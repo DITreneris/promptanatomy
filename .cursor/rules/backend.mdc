@@ -1,0 +1,19 @@
+---
+description: FastAPI, Stripe, CORS ir backend konvencijos
+globs: backend/**/*.py
+alwaysApply: false
+---
+
+# Backend (FastAPI / Stripe)
+
+- Nauji endpointai – Pydantic modeliai request body; atsakymuose tipuoti.
+- Klaidos – `HTTPException(status_code=..., detail="...")`; neverkite raw exception.
+- Konfigūracija iš `core.config` (Pydantic Settings); ne tiesiogiai iš `os.environ`.
+- Logging – `logger.info` / `logger.warning` / `logger.exception`; ne `print`.
+- Stripe: webhook naudoja raw body ir `Stripe-Signature`; checkout – tik su nustatytais env.
+- Kai keičiate API, webhook ar limits – naudokite **backend-agent**. Prieš merge – **quality-assurance-agent**.
+
+```python
+# ✅ Klaidos
+raise HTTPException(status_code=400, detail="Invalid payload")
+```

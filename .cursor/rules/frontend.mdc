@@ -1,0 +1,19 @@
+---
+description: React, Vite, Tailwind ir frontend konvencijos
+globs: frontend/**/*.js,frontend/**/*.jsx
+alwaysApply: false
+---
+
+# Frontend (React / Vite / Tailwind)
+
+- Naudokite **funkcinius komponentus** ir **hooks**; ne class components.
+- Komponentai – `frontend/src/components/`, puslapiai – `frontend/src/pages/`.
+- API kvietimai tik per `frontend/src/api.js` (pvz. `createCheckoutSession()`); ne `fetch` tiesiog komponentuose.
+- Stilius: Tailwind klasės; ne inline style objektai, nebent dinamiškai reikia.
+- Kai keičiate tik frontend, naudokite **frontend-agent** (Cursor subagent). Prieš merge – **quality-assurance-agent**.
+
+```jsx
+// ✅ API per api.js
+import { createCheckoutSession } from '../api'
+const url = await createCheckoutSession(email)
+```

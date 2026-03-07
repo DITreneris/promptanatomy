@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "title": "Promptų Anatomija – AI Operating System",
+    "description": "Išmok valdyti AI kaip operacinę sistemą. Promptų inžinerija, automatizacija ir AI agentai realiems verslo rezultatams. Promptų Anatomija – AI Operating System."
+  },
+  "common": {
+    "skipToContent": "Praleisti į turinį",
+    "home": "Pradžia",
+    "backToHome": "Grįžti į pradžią"
+  },
+  "errors": {
+    "invalidResponse": "Neteisingas atsakymas",
+    "noCheckoutUrl": "Nėra mokėjimo nuorodos",
+    "paymentFailed": "Nepavyko prisijungti prie mokėjimo. Bandykite vėliau."
+  },
+  "nav": {
+    "ariaNav": "Pagrindinė navigacija",
+    "ariaCloseMenu": "Uždaryti meniu",
+    "ariaOpenMenu": "Atidaryti meniu",
+    "ecosystem": "Ekosistema",
+    "methodology": "Metodas",
+    "repo": "Repo",
+    "pricing": "Kainodara",
+    "cta": "Gauti prieigą",
+    "brandPromptu": "PROMPTŲ",
+    "brandAnatomija": "ANATOMIJA",
+    "brandTagline": "AI Operating System",
+    "version": "v2.4"
+  },
+  "hero": {
+    "systemStatus": "System Status: Stable",
+    "commits": "2,481 Commits",
+    "headline1": "Nustok kalbėtis.",
+    "headline2": "Pradėk programuoti.",
+    "subtext": "Išmok valdyti AI kaip operacinę sistemą. Promptų inžinerija, automatizacija ir AI agentai realiems verslo rezultatams.",
+    "cta": "Gauti prieigą dabar",
+    "members": "500+ narys",
+    "community": "AI Praktikų bendruomenė",
+    "liveFeed": "Live Feed",
+    "scriptName": "prompt_os_v2.sh",
+    "systemInit": "System Initializing"
+  },
+  "methodology": {
+    "sectionLabel": "Operating Model",
+    "titleLine1": "Nuspėjamas",
+    "titleLine2": "Rezultatas.",
+    "paragraph": "Atsisakykite atsitiktinių rezultatų. Diegiame inžinerinį mąstymą, kuris AI paverčia galingiausiu jūsų komandos nariu.",
+    "items": [
+      { "title": "Skaidymas", "desc": "Problemos dekonstrukcija į atominius elementus, kuriuos AI interpretuoja be klaidų." },
+      { "title": "Inžinerija", "desc": "Sluoksniuota konstrukcija, naudojant CoT (Chain of Thought) ir Few-shot inžineriją." },
+      { "title": "Skalavimas", "desc": "Sukurta sistema integruojama į verslo procesus, taupant 10-20 valandų per savaitę." }
+    ]
+  },
+  "ecosystem": {
+    "title": "Vertikalūs Varikliai",
+    "paragraph": "Prisijunkite prie specifinių darbo sistemų, paruoštų jūsų rinkai.",
+    "stableLabel": "v2.1 Stable",
+    "items": [
+      { "title": "HR System", "count": "120+ Repo" },
+      { "title": "Marketing Engine", "count": "150+ Repo" },
+      { "title": "RE Broker OS", "count": "80+ Repo" },
+      { "title": "AI Automation", "count": "100+ Repo" }
+    ]
+  },
+  "pricing": {
+    "badge": "Lifetime System Access",
+    "title": "Pasirinkite planą",
+    "subtext": "Gaukite prieigą prie mokymų „Promptų anatomija“ pagal pasirinktą modulių skaičių.",
+    "plans": {
+      "starter": "Starter",
+      "core": "Core",
+      "extended": "Extended",
+      "full": "Full"
+    },
+    "mods": "moduliai",
+    "getAccess": "Gauti prieigą",
+    "loading": "Kraunama...",
+    "allPlansInclude": "Visi planai apima:",
+    "features": [
+      "Promptų Repo (500+ Assets)",
+      "6 blokų sistema",
+      "Sertifikatas (nuo 70%)",
+      "Bendruomenė (WhatsApp)",
+      "Lifetime prieiga"
+    ],
+    "stripeVerified": "Stripe Verified",
+    "refundContact": "Grąžinimo sąlygos – susisiekite",
+    "aiPowered": "AI Powered"
+  },
+  "footer": {
+    "brand": "Promptų Anatomija",
+    "tagline": "Diegiame inžinerinę AI darbo kultūrą. Tai ne kursai – tai operacinė sistema jūsų verslo ateičiai.",
+    "system": "System",
+    "network": "Network",
+    "ecosystem": "Ekosistema",
+    "methodology": "Metodas",
+    "pricing": "Kainodara",
+    "linkedIn": "LinkedIn",
+    "discord": "Discord HQ",
+    "systemLog": "System Log",
+    "comingSoon": "(Netrukus)",
+    "copyright": "© {{year}} Promptų Anatomija. Built for Professionals.",
+    "legal": "Legal",
+    "cookies": "Cookies"
+  },
+  "success": {
+    "breadcrumb": "Apmokėjimas sėkmingas",
+    "heading": "Sėkmingas Diegimas",
+    "body": "Apmokėjimas gautas. Prieiga suteikiama pagal nustatymus. Jei turite klausimų arba per 24 val. negavote instrukcijų – susisiekite su mumis."
+  },
+  "cancel": {
+    "breadcrumb": "Apmokėjimas atšauktas",
+    "heading": "Apmokėjimas atšauktas",
+    "body": "Jūsų mokėjimas nebuvo atliktas. Galite bet kada grįžti ir įsigyti prieigą prie mokymų „Promptų anatomija“.",
+    "tryAgain": "Vėl bandyti"
+  }
+}

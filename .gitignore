@@ -1,0 +1,29 @@
+# Environment and secrets – never commit
+.env
+backend/.env
+frontend/.env
+*.env.local
+
+# Python
+.venv
+venv
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node
+node_modules/
+frontend/dist/
+npm-debug.log*
+yarn-error.log*
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db

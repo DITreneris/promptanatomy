@@ -1,0 +1,418 @@
+import React, { useState, useEffect } from 'react';
+import { 
+  Zap, 
+  Star, 
+  ArrowRight, 
+  CheckCircle, 
+  Lock, 
+  ChevronRight, 
+  Users, 
+  Target, 
+  Briefcase, 
+  Cpu, 
+  ShieldCheck, 
+  Search, 
+  Layers, 
+  Play,
+  HelpCircle,
+  Menu,
+  X,
+  Code,
+  Sparkles,
+  Command,
+  Terminal,
+  CpuIcon,
+  Activity,
+  Globe
+} from 'lucide-react';
+
+// --- PREMIUM DESIGN TOKENS ---
+const THEME = {
+  colors: {
+    brand: {
+      slate: '#5F7688',
+      gold: '#CFA73A',
+      dark: '#0B1320',
+      gradient: 'linear-gradient(135deg, #0B1320 0%, #1A2638 100%)',
+      accentGradient: 'linear-gradient(135deg, #CFA73A 0%, #E8B93C 100%)'
+    },
+    ui: {
+      glass: 'rgba(255, 255, 255, 0.03)',
+      glassBorder: 'rgba(255, 255, 255, 0.08)',
+      surface: '#F8FAFC'
+    }
+  }
+};
+
+// --- COMPONENTS ---
+
+const Navbar = ({ onCtaClick }) => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <nav className={`fixed top-0 w-full z-[100] transition-all duration-500 ${scrolled ? 'py-3 bg-white/70 backdrop-blur-2xl border-b border-slate-200 shadow-sm' : 'py-6 bg-transparent'}`}>
+      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <div className="flex items-center gap-4 group cursor-pointer">
+          <div className="w-12 h-12 rounded-2xl bg-[#0B1320] flex items-center justify-center text-[#CFA73A] shadow-2xl group-hover:scale-105 transition-all duration-500 border border-white/10">
+            <Zap className="w-7 h-7 fill-current" />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-2xl font-black tracking-tighter leading-none text-[#0B1320] flex items-center gap-2">
+              PROMPTŲ <span className="text-[#CFA73A]">ANATOMIJA</span>
+              <span className="hidden sm:inline-block px-1.5 py-0.5 rounded bg-slate-100 text-[8px] font-black text-slate-400 align-middle">v2.4</span>
+            </span>
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400">AI Operating System</span>
+          </div>
+        </div>
+
+        <div className="hidden md:flex items-center space-x-10">
+          {[
+            { name: 'Sistemos', id: 'ekosistema' },
+            { name: 'Metodas', id: 'metodologija' },
+            { name: 'Repo', id: 'library' },
+            { name: 'Pricing', id: 'pricing' }
+          ].map((item) => (
+            <a key={item.name} href={`#${item.id}`} className="text-xs font-black uppercase tracking-[0.15em] text-slate-500 hover:text-[#0B1320] transition-colors">
+              {item.name}
+            </a>
+          ))}
+          <button 
+            onClick={onCtaClick}
+            className="px-8 py-3 rounded-xl text-sm font-black text-[#0B1320] transition-all hover:shadow-[0_10px_20px_rgba(207,167,58,0.2)] hover:-translate-y-0.5 active:scale-95 bg-[#CFA73A] border border-white/20"
+          >
+            Gauti prieigą
+          </button>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+const Hero = ({ onCta }) => (
+  <section className="relative pt-48 pb-32 overflow-hidden bg-white">
+    {/* Noise Texture Overlay */}
+    <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+    <div className="absolute top-0 right-0 w-1/2 h-full bg-[#F8FAFC] -skew-x-12 translate-x-32 -z-10 border-l border-slate-100"></div>
+    
+    <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-24 items-center">
+      <div className="relative z-10 text-left">
+        <div className="inline-flex items-center gap-3 bg-[#0B1320] text-white px-4 py-2 rounded-full mb-10 shadow-2xl border border-white/10">
+          <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+          <span className="text-[10px] font-black uppercase tracking-[0.25em]">System Status: Stable</span>
+          <div className="w-px h-3 bg-white/20"></div>
+          <span className="text-[9px] font-bold text-slate-400">2,481 Commits</span>
+        </div>
+        
+        <h1 className="text-6xl md:text-[94px] font-black text-[#0B1320] mb-8 leading-[0.85] tracking-tighter">
+          Nustok kalbėtis.<br/>
+          <span className="text-transparent bg-clip-text" style={{ backgroundImage: THEME.colors.brand.accentGradient }}>Pradėk programuoti.</span>
+        </h1>
+        
+        <p className="text-xl text-slate-500 mb-14 max-w-xl leading-relaxed font-medium tracking-tight">
+          Išmok valdyti AI kaip operacinę sistemą. Promptų inžinerija, automatizacija ir AI agentai realiems verslo rezultatams.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-6 items-center">
+          <button 
+            onClick={onCta}
+            className="group w-full sm:w-auto px-12 py-6 rounded-2xl text-xl font-black text-[#0B1320] bg-[#CFA73A] transition-all hover:shadow-[0_20px_40px_rgba(207,167,58,0.3)] flex items-center justify-center gap-3 transform hover:-translate-y-1"
+          >
+            Gauti prieigą dabar <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+          </button>
+          
+          <div className="flex items-center gap-4 text-slate-400 font-bold text-sm">
+            <div className="flex -space-x-3">
+              {[1,2,3,4].map(i => (
+                <div key={i} className="w-10 h-10 rounded-full border-4 border-white bg-slate-200 overflow-hidden shadow-sm">
+                   <img src={`https://i.pravatar.cc/100?u=user${i}`} alt="User" />
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col">
+              <span className="text-[#0B1320] font-black leading-none mb-1">500+ narys</span>
+              <span className="text-[10px] uppercase tracking-widest opacity-60">AI Praktikų bendruomenė</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="relative group perspective-1000">
+        <div className="absolute -inset-10 bg-gradient-to-r from-[#CFA73A] to-indigo-500 rounded-[60px] opacity-10 blur-3xl group-hover:opacity-20 transition-all duration-1000"></div>
+        <div className="relative bg-[#0B1320] rounded-[40px] p-10 border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden font-mono backdrop-blur-sm">
+          <div className="flex items-center justify-between mb-12">
+            <div className="flex items-center gap-3">
+              <div className="w-3 h-3 rounded-full bg-rose-500/80"></div>
+              <div className="w-3 h-3 rounded-full bg-amber-500/80"></div>
+              <div className="w-3 h-3 rounded-full bg-emerald-500/80"></div>
+            </div>
+            <div className="flex items-center gap-3">
+               <div className="px-2 py-1 rounded bg-white/5 border border-white/10 text-[9px] text-slate-500 font-black uppercase tracking-widest flex items-center gap-1.5">
+                  <Activity size={10} className="text-emerald-500" /> Live Feed
+               </div>
+               <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">prompt_os_v2.sh</div>
+            </div>
+          </div>
+          
+          <div className="space-y-8">
+            <div className="group/line cursor-default transition-all hover:translate-x-1">
+              <div className="text-[10px] text-slate-600 mb-2 font-black tracking-[0.2em]">// 01: IDENTITY_LAYER</div>
+              <div className="text-sm border-l-2 border-[#CFA73A]/50 group-hover/line:border-[#CFA73A] transition-colors pl-5 py-1">
+                <span className="text-[#CFA73A] font-black">ROLE:</span>
+                <span className="text-slate-300 ml-3 italic opacity-80 group-hover/line:opacity-100">"Senior AI Strategist"</span>
+              </div>
+            </div>
+
+            <div className="group/line cursor-default transition-all hover:translate-x-1">
+              <div className="text-[10px] text-slate-600 mb-2 font-black tracking-[0.2em]">// 02: LOGIC_CONSTRAINTS</div>
+              <div className="text-sm border-l-2 border-indigo-500/50 group-hover/line:border-indigo-500 transition-colors pl-5 py-1">
+                <span className="text-indigo-400 font-black">CONTEXT:</span>
+                <span className="text-slate-300 ml-3 italic opacity-80 group-hover/line:opacity-100">"Enterprise SaaS Scaling..."</span>
+              </div>
+            </div>
+
+            <div className="group/line cursor-default transition-all hover:translate-x-1">
+              <div className="text-[10px] text-slate-600 mb-2 font-black tracking-[0.2em]">// 03: DATA_OUTPUT_SCHEMA</div>
+              <div className="text-sm border-l-2 border-emerald-500/50 group-hover/line:border-emerald-500 transition-colors pl-5 py-1">
+                <span className="text-emerald-400 font-black">SCHEMA:</span>
+                <span className="text-slate-300 ml-3 italic opacity-80 group-hover/line:opacity-100">"JSON-Strict | Nested"</span>
+              </div>
+            </div>
+
+            <div className="pt-8 flex items-center gap-4 text-[#CFA73A] border-t border-white/5">
+              <div className="w-2 h-2 rounded-full bg-[#CFA73A] animate-ping"></div>
+              <span className="text-[11px] font-black tracking-[0.2em] uppercase opacity-70">System Initializing<span className="animate-pulse">...</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+const Methodology = () => (
+  <section id="metodologija" className="py-32 bg-[#F8FAFC] px-6 border-y border-slate-100">
+    <div className="max-w-7xl mx-auto">
+      <div className="flex flex-col lg:flex-row justify-between items-end mb-28 gap-12">
+        <div className="max-w-2xl">
+          <h2 className="text-xs font-black uppercase tracking-[0.4em] text-[#CFA73A] mb-8 italic">Operating Model</h2>
+          <h3 className="text-5xl md:text-7xl font-black text-[#0B1320] tracking-tighter leading-none">Nuspėjamas <br/> Rezultatas.</h3>
+        </div>
+        <p className="text-slate-500 font-medium text-lg max-w-sm leading-relaxed border-l-2 border-slate-200 pl-8">
+          Atsisakykite atsitiktinių rezultatų. Diegiame inžinerinį mąstymą, kuris AI paverčia galingiausiu jūsų komandos nariu.
+        </p>
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-12">
+        {[
+          { icon: <Search />, title: "Skaidymas", desc: "Problemos dekonstrukcija į atominius elementus, kuriuos AI interpretuoja be klaidų." },
+          { icon: <Layers />, title: "Inžinerija", desc: "Sluoksniuota konstrukcija, naudojant CoT (Chain of Thought) ir Few-shot inžineriją." },
+          { icon: <Zap />, title: "Scale", desc: "Sukurta sistema integruojama į verslo procesus, taupant 10-20 valandų per savaitę." }
+        ].map((item, i) => (
+          <div key={i} className="group p-12 rounded-[48px] bg-white border border-slate-200/50 hover:border-[#CFA73A]/40 transition-all duration-700 hover:shadow-2xl hover:shadow-[#CFA73A]/5">
+            <div className="w-16 h-16 rounded-2xl bg-[#0B1320] text-[#CFA73A] flex items-center justify-center mb-10 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-[0_10px_30px_rgba(207,167,58,0.2)]">
+              {React.cloneElement(item.icon, { size: 28 })}
+            </div>
+            <h4 className="text-2xl font-black text-[#0B1320] mb-6 tracking-tight">{item.title}</h4>
+            <p className="text-slate-500 font-medium leading-relaxed opacity-80">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const Ecosystem = () => (
+  <section id="ekosistema" className="py-32 bg-[#0B1320] px-6 relative overflow-hidden">
+    <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+    <div className="max-w-7xl mx-auto relative z-10">
+      <div className="text-center mb-28">
+        <h2 className="text-4xl md:text-6xl font-black text-white mb-8 tracking-tighter">Vertikalūs Varikliai</h2>
+        <p className="text-slate-400 text-lg max-w-2xl mx-auto font-medium opacity-80">Prisijunkite prie specifinių darbo sistemų, paruoštų jūsų rinkai.</p>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          { title: "HR System", color: "#2E9E7E", icon: <Users />, count: "120+ Repo" },
+          { title: "Marketing Engine", color: "#7C5CFF", icon: <Target />, count: "150+ Repo" },
+          { title: "RE Broker OS", color: "#3F6FFF", icon: <Briefcase />, count: "80+ Repo" },
+          { title: "AI Automation", color: "#F38A3F", icon: <Cpu />, count: "100+ Repo" }
+        ].map((item, i) => (
+          <div key={i} className="group relative p-10 rounded-[40px] bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all cursor-pointer overflow-hidden">
+            <div className="absolute -bottom-10 -right-10 w-32 h-32 blur-[60px] opacity-20 transition-opacity group-hover:opacity-40" style={{ backgroundColor: item.color }}></div>
+            <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-white mb-24 shadow-2xl transition-transform group-hover:scale-110" style={{ backgroundColor: item.color }}>
+              {item.icon}
+            </div>
+            <h4 className="text-xl font-black text-white mb-2 tracking-tight">{item.title}</h4>
+            <div className="flex items-center gap-2">
+               <span className="text-[9px] font-black uppercase tracking-[0.25em] opacity-60" style={{ color: item.color }}>{item.count}</span>
+               <div className="w-1 h-1 rounded-full bg-white/20"></div>
+               <span className="text-[9px] font-black uppercase tracking-[0.25em] text-white/40">v2.1 Stable</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const Pricing = ({ onBuy }) => (
+  <section id="pricing" className="py-32 bg-white px-6">
+    <div className="max-w-5xl mx-auto">
+      <div className="bg-[#0B1320] rounded-[64px] p-2 md:p-4 shadow-[0_50px_100px_-20px_rgba(11,19,32,0.3)] relative overflow-hidden">
+        <div className="absolute -top-32 -left-32 w-96 h-96 bg-[#CFA73A] opacity-10 blur-[130px]"></div>
+        
+        <div className="bg-white rounded-[56px] p-12 md:p-24">
+          <div className="flex flex-col lg:flex-row justify-between items-start gap-16 mb-24">
+            <div className="max-w-md">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-[9px] font-black uppercase tracking-[0.25em] text-slate-500 mb-10 border border-slate-200 shadow-sm">
+                 <Globe size={10} className="text-[#CFA73A]" /> Lifetime System Access
+              </div>
+              <h3 className="text-5xl md:text-6xl font-black text-[#0B1320] tracking-tighter mb-8 leading-none">Viena investicija. Visos galimybės.</h3>
+              <p className="text-slate-500 text-lg font-medium leading-relaxed opacity-80">Gaukite prieigą prie visos ekosistemos: inžinerinės metodikos, promptų repo ir AI bendruomenės.</p>
+            </div>
+            <div className="flex flex-col items-center lg:items-end w-full lg:w-auto bg-slate-50 p-10 rounded-[40px] border border-slate-100 shadow-inner">
+              <span className="text-slate-300 line-through text-2xl font-black italic mb-2">199€</span>
+              <span className="text-9xl font-black text-[#0B1320] leading-none tracking-tighter flex items-start">
+                99<span className="text-3xl mt-4">€</span>
+              </span>
+              <span className="mt-6 px-4 py-1.5 rounded-full bg-[#0B1320] text-white text-[8px] font-black uppercase tracking-widest animate-pulse">Liko 14 licencijų</span>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-10 mb-20">
+            {[
+              "12 Inžinerinių modulių (Core)",
+              "Promptų Repo (500+ Assets)",
+              "HR, Marketingo & NT Engines",
+              "Sertifikuota AI meistriškumas",
+              "Slack / Discord HQ Access",
+              "Sistemos atnaujinimai v3.0"
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-5 text-slate-700 font-bold group">
+                <div className="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center shrink-0 border border-emerald-100 group-hover:scale-110 transition-transform">
+                  <CheckCircle size={16} className="text-emerald-600" />
+                </div>
+                <span className="text-base tracking-tight opacity-90">{item}</span>
+              </div>
+            ))}
+          </div>
+
+          <button 
+            onClick={onBuy}
+            className="group w-full py-9 rounded-[32px] text-2xl font-black text-[#0B1320] bg-[#CFA73A] hover:brightness-105 transition-all shadow-[0_30px_70px_-10px_rgba(207,167,58,0.4)] flex items-center justify-center gap-5"
+          >
+            Gauti prieigą dabar <ArrowRight size={28} className="group-hover:translate-x-2 transition-transform" />
+          </button>
+          
+          <div className="mt-16 flex flex-wrap justify-center gap-14 opacity-40 grayscale">
+            <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.25em]">
+              <Lock size={14} /> Stripe Verified
+            </div>
+            <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.25em]">
+              <ShieldCheck size={14} /> Money-Back Policy
+            </div>
+            <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.25em]">
+              <Cpu size={14} /> AI Powered
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+const Footer = () => (
+  <footer className="bg-white pt-48 pb-20 px-6 border-t border-slate-100">
+    <div className="max-w-7xl mx-auto">
+      <div className="grid md:grid-cols-4 gap-24 mb-32">
+        <div className="md:col-span-2">
+          <div className="flex items-center gap-4 mb-10">
+            <div className="w-12 h-12 rounded-2xl bg-[#0B1320] flex items-center justify-center text-[#CFA73A] border border-white/10 shadow-xl">
+              <Zap className="fill-current w-6 h-6" />
+            </div>
+            <span className="text-3xl font-black tracking-tighter uppercase text-[#0B1320]">Anatomija</span>
+          </div>
+          <p className="text-slate-400 font-medium max-w-sm text-lg leading-relaxed italic">
+            Diegiame inžinerinę AI darbo kultūrą. Tai ne kursai – tai operacinė sistema jūsų verslo ateičiai.
+          </p>
+        </div>
+        <div>
+          <h5 className="font-black uppercase text-xs tracking-[0.45em] text-slate-300 mb-12">System</h5>
+          <ul className="space-y-6 text-sm font-black text-slate-500 uppercase tracking-widest">
+            <li><a href="#ekosistema" className="hover:text-[#CFA73A] transition-colors">Sistemos</a></li>
+            <li><a href="#metodologija" className="hover:text-[#CFA73A] transition-colors">Metodas</a></li>
+            <li><a href="#pricing" className="hover:text-[#CFA73A] transition-colors">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 className="font-black uppercase text-xs tracking-[0.45em] text-slate-300 mb-12">Network</h5>
+          <ul className="space-y-6 text-sm font-black text-slate-500 uppercase tracking-widest">
+            <li><a href="#" className="hover:text-[#CFA73A] transition-colors">LinkedIn</a></li>
+            <li><a href="#" className="hover:text-[#CFA73A] transition-colors">Discord HQ</a></li>
+            <li><a href="#" className="hover:text-[#CFA73A] transition-colors">System Log</a></li>
+          </ul>
+        </div>
+      </div>
+      <div className="pt-20 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-10">
+        <span className="text-[10px] font-black uppercase tracking-[0.5em] text-slate-300">© 2024 Promptų Anatomija. Built for Professionals.</span>
+        <div className="flex gap-16 text-[10px] font-black uppercase tracking-[0.35em] text-slate-400">
+          <a href="#" className="hover:text-[#0B1320] transition-colors">Legal</a>
+          <a href="#" className="hover:text-[#0B1320] transition-colors">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+);
+
+export default function App() {
+  const [purchased, setPurchased] = useState(false);
+
+  const handleCta = () => {
+    setPurchased(true);
+    window.scrollTo(0,0);
+  };
+
+  if (purchased) {
+    return (
+      <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center p-6 antialiased">
+         <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+        <div className="max-w-2xl w-full bg-[#0B1320] rounded-[64px] p-2 shadow-3xl animate-in zoom-in-95 duration-500 border border-white/5">
+          <div className="bg-white rounded-[54px] p-16 md:p-28 text-center shadow-inner">
+            <div className="w-32 h-32 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-12 shadow-[0_20px_40px_rgba(16,185,129,0.1)] border-4 border-white">
+              <ShieldCheck size={64} strokeWidth={1.5} />
+            </div>
+            <h2 className="text-5xl font-black text-[#0B1320] mb-8 tracking-tighter uppercase leading-none">Sėkmingas Diegimas</h2>
+            <p className="text-slate-500 mb-14 text-xl font-medium leading-relaxed italic max-w-sm mx-auto">
+              Sistemos prieiga sugeneruota. Patikrinkite savo paštą – ten laukia jūsų asmeninis "AI OS" raktas.
+            </p>
+            <button 
+              onClick={() => setPurchased(false)}
+              className="w-full py-6 bg-[#0B1320] text-white rounded-[24px] font-black uppercase tracking-widest text-sm hover:brightness-125 transition-all shadow-2xl hover:scale-[1.02] active:scale-95 transform"
+            >
+              Atidaryti Dashboard
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-white text-[#0B1320] font-sans selection:bg-[#CFA73A]/30 antialiased overflow-x-hidden">
+      <Navbar onCtaClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })} />
+      <main>
+        <Hero onCta={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })} />
+        <Methodology />
+        <Ecosystem />
+        <Pricing onBuy={handleCta} />
+      </main>
+      <Footer />
+    </div>
+  );
+}

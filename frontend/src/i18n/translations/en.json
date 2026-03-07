@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "title": "Promptų Anatomija – AI Operating System",
+    "description": "Learn to run AI like an operating system. Prompt engineering, automation and AI agents for real business results. Promptų Anatomija – AI Operating System."
+  },
+  "common": {
+    "skipToContent": "Skip to content",
+    "home": "Home",
+    "backToHome": "Back to home"
+  },
+  "errors": {
+    "invalidResponse": "Invalid response",
+    "noCheckoutUrl": "No checkout URL",
+    "paymentFailed": "Failed to connect to payment. Try again later."
+  },
+  "nav": {
+    "ariaNav": "Main navigation",
+    "ariaCloseMenu": "Close menu",
+    "ariaOpenMenu": "Open menu",
+    "ecosystem": "Ecosystem",
+    "methodology": "Method",
+    "repo": "Repo",
+    "pricing": "Pricing",
+    "cta": "Get access",
+    "brandPromptu": "PROMPTŲ",
+    "brandAnatomija": "ANATOMIJA",
+    "brandTagline": "AI Operating System",
+    "version": "v2.4"
+  },
+  "hero": {
+    "systemStatus": "System Status: Stable",
+    "commits": "2,481 Commits",
+    "headline1": "Stop talking.",
+    "headline2": "Start building.",
+    "subtext": "Learn to run AI like an operating system. Prompt engineering, automation and AI agents for real business results.",
+    "cta": "Get access now",
+    "members": "500+ members",
+    "community": "AI Practitioners community",
+    "liveFeed": "Live Feed",
+    "scriptName": "prompt_os_v2.sh",
+    "systemInit": "System Initializing"
+  },
+  "methodology": {
+    "sectionLabel": "Operating Model",
+    "titleLine1": "Predictable",
+    "titleLine2": "Outcome.",
+    "paragraph": "No more random results. We deploy engineering thinking that makes AI the most powerful member of your team.",
+    "items": [
+      { "title": "Breakdown", "desc": "Deconstruct problems into atomic elements that AI interprets without errors." },
+      { "title": "Engineering", "desc": "Layered construction using CoT (Chain of Thought) and Few-shot engineering." },
+      { "title": "Scale", "desc": "The system integrates into business processes, saving 10–20 hours per week." }
+    ]
+  },
+  "ecosystem": {
+    "title": "Vertical Engines",
+    "paragraph": "Connect to purpose-built work systems ready for your market.",
+    "stableLabel": "v2.1 Stable",
+    "items": [
+      { "title": "HR System", "count": "120+ Repo" },
+      { "title": "Marketing Engine", "count": "150+ Repo" },
+      { "title": "RE Broker OS", "count": "80+ Repo" },
+      { "title": "AI Automation", "count": "100+ Repo" }
+    ]
+  },
+  "pricing": {
+    "badge": "Lifetime System Access",
+    "title": "Choose your plan",
+    "subtext": "Get access to the Promptų Anatomija training according to the number of modules you choose.",
+    "plans": {
+      "starter": "Starter",
+      "core": "Core",
+      "extended": "Extended",
+      "full": "Full"
+    },
+    "mods": "modules",
+    "getAccess": "Get access",
+    "loading": "Loading...",
+    "allPlansInclude": "All plans include:",
+    "features": [
+      "Prompt Repo (500+ Assets)",
+      "6-block system",
+      "Certificate (from 70%)",
+      "Community (WhatsApp)",
+      "Lifetime access"
+    ],
+    "stripeVerified": "Stripe Verified",
+    "refundContact": "Refund terms – contact us",
+    "aiPowered": "AI Powered"
+  },
+  "footer": {
+    "brand": "Promptų Anatomija",
+    "tagline": "We deploy an engineering AI work culture. It's not a course – it's an operating system for your business future.",
+    "system": "System",
+    "network": "Network",
+    "ecosystem": "Ecosystem",
+    "methodology": "Method",
+    "pricing": "Pricing",
+    "linkedIn": "LinkedIn",
+    "discord": "Discord HQ",
+    "systemLog": "System Log",
+    "comingSoon": "(Coming soon)",
+    "copyright": "© {{year}} Promptų Anatomija. Built for Professionals.",
+    "legal": "Legal",
+    "cookies": "Cookies"
+  },
+  "success": {
+    "breadcrumb": "Payment successful",
+    "heading": "Installation complete",
+    "body": "Payment received. Access is granted as configured. If you have questions or did not receive instructions within 24 hours – contact us."
+  },
+  "cancel": {
+    "breadcrumb": "Payment cancelled",
+    "heading": "Payment cancelled",
+    "body": "Your payment was not completed. You can return anytime to purchase access to the Promptų Anatomija training.",
+    "tryAgain": "Try again"
+  }
+}

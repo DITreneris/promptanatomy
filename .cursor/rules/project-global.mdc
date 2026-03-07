@@ -1,0 +1,17 @@
+---
+description: Bendri projekto standartai – stack, env, saugumas
+alwaysApply: true
+---
+
+# Projektas: Promptų Anatomija Home
+
+- **Stack:** Frontend – Vite + React, Tailwind; Backend – FastAPI, Stripe. Laikykitės šių technologijų.
+- **Secrets:** Jokie API raktai, slaptažodžiai ar `STRIPE_*` reikšmės kode. Naudokite `.env` ir `.env.example` (be realių reikšmių).
+- **Komentarai:** Leidžiama LT arba EN; dokumentacijoje ir kode būkite nuoseklūs.
+- **Struktūra:** Frontend – `frontend/src/` (pages, components, api.js); backend – `backend/main.py`. Naujus failus dėkite atitinkamuose kataloguose.
+- **Dokumentacija:** Reikšmingi pakeitimai – atnaujinkite README, TODO arba `docs/` (žr. docs/process/documentation.md). Kokybei prieš merge naudokite **quality-assurance-agent**.
+
+## Lean ir tokenai
+- Prieš implementaciją: apmąstyk kelią (ar reikia naujos funkcijos? ar pakanka esamo?).
+- Nekurk nereikalingų funkcijų ar modulių „ateičiai“ – tik konkretus reikalavimas.
+- Atsakymuose ir taisyklėse būk trumpas; cituok (failas:eilutė), nekopijuok didelių blokų; nerepetuok.
