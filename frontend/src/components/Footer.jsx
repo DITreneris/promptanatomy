@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Zap } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
 
@@ -52,8 +53,9 @@ export default function Footer() {
               {t('footer.creator')}
             </span>
           </div>
-          <div className="flex gap-16 text-[10px] font-black uppercase tracking-[0.35em] text-slate-400">
-            <span>{t('footer.legal')} <span className="text-slate-300 font-normal normal-case">{t('footer.comingSoon')}</span></span>
+          <div className="flex flex-wrap gap-8 md:gap-16 text-[10px] font-black uppercase tracking-[0.35em] text-slate-400">
+            <Link to="/privacy" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">{t('footer.privacyPolicy')}</Link>
+            <Link to="/terms" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">{t('footer.termsOfService')}</Link>
             <span>{t('footer.cookies')} <span className="text-slate-300 font-normal normal-case">{t('footer.comingSoon')}</span></span>
           </div>
         </div>

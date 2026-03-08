@@ -13,7 +13,10 @@
     "noCheckoutUrl": "No checkout URL",
     "paymentFailed": "Failed to connect to payment. Try again later.",
     "accessNotConfigured": "Access check not available.",
-    "alreadyPurchased": "You already have this plan or higher."
+    "alreadyPurchased": "You already have this plan or higher.",
+    "validEmailRequired": "Please enter a valid email",
+    "paymentUnavailable": "Payment temporarily unavailable. Try again later.",
+    "networkError": "Network error. Check connection and try again."
   },
   "nav": {
     "ariaNav": "Main navigation",
@@ -41,7 +44,16 @@
     "community": "AI Practitioners community",
     "liveFeed": "Live Feed",
     "scriptName": "prompt_os_v2.sh",
-    "systemInit": "System Initializing"
+    "systemInit": "System Initializing",
+    "codeLine1": "// 01: IDENTITY_LAYER",
+    "codeRole": "ROLE:",
+    "codeRoleValue": "Senior AI Strategist",
+    "codeLine2": "// 02: LOGIC_CONSTRAINTS",
+    "codeContext": "CONTEXT:",
+    "codeContextValue": "Enterprise SaaS Scaling...",
+    "codeLine3": "// 03: DATA_OUTPUT_SCHEMA",
+    "codeSchema": "SCHEMA:",
+    "codeSchemaValue": "JSON-Strict | Nested"
   },
   "methodology": {
     "sectionLabel": "Operating Model",
@@ -115,13 +127,25 @@
     "comingSoon": "(Coming soon)",
     "copyright": "© {{year}} Promptų Anatomija. Built for Professionals.",
     "creator": "creator: tomas staniulis",
-    "legal": "Legal",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
     "cookies": "Cookies"
+  },
+  "legal": {
+    "privacyPolicy": "Privacy Policy",
+    "privacyTitle": "Privacy Policy – Prompt Anatomy",
+    "privacyDescription": "Privacy policy and data handling for Prompt Anatomy.",
+    "privacySkeleton": "This page will contain the privacy policy. For questions, please contact us.",
+    "termsOfService": "Terms of Service",
+    "termsTitle": "Terms of Service – Prompt Anatomy",
+    "termsDescription": "Terms of service for Prompt Anatomy.",
+    "termsSkeleton": "This page will contain the terms of service. For questions, please contact us."
   },
   "success": {
     "breadcrumb": "Payment successful",
     "heading": "Installation complete",
     "body": "Payment received. Your access is being set up. If you have any questions, please contact us.",
+    "emailDisclaimer": "If you don't receive an email within a few minutes, check spam or contact us.",
     "metaTitle": "Payment successful",
     "metaDescription": "Thank you for your purchase."
   },

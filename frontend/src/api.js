@@ -34,5 +34,10 @@ export async function getAccess(email) {
     const detail = (await res.json().catch(() => ({}))).detail || res.statusText
     throw new Error(detail)
   }
-  return res.json()
+  const data = await res.json().catch(() => ({}))
+  return {
+    highest_plan: data?.highest_plan ?? 0,
+    allowed_modules: Array.isArray(data?.allowed_modules) ? data.allowed_modules : [],
+    can_upgrade_to: Array.isArray(data?.can_upgrade_to) ? data.can_upgrade_to : [],
+  }
 }

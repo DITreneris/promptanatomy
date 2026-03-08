@@ -21,6 +21,10 @@ frontend/dist/
 npm-debug.log*
 yarn-error.log*
 
+# Project docs (local / internal)
+TODO.md
+roadmap.md
+
 # IDE / OS
 .idea/
 .vscode/

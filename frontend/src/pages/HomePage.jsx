@@ -23,7 +23,10 @@ export default function HomePage() {
 
   const handleCheckAccess = async () => {
     const email = customerEmail.trim()
-    if (!email || !email.includes('@')) return
+    if (!email || !email.includes('@')) {
+      setAccessError(t('errors.validEmailRequired'))
+      return
+    }
     setAccessError(null)
     setAccessLoading(true)
     try {
@@ -31,7 +34,13 @@ export default function HomePage() {
       setAccess(data)
       setAccessLoading(false)
     } catch (e) {
-      setAccessError(e.message === 'Access check not configured' ? t('errors.accessNotConfigured') : e.message)
+      const msg = e.message || ''
+      const accessErrorMsg =
+        msg === 'Access check not configured' ? t('errors.accessNotConfigured') :
+        msg === 'Valid email required' ? t('errors.validEmailRequired') :
+        /fetch|network/i.test(msg) ? t('errors.networkError') :
+        msg
+      setAccessError(accessErrorMsg)
       setAccess(null)
       setAccessLoading(false)
     }
@@ -45,11 +54,14 @@ export default function HomePage() {
       window.location.href = url
       setTimeout(() => setLoading(false), 10_000)
     } catch (e) {
-      const msg = e.message
+      const msg = e.message || ''
       setError(
         msg === 'Already purchased this plan or higher' ? t('errors.alreadyPurchased') :
         msg === 'Invalid response' ? t('errors.invalidResponse') :
         msg === 'No checkout URL' ? t('errors.noCheckoutUrl') :
+        msg === 'Payment provider error' ? t('errors.paymentUnavailable') :
+        msg === 'Valid email required' ? t('errors.validEmailRequired') :
+        /fetch|network/i.test(msg) ? t('errors.networkError') :
         msg || t('errors.paymentFailed')
       )
       setLoading(false)

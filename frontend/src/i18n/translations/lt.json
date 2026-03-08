@@ -13,7 +13,10 @@
     "noCheckoutUrl": "Nėra mokėjimo nuorodos",
     "paymentFailed": "Nepavyko prisijungti prie mokėjimo. Bandykite vėliau.",
     "accessNotConfigured": "Prieigos tikrinimas neprieinamas.",
-    "alreadyPurchased": "Jau turite šį planą ar aukštesnį."
+    "alreadyPurchased": "Jau turite šį planą ar aukštesnį.",
+    "validEmailRequired": "Įveskite tinkamą el. paštą",
+    "paymentUnavailable": "Mokėjimas laikinai neprieinamas. Bandykite vėliau.",
+    "networkError": "Tinklo klaida. Patikrinkite ryšį ir bandykite dar kartą."
   },
   "nav": {
     "ariaNav": "Pagrindinė navigacija",
@@ -39,9 +42,18 @@
     "cta": "Žiūrėti planus",
     "members": "500+ narių",
     "community": "DI Praktikų bendruomenė",
-    "liveFeed": "Live Feed",
+    "liveFeed": "Tiesioginis srautas",
     "scriptName": "prompt_os_v2.sh",
-    "systemInit": "System Initializing"
+    "systemInit": "Sistema startuoja",
+    "codeLine1": "// 01: TAPATYBĖS_SLUOKSNIS",
+    "codeRole": "VAIDMUO:",
+    "codeRoleValue": "Vyresnysis DI strategas",
+    "codeLine2": "// 02: LOGIKOS_APRIBOŽIMAI",
+    "codeContext": "KONTEKSTAS:",
+    "codeContextValue": "Įmonių SaaS plėtra...",
+    "codeLine3": "// 03: DUOMENŲ_STRUKTŪRA",
+    "codeSchema": "SCHEMA:",
+    "codeSchemaValue": "JSON-Strict | Įdėtas"
   },
   "methodology": {
     "sectionLabel": "Operating Model",
@@ -115,13 +127,25 @@
     "comingSoon": "(Netrukus)",
     "copyright": "© {{year}} Promptų Anatomija. Built for Professionals.",
     "creator": "kūrėjas: tomas staniulis",
-    "legal": "Legal",
+    "privacyPolicy": "Privatumo politika",
+    "termsOfService": "Paslaugų teikimo sąlygos",
     "cookies": "Cookies"
+  },
+  "legal": {
+    "privacyPolicy": "Privatumo politika",
+    "privacyTitle": "Privatumo politika – Promptų Anatomija",
+    "privacyDescription": "Privatumo politika ir duomenų tvarkymas Promptų Anatomija.",
+    "privacySkeleton": "Šiame puslapyje bus pateikta privatumo politika. Klausimams – susisiekite su mumis.",
+    "termsOfService": "Paslaugų teikimo sąlygos",
+    "termsTitle": "Paslaugų teikimo sąlygos – Promptų Anatomija",
+    "termsDescription": "Paslaugų teikimo sąlygos Promptų Anatomija.",
+    "termsSkeleton": "Šiame puslapyje bus pateiktos paslaugų teikimo sąlygos. Klausimams – susisiekite su mumis."
   },
   "success": {
     "breadcrumb": "Apmokėjimas sėkmingas",
     "heading": "Sėkmingas diegimas",
     "body": "Apmokėjimas gautas. Jūsų prieiga ruošiama. Jei turite klausimų – susisiekite su mumis.",
+    "emailDisclaimer": "Jei per kelias minutes negausite laiško, patikrinkite spam arba susisiekite.",
     "metaTitle": "Apmokėjimas sėkmingas",
     "metaDescription": "Ačiū už pirkimą."
   },

@@ -1,0 +1,44 @@
+import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { useLocale } from '../i18n/LocaleContext'
+
+export default function PrivacyPage() {
+  const { t } = useLocale()
+
+  useEffect(() => {
+    document.title = t('legal.privacyTitle')
+    const desc = document.querySelector('meta[name="description"]')
+    if (desc) desc.setAttribute('content', t('legal.privacyDescription'))
+    return () => {
+      document.title = t('meta.title')
+      const d = document.querySelector('meta[name="description"]')
+      if (d) d.setAttribute('content', t('meta.description'))
+    }
+  }, [t])
+
+  return (
+    <div className="min-h-screen bg-[#F8FAFC] antialiased">
+      <div className="max-w-2xl mx-auto px-6 py-16">
+        <nav aria-label="Breadcrumb" className="mb-8 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+          <ol className="flex items-center gap-2">
+            <li><Link to="/" className="hover:text-brand-accent transition-colors duration-200">{t('common.home')}</Link></li>
+            <li aria-hidden>/</li>
+            <li className="text-brand-dark" aria-current="page">{t('legal.privacyPolicy')}</li>
+          </ol>
+        </nav>
+        <h1 className="text-3xl md:text-4xl font-black text-brand-dark tracking-tight mb-6">
+          {t('legal.privacyPolicy')}
+        </h1>
+        <p className="text-slate-600 font-medium leading-relaxed mb-8">
+          {t('legal.privacySkeleton')}
+        </p>
+        <Link
+          to="/"
+          className="inline-flex items-center gap-2 text-brand-accent font-bold hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded"
+        >
+          ← {t('common.backToHome')}
+        </Link>
+      </div>
+    </div>
+  )
+}

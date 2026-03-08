@@ -39,8 +39,11 @@ export default function SuccessPage() {
           <h2 className="text-5xl font-black text-[#0B1320] mb-8 tracking-tighter uppercase leading-none">
             {t('success.heading')}
           </h2>
-          <p className="text-slate-500 mb-14 text-xl font-medium leading-relaxed italic max-w-sm mx-auto">
+          <p className="text-slate-500 mb-4 text-xl font-medium leading-relaxed italic max-w-sm mx-auto">
             {t('success.body')}
+          </p>
+          <p className="text-slate-400 text-sm mb-14 max-w-sm mx-auto">
+            {t('success.emailDisclaimer')}
           </p>
           <Link
             to="/"

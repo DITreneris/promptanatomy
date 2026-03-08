@@ -13,7 +13,7 @@ import stripe
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Literal
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, EmailStr, Field, ValidationError
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
@@ -75,6 +75,11 @@ class ValidateTokenLimitBody(BaseModel):
     text: str = Field(default="", max_length=50_000)
 
 
+class AccessQuery(BaseModel):
+    """Query params for GET /api/access; email validated with EmailStr."""
+    email: EmailStr
+
+
 @app.get("/health")
 async def health():
     """Health check for load balancers and monitoring."""
@@ -88,8 +93,11 @@ async def get_access(request: Request, email: str = ""):
     Return access for the given email: highest_plan, allowed_modules, can_upgrade_to.
     Email required; if Supabase not configured returns 503.
     """
-    email = (email or "").strip()
-    if not email or "@" not in email:
+    raw = (email or "").strip()
+    try:
+        q = AccessQuery(email=raw)
+        email = q.email
+    except ValidationError:
         raise HTTPException(status_code=400, detail="Valid email required")
     if not settings.is_supabase_configured():
         raise HTTPException(status_code=503, detail="Access check not configured")
