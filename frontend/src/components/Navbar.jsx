@@ -42,17 +42,17 @@ export default function Navbar({ onCtaClick }) {
       }`}
       aria-label={t('nav.ariaNav')}
     >
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <a href="/" className={`flex items-center gap-4 group cursor-pointer ${FOCUS_RING} rounded-lg`}>
-          <div className="w-12 h-12 rounded-2xl bg-brand-dark flex items-center justify-center text-brand-accent shadow-soft-lg group-hover:scale-105 group-hover:shadow-glow-accent transition-all duration-300 border border-white/10">
-            <Zap className="w-7 h-7 fill-current" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center gap-2 min-w-0">
+        <a href="/" className={`flex items-center gap-3 sm:gap-4 group cursor-pointer min-w-0 ${FOCUS_RING} rounded-lg`}>
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-brand-dark flex items-center justify-center text-brand-accent shadow-soft-lg group-hover:scale-105 group-hover:shadow-glow-accent transition-all duration-300 border border-white/10 shrink-0">
+            <Zap className="w-6 h-6 sm:w-7 sm:h-7 fill-current" />
           </div>
-          <div className="flex flex-col">
-            <span className="text-2xl font-black tracking-tighter leading-none text-brand-dark flex items-center gap-2">
+          <div className="flex flex-col min-w-0 overflow-hidden">
+            <span className="text-lg sm:text-2xl font-black tracking-tighter leading-none text-brand-dark flex items-center gap-2 break-words">
               {t('nav.brandPromptu')} <span className="text-brand-accent">{t('nav.brandAnatomija')}</span>
               <span className="hidden sm:inline-block px-1.5 py-0.5 rounded bg-slate-100 text-xs font-black text-slate-400 align-middle">{t('nav.version')}</span>
             </span>
-            <span className="text-xs font-black uppercase tracking-[0.4em] text-slate-400">{t('nav.brandTagline')}</span>
+            <span className="text-xs font-black uppercase tracking-[0.2em] sm:tracking-[0.4em] text-slate-400 break-words">{t('nav.brandTagline')}</span>
           </div>
         </a>
 

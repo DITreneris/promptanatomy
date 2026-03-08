@@ -8,8 +8,8 @@ export default function WhatIsPromptAnatomy() {
     t('whatIs.bullet3'),
   ]
   return (
-    <section id="what-is" className="py-16 md:py-24 bg-white px-6 border-b border-slate-100" aria-labelledby="what-is-heading">
-      <div className="max-w-3xl mx-auto text-center">
+    <section id="what-is" className="py-16 md:py-24 bg-white px-4 sm:px-6 border-b border-slate-100 overflow-hidden" aria-labelledby="what-is-heading">
+      <div className="max-w-3xl mx-auto text-center min-w-0">
         <h2 id="what-is-heading" className="text-3xl md:text-4xl font-black text-brand-dark tracking-tight mb-6">
           {t('whatIs.title')}
         </h2>

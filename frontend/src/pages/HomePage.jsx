@@ -76,7 +76,7 @@ export default function HomePage({ forceLocale }) {
   }
 
   return (
-    <div className="min-h-screen bg-white text-brand-dark font-sans selection:bg-brand-accent/30 antialiased overflow-x-hidden">
+    <div className="min-h-screen w-full max-w-[100vw] bg-white text-brand-dark font-sans selection:bg-brand-accent/30 antialiased overflow-x-hidden">
       <a
         href="#main-content"
         className="absolute left-6 top-4 z-[200] py-3 px-4 bg-brand-accent text-brand-dark font-black rounded-xl -translate-y-24 focus:translate-y-0 focus:outline-none focus:ring-2 focus:ring-brand-dark focus:ring-offset-2 transition-transform duration-200"
@@ -89,8 +89,8 @@ export default function HomePage({ forceLocale }) {
         <WhatIsPromptAnatomy />
         <Methodology />
         <Ecosystem />
-        <section id="pricing" className="py-16 md:py-32 bg-white px-6">
-          <div className="max-w-5xl mx-auto">
+        <section id="pricing" className="py-16 md:py-32 bg-white px-4 sm:px-6 overflow-hidden">
+          <div className="max-w-5xl mx-auto min-w-0">
             <div className="mb-6 md:mb-10 p-4 md:p-6 bg-slate-50 rounded-2xl border border-slate-100">
               <label htmlFor="access-email" className="block text-sm font-bold text-slate-700 mb-2">
                 {t('pricing.checkAccess')}

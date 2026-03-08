@@ -10,8 +10,8 @@ export default function Methodology() {
   const itemsWithIcons = Array.isArray(items) ? items.map((item, i) => ({ ...item, icon: ICONS[i] })) : []
 
   return (
-    <section id="metodologija" className="py-32 bg-slate-50 px-6 border-y border-slate-100">
-      <div className="max-w-7xl mx-auto">
+    <section id="metodologija" className="py-32 bg-slate-50 px-4 sm:px-6 border-y border-slate-100 overflow-hidden">
+      <div className="max-w-7xl mx-auto min-w-0">
         <div className="flex flex-col lg:flex-row justify-between items-end mb-24 gap-12">
           <div className="max-w-2xl">
             <h2 className="text-xs font-black uppercase tracking-[0.4em] text-brand-accent mb-8">{t('methodology.sectionLabel')}</h2>

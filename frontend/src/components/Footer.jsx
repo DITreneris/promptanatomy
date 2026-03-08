@@ -7,8 +7,8 @@ export default function Footer() {
   // Dinamiški metai – tik einami (vienas skaičius, ne intervalas 2024–2026)
   const year = new Date().getFullYear()
   return (
-    <footer className="bg-white pt-32 pb-16 px-6 border-t border-slate-100">
-      <div className="max-w-7xl mx-auto">
+    <footer className="bg-white pt-32 pb-16 px-4 sm:px-6 border-t border-slate-100 overflow-hidden">
+      <div className="max-w-7xl mx-auto min-w-0">
         <div className="grid md:grid-cols-4 gap-16 mb-24">
           <div className="md:col-span-2">
             <div className="flex items-center gap-4 mb-10">
