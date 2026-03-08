@@ -52,6 +52,9 @@ export default function Footer() {
             <span className="text-[10px] font-normal normal-case tracking-wider text-slate-400">
               {t('footer.creator')}
             </span>
+            <a href="mailto:tomas@promptanatomy.app" className="text-[10px] font-normal normal-case tracking-wider text-slate-500 hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">
+              tomas@promptanatomy.app
+            </a>
           </div>
           <div className="flex flex-wrap gap-8 md:gap-16 text-[10px] font-black uppercase tracking-[0.35em] text-slate-400">
             <Link to="/privacy" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">{t('footer.privacyPolicy')}</Link>

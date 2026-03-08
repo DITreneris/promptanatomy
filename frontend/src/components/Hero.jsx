@@ -19,19 +19,30 @@ export default function Hero({ onCta }) {
             <span className="text-[9px] font-bold text-slate-400">{t('hero.commits')}</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-[94px] font-black text-brand-dark mb-4 md:mb-8 leading-[0.85] tracking-tighter">
+          <h1 className="text-4xl sm:text-5xl md:text-[94px] font-black text-brand-dark mb-4 md:mb-6 leading-[0.85] tracking-tighter">
             {t('hero.headline1')}<br />
             <span className="text-transparent bg-clip-text" style={{ backgroundImage: ACCENT_GRADIENT }}>
               {t('hero.headline2')}
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-slate-600 font-bold mb-3 md:mb-4 max-w-xl">
-            {t('hero.valueLine')}
+          <p className="text-lg md:text-xl text-slate-600 font-bold mb-4 max-w-xl" aria-describedby="hero-bullets">
+            {t('hero.subtitle')}
           </p>
-          <p className="text-base md:text-xl text-slate-500 mb-10 md:mb-14 max-w-xl leading-relaxed font-medium tracking-tight">
-            {t('hero.subtext')}
-          </p>
+          <ul id="hero-bullets" className="list-none space-y-2 mb-8 md:mb-10 max-w-xl text-base md:text-lg text-slate-600 font-medium">
+            <li className="flex items-center gap-2">
+              <span className="text-brand-accent font-bold" aria-hidden="true">•</span>
+              {t('hero.bullet1')}
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="text-brand-accent font-bold" aria-hidden="true">•</span>
+              {t('hero.bullet2')}
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="text-brand-accent font-bold" aria-hidden="true">•</span>
+              {t('hero.bullet3')}
+            </li>
+          </ul>
 
           <div className="flex flex-col sm:flex-row gap-6 items-center">
             <button

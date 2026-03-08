@@ -46,6 +46,7 @@
 | Mobilus UI / UX auditas | [docs/audit-mobile-ux-user-journey.md](audit-mobile-ux-user-journey.md) | Mobilus meniu, vartotojo kelionė, LT/EN. |
 | Kalbos auditas (EN/LT) | [docs/audit-language-en-lt.md](audit-language-en-lt.md) | Gramatika, stilius, vertimai. |
 | Premium UI/UX (MUST-SHOULD-WANT) | [docs/ux-premium-practices.md](ux-premium-practices.md) | Spalvos, šešėliai, micro-interactions, geriausios praktikos. |
+| UI/UX/SEO MOSCOW planas | [docs/UI_UX_SEO_MOSCOW_PLAN.md](UI_UX_SEO_MOSCOW_PLAN.md) | Hero, konversija, SEO, turinys – ką keisti (tik front-end/turinys), ko neliesti. |
 
 ---
 

@@ -37,7 +37,11 @@
     "commits": "2,481 Commits",
     "headline1": "Nustok kalbėti.",
     "headline2": "Pradėk programuoti.",
-    "valueLine": "Išmok naudoti AI 10x efektyviau",
+    "subtitle": "DI operacinė sistema darbui su ChatGPT, agentais ir automatizacija.",
+    "bullet1": "Promptų inžinerijos metodika",
+    "bullet2": "DI darbo eigų automatizavimas",
+    "bullet3": "Tikri verslo naudojimo atvejai",
+    "valueLine": "Išmok naudoti DI 10x efektyviau",
     "subtext": "Išmok valdyti DI kaip operacinę sistemą. Promptų inžinerija, automatizacija ir DI agentai realiems verslo rezultatams.",
     "cta": "Žiūrėti planus",
     "members": "500+ narių",
@@ -91,7 +95,7 @@
       "full": "Full"
     },
     "planBullets": {
-      "starter": ["AI prompt pagrindai", "Tikri pavyzdžiai", "Prieiga visam laikui"],
+      "starter": ["DI prompt pagrindai", "Tikri pavyzdžiai", "Prieiga visam laikui"],
       "core": ["Išplėstinis promptingas", "Darbo eigos automatizavimas", "Prieiga visam laikui"],
       "extended": ["Viskas iš Core", "Papildomi moduliai", "Prieiga visam laikui"],
       "full": ["Pilna prieiga", "Visi 15 modulių", "Prieiga visam laikui"]

@@ -56,6 +56,15 @@
 - **LT:** „per 24 val.“ – sutrumpinimas priimtinas UI kontekste; jei norima formaliau – „per 24 valandas“.
 - **EN:** „24 hours“ – pilna forma, aišku.
 
+### 3.4 AI / DI nuoseklumas (pagal [language-guidelines-en-lt.md](language-guidelines-en-lt.md))
+
+| Kalba | Terminas | Paskirtis |
+|-------|----------|-----------|
+| **LT** | **DI** (dirbtinis intelektas) | Visur vartotojui matomame tekste: „DI operacinė sistema“, „DI Powered“, „DI agentai“, „DI prompt pagrindai“ ir t. t. |
+| **EN** | **AI** | Tarptautiniam vartotojui: „AI Operating System“, „AI Powered“, „AI agents“ ir t. t. |
+
+Audito metu patikrinti, kad LT vertime nėra likusių „AI“ ten, kur kalbama apie produktą ar bendruomenę (pvz. hero.valueLine, pricing.planBullets.starter). EN lieka „AI“.
+
 ---
 
 ## 4. Kalbos kultūra ir natūralumas
@@ -64,7 +73,7 @@
 
 - **„Pradėk programuoti.“** vs EN **„Start building.“**  
   „Building“ plačiau = kurti, statyti; „programuoti“ = to program. Jei produktas apie AI/kodą – abu priimtina. Jei norima artimesnė EN reikšmei – galima **„Pradėk kurti.“**
-- **„Išmok valdyti AI kaip operacinę sistemą“** – natūralu, gerai.
+- **„Išmok valdyti DI kaip operacinę sistemą“** – natūralu, gerai (LT: DI).
 
 ### 4.2 Metodologija (LT)
 
@@ -125,3 +134,5 @@ Vertimai apskritai **kokybiški** ir vartotojui **suprantami**. Lietuvių kalboj
 | **LT** ecosystem.title | Vertikalūs Varikliai | Vertikalūs varikliai |
 | **LT** pricing.features (sertifikatas) | Sertifikatas (nuo 70%) | Sertifikatas (nuo 70% įvertinimo) |
 | **EN** pricing.features (certificate) | Certificate (from 70%) | Certificate (from 70% score) |
+| **LT** hero.valueLine | Išmok naudoti AI 10x efektyviau | Išmok naudoti DI 10x efektyviau (DI/AI nuoseklumas) |
+| **LT** pricing.planBullets.starter | AI prompt pagrindai | DI prompt pagrindai (DI/AI nuoseklumas) |
