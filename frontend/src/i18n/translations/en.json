@@ -49,15 +49,15 @@
     "liveFeed": "Live Feed",
     "scriptName": "prompt_os_v2.sh",
     "systemInit": "System Initializing",
-    "codeLine1": "// 01: IDENTITY_LAYER",
+    "codeLine1": "01. Meta",
     "codeRole": "ROLE:",
     "codeRoleValue": "Senior AI Strategist",
-    "codeLine2": "// 02: LOGIC_CONSTRAINTS",
+    "codeLine2": "02. Input",
     "codeContext": "CONTEXT:",
-    "codeContextValue": "Enterprise SaaS Scaling...",
-    "codeLine3": "// 03: DATA_OUTPUT_SCHEMA",
+    "codeContextValue": "What I want to achieve – task in plain words",
+    "codeLine3": "03. Output",
     "codeSchema": "SCHEMA:",
-    "codeSchemaValue": "JSON-Strict | Nested",
+    "codeSchemaValue": "Clear structure – bullets or list",
     "avatarAlt": "Community member avatar"
   },
   "whatIs": {
@@ -72,7 +72,7 @@
     "sectionLabel": "Operating Model",
     "titleLine1": "Predictable",
     "titleLine2": "Outcome.",
-    "paragraph": "No more random results. We deploy engineering thinking – in every module: learning → check → practice.",
+    "paragraph": "Enough of random results. We deploy engineering thinking – in every module: learning → check → practice.",
     "items": [
       { "title": "Breakdown", "desc": "Deconstruct problems into atomic elements that AI interprets without errors." },
       { "title": "Engineering", "desc": "Layered construction using CoT (Chain of Thought) and Few-shot engineering." },
@@ -96,7 +96,7 @@
     "subtext": "Get access to the Prompt Anatomy training according to the number of modules you choose.",
     "cumulativeNote": "Access is cumulative.",
     "recommended": "Recommended",
-    "coreIncludesStarter": "Everything in the first plan, plus Context engineering.",
+    "coreIncludesStarter": "Everything in Starter plus Context engineering.",
     "plans": {
       "starter": "Starter",
       "core": "Core",

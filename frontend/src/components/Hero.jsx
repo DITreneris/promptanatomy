@@ -87,26 +87,23 @@ export default function Hero({ onCta }) {
               </div>
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-6">
               <div className="group/line cursor-default transition-all hover:translate-x-1">
-                <div className="text-xs text-slate-600 mb-2 font-black tracking-[0.2em]">{t('hero.codeLine1')}</div>
+                <div className="text-xs text-slate-600 mb-1 font-black tracking-[0.2em]">{t('hero.codeLine1')}</div>
                 <div className="text-sm border-l-2 border-brand-accent/50 group-hover/line:border-brand-accent transition-colors duration-200 pl-5 py-1 break-words min-w-0">
-                  <span className="text-brand-accent font-black">{t('hero.codeRole')}</span>
-                  <span className="text-slate-300 ml-3 italic opacity-80 group-hover/line:opacity-100 break-all">&quot;{t('hero.codeRoleValue')}&quot;</span>
+                  <span className="text-brand-accent font-black">{t('hero.codeRole')}</span><span className="text-slate-300 italic opacity-80 group-hover/line:opacity-100 break-all">&quot;{t('hero.codeRoleValue')}&quot;</span>
                 </div>
               </div>
               <div className="group/line cursor-default transition-all hover:translate-x-1">
-                <div className="text-xs text-slate-600 mb-2 font-black tracking-[0.2em]">{t('hero.codeLine2')}</div>
+                <div className="text-xs text-slate-600 mb-1 font-black tracking-[0.2em]">{t('hero.codeLine2')}</div>
                 <div className="text-sm border-l-2 border-indigo-500/50 group-hover/line:border-indigo-500 transition-colors pl-5 py-1 break-words min-w-0">
-                  <span className="text-indigo-400 font-black">{t('hero.codeContext')}</span>
-                  <span className="text-slate-300 ml-3 italic opacity-80 group-hover/line:opacity-100 break-all">&quot;{t('hero.codeContextValue')}&quot;</span>
+                  <span className="text-indigo-400 font-black">{t('hero.codeContext')}</span><span className="text-slate-300 italic opacity-80 group-hover/line:opacity-100 break-all">&quot;{t('hero.codeContextValue')}&quot;</span>
                 </div>
               </div>
               <div className="group/line cursor-default transition-all hover:translate-x-1">
-                <div className="text-xs text-slate-600 mb-2 font-black tracking-[0.2em]">{t('hero.codeLine3')}</div>
+                <div className="text-xs text-slate-600 mb-1 font-black tracking-[0.2em]">{t('hero.codeLine3')}</div>
                 <div className="text-sm border-l-2 border-emerald-500/50 group-hover/line:border-emerald-500 transition-colors pl-5 py-1 break-words min-w-0">
-                  <span className="text-emerald-400 font-black">{t('hero.codeSchema')}</span>
-                  <span className="text-slate-300 ml-3 italic opacity-80 group-hover/line:opacity-100 break-all">&quot;{t('hero.codeSchemaValue')}&quot;</span>
+                  <span className="text-emerald-400 font-black">{t('hero.codeSchema')}</span><span className="text-slate-300 italic opacity-80 group-hover/line:opacity-100 break-all">&quot;{t('hero.codeSchemaValue')}&quot;</span>
                 </div>
               </div>
               <div className="pt-8 flex items-center gap-4 text-brand-accent border-t border-white/5">

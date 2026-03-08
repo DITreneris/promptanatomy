@@ -67,11 +67,6 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail }
                 {t(`pricing.plans.${plan.labelKey}`)}
               </span>
               <p className="text-slate-600 font-bold mb-3">{plan.mods} {t('pricing.mods')}</p>
-              {isCore && (
-                <p className="text-slate-600 text-sm font-medium mb-3 border-l-2 border-brand-accent/50 pl-3">
-                  {t('pricing.coreIncludesStarter')}
-                </p>
-              )}
               {(() => {
                 const bullets = t(`pricing.planBullets.${plan.labelKey}`)
                 const list = Array.isArray(bullets) ? bullets : []

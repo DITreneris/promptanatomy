@@ -49,15 +49,15 @@
     "liveFeed": "Tiesioginis srautas",
     "scriptName": "prompt_os_v2.sh",
     "systemInit": "Sistema startuoja",
-    "codeLine1": "// 01: TAPATYBĖS_SLUOKSNIS",
+    "codeLine1": "01. Meta",
     "codeRole": "VAIDMUO:",
     "codeRoleValue": "Vyresnysis DI strategas",
-    "codeLine2": "// 02: LOGIKOS_APRIBOŽIMAI",
+    "codeLine2": "02. Input",
     "codeContext": "KONTEKSTAS:",
-    "codeContextValue": "Įmonių SaaS plėtra...",
-    "codeLine3": "// 03: DUOMENŲ_STRUKTŪRA",
+    "codeContextValue": "Užduoties aprašymas – ką noriu išspręsti",
+    "codeLine3": "03. Output",
     "codeSchema": "SCHEMA:",
-    "codeSchemaValue": "JSON-Strict | Įdėtas",
+    "codeSchemaValue": "Aiški struktūra, punktai ar sąrašas",
     "avatarAlt": "Bendruomenės nario avataras"
   },
   "whatIs": {
@@ -72,7 +72,7 @@
     "sectionLabel": "Operating Model",
     "titleLine1": "Nuspėjamas",
     "titleLine2": "Rezultatas.",
-    "paragraph": "Atsisakykite atsitiktinių rezultatų. Diegiame inžinerinį mąstymą – kiekviename modulyje: mokymasis → patikrinimas → praktika.",
+    "paragraph": "Užtenka atsitiktinių rezultatų. Diegiame inžinerinį mąstymą – kiekviename modulyje: mokymasis → patikrinimas → praktika.",
     "items": [
       { "title": "Skaidymas", "desc": "Problemos dekonstrukcija į atominius elementus, kuriuos DI interpretuoja be klaidų." },
       { "title": "Inžinerija", "desc": "Sluoksniuota konstrukcija, naudojant CoT (Chain of Thought) ir Few-shot inžineriją." },
@@ -96,7 +96,7 @@
     "subtext": "Gauk prieigą prie mokymų „Promptų Anatomija“ pagal pasirinktą modulių skaičių.",
     "cumulativeNote": "Prieiga kaupiama.",
     "recommended": "Rekomenduojama",
-    "coreIncludesStarter": "Viskas, kas pirmame, plius Konteksto inžinerija.",
+    "coreIncludesStarter": "Viskas iš Starter plius Konteksto inžinerija.",
     "plans": {
       "starter": "Starter",
       "core": "Core",

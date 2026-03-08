@@ -43,26 +43,6 @@ export default function Footer() {
                   {t('footer.support')}
                 </a>
               </li>
-              <li>
-                <a href="https://ditreneris.github.io/biblioteka/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">
-                  {t('footer.biblioteka')}
-                </a>
-              </li>
-              <li>
-                <a href="https://ditreneris.github.io/marketingas/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">
-                  {t('footer.marketingas')}
-                </a>
-              </li>
-              <li>
-                <a href="https://ditreneris.github.io/personalas/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">
-                  {t('footer.personalas')}
-                </a>
-              </li>
-              <li>
-                <a href="https://ditreneris.github.io/ceo/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">
-                  {t('footer.ceo')}
-                </a>
-              </li>
               <li><span title={t('footer.comingSoon')}>{t('footer.linkedIn')} <span className="text-slate-300 font-normal normal-case">{t('footer.comingSoon')}</span></span></li>
               <li><span title={t('footer.comingSoon')}>{t('footer.discord')} <span className="text-slate-300 font-normal normal-case">{t('footer.comingSoon')}</span></span></li>
               <li><span title={t('footer.comingSoon')}>{t('footer.systemLog')} <span className="text-slate-300 font-normal normal-case">{t('footer.comingSoon')}</span></span></li>
