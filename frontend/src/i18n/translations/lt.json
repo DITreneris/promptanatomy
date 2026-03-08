@@ -63,7 +63,7 @@
     "items": [
       { "title": "Skaidymas", "desc": "Problemos dekonstrukcija į atominius elementus, kuriuos DI interpretuoja be klaidų." },
       { "title": "Inžinerija", "desc": "Sluoksniuota konstrukcija, naudojant CoT (Chain of Thought) ir Few-shot inžineriją." },
-      { "title": "Skalavimas", "desc": "Sukurta sistema integruojama į verslo procesus, taupant 10-20 valandų per savaitę." }
+      { "title": "Skalės augimas", "desc": "Sukurta sistema integruojama į verslo procesus, taupant 10-20 valandų per savaitę." }
     ]
   },
   "ecosystem": {
