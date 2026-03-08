@@ -71,7 +71,7 @@ Frontend: `http://localhost:5173`
 
 | Kintamasis | Aprašymas |
 |------------|-----------|
-| `VITE_API_URL` | Backend base URL (default `http://localhost:8000`) |
+| `VITE_API_URL` | Backend / API base URL. Lokaliai default `http://localhost:8000`. Produkcijoje (Vercel) jei nenustatyta – naudojamas `window.location.origin`, t. y. kvietimai eina į tą patį domeną (`/api/access`, `/api/stripe-webhook`). |
 | `VITE_GLOSSARY_URL` | (Optional) Training app žodyno nuoroda; jei nustatyta, meniu „Repo“ atidaro šią nuorodą naujame skirtuke |
 
 ## Daugiakalbis režimas (LT/EN)

@@ -1,5 +1,11 @@
 /**
  * Frontend config from env. Vite exposes only VITE_* to client.
+ * In production (Vercel), if VITE_API_URL is not set, use same origin so /api/access and future API routes work.
  */
-export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+function getApiUrl() {
+  if (import.meta.env.VITE_API_URL) return import.meta.env.VITE_API_URL
+  if (typeof window !== 'undefined' && window.location?.origin) return window.location.origin
+  return 'http://localhost:8000'
+}
+export const API_URL = getApiUrl()
 export const GLOSSARY_URL = import.meta.env.VITE_GLOSSARY_URL || ''
