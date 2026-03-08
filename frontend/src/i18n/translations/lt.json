@@ -62,12 +62,11 @@
   },
   "whatIs": {
     "title": "Kas yra Promptų Anatomija",
-    "intro": "Promptų Anatomija – mokomės formuluoti užklausas taip, kad atsakymas būtų aiškus, nuspėjamas ir patikrinamas. Viena metodika: 6 blokų sistema (META → INPUT → OUTPUT → REASONING → QUALITY → ADVANCED).",
-    "bullet1": "Viena metodika visur – mažiau iteracijų, daugiau tikslumo.",
-    "bullet2": "115+ paruoštų promptų ir šablonų (moduliuose ir bibliotekoje).",
-    "bullet3": "Kiekviename modulyje: mokymasis → žinių patikrinimas → praktika.",
-    "bullet4": "3 keliai pagal rolę: Duomenų analizė, Agentų inžinerija, Turinio inžinerija.",
-    "stats": "100 terminų žodynas, 60 DI įrankių, 115+ promptų."
+    "intro": "Tai DI operacinė sistema efektyviam darbui. Sistema moko formuluoti struktūruotas užklausas, kad atsakymai būtų aiškūs, prognozuojami ir patikrinami. Sistema paremta 6 blokų metodika: META → INPUT → OUTPUT → REASONING → QUALITY → ADVANCED.",
+    "listLabel": "Iš viso sistemoje:",
+    "bullet1": "115+ paruoštų promptų ir šablonų",
+    "bullet2": "60 DI įrankių katalogas",
+    "bullet3": "100 svarbiausių DI terminų žodynas"
   },
   "methodology": {
     "sectionLabel": "Operating Model",

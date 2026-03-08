@@ -62,12 +62,11 @@
   },
   "whatIs": {
     "title": "What is Prompt Anatomy",
-    "intro": "Prompt Anatomy – learn to formulate prompts so the outcome is clear, predictable and verifiable. One methodology: the 6-block system (META → INPUT → OUTPUT → REASONING → QUALITY → ADVANCED).",
-    "bullet1": "One methodology everywhere – fewer iterations, more precision.",
-    "bullet2": "115+ ready prompts and templates (in modules and library).",
-    "bullet3": "In every module: learning → knowledge check → practice.",
-    "bullet4": "3 paths by role: Data analysis, Agent engineering, Content engineering.",
-    "stats": "100-term glossary, 60 AI tools, 115+ prompts."
+    "intro": "It's an AI operating system for effective work. The system teaches you to formulate structured prompts so that answers are clear, predictable and verifiable. It's based on the 6-block methodology: META → INPUT → OUTPUT → REASONING → QUALITY → ADVANCED.",
+    "listLabel": "In the system:",
+    "bullet1": "115+ ready prompts and templates",
+    "bullet2": "60 AI tools catalog",
+    "bullet3": "100 key AI terms glossary"
   },
   "methodology": {
     "sectionLabel": "Operating Model",

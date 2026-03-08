@@ -6,7 +6,6 @@ export default function WhatIsPromptAnatomy() {
     t('whatIs.bullet1'),
     t('whatIs.bullet2'),
     t('whatIs.bullet3'),
-    t('whatIs.bullet4'),
   ]
   return (
     <section id="what-is" className="py-16 md:py-24 bg-white px-6 border-b border-slate-100" aria-labelledby="what-is-heading">
@@ -17,6 +16,9 @@ export default function WhatIsPromptAnatomy() {
         <p className="text-lg text-slate-600 font-medium mb-8 leading-relaxed">
           {t('whatIs.intro')}
         </p>
+        <p className="text-base font-bold text-slate-600 mb-3">
+          {t('whatIs.listLabel')}
+        </p>
         <ul className="list-none space-y-3 text-left inline-block">
           {bullets.map((text, i) => (
             <li key={i} className="flex items-center gap-3 text-slate-600 font-medium">
@@ -25,9 +27,6 @@ export default function WhatIsPromptAnatomy() {
             </li>
           ))}
         </ul>
-        <p className="mt-8 text-base text-slate-500 font-medium">
-          {t('whatIs.stats')}
-        </p>
       </div>
     </section>
   )
