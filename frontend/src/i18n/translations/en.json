@@ -54,7 +54,7 @@
     "codeRoleValue": "Senior AI Strategist",
     "codeLine2": "02. Input",
     "codeContext": "CONTEXT:",
-    "codeContextValue": "What I want to achieve – task in plain words",
+    "codeContextValue": "Create a marketing strategy and plan",
     "codeLine3": "03. Output",
     "codeSchema": "SCHEMA:",
     "codeSchemaValue": "Clear structure – bullets or list",
