@@ -1,5 +1,9 @@
 # Gili kodo bazės analizė: Marketinginis tinklalapis „Promptų anatomija“
 
+**Archyvas.** Analizė atlikta, kai projektas buvo tik `react.txt` + README_SOT. Dabar – pilnas Vite+React frontend ir FastAPI backend; šis dokumentas paliktas istorinei nuorodai.
+
+---
+
 ## 1. Kas dabar yra projekte
 
 | Failas | Aprašymas |

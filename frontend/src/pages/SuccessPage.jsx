@@ -1,9 +1,26 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ShieldCheck } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
 
 export default function SuccessPage() {
   const { t } = useLocale()
+
+  useEffect(() => {
+    document.title = t('success.metaTitle')
+    const desc = document.querySelector('meta[name="description"]')
+    if (desc) desc.setAttribute('content', t('success.metaDescription'))
+    const robots = document.querySelector('meta[name="robots"]')
+    if (robots) robots.setAttribute('content', 'noindex, nofollow')
+    return () => {
+      document.title = t('meta.title')
+      const d = document.querySelector('meta[name="description"]')
+      if (d) d.setAttribute('content', t('meta.description'))
+      const r = document.querySelector('meta[name="robots"]')
+      if (r) r.setAttribute('content', 'index, follow')
+    }
+  }, [t])
+
   return (
     <div className="min-h-screen bg-[#F8FAFC] flex flex-col items-center justify-center p-6 antialiased">
       <nav aria-label="Breadcrumb" className="relative z-10 mb-8 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">

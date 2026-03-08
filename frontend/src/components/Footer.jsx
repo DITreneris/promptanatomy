@@ -3,6 +3,7 @@ import { useLocale } from '../i18n/LocaleContext'
 
 export default function Footer() {
   const { t } = useLocale()
+  // Dinamiški metai – tik einami (vienas skaičius, ne intervalas 2024–2026)
   const year = new Date().getFullYear()
   return (
     <footer className="bg-white pt-48 pb-20 px-6 border-t border-slate-100">
@@ -43,9 +44,14 @@ export default function Footer() {
           </div>
         </div>
         <div className="pt-20 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-10">
-          <span className="text-[10px] font-black uppercase tracking-[0.5em] text-slate-300">
-            {t('footer.copyright', { year })}
-          </span>
+          <div className="flex flex-col gap-1">
+            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-slate-300">
+              {t('footer.copyright', { year })}
+            </span>
+            <span className="text-[10px] font-normal normal-case tracking-wider text-slate-400">
+              {t('footer.creator')}
+            </span>
+          </div>
           <div className="flex gap-16 text-[10px] font-black uppercase tracking-[0.35em] text-slate-400">
             <span>{t('footer.legal')} <span className="text-slate-300 font-normal normal-case">{t('footer.comingSoon')}</span></span>
             <span>{t('footer.cookies')} <span className="text-slate-300 font-normal normal-case">{t('footer.comingSoon')}</span></span>

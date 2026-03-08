@@ -66,7 +66,18 @@
 - **SEO ir a11y:** `useEffect` nustato `document.documentElement.lang`, `document.title`, `meta name="description"`, `og:title`, `og:description` pagal pasirinktą kalbą – gerai.
 - **Perjungiklis:** Navbar (desktop ir mobile) – LT | EN mygtukai su `aria-pressed` ir `aria-label="Lietuvių"` / `"English"` (fiksuota EN, ne per `t()` – priimtina).
 
-### 3.3 Vertimų ir kelionės nuoseklumas
+### 3.3 Kalbos perjungiklio vieta (mobile)
+
+- **Geriausios praktikos (2025–2026):** Kalbos perjungiklis turi būti **lengvai randamas** (discoverable) – rekomenduojama pirmoji mobiliojo meniu pozicija arba šalia hamburgerio (šaltiniai: WPML „first place in phone menu“, Divi.Help „next to hamburger“, SimpleLocalize / Localizely – aiškiai matoma vieta header / meniu).
+- **Įgyvendinta:** Kalbos perjungiklis perkeltas į **pirmą poziciją** mobiliajame drawer – atsidarius meniu vartotojas iškart mato LT | EN, tada nuorodas, tada CTA. Tai atitinka rekomendaciją, kad mobilėje kalba būtų pasiekiama be gilaus scroll ar kelių atidarymų.
+- **Rekomendacija:** Tekstinės etiketės (LT, EN) ir `aria-label` palikti; vėliau galima svarstyti „Lietuvių / English“ pilną pavadinimą edu kontekste, jei reikia dar aiškiau.
+
+### 3.4 Edu / daugiakalbių produktų kontekstas
+
+- **Statistika (MoldStud ir panašūs šaltiniai):** ~76% vartotojų nori turinio gimtąja kalba; ~36% atsisako platformos be pageidaujamos kalbos. Edu ir produktų puslapiuose lengvas kalbos pasirinkimas ypač svarbus.
+- **Mobilėje:** Dažnas naudojimas – perjungiklis turi būti pasiekiamas be gilaus scroll ar kelių atidarymų. Pirmoji drawer pozicija atitinka šį reikalavimą.
+
+### 3.5 Vertimų ir kelionės nuoseklumas
 
 | Aspektas | Būsena |
 |----------|--------|
@@ -76,7 +87,7 @@
 | **Stripe Checkout kalba** | Stripe sesijos kalba priklauso nuo backend (jei perduodama `locale` į Stripe API) – atskira backend konfigūracija. |
 | **Breadcrumb** | „Pradžia“ / „Home“ ir success/cancel breadcrumb – vertima abiejose kalbose. |
 
-### 3.4 Siūlomi patikrinimai
+### 3.6 Siūlomi patikrinimai
 
 - **Lentelė raktų:** Paleisti patikrą (pvz. skriptą arba rankiniu būdu), kad kiekvienas raktas iš `lt.json` egzistuoja `en.json` ir atvirkščiai.
 - **Ilgi tekstai EN:** Kai kurie EN sakiniai ilgesni už LT – pvz. hero subtext, methodology. Mobilėje patikrinti, kad neįeina per daug eilučių ir layout nesulūžta.

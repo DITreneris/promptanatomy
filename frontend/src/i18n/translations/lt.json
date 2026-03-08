@@ -1,10 +1,10 @@
 {
   "meta": {
-    "title": "Promptų Anatomija – AI Operating System",
-    "description": "Išmok valdyti AI kaip operacinę sistemą. Promptų inžinerija, automatizacija ir AI agentai realiems verslo rezultatams. Promptų Anatomija – AI Operating System."
+    "title": "Promptų Anatomija – DI Operating System",
+    "description": "Išmok valdyti DI kaip operacinę sistemą. Promptų inžinerija, automatizacija ir DI agentai realiems verslo rezultatams. Promptų Anatomija – DI Operating System."
   },
   "common": {
-    "skipToContent": "Praleisti į turinį",
+    "skipToContent": "Pereiti prie turinio",
     "home": "Pradžia",
     "backToHome": "Grįžti į pradžią"
   },
@@ -26,18 +26,18 @@
     "cta": "Gauti prieigą",
     "brandPromptu": "PROMPTŲ",
     "brandAnatomija": "ANATOMIJA",
-    "brandTagline": "AI Operating System",
+    "brandTagline": "DI Operating System",
     "version": "v2.4"
   },
   "hero": {
     "systemStatus": "System Status: Stable",
     "commits": "2,481 Commits",
-    "headline1": "Nustok kalbėtis.",
+    "headline1": "Nustok kalbėti.",
     "headline2": "Pradėk programuoti.",
-    "subtext": "Išmok valdyti AI kaip operacinę sistemą. Promptų inžinerija, automatizacija ir AI agentai realiems verslo rezultatams.",
+    "subtext": "Išmok valdyti DI kaip operacinę sistemą. Promptų inžinerija, automatizacija ir DI agentai realiems verslo rezultatams.",
     "cta": "Gauti prieigą dabar",
-    "members": "500+ narys",
-    "community": "AI Praktikų bendruomenė",
+    "members": "500+ narių",
+    "community": "DI Praktikų bendruomenė",
     "liveFeed": "Live Feed",
     "scriptName": "prompt_os_v2.sh",
     "systemInit": "System Initializing"
@@ -46,22 +46,22 @@
     "sectionLabel": "Operating Model",
     "titleLine1": "Nuspėjamas",
     "titleLine2": "Rezultatas.",
-    "paragraph": "Atsisakykite atsitiktinių rezultatų. Diegiame inžinerinį mąstymą, kuris AI paverčia galingiausiu jūsų komandos nariu.",
+    "paragraph": "Atsisakykite atsitiktinių rezultatų. Diegiame inžinerinį mąstymą, kuris DI paverčia galingiausiu jūsų komandos nariu.",
     "items": [
-      { "title": "Skaidymas", "desc": "Problemos dekonstrukcija į atominius elementus, kuriuos AI interpretuoja be klaidų." },
+      { "title": "Skaidymas", "desc": "Problemos dekonstrukcija į atominius elementus, kuriuos DI interpretuoja be klaidų." },
       { "title": "Inžinerija", "desc": "Sluoksniuota konstrukcija, naudojant CoT (Chain of Thought) ir Few-shot inžineriją." },
       { "title": "Skalavimas", "desc": "Sukurta sistema integruojama į verslo procesus, taupant 10-20 valandų per savaitę." }
     ]
   },
   "ecosystem": {
-    "title": "Vertikalūs Varikliai",
+    "title": "Vertikalūs varikliai",
     "paragraph": "Prisijunkite prie specifinių darbo sistemų, paruoštų jūsų rinkai.",
     "stableLabel": "v2.1 Stable",
     "items": [
       { "title": "HR System", "count": "120+ Repo" },
       { "title": "Marketing Engine", "count": "150+ Repo" },
       { "title": "RE Broker OS", "count": "80+ Repo" },
-      { "title": "AI Automation", "count": "100+ Repo" }
+      { "title": "DI Automation", "count": "100+ Repo" }
     ]
   },
   "pricing": {
@@ -81,22 +81,22 @@
     "features": [
       "Promptų Repo (500+ Assets)",
       "6 blokų sistema",
-      "Sertifikatas (nuo 70%)",
+      "Sertifikatas (nuo 70% įvertinimo)",
       "Bendruomenė (WhatsApp)",
       "Lifetime prieiga"
     ],
     "stripeVerified": "Stripe Verified",
     "refundContact": "Grąžinimo sąlygos – susisiekite",
-    "aiPowered": "AI Powered",
+    "aiPowered": "DI Powered",
     "checkAccess": "Patikrinti prieigą",
     "emailPlaceholder": "El. paštas",
     "yourAccess": "Jūsų prieiga: 1–%s moduliai",
     "alreadyHave": "Jau turite",
-    "upgradeTo": "Upgrade į %s"
+    "upgradeTo": "Pagerinti iki %s"
   },
   "footer": {
     "brand": "Promptų Anatomija",
-    "tagline": "Diegiame inžinerinę AI darbo kultūrą. Tai ne kursai – tai operacinė sistema jūsų verslo ateičiai.",
+    "tagline": "Diegiame inžinerinę DI darbo kultūrą. Tai ne kursai – tai operacinė sistema jūsų verslo ateičiai.",
     "system": "System",
     "network": "Network",
     "ecosystem": "Ekosistema",
@@ -107,18 +107,23 @@
     "systemLog": "System Log",
     "comingSoon": "(Netrukus)",
     "copyright": "© {{year}} Promptų Anatomija. Built for Professionals.",
+    "creator": "kūrėjas: tomas staniulis",
     "legal": "Legal",
     "cookies": "Cookies"
   },
   "success": {
     "breadcrumb": "Apmokėjimas sėkmingas",
-    "heading": "Sėkmingas Diegimas",
-    "body": "Apmokėjimas gautas. Prieiga suteikiama pagal nustatymus. Jei turite klausimų arba per 24 val. negavote instrukcijų – susisiekite su mumis."
+    "heading": "Sėkmingas diegimas",
+    "body": "Apmokėjimas gautas. Jūsų prieiga ruošiama. Jei turite klausimų – susisiekite su mumis.",
+    "metaTitle": "Apmokėjimas sėkmingas",
+    "metaDescription": "Ačiū už pirkimą."
   },
   "cancel": {
     "breadcrumb": "Apmokėjimas atšauktas",
     "heading": "Apmokėjimas atšauktas",
     "body": "Jūsų mokėjimas nebuvo atliktas. Galite bet kada grįžti ir įsigyti prieigą prie mokymų „Promptų anatomija“.",
-    "tryAgain": "Vėl bandyti"
+    "tryAgain": "Vėl bandyti",
+    "metaTitle": "Apmokėjimas atšauktas",
+    "metaDescription": "Jūsų mokėjimas nebuvo atliktas."
   }
 }

@@ -5,6 +5,7 @@ Minimal FastAPI backend for Promptų Anatomija home page.
 - POST /api/webhooks/stripe: Stripe webhook (raw body, signature verification).
 - POST /api/validate-token-limit: validate text against token limit (for future AI endpoints).
 """
+import json
 import logging
 from contextlib import asynccontextmanager
 
@@ -221,7 +222,21 @@ async def stripe_webhook(request: Request):
 
     if not webhook_secret:
         if settings.allow_webhook_without_secret:
-            logger.warning("STRIPE_WEBHOOK_SECRET not set; webhook verification skipped (dev)")
+            logger.warning(
+                "STRIPE_WEBHOOK_SECRET not set; webhook verification skipped (dev only). "
+                "Signature not verified – do not use in production."
+            )
+            try:
+                event = json.loads(payload)
+            except json.JSONDecodeError as e:
+                logger.warning("Webhook dev: invalid JSON payload: %s", e)
+                raise HTTPException(status_code=400, detail="Invalid payload")
+            if event.get("type") == "checkout.session.completed":
+                obj = event.get("data", {}).get("object")
+                if obj:
+                    handle_checkout_completed(obj)
+                else:
+                    logger.warning("Webhook dev: checkout.session.completed missing data.object")
             return {"received": True}
         raise HTTPException(status_code=503, detail="Webhook not configured")
 

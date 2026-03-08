@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Promptų Anatomija – AI Operating System",
-    "description": "Learn to run AI like an operating system. Prompt engineering, automation and AI agents for real business results. Promptų Anatomija – AI Operating System."
+    "title": "Prompt Anatomy – AI Operating System",
+    "description": "Learn to run AI like an operating system. Prompt engineering, automation and AI agents for real business results. Prompt Anatomy – AI Operating System."
   },
   "common": {
     "skipToContent": "Skip to content",
@@ -24,8 +24,8 @@
     "repo": "Repo",
     "pricing": "Pricing",
     "cta": "Get access",
-    "brandPromptu": "PROMPTŲ",
-    "brandAnatomija": "ANATOMIJA",
+    "brandPromptu": "PROMPT",
+    "brandAnatomija": "ANATOMY",
     "brandTagline": "AI Operating System",
     "version": "v2.4"
   },
@@ -67,7 +67,7 @@
   "pricing": {
     "badge": "Lifetime System Access",
     "title": "Choose your plan",
-    "subtext": "Get access to the Promptų Anatomija training according to the number of modules you choose.",
+    "subtext": "Get access to the Prompt Anatomy training according to the number of modules you choose.",
     "plans": {
       "starter": "Starter",
       "core": "Core",
@@ -81,7 +81,7 @@
     "features": [
       "Prompt Repo (500+ Assets)",
       "6-block system",
-      "Certificate (from 70%)",
+      "Certificate (from 70% score)",
       "Community (WhatsApp)",
       "Lifetime access"
     ],
@@ -95,7 +95,7 @@
     "upgradeTo": "Upgrade to %s"
   },
   "footer": {
-    "brand": "Promptų Anatomija",
+    "brand": "Prompt Anatomy",
     "tagline": "We deploy an engineering AI work culture. It's not a course – it's an operating system for your business future.",
     "system": "System",
     "network": "Network",
@@ -107,18 +107,23 @@
     "systemLog": "System Log",
     "comingSoon": "(Coming soon)",
     "copyright": "© {{year}} Promptų Anatomija. Built for Professionals.",
+    "creator": "creator: tomas staniulis",
     "legal": "Legal",
     "cookies": "Cookies"
   },
   "success": {
     "breadcrumb": "Payment successful",
     "heading": "Installation complete",
-    "body": "Payment received. Access is granted as configured. If you have questions or did not receive instructions within 24 hours – contact us."
+    "body": "Payment received. Your access is being set up. If you have any questions, please contact us.",
+    "metaTitle": "Payment successful",
+    "metaDescription": "Thank you for your purchase."
   },
   "cancel": {
     "breadcrumb": "Payment cancelled",
     "heading": "Payment cancelled",
-    "body": "Your payment was not completed. You can return anytime to purchase access to the Promptų Anatomija training.",
-    "tryAgain": "Try again"
+    "body": "Your payment was not completed. You can return anytime to purchase access to the Prompt Anatomy training.",
+    "tryAgain": "Try again",
+    "metaTitle": "Payment cancelled",
+    "metaDescription": "Your payment was not completed."
   }
 }

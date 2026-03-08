@@ -5,10 +5,19 @@ import en from './translations/en.json'
 const translations = { lt, en }
 const STORAGE_KEY = 'locale'
 const VALID_LOCALES = ['lt', 'en']
+const DEFAULT_LOCALE = 'en'
+
+/** Map browser language to supported locale; used only when user has no stored preference. */
+function detectBrowserLocale() {
+  if (typeof window === 'undefined' || !window.navigator) return DEFAULT_LOCALE
+  const lang = window.navigator.language || window.navigator.userLanguage || ''
+  const codes = [lang, ...(window.navigator.languages || [])].map((l) => (l || '').toLowerCase().split('-')[0])
+  return codes.some((c) => c === 'lt') ? 'lt' : DEFAULT_LOCALE
+}
 
 function normalizeLocale(value) {
   const v = (value || '').toLowerCase().trim()
-  return VALID_LOCALES.includes(v) ? v : 'lt'
+  return VALID_LOCALES.includes(v) ? v : DEFAULT_LOCALE
 }
 
 function getNested(obj, path) {
@@ -29,8 +38,12 @@ const LocaleContext = createContext(null)
 
 export function LocaleProvider({ children }) {
   const [locale, setLocaleState] = useState(() => {
-    if (typeof window === 'undefined') return 'lt'
-    return normalizeLocale(window.localStorage?.getItem(STORAGE_KEY))
+    if (typeof window === 'undefined') return DEFAULT_LOCALE
+    const stored = window.localStorage?.getItem(STORAGE_KEY)
+    if (stored && VALID_LOCALES.includes((stored || '').toLowerCase().trim())) {
+      return normalizeLocale(stored)
+    }
+    return detectBrowserLocale()
   })
 
   const setLocale = useCallback((next) => {
@@ -44,7 +57,7 @@ export function LocaleProvider({ children }) {
   const t = useCallback(
     (key, params) => {
       const loc = normalizeLocale(locale)
-      const tr = translations[loc] || translations.lt
+      const tr = translations[loc] || translations[DEFAULT_LOCALE]
       return translate(tr, key, params)
     },
     [locale]
@@ -53,7 +66,7 @@ export function LocaleProvider({ children }) {
   useEffect(() => {
     const loc = normalizeLocale(locale)
     document.documentElement.lang = loc
-    const tr = translations[loc] || translations.lt
+    const tr = translations[loc] || translations[DEFAULT_LOCALE]
     const title = translate(tr, 'meta.title')
     const description = translate(tr, 'meta.description')
     document.title = title

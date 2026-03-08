@@ -1,6 +1,14 @@
 # TODO – Promptų Anatomija Home
 
-**Atnaujinta:** 2026-03-07. Žingsniai iš kodo bazės analizės – prioritetai ir seka.
+**Atnaujinta:** 2025-03-08. Žingsniai iš kodo bazės analizės – prioritetai ir seka.
+
+---
+
+## Pastaruoju metu padaryta
+
+- **SEO:** sitemap.xml, robots.txt, canonical, og:image meta, meta robots; success/cancel – unikalūs title/description ir noindex. Žr. [docs/SEO-KISS-Marry-Kill.md](docs/SEO-KISS-Marry-Kill.md).
+- **Dokumentacija (lean):** INDEX.md – vienas įėjimas; deploy ir webhook sujungti į [docs/deploy-and-webhook.md](docs/deploy-and-webhook.md); istorinė analizė – [docs/archive/](docs/archive/).
+- **Daugiakalbis (LT/EN), webhook → Supabase, GET /api/access, checkout 409** – anksčiau įdiegta.
 
 ---
 
@@ -23,9 +31,10 @@
 - [ ] Magic link / email – įgyvendinti kartu su Training App repo.
 
 ### 5. Kiti (turinyje ir UX)
+- [ ] **Footer – sutvarkyti:** nuorodos (LinkedIn, Discord, System Log), Legal, Cookies; pakeisti „Netrukus“ į tikrus URL arba laikinus tekstus. Žr. **Frontend UX** žemiau.
 - [ ] Skaičiai LP – žr. skyrių **Skaičiai** žemiau.
 - [ ] `VITE_GLOSSARY_URL` – žr. **Žodynas (Repo)**.
-- [ ] Footer, kontrastas, focus trap – žr. **Frontend UX**.
+- [ ] Kontrastas, focus trap – žr. **Frontend UX**.
 - [x] **Daugiakalbis režimas (LT/EN)** – įdiegta (LocaleContext, lt.json/en.json, kalbos perjungiklis Navbar, localStorage, document lang/meta). Žr. README § Daugiakalbis režimas.
 
 ---
@@ -36,9 +45,15 @@ Detalus kontekstas: skyriai **Kol kas negalima**, **Kainodara ir teisė** žemia
 
 *(Backend: įdiegta Pydantic Settings, GET /health, pytest testai, webhook be secret grąžina 503 jei ne ALLOW_WEBHOOK_WITHOUT_SECRET.)*
 
+## Checkout produkcijoje („Pirkti“ / „Upgrade“)
+
+- **createCheckoutSession** (mygtukai „Pirkti“, „Upgrade į X“) siunčia **POST** į `${API_URL}/api/create-checkout-session`. Kol šio endpoint nėra Vercel’e, checkout produkcijoje veiks tik vienu iš būdų:
+  - **Variantas A:** Nustatyti **VITE_API_URL** (Vercel build env) į atskirai deployintą FastAPI backend URL – tada frontend kreipsis į tą backend.
+  - **Variantas B:** Pridėti **api/create-checkout-session.js** (Vercel serverless function), kuris tikrina prieigą (Supabase), kuria Stripe Checkout Session su metadata.plan ir grąžina URL. Su dabartine logika (same-origin fallback) checkout eis į tą patį domeną.
+
 ## Kol kas negalima (priklauso nuo išorės)
 
-- **Webhook → DB + prieiga:** MVP įdiegta – Supabase `user_access`, webhook upsert, GET /api/access, checkout 409 jei jau nusipirkta. Lentelė: [docs/supabase-user-access.sql](docs/supabase-user-access.sql).
+- **Webhook → DB + prieiga:** MVP įdiegta – Supabase `user_access`, webhook upsert, GET /api/access (Vercel `api/access.js`), Stripe webhook (Vercel `api/stripe-webhook.js`). Checkout 409 – tik jei naudojamas backend su prieigos tikrinimu. Lentelė: [docs/supabase-user-access.sql](docs/supabase-user-access.sql).
 - **Magic link:** Siųsti prisijungimo nuorodą po apmokėjimo – reikia Supabase Auth arba email provider. Įgyvendinsime kartu su webhook.
 - **Prieigos tikrinimas:** Atlieka Training App (app.promptuanatomija.lt); šiame repo tik webhook sukuria prieigą.
 - **Login į mokymų app:** Magic link / passwordless – įgyvendinamas Training App repo su Supabase Auth.

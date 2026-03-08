@@ -5,7 +5,7 @@ Trumpas saugumo apžvalgos dokumentas: kas jau įdiegta, rekomendacijos ir deplo
 ## Kas jau padaryta
 
 - **Secrets:** Jautri reikšmės tik per aplinkos kintamuosius; backend naudoja Pydantic Settings ir `SecretStr` (Stripe raktai). `.env` failai nėra commitinami (žr. projekto `.gitignore`).
-- **Stripe webhook:** Naudojamas raw body ir `Stripe-Signature` verifikacija; be `STRIPE_WEBHOOK_SECRET` – 503 (arba dev režime `ALLOW_WEBHOOK_WITHOUT_SECRET=1`).
+- **Stripe webhook:** Naudojamas raw body ir `Stripe-Signature` verifikacija; be `STRIPE_WEBHOOK_SECRET` – 503. Dev režime (`ALLOW_WEBHOOK_WITHOUT_SECRET=1`) payload vis tiek apdorojamas (JSON parse, `checkout.session.completed` → upsert į `user_access`), bet parašas **netikrinamas** – naudoti tik lokaliai, niekada produkcijoje.
 - **CORS:** Fiksuotos `allow_origins` (frontend origin + localhost); `allow_headers` susiaurintas iki `Content-Type`, `Authorization`.
 - **Įvesties validacija:** `customer_email` – Pydantic `EmailStr`, max 254 simboliai; `text` (validate-token-limit) – max 50 000 simbolių; tokenų limitas per užklausą.
 - **Rate limiting:** `POST /api/create-checkout-session` ir `POST /api/validate-token-limit` apriboti (30/min ir 60/min pagal IP).
