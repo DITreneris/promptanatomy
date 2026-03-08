@@ -22,9 +22,10 @@ Prieš pradedant užduotį, nustatykite, kuris agentas tinkamiausias, ir deleguo
 
 ## Procesas ir dokumentacija
 
-- **Dokumentų indeksas:** [docs/INDEX.md](docs/INDEX.md) – visi projekto dokumentai vienoje vietoje (kelias + paskirtis).
+- **Dokumentų indeksas:** [docs/INDEX.md](docs/INDEX.md) – **vienintelis** šaltinis dokumentų kelių ir paskirčių; visi doc nuorodas tikrinti per INDEX.
 - **Development workflow:** [docs/process/development.md](docs/process/development.md) – kaip naudoti agentus, QA, doc atnaujinimai.
 - **Ką dokumentuoti:** [docs/process/documentation.md](docs/process/documentation.md).
+- **Regresijos apsauga:** [docs/golden-legacy-standard.md](docs/golden-legacy-standard.md) – prieš merge: backend `pytest`, frontend `npm run build`; ką nepalaužti.
 
 ## Taisyklės
 

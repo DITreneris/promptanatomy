@@ -9,6 +9,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/en" element={<HomePage forceLocale="en" />} />
       <Route path="/success" element={<SuccessPage />} />
       <Route path="/cancel" element={<CancelPage />} />
       <Route path="/privacy" element={<PrivacyPage />} />

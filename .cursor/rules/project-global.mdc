@@ -9,7 +9,7 @@ alwaysApply: true
 - **Secrets:** Jokie API raktai, slaptažodžiai ar `STRIPE_*` reikšmės kode. Naudokite `.env` ir `.env.example` (be realių reikšmių).
 - **Komentarai:** Leidžiama LT arba EN; dokumentacijoje ir kode būkite nuoseklūs.
 - **Struktūra:** Frontend – `frontend/src/` (pages, components, api.js); backend – `backend/main.py`. Naujus failus dėkite atitinkamuose kataloguose.
-- **Dokumentacija:** Reikšmingi pakeitimai – atnaujinkite README, TODO arba `docs/` (žr. docs/process/documentation.md). Kokybei prieš merge naudokite **quality-assurance-agent**.
+- **Dokumentacija:** Reikšmingi pakeitimai – atnaujinkite README, TODO arba `docs/` (keliai ir ką dokumentuoti: docs/INDEX.md, docs/process/documentation.md). Prieš merge: **quality-assurance-agent**; regresijai – docs/golden-legacy-standard.md (pytest + frontend build).
 
 ## Lean ir tokenai
 - Prieš implementaciją: apmąstyk kelią (ar reikia naujos funkcijos? ar pakanka esamo?).

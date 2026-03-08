@@ -15,7 +15,7 @@ Checklist:
 - New endpoints: add under `/api/`, document in docstrings, keep CORS as configured.
 - Stripe: checkout uses `STRIPE_PRICE_ID` and `FRONTEND_ORIGIN`; webhook uses raw body and `Stripe-Signature`.
 - Token limits: use `limits.py` (e.g. `check_token_limit`, dependency) for any AI or token-counted endpoints.
-- Env: document new variables in `backend/.env.example` and README if needed.
+- Env: document new variables in `backend/.env.example` and README if needed. Doc paths and what to update: docs/INDEX.md, docs/process/documentation.md.
 
 If the task requires UI or frontend changes, delegate to **frontend-agent** or **fullstack-agent**.
 

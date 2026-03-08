@@ -57,7 +57,16 @@
     "codeContextValue": "Įmonių SaaS plėtra...",
     "codeLine3": "// 03: DUOMENŲ_STRUKTŪRA",
     "codeSchema": "SCHEMA:",
-    "codeSchemaValue": "JSON-Strict | Įdėtas"
+    "codeSchemaValue": "JSON-Strict | Įdėtas",
+    "avatarAlt": "Bendruomenės nario avataras"
+  },
+  "whatIs": {
+    "title": "Kas yra Prompt Anatomy",
+    "intro": "Prompt Anatomy – tai sistema, kuri leidžia valdyti DI kaip operacinę sistemą.",
+    "bullet1": "metodika",
+    "bullet2": "prompt biblioteka",
+    "bullet3": "automatizavimo šablonai",
+    "bullet4": "DI darbo eigų modeliai"
   },
   "methodology": {
     "sectionLabel": "Operating Model",

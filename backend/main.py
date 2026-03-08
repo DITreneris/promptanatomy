@@ -43,9 +43,12 @@ app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 origins = [
-    settings.frontend_origin_stripped(),
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
+    o for o in (
+        settings.frontend_origin_stripped(),
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+    )
+    if o
 ]
 app.add_middleware(
     CORSMiddleware,

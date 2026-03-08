@@ -33,7 +33,7 @@ module.exports = async function handler(req, res) {
 
   if (req.method !== 'GET') {
     res.setHeader('Allow', 'GET, OPTIONS');
-    return res.status(405).json({ error: 'Method not allowed' });
+    return res.status(405).json({ detail: 'Method not allowed' });
   }
 
   const email = (req.query.email || '').trim();

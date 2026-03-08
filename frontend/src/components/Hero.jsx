@@ -57,7 +57,7 @@ export default function Hero({ onCta }) {
               <div className="flex -space-x-3">
                 {[1, 2, 3, 4].map((i) => (
                   <div key={i} className="w-10 h-10 rounded-full border-4 border-white bg-slate-200 overflow-hidden shadow-sm">
-                    <img src={`https://i.pravatar.cc/100?u=user${i}`} alt="" />
+                    <img src={`https://i.pravatar.cc/100?u=user${i}`} alt={t('hero.avatarAlt')} />
                   </div>
                 ))}
               </div>

@@ -1,7 +1,8 @@
 # Kalbos auditas: EN ir LT (gramatika, stilius, kalbos kultūra)
 
 **Data:** 2026-03-08  
-**Apimtis:** Vartotojui matomi tekstai iš `frontend/src/i18n/translations/en.json` ir `lt.json`, įvertinta gramatika, stilius, kalbos kultūra ir aiškumas vartotojo akimis.
+**Paskutinis atnaujinimas (auditas po turinio pakeitimų):** 2026-03-08  
+**Apimtis:** Vartotojui matomi tekstai iš `frontend/src/i18n/translations/en.json` ir `lt.json`, įvertinta gramatika, stilius, kalbos kultūra ir aiškumas. Apima hero, whatIs, methodology, ecosystem, pricing, footer, legal, success, cancel, errors, nav, common.
 
 ---
 
@@ -9,8 +10,9 @@
 
 | Aspektas | EN | LT |
 |----------|----|-----|
-| **Bendras įspūdis** | Aiškus, profesionalus, vienodas tonas. | Daugiausia sklandu; keli gramatiniai ir leksiniai nukrypimai gali atkreipti dėmesį. |
-| **Prioritetas** | Smulkūs stiliaus patikslinimai. | Pataisyti gramatiką (narys → narių; kalbėtis → kalbėti); pasirinktinai – natūralesnės frazės. |
+| **Bendras įspūdis** | Aiškus, profesionalus, vienodas tonas. Terminai nuoseklūs (AI, brand). | Sklandu; ankstesnės gramatinės pataisos įgyvendintos. DI naudojamas nuosekliai. |
+| **Prioritetas** | Pasirinktinai: klausimo ženklas whatIs.title; smulkūs stiliaus patikslinimai. | Pasirinktinai: prekės ženklo rašyba „Promptų Anatomija“ (didžioji A) citatose; whatIs.title – pilnas LT. |
+| **Naujas turinys (whatIs, avatarAlt)** | whatIs.* – teisinga, AI nuoseklus. avatarAlt – aiškus. | whatIs.* – teisinga, DI nuoseklus. avatarAlt – „Bendruomenės nario avataras“ gerai. |
 
 ---
 
@@ -18,21 +20,21 @@
 
 ### 2.1 Lietuvių kalba (LT)
 
-| Vieta | Dabartinis tekstas | Problema | Rekomendacija |
+Ankstesnės rekomendacijos **jau įgyvendintos** (žr. skyrių 8): hero.members, hero.headline1, common.skipToContent, success.heading, pricing.upgradeTo, ecosystem.title, pricing.features (sertifikatas), hero.valueLine, pricing.planBullets.starter (AI→DI).
+
+| Vieta | Dabartinis tekstas | Pastaba | Rekomendacija |
 |-------|--------------------|----------|----------------|
-| **hero.members** | „500+ narys“ | **Klaida:** su kiekybine skaičiumi reikia daugiskaitos kilmininko: *narys* → *narių*. „500+ narys“ skamba kaip klaida. | **„500+ narių“** |
-| **hero.headline1** | „Nustok kalbėtis.“ | **Stilius/gramatika:** *Kalbėtis* – sangrąžinis veiksmažodis („talk with each other“ / „talk to oneself“). Bendresnei reikšmei „stop talking“ natūraliau **„Nustok kalbėti.“** | **„Nustok kalbėti.“** |
-| **common.skipToContent** | „Praleisti į turinį“ | **Aiškumas:** „Praleisti“ gali reikšti „to miss“. Įprasta a11y frazė „Skip to content“ geriau atitinka **„Pereiti prie turinio“** (peršti į pagrindinį turinį). | **„Pereiti prie turinio“** (arba „Praleisti į pagrindinį turinį“) |
-| **success.heading** | „Sėkmingas Diegimas“ | **Rašyba:** lietuviškai antraštėse dažniau nerašoma didžiosios po pirmo žodžio (nebent visi žodžiai svarbūs). | **„Sėkmingas diegimas“** arba **„Diegimas atliktas“** |
-| **pricing.upgradeTo** | „Upgrade į %s“ | **Kalba:** anglų „Upgrade“ + lietuviškas „į“. Gramatiškai priimtina kaip skolinys; jei norima viskas lietuviškai – **„Pagerinti iki %s“** arba **„Atnaujinti iki %s“**. | Palikti (priimtina) arba **„Pagerinti iki %s“** |
+| **pricing.subtext** | „…mokymų „Promptų anatomija“ pagal…“ | Prekės ženkle citatoje dažnai didžioji: *Anatomija*. | Pasirinktinai: **„Promptų Anatomija“** (didžioji A). |
+| **whatIs.title** | „Kas yra Prompt Anatomy“ | Brand anglų kalba. Pilnas LT: „Kas yra Promptų Anatomija“. | Palikti (brand) arba **„Kas yra Promptų Anatomija“**. |
+| **pricing.yourAccess** | „Jūsų prieiga: 1–%s moduliai“ | Su skaičiumi (3, 6) – „3 moduliai“ teisinga. | — |
 
 ### 2.2 Anglų kalba (EN)
 
 | Vieta | Dabartinis tekstas | Pastaba | Rekomendacija |
 |-------|--------------------|---------|----------------|
-| **pricing.features** | „Certificate (from 70%)“ | Aišku, bet „70%“ gali būti neaišku – 70% ko? | Pasirinktinai: **„Certificate (from 70% score)“** arba palikti, jei kontekstas aiškus. |
+| **whatIs.title** | „What is Prompt Anatomy“ | Klausimo forma – galima „?“ | Pasirinktinai: **„What is Prompt Anatomy?“** |
+| **pricing.features** (certificate) | „Certificate (from 70% score)“ | Jau pataisyta. | — |
 | **pricing.yourAccess** | „Your access: 1–%s modules“ | Gramatiškai teisinga. | — |
-| **success.body** | „If you have questions or did not receive instructions within 24 hours“ | Teisinga; sakinys ilgas. | Galima sutrumpinti: „Questions or no instructions within 24h? Contact us.“ – bet ne būtina. |
 
 ---
 
@@ -41,7 +43,7 @@
 ### 3.1 Tonas ir brand balsas
 
 - **EN:** Nuoseklus, tiesus, „product / SaaS“ stilius („Stop talking.“, „Start building.“, „Get access“). Tinkama edu/produkto puslapiui.
-- **LT:** Atitinka tą patį toną; po pataisų bus gramatiškai ir stilistiškai sklandesnis.
+- **LT:** Atitinka tą patį toną; ankstesnės pataisos įgyvendintos – gramatiškai ir stilistiškai sklandu, DI nuosekliai.
 
 ### 3.2 Nuoseklumas tarp kalbų
 
@@ -89,36 +91,34 @@ Audito metu patikrinti, kad LT vertime nėra likusių „AI“ ten, kur kalbama 
 
 ## 5. Rekomendacijos pagal prioritetą
 
-### Būtina (gramatika / aiškumas)
+### Įgyvendinta (būtina – žr. skyrių 8)
 
-1. **LT hero.members:** „500+ narys“ → **„500+ narių“**.
-2. **LT hero.headline1:** „Nustok kalbėtis.“ → **„Nustok kalbėti.“**
-3. **LT common.skipToContent:** „Praleisti į turinį“ → **„Pereiti prie turinio“** (arba panaši aiškesnė frazė).
-4. **LT success.heading:** „Sėkmingas Diegimas“ → **„Sėkmingas diegimas“** (arba „Diegimas atliktas“).
+1. LT hero.members, hero.headline1, common.skipToContent, success.heading, pricing.upgradeTo, ecosystem.title, pricing.features (sertifikatas), hero.valueLine, pricing.planBullets.starter (AI→DI).
 
-### Pageidautina (stilius / simetrija)
+### Pageidautina (po naujo turinio)
 
-5. **LT pricing.upgradeTo:** svarstyti **„Pagerinti iki %s“** vietoj „Upgrade į %s“ jei norima viskas lietuviškai.
-6. **EN pricing.features:** pasirinktinai patikslinti **„Certificate (from 70% score)“** (arba palikti, jei kontekstas pakankamai aiškus).
+2. **LT pricing.subtext:** „Promptų anatomija“ → **„Promptų Anatomija“** (didžioji A brand citatoje).
+3. **LT whatIs.title:** palikti „Kas yra Prompt Anatomy“ (brand) arba **„Kas yra Promptų Anatomija“** (pilnas LT).
+4. **EN whatIs.title:** **„What is Prompt Anatomy?“** (klausimo ženklas).
 
 ### Palikti kaip yra
 
-- Brand terminai (Lifetime access, Repo, Stripe Verified, AI Powered).
-- Ilgesni sakiniai success.body – skaidūs, tik pasirinktinai galima trumpinti.
-- „Promptų Anatomija“ abiejose kalbose.
+- Brand terminai (Lifetime access, Repo, Stripe Verified, AI/DI Powered).
+- whatIs.*, hero.avatarAlt – naujas turinys, gramatiškai ir DI/AI nuosekliai teisingas.
+- „Promptų Anatomija“ / „Prompt Anatomy“ pagal kalbą.
 
 ---
 
 ## 6. Nuorodos į failus
 
 - Vertimai: [frontend/src/i18n/translations/lt.json](../frontend/src/i18n/translations/lt.json), [frontend/src/i18n/translations/en.json](../frontend/src/i18n/translations/en.json).
-- Raktų naudojimas: `t('key')` per [LocaleContext.jsx](../frontend/src/i18n/LocaleContext.jsx); komponentai – [Navbar](../frontend/src/components/Navbar.jsx), [Hero](../frontend/src/components/Hero.jsx), [Pricing](../frontend/src/components/Pricing.jsx), [Footer](../frontend/src/components/Footer.jsx), puslapiai Success/Cancel.
+- Raktų naudojimas: `t('key')` per [LocaleContext.jsx](../frontend/src/i18n/LocaleContext.jsx); komponentai – [Navbar](../frontend/src/components/Navbar.jsx), [Hero](../frontend/src/components/Hero.jsx), [WhatIsPromptAnatomy](../frontend/src/components/WhatIsPromptAnatomy.jsx), [Methodology](../frontend/src/components/Methodology.jsx), [Ecosystem](../frontend/src/components/Ecosystem.jsx), [Pricing](../frontend/src/components/Pricing.jsx), [Footer](../frontend/src/components/Footer.jsx), puslapiai Success/Cancel.
 
 ---
 
 ## 7. Santrauka
 
-Vertimai apskritai **kokybiški** ir vartotojui **suprantami**. Lietuvių kalboje rekomenduojama pataisyti **narių**, **kalbėti**, **Pereiti prie turinio** ir **Sėkmingas diegimas** (arba atitikmenis), kad būtų gramatiškai ir stilistiškai sklandu. Anglų kalboje pakanka smulkių, pasirinktinių patikslinimų. Po šių pataisų abi kalbos atitiks profesionalių edu/produkto puslapių lygį ir bus nuoseklios vartotojo akimis.
+Vertimai **kokybiški** ir vartotojui **suprantami**. Ankstesnės būtinos pataisos (LT gramatika, DI/AI nuoseklumas) **įgyvendintos**. Naujas turinys (whatIs.*, hero.avatarAlt) – gramatiškai teisingas, DI (LT) ir AI (EN) naudojami nuosekliai. Pasirinktini patikslinimai: LT – „Promptų Anatomija“ didžiąja A citatose, whatIs.title pilnas LT; EN – whatIs.title su „?“.
 
 ---
 
@@ -136,3 +136,4 @@ Vertimai apskritai **kokybiški** ir vartotojui **suprantami**. Lietuvių kalboj
 | **EN** pricing.features (certificate) | Certificate (from 70%) | Certificate (from 70% score) |
 | **LT** hero.valueLine | Išmok naudoti AI 10x efektyviau | Išmok naudoti DI 10x efektyviau (DI/AI nuoseklumas) |
 | **LT** pricing.planBullets.starter | AI prompt pagrindai | DI prompt pagrindai (DI/AI nuoseklumas) |
+| **Naujas turinys (2026-03-08)** | — | whatIs.* (LT/EN) – patikrinta, gramatika ir DI/AI teisingi. hero.avatarAlt – pridėtas (LT/EN). |

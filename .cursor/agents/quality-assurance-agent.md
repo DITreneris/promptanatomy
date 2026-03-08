@@ -14,7 +14,8 @@ Checklist:
 - **Frontend:** Functional components and hooks; API only via api.js; Tailwind; no hardcoded secrets or API URLs.
 - **Backend:** Pydantic for bodies; HTTPException for errors; config from env; logger (no print); Stripe webhook uses raw body and signature; token limits via limits.py when relevant.
 - **Security:** No secrets in code; .env for sensitive values; .env.example without real values.
-- **Docs:** If the change affects API, config, or workflow, remind to update README, TODO, or docs/ as per docs/process/documentation.md.
+- **Regression:** Before merge, run backend `pytest` and frontend `npm run build`; critical paths in docs/golden-legacy-standard.md must not be broken (see docs/INDEX.md).
+- **Docs:** If the change affects API, config, or workflow, remind to update README, TODO, or docs/ as per docs/process/documentation.md (paths in docs/INDEX.md).
 
 Keep feedback concise; cite file and line where relevant.
 

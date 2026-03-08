@@ -15,7 +15,7 @@ Checklist:
 - New pages go in `frontend/src/pages/` and are wired in the router in `App.jsx`.
 - New API usage: add or use functions in `frontend/src/api.js`, call them from components.
 - No secrets or API URLs hardcoded; use `config.js` / env where needed.
-- Preserve existing design (e.g. navy/gold, layout) unless the task explicitly changes it.
+- Preserve existing design (e.g. navy/gold, layout) unless the task explicitly changes it. For doc updates (e.g. i18n keys): docs/INDEX.md, docs/process/documentation.md.
 
 If the task requires backend changes (new endpoints, Stripe, limits), delegate to **backend-agent** or **fullstack-agent**.
 

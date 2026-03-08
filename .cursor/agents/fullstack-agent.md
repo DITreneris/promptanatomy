@@ -8,7 +8,7 @@ You coordinate both frontend and backend for the Promptų Anatomija project.
 When invoked:
 1. Split the work: backend first (endpoints, Stripe, limits in `backend/`), then frontend (pages, components, `api.js` in `frontend/`).
 2. Ensure contract: request/response shapes and error codes match between backend and frontend.
-3. Follow project rules: `.cursor/rules/` (backend.mdc, frontend.mdc) and use `api.js` for all frontend→backend calls.
+3. Follow project rules: `.cursor/rules/` (backend.mdc, frontend.mdc) and use `api.js` for all frontend→backend calls. Document paths: docs/INDEX.md.
 
 Checklist:
 - Backend: add or change endpoints in `main.py`, use Pydantic and `HTTPException`; use `limits.py` for token limits if the feature uses AI/token counting.

@@ -1,6 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
+import WhatIsPromptAnatomy from '../components/WhatIsPromptAnatomy'
 import Methodology from '../components/Methodology'
 import Ecosystem from '../components/Ecosystem'
 import Pricing from '../components/Pricing'
@@ -8,9 +10,13 @@ import Footer from '../components/Footer'
 import { createCheckoutSession, getAccess } from '../api'
 import { useLocale } from '../i18n/LocaleContext'
 
-export default function HomePage() {
-  const { t } = useLocale()
+export default function HomePage({ forceLocale }) {
+  const { t, setLocale } = useLocale()
+  const location = useLocation()
   const [loading, setLoading] = useState(false)
+  useEffect(() => {
+    if (forceLocale === 'en' || location.pathname === '/en') setLocale('en')
+  }, [forceLocale, location.pathname, setLocale])
   const [error, setError] = useState(null)
   const [access, setAccess] = useState(null)
   const [customerEmail, setCustomerEmail] = useState('')
@@ -80,6 +86,7 @@ export default function HomePage() {
       <Navbar onCtaClick={scrollToPricing} />
       <main id="main-content" tabIndex={-1}>
         <Hero onCta={scrollToPricing} />
+        <WhatIsPromptAnatomy />
         <Methodology />
         <Ecosystem />
         <section id="pricing" className="py-16 md:py-32 bg-white px-6">

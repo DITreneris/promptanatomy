@@ -1,6 +1,6 @@
 # Dokumentų indeksas
 
-**Vienas įėjimas** į visus projekto dokumentus. Naudokite šį failą norėdami rasti reikiamą dokumentą (žmonės ir agentai). Lean struktūra – production deploy.
+**Vienintelis įėjimas** į projekto dokumentus – visi keliai ir paskirtys čia. Naudokite agentai ir žmonės. Lean struktūra – production deploy. Cursor taisyklės ir agentai remiasi šiuo indeksu.
 
 ---
 
@@ -10,6 +10,7 @@
 |------------|--------|-----------|
 | Pagrindinis README | [README.md](../README.md) | Struktūra, reikalavimai, paleidimas (backend/frontend), env, Stripe, testai. |
 | Produkto aprašas (SOT) | [README_SOT.md](../README_SOT.md) | Turinys, moduliai, technologijos, deployment. |
+| Roadmap | [roadmap.md](../roadmap.md) | Fazės, prioritetai, deploy ir webhook žingsniai; nuoroda į phase-1-scope. |
 | Darbų sąrašas | [TODO.md](../TODO.md) | Artimi darbai, žinomi trūkumai. |
 | Changelog | [CHANGELOG.md](../CHANGELOG.md) | Pridėta / pakeista / taisymai. Šablonas: [templates/changelog-entry.md](templates/changelog-entry.md). |
 
@@ -19,6 +20,7 @@
 
 | Dokumentas | Kelias | Paskirtis |
 |------------|--------|-----------|
+| Production readiness (analizė, bugai, checklist) | [docs/production-readiness-analysis.md](production-readiness-analysis.md) | Gili kodo bazės analizė prieš production; atlikti pataisymai ir rekomendacijos. |
 | Saugumas | [docs/security.md](security.md) | Secrets, CORS, validacija, rate limit, headers, produkcija. |
 | Saugumo auditas (gilus) | [docs/security-audit-deep.md](security-audit-deep.md) | Architektūra, jautrūs taškai, rizikos, industrijos praktikos, MOSCOW prioritetai. |
 | Mokėjimų praktikos | [docs/payment-best-practices.md](payment-best-practices.md) | Plan_id/plan_value, Stripe/Supabase/Vercel konvencijos, env, pitfalls. |
@@ -50,7 +52,15 @@
 
 ---
 
-## 5. Procesas ir šablonai
+## 5. Kokybė ir regresija
+
+| Dokumentas | Kelias | Paskirtis |
+|------------|--------|-----------|
+| Golden Legacy Standard | [docs/golden-legacy-standard.md](golden-legacy-standard.md) | Fiksuota veikianti būsena: backend kontraktai, frontend maršrutai ir LP struktūra, kas nekeičiama. Regresijos apsauga prieš pakeitimus. |
+
+---
+
+## 6. Procesas ir šablonai
 
 | Dokumentas | Kelias | Paskirtis |
 |------------|--------|-----------|
@@ -63,11 +73,13 @@
 
 ---
 
-## 6. Cursor (agentai ir taisyklės)
+## 7. Cursor (agentai ir taisyklės)
+
+Agentai ir `.cursor/rules/` remiasi **šiuo indeksu** (docs/INDEX.md) – dokumentų keliai ir paskirtys. Atnaujinant docs, palaikykite INDEX atitiktį.
 
 | Dokumentas | Kelias | Paskirtis |
 |------------|--------|-----------|
-| Agentų orkestratorius | [AGENTS.md](../AGENTS.md) | Kuris agentas kada; lean ir tokenai; nuorodos į agentus. |
+| Agentų orkestratorius | [AGENTS.md](../AGENTS.md) | Kuris agentas kada; lean ir tokenai; nuorodos į agentus; INDEX ir golden-legacy. |
 | Frontend agentas | [.cursor/agents/frontend-agent.md](../.cursor/agents/frontend-agent.md) | React, Vite, Tailwind, api.js. |
 | Backend agentas | [.cursor/agents/backend-agent.md](../.cursor/agents/backend-agent.md) | FastAPI, Stripe, limits. |
 | Fullstack agentas | [.cursor/agents/fullstack-agent.md](../.cursor/agents/fullstack-agent.md) | Koordinacija frontend + backend. |
@@ -77,7 +89,7 @@
 
 ---
 
-## 7. Archyvas
+## 8. Archyvas
 
 | Dokumentas | Kelias | Paskirtis |
 |------------|--------|-----------|
@@ -91,4 +103,5 @@
 - **Pradėti:** AGENTS.md → agentas → docs/process/development.md
 - **Klausimai:** q-and-a-agent; šaltiniai: README.md, README_SOT.md, docs/
 - **Po pakeitimų:** quality-assurance-agent; doc pagal docs/process/documentation.md
+- **Regresija:** docs/golden-legacy-standard.md – ką nepalaužti; pytest + frontend build prieš merge.
 - **Indeksas visada:** docs/INDEX.md (šis failas)

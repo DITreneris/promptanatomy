@@ -57,7 +57,16 @@
     "codeContextValue": "Enterprise SaaS Scaling...",
     "codeLine3": "// 03: DATA_OUTPUT_SCHEMA",
     "codeSchema": "SCHEMA:",
-    "codeSchemaValue": "JSON-Strict | Nested"
+    "codeSchemaValue": "JSON-Strict | Nested",
+    "avatarAlt": "Community member avatar"
+  },
+  "whatIs": {
+    "title": "What is Prompt Anatomy",
+    "intro": "Prompt Anatomy is a system that lets you run AI like an operating system.",
+    "bullet1": "methodology",
+    "bullet2": "prompt library",
+    "bullet3": "automation templates",
+    "bullet4": "AI workflow models"
   },
   "methodology": {
     "sectionLabel": "Operating Model",

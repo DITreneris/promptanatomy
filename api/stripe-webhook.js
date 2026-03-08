@@ -45,7 +45,7 @@ module.exports = async function handler(req, res) {
   const secret = process.env.STRIPE_WEBHOOK_SECRET;
   if (!secret) {
     console.warn('STRIPE_WEBHOOK_SECRET not set');
-    return res.status(503).json({ error: 'Webhook not configured' });
+    return res.status(503).json({ detail: 'Webhook not configured' });
   }
 
   let event;
@@ -55,7 +55,7 @@ module.exports = async function handler(req, res) {
     event = stripe.webhooks.constructEvent(rawBody, sig, secret);
   } catch (err) {
     console.warn('Stripe webhook verification failed:', err.message);
-    return res.status(400).json({ error: err.message });
+    return res.status(400).json({ detail: 'Invalid signature or payload' });
   }
 
   if (event.type !== 'checkout.session.completed') {
