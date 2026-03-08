@@ -15,21 +15,33 @@ Vienas dokumentas: kas įdiegta produkcijoje (Vercel + Stripe webhook), kaip tik
 
 ---
 
-## 2. Troubleshooting: kodėl user_access tuščia
+## 2. Prieš release: produkcijos env checklist
+
+Prieš deploy į produkciją patikrinkite:
+
+- **STRIPE_WEBHOOK_SECRET** – būtina; be jo webhook grąžina 503.
+- **ALLOW_WEBHOOK_WITHOUT_SECRET** – **niekada** įjungti prod (tik lokaliai dev).
+- **FRONTEND_ORIGIN** – pilnas https URL (pvz. `https://promptuanatomija.lt`) be galinio `/` (CORS ir redirectai).
+- **HTTPS** – Vercel jau įjungia HTTPS ir HSTS; jei backend atskirai – HSTS nustatyti reverse proxy (Nginx/Cloudflare).
+- **Webhook klaidų stebėjimas** – rekomenduojama stebėti Vercel Function logs (arba Sentry ir pan.) dėl 4xx/5xx webhook atsakymų.
+
+---
+
+## 3. Troubleshooting: kodėl user_access tuščia
 
 Jei mokėjimas per Stripe pavyko, webhook rodo 0% klaidų, bet **user_access** lentelė Supabase tuščia – tikrink:
 
-### 2.1 Vercel env
+### 3.1 Vercel env
 
 - **Vercel → Project → Settings → Environment Variables**
 - Production (ir Preview, jei testuoji): `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` (service role, ne anon key).
 - Po pakeitimų **Redeploy**.
 
-### 2.2 Stripe Checkout Session – metadata.plan
+### 3.2 Stripe Checkout Session – metadata.plan
 
 Webhook įrašo į DB tik jei `session.metadata.plan` yra **plan_id** ("1"–"4") arba **plan_value** (3, 6, 12, 15). Be `metadata.plan` webhook grąžina 200, bet įrašo neįrašo.
 
-### 2.3 Vercel function logai
+### 3.3 Vercel function logai
 
 **Vercel → Deployments → pasirink deployment → Functions → stripe-webhook → Logs.** Ieškok:
 
@@ -38,17 +50,17 @@ Webhook įrašo į DB tik jei `session.metadata.plan` yra **plan_id** ("1"–"4"
 - `no metadata.plan` – session be metadata.plan  
 - `user_access upsert error:` – Supabase klaida (schema, RLS, raktas)
 
-### 2.4 Supabase lentelė
+### 3.4 Supabase lentelė
 
 Lentelė **user_access** turi turėti: `email` (text, NOT NULL, UNIQUE), `highest_plan` (integer, NOT NULL, default 0), `stripe_customer_id` (text, nullable). Schema: [docs/supabase-user-access.sql](supabase-user-access.sql).
 
-### 2.5 Testas iš Stripe
+### 3.5 Testas iš Stripe
 
 **Stripe Dashboard → Webhooks → endpoint → Send test webhook** → `checkout.session.completed`. Patikrink Vercel logs ir Supabase Table Editor.
 
 ---
 
-## 3. Nuorodos
+## 4. Nuorodos
 
 - Planų ir webhook konvencijos: [docs/payment-best-practices.md](payment-best-practices.md)
 - Lentelės SQL: [docs/supabase-user-access.sql](supabase-user-access.sql)

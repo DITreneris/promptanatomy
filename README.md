@@ -92,7 +92,9 @@ python -m pytest tests/ -v
 Prieš release arba periodiškai paleiskite auditą, kad patikrintumėte žinomas pažeidžiamumų duomenų bazėse:
 
 - **Backend:** `pip install pip-audit` tada `pip-audit` (backend venv aktyvuotas).
-- **Frontend:** `cd frontend && npm audit` (galima `npm audit fix` ne kritiniams atnaujinimams).
+- **Frontend:** `cd frontend && npm audit` (galima `npm audit --production` tik production dependencies; `npm audit fix` – ne kritiniams atnaujinimams).
+
+Iš repo šaknies: `npm run audit:frontend`, `npm run audit:backend` (jei įdiegta `pip-audit`).
 
 Daugiau saugumo praktikų: [docs/security.md](docs/security.md).
 

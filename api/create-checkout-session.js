@@ -13,12 +13,19 @@ const PLAN_ID_TO_VALUE = { '1': 3, '2': 6, '3': 12, '4': 15 };
 /** Phase 1: only plans 1 and 2 (docs/phase-1-scope.md). */
 const PHASE1_PLAN_IDS = ['1', '2'];
 
-function corsHeaders(origin) {
-  return {
-    'Access-Control-Allow-Origin': origin || '*',
-    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-  };
+const ALLOWED_ORIGINS = [
+  process.env.FRONTEND_ORIGIN?.replace(/\/$/, ''),
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+].filter(Boolean);
+
+function setCorsHeaders(req, res) {
+  const origin = (req.headers.origin || req.headers.referer?.replace(/\/$/, '') || '').trim();
+  if (origin && ALLOWED_ORIGINS.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 }
 
 function getPriceId(planId) {
@@ -31,8 +38,7 @@ function planIdToValue(planId) {
 }
 
 module.exports = async function handler(req, res) {
-  const origin = req.headers.origin || req.headers.referer?.replace(/\/$/, '') || '*';
-  Object.entries(corsHeaders(origin)).forEach(([k, v]) => res.setHeader(k, v));
+  setCorsHeaders(req, res);
 
   if (req.method === 'OPTIONS') {
     return res.status(204).end();
@@ -91,7 +97,7 @@ module.exports = async function handler(req, res) {
     }
   }
 
-  const frontendOrigin = (process.env.FRONTEND_ORIGIN || origin || '').replace(/\/$/, '') || 'http://localhost:5173';
+  const frontendOrigin = (process.env.FRONTEND_ORIGIN || '').replace(/\/$/, '') || 'http://localhost:5173';
 
   try {
     const stripe = new Stripe(secretKey);

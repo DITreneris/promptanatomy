@@ -2,11 +2,13 @@
 
 Trumpas saugumo apžvalgos dokumentas: kas jau įdiegta, rekomendacijos ir deployment reikalavimai.
 
+**Gili analizė (architektūra, jautrūs taškai, rizikos, MOSCOW):** [docs/security-audit-deep.md](security-audit-deep.md).
+
 ## Kas jau padaryta
 
 - **Secrets:** Jautri reikšmės tik per aplinkos kintamuosius; backend naudoja Pydantic Settings ir `SecretStr` (Stripe raktai). `.env` failai nėra commitinami (žr. projekto `.gitignore`).
 - **Stripe webhook:** Naudojamas raw body ir `Stripe-Signature` verifikacija; be `STRIPE_WEBHOOK_SECRET` – 503. Dev režime (`ALLOW_WEBHOOK_WITHOUT_SECRET=1`) payload vis tiek apdorojamas (JSON parse, `checkout.session.completed` → upsert į `user_access`), bet parašas **netikrinamas** – naudoti tik lokaliai, niekada produkcijoje.
-- **CORS:** Fiksuotos `allow_origins` (frontend origin + localhost); `allow_headers` susiaurintas iki `Content-Type`, `Authorization`.
+- **CORS:** Backend – fiksuotos `allow_origins` (frontend origin + localhost). Vercel `api/` – whitelist (`FRONTEND_ORIGIN` + localhost); neleistinam origin negrąžinamas `*`.
 - **Įvesties validacija:** `customer_email` – Pydantic `EmailStr`, max 254 simboliai; `text` (validate-token-limit) – max 50 000 simbolių; tokenų limitas per užklausą.
 - **Rate limiting:** `POST /api/create-checkout-session` ir `POST /api/validate-token-limit` apriboti (30/min ir 60/min pagal IP).
 - **Security headers:** `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`.
@@ -16,6 +18,7 @@ Trumpas saugumo apžvalgos dokumentas: kas jau įdiegta, rekomendacijos ir deplo
 - **HTTPS** turi būti užtikrintas reverse proxy / hosting lygmenyje (ne FastAPI kode). Produkcijoje backend ir frontend turi būti prieinami tik per HTTPS.
 - **FRONTEND_ORIGIN** produkcijoje nustatykite į pilną frontend URL su `https://`, pvz. `https://promptuanatomija.lt` (be galinio `/`).
 - **STRIPE_WEBHOOK_SECRET** būtinas produkcijoje; `ALLOW_WEBHOOK_WITHOUT_SECRET` naudokite tik lokaliai.
+- **Produkcijos env checklist (prieš release):** [docs/deploy-and-webhook.md § 2](deploy-and-webhook.md#2-prieš-release-produkcijos-env-checklist).
 
 ## Rate limiting už reverse proxy
 
