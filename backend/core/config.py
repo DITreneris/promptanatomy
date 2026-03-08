@@ -40,6 +40,9 @@ class Settings(BaseSettings):
 
     # Plan values: 3, 6, 12, 15 (module cap). plan_id "1"->3, "2"->6, "3"->12, "4"->15.
     PLAN_VALUES = (3, 6, 12, 15)
+    # Phase 1: only plans 1 and 2 (modules 1–3, 1–6); 7+ locked (docs/phase-1-scope.md).
+    PHASE1_PLAN_IDS = ("1", "2")
+    PHASE1_PLAN_VALUES = (3, 6)
     PLAN_ID_TO_VALUE = {"1": 3, "2": 6, "3": 12, "4": 15}
 
     def frontend_origin_stripped(self) -> str:

@@ -67,7 +67,7 @@ async def add_security_headers(request: Request, call_next):
 
 
 class CreateCheckoutBody(BaseModel):
-    plan_id: Literal["1", "2", "3", "4"] = Field(..., description="Pricing plan 1–4 (1–3 mod / 1–6 / 1–12 / 1–15)")
+    plan_id: Literal["1", "2"] = Field(..., description="Pricing plan 1 or 2 (Phase 1: 1–3 mod / 1–6 mod)")
     customer_email: EmailStr | None = Field(default=None, max_length=254)
 
 
@@ -104,7 +104,8 @@ async def get_access(request: Request, email: str = ""):
     access = get_user_access(email)
     highest_plan = (access["highest_plan"] if access else 0) or 0
     allowed_modules = list(range(1, highest_plan + 1)) if highest_plan > 0 else []
-    can_upgrade_to = [p for p in settings.PLAN_VALUES if p > highest_plan]
+    # Phase 1: only offer upgrade to 3 or 6 (docs/phase-1-scope.md).
+    can_upgrade_to = [p for p in settings.PHASE1_PLAN_VALUES if p > highest_plan]
     return {
         "highest_plan": highest_plan,
         "allowed_modules": allowed_modules,

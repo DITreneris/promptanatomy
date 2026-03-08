@@ -1,12 +1,15 @@
 import { ArrowRight, CheckCircle, Lock, ShieldCheck, Cpu, Globe } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
 
-const PLANS = [
+/** Phase 1: only 2 products (1–3 and 1–6 modules); modules 7+ locked. */
+const PHASE1_MAX_MODULES = 6
+const PLANS_ALL = [
   { id: '1', mods: '1–3', price: 39, labelKey: 'starter', planValue: 3 },
   { id: '2', mods: '1–6', price: 99, labelKey: 'core', planValue: 6 },
   { id: '3', mods: '1–12', price: 149, labelKey: 'extended', planValue: 12 },
   { id: '4', mods: '1–15', price: 199, labelKey: 'full', planValue: 15 },
 ]
+const PLANS = PLANS_ALL.filter((p) => p.planValue <= PHASE1_MAX_MODULES)
 
 export default function Pricing({ onBuy, loading, error, access, customerEmail }) {
   const { t } = useLocale()
@@ -17,6 +20,8 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail }
   const plansToShow = access
     ? PLANS.filter((p) => p.planValue > highest_plan && can_upgrade_to.includes(p.planValue))
     : PLANS
+
+  const showModulesLockedNote = true
 
   const getButtonState = (plan) => {
     if (!access) return { action: 'buy', label: t('pricing.getAccess') }
@@ -37,22 +42,36 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail }
         <p className="text-slate-500 text-base md:text-lg font-medium max-w-xl mx-auto">
           {t('pricing.subtext')}
         </p>
+        <p className="text-slate-400 text-sm font-medium mt-2">
+          {t('pricing.cumulativeNote')}
+        </p>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-10 md:mb-16">
+      <div className="grid md:grid-cols-2 gap-4 md:gap-6 mb-10 md:mb-16">
         {plansToShow.map((plan) => {
           const state = getButtonState(plan)
           const isOwned = state?.action === 'owned'
           const isUpgradeOrBuy = state?.action === 'upgrade' || state?.action === 'buy'
+          const isCore = plan.labelKey === 'core'
           return (
             <div
               key={plan.id}
-              className="bg-white rounded-[32px] border-2 border-slate-100 p-8 shadow-soft hover:border-brand-accent/30 hover:shadow-soft-lg hover:-translate-y-0.5 transition-all duration-300 flex flex-col"
+              className={`bg-white rounded-[32px] border-2 p-8 shadow-soft hover:shadow-soft-lg hover:-translate-y-0.5 transition-all duration-300 flex flex-col relative ${isCore ? 'border-brand-accent/50' : 'border-slate-100 hover:border-brand-accent/30'}`}
             >
+              {isCore && (
+                <span className="absolute top-6 right-6 px-3 py-1 rounded-full bg-brand-accent/15 text-brand-accent text-[10px] font-black uppercase tracking-widest">
+                  {t('pricing.recommended')}
+                </span>
+              )}
               <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
                 {t(`pricing.plans.${plan.labelKey}`)}
               </span>
               <p className="text-slate-600 font-bold mb-3">{plan.mods} {t('pricing.mods')}</p>
+              {isCore && (
+                <p className="text-slate-600 text-sm font-medium mb-3 border-l-2 border-brand-accent/50 pl-3">
+                  {t('pricing.coreIncludesStarter')}
+                </p>
+              )}
               {(() => {
                 const bullets = t(`pricing.planBullets.${plan.labelKey}`)
                 const list = Array.isArray(bullets) ? bullets : []
@@ -90,9 +109,16 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail }
         })}
       </div>
 
-      {plansToShow.length === 0 && access && highest_plan >= 15 && (
+      {plansToShow.length === 0 && access && highest_plan >= PHASE1_MAX_MODULES && (
         <p className="text-center text-slate-600 font-medium mb-16">
-          {t('pricing.alreadyHave')} – {t('pricing.yourAccess').replace('%s', '15')}
+          {t('pricing.alreadyHave')} – {t('pricing.yourAccess').replace('%s', String(PHASE1_MAX_MODULES))}
+        </p>
+      )}
+
+      {showModulesLockedNote && (
+        <p className="text-center text-slate-400 text-sm font-medium mb-6 flex items-center justify-center gap-2">
+          <Lock size={14} aria-hidden />
+          {t('pricing.modulesLocked')}
         </p>
       )}
 

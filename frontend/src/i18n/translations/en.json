@@ -81,6 +81,9 @@
     "badge": "Lifetime System Access",
     "title": "Choose your plan",
     "subtext": "Get access to the Prompt Anatomy training according to the number of modules you choose.",
+    "cumulativeNote": "Access is cumulative.",
+    "recommended": "Recommended",
+    "coreIncludesStarter": "Everything in Starter, plus modules 4–6.",
     "plans": {
       "starter": "Starter",
       "core": "Core",
@@ -111,7 +114,8 @@
     "emailPlaceholder": "Email",
     "yourAccess": "Your access: 1–%s modules",
     "alreadyHave": "Already have",
-    "upgradeTo": "Upgrade to %s"
+    "upgradeTo": "Upgrade to %s",
+    "modulesLocked": "Modules 7–15 coming in a later phase."
   },
   "footer": {
     "brand": "Prompt Anatomy",

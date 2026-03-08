@@ -81,6 +81,9 @@
     "badge": "Lifetime System Access",
     "title": "Pasirinkite planą",
     "subtext": "Gaukite prieigą prie mokymų „Promptų anatomija“ pagal pasirinktą modulių skaičių.",
+    "cumulativeNote": "Prieiga kaupiama.",
+    "recommended": "Rekomenduojama",
+    "coreIncludesStarter": "Viskas iš Starter, plius moduliai 4–6.",
     "plans": {
       "starter": "Starter",
       "core": "Core",
@@ -111,7 +114,8 @@
     "emailPlaceholder": "El. paštas",
     "yourAccess": "Jūsų prieiga: 1–%s moduliai",
     "alreadyHave": "Jau turite",
-    "upgradeTo": "Pagerinti iki %s"
+    "upgradeTo": "Pagerinti iki %s",
+    "modulesLocked": "Moduliai 7–15 – vėlesnėje fazėje."
   },
   "footer": {
     "brand": "Promptų Anatomija",

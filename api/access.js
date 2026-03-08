@@ -6,6 +6,8 @@
 const { createClient } = require('@supabase/supabase-js');
 
 const PLAN_VALUES = [3, 6, 12, 15];
+/** Phase 1: only offer upgrade to 3 or 6 (docs/phase-1-scope.md). */
+const PHASE1_PLAN_VALUES = [3, 6];
 
 function corsHeaders(origin) {
   return {
@@ -56,7 +58,7 @@ module.exports = async function handler(req, res) {
   }
 
   const allowed_modules = highest_plan > 0 ? Array.from({ length: highest_plan }, (_, i) => i + 1) : [];
-  const can_upgrade_to = PLAN_VALUES.filter((p) => p > highest_plan);
+  const can_upgrade_to = PHASE1_PLAN_VALUES.filter((p) => p > highest_plan);
 
   return res.status(200).json({
     highest_plan: highest_plan,

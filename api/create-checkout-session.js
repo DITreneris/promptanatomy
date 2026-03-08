@@ -10,6 +10,8 @@ const { createClient } = require('@supabase/supabase-js');
 
 const PLAN_VALUES = [3, 6, 12, 15];
 const PLAN_ID_TO_VALUE = { '1': 3, '2': 6, '3': 12, '4': 15 };
+/** Phase 1: only plans 1 and 2 (docs/phase-1-scope.md). */
+const PHASE1_PLAN_IDS = ['1', '2'];
 
 function corsHeaders(origin) {
   return {
@@ -53,9 +55,9 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ detail: 'Invalid JSON' });
   }
 
-  const planId = body.plan_id;
-  if (!['1', '2', '3', '4'].includes(planId)) {
-    return res.status(400).json({ detail: `Invalid plan_id ${planId}` });
+  const planId = String(body.plan_id || '');
+  if (!PHASE1_PLAN_IDS.includes(planId)) {
+    return res.status(400).json({ detail: 'Only plans 1 and 2 are available in this phase' });
   }
 
   const priceId = getPriceId(planId);

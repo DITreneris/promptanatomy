@@ -25,8 +25,12 @@ class TestCreateCheckoutSession:
         assert r.status_code == 422
 
     def test_invalid_plan_id_returns_422(self):
-        """plan_id must be '1','2','3','4'; '0' or '5' returns 422."""
+        """Phase 1: plan_id must be '1' or '2'; '0', '3', '4', '5' return 422."""
         r = client.post("/api/create-checkout-session", json={"plan_id": "0"})
+        assert r.status_code == 422
+        r = client.post("/api/create-checkout-session", json={"plan_id": "3"})
+        assert r.status_code == 422
+        r = client.post("/api/create-checkout-session", json={"plan_id": "4"})
         assert r.status_code == 422
         r = client.post("/api/create-checkout-session", json={"plan_id": "5"})
         assert r.status_code == 422
@@ -101,7 +105,7 @@ class TestGetAccess:
     def test_returns_access_shape_when_configured(self, monkeypatch):
         monkeypatch.setattr("main.settings", SimpleNamespace(
             is_supabase_configured=lambda: True,
-            PLAN_VALUES=(3, 6, 12, 15),
+            PHASE1_PLAN_VALUES=(3, 6),
         ))
         with patch("main.get_user_access", return_value={"highest_plan": 6, "stripe_customer_id": None}):
             r = client.get("/api/access?email=user@example.com")
@@ -109,12 +113,12 @@ class TestGetAccess:
         data = r.json()
         assert data["highest_plan"] == 6
         assert data["allowed_modules"] == [1, 2, 3, 4, 5, 6]
-        assert data["can_upgrade_to"] == [12, 15]
+        assert data["can_upgrade_to"] == []
 
     def test_returns_empty_access_when_user_unknown(self, monkeypatch):
         monkeypatch.setattr("main.settings", SimpleNamespace(
             is_supabase_configured=lambda: True,
-            PLAN_VALUES=(3, 6, 12, 15),
+            PHASE1_PLAN_VALUES=(3, 6),
         ))
         with patch("main.get_user_access", return_value=None):
             r = client.get("/api/access?email=new@example.com")
@@ -122,7 +126,7 @@ class TestGetAccess:
         data = r.json()
         assert data["highest_plan"] == 0
         assert data["allowed_modules"] == []
-        assert data["can_upgrade_to"] == [3, 6, 12, 15]
+        assert data["can_upgrade_to"] == [3, 6]
 
 
 class TestHealth:
