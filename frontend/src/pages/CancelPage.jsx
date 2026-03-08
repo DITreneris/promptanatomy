@@ -22,8 +22,8 @@ export default function CancelPage() {
   }, [t])
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] flex flex-col items-center justify-center p-6 antialiased">
-      <nav aria-label="Breadcrumb" className="relative z-10 mb-8 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+    <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-6 antialiased">
+      <nav aria-label="Breadcrumb" className="relative z-10 mb-8 text-xs font-black uppercase tracking-[0.2em] text-slate-400">
         <ol className="flex items-center gap-2">
           <li><Link to="/" className="hover:text-brand-accent transition-colors duration-200">{t('common.home')}</Link></li>
           <li aria-hidden>/</li>
@@ -31,7 +31,7 @@ export default function CancelPage() {
         </ol>
       </nav>
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
-      <div className="max-w-xl w-full bg-white rounded-[48px] p-12 md:p-16 text-center shadow-xl border border-slate-100 relative z-10">
+      <div className="max-w-xl w-full bg-white rounded-3xl p-12 md:p-16 text-center shadow-xl border border-slate-100 relative z-10">
         <h2 className="text-3xl font-black text-brand-dark mb-6 tracking-tight">
           {t('cancel.heading')}
         </h2>

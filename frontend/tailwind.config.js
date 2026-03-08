@@ -6,6 +6,12 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['ui-sans-serif', 'system-ui', 'sans-serif'],
+      },
+      fontSize: {
+        label: ['10px', { lineHeight: '1.25' }],
+      },
       colors: {
         brand: {
           dark: '#0B1320',

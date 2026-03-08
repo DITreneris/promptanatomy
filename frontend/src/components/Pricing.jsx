@@ -33,7 +33,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail }
   return (
     <>
       <div className="text-center mb-8 md:mb-16">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-[9px] font-black uppercase tracking-[0.25em] text-slate-500 mb-4 md:mb-6 border border-slate-200">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-xs font-black uppercase tracking-[0.25em] text-slate-500 mb-4 md:mb-6 border border-slate-200">
           <Globe size={10} className="text-brand-accent" /> {t('pricing.badge')}
         </div>
         <h2 className="text-2xl md:text-5xl font-black text-brand-dark tracking-tighter mb-3 md:mb-4">
@@ -56,10 +56,10 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail }
           return (
             <div
               key={plan.id}
-              className={`bg-white rounded-[32px] border-2 p-8 shadow-soft hover:shadow-soft-lg hover:-translate-y-0.5 transition-all duration-300 flex flex-col relative ${isCore ? 'border-brand-accent/50' : 'border-slate-100 hover:border-brand-accent/30'}`}
+              className={`bg-white rounded-3xl border-2 p-8 shadow-soft hover:shadow-soft-lg hover:-translate-y-0.5 transition-all duration-300 flex flex-col relative ${isCore ? 'border-brand-accent/50' : 'border-slate-100 hover:border-brand-accent/30'}`}
             >
               {isCore && (
-                <span className="absolute top-6 right-6 px-3 py-1 rounded-full bg-brand-accent/15 text-brand-accent text-[10px] font-black uppercase tracking-widest">
+                <span className="absolute top-6 right-6 px-3 py-1 rounded-full bg-brand-accent/15 text-brand-accent text-xs font-black uppercase tracking-widest">
                   {t('pricing.recommended')}
                 </span>
               )}
@@ -122,7 +122,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail }
         </p>
       )}
 
-      <div className="bg-slate-50 rounded-[40px] p-10 border border-slate-100 mb-10">
+      <div className="bg-slate-50 rounded-3xl p-10 border border-slate-100 mb-10">
         <p className="text-slate-600 font-bold mb-6">{t('pricing.allPlansInclude')}</p>
         <div className="grid md:grid-cols-2 gap-4">
           {(Array.isArray(features) ? features : []).map((item, i) => (
@@ -137,19 +137,19 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail }
       </div>
 
       {error && (
-        <p className="mb-4 text-red-600 text-sm font-medium text-center" role="alert" aria-live="polite">
+        <p className="mb-6 text-red-600 text-sm font-medium text-center" role="alert" aria-live="polite">
           {error}
         </p>
       )}
 
       <div className="flex flex-wrap justify-center gap-14 text-slate-400">
-        <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.25em]">
+        <div className="flex items-center gap-3 text-xs font-black uppercase tracking-[0.25em]">
           <Lock size={14} /> {t('pricing.stripeVerified')}
         </div>
-        <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.25em]">
+        <div className="flex items-center gap-3 text-xs font-black uppercase tracking-[0.25em]">
           <ShieldCheck size={14} /> {t('pricing.refundContact')}
         </div>
-        <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.25em]">
+        <div className="flex items-center gap-3 text-xs font-black uppercase tracking-[0.25em]">
           <Cpu size={14} /> {t('pricing.aiPowered')}
         </div>
       </div>

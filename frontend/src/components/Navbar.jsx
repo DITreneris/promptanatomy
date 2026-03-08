@@ -50,9 +50,9 @@ export default function Navbar({ onCtaClick }) {
           <div className="flex flex-col">
             <span className="text-2xl font-black tracking-tighter leading-none text-brand-dark flex items-center gap-2">
               {t('nav.brandPromptu')} <span className="text-brand-accent">{t('nav.brandAnatomija')}</span>
-              <span className="hidden sm:inline-block px-1.5 py-0.5 rounded bg-slate-100 text-[8px] font-black text-slate-400 align-middle">{t('nav.version')}</span>
+              <span className="hidden sm:inline-block px-1.5 py-0.5 rounded bg-slate-100 text-xs font-black text-slate-400 align-middle">{t('nav.version')}</span>
             </span>
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400">{t('nav.brandTagline')}</span>
+            <span className="text-xs font-black uppercase tracking-[0.4em] text-slate-400">{t('nav.brandTagline')}</span>
           </div>
         </a>
 

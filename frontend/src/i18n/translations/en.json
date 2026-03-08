@@ -23,7 +23,7 @@
     "ariaCloseMenu": "Close menu",
     "ariaOpenMenu": "Open menu",
     "ecosystem": "Ecosystem",
-    "methodology": "Method",
+    "methodology": "Methodology",
     "repo": "Repo",
     "pricing": "Pricing",
     "cta": "See plans",
@@ -62,8 +62,8 @@
   },
   "whatIs": {
     "title": "What is Prompt Anatomy",
-    "intro": "Learn to formulate prompts so the outcome is clear, predictable and verifiable – one 6-block system (META → INPUT → OUTPUT → REASONING → QUALITY → ADVANCED).",
-    "bullet1": "6-block model – one methodology everywhere; fewer iterations, more precision.",
+    "intro": "Prompt Anatomy – learn to formulate prompts so the outcome is clear, predictable and verifiable. One methodology: the 6-block system (META → INPUT → OUTPUT → REASONING → QUALITY → ADVANCED).",
+    "bullet1": "One methodology everywhere – fewer iterations, more precision.",
     "bullet2": "115+ ready prompts and templates (in modules and library).",
     "bullet3": "In every module: learning → knowledge check → practice.",
     "bullet4": "3 paths by role: Data analysis, Agent engineering, Content engineering.",
@@ -73,7 +73,7 @@
     "sectionLabel": "Operating Model",
     "titleLine1": "Predictable",
     "titleLine2": "Outcome.",
-    "paragraph": "No more random results. We deploy engineering thinking and a 6-block system – in every module: learning → check → practice.",
+    "paragraph": "No more random results. We deploy engineering thinking – in every module: learning → check → practice.",
     "items": [
       { "title": "Breakdown", "desc": "Deconstruct problems into atomic elements that AI interprets without errors." },
       { "title": "Engineering", "desc": "Layered construction using CoT (Chain of Thought) and Few-shot engineering." },
@@ -97,7 +97,7 @@
     "subtext": "Get access to the Prompt Anatomy training according to the number of modules you choose.",
     "cumulativeNote": "Access is cumulative.",
     "recommended": "Recommended",
-    "coreIncludesStarter": "Everything in Starter, plus modules 4–6.",
+    "coreIncludesStarter": "Everything in the first plan, plus Context engineering.",
     "plans": {
       "starter": "Starter",
       "core": "Core",
@@ -105,8 +105,8 @@
       "full": "Full"
     },
     "planBullets": {
-      "starter": ["AI prompt fundamentals", "Real examples", "Lifetime access"],
-      "core": ["Advanced prompting", "Workflow automation", "Lifetime access"],
+      "starter": ["Prompt engineering", "6-block system", "6 business scenarios", "Lifetime access"],
+      "core": ["Everything in Starter", "Context engineering", "Sprint and project", "Lifetime access"],
       "extended": ["All Core benefits", "Extended modules", "Lifetime access"],
       "full": ["Full system access", "All 15 modules", "Lifetime access"]
     },
@@ -125,6 +125,7 @@
     "refundContact": "Refund terms – contact us",
     "aiPowered": "AI Powered",
     "checkAccess": "Check your access",
+    "checkButton": "Check",
     "emailPlaceholder": "Email",
     "yourAccess": "Your access: 1–%s modules",
     "alreadyHave": "Already have",
@@ -137,7 +138,7 @@
     "system": "System",
     "network": "Network",
     "ecosystem": "Ecosystem",
-    "methodology": "Method",
+    "methodology": "Methodology",
     "pricing": "Pricing",
     "support": "Support (WhatsApp)",
     "biblioteka": "Library (AI automation)",
@@ -166,7 +167,7 @@
   },
   "success": {
     "breadcrumb": "Payment successful",
-    "heading": "Installation complete",
+    "heading": "Payment complete",
     "body": "Payment received. Your access is being set up. If you have any questions, please contact us.",
     "emailDisclaimer": "If you don't receive an email within a few minutes, check spam or contact us.",
     "goToTraining": "Go to training",

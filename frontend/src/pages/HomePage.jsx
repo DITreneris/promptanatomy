@@ -113,7 +113,7 @@ export default function HomePage({ forceLocale }) {
                   aria-busy={accessLoading}
                   className="px-6 py-3 rounded-xl font-bold bg-brand-dark text-white hover:brightness-110 active:scale-[0.98] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 disabled:opacity-70"
                 >
-                  {accessLoading ? t('pricing.loading') : t('pricing.checkAccess')}
+                  {accessLoading ? t('pricing.loading') : t('pricing.checkButton')}
                 </button>
               </div>
               {accessError && (

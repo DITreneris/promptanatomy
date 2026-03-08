@@ -22,7 +22,7 @@ export default function Ecosystem() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {items.map((item, i) => {
-            const cardClass = "group relative p-10 rounded-[40px] bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden block focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+            const cardClass = "group relative p-10 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden block focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
             const content = (
               <>
                 <div
@@ -37,11 +37,11 @@ export default function Ecosystem() {
                 </div>
                 <h4 className="text-xl font-black text-white mb-2 tracking-tight">{item.title}</h4>
                 <div className="flex items-center gap-2">
-                  <span className="text-[9px] font-black uppercase tracking-[0.25em] opacity-60" style={{ color: item.color }}>
+                  <span className="text-xs font-black uppercase tracking-[0.25em] opacity-60" style={{ color: item.color }}>
                     {item.count}
                   </span>
                   <div className="w-1 h-1 rounded-full bg-white/20" />
-                  <span className="text-[9px] font-black uppercase tracking-[0.25em] text-white/40">{t('ecosystem.stableLabel')}</span>
+                  <span className="text-xs font-black uppercase tracking-[0.25em] text-white/40">{t('ecosystem.stableLabel')}</span>
                 </div>
               </>
             )

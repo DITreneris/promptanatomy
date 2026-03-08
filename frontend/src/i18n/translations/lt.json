@@ -23,7 +23,7 @@
     "ariaCloseMenu": "Uždaryti meniu",
     "ariaOpenMenu": "Atidaryti meniu",
     "ecosystem": "Ekosistema",
-    "methodology": "Metodas",
+    "methodology": "Metodologija",
     "repo": "Repo",
     "pricing": "Kainodara",
     "cta": "Žiūrėti planus",
@@ -34,7 +34,7 @@
   },
   "hero": {
     "systemStatus": "Sistemos būsena: stabili",
-    "commits": "2 481 commit'ai",
+    "commits": "2 480 commit'ų",
     "headline1": "Nustok kalbėti.",
     "headline2": "Pradėk programuoti.",
     "subtitle": "DI operacinė sistema darbui su ChatGPT, agentais ir automatizacija.",
@@ -61,9 +61,9 @@
     "avatarAlt": "Bendruomenės nario avataras"
   },
   "whatIs": {
-    "title": "Kas yra Prompt Anatomy",
-    "intro": "Mokomesi formuluoti užklausas taip, kad atsakymas būtų aiškus, nuspėjamas ir patikrinamas – viena 6 blokų sistema (META → INPUT → OUTPUT → REASONING → QUALITY → ADVANCED).",
-    "bullet1": "6 blokų modelis – viena metodika visur; mažiau iteracijų, daugiau tikslumo.",
+    "title": "Kas yra Promptų Anatomija",
+    "intro": "Promptų Anatomija – mokomės formuluoti užklausas taip, kad atsakymas būtų aiškus, nuspėjamas ir patikrinamas. Viena metodika: 6 blokų sistema (META → INPUT → OUTPUT → REASONING → QUALITY → ADVANCED).",
+    "bullet1": "Viena metodika visur – mažiau iteracijų, daugiau tikslumo.",
     "bullet2": "115+ paruoštų promptų ir šablonų (moduliuose ir bibliotekoje).",
     "bullet3": "Kiekviename modulyje: mokymasis → žinių patikrinimas → praktika.",
     "bullet4": "3 keliai pagal rolę: Duomenų analizė, Agentų inžinerija, Turinio inžinerija.",
@@ -73,7 +73,7 @@
     "sectionLabel": "Operating Model",
     "titleLine1": "Nuspėjamas",
     "titleLine2": "Rezultatas.",
-    "paragraph": "Atsisakykite atsitiktinių rezultatų. Diegiame inžinerinį mąstymą ir 6 blokų sistemą – kiekviename modulyje: mokymasis → patikrinimas → praktika.",
+    "paragraph": "Atsisakykite atsitiktinių rezultatų. Diegiame inžinerinį mąstymą – kiekviename modulyje: mokymasis → patikrinimas → praktika.",
     "items": [
       { "title": "Skaidymas", "desc": "Problemos dekonstrukcija į atominius elementus, kuriuos DI interpretuoja be klaidų." },
       { "title": "Inžinerija", "desc": "Sluoksniuota konstrukcija, naudojant CoT (Chain of Thought) ir Few-shot inžineriją." },
@@ -94,10 +94,10 @@
   "pricing": {
     "badge": "Lifetime System Access",
     "title": "Pasirink planą",
-    "subtext": "Gauk prieigą prie mokymų „Promptų anatomija“ pagal pasirinktą modulių skaičių.",
+    "subtext": "Gauk prieigą prie mokymų „Promptų Anatomija“ pagal pasirinktą modulių skaičių.",
     "cumulativeNote": "Prieiga kaupiama.",
     "recommended": "Rekomenduojama",
-    "coreIncludesStarter": "Viskas iš Starter, plius moduliai 4–6.",
+    "coreIncludesStarter": "Viskas, kas pirmame, plius Konteksto inžinerija.",
     "plans": {
       "starter": "Starter",
       "core": "Core",
@@ -105,8 +105,8 @@
       "full": "Full"
     },
     "planBullets": {
-      "starter": ["DI prompt pagrindai", "Tikri pavyzdžiai", "Prieiga visam laikui"],
-      "core": ["Išplėstinis promptingas", "Darbo eigos automatizavimas", "Prieiga visam laikui"],
+      "starter": ["Promptų inžinerija", "6 blokų sistema", "6 verslo scenarijai", "Prieiga visam laikui"],
+      "core": ["Viskas, kas Starter", "Konteksto inžinerija", "Sprintas ir projektas", "Prieiga visam laikui"],
       "extended": ["Viskas iš Core", "Papildomi moduliai", "Prieiga visam laikui"],
       "full": ["Pilna prieiga", "Visi 15 modulių", "Prieiga visam laikui"]
     },
@@ -125,11 +125,12 @@
     "refundContact": "Grąžinimo sąlygos – susisiek",
     "aiPowered": "DI Powered",
     "checkAccess": "Patikrink prieigą",
+    "checkButton": "Tikrinti",
     "emailPlaceholder": "El. paštas",
     "yourAccess": "Tavo prieiga: 1–%s moduliai",
     "alreadyHave": "Jau turi",
     "upgradeTo": "Pagerinti į %s",
-    "modulesLocked": "Moduliai 7–15 – vėlesnėje fazėje."
+    "modulesLocked": "Moduliai 7–15 bus vėlesnės fazės metu."
   },
   "footer": {
     "brand": "Promptų Anatomija",
@@ -137,7 +138,7 @@
     "system": "System",
     "network": "Network",
     "ecosystem": "Ekosistema",
-    "methodology": "Metodas",
+    "methodology": "Metodologija",
     "pricing": "Kainodara",
     "support": "Pagalba (WhatsApp)",
     "biblioteka": "Biblioteka (DI automatizacija)",
@@ -166,7 +167,7 @@
   },
   "success": {
     "breadcrumb": "Apmokėjimas sėkmingas",
-    "heading": "Sėkmingas diegimas",
+    "heading": "Apmokėjimas sėkmingas",
     "body": "Apmokėjimas gautas. Tavo prieiga ruošiama. Jei turi klausimų – susisiek su mumis.",
     "emailDisclaimer": "Jei per kelias minutes negausi laiško, patikrink spam arba susisiek su mumis.",
     "goToTraining": "Eiti į mokymus",
