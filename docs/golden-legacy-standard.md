@@ -23,6 +23,8 @@
 | Endpoint / elgsena | Tikėtinas atsakymas / elgsena | Testas |
 |--------------------|-------------------------------|--------|
 | `GET /health` | 200, `{"status": "ok"}` | `TestHealth.test_health_returns_200_and_ok` |
+| `GET /api/success-redirect` be `session_id` arba netinkamas session | 400, detail "session_id required" / "Invalid or unpaid session" | (rankinis arba testas) |
+| `GET /api/success-redirect?session_id=cs_xxx` (validus paid session) | 200, `{ "redirect_url": "https://...?access_tier=...&expires=...&token=..." }` | (rankinis arba testas) |
 | `GET /api/access` be `email` | 400, detail apie email | `TestGetAccess.test_missing_email_returns_400` |
 | `GET /api/access?email=invalid` | 400 | `TestGetAccess.test_invalid_email_returns_400` |
 | `GET /api/access` (Supabase nekonfigūruotas) | 503, "not configured" | `TestGetAccess.test_access_not_configured_returns_503` |

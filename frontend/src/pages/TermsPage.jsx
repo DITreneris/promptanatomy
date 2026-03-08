@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { ArrowLeft } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
 
 export default function TermsPage() {
@@ -36,7 +37,7 @@ export default function TermsPage() {
           to="/"
           className="inline-flex items-center gap-2 text-brand-accent font-bold hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded"
         >
-          ← {t('common.backToHome')}
+          <ArrowLeft className="w-5 h-5" /> {t('common.backToHome')}
         </Link>
       </div>
     </div>

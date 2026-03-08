@@ -25,6 +25,9 @@ export default function WhatIsPromptAnatomy() {
             </li>
           ))}
         </ul>
+        <p className="mt-8 text-base text-slate-500 font-medium">
+          {t('whatIs.stats')}
+        </p>
       </div>
     </section>
   )

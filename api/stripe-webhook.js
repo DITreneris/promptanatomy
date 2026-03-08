@@ -11,11 +11,13 @@ const PLAN_VALUES = [3, 6, 12, 15];
 /** plan_id "1"|"2"|"3"|"4" → plan_value 3|6|12|15 */
 const PLAN_ID_TO_VALUE = { '1': 3, '2': 6, '3': 12, '4': 15 };
 
+/** Accepts plan_value string "3"|"6"|"12"|"15" (from Session metadata) or plan_id "1"|"2"|"3"|"4". */
 function toPlanValue(planStr) {
   const s = String(planStr).trim();
-  if (PLAN_ID_TO_VALUE[s] != null) return PLAN_ID_TO_VALUE[s];
   const num = parseInt(s, 10);
-  return Number.isInteger(num) && PLAN_VALUES.includes(num) ? num : null;
+  if (Number.isInteger(num) && PLAN_VALUES.includes(num)) return num;
+  if (PLAN_ID_TO_VALUE[s] != null) return PLAN_ID_TO_VALUE[s];
+  return null;
 }
 
 function getRawBody(req) {

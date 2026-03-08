@@ -48,7 +48,8 @@ export default function Hero({ onCta }) {
             <button
               type="button"
               onClick={onCta}
-              className="group w-full sm:w-auto min-h-[44px] px-12 py-6 rounded-2xl text-xl font-black text-brand-dark bg-brand-accent transition-all duration-200 hover:shadow-glow-accent flex items-center justify-center gap-3 transform hover:-translate-y-0.5 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
+              className="group w-full sm:w-auto min-h-[44px] px-12 py-6 rounded-2xl text-xl font-black text-brand-dark transition-all duration-200 hover:shadow-glow-accent flex items-center justify-center gap-3 transform hover:-translate-y-0.5 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
+              style={{ background: ACCENT_GRADIENT }}
             >
               {t('hero.cta')} <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
             </button>

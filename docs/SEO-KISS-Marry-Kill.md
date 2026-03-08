@@ -45,7 +45,7 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 | **Sitemap + robots** | Statinis `public/sitemap.xml` ir `public/robots.txt`; Vite build nukopijuos. | Įgyvendinta |
 | **Vienas og:image** | PNG/JPEG 1200×630 į `public/og-image.png`, meta su absoliučiu URL. | Meta įgyvendinta; failas – įkelti |
 | **GitHub** | 5–7 topics; description 1–2 sakiniai su raktažodžiais (kai repo viešas). | Vėliau |
-| **Canonical** | `<link rel="canonical" href="https://promptanatomy.app/" />` pagrindiniam puslapiui. | Įgyvendinta |
+| **Canonical** | `<link rel="canonical" href="https://www.promptanatomy.app/" />` pagrindiniam puslapiui. | Įgyvendinta |
 | **Meta noindex** | Success/Cancel: `<meta name="robots" content="noindex, nofollow">` + unikalūs title/description. | Įgyvendinta |
 
 ---

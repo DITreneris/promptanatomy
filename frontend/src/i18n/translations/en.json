@@ -62,17 +62,18 @@
   },
   "whatIs": {
     "title": "What is Prompt Anatomy",
-    "intro": "Prompt Anatomy is a system that lets you run AI like an operating system.",
-    "bullet1": "methodology",
-    "bullet2": "prompt library",
-    "bullet3": "automation templates",
-    "bullet4": "AI workflow models"
+    "intro": "Learn to formulate prompts so the outcome is clear, predictable and verifiable – one 6-block system (META → INPUT → OUTPUT → REASONING → QUALITY → ADVANCED).",
+    "bullet1": "6-block model – one methodology everywhere; fewer iterations, more precision.",
+    "bullet2": "115+ ready prompts and templates (in modules and library).",
+    "bullet3": "In every module: learning → knowledge check → practice.",
+    "bullet4": "3 paths by role: Data analysis, Agent engineering, Content engineering.",
+    "stats": "100-term glossary, 60 AI tools, 115+ prompts."
   },
   "methodology": {
     "sectionLabel": "Operating Model",
     "titleLine1": "Predictable",
     "titleLine2": "Outcome.",
-    "paragraph": "No more random results. We deploy engineering thinking that makes AI the most powerful member of your team.",
+    "paragraph": "No more random results. We deploy engineering thinking and a 6-block system – in every module: learning → check → practice.",
     "items": [
       { "title": "Breakdown", "desc": "Deconstruct problems into atomic elements that AI interprets without errors." },
       { "title": "Engineering", "desc": "Layered construction using CoT (Chain of Thought) and Few-shot engineering." },
@@ -82,12 +83,12 @@
   "ecosystem": {
     "title": "Vertical Engines",
     "paragraph": "Connect to purpose-built work systems ready for your market.",
-    "stableLabel": "v2.1 Stable",
+    "stableLabel": "v2.4 Stable",
     "items": [
-      { "title": "HR System", "count": "120+ Repo" },
-      { "title": "Marketing Engine", "count": "150+ Repo" },
-      { "title": "RE Broker OS", "count": "80+ Repo" },
-      { "title": "AI Automation", "count": "100+ Repo" }
+      { "title": "Recruitment system (HR)", "count": "120+ Repo", "url": "https://ditreneris.github.io/personalas/" },
+      { "title": "Content system (marketing)", "count": "150+ Repo", "url": "https://ditreneris.github.io/marketingas/" },
+      { "title": "Operations center (CEO/COO)", "count": "CEO/COO", "url": "https://ditreneris.github.io/ceo/" },
+      { "title": "Library (AI automation)", "count": "100+ Repo", "url": "https://ditreneris.github.io/biblioteka/" }
     ]
   },
   "pricing": {
@@ -138,11 +139,16 @@
     "ecosystem": "Ecosystem",
     "methodology": "Method",
     "pricing": "Pricing",
+    "support": "Support (WhatsApp)",
+    "biblioteka": "Library (AI automation)",
+    "marketingas": "Content system (marketing)",
+    "personalas": "Recruitment system (HR)",
+    "ceo": "Operations center (CEO/COO)",
     "linkedIn": "LinkedIn",
     "discord": "Discord HQ",
     "systemLog": "System Log",
     "comingSoon": "(Coming soon)",
-    "copyright": "© {{year}} Promptų Anatomija. Built for Professionals.",
+    "copyright": "© {{year}} Prompt Anatomy. Built for Professionals.",
     "creator": "creator: tomas staniulis",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
@@ -163,6 +169,9 @@
     "heading": "Installation complete",
     "body": "Payment received. Your access is being set up. If you have any questions, please contact us.",
     "emailDisclaimer": "If you don't receive an email within a few minutes, check spam or contact us.",
+    "goToTraining": "Go to training",
+    "redirecting": "Redirecting…",
+    "redirectError": "Could not prepare the link. You can return home or contact us.",
     "metaTitle": "Payment successful",
     "metaDescription": "Thank you for your purchase."
   },

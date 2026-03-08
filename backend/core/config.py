@@ -37,6 +37,19 @@ class Settings(BaseSettings):
         default=None,
         description="Supabase service role key (server-side only)",
     )
+    access_token_secret: SecretStr | None = Field(
+        default=None,
+        description="Shared secret for magic-link token (HMAC); same value in training app env",
+    )
+    training_redirect_base: str = Field(
+        default="https://www.promptanatomy.app",
+        description="Base URL to redirect to after payment (no trailing slash); training app",
+    )
+    access_token_expiry_days: int = Field(
+        default=30,
+        ge=1,
+        description="Days until magic-link expires (from now)",
+    )
 
     # Plan values: 3, 6, 12, 15 (module cap). plan_id "1"->3, "2"->6, "3"->12, "4"->15.
     PLAN_VALUES = (3, 6, 12, 15)

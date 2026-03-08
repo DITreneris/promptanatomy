@@ -19,7 +19,7 @@ export default function Methodology() {
               {t('methodology.titleLine1')} <br /> {t('methodology.titleLine2')}
             </h3>
           </div>
-          <p className="text-slate-500 font-medium text-lg max-w-sm leading-relaxed border-l-2 border-slate-200 pl-8">
+          <p className="text-slate-600 font-medium text-lg max-w-sm leading-relaxed border-l-2 border-slate-200 pl-8">
             {t('methodology.paragraph')}
           </p>
         </div>
@@ -34,7 +34,7 @@ export default function Methodology() {
                 {React.cloneElement(item.icon, { size: 28 })}
               </div>
               <h4 className="text-2xl font-black text-brand-dark mb-6 tracking-tight">{item.title}</h4>
-              <p className="text-slate-500 font-medium leading-relaxed opacity-80">{item.desc}</p>
+              <p className="text-slate-600 font-medium leading-relaxed opacity-90">{item.desc}</p>
             </div>
           ))}
         </div>

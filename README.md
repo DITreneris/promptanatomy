@@ -50,7 +50,7 @@ Frontend: `http://localhost:5173`
   stripe listen --forward-to localhost:8000/api/webhooks/stripe
   ```
   Pasiimkite webhook signing secret (`whsec_...`) ir įrašykite į `STRIPE_WEBHOOK_SECRET`.
-- **Produkcijoje (Vercel):** Stripe Dashboard → Webhooks → Add endpoint, URL `https://promptanatomy.app/api/stripe-webhook`, event `checkout.session.completed`. Vercel serverless funkcija: `api/stripe-webhook.js`. Būtina `STRIPE_WEBHOOK_SECRET` (Vercel env). **Atskiras FastAPI backend:** URL būtų `https://<backend-domain>/api/webhooks/stripe`. Lokaliai galima naudoti `ALLOW_WEBHOOK_WITHOUT_SECRET=1` (tik dev).
+- **Produkcijoje (Vercel):** Stripe Dashboard → Webhooks → Add endpoint, URL `https://www.promptanatomy.app/api/stripe-webhook`, event `checkout.session.completed`. Vercel serverless funkcija: `api/stripe-webhook.js`. Būtina `STRIPE_WEBHOOK_SECRET` (Vercel env). **Atskiras FastAPI backend:** URL būtų `https://<backend-domain>/api/webhooks/stripe`. Lokaliai galima naudoti `ALLOW_WEBHOOK_WITHOUT_SECRET=1` (tik dev).
 
 ## Aplinkos kintamieji
 
@@ -61,11 +61,14 @@ Frontend: `http://localhost:5173`
 | `STRIPE_SECRET_KEY` | Stripe secret key (test arba live) |
 | `STRIPE_WEBHOOK_SECRET` | Webhook signing secret (`whsec_...`) |
 | `STRIPE_PRICE_ID_PLAN_1` … `_4` | Stripe Price ID kiekvienam planui (39 / 99 / 149 / 199 EUR); žr. `backend/.env.example` |
-| `FRONTEND_ORIGIN` | Frontend URL be `/` (pvz. `http://localhost:5173` arba `https://promptuanatomija.lt`) |
+| `FRONTEND_ORIGIN` | Frontend URL be `/` (pvz. `http://localhost:5173` arba `https://www.promptanatomy.app`) |
 | `MAX_TOKENS_PER_REQUEST` | (Optional) Maks. tokenai per užklausą `/api/validate-token-limit`; default 4096. |
 | `ALLOW_WEBHOOK_WITHOUT_SECRET` | (Optional) Jei `1` – webhook priimamas be secret (tik development). Produkcijoje nenaudoti. |
 | `SUPABASE_URL` | (Optional) Supabase projekto URL – prieigos tikrinimui ir webhook upsert į `user_access`. |
 | `SUPABASE_SERVICE_ROLE_KEY` | (Optional) Supabase service role key – backend naudoja tik serverio pusėje. |
+| `ACCESS_TOKEN_SECRET` | (Optional) Bendras secret su mokymų app – magic-link redirect (`GET /api/success-redirect`). Sugeneruoti: `openssl rand -base64 32`. |
+| `TRAINING_REDIRECT_BASE` | (Optional) Base URL į mokymų app (default `https://www.promptanatomy.app`). |
+| `ACCESS_TOKEN_EXPIRY_DAYS` | (Optional) Kiek dienų galioja magic-link (default 30). |
 
 ### Frontend (`frontend/.env`)
 

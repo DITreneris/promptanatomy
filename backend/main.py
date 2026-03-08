@@ -1,12 +1,17 @@
 """
 Minimal FastAPI backend for Promptų Anatomija home page.
 - GET /health: health check for load balancers / monitoring.
+- GET /api/success-redirect: return magic-link redirect URL for paid session (training app).
 - POST /api/create-checkout-session: create Stripe Checkout Session, return URL.
 - POST /api/webhooks/stripe: Stripe webhook (raw body, signature verification).
 - POST /api/validate-token-limit: validate text against token limit (for future AI endpoints).
 """
+import base64
+import hashlib
+import hmac
 import json
 import logging
+import time
 from contextlib import asynccontextmanager
 
 import stripe
@@ -83,10 +88,59 @@ class AccessQuery(BaseModel):
     email: EmailStr
 
 
+def _build_magic_link_token(access_tier: int, expires: int, secret: str) -> str:
+    """Build HMAC-SHA256 token (base64url) for payload access_tier:expires."""
+    payload = f"{access_tier}:{expires}"
+    signature = hmac.new(
+        secret.encode() if isinstance(secret, str) else secret,
+        payload.encode(),
+        hashlib.sha256,
+    ).digest()
+    token = base64.urlsafe_b64encode(signature).rstrip(b"=").replace(b"+", b"-").replace(b"/", b"_").decode()
+    return token
+
+
 @app.get("/health")
 async def health():
     """Health check for load balancers and monitoring."""
     return {"status": "ok"}
+
+
+@app.get("/api/success-redirect")
+@limiter.limit("30/minute")
+async def success_redirect(request: Request, session_id: str = ""):
+    """
+    Return redirect_url for magic-link to training app (access_tier, expires, token).
+    Requires paid Stripe Checkout session; ACCESS_TOKEN_SECRET must be set.
+    """
+    if not settings.access_token_secret:
+        raise HTTPException(status_code=503, detail="Redirect not configured")
+    raw = (session_id or "").strip()
+    if not raw:
+        raise HTTPException(status_code=400, detail="session_id required")
+    try:
+        session = stripe.checkout.Session.retrieve(raw)
+    except stripe.error.StripeError:
+        logger.warning("Success-redirect: Stripe retrieve failed for session_id=%s", raw[:20])
+        raise HTTPException(status_code=400, detail="Invalid or unpaid session")
+    if session.get("payment_status") != "paid":
+        raise HTTPException(status_code=400, detail="Invalid or unpaid session")
+    metadata = session.get("metadata") or {}
+    plan_str = metadata.get("plan")
+    if not plan_str:
+        raise HTTPException(status_code=400, detail="Invalid or unpaid session")
+    try:
+        access_tier = int(plan_str)
+    except (TypeError, ValueError):
+        raise HTTPException(status_code=400, detail="Invalid or unpaid session")
+    if access_tier not in settings.PHASE1_PLAN_VALUES:
+        raise HTTPException(status_code=400, detail="Invalid or unpaid session")
+    expires = int(time.time()) + (settings.access_token_expiry_days * 86400)
+    secret = settings.access_token_secret.get_secret_value()
+    token = _build_magic_link_token(access_tier, expires, secret)
+    base_url = settings.training_redirect_base.rstrip("/")
+    redirect_url = f"{base_url}/?access_tier={access_tier}&expires={expires}&token={token}"
+    return {"redirect_url": redirect_url}
 
 
 @app.get("/api/access")

@@ -6,12 +6,14 @@ Vienas dokumentas: kas įdiegta produkcijoje (Vercel + Stripe webhook), kaip tik
 
 ## 1. Dabartinė setup (įgyvendinta)
 
+- **Viešas domenas (canonical):** `https://www.promptanatomy.app` – naudoti visur produkcijoje (FRONTEND_ORIGIN, canonical, sitemap, webhook URL, dokumentacija).
 - **Frontend:** Vercel build iš `frontend/`, output `frontend/dist`.
 - **Webhook:** Vercel serverless `api/stripe-webhook.js` – Stripe parašas, email iš session, `metadata.plan`, Supabase upsert (`user_access`), `stripe_customer_id`.
-- **Stripe Dashboard:** Webhook URL – `https://promptanatomy.app/api/stripe-webhook`, event `checkout.session.completed`. Signing secret → env `STRIPE_WEBHOOK_SECRET`.
+- **Stripe Dashboard:** Webhook URL – `https://www.promptanatomy.app/api/stripe-webhook`, event `checkout.session.completed`. Signing secret → env `STRIPE_WEBHOOK_SECRET`.
 - **Create-checkout-session ir GET /api/access:** Kol FastAPI backend nedeployintas atskirai, šie endpointai produkcijoje veikia per tą patį frontend deploy tik jei pridėti atitinkamos Vercel functions; dabar frontend naudoja `VITE_API_URL` (lokaliai `localhost:8000`). Produkcijoje reikia arba atskiro backend deploy, arba tų pačių endpointų kaip Vercel functions.
+- **Success-redirect (magic-link):** Vercel serverless `api/success-redirect.js` – pagal `session_id` grąžina `redirect_url` į mokymų app su `access_tier`, `expires`, `token`. Reikia env: `ACCESS_TOKEN_SECRET`, `STRIPE_SECRET_KEY`; optional: `TRAINING_REDIRECT_BASE`, `ACCESS_TOKEN_EXPIRY_DAYS`.
 
-**Vercel env (būtina webhook + prieigai):** `STRIPE_WEBHOOK_SECRET`, `STRIPE_SECRET_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`.
+**Vercel env (būtina webhook + prieigai + success-redirect):** `STRIPE_WEBHOOK_SECRET`, `STRIPE_SECRET_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `ACCESS_TOKEN_SECRET` (bendras su mokymų app; success-redirect funkcijai). Optional: `TRAINING_REDIRECT_BASE`, `ACCESS_TOKEN_EXPIRY_DAYS`.
 
 ---
 
@@ -21,7 +23,7 @@ Prieš deploy į produkciją patikrinkite:
 
 - **STRIPE_WEBHOOK_SECRET** – būtina; be jo webhook grąžina 503.
 - **ALLOW_WEBHOOK_WITHOUT_SECRET** – **niekada** įjungti prod (tik lokaliai dev).
-- **FRONTEND_ORIGIN** – pilnas https URL (pvz. `https://promptuanatomija.lt`) be galinio `/` (CORS ir redirectai).
+- **FRONTEND_ORIGIN** – pilnas https URL (pvz. `https://www.promptanatomy.app`) be galinio `/` (CORS ir redirectai).
 - **HTTPS** – Vercel jau įjungia HTTPS ir HSTS; jei backend atskirai – HSTS nustatyti reverse proxy (Nginx/Cloudflare).
 - **Webhook klaidų stebėjimas** – rekomenduojama stebėti Vercel Function logs (arba Sentry ir pan.) dėl 4xx/5xx webhook atsakymų.
 

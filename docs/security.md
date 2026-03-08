@@ -16,7 +16,7 @@ Trumpas saugumo apžvalgos dokumentas: kas jau įdiegta, rekomendacijos ir deplo
 ## Produkcija ir HTTPS
 
 - **HTTPS** turi būti užtikrintas reverse proxy / hosting lygmenyje (ne FastAPI kode). Produkcijoje backend ir frontend turi būti prieinami tik per HTTPS.
-- **FRONTEND_ORIGIN** produkcijoje nustatykite į pilną frontend URL su `https://`, pvz. `https://promptuanatomija.lt` (be galinio `/`).
+- **FRONTEND_ORIGIN** produkcijoje nustatykite į pilną frontend URL su `https://`, pvz. `https://www.promptanatomy.app` (be galinio `/`).
 - **STRIPE_WEBHOOK_SECRET** būtinas produkcijoje; `ALLOW_WEBHOOK_WITHOUT_SECRET` naudokite tik lokaliai.
 - **Produkcijos env checklist (prieš release):** [docs/deploy-and-webhook.md § 2](deploy-and-webhook.md#2-prieš-release-produkcijos-env-checklist).
 

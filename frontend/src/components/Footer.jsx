@@ -17,13 +17,13 @@ export default function Footer() {
               </div>
               <span className="text-3xl font-black tracking-tighter uppercase text-brand-dark">{t('footer.brand')}</span>
             </div>
-            <p className="text-slate-400 font-medium max-w-sm text-lg leading-relaxed italic">
+            <p className="text-slate-600 font-medium max-w-sm text-lg leading-relaxed italic">
               {t('footer.tagline')}
             </p>
           </div>
           <div>
             <h5 className="font-black uppercase text-xs tracking-[0.45em] text-slate-300 mb-12">{t('footer.system')}</h5>
-            <ul className="space-y-6 text-sm font-black text-slate-500 uppercase tracking-widest">
+            <ul className="space-y-6 text-sm font-black text-slate-600 uppercase tracking-widest">
               <li>
                 <a href="#ekosistema" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">{t('footer.ecosystem')}</a>
               </li>
@@ -37,7 +37,32 @@ export default function Footer() {
           </div>
           <div>
             <h5 className="font-black uppercase text-xs tracking-[0.45em] text-slate-300 mb-12">{t('footer.network')}</h5>
-            <ul className="space-y-6 text-sm font-black text-slate-400 uppercase tracking-widest">
+            <ul className="space-y-6 text-sm font-black text-slate-600 uppercase tracking-widest">
+              <li>
+                <a href="https://chat.whatsapp.com/GqjIo2lB4vG6Yps8kanyxA" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">
+                  {t('footer.support')}
+                </a>
+              </li>
+              <li>
+                <a href="https://ditreneris.github.io/biblioteka/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">
+                  {t('footer.biblioteka')}
+                </a>
+              </li>
+              <li>
+                <a href="https://ditreneris.github.io/marketingas/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">
+                  {t('footer.marketingas')}
+                </a>
+              </li>
+              <li>
+                <a href="https://ditreneris.github.io/personalas/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">
+                  {t('footer.personalas')}
+                </a>
+              </li>
+              <li>
+                <a href="https://ditreneris.github.io/ceo/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">
+                  {t('footer.ceo')}
+                </a>
+              </li>
               <li><span>{t('footer.linkedIn')} <span className="text-slate-300 font-normal normal-case">{t('footer.comingSoon')}</span></span></li>
               <li><span>{t('footer.discord')} <span className="text-slate-300 font-normal normal-case">{t('footer.comingSoon')}</span></span></li>
               <li><span>{t('footer.systemLog')} <span className="text-slate-300 font-normal normal-case">{t('footer.comingSoon')}</span></span></li>

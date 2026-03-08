@@ -49,7 +49,7 @@
 
 ## 3. Production checklist (santrauka)
 
-- [ ] **Env:** Backend/Vercel – `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `FRONTEND_ORIGIN` (https), Supabase (`SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`). Žr. [deploy-and-webhook.md](deploy-and-webhook.md) § 2.
+- [ ] **Env:** Backend/Vercel – `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `FRONTEND_ORIGIN` (pvz. `https://www.promptanatomy.app`), Supabase (`SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`). Žr. [deploy-and-webhook.md](deploy-and-webhook.md) § 2.
 - [ ] **ALLOW_WEBHOOK_WITHOUT_SECRET** – produkcijoje **ne** naudoti.
 - [ ] **Stripe webhook URL** – nukreipti į deployintą backend arba Vercel `https://<domain>/api/stripe-webhook`, event `checkout.session.completed`.
 - [ ] **HTTPS** – užtikrintas hostingo (Vercel) pusėje.
@@ -57,7 +57,15 @@
 
 ---
 
-## 4. Nuorodos
+## 4. Prieš deploy – greitas tikrinimas
+
+- [ ] **Vercel env (būtina):** `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `FRONTEND_ORIGIN` (pvz. `https://www.promptanatomy.app`), `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`. Be `FRONTEND_ORIGIN` – CORS api/access ir api/create-checkout-session blokuos production origin.
+- [ ] **Backend (jei deployinamas atskirai):** `backend/.env` su tais pačiais kintamaisiais; `uvicorn main:app --host 0.0.0.0`.
+- [ ] **Regresija:** `cd backend && python -m pytest tests/ -v` (su aktyvuotu venv), `cd frontend && npm run build`.
+- [ ] **Stripe webhook:** Po deploy – Stripe Dashboard → Send test webhook `checkout.session.completed`; patikrinti Vercel Function logs ir Supabase `user_access`.
+- [ ] **Nekomituoti:** `frontend/dist/` (jau .gitignore); jokie `.env` su realiais raktais.
+
+## 5. Nuorodos
 
 - [docs/security.md](security.md) – saugumo praktikos
 - [docs/deploy-and-webhook.md](deploy-and-webhook.md) – deploy ir webhook troubleshooting

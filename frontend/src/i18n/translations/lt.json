@@ -11,12 +11,12 @@
   "errors": {
     "invalidResponse": "Neteisingas atsakymas",
     "noCheckoutUrl": "Nėra mokėjimo nuorodos",
-    "paymentFailed": "Nepavyko prisijungti prie mokėjimo. Bandykite vėliau.",
+    "paymentFailed": "Nepavyko prisijungti prie mokėjimo. Bandyk vėliau.",
     "accessNotConfigured": "Prieigos tikrinimas neprieinamas.",
-    "alreadyPurchased": "Jau turite šį planą ar aukštesnį.",
-    "validEmailRequired": "Įveskite tinkamą el. paštą",
-    "paymentUnavailable": "Mokėjimas laikinai neprieinamas. Bandykite vėliau.",
-    "networkError": "Tinklo klaida. Patikrinkite ryšį ir bandykite dar kartą."
+    "alreadyPurchased": "Jau turi šį planą ar aukštesnį.",
+    "validEmailRequired": "Įvesk tinkamą el. paštą",
+    "paymentUnavailable": "Mokėjimas laikinai neprieinamas. Bandyk vėliau.",
+    "networkError": "Tinklo klaida. Patikrink ryšį ir bandyk dar kartą."
   },
   "nav": {
     "ariaNav": "Pagrindinė navigacija",
@@ -33,8 +33,8 @@
     "version": "v2.4"
   },
   "hero": {
-    "systemStatus": "System Status: Stable",
-    "commits": "2,481 Commits",
+    "systemStatus": "Sistemos būsena: stabili",
+    "commits": "2 481 commit'ai",
     "headline1": "Nustok kalbėti.",
     "headline2": "Pradėk programuoti.",
     "subtitle": "DI operacinė sistema darbui su ChatGPT, agentais ir automatizacija.",
@@ -62,17 +62,18 @@
   },
   "whatIs": {
     "title": "Kas yra Prompt Anatomy",
-    "intro": "Prompt Anatomy – tai sistema, kuri leidžia valdyti DI kaip operacinę sistemą.",
-    "bullet1": "metodika",
-    "bullet2": "prompt biblioteka",
-    "bullet3": "automatizavimo šablonai",
-    "bullet4": "DI darbo eigų modeliai"
+    "intro": "Mokomesi formuluoti užklausas taip, kad atsakymas būtų aiškus, nuspėjamas ir patikrinamas – viena 6 blokų sistema (META → INPUT → OUTPUT → REASONING → QUALITY → ADVANCED).",
+    "bullet1": "6 blokų modelis – viena metodika visur; mažiau iteracijų, daugiau tikslumo.",
+    "bullet2": "115+ paruoštų promptų ir šablonų (moduliuose ir bibliotekoje).",
+    "bullet3": "Kiekviename modulyje: mokymasis → žinių patikrinimas → praktika.",
+    "bullet4": "3 keliai pagal rolę: Duomenų analizė, Agentų inžinerija, Turinio inžinerija.",
+    "stats": "100 terminų žodynas, 60 DI įrankių, 115+ promptų."
   },
   "methodology": {
     "sectionLabel": "Operating Model",
     "titleLine1": "Nuspėjamas",
     "titleLine2": "Rezultatas.",
-    "paragraph": "Atsisakykite atsitiktinių rezultatų. Diegiame inžinerinį mąstymą, kuris DI paverčia galingiausiu jūsų komandos nariu.",
+    "paragraph": "Atsisakykite atsitiktinių rezultatų. Diegiame inžinerinį mąstymą ir 6 blokų sistemą – kiekviename modulyje: mokymasis → patikrinimas → praktika.",
     "items": [
       { "title": "Skaidymas", "desc": "Problemos dekonstrukcija į atominius elementus, kuriuos DI interpretuoja be klaidų." },
       { "title": "Inžinerija", "desc": "Sluoksniuota konstrukcija, naudojant CoT (Chain of Thought) ir Few-shot inžineriją." },
@@ -81,19 +82,19 @@
   },
   "ecosystem": {
     "title": "Vertikalūs varikliai",
-    "paragraph": "Prisijunkite prie specifinių darbo sistemų, paruoštų jūsų rinkai.",
-    "stableLabel": "v2.1 Stable",
+    "paragraph": "Prisijunk prie specifinių darbo sistemų, paruoštų tavo rinkai.",
+    "stableLabel": "v2.4 Stable",
     "items": [
-      { "title": "HR System", "count": "120+ Repo" },
-      { "title": "Marketing Engine", "count": "150+ Repo" },
-      { "title": "RE Broker OS", "count": "80+ Repo" },
-      { "title": "DI Automation", "count": "100+ Repo" }
+      { "title": "Atrankos sistema (personalas)", "count": "120+ Repo", "url": "https://ditreneris.github.io/personalas/" },
+      { "title": "Turinio DI sistema (rinkodara)", "count": "150+ Repo", "url": "https://ditreneris.github.io/marketingas/" },
+      { "title": "DI operacinis centras (vadovybė)", "count": "Vadovybė", "url": "https://ditreneris.github.io/ceo/" },
+      { "title": "Biblioteka (DI automatizacija)", "count": "100+ Repo", "url": "https://ditreneris.github.io/biblioteka/" }
     ]
   },
   "pricing": {
     "badge": "Lifetime System Access",
-    "title": "Pasirinkite planą",
-    "subtext": "Gaukite prieigą prie mokymų „Promptų anatomija“ pagal pasirinktą modulių skaičių.",
+    "title": "Pasirink planą",
+    "subtext": "Gauk prieigą prie mokymų „Promptų anatomija“ pagal pasirinktą modulių skaičių.",
     "cumulativeNote": "Prieiga kaupiama.",
     "recommended": "Rekomenduojama",
     "coreIncludesStarter": "Viskas iš Starter, plius moduliai 4–6.",
@@ -121,23 +122,28 @@
       "Lifetime prieiga"
     ],
     "stripeVerified": "Stripe Verified",
-    "refundContact": "Grąžinimo sąlygos – susisiekite",
+    "refundContact": "Grąžinimo sąlygos – susisiek",
     "aiPowered": "DI Powered",
-    "checkAccess": "Patikrinti prieigą",
+    "checkAccess": "Patikrink prieigą",
     "emailPlaceholder": "El. paštas",
-    "yourAccess": "Jūsų prieiga: 1–%s moduliai",
-    "alreadyHave": "Jau turite",
-    "upgradeTo": "Pagerinti iki %s",
+    "yourAccess": "Tavo prieiga: 1–%s moduliai",
+    "alreadyHave": "Jau turi",
+    "upgradeTo": "Pagerinti į %s",
     "modulesLocked": "Moduliai 7–15 – vėlesnėje fazėje."
   },
   "footer": {
     "brand": "Promptų Anatomija",
-    "tagline": "Diegiame inžinerinę DI darbo kultūrą. Tai ne kursai – tai operacinė sistema jūsų verslo ateičiai.",
+    "tagline": "Diegiame inžinerinę DI darbo kultūrą. Tai ne kursai – tai operacinė sistema tavo verslo ateičiai.",
     "system": "System",
     "network": "Network",
     "ecosystem": "Ekosistema",
     "methodology": "Metodas",
     "pricing": "Kainodara",
+    "support": "Pagalba (WhatsApp)",
+    "biblioteka": "Biblioteka (DI automatizacija)",
+    "marketingas": "Turinio DI sistema (rinkodara)",
+    "personalas": "Atrankos sistema (personalas)",
+    "ceo": "DI operacinis centras (CEO/COO)",
     "linkedIn": "LinkedIn",
     "discord": "Discord HQ",
     "systemLog": "System Log",
@@ -152,26 +158,29 @@
     "privacyPolicy": "Privatumo politika",
     "privacyTitle": "Privatumo politika – Promptų Anatomija",
     "privacyDescription": "Privatumo politika ir duomenų tvarkymas Promptų Anatomija.",
-    "privacySkeleton": "Šiame puslapyje bus pateikta privatumo politika. Klausimams – susisiekite su mumis.",
+    "privacySkeleton": "Šiame puslapyje bus pateikta privatumo politika. Klausimams – susisiek su mumis.",
     "termsOfService": "Paslaugų teikimo sąlygos",
     "termsTitle": "Paslaugų teikimo sąlygos – Promptų Anatomija",
     "termsDescription": "Paslaugų teikimo sąlygos Promptų Anatomija.",
-    "termsSkeleton": "Šiame puslapyje bus pateiktos paslaugų teikimo sąlygos. Klausimams – susisiekite su mumis."
+    "termsSkeleton": "Šiame puslapyje bus pateiktos paslaugų teikimo sąlygos. Klausimams – susisiek su mumis."
   },
   "success": {
     "breadcrumb": "Apmokėjimas sėkmingas",
     "heading": "Sėkmingas diegimas",
-    "body": "Apmokėjimas gautas. Jūsų prieiga ruošiama. Jei turite klausimų – susisiekite su mumis.",
-    "emailDisclaimer": "Jei per kelias minutes negausite laiško, patikrinkite spam arba susisiekite.",
+    "body": "Apmokėjimas gautas. Tavo prieiga ruošiama. Jei turi klausimų – susisiek su mumis.",
+    "emailDisclaimer": "Jei per kelias minutes negausi laiško, patikrink spam arba susisiek su mumis.",
+    "goToTraining": "Eiti į mokymus",
+    "redirecting": "Nukreipiame…",
+    "redirectError": "Nepavyko paruošti nuorodos. Gali grįžti į pradžią arba susisiekti su mumis.",
     "metaTitle": "Apmokėjimas sėkmingas",
     "metaDescription": "Ačiū už pirkimą."
   },
   "cancel": {
     "breadcrumb": "Apmokėjimas atšauktas",
     "heading": "Apmokėjimas atšauktas",
-    "body": "Jūsų mokėjimas nebuvo atliktas. Galite bet kada grįžti ir įsigyti prieigą prie mokymų „Promptų anatomija“.",
+    "body": "Tavo mokėjimas nebuvo atliktas. Gali bet kada grįžti ir įsigyti prieigą prie mokymų „Promptų anatomija“.",
     "tryAgain": "Vėl bandyti",
     "metaTitle": "Apmokėjimas atšauktas",
-    "metaDescription": "Jūsų mokėjimas nebuvo atliktas."
+    "metaDescription": "Tavo mokėjimas nebuvo atliktas."
   }
 }

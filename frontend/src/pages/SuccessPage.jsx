@@ -1,10 +1,16 @@
-import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import { ShieldCheck } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
+import { getSuccessRedirectUrl } from '../api'
 
 export default function SuccessPage() {
   const { t } = useLocale()
+  const [searchParams] = useSearchParams()
+  const sessionId = searchParams.get('session_id')?.trim() || null
+  const [redirectUrl, setRedirectUrl] = useState(null)
+  const [loading, setLoading] = useState(!!sessionId)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     document.title = t('success.metaTitle')
@@ -20,6 +26,20 @@ export default function SuccessPage() {
       if (r) r.setAttribute('content', 'index, follow')
     }
   }, [t])
+
+  useEffect(() => {
+    if (!sessionId) return
+    getSuccessRedirectUrl(sessionId)
+      .then((url) => {
+        setRedirectUrl(url)
+        setError(null)
+      })
+      .catch((err) => {
+        setError(err?.message || t('success.redirectError'))
+        setRedirectUrl(null)
+      })
+      .finally(() => setLoading(false))
+  }, [sessionId, t])
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] flex flex-col items-center justify-center p-6 antialiased">
@@ -39,18 +59,38 @@ export default function SuccessPage() {
           <h2 className="text-5xl font-black text-[#0B1320] mb-8 tracking-tighter uppercase leading-none">
             {t('success.heading')}
           </h2>
-          <p className="text-slate-500 mb-4 text-xl font-medium leading-relaxed italic max-w-sm mx-auto">
+          <p className="text-slate-600 mb-4 text-xl font-medium leading-relaxed italic max-w-sm mx-auto">
             {t('success.body')}
           </p>
-          <p className="text-slate-400 text-sm mb-14 max-w-sm mx-auto">
+          <p className="text-slate-500 text-sm mb-6 max-w-sm mx-auto">
             {t('success.emailDisclaimer')}
           </p>
-          <Link
-            to="/"
-            className="block w-full min-h-[48px] py-6 bg-brand-dark text-white rounded-[24px] font-black uppercase tracking-widest text-sm hover:brightness-110 transition-all duration-200 shadow-soft-lg hover:scale-[1.02] active:scale-[0.98] transform text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
-          >
-            {t('common.backToHome')}
-          </Link>
+          {loading && (
+            <p className="text-slate-500 text-sm mb-8" aria-live="polite">
+              {t('success.redirecting')}
+            </p>
+          )}
+          {error && (
+            <p className="text-amber-700 text-sm mb-6 max-w-sm mx-auto" role="alert">
+              {error}
+            </p>
+          )}
+          <div className="flex flex-col gap-4">
+            {redirectUrl && (
+              <a
+                href={redirectUrl}
+                className="block w-full min-h-[48px] py-6 bg-brand-dark text-white rounded-[24px] font-black uppercase tracking-widest text-sm hover:brightness-110 transition-all duration-200 shadow-soft-lg hover:scale-[1.02] active:scale-[0.98] transform text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
+              >
+                {t('success.goToTraining')}
+              </a>
+            )}
+            <Link
+              to="/"
+              className="block w-full min-h-[48px] py-6 bg-slate-200 text-slate-700 rounded-[24px] font-black uppercase tracking-widest text-sm hover:bg-slate-300 transition-all duration-200 shadow-soft-lg text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
+            >
+              {t('common.backToHome')}
+            </Link>
+          </div>
         </div>
       </div>
     </div>

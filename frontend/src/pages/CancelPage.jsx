@@ -23,7 +23,7 @@ export default function CancelPage() {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] flex flex-col items-center justify-center p-6 antialiased">
-      <nav aria-label="Breadcrumb" className="mb-8 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+      <nav aria-label="Breadcrumb" className="relative z-10 mb-8 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
         <ol className="flex items-center gap-2">
           <li><Link to="/" className="hover:text-brand-accent transition-colors duration-200">{t('common.home')}</Link></li>
           <li aria-hidden>/</li>
@@ -35,7 +35,7 @@ export default function CancelPage() {
         <h2 className="text-3xl font-black text-brand-dark mb-6 tracking-tight">
           {t('cancel.heading')}
         </h2>
-        <p className="text-slate-500 mb-10 text-lg font-medium leading-relaxed">
+        <p className="text-slate-600 mb-10 text-lg font-medium leading-relaxed">
           {t('cancel.body')}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

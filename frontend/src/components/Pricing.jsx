@@ -39,10 +39,10 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail }
         <h2 className="text-2xl md:text-5xl font-black text-brand-dark tracking-tighter mb-3 md:mb-4">
           {t('pricing.title')}
         </h2>
-        <p className="text-slate-500 text-base md:text-lg font-medium max-w-xl mx-auto">
+        <p className="text-slate-600 text-base md:text-lg font-medium max-w-xl mx-auto">
           {t('pricing.subtext')}
         </p>
-        <p className="text-slate-400 text-sm font-medium mt-2">
+        <p className="text-slate-500 text-sm font-medium mt-2">
           {t('pricing.cumulativeNote')}
         </p>
       </div>
