@@ -3,7 +3,7 @@ import { Zap, Menu, X } from 'lucide-react'
 import { GLOSSARY_URL } from '../config'
 import { useLocale } from '../i18n/LocaleContext'
 
-const FOCUS_RING = 'focus:outline-none focus-visible:ring-2 focus-visible:ring-[#CFA73A] focus-visible:ring-offset-2'
+const FOCUS_RING = 'focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2'
 
 export default function Navbar({ onCtaClick }) {
   const { t, locale, setLocale } = useLocale()
@@ -33,7 +33,7 @@ export default function Navbar({ onCtaClick }) {
 
   const closeMobile = () => setMobileOpen(false)
 
-  const navLinkClass = `text-xs font-black uppercase tracking-[0.15em] text-slate-500 hover:text-[#0B1320] transition-colors min-h-[44px] min-w-[44px] inline-flex items-center ${FOCUS_RING}`
+  const navLinkClass = `text-xs font-black uppercase tracking-[0.15em] text-slate-500 hover:text-brand-dark transition-colors duration-200 min-h-[44px] min-w-[44px] inline-flex items-center ${FOCUS_RING}`
 
   return (
     <nav
@@ -44,12 +44,12 @@ export default function Navbar({ onCtaClick }) {
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <a href="/" className={`flex items-center gap-4 group cursor-pointer ${FOCUS_RING} rounded-lg`}>
-          <div className="w-12 h-12 rounded-2xl bg-[#0B1320] flex items-center justify-center text-[#CFA73A] shadow-2xl group-hover:scale-105 transition-all duration-500 border border-white/10">
+          <div className="w-12 h-12 rounded-2xl bg-brand-dark flex items-center justify-center text-brand-accent shadow-soft-lg group-hover:scale-105 group-hover:shadow-glow-accent transition-all duration-300 border border-white/10">
             <Zap className="w-7 h-7 fill-current" />
           </div>
           <div className="flex flex-col">
-            <span className="text-2xl font-black tracking-tighter leading-none text-[#0B1320] flex items-center gap-2">
-              {t('nav.brandPromptu')} <span className="text-[#CFA73A]">{t('nav.brandAnatomija')}</span>
+            <span className="text-2xl font-black tracking-tighter leading-none text-brand-dark flex items-center gap-2">
+              {t('nav.brandPromptu')} <span className="text-brand-accent">{t('nav.brandAnatomija')}</span>
               <span className="hidden sm:inline-block px-1.5 py-0.5 rounded bg-slate-100 text-[8px] font-black text-slate-400 align-middle">{t('nav.version')}</span>
             </span>
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400">{t('nav.brandTagline')}</span>
@@ -83,7 +83,7 @@ export default function Navbar({ onCtaClick }) {
               <button
                 type="button"
                 onClick={() => setLocale('lt')}
-                className={`px-2.5 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider transition-colors ${locale === 'lt' ? 'bg-[#0B1320] text-white' : 'text-slate-500 hover:text-[#0B1320]'} ${FOCUS_RING}`}
+                className={`px-2.5 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-500 hover:text-brand-dark'} ${FOCUS_RING}`}
                 aria-pressed={locale === 'lt'}
                 aria-label="Lietuvių"
               >
@@ -92,7 +92,7 @@ export default function Navbar({ onCtaClick }) {
               <button
                 type="button"
                 onClick={() => setLocale('en')}
-                className={`px-2.5 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider transition-colors ${locale === 'en' ? 'bg-[#0B1320] text-white' : 'text-slate-500 hover:text-[#0B1320]'} ${FOCUS_RING}`}
+                className={`px-2.5 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-500 hover:text-brand-dark'} ${FOCUS_RING}`}
                 aria-pressed={locale === 'en'}
                 aria-label="English"
               >
@@ -102,7 +102,7 @@ export default function Navbar({ onCtaClick }) {
             <button
               type="button"
               onClick={onCtaClick}
-              className={`px-8 py-3 rounded-xl text-sm font-black text-[#0B1320] transition-all hover:shadow-[0_10px_20px_rgba(207,167,58,0.2)] hover:-translate-y-0.5 active:scale-95 bg-[#CFA73A] border border-white/20 min-h-[44px] ${FOCUS_RING}`}
+              className="px-8 py-3 rounded-xl text-sm font-black text-brand-dark transition-all duration-200 hover:shadow-glow-accent hover:-translate-y-0.5 active:scale-[0.98] bg-brand-accent border border-white/20 min-h-[44px] focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus:outline-none"
             >
               {t('nav.cta')}
             </button>
@@ -112,7 +112,7 @@ export default function Navbar({ onCtaClick }) {
         <button
           type="button"
           onClick={() => setMobileOpen((o) => !o)}
-          className={`md:hidden p-3 rounded-xl text-[#0B1320] hover:bg-slate-100 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center ${FOCUS_RING}`}
+          className="md:hidden p-3 rounded-xl text-brand-dark hover:bg-slate-100 active:scale-[0.98] transition-all duration-200 min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
           aria-expanded={mobileOpen}
           aria-controls="mobile-nav"
           aria-label={mobileOpen ? t('nav.ariaCloseMenu') : t('nav.ariaOpenMenu')}
@@ -126,8 +126,9 @@ export default function Navbar({ onCtaClick }) {
         className={`fixed inset-0 z-[99] md:hidden ${mobileOpen ? 'visible' : 'invisible'}`}
         aria-hidden={!mobileOpen}
       >
+        {/* Overlay without backdrop-blur to avoid mobile GPU freeze */}
         <div
-          className={`absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300 ${mobileOpen ? 'opacity-100' : 'opacity-0'}`}
+          className={`absolute inset-0 bg-black/50 transition-opacity duration-300 ${mobileOpen ? 'opacity-100' : 'opacity-0'}`}
           onClick={closeMobile}
           aria-hidden
         />
@@ -138,7 +139,7 @@ export default function Navbar({ onCtaClick }) {
             <button
               type="button"
               onClick={() => setLocale('lt')}
-              className={`px-4 py-2.5 rounded-md text-sm font-bold uppercase tracking-wider transition-colors ${locale === 'lt' ? 'bg-[#0B1320] text-white' : 'text-slate-500 hover:text-[#0B1320]'} ${FOCUS_RING}`}
+              className={`px-4 py-2.5 rounded-md text-sm font-bold uppercase tracking-wider transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-500 hover:text-brand-dark'} focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
               aria-pressed={locale === 'lt'}
               aria-label="Lietuvių"
             >
@@ -147,7 +148,7 @@ export default function Navbar({ onCtaClick }) {
             <button
               type="button"
               onClick={() => setLocale('en')}
-              className={`px-4 py-2.5 rounded-md text-sm font-bold uppercase tracking-wider transition-colors ${locale === 'en' ? 'bg-[#0B1320] text-white' : 'text-slate-500 hover:text-[#0B1320]'} ${FOCUS_RING}`}
+              className={`px-4 py-2.5 rounded-md text-sm font-bold uppercase tracking-wider transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-500 hover:text-brand-dark'} focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
               aria-pressed={locale === 'en'}
               aria-label="English"
             >
@@ -162,7 +163,7 @@ export default function Navbar({ onCtaClick }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={closeMobile}
-                className={`py-4 text-base font-black uppercase tracking-[0.15em] text-slate-500 hover:text-[#0B1320] border-b border-slate-100 min-h-[48px] flex items-center ${FOCUS_RING}`}
+                className="py-4 text-base font-black uppercase tracking-[0.15em] text-slate-500 hover:text-brand-dark border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded"
               >
                 {item.name}
               </a>
@@ -171,7 +172,7 @@ export default function Navbar({ onCtaClick }) {
                 key={item.id ?? 'repo'}
                 href={`#${item.id}`}
                 onClick={closeMobile}
-                className={`py-4 text-base font-black uppercase tracking-[0.15em] text-slate-500 hover:text-[#0B1320] border-b border-slate-100 min-h-[48px] flex items-center ${FOCUS_RING}`}
+                className="py-4 text-base font-black uppercase tracking-[0.15em] text-slate-500 hover:text-brand-dark border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded"
               >
                 {item.name}
               </a>
@@ -180,7 +181,7 @@ export default function Navbar({ onCtaClick }) {
           <button
             type="button"
             onClick={() => { closeMobile(); onCtaClick() }}
-            className={`mt-8 py-4 rounded-xl text-base font-black text-[#0B1320] bg-[#CFA73A] border border-white/20 min-h-[48px] flex items-center justify-center ${FOCUS_RING}`}
+            className="mt-8 py-4 rounded-xl text-base font-black text-brand-dark bg-brand-accent border border-white/20 min-h-[48px] flex items-center justify-center active:scale-[0.98] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
           >
             {t('nav.cta')}
           </button>

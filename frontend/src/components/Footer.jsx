@@ -11,10 +11,10 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-24 mb-32">
           <div className="md:col-span-2">
             <div className="flex items-center gap-4 mb-10">
-              <div className="w-12 h-12 rounded-2xl bg-[#0B1320] flex items-center justify-center text-[#CFA73A] border border-white/10 shadow-xl">
+              <div className="w-12 h-12 rounded-2xl bg-brand-dark flex items-center justify-center text-brand-accent border border-white/10 shadow-soft">
                 <Zap className="fill-current w-6 h-6" />
               </div>
-              <span className="text-3xl font-black tracking-tighter uppercase text-[#0B1320]">{t('footer.brand')}</span>
+              <span className="text-3xl font-black tracking-tighter uppercase text-brand-dark">{t('footer.brand')}</span>
             </div>
             <p className="text-slate-400 font-medium max-w-sm text-lg leading-relaxed italic">
               {t('footer.tagline')}
@@ -24,13 +24,13 @@ export default function Footer() {
             <h5 className="font-black uppercase text-xs tracking-[0.45em] text-slate-300 mb-12">{t('footer.system')}</h5>
             <ul className="space-y-6 text-sm font-black text-slate-500 uppercase tracking-widest">
               <li>
-                <a href="#ekosistema" className="hover:text-[#CFA73A] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#CFA73A] focus-visible:ring-offset-2 rounded">{t('footer.ecosystem')}</a>
+                <a href="#ekosistema" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">{t('footer.ecosystem')}</a>
               </li>
               <li>
-                <a href="#metodologija" className="hover:text-[#CFA73A] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#CFA73A] focus-visible:ring-offset-2 rounded">{t('footer.methodology')}</a>
+                <a href="#metodologija" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">{t('footer.methodology')}</a>
               </li>
               <li>
-                <a href="#pricing" className="hover:text-[#CFA73A] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#CFA73A] focus-visible:ring-offset-2 rounded">{t('footer.pricing')}</a>
+                <a href="#pricing" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">{t('footer.pricing')}</a>
               </li>
             </ul>
           </div>

@@ -23,7 +23,7 @@
     "methodology": "Method",
     "repo": "Repo",
     "pricing": "Pricing",
-    "cta": "Get access",
+    "cta": "See plans",
     "brandPromptu": "PROMPT",
     "brandAnatomija": "ANATOMY",
     "brandTagline": "AI Operating System",
@@ -34,8 +34,9 @@
     "commits": "2,481 Commits",
     "headline1": "Stop talking.",
     "headline2": "Start building.",
+    "valueLine": "Master AI prompting for real work",
     "subtext": "Learn to run AI like an operating system. Prompt engineering, automation and AI agents for real business results.",
-    "cta": "Get access now",
+    "cta": "See plans",
     "members": "500+ members",
     "community": "AI Practitioners community",
     "liveFeed": "Live Feed",
@@ -73,6 +74,12 @@
       "core": "Core",
       "extended": "Extended",
       "full": "Full"
+    },
+    "planBullets": {
+      "starter": ["AI prompt fundamentals", "Real examples", "Lifetime access"],
+      "core": ["Advanced prompting", "Workflow automation", "Lifetime access"],
+      "extended": ["All Core benefits", "Extended modules", "Lifetime access"],
+      "full": ["Full system access", "All 15 modules", "Lifetime access"]
     },
     "mods": "modules",
     "getAccess": "Get access",

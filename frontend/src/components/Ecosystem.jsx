@@ -10,7 +10,7 @@ export default function Ecosystem() {
   const items = Array.isArray(trItems) ? trItems.map((item, i) => ({ ...item, color: COLORS[i], icon: ICONS[i] })) : []
 
   return (
-    <section id="ekosistema" className="py-32 bg-[#0B1320] px-6 relative overflow-hidden">
+    <section id="ekosistema" className="py-32 bg-brand-dark px-6 relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-28">
@@ -24,7 +24,7 @@ export default function Ecosystem() {
           {items.map((item, i) => (
             <div
               key={i}
-              className="group relative p-10 rounded-[40px] bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all overflow-hidden"
+              className="group relative p-10 rounded-[40px] bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden"
             >
               <div
                 className="absolute -bottom-10 -right-10 w-32 h-32 blur-[60px] opacity-20 transition-opacity group-hover:opacity-40"

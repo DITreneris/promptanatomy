@@ -27,19 +27,19 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail }
 
   return (
     <>
-      <div className="text-center mb-16">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-[9px] font-black uppercase tracking-[0.25em] text-slate-500 mb-6 border border-slate-200">
-          <Globe size={10} className="text-[#CFA73A]" /> {t('pricing.badge')}
+      <div className="text-center mb-8 md:mb-16">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-[9px] font-black uppercase tracking-[0.25em] text-slate-500 mb-4 md:mb-6 border border-slate-200">
+          <Globe size={10} className="text-brand-accent" /> {t('pricing.badge')}
         </div>
-        <h2 className="text-4xl md:text-5xl font-black text-[#0B1320] tracking-tighter mb-4">
+        <h2 className="text-2xl md:text-5xl font-black text-brand-dark tracking-tighter mb-3 md:mb-4">
           {t('pricing.title')}
         </h2>
-        <p className="text-slate-500 text-lg font-medium max-w-xl mx-auto">
+        <p className="text-slate-500 text-base md:text-lg font-medium max-w-xl mx-auto">
           {t('pricing.subtext')}
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-10 md:mb-16">
         {plansToShow.map((plan) => {
           const state = getButtonState(plan)
           const isOwned = state?.action === 'owned'
@@ -47,13 +47,27 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail }
           return (
             <div
               key={plan.id}
-              className="bg-white rounded-[32px] border-2 border-slate-100 p-8 shadow-sm hover:border-[#CFA73A]/40 hover:shadow-md transition-all flex flex-col"
+              className="bg-white rounded-[32px] border-2 border-slate-100 p-8 shadow-soft hover:border-brand-accent/30 hover:shadow-soft-lg hover:-translate-y-0.5 transition-all duration-300 flex flex-col"
             >
               <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
                 {t(`pricing.plans.${plan.labelKey}`)}
               </span>
-              <p className="text-slate-600 font-bold mb-1">{plan.mods} {t('pricing.mods')}</p>
-              <p className="text-4xl font-black text-[#0B1320] mb-6">
+              <p className="text-slate-600 font-bold mb-3">{plan.mods} {t('pricing.mods')}</p>
+              {(() => {
+                const bullets = t(`pricing.planBullets.${plan.labelKey}`)
+                const list = Array.isArray(bullets) ? bullets : []
+                return list.length > 0 ? (
+                  <ul className="space-y-2 mb-4 text-sm text-slate-700 font-medium">
+                    {list.map((item, i) => (
+                      <li key={i} className="flex items-center gap-2">
+                        <CheckCircle size={16} className="text-emerald-500 shrink-0" aria-hidden />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null
+              })()}
+              <p className="text-4xl font-black text-brand-dark mb-6">
                 {plan.price}<span className="text-xl font-bold text-slate-500"> €</span>
               </p>
               {isOwned ? (
@@ -66,7 +80,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail }
                   onClick={() => onBuy(plan.id, customerEmail)}
                   disabled={loading}
                   aria-busy={loading}
-                  className="mt-auto w-full min-h-[48px] py-4 rounded-2xl text-base font-black text-[#0B1320] bg-[#CFA73A] hover:brightness-105 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-[#CFA73A] focus-visible:ring-offset-2"
+                  className="mt-auto w-full min-h-[48px] py-4 rounded-2xl text-base font-black text-brand-dark bg-brand-accent hover:shadow-glow-accent active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
                 >
                   {loading ? t('pricing.loading') : <>{state.label} <ArrowRight size={18} /></>}
                 </button>
@@ -102,7 +116,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail }
         </p>
       )}
 
-      <div className="flex flex-wrap justify-center gap-14 opacity-40 grayscale">
+      <div className="flex flex-wrap justify-center gap-14 text-slate-400">
         <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.25em]">
           <Lock size={14} /> {t('pricing.stripeVerified')}
         </div>

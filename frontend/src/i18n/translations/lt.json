@@ -23,10 +23,10 @@
     "methodology": "Metodas",
     "repo": "Repo",
     "pricing": "Kainodara",
-    "cta": "Gauti prieigą",
+    "cta": "Žiūrėti planus",
     "brandPromptu": "PROMPTŲ",
     "brandAnatomija": "ANATOMIJA",
-    "brandTagline": "DI Operating System",
+    "brandTagline": "DI OPERACINĖ SISTEMA",
     "version": "v2.4"
   },
   "hero": {
@@ -34,8 +34,9 @@
     "commits": "2,481 Commits",
     "headline1": "Nustok kalbėti.",
     "headline2": "Pradėk programuoti.",
+    "valueLine": "Išmok naudoti AI 10x efektyviau",
     "subtext": "Išmok valdyti DI kaip operacinę sistemą. Promptų inžinerija, automatizacija ir DI agentai realiems verslo rezultatams.",
-    "cta": "Gauti prieigą dabar",
+    "cta": "Žiūrėti planus",
     "members": "500+ narių",
     "community": "DI Praktikų bendruomenė",
     "liveFeed": "Live Feed",
@@ -73,6 +74,12 @@
       "core": "Core",
       "extended": "Extended",
       "full": "Full"
+    },
+    "planBullets": {
+      "starter": ["AI prompt pagrindai", "Tikri pavyzdžiai", "Prieiga visam laikui"],
+      "core": ["Išplėstinis promptingas", "Darbo eigos automatizavimas", "Prieiga visam laikui"],
+      "extended": ["Viskas iš Core", "Papildomi moduliai", "Prieiga visam laikui"],
+      "full": ["Pilna prieiga", "Visi 15 modulių", "Prieiga visam laikui"]
     },
     "mods": "moduliai",
     "getAccess": "Gauti prieigą",

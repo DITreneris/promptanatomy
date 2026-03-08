@@ -58,10 +58,10 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-white text-[#0B1320] font-sans selection:bg-[#CFA73A]/30 antialiased overflow-x-hidden">
+    <div className="min-h-screen bg-white text-brand-dark font-sans selection:bg-brand-accent/30 antialiased overflow-x-hidden">
       <a
         href="#main-content"
-        className="absolute left-6 top-4 z-[200] py-3 px-4 bg-[#CFA73A] text-[#0B1320] font-black rounded-xl -translate-y-24 focus:translate-y-0 focus:outline-none focus:ring-2 focus:ring-[#0B1320] focus:ring-offset-2 transition-transform duration-200"
+        className="absolute left-6 top-4 z-[200] py-3 px-4 bg-brand-accent text-brand-dark font-black rounded-xl -translate-y-24 focus:translate-y-0 focus:outline-none focus:ring-2 focus:ring-brand-dark focus:ring-offset-2 transition-transform duration-200"
       >
         {t('common.skipToContent')}
       </a>
@@ -70,9 +70,9 @@ export default function HomePage() {
         <Hero onCta={scrollToPricing} />
         <Methodology />
         <Ecosystem />
-        <section id="pricing" className="py-32 bg-white px-6">
+        <section id="pricing" className="py-16 md:py-32 bg-white px-6">
           <div className="max-w-5xl mx-auto">
-            <div className="mb-10 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+            <div className="mb-6 md:mb-10 p-4 md:p-6 bg-slate-50 rounded-2xl border border-slate-100">
               <label htmlFor="access-email" className="block text-sm font-bold text-slate-700 mb-2">
                 {t('pricing.checkAccess')}
               </label>
@@ -84,7 +84,7 @@ export default function HomePage() {
                   value={customerEmail}
                   onChange={(e) => setCustomerEmail(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleCheckAccess()}
-                  className="flex-1 min-w-[200px] px-4 py-3 rounded-xl border border-slate-200 text-[#0B1320] focus:outline-none focus:ring-2 focus:ring-[#CFA73A] focus:border-transparent"
+                  className="flex-1 min-w-[200px] px-4 py-3 rounded-xl border border-slate-200 text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-shadow duration-200"
                   aria-describedby={accessError ? 'access-error' : undefined}
                 />
                 <button
@@ -92,7 +92,7 @@ export default function HomePage() {
                   onClick={handleCheckAccess}
                   disabled={accessLoading}
                   aria-busy={accessLoading}
-                  className="px-6 py-3 rounded-xl font-bold bg-[#0B1320] text-white hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-[#CFA73A] focus:ring-offset-2 disabled:opacity-70"
+                  className="px-6 py-3 rounded-xl font-bold bg-brand-dark text-white hover:brightness-110 active:scale-[0.98] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 disabled:opacity-70"
                 >
                   {accessLoading ? t('pricing.loading') : t('pricing.checkAccess')}
                 </button>

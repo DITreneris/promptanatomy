@@ -3,6 +3,11 @@
 ## [Unreleased] / 2026-03-08
 
 ### Prideta
+- **Premium UI/UX (MUST–SHOULD–WANT):** Dokumentas `docs/ux-premium-practices.md` – geriausios SaaS praktikos (spalvos, šešėliai, micro-interactions), kas įdiegta (MUST) ir tolesni žingsniai (SHOULD/WANT). Įtraukta į `docs/INDEX.md`.
+- **Tailwind tema (premium niuansai):** `tailwind.config.js` – spalvos `brand-dark`, `brand-accent`, `brand-accent-hover`; šešėliai `shadow-soft`, `shadow-soft-lg`, `shadow-glow-accent`; `duration-400`. Visi komponentai naudoja `brand-*` vietoj hex.
+- **Smooth scroll ir reduced motion:** `index.css` – `html { scroll-behavior: smooth }` anchor nuorodoms; `prefers-reduced-motion` išjungia smooth scroll.
+- **Mobilus konversijos UX:** Hero – value line „Master AI prompting for real work“ / „Išmok naudoti AI 10x efektyviau“; viršutinis CTA „See plans“ / „Žiūrėti planus“ (scroll į planus), pirkimo CTA tik kortelėse; vertimai `pricing.planBullets` – 3 value bullet'ai kiekvienam planui (EN/LT); pricing sekcijos vertical rhythm (mažesni atstumai mobiliai, H2 dydis „Pasirinkite planą“).
+- **LT viršutinė eilutė:** `nav.brandTagline` lietuviškai – „DI OPERACINĖ SISTEMA“ (anksčiau „DI Operating System“).
 - **Mokėjimų geriausios praktikos:** Dokumentas `docs/payment-best-practices.md` – planų žymėjimas (plan_id vs plan_value), Stripe/Supabase/Vercel konvencijos, env checklist, API žemėlapis, pitfalls, plėtros gairės. Įtraukta į `docs/INDEX.md`.
 - **Produkcijos prieiga ir checkout pastaba:** Vercel serverless `api/access.js` – GET /api/access?email= (Supabase user_access, CORS). Frontend config – same-origin fallback (kai VITE_API_URL nenustatytas, naudojamas window.location.origin), kad „Patikrinti prieigą“ veiktų be „Failed to fetch“. TODO.md – skyrius „Checkout produkcijoje“: variantas A (VITE_API_URL į FastAPI) arba B (api/create-checkout-session.js Vercel’e).
 - **Webhook metadata.plan:** Vercel stripe-webhook priima ir plan_id ("1"–"4"), ir plan_value (3,6,12,15); mapinimas į plan_value, kad Supabase gautų teisingą highest_plan.
@@ -26,6 +31,8 @@
 - **Vercel create-checkout-session:** Serverless `api/create-checkout-session.js` – POST /api/create-checkout-session (body: plan_id, customer_email); Supabase prieigos tikrinimas (409 jei jau turi planą); Stripe Checkout Session, CORS; env: STRIPE_SECRET_KEY, STRIPE_PRICE_ID_PLAN_1..4, FRONTEND_ORIGIN, opcionaliai SUPABASE_*.
 
 ### Pakeista
+- **Micro UI/UX (ultra premium):** Mygtukai – `active:scale-[0.98]`, `duration-200`, CTA `hover:shadow-glow-accent`, `hover:-translate-y-0.5`. Navbar – logo hover `shadow-glow-accent`, nuorodos/kalbų perjungiklis su `brand-*`, focus ring `ring-brand-accent`. Hero – badge `shadow-soft`, code card `shadow-soft-lg`, CTA glow + active scale. Methodology – kortelės `hover:-translate-y-0.5`, `hover:shadow-soft-lg`, `hover:border-brand-accent/40`, ikonų blokas `group-hover:shadow-glow-accent`. Pricing – kortelės hover lift + `shadow-soft-lg`, CTA glow; trust eilutė nuo `opacity-40 grayscale` į `text-slate-400`. Ecosystem – kortelės `hover:-translate-y-0.5`. Footer – nuorodos `hover:text-brand-accent`. Success/Cancel – brand spalvos, vienodi focus ir active scale.
+- **Spalvų konsistencija:** Hex (#0B1320, #CFA73A) pakeisti į `brand-dark` / `brand-accent` visuose komponentuose (Navbar, Hero, Methodology, Ecosystem, Pricing, Footer, HomePage, SuccessPage, CancelPage).
 - **README.md** – backend struktūroje pridėtas `POST /api/validate-token-limit`; aplinkos kintamųjų lentelėje – `MAX_TOKENS_PER_REQUEST` (optional); pridėti health, Pydantic Settings, webhook prod reikalavimas, backend testai, `ALLOW_WEBHOOK_WITHOUT_SECRET`; pridėtas skyrius „Priklausomybių saugumo auditą“ ir nuoroda į `docs/security.md`.
 - **Backend:** `main.py` ir `limits.py` naudoja `core.config` (get_settings) vietoj `os.environ`/`load_dotenv`; webhook endpoint saugumas (503 kai nėra secret).
 - **Backend (saugumas):** `CreateCheckoutBody.customer_email` – Pydantic `EmailStr` ir `max_length=254`; `ValidateTokenLimitBody.text` – `max_length=50_000`; CORS `allow_headers` susiaurintas iki `Content-Type`, `Authorization`; pridėtas `slowapi` (rate limit) ir security headers middleware.
@@ -41,5 +48,6 @@
 - **EN pavadinimas ir LT AI→DI:** EN – vartotojui matomas pavadinimas „Prompt Anatomy“ (`en.json`: meta, brand, footer.brand, copyright, pricing.subtext, cancel.body; navbar PROMPT/ANATOMY; `index.html` title/meta/og). LT – visur vartotojui matomoje kalboje „AI“ pakeista į „DI“ (`lt.json`: meta, brandTagline, hero, methodology, ecosystem, aiPowered, footer.tagline). Kalbos gairėse įrašyta AI/DI taisyklė.
 
 ### Taisymai
+- **Mobilus šoninis meniu (užstringimas):** Nuimtas `backdrop-blur-sm` iš mobile overlay – pilno ekrano blur mobiliajame apkrauna GPU ir sukeldavo lagą. Overlay dabar tik `bg-black/50`, meniu atsidaro/užsidaro sklandžiai.
 - **Backend webhook dev režimas:** Kai `STRIPE_WEBHOOK_SECRET` nenustatytas ir `ALLOW_WEBHOOK_WITHOUT_SECRET=1`, handleris anksčiau grąžindavo `{"received": True}` be payload apdorojimo – Supabase `user_access` neatsinaujindavo. Dabar payload parsina kaip JSON ir, jei `event.type === "checkout.session.completed"`, kviečia `handle_checkout_completed(event["data"]["object"])`; parašas netikrinamas (log įspėjimas). `backend/main.py`.
 - **frontend/src/api.js:** Sėkmės keliu saugus atsakymo parsavimas – `res.json().catch(() => null)` ir tikrinama `data?.url`, kad 200 su ne-JSON ar be `url` nesukeltų neapdorotos rejection.
