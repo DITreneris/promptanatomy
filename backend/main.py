@@ -19,6 +19,7 @@ from slowapi.errors import RateLimitExceeded
 
 from core.config import init_settings, get_settings
 from limits import check_token_limit
+from db import get_user_access, upsert_user_access
 
 settings = init_settings()
 if settings.stripe_secret_key:
@@ -79,6 +80,29 @@ async def health():
     return {"status": "ok"}
 
 
+@app.get("/api/access")
+@limiter.limit("60/minute")
+async def get_access(request: Request, email: str = ""):
+    """
+    Return access for the given email: highest_plan, allowed_modules, can_upgrade_to.
+    Email required; if Supabase not configured returns 503.
+    """
+    email = (email or "").strip()
+    if not email or "@" not in email:
+        raise HTTPException(status_code=400, detail="Valid email required")
+    if not settings.is_supabase_configured():
+        raise HTTPException(status_code=503, detail="Access check not configured")
+    access = get_user_access(email)
+    highest_plan = (access["highest_plan"] if access else 0) or 0
+    allowed_modules = list(range(1, highest_plan + 1)) if highest_plan > 0 else []
+    can_upgrade_to = [p for p in settings.PLAN_VALUES if p > highest_plan]
+    return {
+        "highest_plan": highest_plan,
+        "allowed_modules": allowed_modules,
+        "can_upgrade_to": can_upgrade_to,
+    }
+
+
 @app.post("/api/validate-token-limit")
 @limiter.limit("60/minute")
 async def validate_token_limit(request: Request, body: ValidateTokenLimitBody):
@@ -99,6 +123,19 @@ async def create_checkout_session(request: Request, body: CreateCheckoutBody):
     price_id = settings.get_price_id_for_plan(body.plan_id)
     if not price_id:
         raise HTTPException(status_code=400, detail=f"Plan {body.plan_id} not configured")
+    plan_value = settings.plan_id_to_value(body.plan_id)
+    if plan_value is None:
+        raise HTTPException(status_code=400, detail=f"Invalid plan_id {body.plan_id}")
+
+    if settings.is_supabase_configured() and body.customer_email:
+        access = get_user_access(body.customer_email)
+        current = (access["highest_plan"] if access else 0) or 0
+        if current >= plan_value:
+            raise HTTPException(
+                status_code=409,
+                detail="Already purchased this plan or higher",
+            )
+
     try:
         session_params = {
             "mode": "payment",
@@ -111,9 +148,11 @@ async def create_checkout_session(request: Request, body: CreateCheckoutBody):
             "success_url": f"{settings.frontend_origin_stripped()}/success?session_id={{CHECKOUT_SESSION_ID}}",
             "cancel_url": f"{settings.frontend_origin_stripped()}/cancel",
             "customer_creation": "always",
+            "metadata": {"plan": str(plan_value)},
         }
         if body.customer_email:
             session_params["customer_email"] = body.customer_email
+            session_params["client_reference_id"] = body.customer_email
         session = stripe.checkout.Session.create(**session_params)
         return {"url": session.url}
     except stripe.error.StripeError:
@@ -121,17 +160,56 @@ async def create_checkout_session(request: Request, body: CreateCheckoutBody):
         raise HTTPException(status_code=502, detail="Payment provider error")
 
 
+def _get_email_from_session(session: dict) -> str | None:
+    """Extract email from Stripe checkout session."""
+    details = session.get("customer_details") or {}
+    if details.get("email"):
+        return details["email"]
+    if session.get("customer_email"):
+        return session["customer_email"]
+    if session.get("client_reference_id"):
+        return session["client_reference_id"]
+    return None
+
+
 def handle_checkout_completed(session: dict) -> None:
     """
-    Process checkout.session.completed webhook event.
-    Stub: log and prepare for future DB/email (Supabase, etc.).
+    Process checkout.session.completed: upsert user_access in Supabase.
+    Email from customer_details or client_reference_id; plan from metadata.plan.
     """
     logger.info(
         "Checkout completed: session_id=%s customer_email=%s",
         session.get("id"),
         session.get("customer_email"),
     )
-    # TODO: create entitlement, send email, update DB
+    email = _get_email_from_session(session)
+    if not email:
+        logger.warning("Checkout completed but no email in session %s", session.get("id"))
+        return
+    metadata = session.get("metadata") or {}
+    plan_str = metadata.get("plan")
+    if not plan_str:
+        logger.warning("Checkout completed but no metadata.plan in session %s", session.get("id"))
+        return
+    try:
+        purchased_plan = int(plan_str)
+    except (TypeError, ValueError):
+        logger.warning("Invalid metadata.plan=%s in session %s", plan_str, session.get("id"))
+        return
+    if purchased_plan not in settings.PLAN_VALUES:
+        logger.warning("Unknown plan value %s in session %s", purchased_plan, session.get("id"))
+        return
+    if not settings.is_supabase_configured():
+        logger.info("Supabase not configured; skipping user_access upsert")
+        return
+    access = get_user_access(email)
+    current = (access["highest_plan"] if access else 0) or 0
+    new_highest = max(current, purchased_plan)
+    stripe_customer_id = session.get("customer")
+    if upsert_user_access(email, new_highest, stripe_customer_id):
+        logger.info("user_access upserted: email=%s highest_plan=%s", email, new_highest)
+    else:
+        logger.warning("user_access upsert failed for email=%s", email)
 
 
 @app.post("/api/webhooks/stripe")

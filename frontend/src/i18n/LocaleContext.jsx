@@ -4,6 +4,12 @@ import en from './translations/en.json'
 
 const translations = { lt, en }
 const STORAGE_KEY = 'locale'
+const VALID_LOCALES = ['lt', 'en']
+
+function normalizeLocale(value) {
+  const v = (value || '').toLowerCase().trim()
+  return VALID_LOCALES.includes(v) ? v : 'lt'
+}
 
 function getNested(obj, path) {
   return path.split('.').reduce((o, k) => o?.[k], obj)
@@ -24,28 +30,32 @@ const LocaleContext = createContext(null)
 export function LocaleProvider({ children }) {
   const [locale, setLocaleState] = useState(() => {
     if (typeof window === 'undefined') return 'lt'
-    return window.localStorage?.getItem(STORAGE_KEY) || 'lt'
+    return normalizeLocale(window.localStorage?.getItem(STORAGE_KEY))
   })
 
   const setLocale = useCallback((next) => {
-    setLocaleState(next)
+    const value = normalizeLocale(next)
+    setLocaleState(value)
     if (typeof window !== 'undefined' && window.localStorage) {
-      window.localStorage.setItem(STORAGE_KEY, next)
+      window.localStorage.setItem(STORAGE_KEY, value)
     }
   }, [])
 
   const t = useCallback(
     (key, params) => {
-      const tr = translations[locale] || translations.lt
+      const loc = normalizeLocale(locale)
+      const tr = translations[loc] || translations.lt
       return translate(tr, key, params)
     },
     [locale]
   )
 
   useEffect(() => {
-    document.documentElement.lang = locale
-    const title = translate(translations[locale] || translations.lt, 'meta.title')
-    const description = translate(translations[locale] || translations.lt, 'meta.description')
+    const loc = normalizeLocale(locale)
+    document.documentElement.lang = loc
+    const tr = translations[loc] || translations.lt
+    const title = translate(tr, 'meta.title')
+    const description = translate(tr, 'meta.description')
     document.title = title
     let metaDesc = document.querySelector('meta[name="description"]')
     if (metaDesc) metaDesc.setAttribute('content', description)

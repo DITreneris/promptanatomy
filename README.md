@@ -5,7 +5,7 @@ Marketinginis tinklalapis ir minimalus backend mokėjimams per Stripe. Tikslas: 
 ## Struktūra
 
 - **frontend/** – Vite + React, landing puslapis, pricing, CTA → Stripe Checkout, puslapiai `/success` ir `/cancel`.
-- **backend/** – FastAPI, entry point `backend/main.py`: `GET /health` (health check), `POST /api/create-checkout-session`, `POST /api/webhooks/stripe`, `POST /api/validate-token-limit` (tokenų limitas būsimiems AI endpointams). Konfigūracija per Pydantic Settings (`backend/core/config.py`).
+- **backend/** – FastAPI, entry point `backend/main.py`: `GET /health`, `GET /api/access` (prieiga pagal email), `POST /api/create-checkout-session`, `POST /api/webhooks/stripe`, `POST /api/validate-token-limit`. Konfigūracija per Pydantic Settings (`backend/core/config.py`). MVP upgrade: Supabase lentelė `user_access` (highest_plan), webhook įrašo prieigą, checkout blokuoja jei jau turi planą – žr. [docs/supabase-user-access.sql](docs/supabase-user-access.sql).
 
 ## Reikalavimai
 
@@ -24,7 +24,7 @@ python -m venv .venv
 # Linux/macOS: source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env
-# Redaguokite .env: STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET, STRIPE_PRICE_ID_PLAN_1…4, FRONTEND_ORIGIN
+# Redaguokite .env: STRIPE_*, FRONTEND_ORIGIN; MVP upgrade – SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY (žr. lentelę žemiau)
 uvicorn main:app --reload --port 8000
 ```
 
@@ -50,7 +50,7 @@ Frontend: `http://localhost:5173`
   stripe listen --forward-to localhost:8000/api/webhooks/stripe
   ```
   Pasiimkite webhook signing secret (`whsec_...`) ir įrašykite į `STRIPE_WEBHOOK_SECRET`.
-- **Produkcijoje:** Stripe Dashboard → Webhooks → Add endpoint, URL `https://<backend-domain>/api/webhooks/stripe`, event `checkout.session.completed`. Būtina nustatyti `STRIPE_WEBHOOK_SECRET` – be jo webhook grąžins 503. Lokaliai galima naudoti `ALLOW_WEBHOOK_WITHOUT_SECRET=1` (tik dev).
+- **Produkcijoje (Vercel):** Stripe Dashboard → Webhooks → Add endpoint, URL `https://promptanatomy.app/api/stripe-webhook`, event `checkout.session.completed`. Vercel serverless funkcija: `api/stripe-webhook.js`. Būtina `STRIPE_WEBHOOK_SECRET` (Vercel env). **Atskiras FastAPI backend:** URL būtų `https://<backend-domain>/api/webhooks/stripe`. Lokaliai galima naudoti `ALLOW_WEBHOOK_WITHOUT_SECRET=1` (tik dev).
 
 ## Aplinkos kintamieji
 
@@ -64,6 +64,8 @@ Frontend: `http://localhost:5173`
 | `FRONTEND_ORIGIN` | Frontend URL be `/` (pvz. `http://localhost:5173` arba `https://promptuanatomija.lt`) |
 | `MAX_TOKENS_PER_REQUEST` | (Optional) Maks. tokenai per užklausą `/api/validate-token-limit`; default 4096. |
 | `ALLOW_WEBHOOK_WITHOUT_SECRET` | (Optional) Jei `1` – webhook priimamas be secret (tik development). Produkcijoje nenaudoti. |
+| `SUPABASE_URL` | (Optional) Supabase projekto URL – prieigos tikrinimui ir webhook upsert į `user_access`. |
+| `SUPABASE_SERVICE_ROLE_KEY` | (Optional) Supabase service role key – backend naudoja tik serverio pusėje. |
 
 ### Frontend (`frontend/.env`)
 

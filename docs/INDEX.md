@@ -13,7 +13,9 @@ Vienas įėjimas į visus projekto dokumentus. Naudokite šį indeksą norėdami
 | Darbų sąrašas | [TODO.md](../TODO.md) | Artimi darbai, žinomi trūkumai. Atnaujinti kartu su pakeitimais. |
 | Changelog | [CHANGELOG.md](../CHANGELOG.md) | Pridėta / pakeista / taisymai pagal šabloną docs/templates/changelog-entry.md. |
 | Kodo bazės analizė | [ANALIZE_KODO_BAZE.md](../ANALIZE_KODO_BAZE.md) | Istorinė analizė, spragos, rekomendacijos. |
+| Mobilus UI / UX / vartotojo kelionė (LT–EN) auditas | [docs/audit-mobile-ux-user-journey.md](audit-mobile-ux-user-journey.md) | Mobilus UI, UX ir vartotojo kelionės auditas (LT/EN). |
 | Kainodaros planas | [docs/pricing-plan.md](pricing-plan.md) | Produkto kainodara, geriausios praktikos, palyginimas su ES/pasauliu, klausimai patikslinimui. |
+| Supabase user_access (MVP upgrade) | [docs/supabase-user-access.sql](supabase-user-access.sql) | SQL lentelės `user_access` kūrimui; highest_plan, email, stripe_customer_id. |
 | Saugumas | [docs/security.md](security.md) | Kas įdiegta (secrets, CORS, validacija, rate limit, headers), produkcija (HTTPS), auditą, pageidaujami žingsniai. |
 | Frontend i18n (LT/EN) | [README.md](../README.md#daugiakalbis-režimas-lten) | Vertimai `frontend/src/i18n/translations/`; kaip pridėti naują tekstą – docs/process/documentation.md. |
 

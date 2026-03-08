@@ -11,7 +11,9 @@
   "errors": {
     "invalidResponse": "Neteisingas atsakymas",
     "noCheckoutUrl": "Nėra mokėjimo nuorodos",
-    "paymentFailed": "Nepavyko prisijungti prie mokėjimo. Bandykite vėliau."
+    "paymentFailed": "Nepavyko prisijungti prie mokėjimo. Bandykite vėliau.",
+    "accessNotConfigured": "Prieigos tikrinimas neprieinamas.",
+    "alreadyPurchased": "Jau turite šį planą ar aukštesnį."
   },
   "nav": {
     "ariaNav": "Pagrindinė navigacija",
@@ -85,7 +87,12 @@
     ],
     "stripeVerified": "Stripe Verified",
     "refundContact": "Grąžinimo sąlygos – susisiekite",
-    "aiPowered": "AI Powered"
+    "aiPowered": "AI Powered",
+    "checkAccess": "Patikrinti prieigą",
+    "emailPlaceholder": "El. paštas",
+    "yourAccess": "Jūsų prieiga: 1–%s moduliai",
+    "alreadyHave": "Jau turite",
+    "upgradeTo": "Upgrade į %s"
   },
   "footer": {
     "brand": "Promptų Anatomija",

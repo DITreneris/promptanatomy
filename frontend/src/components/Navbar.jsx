@@ -157,6 +157,26 @@ export default function Navbar({ onCtaClick }) {
               </a>
             )
           )}
+          <div className="mt-6 flex items-center gap-2 p-1 rounded-lg bg-slate-100 border border-slate-200 w-fit">
+            <button
+              type="button"
+              onClick={() => setLocale('lt')}
+              className={`px-4 py-2.5 rounded-md text-sm font-bold uppercase tracking-wider transition-colors ${locale === 'lt' ? 'bg-[#0B1320] text-white' : 'text-slate-500 hover:text-[#0B1320]'} ${FOCUS_RING}`}
+              aria-pressed={locale === 'lt'}
+              aria-label="Lietuvių"
+            >
+              LT
+            </button>
+            <button
+              type="button"
+              onClick={() => setLocale('en')}
+              className={`px-4 py-2.5 rounded-md text-sm font-bold uppercase tracking-wider transition-colors ${locale === 'en' ? 'bg-[#0B1320] text-white' : 'text-slate-500 hover:text-[#0B1320]'} ${FOCUS_RING}`}
+              aria-pressed={locale === 'en'}
+              aria-label="English"
+            >
+              EN
+            </button>
+          </div>
           <button
             type="button"
             onClick={() => { closeMobile(); onCtaClick() }}

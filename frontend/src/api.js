@@ -21,3 +21,18 @@ export async function createCheckoutSession(planId, customerEmail = null) {
   if (!data?.url) throw new Error(data === null ? 'Invalid response' : 'No checkout URL')
   return data.url
 }
+
+/**
+ * Get access for email: highest_plan, allowed_modules, can_upgrade_to.
+ * @param {string} email
+ * @returns {Promise<{ highest_plan: number, allowed_modules: number[], can_upgrade_to: number[] }>}
+ */
+export async function getAccess(email) {
+  const params = new URLSearchParams({ email: email.trim() })
+  const res = await fetch(`${API_URL}/api/access?${params}`)
+  if (!res.ok) {
+    const detail = (await res.json().catch(() => ({}))).detail || res.statusText
+    throw new Error(detail)
+  }
+  return res.json()
+}

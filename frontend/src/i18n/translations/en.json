@@ -11,7 +11,9 @@
   "errors": {
     "invalidResponse": "Invalid response",
     "noCheckoutUrl": "No checkout URL",
-    "paymentFailed": "Failed to connect to payment. Try again later."
+    "paymentFailed": "Failed to connect to payment. Try again later.",
+    "accessNotConfigured": "Access check not available.",
+    "alreadyPurchased": "You already have this plan or higher."
   },
   "nav": {
     "ariaNav": "Main navigation",
@@ -85,7 +87,12 @@
     ],
     "stripeVerified": "Stripe Verified",
     "refundContact": "Refund terms – contact us",
-    "aiPowered": "AI Powered"
+    "aiPowered": "AI Powered",
+    "checkAccess": "Check your access",
+    "emailPlaceholder": "Email",
+    "yourAccess": "Your access: 1–%s modules",
+    "alreadyHave": "Already have",
+    "upgradeTo": "Upgrade to %s"
   },
   "footer": {
     "brand": "Promptų Anatomija",

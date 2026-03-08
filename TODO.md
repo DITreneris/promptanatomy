@@ -15,12 +15,12 @@
 - [ ] Pakeisti tekstą: nepažadėti el. laiško, kol jis neįdiegtas, arba pridėti išlygą („Jei per X min negausite – susisiekite“).
 
 ### 3. Webhook – struktūra ir dokumentacija
-- [ ] Išskirti `checkout.session.completed` apdorojimą į atskirą funkciją; palikti stub vietas DB + email (Supabase).
-- [ ] Docs: užfiksuoti webhook reikalavimus (Supabase env, lentelės users/access).
+- [x] Išskirti `checkout.session.completed` apdorojimą; webhook įrašo į Supabase `user_access` (highest_plan).
+- [x] Docs: [docs/supabase-user-access.sql](docs/supabase-user-access.sql) – lentelė; env `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`.
 
-### 4. Webhook → DB + prieiga (kai bus Supabase)
-- [ ] Po apmokėjimo: sukurti user ir access įrašą (priklauso nuo Supabase / DB pasirinkimo).
-- [ ] Magic link / email – įgyvendinti kartu su webhook arba Training App repo.
+### 4. Webhook → DB + prieiga (MVP atlikta)
+- [x] Po apmokėjimo: upsert į Supabase `user_access` (email, highest_plan, stripe_customer_id). GET `/api/access?email=` grąžina prieigą ir `can_upgrade_to`. Checkout blokuoja (409) jei jau turi tą patį/aukštesnį planą.
+- [ ] Magic link / email – įgyvendinti kartu su Training App repo.
 
 ### 5. Kiti (turinyje ir UX)
 - [ ] Skaičiai LP – žr. skyrių **Skaičiai** žemiau.
@@ -38,7 +38,7 @@ Detalus kontekstas: skyriai **Kol kas negalima**, **Kainodara ir teisė** žemia
 
 ## Kol kas negalima (priklauso nuo išorės)
 
-- **Webhook → DB + prieiga:** Sukurti user ir access įrašą po apmokėjimo – reikia Supabase (arba kitos DB). Įgyvendinsime pasirinkus DB (žingsnis 4).
+- **Webhook → DB + prieiga:** MVP įdiegta – Supabase `user_access`, webhook upsert, GET /api/access, checkout 409 jei jau nusipirkta. Lentelė: [docs/supabase-user-access.sql](docs/supabase-user-access.sql).
 - **Magic link:** Siųsti prisijungimo nuorodą po apmokėjimo – reikia Supabase Auth arba email provider. Įgyvendinsime kartu su webhook.
 - **Prieigos tikrinimas:** Atlieka Training App (app.promptuanatomija.lt); šiame repo tik webhook sukuria prieigą.
 - **Login į mokymų app:** Magic link / passwordless – įgyvendinamas Training App repo su Supabase Auth.

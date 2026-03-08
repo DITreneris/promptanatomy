@@ -32,6 +32,15 @@ class Settings(BaseSettings):
         default=False,
         description="If True, webhook accepts requests without STRIPE_WEBHOOK_SECRET (dev only)",
     )
+    supabase_url: str | None = Field(default=None, description="Supabase project URL")
+    supabase_service_role_key: SecretStr | None = Field(
+        default=None,
+        description="Supabase service role key (server-side only)",
+    )
+
+    # Plan values: 3, 6, 12, 15 (module cap). plan_id "1"->3, "2"->6, "3"->12, "4"->15.
+    PLAN_VALUES = (3, 6, 12, 15)
+    PLAN_ID_TO_VALUE = {"1": 3, "2": 6, "3": 12, "4": 15}
 
     def frontend_origin_stripped(self) -> str:
         return self.frontend_origin.rstrip("/")
@@ -45,6 +54,14 @@ class Settings(BaseSettings):
         return any(
             self.get_price_id_for_plan(p) for p in ("1", "2", "3", "4")
         )
+
+    def plan_id_to_value(self, plan_id: str) -> int | None:
+        """Return plan_value (3,6,12,15) for plan_id '1'..'4', or None."""
+        return self.PLAN_ID_TO_VALUE.get(plan_id)
+
+    def is_supabase_configured(self) -> bool:
+        """True if Supabase URL and key are set (access check and webhook upsert enabled)."""
+        return bool(self.supabase_url and self.supabase_service_role_key)
 
 
 _settings: Settings | None = None

@@ -1,0 +1,9 @@
+{
+  "name": "promptanatomy",
+  "private": true,
+  "description": "Root package for Vercel serverless API (api/*). Frontend build via vercel.json.",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "stripe": "^17.0.0"
+  }
+}
