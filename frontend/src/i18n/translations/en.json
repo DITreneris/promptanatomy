@@ -83,11 +83,41 @@
     "title": "Vertical Engines",
     "paragraph": "Connect to purpose-built work systems ready for your market.",
     "stableLabel": "v2.4 Stable",
+    "ctaOpen": "Open system",
     "items": [
-      { "title": "Library (AI automation)", "count": "100+ Repo", "url": "https://ditreneris.github.io/biblioteka/" },
-      { "title": "Content system (marketing)", "count": "150+ Repo", "url": "https://ditreneris.github.io/marketingas/" },
-      { "title": "Recruitment system (HR)", "count": "120+ Repo", "url": "https://ditreneris.github.io/personalas/" },
-      { "title": "Operations center (CEO/COO)", "count": "CEO/COO", "url": "https://ditreneris.github.io/ceo/" }
+      {
+        "title": "Library (AI automation)",
+        "count": "100+ Repo",
+        "url": "https://ditreneris.github.io/biblioteka/",
+        "outcome": "Ready-made prompts and workflow templates.",
+        "bullets": ["100+ prompts", "Templates", "ChatGPT"],
+        "ctaLabel": "Open library"
+      },
+      {
+        "title": "Content system (marketing)",
+        "count": "150+ Repo",
+        "url": "https://ditreneris.github.io/marketingas/",
+        "outcome": "Marketing content prompts and templates.",
+        "bullets": ["Content planning", "Templates", "Personas"],
+        "ctaLabel": "Open system",
+        "primary": true
+      },
+      {
+        "title": "Recruitment system (HR)",
+        "count": "120+ Repo",
+        "url": "https://ditreneris.github.io/personalas/",
+        "outcome": "Recruitment and assessment prompts.",
+        "bullets": ["Job ads", "Assessment", "Interviews"],
+        "ctaLabel": "Open system"
+      },
+      {
+        "title": "Operations center (CEO/COO)",
+        "count": "CEO/COO",
+        "url": "https://ditreneris.github.io/ceo/",
+        "outcome": "Prompts and templates for leadership.",
+        "bullets": ["Decisions", "Operations", "Structure"],
+        "ctaLabel": "Open center"
+      }
     ]
   },
   "pricing": {

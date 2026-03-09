@@ -1,20 +1,20 @@
-import { Users, Target, Briefcase, Cpu } from 'lucide-react'
+import { Users, BookOpen, Megaphone, LayoutDashboard } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
 
 const FALLBACK_COLORS = ['#2E9E7E', '#7C5CFF', '#3F6FFF', '#F38A3F']
-const FALLBACK_ICONS = [<Users key="u" />, <Target key="t" />, <Briefcase key="b" />, <Cpu key="c" />]
+const FALLBACK_ICONS = [<BookOpen key="b" />, <Megaphone key="m" />, <Users key="u" />, <LayoutDashboard key="d" />]
 
 const ECOSYSTEM_META = {
-  'https://ditreneris.github.io/biblioteka/': { color: '#F38A3F', icon: <Cpu key="c" /> },
-  'https://ditreneris.github.io/marketingas/': { color: '#7C5CFF', icon: <Target key="t" /> },
+  'https://ditreneris.github.io/biblioteka/': { color: '#F38A3F', icon: <BookOpen key="b" /> },
+  'https://ditreneris.github.io/marketingas/': { color: '#7C5CFF', icon: <Megaphone key="m" /> },
   'https://ditreneris.github.io/personalas/': { color: '#2E9E7E', icon: <Users key="u" /> },
-  'https://ditreneris.github.io/ceo/': { color: '#3F6FFF', icon: <Briefcase key="b" /> },
+  'https://ditreneris.github.io/ceo/': { color: '#3F6FFF', icon: <LayoutDashboard key="d" /> },
 }
 
 export default function Ecosystem() {
   const { t } = useLocale()
   const trItems = t('ecosystem.items') || []
-  const items = Array.isArray(trItems)
+  const rawItems = Array.isArray(trItems)
     ? trItems.map((item, i) => {
         const meta = item.url ? ECOSYSTEM_META[item.url] : null
         return {
@@ -24,6 +24,7 @@ export default function Ecosystem() {
         }
       })
     : []
+  const items = [...rawItems].sort((a, b) => (b.primary ? 1 : 0) - (a.primary ? 1 : 0))
 
   return (
     <section id="ekosistema" className="py-32 bg-brand-dark px-4 sm:px-6 relative overflow-hidden">
@@ -38,7 +39,16 @@ export default function Ecosystem() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {items.map((item, i) => {
-            const cardClass = "group relative p-10 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden block focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+            const isPrimary = item.primary === true
+            const hasOutcome = typeof item.outcome === 'string' && item.outcome.trim().length > 0
+            const hasBullets = Array.isArray(item.bullets) && item.bullets.length > 0
+            const ctaLabel = (typeof item.ctaLabel === 'string' && item.ctaLabel.trim()) || (typeof t('ecosystem.ctaOpen') === 'string' && t('ecosystem.ctaOpen').trim()) || null
+            const useCtaLayout = hasOutcome || hasBullets || ctaLabel
+
+            const cardBaseClass = "group relative rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+            const cardClass = `${cardBaseClass} ${isPrimary ? 'p-12 lg:col-span-2' : 'p-10'} ${useCtaLayout ? '' : 'block'}`
+            const titleClass = isPrimary ? 'text-2xl font-black text-white mb-2 tracking-tight' : 'text-xl font-black text-white mb-2 tracking-tight'
+
             const content = (
               <>
                 <div
@@ -46,21 +56,49 @@ export default function Ecosystem() {
                   style={{ backgroundColor: item.color }}
                 />
                 <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center text-white mb-24 shadow-2xl transition-transform group-hover:scale-110"
+                  className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-2xl transition-transform group-hover:scale-110 ${useCtaLayout ? 'mb-6' : 'mb-24'}`}
                   style={{ backgroundColor: item.color }}
                 >
                   {item.icon}
                 </div>
-                <h4 className="text-xl font-black text-white mb-2 tracking-tight">{item.title}</h4>
-                <div className="flex items-center gap-2">
+                <h4 className={titleClass}>{item.title}</h4>
+                {hasOutcome && (
+                  <p className="text-slate-300 text-sm mb-3">{item.outcome}</p>
+                )}
+                {hasBullets && (
+                  <ul className="list-disc list-inside text-slate-400 text-sm space-y-1 mb-4">
+                    {(item.bullets.slice(0, 3)).map((bullet, bi) => (
+                      <li key={bi}>{bullet}</li>
+                    ))}
+                  </ul>
+                )}
+                <div className={`flex items-center gap-2 ${useCtaLayout ? 'mb-4' : ''}`}>
                   <span className="text-xs font-black uppercase tracking-[0.25em] opacity-60" style={{ color: item.color }}>
                     {item.count}
                   </span>
                   <div className="w-1 h-1 rounded-full bg-white/20" />
                   <span className="text-xs font-black uppercase tracking-[0.25em] text-white/40">{t('ecosystem.stableLabel')}</span>
                 </div>
+                {useCtaLayout && ctaLabel && item.url && (
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center min-h-[44px] px-6 py-3 rounded-xl font-black text-white bg-brand-accent hover:opacity-90 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+                  >
+                    {ctaLabel}
+                  </a>
+                )}
               </>
             )
+
+            if (useCtaLayout) {
+              return (
+                <div key={i} className={cardClass}>
+                  {content}
+                </div>
+              )
+            }
             return item.url ? (
               <a
                 key={i}

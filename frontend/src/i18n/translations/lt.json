@@ -83,11 +83,41 @@
     "title": "Vertikalūs varikliai",
     "paragraph": "Prisijunk prie specifinių darbo sistemų, paruoštų tavo rinkai.",
     "stableLabel": "v2.4 Stable",
+    "ctaOpen": "Atidaryti sistemą",
     "items": [
-      { "title": "Biblioteka (DI automatizacija)", "count": "100+ Repo", "url": "https://ditreneris.github.io/biblioteka/" },
-      { "title": "Turinio DI sistema (rinkodara)", "count": "150+ Repo", "url": "https://ditreneris.github.io/marketingas/" },
-      { "title": "Atrankos sistema (personalas)", "count": "120+ Repo", "url": "https://ditreneris.github.io/personalas/" },
-      { "title": "DI operacinis centras (vadovybė)", "count": "Vadovybė", "url": "https://ditreneris.github.io/ceo/" }
+      {
+        "title": "Biblioteka (DI automatizacija)",
+        "count": "100+ Repo",
+        "url": "https://ditreneris.github.io/biblioteka/",
+        "outcome": "Paruošti promptai ir workflow šablonai.",
+        "bullets": ["100+ promptų", "Šablonai", "ChatGPT"],
+        "ctaLabel": "Atidaryti biblioteką"
+      },
+      {
+        "title": "Turinio DI sistema (rinkodara)",
+        "count": "150+ Repo",
+        "url": "https://ditreneris.github.io/marketingas/",
+        "outcome": "Rinkodaros turinio promptai ir šablonai.",
+        "bullets": ["Turinio planavimas", "Šablonai", "Persona"],
+        "ctaLabel": "Atidaryti sistemą",
+        "primary": true
+      },
+      {
+        "title": "Atrankos sistema (personalas)",
+        "count": "120+ Repo",
+        "url": "https://ditreneris.github.io/personalas/",
+        "outcome": "Atrankos ir įvertinimo promptai.",
+        "bullets": ["Skelbimai", "Įvertinimas", "Interviu"],
+        "ctaLabel": "Atidaryti sistemą"
+      },
+      {
+        "title": "DI operacinis centras (vadovybė)",
+        "count": "Vadovybė",
+        "url": "https://ditreneris.github.io/ceo/",
+        "outcome": "Vadovams skirti promptai ir šablonai.",
+        "bullets": ["Sprendimai", "Operacijos", "Struktūra"],
+        "ctaLabel": "Atidaryti centrą"
+      }
     ]
   },
   "pricing": {
