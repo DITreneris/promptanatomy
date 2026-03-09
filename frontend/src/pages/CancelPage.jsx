@@ -41,7 +41,7 @@ export default function CancelPage() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             to="/#pricing"
-            className="min-h-[44px] inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-lg font-black text-brand-dark bg-brand-accent hover:shadow-glow-accent active:scale-[0.98] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
+            className="min-h-[44px] inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-lg font-black text-brand-dark bg-accent-gradient hover:shadow-glow-accent active:scale-[0.98] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
           >
             {t('cancel.tryAgain')} <ArrowLeft className="w-5 h-5 rotate-180" />
           </Link>

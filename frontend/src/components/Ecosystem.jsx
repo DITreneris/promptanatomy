@@ -1,26 +1,34 @@
 import { Users, BookOpen, Megaphone, LayoutDashboard } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
 
-const FALLBACK_COLORS = ['#2E9E7E', '#7C5CFF', '#3F6FFF', '#F38A3F']
 const FALLBACK_ICONS = [<BookOpen key="b" />, <Megaphone key="m" />, <Users key="u" />, <LayoutDashboard key="d" />]
-
-const ECOSYSTEM_META = {
-  'https://ditreneris.github.io/biblioteka/': { color: '#F38A3F', icon: <BookOpen key="b" /> },
-  'https://ditreneris.github.io/marketingas/': { color: '#7C5CFF', icon: <Megaphone key="m" /> },
-  'https://ditreneris.github.io/personalas/': { color: '#2E9E7E', icon: <Users key="u" /> },
-  'https://ditreneris.github.io/ceo/': { color: '#3F6FFF', icon: <LayoutDashboard key="d" /> },
+/** URL → theme index 1–4 (ecosystem-1 … ecosystem-4 in tailwind.config) */
+const ECOSYSTEM_URL_INDEX = {
+  'https://ditreneris.github.io/biblioteka/': 4,
+  'https://ditreneris.github.io/marketingas/': 2,
+  'https://ditreneris.github.io/personalas/': 1,
+  'https://ditreneris.github.io/ceo/': 3,
 }
+const ECOSYSTEM_URL_ICON = {
+  'https://ditreneris.github.io/biblioteka/': <BookOpen key="b" />,
+  'https://ditreneris.github.io/marketingas/': <Megaphone key="m" />,
+  'https://ditreneris.github.io/personalas/': <Users key="u" />,
+  'https://ditreneris.github.io/ceo/': <LayoutDashboard key="d" />,
+}
+const ECOSYSTEM_BG_CLASSES = ['bg-ecosystem-1', 'bg-ecosystem-2', 'bg-ecosystem-3', 'bg-ecosystem-4']
+const ECOSYSTEM_HOVER_RING = ['group-hover:ring-ecosystem-1', 'group-hover:ring-ecosystem-2', 'group-hover:ring-ecosystem-3', 'group-hover:ring-ecosystem-4']
 
 export default function Ecosystem() {
   const { t } = useLocale()
   const trItems = t('ecosystem.items') || []
   const rawItems = Array.isArray(trItems)
     ? trItems.map((item, i) => {
-        const meta = item.url ? ECOSYSTEM_META[item.url] : null
+        const themeIndex = (item.url && ECOSYSTEM_URL_INDEX[item.url]) ?? ((i % 4) + 1)
+        const icon = (item.url && ECOSYSTEM_URL_ICON[item.url]) ?? FALLBACK_ICONS[i % FALLBACK_ICONS.length]
         return {
           ...item,
-          color: meta?.color ?? FALLBACK_COLORS[i % FALLBACK_COLORS.length],
-          icon: meta?.icon ?? FALLBACK_ICONS[i % FALLBACK_ICONS.length],
+          themeIndex,
+          icon,
         }
       })
     : []
@@ -53,7 +61,7 @@ export default function Ecosystem() {
                   className="absolute -bottom-10 -right-10 w-32 h-32 blur-[60px] opacity-20 transition-opacity group-hover:opacity-40 bg-white/5"
                 />
                 <div
-                  className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-2xl transition-all group-hover:scale-110 bg-white/10 ring-2 ring-transparent group-hover:ring-2 group-hover:ring-brand-accent ${useCtaLayout ? 'mb-6' : 'mb-24'}`}
+                  className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-2xl transition-all group-hover:scale-110 ring-2 ring-transparent group-hover:ring-2 ${ECOSYSTEM_BG_CLASSES[item.themeIndex - 1]} ${ECOSYSTEM_HOVER_RING[item.themeIndex - 1]} ${useCtaLayout ? 'mb-6' : 'mb-24'}`}
                 >
                   {item.icon}
                 </div>
@@ -70,7 +78,7 @@ export default function Ecosystem() {
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center min-h-[44px] px-6 py-3 rounded-xl font-black text-white bg-brand-accent hover:opacity-90 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+                    className="inline-flex items-center justify-center min-h-[44px] px-6 py-3 rounded-xl font-black text-brand-dark bg-accent-gradient hover:opacity-90 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
                   >
                     {ctaLabel}
                   </a>

@@ -39,7 +39,8 @@ Detali peržiūra: šriftai, dydžiai, spalvos, tarpai, mikro kopija. Ką galima
 | **Hardcoded hex** | `#F8FAFC` (Hero, Success, Cancel, Privacy), Ecosystem `#2E9E7E`, `#7C5CFF`… | `#F8FAFC` → `slate-50` arba į `tailwind.config` kaip `background: { page: '#F8FAFC' }`. Ecosystem spalvas į config kaip semantic (pvz. `ecosystem.1` …). |
 | **Kontrastas ant baltų** | `text-slate-300`, `text-slate-400` body/paragraph | Ant white: 400 mažesniems tekstams ok; 300 – tik labai dideliems arba ne kritiniam tekstui. Footer copyright `text-slate-300` – svarstyti `slate-500` arba `slate-600` dėl WCAG. |
 | **Klaidos / įspėjimai** | `text-red-600`, `text-amber-700` | Gerai. Palikti; jei reikia – vienas „error“ tokenas config. |
-| **Accent gradient** | Hero, mygtukai: `#CFA73A` → `#E8B93C` | Jau atitinka `brand.accent` ir `accent-hover`. Gal config į `backgroundImage` tokeną, kad nereikėtų inline style. |
+| **Accent gradient** | Hero, mygtukai: `#CFA73A` → `#E8B93C` | **Įgyvendinta:** `tailwind.config.js` – `backgroundImage['accent-gradient']`; visi primary CTA naudoja `bg-accent-gradient`. |
+| **Ecosystem hex** | `#2E9E7E`, `#7C5CFF` ir kt. | **Įgyvendinta:** perkelta į `tailwind.config.js` kaip `colors.ecosystem` (1–4); Ecosystem.jsx naudoja theme klases. |
 
 **Prioritetas:** `#F8FAFC` → token, footer copyright kontrastas.
 

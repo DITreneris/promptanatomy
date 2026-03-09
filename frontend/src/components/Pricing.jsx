@@ -94,7 +94,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail }
                   onClick={() => onBuy(plan.id, customerEmail)}
                   disabled={loading}
                   aria-busy={loading}
-                  className="mt-auto w-full min-h-[48px] py-4 rounded-2xl text-base font-black text-brand-dark bg-brand-accent hover:shadow-glow-accent active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
+                  className="mt-auto w-full min-h-[48px] py-4 rounded-2xl text-base font-black text-brand-dark bg-accent-gradient hover:shadow-glow-accent active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
                 >
                   {loading ? t('pricing.loading') : <>{state.label} <ArrowRight size={18} /></>}
                 </button>

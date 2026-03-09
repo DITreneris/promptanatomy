@@ -104,7 +104,7 @@ export default function Navbar({ onCtaClick }) {
             <button
               type="button"
               onClick={onCtaClick}
-              className="px-8 py-3 rounded-xl text-sm font-black text-brand-dark transition-all duration-200 hover:shadow-glow-accent hover:-translate-y-0.5 active:scale-[0.98] bg-brand-accent border border-white/20 min-h-[44px] focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus:outline-none"
+              className="px-8 py-3 rounded-xl text-sm font-black text-brand-dark bg-accent-gradient transition-all duration-200 hover:shadow-glow-accent hover:-translate-y-0.5 active:scale-[0.98] border border-white/20 min-h-[44px] focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus:outline-none"
             >
               {t('nav.cta')}
             </button>
@@ -195,7 +195,7 @@ export default function Navbar({ onCtaClick }) {
           <button
             type="button"
             onClick={() => { closeMobile(); onCtaClick() }}
-            className="mt-8 py-4 rounded-xl text-base font-black text-brand-dark bg-brand-accent border border-white/20 min-h-[48px] flex items-center justify-center active:scale-[0.98] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
+            className="mt-8 py-4 rounded-xl text-base font-black text-brand-dark bg-accent-gradient border border-white/20 min-h-[48px] flex items-center justify-center active:scale-[0.98] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
           >
             {t('nav.cta')}
           </button>

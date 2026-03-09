@@ -18,6 +18,15 @@ export default {
           accent: '#CFA73A',
           'accent-hover': '#E8B93C',
         },
+        ecosystem: {
+          1: '#2E9E7E',
+          2: '#7C5CFF',
+          3: '#3F6FFF',
+          4: '#F38A3F',
+        },
+      },
+      backgroundImage: {
+        'accent-gradient': 'linear-gradient(135deg, #CFA73A 0%, #E8B93C 100%)',
       },
       boxShadow: {
         'soft': '0 2px 8px -2px rgba(11, 19, 32, 0.08), 0 4px 16px -4px rgba(11, 19, 32, 0.06)',

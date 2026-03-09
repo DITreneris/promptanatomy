@@ -9,6 +9,8 @@ Geriausių praktikų (GitHub, Vercel, Linear, Stripe stilius) pritaikymas projek
 | Praktika | Paskirtis | Projekte |
 |----------|-----------|----------|
 | **Semantinės spalvos** | Viena brand paletė (dark, accent) – lengva keisti ir laikyti konsistenciją | `tailwind.config.js`: `brand-dark`, `brand-accent`; komponentai naudoja `brand-*` |
+| **Accent gradientas ir primary CTA** | Vienas accent gradientas visur – keičiamas vienoje vietoje (config) | `tailwind.config.js`: `backgroundImage['accent-gradient']`; visi primary CTA (Hero, Navbar, Pricing, Ecosystem, Cancel, skip link) naudoja `bg-accent-gradient` |
+| **Ecosystem spalvos** | Kortelių spalvos centralizuotos theme | `tailwind.config.js`: `colors.ecosystem` (1–4); Ecosystem.jsx naudoja `bg-ecosystem-1` … `bg-ecosystem-4` |
 | **Focus states** | Prieinamumas ir aiškūs interaktyvūs elementai | Visur `focus-visible:ring-2 ring-brand-accent ring-offset-2` |
 | **Smooth scroll** | Natūralus anchor scroll | `index.css`: `html { scroll-behavior: smooth }` + `prefers-reduced-motion` override |
 | **Button micro-feedback** | Jausmas „paspaudimas“ | CTA/mygtukai: `active:scale-[0.98]`, `duration-200` |

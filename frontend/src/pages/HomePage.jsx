@@ -79,7 +79,7 @@ export default function HomePage({ forceLocale }) {
     <div className="min-h-screen w-full max-w-[100vw] bg-white text-brand-dark font-sans selection:bg-brand-accent/30 antialiased overflow-x-hidden">
       <a
         href="#main-content"
-        className="absolute left-6 top-4 z-[200] py-3 px-4 bg-brand-accent text-brand-dark font-black rounded-xl -translate-y-24 focus:translate-y-0 focus:outline-none focus:ring-2 focus:ring-brand-dark focus:ring-offset-2 transition-transform duration-200"
+        className="absolute left-6 top-4 z-[200] py-3 px-4 bg-accent-gradient text-brand-dark font-black rounded-xl -translate-y-24 focus:translate-y-0 focus:outline-none focus:ring-2 focus:ring-brand-dark focus:ring-offset-2 transition-transform duration-200"
       >
         {t('common.skipToContent')}
       </a>

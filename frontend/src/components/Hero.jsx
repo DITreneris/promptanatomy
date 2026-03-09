@@ -1,8 +1,6 @@
 import { ArrowRight, Activity } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
 
-const ACCENT_GRADIENT = 'linear-gradient(135deg, #CFA73A 0%, #E8B93C 100%)'
-
 export default function Hero({ onCta }) {
   const { t } = useLocale()
   return (
@@ -21,7 +19,7 @@ export default function Hero({ onCta }) {
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-brand-dark mb-4 md:mb-6 leading-[0.85] tracking-tighter break-words">
             {t('hero.headline1')}<br />
-            <span className="text-transparent bg-clip-text break-words" style={{ backgroundImage: ACCENT_GRADIENT }}>
+            <span className="text-transparent bg-clip-text bg-accent-gradient break-words">
               {t('hero.headline2')}
             </span>
           </h1>
@@ -48,8 +46,7 @@ export default function Hero({ onCta }) {
             <button
               type="button"
               onClick={onCta}
-              className="group w-full sm:w-auto min-h-[44px] px-12 py-6 rounded-2xl text-xl font-black text-brand-dark transition-all duration-200 hover:shadow-glow-accent flex items-center justify-center gap-3 transform hover:-translate-y-0.5 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
-              style={{ background: ACCENT_GRADIENT }}
+              className="group w-full sm:w-auto min-h-[44px] px-12 py-6 rounded-2xl text-xl font-black text-brand-dark bg-accent-gradient transition-all duration-200 hover:shadow-glow-accent flex items-center justify-center gap-3 transform hover:-translate-y-0.5 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
             >
               {t('hero.cta')} <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
             </button>
@@ -71,7 +68,7 @@ export default function Hero({ onCta }) {
         </div>
 
         <div className="relative group perspective-1000 min-w-0 overflow-hidden rounded-3xl">
-          <div className="absolute -inset-10 bg-gradient-to-r from-brand-accent to-indigo-500 rounded-[60px] opacity-5 blur-2xl md:opacity-10 md:blur-3xl group-hover:opacity-10 md:group-hover:opacity-20 transition-opacity duration-500 pointer-events-none" aria-hidden />
+          <div className="absolute -inset-10 bg-gradient-to-r from-brand-accent to-brand-dark rounded-[60px] opacity-5 blur-2xl md:opacity-10 md:blur-3xl group-hover:opacity-10 md:group-hover:opacity-20 transition-opacity duration-500 pointer-events-none" aria-hidden />
           <div className="relative bg-brand-dark rounded-3xl p-6 sm:p-10 border border-white/10 shadow-soft-lg overflow-x-auto font-mono min-w-0">
             <div className="flex items-center justify-between mb-12">
               <div className="flex items-center gap-3">
