@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Promptų Anatomija – DI Operating System",
-    "description": "Išmok valdyti DI kaip operacinę sistemą. Promptų inžinerija, automatizacija ir DI agentai realiems verslo rezultatams. Promptų Anatomija – DI Operating System."
+    "title": "Promptų Anatomija – DI Operacinė Sistema",
+    "description": "Išmok valdyti DI kaip operacinę sistemą. Promptų inžinerija, automatizacija ir DI agentai realiems verslo rezultatams. Promptų Anatomija – DI Operacinė Sistema."
   },
   "common": {
     "skipToContent": "Pereiti prie turinio",
@@ -90,7 +90,7 @@
         "count": "100+ Repo",
         "url": "https://ditreneris.github.io/biblioteka/",
         "outcome": "Paruošti promptai ir workflow šablonai.",
-        "bullets": ["100+ promptų", "AI workflow"],
+        "bullets": ["100+ promptų", "DI workflow"],
         "ctaLabel": "Atidaryti biblioteką"
       },
       {
@@ -98,7 +98,7 @@
         "count": "150+ Repo",
         "url": "https://ditreneris.github.io/marketingas/",
         "outcome": "Rinkodaros turinio promptai ir šablonai.",
-        "bullets": ["Turinio planavimas", "AI šablonai"],
+        "bullets": ["Turinio planavimas", "DI šablonai"],
         "ctaLabel": "Kurti turinį",
         "primary": true
       },
@@ -116,7 +116,7 @@
         "url": "https://ditreneris.github.io/ceo/",
         "outcome": "Vadovams skirti promptai ir šablonai.",
         "bullets": ["Sprendimai", "Operacijos"],
-        "ctaLabel": "Atidaryti operacinį centrą"
+        "ctaLabel": "Atidaryti OC"
       }
     ]
   },
