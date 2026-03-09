@@ -67,21 +67,21 @@
     "processAriaLabel": "Kaip veikia: 6 metodikos blokai",
     "processBlocks": ["META", "INPUT", "OUTPUT", "REASONING", "QUALITY", "ADVANCED"],
     "stat1Number": "115+",
-    "stat1Label": "Promptai",
-    "stat2Number": "60",
-    "stat2Label": "Įrankiai",
+    "stat1Label": "Promptų",
+    "stat2Number": "~60",
+    "stat2Label": "Įrankių",
     "stat3Number": "100",
-    "stat3Label": "Terminai"
+    "stat3Label": "Terminų"
   },
   "methodology": {
-    "sectionLabel": "Operating Model",
+    "sectionLabel": "Veiklos modelis",
     "titleLine1": "Nuspėjamas",
     "titleLine2": "Rezultatas.",
-    "paragraph": "Užtenka atsitiktinių rezultatų. Diegiame inžinerinį mąstymą – kiekviename modulyje: mokymasis → patikrinimas → praktika.",
+    "paragraph": "Užtenka atsitiktinių rezultatų. Siūlome mąstymo grandinę kiekvieno modulio metu: patirtis → patikrinimas → praktika.",
     "items": [
-      { "title": "Skaidymas", "desc": "Problemos dekonstrukcija į atominius elementus, kuriuos DI interpretuoja be klaidų." },
-      { "title": "Inžinerija", "desc": "Sluoksniuota konstrukcija, naudojant CoT (Chain of Thought) ir Few-shot inžineriją." },
-      { "title": "Skalės augimas", "desc": "Sukurta sistema integruojama į verslo procesus, taupant 10-20 valandų per savaitę." }
+      { "title": "Skaidymas", "desc": "Problemos dekonstruojamos ir sudėliojamos į hierarchinę struktūrą, kurią DI interpretuoja be klaidų." },
+      { "title": "Inžinerija", "desc": "Kelių lygių inžinerija, naudojant sisteminius, metodinius ir agentinius promptus." },
+      { "title": "Skalės augimas", "desc": "Sistema lengvai integruojama į verslo procesus, taupant 10-20 valandų per savaitę." }
     ]
   },
   "ecosystem": {
@@ -149,8 +149,9 @@
     "loading": "Kraunama...",
     "allPlansInclude": "Visi planai apima:",
     "features": [
-      "Promptų Repo (500+ promptų ir šablonų)",
+      "Promptų Repo (500+ šablonų ir įrankių)",
       "6 blokų sistema",
+      "Konteksto inžinerija",
       "Sertifikatas (nuo 70% įvertinimo)",
       "Bendruomenė (WhatsApp)",
       "Lifetime prieiga"
@@ -168,7 +169,7 @@
   },
   "footer": {
     "brand": "Promptų Anatomija",
-    "tagline": "Diegiame inžinerinę DI darbo kultūrą. Tai ne kursai – tai operacinė sistema tavo verslo ateičiai.",
+    "tagline": "Diegiame inžinerinę DI darbo kultūrą. Promptų anatomija – tai ne mokymai, tai – operacinė sistema tavo ateičiai.",
     "system": "System",
     "network": "Network",
     "ecosystem": "Ekosistema",

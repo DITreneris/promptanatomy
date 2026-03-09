@@ -15,7 +15,8 @@ Geriausių praktikų (GitHub, Vercel, Linear, Stripe stilius) pritaikymas projek
 | **Smooth scroll** | Natūralus anchor scroll | `index.css`: `html { scroll-behavior: smooth }` + `prefers-reduced-motion` override |
 | **Button micro-feedback** | Jausmas „paspaudimas“ | CTA/mygtukai: `active:scale-[0.98]`, `duration-200` |
 | **Card hover** | Kortelės atrodo paspaudžiamos | Pricing, Methodology, Ecosystem: `hover:-translate-y-0.5`, `hover:shadow-soft-lg`, `duration-300` |
-| **Shadow hierarchy** | Šviesūs, ne „plokšti“ šešėliai | `shadow-soft`, `shadow-soft-lg`, `shadow-glow-accent` (Tailwind extend) |
+| **Shadow hierarchy** | Šviesūs, ne „plokšti“ šešėliai | `shadow-soft`, `shadow-soft-lg`, `shadow-soft-top`, `shadow-glow-accent` (Tailwind extend) |
+| **Footer gylis** | Mažesnis ryškumas apačioje, atskyrimas nuo turinio | Footer: `bg-slate-50` + `shadow-soft-top` + `border-t border-slate-100` |
 | **Transition duration** | Vienodas atsakas į hover/focus | `duration-200` mygtukams, `duration-300` kortelėms |
 | **Trust bar** | Skaitomumas be per didelio „pilko“ | Pricing trust eilutė: nuo `opacity-40 grayscale` pakeista į `text-slate-400` |
 | **Reduced motion** | Prieinamumas vartotojams su jautria vestibular sistema | `index.css`: animacijos/transition sumažinami |

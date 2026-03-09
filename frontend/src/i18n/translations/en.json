@@ -68,7 +68,7 @@
     "processBlocks": ["META", "INPUT", "OUTPUT", "REASONING", "QUALITY", "ADVANCED"],
     "stat1Number": "115+",
     "stat1Label": "Prompts",
-    "stat2Number": "60",
+    "stat2Number": "~60",
     "stat2Label": "Tools",
     "stat3Number": "100",
     "stat3Label": "Terms"
@@ -151,6 +151,7 @@
     "features": [
       "Prompt Repo (500+ prompts and templates)",
       "6-block system",
+      "Context engineering",
       "Certificate (from 70% score)",
       "Community (WhatsApp)",
       "Lifetime access"
