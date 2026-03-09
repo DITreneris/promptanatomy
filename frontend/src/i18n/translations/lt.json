@@ -81,7 +81,7 @@
   },
   "ecosystem": {
     "title": "Vertikalūs varikliai",
-    "paragraph": "Viena DI operacinė sistema – keturi darbo kontekstai: biblioteka, turinys, personalas, vadovybė.",
+    "paragraph": "Viena DI operacinė sistema. Keturi darbo kontekstai.",
     "stableLabel": "v2.4 Stable",
     "ctaOpen": "Atidaryti sistemą",
     "items": [
@@ -90,7 +90,7 @@
         "count": "100+ Repo",
         "url": "https://ditreneris.github.io/biblioteka/",
         "outcome": "Paruošti promptai ir workflow šablonai.",
-        "bullets": ["100+ promptų", "Šablonai", "ChatGPT"],
+        "bullets": ["100+ promptų", "AI workflow"],
         "ctaLabel": "Atidaryti biblioteką"
       },
       {
@@ -98,8 +98,8 @@
         "count": "150+ Repo",
         "url": "https://ditreneris.github.io/marketingas/",
         "outcome": "Rinkodaros turinio promptai ir šablonai.",
-        "bullets": ["Turinio planavimas", "Šablonai", "Persona"],
-        "ctaLabel": "Atidaryti sistemą",
+        "bullets": ["Turinio planavimas", "AI šablonai"],
+        "ctaLabel": "Kurti turinį",
         "primary": true
       },
       {
@@ -107,16 +107,16 @@
         "count": "120+ Repo",
         "url": "https://ditreneris.github.io/personalas/",
         "outcome": "Atrankos ir įvertinimo promptai.",
-        "bullets": ["Skelbimai", "Įvertinimas", "Interviu"],
-        "ctaLabel": "Atidaryti sistemą"
+        "bullets": ["Skelbimai", "Įvertinimas"],
+        "ctaLabel": "Vertinti kandidatus"
       },
       {
         "title": "DI operacinis centras (vadovybė)",
         "count": "Vadovybė",
         "url": "https://ditreneris.github.io/ceo/",
         "outcome": "Vadovams skirti promptai ir šablonai.",
-        "bullets": ["Sprendimai", "Operacijos", "Struktūra"],
-        "ctaLabel": "Atidaryti centrą"
+        "bullets": ["Sprendimai", "Operacijos"],
+        "ctaLabel": "Atidaryti operacinį centrą"
       }
     ]
   },

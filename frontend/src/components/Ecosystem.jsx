@@ -32,17 +32,16 @@ export default function Ecosystem() {
       <div className="max-w-7xl mx-auto relative z-10 min-w-0">
         <div className="text-center mb-28">
           <h2 className="text-4xl md:text-6xl font-black text-white mb-8 tracking-tighter">{t('ecosystem.title')}</h2>
-          <p className="text-slate-300 text-lg max-w-2xl mx-auto font-medium">
+          <p className="text-slate-300 text-lg max-w-[600px] mx-auto font-medium mt-3 leading-relaxed">
             {t('ecosystem.paragraph')}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {items.map((item, i) => {
-            const hasOutcome = typeof item.outcome === 'string' && item.outcome.trim().length > 0
             const hasBullets = Array.isArray(item.bullets) && item.bullets.length > 0
             const ctaLabel = (typeof item.ctaLabel === 'string' && item.ctaLabel.trim()) || (typeof t('ecosystem.ctaOpen') === 'string' && t('ecosystem.ctaOpen').trim()) || null
-            const useCtaLayout = hasOutcome || hasBullets || ctaLabel
+            const useCtaLayout = hasBullets || ctaLabel
 
             const cardBaseClass = "group relative rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
             const cardClass = `${cardBaseClass} p-10 ${useCtaLayout ? '' : 'block'}`
@@ -51,34 +50,21 @@ export default function Ecosystem() {
             const content = (
               <>
                 <div
-                  className="absolute -bottom-10 -right-10 w-32 h-32 blur-[60px] opacity-20 transition-opacity group-hover:opacity-40"
-                  style={{ backgroundColor: item.color }}
+                  className="absolute -bottom-10 -right-10 w-32 h-32 blur-[60px] opacity-20 transition-opacity group-hover:opacity-40 bg-white/5"
                 />
                 <div
-                  className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-2xl transition-transform group-hover:scale-110 ${useCtaLayout ? 'mb-6' : 'mb-24'}`}
-                  style={{ backgroundColor: item.color }}
+                  className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-2xl transition-all group-hover:scale-110 bg-white/10 ring-2 ring-transparent group-hover:ring-2 group-hover:ring-brand-accent ${useCtaLayout ? 'mb-6' : 'mb-24'}`}
                 >
                   {item.icon}
                 </div>
-                <span className="text-xs font-black uppercase tracking-[0.2em] text-white/40 mb-2 block" aria-hidden="true">{i + 1} / {items.length}</span>
                 <h4 className={titleClass}>{item.title}</h4>
-                {hasOutcome && (
-                  <p className="text-slate-300 text-sm mb-3">{item.outcome}</p>
-                )}
                 {hasBullets && (
-                  <ul className="list-disc list-inside text-slate-400 text-sm space-y-1 mb-4">
-                    {(item.bullets.slice(0, 3)).map((bullet, bi) => (
+                  <ul className="list-disc list-inside text-slate-400 text-sm space-y-2 leading-relaxed mb-4">
+                    {(item.bullets.slice(0, 2)).map((bullet, bi) => (
                       <li key={bi}>{bullet}</li>
                     ))}
                   </ul>
                 )}
-                <div className={`flex items-center gap-2 ${useCtaLayout ? 'mb-4' : ''}`}>
-                  <span className="text-xs font-black uppercase tracking-[0.25em] opacity-60" style={{ color: item.color }}>
-                    {item.count}
-                  </span>
-                  <div className="w-1 h-1 rounded-full bg-white/20" />
-                  <span className="text-xs font-black uppercase tracking-[0.25em] text-white/40">{t('ecosystem.stableLabel')}</span>
-                </div>
                 {useCtaLayout && ctaLabel && item.url && (
                   <a
                     href={item.url}

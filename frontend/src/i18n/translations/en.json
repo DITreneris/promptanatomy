@@ -81,7 +81,7 @@
   },
   "ecosystem": {
     "title": "Vertical Engines",
-    "paragraph": "One system, four work verticals: library, content, HR, leadership.",
+    "paragraph": "One system. Four work verticals.",
     "stableLabel": "v2.4 Stable",
     "ctaOpen": "Open system",
     "items": [
@@ -90,7 +90,7 @@
         "count": "100+ Repo",
         "url": "https://ditreneris.github.io/biblioteka/",
         "outcome": "Ready-made prompts and workflow templates.",
-        "bullets": ["100+ prompts", "Templates", "ChatGPT"],
+        "bullets": ["100+ prompts", "AI workflow"],
         "ctaLabel": "Open library"
       },
       {
@@ -98,8 +98,8 @@
         "count": "150+ Repo",
         "url": "https://ditreneris.github.io/marketingas/",
         "outcome": "Marketing content prompts and templates.",
-        "bullets": ["Content planning", "Templates", "Personas"],
-        "ctaLabel": "Open system",
+        "bullets": ["Content planning", "AI templates"],
+        "ctaLabel": "Create content",
         "primary": true
       },
       {
@@ -107,16 +107,16 @@
         "count": "120+ Repo",
         "url": "https://ditreneris.github.io/personalas/",
         "outcome": "Recruitment and assessment prompts.",
-        "bullets": ["Job ads", "Assessment", "Interviews"],
-        "ctaLabel": "Open system"
+        "bullets": ["Job ads", "Assessment"],
+        "ctaLabel": "Assess candidates"
       },
       {
         "title": "Operations center (CEO/COO)",
         "count": "CEO/COO",
         "url": "https://ditreneris.github.io/ceo/",
         "outcome": "Prompts and templates for leadership.",
-        "bullets": ["Decisions", "Operations", "Structure"],
-        "ctaLabel": "Open center"
+        "bullets": ["Decisions", "Operations"],
+        "ctaLabel": "Open operations center"
       }
     ]
   },
