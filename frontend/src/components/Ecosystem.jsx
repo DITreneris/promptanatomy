@@ -24,7 +24,7 @@ export default function Ecosystem() {
         }
       })
     : []
-  const items = [...rawItems].sort((a, b) => (b.primary ? 1 : 0) - (a.primary ? 1 : 0))
+  const items = rawItems
 
   return (
     <section id="ekosistema" className="py-32 bg-brand-dark px-4 sm:px-6 relative overflow-hidden">
@@ -39,15 +39,14 @@ export default function Ecosystem() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {items.map((item, i) => {
-            const isPrimary = item.primary === true
             const hasOutcome = typeof item.outcome === 'string' && item.outcome.trim().length > 0
             const hasBullets = Array.isArray(item.bullets) && item.bullets.length > 0
             const ctaLabel = (typeof item.ctaLabel === 'string' && item.ctaLabel.trim()) || (typeof t('ecosystem.ctaOpen') === 'string' && t('ecosystem.ctaOpen').trim()) || null
             const useCtaLayout = hasOutcome || hasBullets || ctaLabel
 
             const cardBaseClass = "group relative rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
-            const cardClass = `${cardBaseClass} ${isPrimary ? 'p-12 lg:col-span-2' : 'p-10'} ${useCtaLayout ? '' : 'block'}`
-            const titleClass = isPrimary ? 'text-2xl font-black text-white mb-2 tracking-tight' : 'text-xl font-black text-white mb-2 tracking-tight'
+            const cardClass = `${cardBaseClass} p-10 ${useCtaLayout ? '' : 'block'}`
+            const titleClass = "text-xl font-black text-white mb-2 tracking-tight"
 
             const content = (
               <>
@@ -61,6 +60,7 @@ export default function Ecosystem() {
                 >
                   {item.icon}
                 </div>
+                <span className="text-xs font-black uppercase tracking-[0.2em] text-white/40 mb-2 block" aria-hidden="true">{i + 1} / {items.length}</span>
                 <h4 className={titleClass}>{item.title}</h4>
                 {hasOutcome && (
                   <p className="text-slate-300 text-sm mb-3">{item.outcome}</p>

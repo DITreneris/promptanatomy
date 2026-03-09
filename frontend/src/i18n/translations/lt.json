@@ -81,7 +81,7 @@
   },
   "ecosystem": {
     "title": "Vertikalūs varikliai",
-    "paragraph": "Prisijunk prie specifinių darbo sistemų, paruoštų tavo rinkai.",
+    "paragraph": "Viena DI operacinė sistema – keturi darbo kontekstai: biblioteka, turinys, personalas, vadovybė.",
     "stableLabel": "v2.4 Stable",
     "ctaOpen": "Atidaryti sistemą",
     "items": [
