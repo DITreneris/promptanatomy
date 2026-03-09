@@ -40,7 +40,7 @@ export default function Navbar({ onCtaClick }) {
   return (
     <nav
       className={`fixed top-0 w-full z-[100] transition-all duration-500 ${
-        scrolled ? 'py-3 bg-white/70 backdrop-blur-2xl border-b border-slate-200 shadow-sm' : 'py-6 bg-transparent'
+        scrolled ? 'py-3 bg-white/70 backdrop-blur-2xl border-b border-slate-200 shadow-sm' : 'py-4 md:py-6 bg-transparent'
       }`}
       aria-label={t('nav.ariaNav')}
     >
@@ -54,7 +54,7 @@ export default function Navbar({ onCtaClick }) {
               {t('nav.brandPromptu')} <span className="text-brand-accent">{t('nav.brandAnatomija')}</span>
               <span className="hidden sm:inline-block px-1.5 py-0.5 rounded bg-slate-100 text-xs font-black text-slate-400 align-middle">{t('nav.version')}</span>
             </span>
-            <span className="text-xs font-black uppercase tracking-[0.2em] sm:tracking-[0.4em] text-slate-400 break-words">{t('nav.brandTagline')}</span>
+            <span className="text-xs font-black uppercase tracking-[0.2em] sm:tracking-[0.4em] text-slate-500 sm:text-slate-400 break-words">{t('nav.brandTagline')}</span>
           </div>
         </a>
 
@@ -130,7 +130,7 @@ export default function Navbar({ onCtaClick }) {
       >
         {/* Overlay without backdrop-blur to avoid mobile GPU freeze */}
         <div
-          className={`absolute inset-0 bg-black/50 transition-opacity duration-300 ${mobileOpen ? 'opacity-100' : 'opacity-0'}`}
+          className={`absolute inset-0 bg-black/60 transition-opacity duration-300 ${mobileOpen ? 'opacity-100' : 'opacity-0'}`}
           onClick={closeMobile}
           aria-hidden
         />

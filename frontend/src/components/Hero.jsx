@@ -67,38 +67,40 @@ export default function Hero({ onCta }) {
           </div>
         </div>
 
-        <div className="relative group perspective-1000 min-w-0 overflow-hidden rounded-3xl">
-          <div className="absolute -inset-10 bg-gradient-to-r from-brand-accent to-brand-dark rounded-[60px] opacity-5 blur-2xl md:opacity-10 md:blur-3xl group-hover:opacity-10 md:group-hover:opacity-20 transition-opacity duration-500 pointer-events-none" aria-hidden />
-          <div className="relative bg-brand-dark rounded-3xl p-6 sm:p-10 border border-white/10 shadow-soft-lg overflow-x-auto font-mono min-w-0">
-            <div className="flex items-center justify-between mb-12">
-              <div className="flex items-center gap-3">
+        <div className="relative group perspective-1000 min-w-0 rounded-3xl">
+          <div className="absolute inset-0 overflow-hidden rounded-3xl" aria-hidden>
+            <div className="absolute -inset-10 bg-gradient-to-r from-brand-accent to-brand-dark rounded-[60px] opacity-5 blur-2xl md:opacity-10 md:blur-3xl group-hover:opacity-10 md:group-hover:opacity-20 transition-opacity duration-500 pointer-events-none" />
+          </div>
+          <div className="relative bg-brand-dark rounded-3xl p-5 sm:p-10 border border-white/10 shadow-soft-lg overflow-x-auto overflow-y-visible font-mono min-w-0">
+            <div className="flex items-center justify-between mb-12 gap-2">
+              <div className="flex items-center gap-3 shrink-0">
                 <div className="w-3 h-3 rounded-full bg-rose-500/80"></div>
                 <div className="w-3 h-3 rounded-full bg-amber-500/80"></div>
                 <div className="w-3 h-3 rounded-full bg-emerald-500/80"></div>
               </div>
-              <div className="flex items-center gap-3">
-                <div className="px-2 py-1 rounded bg-white/5 border border-white/10 text-xs text-slate-500 font-black uppercase tracking-widest flex items-center gap-1.5">
+              <div className="flex items-center gap-2 min-w-0">
+                <div className="px-2 py-1 rounded bg-white/5 border border-white/10 text-xs text-slate-500 font-black uppercase tracking-widest flex items-center gap-1.5 shrink-0">
                   <Activity size={10} className="text-emerald-500" /> {t('hero.liveFeed')}
                 </div>
-                <div className="text-xs font-bold text-slate-500 uppercase tracking-widest">{t('hero.scriptName')}</div>
+                <div className="px-2 py-1 rounded bg-white/5 border border-white/10 text-xs text-slate-500 font-bold uppercase tracking-widest truncate">{t('hero.scriptName')}</div>
               </div>
             </div>
 
             <div className="space-y-6">
               <div className="group/line cursor-default transition-all hover:translate-x-1">
-                <div className="text-xs text-slate-600 mb-1 font-black tracking-[0.2em]">{t('hero.codeLine1')}</div>
+                <div className="text-sm sm:text-xs text-slate-600 mb-1 font-black tracking-[0.2em]">{t('hero.codeLine1')}</div>
                 <div className="text-sm border-l-2 border-brand-accent/50 group-hover/line:border-brand-accent transition-colors duration-200 pl-5 py-1 break-words min-w-0">
                   <span className="text-brand-accent font-black">{t('hero.codeRole')}</span><span className="text-slate-300 italic opacity-80 group-hover/line:opacity-100 break-all">&quot;{t('hero.codeRoleValue')}&quot;</span>
                 </div>
               </div>
               <div className="group/line cursor-default transition-all hover:translate-x-1">
-                <div className="text-xs text-slate-600 mb-1 font-black tracking-[0.2em]">{t('hero.codeLine2')}</div>
+                <div className="text-sm sm:text-xs text-slate-600 mb-1 font-black tracking-[0.2em]">{t('hero.codeLine2')}</div>
                 <div className="text-sm border-l-2 border-indigo-500/50 group-hover/line:border-indigo-500 transition-colors pl-5 py-1 break-words min-w-0">
                   <span className="text-indigo-400 font-black">{t('hero.codeContext')}</span><span className="text-slate-300 italic opacity-80 group-hover/line:opacity-100 break-all">&quot;{t('hero.codeContextValue')}&quot;</span>
                 </div>
               </div>
               <div className="group/line cursor-default transition-all hover:translate-x-1">
-                <div className="text-xs text-slate-600 mb-1 font-black tracking-[0.2em]">{t('hero.codeLine3')}</div>
+                <div className="text-sm sm:text-xs text-slate-600 mb-1 font-black tracking-[0.2em]">{t('hero.codeLine3')}</div>
                 <div className="text-sm border-l-2 border-emerald-500/50 group-hover/line:border-emerald-500 transition-colors pl-5 py-1 break-words min-w-0">
                   <span className="text-emerald-400 font-black">{t('hero.codeSchema')}</span><span className="text-slate-300 italic opacity-80 group-hover/line:opacity-100 break-all">&quot;{t('hero.codeSchemaValue')}&quot;</span>
                 </div>

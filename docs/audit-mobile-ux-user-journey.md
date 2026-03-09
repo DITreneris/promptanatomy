@@ -42,9 +42,20 @@
 | Problema | Vieta | Rekomendacija |
 |----------|--------|----------------|
 | **Hero antraštė** | `Hero.jsx` – `text-4xl sm:text-5xl md:text-6xl lg:text-7xl` | Dabar scale nuoseklus; ant labai mažų (&lt;360px) galima svarstyti `text-3xl` pradžioje. |
-| **Hero code block** | Dešinė kolona – `text-xs` labeliai | Mobilėje skaitytumą pagerintų `text-sm` labeliams (optional). |
 | **Footer grid** | `Footer.jsx` – `md:grid-cols-4`, `gap-16` | Mobilėje viena kolona; gap jau 16. |
 | **Skip link** | `HomePage.jsx` | Focus order logiškas (skip → logo → nav → CTA). |
+
+### 1.5 Mobile UI pataisymai (2026-03)
+
+| Vieta | Problema | Įgyvendinta |
+|-------|----------|-------------|
+| **Hero kodo blokas** | Tekstas mobilėje sutrumpintas („…stra...“) dėl `overflow-hidden` ant wrapper. | `overflow-hidden` perkeltas tik ant glow wrapper (apkarpomas tik dekoratyvus gradientas); turinio blokas su `overflow-x-auto overflow-y-visible` ir `min-w-0` – tekstas laisvai wrap’ina. |
+| **Hero kodo blokas** | Per mažas padding mobilėje. | `p-6 sm:p-10` → `p-5 sm:p-10`. |
+| **Hero kodo viršus** | LiveFeed ir scriptName skirtingo stiliaus (vienas pill, kitas plain). | Abiem vienodas pill stilius (`bg-white/5 border border-white/10`), `gap-2` tarp jų; scriptName su `truncate` jei per ilgas. |
+| **Hero kodo labeliai** | `text-xs` mobilėje sunkiau skaitomi. | Labeliai (01. Rūta, 02. Input, 03. Output): `text-sm sm:text-xs`. |
+| **Navbar tagline** | „DI OPERACINĖ SISTEMA“ – `text-slate-400` per silpnas ant baltos. | Mobilėje `text-slate-500`, nuo `sm` – `text-slate-400`. |
+| **Navbar** | Viršutinis padding kai ne scrolled. | `py-6` → `py-4 md:py-6`. |
+| **Drawer overlay** | Stipresnis atskyrimas nuo puslapio. | Overlay `bg-black/50` → `bg-black/60`. |
 
 ---
 
