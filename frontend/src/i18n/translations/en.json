@@ -62,11 +62,16 @@
   },
   "whatIs": {
     "title": "What is Prompt Anatomy",
-    "intro": "It's an AI operating system for effective work. The system teaches you to formulate structured prompts so that answers are clear, predictable and verifiable – standardized and repeatable. It's based on the 6-block methodology: META → INPUT → OUTPUT → REASONING → QUALITY → ADVANCED.",
-    "listLabel": "In the system:",
-    "bullet1": "115+ ready prompts and templates",
-    "bullet2": "60 AI tools catalog",
-    "bullet3": "100 key AI terms glossary"
+    "valueLine1": "It's an AI operating system for effective work.",
+    "valueLine2": "The system teaches you to formulate structured prompts so that answers are clear, predictable and verifiable – standardized and repeatable.",
+    "processAriaLabel": "How it works: 6 methodology blocks",
+    "processBlocks": ["META", "INPUT", "OUTPUT", "REASONING", "QUALITY", "ADVANCED"],
+    "stat1Number": "115+",
+    "stat1Label": "Prompts",
+    "stat2Number": "60",
+    "stat2Label": "Tools",
+    "stat3Number": "100",
+    "stat3Label": "Terms"
   },
   "methodology": {
     "sectionLabel": "Operating Model",

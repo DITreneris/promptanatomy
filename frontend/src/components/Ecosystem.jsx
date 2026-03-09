@@ -27,10 +27,10 @@ export default function Ecosystem() {
   const items = rawItems
 
   return (
-    <section id="ekosistema" className="py-32 bg-brand-dark px-4 sm:px-6 relative overflow-hidden">
+    <section id="ekosistema" className="py-20 md:py-32 bg-brand-dark px-4 sm:px-6 relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
       <div className="max-w-7xl mx-auto relative z-10 min-w-0">
-        <div className="text-center mb-28">
+        <div className="text-center mb-16 md:mb-28">
           <h2 className="text-4xl md:text-6xl font-black text-white mb-8 tracking-tighter">{t('ecosystem.title')}</h2>
           <p className="text-slate-300 text-lg max-w-[600px] mx-auto font-medium mt-3 leading-relaxed">
             {t('ecosystem.paragraph')}

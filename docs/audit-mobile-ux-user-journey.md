@@ -18,15 +18,33 @@
 - **Overflow:** `HomePage` turi `overflow-x-hidden` – mažina horizontalų scroll mobilėje.
 - **Reduced motion:** `index.css` – `prefers-reduced-motion: reduce` sumažina animacijas.
 
-### 1.2 Trūkumai / rekomendacijos
+### 1.2 Explainer sekcija (WhatIsPromptAnatomy) – mobilė
+
+| Aspektas | Įgyvendinta |
+|----------|-------------|
+| **TITLE** | `text-4xl md:text-5xl` – skaitoma ant mažų ekranų. |
+| **VALUE** | 2 eilutės, `max-w-[720px]`, `text-lg` – pakanka vietos ir kontrasto. |
+| **PROCESS (pills)** | `flex flex-wrap justify-center gap-4` – 6 pill'ai su rodyklėmis persikelia į kelias eilutes; `gap-4` (16px) atitinka touch spacing. |
+| **PROOF (stat kortelės)** | `grid-cols-1 sm:grid-cols-3` – &lt;640px viena kolona (skaičius + labelis po vieną), nuo sm – trys stulpeliai; `gap-8 sm:gap-12` – mažesnis tarpas mobilėje. |
+| **Section padding** | `py-20 md:py-28` – vienoda su kitomis sekcijomis, mažiau vertikalaus scroll. |
+| **A11y** | PROCESS turi `aria-label` (processAriaLabel); PROOF naudoja `<figure>`/`<figcaption>` semantiką. |
+
+### 1.3 Kitos sekcijos – mobilūs pataisymai (įgyvendinta)
+
+| Vieta | Pakeitimas |
+|-------|------------|
+| **Methodology** | `py-32` → `py-20 md:py-32`; header `mb-24` → `mb-16 md:mb-24`; grid `gap-12` → `gap-8 md:gap-12`; kortelės `p-12` → `p-8 md:p-12`; H3 `text-5xl md:text-7xl` → `text-4xl md:text-5xl lg:text-7xl`. |
+| **Ecosystem** | `py-32` → `py-20 md:py-32`; header `mb-28` → `mb-16 md:mb-28`. |
+| **Pricing** | Plano etiketė `text-[10px]` → `text-xs` (skaitomumas, micro-auditas). |
+
+### 1.4 Trūkumai / rekomendacijos (likusios)
 
 | Problema | Vieta | Rekomendacija |
 |----------|--------|----------------|
-| **Hero antraštė per didelė ant mažų ekranų** | `Hero.jsx` – `text-6xl` (mobile) iki `md:text-[94px]` | Ant labai mažų ekranų (pvz. &lt;360px) `text-6xl` gali būti per didelis; apsvarstyti `text-4xl sm:text-5xl md:text-6xl lg:text-[94px]` arba `clamp()` per Tailwind arbitrary value. |
-| **Hero code block** | Dešinė kolona – daug teksto, maži šriftai (`text-[9px]`, `text-[10px]`) | Mobilėje skaitytumą pagerintų šiek tiek didesnis fontas arba sutrumpintas turinys tik mobile. |
-| **Pricing kortelės** | `Pricing.jsx` – `md:grid-cols-2 lg:grid-cols-4` | Ant mažų ekranų viena kolona – gerai; galima pridėti horizontalų scroll su snap (optional) jei norima palyginti planus vieno ekrano ribose. |
-| **Footer grid** | `Footer.jsx` – `md:grid-cols-4`, `gap-24` | Mobilėje viena kolona, `gap-24` gali atrodyti per didelis; galima `gap-12 md:gap-24`. |
-| **Skip link pozicija** | `HomePage.jsx` – `-translate-y-24 focus:translate-y-0` | Veikia; įsitikinti, kad focus order (Tab) yra logiškas po Navbar (skip → logo → nav → CTA). |
+| **Hero antraštė** | `Hero.jsx` – `text-4xl sm:text-5xl md:text-6xl lg:text-7xl` | Dabar scale nuoseklus; ant labai mažų (&lt;360px) galima svarstyti `text-3xl` pradžioje. |
+| **Hero code block** | Dešinė kolona – `text-xs` labeliai | Mobilėje skaitytumą pagerintų `text-sm` labeliams (optional). |
+| **Footer grid** | `Footer.jsx` – `md:grid-cols-4`, `gap-16` | Mobilėje viena kolona; gap jau 16. |
+| **Skip link** | `HomePage.jsx` | Focus order logiškas (skip → logo → nav → CTA). |
 
 ---
 
@@ -95,12 +113,33 @@
 
 ---
 
-## 4. Santrauka
+## 4. Vartotojo kelionė – matomumas ir suprantamumas (mobilė)
+
+Kelionė nuo LP iki konversijos; kiekvienas žingsnis turi būti **matomas** ir **suprantamas** be per didelio scroll ar painiavos.
+
+| Žingsnis | Kas matoma / suprantama | Mobilūs patikrinimai |
+|----------|--------------------------|----------------------|
+| **1. Įėjimas (LP)** | Navbar (logo, hamburgeris, CTA), Hero (antraštė, vertė, CTA) | Logo ir CTA matomi; hamburgeris atidaro meniu su LT/EN, nuorodomis, CTA. |
+| **2. Kas tai / Kaip veikia / Kas viduje** | Explainer: TITLE → VALUE → PROCESS (pills) → PROOF (3 skaičiai) | Viena kolona; pills persikelia; stat kortelės po vieną (&lt;640px) arba trys (≥640px). |
+| **3. Metodologija** | „Operating Model“ + 3 kortelės | Mažesnis padding ir H3 mobilėje; kortelės viena po kitos. |
+| **4. Ekosistema** | 4 vertikalai su CTA | Grid 1→2→4; CTA min-h-[44px]. |
+| **5. Kainodara** | Check access + planų kortelės | Viena kolona; plano etiketė text-xs; mygtukai 48px. |
+| **6. Pirkimas / Success / Cancel** | Redirect į Stripe; grįžus – pranešimas | Kalba išlieka; breadcrumbs aiškūs. |
+| **7. Footer** | Nuorodos, copyright, Privacy/Terms | Viena kolona; touch targets pakanka. |
+
+Explainer struktūra (TITLE → VALUE → PROCESS → PROOF) atitinka „Kas tai → Kaip veikia → Kas viduje“ – vienu scroll matoma produkto mechanika.
+
+---
+
+## 5. Santrauka
 
 | Sritis | Įvertinimas | Prioritetas tobulinti |
 |--------|-------------|------------------------|
-| **Mobilus UI** | Geras: viewport, touch targets, responsive, mobile menu, reduced motion | Hero antraštė ir code block ant labai mažų ekranų; footer gap. |
+| **Mobilus UI** | Geras: viewport, touch targets, responsive, mobile menu; explainer ir sekcijų padding/grid mobilėje | Hero code block šriftas (optional); focus trap. |
 | **UX** | Geras: CTA, klaidos, loading, focus ring, breadcrumbs | Focus trap mobilaus meniu; kontrastas (WCAG); Success teksto išlyga. |
-| **Vartotojo kelionė LT/EN** | Geras: vienoda struktūra, lang/meta/title atnaujinami, success/cancel vertimi | Vertimų raktų simetrijos patikra; Stripe Checkout kalba (backend). |
+| **Vartotojo kelionė LT/EN** | Geras: struktūra, lang/meta/title, success/cancel vertimi | Raktų simetrijos patikra; Stripe kalba (backend). |
+| **Kelionė – matomumas** | Explainer ir sekcijos pritaikytos mobilėje; kelionė nuo Hero iki Footer aiški | Testuoti ant realių įrenginių. |
 
-Rekomenduojama: prioritetu įdiegti focus trap mobilaus meniu ir (jei dar nepadaryta) kontrasto pataisymus; tada – Success teksto išlygą ir Hero/footer smulkesnius mobile pakeitimus.
+**Įgyvendinta (2025-03-09):** Explainer spacing, processAriaLabel, PROOF figure/figcaption; Methodology ir Ecosystem responsive padding/grid; Pricing plan label text-xs; audit papildytas Explainer mobile ir vartotojo kelionės skyriumi.
+
+Rekomenduojama: focus trap mobilaus meniu; kontrasto pataisymai; Success teksto išlyga; Hero code block (optional).

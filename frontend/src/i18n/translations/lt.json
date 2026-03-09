@@ -62,11 +62,16 @@
   },
   "whatIs": {
     "title": "Kas yra Promptų Anatomija",
-    "intro": "Tai DI operacinė sistema efektyviam darbui. Sistema moko formuluoti struktūruotas užklausas, kad atsakymai būtų aiškūs, prognozuojami ir patikrinami – standartizuotai ir pakartojamai. Sistema paremta 6 blokų metodika: META → INPUT → OUTPUT → REASONING → QUALITY → ADVANCED.",
-    "listLabel": "Iš viso sistemoje:",
-    "bullet1": "115+ paruoštų promptų ir šablonų",
-    "bullet2": "60 DI įrankių katalogas",
-    "bullet3": "100 svarbiausių DI terminų žodynas"
+    "valueLine1": "Tai DI operacinė sistema efektyviam darbui.",
+    "valueLine2": "Sistema moko formuluoti struktūruotas užklausas, kad atsakymai būtų aiškūs, prognozuojami ir patikrinami – standartizuotai ir pakartojamai.",
+    "processAriaLabel": "Kaip veikia: 6 metodikos blokai",
+    "processBlocks": ["META", "INPUT", "OUTPUT", "REASONING", "QUALITY", "ADVANCED"],
+    "stat1Number": "115+",
+    "stat1Label": "Promptai",
+    "stat2Number": "60",
+    "stat2Label": "Įrankiai",
+    "stat3Number": "100",
+    "stat3Label": "Terminai"
   },
   "methodology": {
     "sectionLabel": "Operating Model",

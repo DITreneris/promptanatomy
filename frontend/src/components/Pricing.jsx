@@ -63,7 +63,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail }
                   {t('pricing.recommended')}
                 </span>
               )}
-              <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
+              <span className="text-xs font-black uppercase tracking-widest text-slate-400 mb-2">
                 {t(`pricing.plans.${plan.labelKey}`)}
               </span>
               <p className="text-slate-600 font-bold mb-3">{plan.mods} {t('pricing.mods')}</p>

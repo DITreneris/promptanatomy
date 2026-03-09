@@ -10,12 +10,12 @@ export default function Methodology() {
   const itemsWithIcons = Array.isArray(items) ? items.map((item, i) => ({ ...item, icon: ICONS[i] })) : []
 
   return (
-    <section id="metodologija" className="py-32 bg-slate-50 px-4 sm:px-6 border-y border-slate-100 overflow-hidden">
+    <section id="metodologija" className="py-20 md:py-32 bg-slate-50 px-4 sm:px-6 border-y border-slate-100 overflow-hidden">
       <div className="max-w-7xl mx-auto min-w-0">
-        <div className="flex flex-col lg:flex-row justify-between items-end mb-24 gap-12">
+        <div className="flex flex-col lg:flex-row justify-between items-end mb-16 md:mb-24 gap-12">
           <div className="max-w-2xl">
             <h2 className="text-xs font-black uppercase tracking-[0.4em] text-brand-accent mb-8">{t('methodology.sectionLabel')}</h2>
-            <h3 className="text-5xl md:text-7xl font-black text-brand-dark tracking-tighter leading-none">
+            <h3 className="text-4xl md:text-5xl lg:text-7xl font-black text-brand-dark tracking-tighter leading-none">
               {t('methodology.titleLine1')} <br /> {t('methodology.titleLine2')}
             </h3>
           </div>
@@ -24,11 +24,11 @@ export default function Methodology() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {itemsWithIcons.map((item, i) => (
             <div
               key={i}
-              className="group p-12 rounded-3xl bg-white border border-slate-200/50 hover:border-brand-accent/40 transition-all duration-300 hover:shadow-soft-lg hover:-translate-y-0.5"
+              className="group p-8 md:p-12 rounded-3xl bg-white border border-slate-200/50 hover:border-brand-accent/40 transition-all duration-300 hover:shadow-soft-lg hover:-translate-y-0.5"
             >
               <div className="w-16 h-16 rounded-2xl bg-brand-dark text-brand-accent flex items-center justify-center mb-10 transition-all duration-300 group-hover:scale-105 group-hover:shadow-glow-accent">
                 {React.cloneElement(item.icon, { size: 28 })}
