@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { Zap, Menu, X } from 'lucide-react'
 import { GLOSSARY_URL } from '../config'
 import { useLocale } from '../i18n/LocaleContext'
@@ -7,6 +8,7 @@ const FOCUS_RING = 'focus:outline-none focus-visible:ring-2 focus-visible:ring-b
 
 export default function Navbar({ onCtaClick }) {
   const { t, locale, setLocale } = useLocale()
+  const location = useLocation()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -135,6 +137,18 @@ export default function Navbar({ onCtaClick }) {
         <div
           className={`absolute top-0 right-0 h-full w-full max-w-sm bg-white shadow-2xl border-l border-slate-200 flex flex-col pt-24 px-6 transition-transform duration-300 ease-out ${mobileOpen ? 'translate-x-0' : 'translate-x-full'}`}
         >
+          <Link
+            to="/"
+            onClick={() => {
+              closeMobile()
+              if (location.pathname === '/' || location.pathname === '/en') {
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+              }
+            }}
+            className="py-4 text-base font-black uppercase tracking-[0.15em] text-slate-500 hover:text-brand-dark border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded"
+          >
+            {t('common.home')}
+          </Link>
           <div className="mb-6 flex items-center gap-2 p-1 rounded-lg bg-slate-100 border border-slate-200 w-fit">
             <button
               type="button"

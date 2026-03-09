@@ -70,8 +70,8 @@ export default function Hero({ onCta }) {
           </div>
         </div>
 
-        <div className="relative group perspective-1000 min-w-0">
-          <div className="absolute -inset-10 bg-gradient-to-r from-brand-accent to-indigo-500 rounded-[60px] opacity-10 blur-3xl group-hover:opacity-20 transition-opacity duration-500 pointer-events-none" aria-hidden />
+        <div className="relative group perspective-1000 min-w-0 overflow-hidden rounded-3xl">
+          <div className="absolute -inset-10 bg-gradient-to-r from-brand-accent to-indigo-500 rounded-[60px] opacity-5 blur-2xl md:opacity-10 md:blur-3xl group-hover:opacity-10 md:group-hover:opacity-20 transition-opacity duration-500 pointer-events-none" aria-hidden />
           <div className="relative bg-brand-dark rounded-3xl p-6 sm:p-10 border border-white/10 shadow-soft-lg overflow-x-auto font-mono min-w-0">
             <div className="flex items-center justify-between mb-12">
               <div className="flex items-center gap-3">

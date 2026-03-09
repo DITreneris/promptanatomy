@@ -62,7 +62,7 @@
   },
   "whatIs": {
     "title": "Kas yra Promptų Anatomija",
-    "intro": "Tai DI operacinė sistema efektyviam darbui. Sistema moko formuluoti struktūruotas užklausas, kad atsakymai būtų aiškūs, prognozuojami ir patikrinami. Sistema paremta 6 blokų metodika: META → INPUT → OUTPUT → REASONING → QUALITY → ADVANCED.",
+    "intro": "Tai DI operacinė sistema efektyviam darbui. Sistema moko formuluoti struktūruotas užklausas, kad atsakymai būtų aiškūs, prognozuojami ir patikrinami – standartizuotai ir pakartojamai. Sistema paremta 6 blokų metodika: META → INPUT → OUTPUT → REASONING → QUALITY → ADVANCED.",
     "listLabel": "Iš viso sistemoje:",
     "bullet1": "115+ paruoštų promptų ir šablonų",
     "bullet2": "60 DI įrankių katalogas",
@@ -84,10 +84,10 @@
     "paragraph": "Prisijunk prie specifinių darbo sistemų, paruoštų tavo rinkai.",
     "stableLabel": "v2.4 Stable",
     "items": [
-      { "title": "Atrankos sistema (personalas)", "count": "120+ Repo", "url": "https://ditreneris.github.io/personalas/" },
+      { "title": "Biblioteka (DI automatizacija)", "count": "100+ Repo", "url": "https://ditreneris.github.io/biblioteka/" },
       { "title": "Turinio DI sistema (rinkodara)", "count": "150+ Repo", "url": "https://ditreneris.github.io/marketingas/" },
-      { "title": "DI operacinis centras (vadovybė)", "count": "Vadovybė", "url": "https://ditreneris.github.io/ceo/" },
-      { "title": "Biblioteka (DI automatizacija)", "count": "100+ Repo", "url": "https://ditreneris.github.io/biblioteka/" }
+      { "title": "Atrankos sistema (personalas)", "count": "120+ Repo", "url": "https://ditreneris.github.io/personalas/" },
+      { "title": "DI operacinis centras (vadovybė)", "count": "Vadovybė", "url": "https://ditreneris.github.io/ceo/" }
     ]
   },
   "pricing": {

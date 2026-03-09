@@ -1,13 +1,29 @@
 import { Users, Target, Briefcase, Cpu } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
 
-const COLORS = ['#2E9E7E', '#7C5CFF', '#3F6FFF', '#F38A3F']
-const ICONS = [<Users key="u" />, <Target key="t" />, <Briefcase key="b" />, <Cpu key="c" />]
+const FALLBACK_COLORS = ['#2E9E7E', '#7C5CFF', '#3F6FFF', '#F38A3F']
+const FALLBACK_ICONS = [<Users key="u" />, <Target key="t" />, <Briefcase key="b" />, <Cpu key="c" />]
+
+const ECOSYSTEM_META = {
+  'https://ditreneris.github.io/biblioteka/': { color: '#F38A3F', icon: <Cpu key="c" /> },
+  'https://ditreneris.github.io/marketingas/': { color: '#7C5CFF', icon: <Target key="t" /> },
+  'https://ditreneris.github.io/personalas/': { color: '#2E9E7E', icon: <Users key="u" /> },
+  'https://ditreneris.github.io/ceo/': { color: '#3F6FFF', icon: <Briefcase key="b" /> },
+}
 
 export default function Ecosystem() {
   const { t } = useLocale()
   const trItems = t('ecosystem.items') || []
-  const items = Array.isArray(trItems) ? trItems.map((item, i) => ({ ...item, color: COLORS[i], icon: ICONS[i] })) : []
+  const items = Array.isArray(trItems)
+    ? trItems.map((item, i) => {
+        const meta = item.url ? ECOSYSTEM_META[item.url] : null
+        return {
+          ...item,
+          color: meta?.color ?? FALLBACK_COLORS[i % FALLBACK_COLORS.length],
+          icon: meta?.icon ?? FALLBACK_ICONS[i % FALLBACK_ICONS.length],
+        }
+      })
+    : []
 
   return (
     <section id="ekosistema" className="py-32 bg-brand-dark px-4 sm:px-6 relative overflow-hidden">

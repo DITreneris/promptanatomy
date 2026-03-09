@@ -62,7 +62,7 @@
   },
   "whatIs": {
     "title": "What is Prompt Anatomy",
-    "intro": "It's an AI operating system for effective work. The system teaches you to formulate structured prompts so that answers are clear, predictable and verifiable. It's based on the 6-block methodology: META → INPUT → OUTPUT → REASONING → QUALITY → ADVANCED.",
+    "intro": "It's an AI operating system for effective work. The system teaches you to formulate structured prompts so that answers are clear, predictable and verifiable – standardized and repeatable. It's based on the 6-block methodology: META → INPUT → OUTPUT → REASONING → QUALITY → ADVANCED.",
     "listLabel": "In the system:",
     "bullet1": "115+ ready prompts and templates",
     "bullet2": "60 AI tools catalog",
@@ -84,10 +84,10 @@
     "paragraph": "Connect to purpose-built work systems ready for your market.",
     "stableLabel": "v2.4 Stable",
     "items": [
-      { "title": "Recruitment system (HR)", "count": "120+ Repo", "url": "https://ditreneris.github.io/personalas/" },
+      { "title": "Library (AI automation)", "count": "100+ Repo", "url": "https://ditreneris.github.io/biblioteka/" },
       { "title": "Content system (marketing)", "count": "150+ Repo", "url": "https://ditreneris.github.io/marketingas/" },
-      { "title": "Operations center (CEO/COO)", "count": "CEO/COO", "url": "https://ditreneris.github.io/ceo/" },
-      { "title": "Library (AI automation)", "count": "100+ Repo", "url": "https://ditreneris.github.io/biblioteka/" }
+      { "title": "Recruitment system (HR)", "count": "120+ Repo", "url": "https://ditreneris.github.io/personalas/" },
+      { "title": "Operations center (CEO/COO)", "count": "CEO/COO", "url": "https://ditreneris.github.io/ceo/" }
     ]
   },
   "pricing": {
