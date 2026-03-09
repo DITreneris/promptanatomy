@@ -43,9 +43,21 @@ export default function Footer() {
                   {t('footer.support')}
                 </a>
               </li>
-              <li><span title={t('footer.comingSoon')}>{t('footer.linkedIn')} <span className="text-slate-300 font-normal normal-case">{t('footer.comingSoon')}</span></span></li>
-              <li><span title={t('footer.comingSoon')}>{t('footer.discord')} <span className="text-slate-300 font-normal normal-case">{t('footer.comingSoon')}</span></span></li>
-              <li><span title={t('footer.comingSoon')}>{t('footer.systemLog')} <span className="text-slate-300 font-normal normal-case">{t('footer.comingSoon')}</span></span></li>
+              <li>
+                <a href="https://www.linkedin.com/in/staniulis/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">
+                  {t('footer.linkedIn')}
+                </a>
+              </li>
+              <li>
+                <a href="https://x.com/PromptAnatom" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">
+                  {t('footer.twitter')}
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/tomas.staniulis" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">
+                  {t('footer.facebook')}
+                </a>
+              </li>
             </ul>
           </div>
         </div>

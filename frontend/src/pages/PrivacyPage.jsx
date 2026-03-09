@@ -27,12 +27,24 @@ export default function PrivacyPage() {
             <li className="text-brand-dark" aria-current="page">{t('legal.privacyPolicy')}</li>
           </ol>
         </nav>
-        <h1 className="text-3xl md:text-4xl font-black text-brand-dark tracking-tight mb-6">
+        <h1 className="text-3xl md:text-4xl font-black text-brand-dark tracking-tight mb-2">
           {t('legal.privacyPolicy')}
         </h1>
-        <p className="text-slate-600 font-medium leading-relaxed mb-8">
-          {t('legal.privacySkeleton')}
-        </p>
+        <p className="text-slate-500 text-sm mb-8">{t('legal.privacyIntro')}</p>
+        <div className="space-y-8 mb-10">
+          <section>
+            <h2 className="text-lg font-black text-brand-dark uppercase tracking-wide mb-2">{t('legal.privacyPrinciplesTitle')}</h2>
+            <p className="text-slate-600 font-medium leading-relaxed">{t('legal.privacyPrinciples')}</p>
+          </section>
+          <section>
+            <h2 className="text-lg font-black text-brand-dark uppercase tracking-wide mb-2">{t('legal.privacyDataTitle')}</h2>
+            <p className="text-slate-600 font-medium leading-relaxed">{t('legal.privacyData')}</p>
+          </section>
+          <section>
+            <h2 className="text-lg font-black text-brand-dark uppercase tracking-wide mb-2">{t('legal.privacyRightsTitle')}</h2>
+            <p className="text-slate-600 font-medium leading-relaxed">{t('legal.privacyRights')}</p>
+          </section>
+        </div>
         <Link
           to="/"
           className="inline-flex items-center gap-2 text-brand-accent font-bold hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded"
