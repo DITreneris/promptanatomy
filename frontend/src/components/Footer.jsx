@@ -53,11 +53,6 @@ export default function Footer() {
                   {t('footer.twitter')}
                 </a>
               </li>
-              <li>
-                <a href="https://www.facebook.com/tomas.staniulis" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">
-                  {t('footer.facebook')}
-                </a>
-              </li>
             </ul>
           </div>
         </div>
