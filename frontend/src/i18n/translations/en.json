@@ -16,7 +16,8 @@
     "alreadyPurchased": "You already have this plan or higher.",
     "validEmailRequired": "Please enter a valid email",
     "paymentUnavailable": "Payment temporarily unavailable. Try again later.",
-    "networkError": "Network error. Check connection and try again."
+    "networkError": "Network error. Check connection and try again.",
+    "noAccessForEmail": "No access found for this email. Choose a plan below."
   },
   "nav": {
     "ariaNav": "Main navigation",
@@ -167,6 +168,8 @@
     "alreadyHave": "Already have",
     "upgradeTo": "Upgrade to %s",
     "goToTraining": "Go to training",
+    "noAccessFound": "No access found",
+    "noAccessBody": "No access found for this email. Choose a plan below to get started.",
     "modulesLocked": "Modules 7–15 coming in a later phase."
   },
   "footer": {
@@ -224,6 +227,7 @@
     "goToTraining": "Go to training",
     "redirecting": "Redirecting…",
     "redirectError": "Could not prepare the link. You can return home or contact us.",
+    "noSession": "If you just paid – please wait, the system is preparing your access.",
     "metaTitle": "Payment successful",
     "metaDescription": "Thank you for your purchase."
   },

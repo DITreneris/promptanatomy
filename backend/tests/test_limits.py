@@ -2,7 +2,7 @@
 import pytest
 from fastapi import HTTPException
 
-from limits import (
+from token_limits import (
     estimate_tokens,
     get_max_tokens_per_request,
     check_token_limit,

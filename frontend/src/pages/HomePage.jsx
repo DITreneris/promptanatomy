@@ -58,8 +58,13 @@ export default function HomePage({ forceLocale }) {
     try {
       const url = await getTrainingAccessLink(customerEmail)
       window.open(url, '_blank', 'noopener,noreferrer')
-    } catch {
-      window.open('/anatomija/', '_blank', 'noopener,noreferrer')
+    } catch (e) {
+      const msg = e?.message || ''
+      const errorMsg =
+        msg === 'No access found for this email' ? t('errors.noAccessForEmail') :
+        /fetch|network/i.test(msg) ? t('errors.networkError') :
+        t('errors.noAccessForEmail')
+      setAccessError(errorMsg)
     } finally {
       setTrainingLinkLoading(false)
     }
@@ -112,6 +117,7 @@ export default function HomePage({ forceLocale }) {
                 <input
                   id="access-email"
                   type="email"
+                  autoComplete="email"
                   placeholder={t('pricing.emailPlaceholder')}
                   value={customerEmail}
                   onChange={(e) => setCustomerEmail(e.target.value)}
@@ -160,6 +166,23 @@ export default function HomePage({ forceLocale }) {
                   </button>
                 </div>
               )}
+              {access && access.highest_plan === 0 && (
+                <div className="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200">
+                  <p className="text-sm font-bold text-amber-800 mb-1">
+                    {t('pricing.noAccessFound')}
+                  </p>
+                  <p className="text-sm text-amber-700 mb-3">
+                    {t('pricing.noAccessBody')}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={scrollToPricing}
+                    className="block w-full py-3 rounded-xl text-center font-black text-sm text-brand-dark bg-accent-gradient hover:shadow-glow-accent active:scale-[0.98] transition-all duration-200"
+                  >
+                    {t('pricing.getAccess')} →
+                  </button>
+                </div>
+              )}
             </div>
             <Pricing
               onBuy={handleBuy}
@@ -168,6 +191,7 @@ export default function HomePage({ forceLocale }) {
               access={access}
               customerEmail={customerEmail.trim() || undefined}
               onGoToTraining={handleGoToTraining}
+              trainingLinkLoading={trainingLinkLoading}
             />
           </div>
         </section>

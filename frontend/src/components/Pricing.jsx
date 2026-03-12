@@ -11,7 +11,7 @@ const PLANS_ALL = [
 ]
 const PLANS = PLANS_ALL.filter((p) => p.planValue <= PHASE1_MAX_MODULES)
 
-export default function Pricing({ onBuy, loading, error, access, customerEmail, onGoToTraining }) {
+export default function Pricing({ onBuy, loading, error, access, customerEmail, onGoToTraining, trainingLinkLoading }) {
   const { t } = useLocale()
   const features = t('pricing.features') || []
   const highest_plan = access?.highest_plan ?? 0
@@ -87,10 +87,12 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
               {isOwned ? (
                 <button
                   type="button"
+                  disabled={trainingLinkLoading}
+                  aria-busy={trainingLinkLoading}
                   onClick={() => onGoToTraining?.()}
-                  className="mt-auto block w-full py-4 text-center font-bold rounded-2xl border-2 border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 hover:border-emerald-300 transition-all duration-200"
+                  className="mt-auto block w-full py-4 text-center font-bold rounded-2xl border-2 border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 hover:border-emerald-300 transition-all duration-200 disabled:opacity-70"
                 >
-                  {t('pricing.goToTraining')} →
+                  {trainingLinkLoading ? t('pricing.loading') : `${t('pricing.goToTraining')} →`}
                 </button>
               ) : isUpgradeOrBuy ? (
                 <button

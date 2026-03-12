@@ -65,6 +65,11 @@ export default function SuccessPage() {
           <p className="text-slate-500 text-sm mb-6 max-w-sm mx-auto">
             {t('success.emailDisclaimer')}
           </p>
+          {!sessionId && (
+            <p className="text-slate-500 text-sm mb-6 max-w-sm mx-auto">
+              {t('success.noSession')}
+            </p>
+          )}
           {loading && (
             <p className="text-slate-500 text-sm mb-8" aria-live="polite">
               {t('success.redirecting')}

@@ -46,7 +46,7 @@ export default function Navbar({ onCtaClick }) {
       aria-label={t('nav.ariaNav')}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center gap-2 min-w-0">
-        <a href="/" className={`flex items-center gap-3 sm:gap-4 group cursor-pointer min-w-0 ${FOCUS_RING} rounded-lg`}>
+        <Link to="/" className={`flex items-center gap-3 sm:gap-4 group cursor-pointer min-w-0 ${FOCUS_RING} rounded-lg`}>
           <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-brand-dark flex items-center justify-center text-brand-accent shadow-soft-lg group-hover:scale-105 group-hover:shadow-glow-accent transition-all duration-300 border border-white/10 shrink-0">
             <Zap className="w-6 h-6 sm:w-7 sm:h-7 fill-current" />
           </div>
@@ -57,7 +57,7 @@ export default function Navbar({ onCtaClick }) {
             </span>
             <span className="text-xs font-black uppercase tracking-[0.2em] sm:tracking-[0.4em] text-slate-500 sm:text-slate-400 break-words">{t('nav.brandTagline')}</span>
           </div>
-        </a>
+        </Link>
 
         <div className="hidden md:flex items-center space-x-10">
           {navItems.map((item) =>

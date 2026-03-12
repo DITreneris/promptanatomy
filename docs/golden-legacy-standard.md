@@ -2,7 +2,7 @@
 
 **Tikslas:** Fiksuoti veikiančią būseną ir kritinius kelius, kad pakeitimai nepalaužtų to, kas jau veikia. Prieš didesnius refaktorinimus ar naujas funkcijas – patikrinti, kad šis standartas išlieka tenkinamas.
 
-**Data fiksavimo:** 2026-03-08
+**Data fiksavimo:** 2026-03-12
 
 ---
 
@@ -11,6 +11,7 @@
 - LP rodomas, visos sekcijos matomos (Hero, Kas yra Prompt Anatomy, Methodology, Ecosystem, Pricing, Footer).
 - Kalbos perjungimas LT/EN veikia; LT naudoja DI, EN – AI (pagal [language-guidelines-en-lt.md](language-guidelines-en-lt.md)).
 - Checkout srautas: prieigos tikrinimas (email) → planų pasirinkimas → Stripe Checkout → success/cancel puslapiai.
+- Prieigos srautas (susimokėjus): LP „Eiti į mokymus" → `GET /api/generate-access-link?email=...` → magic link su HMAC tokenu → training app atrakina modulius.
 - Backend API ir webhook atsako pagal aprašytas sutartis (žr. skyrių 2–3).
 - Frontend build (`npm run build`) ir backend testai (`pytest`) eina sėkmingai.
 
@@ -36,6 +37,12 @@
 | Jau įsigytas planas (Supabase) | 409, "already" | `TestCreateCheckoutSession.test_already_purchased_returns_409` |
 | `POST /api/webhooks/stripe` be secret (jei reikalaujama) | 503 | (webhook testai pagal backend) |
 | `POST /api/validate-token-limit` | 200 + `ok`, `tokens`; 429 virš limito; 422 per ilgas text | `TestValidateTokenLimit.*` |
+| `GET /api/verify-access` be parametrų | 400, `{"error": "Missing access_tier, expires, or token"}` | (rankinis) |
+| `GET /api/verify-access?access_tier=3&expires=...&token=...` (validus) | 200, `{"access_tier": 3}` | (rankinis) |
+| `GET /api/verify-access` su pasibaigusiu token | 401, `{"error": "Link expired"}` | (rankinis) |
+| `GET /api/generate-access-link` be `email` | 400, `{"detail": "Valid email required"}` | (rankinis) |
+| `GET /api/generate-access-link?email=...` (neturi prieigos) | 404, `{"detail": "No access found for this email"}` | (rankinis) |
+| `GET /api/generate-access-link?email=...` (turi prieigą Supabase) | 200, `{"redirect_url": "https://...?access_tier=...&expires=...&token=..."}` | (rankinis) |
 
 **Kaip tikrinti:** `cd backend && pytest` – visi testai turi praeiti.
 
@@ -63,12 +70,12 @@
 - WhatIsPromptAnatomy (h2, intro, 4 bullet).
 - Methodology (section id metodologija).
 - Ecosystem (section id ekosistema).
-- Pricing (section id pricing, prieigos forma, 2 planai Phase 1).
+- Pricing (section id pricing, prieigos forma, 2 planai Phase 1; „Eiti į mokymus" mygtukas kviečia `/api/generate-access-link` ir atidaro training app su magic link).
 - Footer (brand, tagline; System: Ekosistema, Metodologija, Kainodara; Network: Support/WhatsApp, LinkedIn, X (Twitter); legal, copyright).
 
 **i18n:** Visi raktai naudojami iš `lt.json` / `en.json`; nėra hardcoded teksto komponentuose (Hero, WhatIs, Methodology, Ecosystem, Pricing, Footer, Navbar, Success, Cancel). LT – terminas DI; EN – AI.
 
-**Kaip tikrinti:** `cd frontend && npm run build` – build turi pavykti. Rankinis smoke: atidaryti `/`, `/en`, `/success`, `/cancel`, perjungti kalbą, scroll į pricing, patikrinti prieigos formą.
+**Kaip tikrinti:** `cd frontend && npm run build` – build turi pavykti. Rankinis smoke: atidaryti `/`, `/en`, `/success`, `/cancel`, perjungti kalbą, scroll į pricing, patikrinti prieigos formą. Magic link flow: patikrinti prieigą su susimokėjusio vartotojo email → spausti „Eiti į mokymus" → turi nukreipti į training app su `access_tier`, `expires`, `token` parametrais → moduliai atrakinti.
 
 ---
 
@@ -76,7 +83,8 @@
 
 - **React + Vite** – struktūra, routing (React Router), build pipeline. Nėra migracijos į Next.js ar SSR (pagal [UI_UX_SEO_MOSCOW_PLAN.md](UI_UX_SEO_MOSCOW_PLAN.md) WON'T).
 - **Stripe flow** – create-checkout-session → Stripe Checkout → success/cancel; webhook `checkout.session.completed` → Supabase `user_access`. Nepažeisti endpointų kontraktų.
-- **API:** `api.js` – `getAccess`, `createCheckoutSession`; backend atsakymų formatai (JSON su `url`, `highest_plan`, `can_upgrade_to` ir t. t.).
+- **Magic link flow** – `success-redirect.js` ir `generate-access-link.js` naudoja tą pačią `buildMagicLinkToken()` logiką (HMAC-SHA256, base64url, `ACCESS_TOKEN_SECRET`). `verify-access.js` tikrina tokeną. Keičiant vieno token formatą – keisti visus tris.
+- **API:** `api.js` – `getAccess`, `createCheckoutSession`, `getSuccessRedirectUrl`, `getTrainingAccessLink`; backend atsakymų formatai (JSON su `url`, `highest_plan`, `can_upgrade_to`, `redirect_url` ir t. t.).
 - **Env:** Backend – Pydantic Settings, `STRIPE_*`, `SUPABASE_*`, `FRONTEND_ORIGIN`. Frontend – `VITE_API_URL` (optional). Nepašalinti naudojamų kintamųjų.
 
 ---

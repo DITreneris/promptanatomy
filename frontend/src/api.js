@@ -14,7 +14,8 @@ export async function createCheckoutSession(planId, customerEmail = null) {
     body: JSON.stringify(body),
   })
   if (!res.ok) {
-    const detail = (await res.json().catch(() => ({}))).detail || res.statusText
+    const raw = (await res.json().catch(() => ({}))).detail || res.statusText
+    const detail = typeof raw === 'string' ? raw : JSON.stringify(raw)
     throw new Error(detail)
   }
   const data = await res.json().catch(() => null)
@@ -31,7 +32,8 @@ export async function getSuccessRedirectUrl(sessionId) {
   const params = new URLSearchParams({ session_id: sessionId })
   const res = await fetch(`${API_URL}/api/success-redirect?${params}`)
   if (!res.ok) {
-    const detail = (await res.json().catch(() => ({}))).detail || res.statusText
+    const raw = (await res.json().catch(() => ({}))).detail || res.statusText
+    const detail = typeof raw === 'string' ? raw : JSON.stringify(raw)
     throw new Error(detail)
   }
   const data = await res.json().catch(() => null)
@@ -49,7 +51,8 @@ export async function getTrainingAccessLink(email) {
   const params = new URLSearchParams({ email: email.trim() })
   const res = await fetch(`${API_URL}/api/generate-access-link?${params}`)
   if (!res.ok) {
-    const detail = (await res.json().catch(() => ({}))).detail || res.statusText
+    const raw = (await res.json().catch(() => ({}))).detail || res.statusText
+    const detail = typeof raw === 'string' ? raw : JSON.stringify(raw)
     throw new Error(detail)
   }
   const data = await res.json().catch(() => null)
@@ -66,7 +69,8 @@ export async function getAccess(email) {
   const params = new URLSearchParams({ email: email.trim() })
   const res = await fetch(`${API_URL}/api/access?${params}`)
   if (!res.ok) {
-    const detail = (await res.json().catch(() => ({}))).detail || res.statusText
+    const raw = (await res.json().catch(() => ({}))).detail || res.statusText
+    const detail = typeof raw === 'string' ? raw : JSON.stringify(raw)
     throw new Error(detail)
   }
   const data = await res.json().catch(() => ({}))

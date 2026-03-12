@@ -2,6 +2,8 @@
 Application settings via Pydantic Settings. All config from env / .env.
 Secrets use SecretStr so they are not logged or displayed.
 """
+from typing import ClassVar
+
 from pydantic import Field, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -51,12 +53,10 @@ class Settings(BaseSettings):
         description="Days until magic-link expires (from now)",
     )
 
-    # Plan values: 3, 6, 12, 15 (module cap). plan_id "1"->3, "2"->6, "3"->12, "4"->15.
-    PLAN_VALUES = (3, 6, 12, 15)
-    # Phase 1: only plans 1 and 2 (modules 1–3, 1–6); 7+ locked (docs/phase-1-scope.md).
-    PHASE1_PLAN_IDS = ("1", "2")
-    PHASE1_PLAN_VALUES = (3, 6)
-    PLAN_ID_TO_VALUE = {"1": 3, "2": 6, "3": 12, "4": 15}
+    PLAN_VALUES: ClassVar[tuple[int, ...]] = (3, 6, 12, 15)
+    PHASE1_PLAN_IDS: ClassVar[tuple[str, ...]] = ("1", "2")
+    PHASE1_PLAN_VALUES: ClassVar[tuple[int, ...]] = (3, 6)
+    PLAN_ID_TO_VALUE: ClassVar[dict[str, int]] = {"1": 3, "2": 6, "3": 12, "4": 15}
 
     def frontend_origin_stripped(self) -> str:
         return self.frontend_origin.rstrip("/")

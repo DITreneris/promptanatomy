@@ -24,7 +24,7 @@ from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
 
 from core.config import init_settings, get_settings
-from limits import check_token_limit
+from token_limits import check_token_limit
 from db import get_user_access, upsert_user_access
 
 settings = init_settings()

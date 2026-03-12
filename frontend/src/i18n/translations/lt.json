@@ -16,7 +16,8 @@
     "alreadyPurchased": "Jau turi šį planą ar aukštesnį.",
     "validEmailRequired": "Įvesk tinkamą el. paštą",
     "paymentUnavailable": "Mokėjimas laikinai neprieinamas. Bandyk vėliau.",
-    "networkError": "Tinklo klaida. Patikrink ryšį ir bandyk dar kartą."
+    "networkError": "Tinklo klaida. Patikrink ryšį ir bandyk dar kartą.",
+    "noAccessForEmail": "Šiam el. paštui prieiga nerasta. Pasirink planą žemiau."
   },
   "nav": {
     "ariaNav": "Pagrindinė navigacija",
@@ -167,6 +168,8 @@
     "alreadyHave": "Jau turi",
     "upgradeTo": "Pagerinti į %s",
     "goToTraining": "Eiti į mokymus",
+    "noAccessFound": "Prieiga nerasta",
+    "noAccessBody": "Šiam el. paštui prieiga dar nesuteikta. Pasirink planą žemiau ir gauk prieigą.",
     "modulesLocked": "Moduliai 7–15 bus vėlesnės fazės metu."
   },
   "footer": {
@@ -224,6 +227,7 @@
     "goToTraining": "Eiti į mokymus",
     "redirecting": "Nukreipiame…",
     "redirectError": "Nepavyko paruošti nuorodos. Gali grįžti į pradžią arba susisiekti su mumis.",
+    "noSession": "Jei ką tik sumokėjai – palauk, sistema ruošia tavo prieigą.",
     "metaTitle": "Apmokėjimas sėkmingas",
     "metaDescription": "Ačiū už pirkimą."
   },
