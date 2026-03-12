@@ -2,7 +2,7 @@
 
 **Tikslas:** Fiksuoti veikiančią būseną ir kritinius kelius, kad pakeitimai nepalaužtų to, kas jau veikia. Prieš didesnius refaktorinimus ar naujas funkcijas – patikrinti, kad šis standartas išlieka tenkinamas.
 
-**Data fiksavimo:** 2026-03-12
+**Data fiksavimo:** 2026-03-12 (atnaujinta po deploy)
 
 ---
 
@@ -14,6 +14,8 @@
 - Prieigos srautas (susimokėjus): LP „Eiti į mokymus" → `GET /api/generate-access-link?email=...` → magic link su HMAC tokenu → training app atrakina modulius.
 - Backend API ir webhook atsako pagal aprašytas sutartis (žr. skyrių 2–3).
 - Frontend build (`npm run build`) ir backend testai (`pytest`) eina sėkmingai.
+- Training app build (`cd apps/prompt-anatomy && npm run build`) eina sėkmingai.
+- Prieigos tikrinimas LP: email su `highest_plan === 0` rodo amber bloką „Prieiga nerasta" + CTA „Gauti prieigą".
 
 ---
 
@@ -46,6 +48,11 @@
 
 **Kaip tikrinti:** `cd backend && pytest` – visi testai turi praeiti.
 
+**Žinomos aplinkos pastabos:**
+- `test_api.py` gali failinti lokaliai dėl `wrapt` paketo nesuderinamumo su Python 3.11+ (`formatargspec` pašalintas iš `inspect`). Fix: `pip install --upgrade wrapt` arba naudoti venv su tinkamomis versijomis. CI/Vercel aplinkoje problema nepasireiškia.
+- `backend/token_limits.py` (anksčiau `limits.py`) – pervadinta, nes senas pavadinimas shadino `limits` PyPI paketą, naudojamą `slowapi`. **Nekurti naujo `limits.py` failo backend/ šaknyje.**
+- `core/config.py` – `Settings` klasės konstantos (`PLAN_VALUES`, `PHASE1_PLAN_IDS`, `PHASE1_PLAN_VALUES`, `PLAN_ID_TO_VALUE`) turi `ClassVar` anotacijas. **Naujoms konstantoms Settings klasėje – visada naudoti `ClassVar`.**
+
 ---
 
 ## 3. Frontend – kritiniai keliai
@@ -75,7 +82,16 @@
 
 **i18n:** Visi raktai naudojami iš `lt.json` / `en.json`; nėra hardcoded teksto komponentuose (Hero, WhatIs, Methodology, Ecosystem, Pricing, Footer, Navbar, Success, Cancel). LT – terminas DI; EN – AI.
 
-**Kaip tikrinti:** `cd frontend && npm run build` – build turi pavykti. Rankinis smoke: atidaryti `/`, `/en`, `/success`, `/cancel`, perjungti kalbą, scroll į pricing, patikrinti prieigos formą. Magic link flow: patikrinti prieigą su susimokėjusio vartotojo email → spausti „Eiti į mokymus" → turi nukreipti į training app su `access_tier`, `expires`, `token` parametrais → moduliai atrakinti.
+**Kaip tikrinti:** `cd frontend && npm run build` – build turi pavykti. `cd apps/prompt-anatomy && npm run build` – training app build turi pavykti. Rankinis smoke: atidaryti `/`, `/en`, `/success`, `/cancel`, perjungti kalbą, scroll į pricing, patikrinti prieigos formą. Magic link flow: patikrinti prieigą su susimokėjusio vartotojo email → spausti „Eiti į mokymus" → turi nukreipti į training app su `access_tier`, `expires`, `token` parametrais → moduliai atrakinti.
+
+**UX smoke (po P0-P3 fix'ų):**
+- Email be prieigos (`highest_plan === 0`) → amber blokas „Prieiga nerasta" + CTA „Gauti prieigą →" (scroll į pricing).
+- Email su prieiga (`highest_plan > 0`) → žalias blokas su progress bar + „Eiti į mokymus →" (magic link).
+- „Eiti į mokymus" mygtukas rodo loading state (`trainingLinkLoading`).
+- `/cancel` puslapis – „Bandyti dar kartą" nuoroda scroll'ina į `#pricing` (ne SPA navigate + hash).
+- `/success` be `session_id` – informacinis pranešimas „Jei ką tik sumokėjai – palauk".
+- Magic link su netinkamu/pasibaigusiu tokenu → „Grįžti į pradžią" nuoroda (ne Retry mygtukas).
+- Klaidos `api.js` – `detail` visada string (typeof safety).
 
 ---
 
@@ -86,13 +102,30 @@
 - **Magic link flow** – `success-redirect.js` ir `generate-access-link.js` naudoja tą pačią `buildMagicLinkToken()` logiką (HMAC-SHA256, base64url, `ACCESS_TOKEN_SECRET`). `verify-access.js` tikrina tokeną. Keičiant vieno token formatą – keisti visus tris.
 - **API:** `api.js` – `getAccess`, `createCheckoutSession`, `getSuccessRedirectUrl`, `getTrainingAccessLink`; backend atsakymų formatai (JSON su `url`, `highest_plan`, `can_upgrade_to`, `redirect_url` ir t. t.).
 - **Env:** Backend – Pydantic Settings, `STRIPE_*`, `SUPABASE_*`, `FRONTEND_ORIGIN`. Frontend – `VITE_API_URL` (optional). Nepašalinti naudojamų kintamųjų.
+- **Backend failo pavadinimas:** `token_limits.py` (ne `limits.py`). `limits` vardas shadina PyPI paketą – neleistina.
+- **Training app submodule:** `apps/prompt-anatomy` → `DITreneris/inzinerija`. Magic link tier validacija naudoja `VALID_MAX_MODULE_IDS` iš `constants/pricing.ts` (ne hardcoded reikšmes).
+- **LT kalba:** visur vartotojui matomas tekstas – „Tu" forma (ne „Jūs"). Terminas „DI" (ne „AI").
+- **api.js error handling:** `detail` iš backend visada konvertuojamas į string (`typeof raw === 'string' ? raw : JSON.stringify(raw)`).
 
 ---
 
-## 5. Kada atnaujinti šį dokumentą
+## 5. Deploy procesas (GitHub → Vercel)
+
+1. **Submodulis pirmas:** `git -C apps/prompt-anatomy add -A && commit && push origin main` (į `DITreneris/inzinerija`).
+2. **Parent repo:** `git add -A && commit && push origin main` (į `DITreneris/promptanatomy`). Commit'e turi būti atnaujintas submodule reference.
+3. **Vercel:** auto-deploy iš GitHub main branch. `vercel.json` – `installCommand` su `git submodule update --init --recursive`, build'ina abu frontendus.
+4. **Regresijos prieš push:** `frontend: npm run build`, `apps/prompt-anatomy: npm run build`, `backend: pytest`.
+
+---
+
+## 6. Kada atnaujinti šį dokumentą
 
 - Pridedant naujus backend endpointus arba keičiant atsakymo formatus – įrašyti į 2 skyrių ir atnaujinti/pridėti testus.
 - Pridedant naujus frontend maršrutus ar LP sekcijas – atnaujinti 3 skyrių.
 - Pakeitus „WON'T“ (pvz. priimant SSR) – atnaujinti 4 skyrių ir roadmap.
 
-**Regresijos tikrinimas:** prieš merge/release – paleisti `backend`: `pytest`, `frontend`: `npm run build`; pagal poreikį – rankinis smoke pagal 3 skyrių.
+- Pridedant naujus UX srautus ar keičiant error handling – atnaujinti 3 skyriaus „UX smoke" sąrašą.
+- Po kiekvieno deploy – patikrinti ar 5 skyriaus procesas vis dar aktualus.
+
+
+**Regresijos tikrinimas:** prieš merge/release – paleisti `backend`: `pytest`, `frontend`: `npm run build`, `apps/prompt-anatomy`: `npm run build`; pagal poreikį – rankinis smoke pagal 3 skyrių.
