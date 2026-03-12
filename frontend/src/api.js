@@ -40,6 +40,24 @@ export async function getSuccessRedirectUrl(sessionId) {
 }
 
 /**
+ * Generate magic-link redirect URL for a user who already has access (by email).
+ * Checks Supabase; returns redirect_url with access_tier, expires, token.
+ * @param {string} email
+ * @returns {Promise<string>} redirect_url to training app with magic link params
+ */
+export async function getTrainingAccessLink(email) {
+  const params = new URLSearchParams({ email: email.trim() })
+  const res = await fetch(`${API_URL}/api/generate-access-link?${params}`)
+  if (!res.ok) {
+    const detail = (await res.json().catch(() => ({}))).detail || res.statusText
+    throw new Error(detail)
+  }
+  const data = await res.json().catch(() => null)
+  if (!data?.redirect_url) throw new Error(data === null ? 'Invalid response' : 'No redirect URL')
+  return data.redirect_url
+}
+
+/**
  * Get access for email: highest_plan, allowed_modules, can_upgrade_to.
  * @param {string} email
  * @returns {Promise<{ highest_plan: number, allowed_modules: number[], can_upgrade_to: number[] }>}

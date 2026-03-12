@@ -7,7 +7,7 @@ import Methodology from '../components/Methodology'
 import Ecosystem from '../components/Ecosystem'
 import Pricing from '../components/Pricing'
 import Footer from '../components/Footer'
-import { createCheckoutSession, getAccess } from '../api'
+import { createCheckoutSession, getAccess, getTrainingAccessLink } from '../api'
 import { useLocale } from '../i18n/LocaleContext'
 
 export default function HomePage({ forceLocale }) {
@@ -22,6 +22,7 @@ export default function HomePage({ forceLocale }) {
   const [customerEmail, setCustomerEmail] = useState('')
   const [accessLoading, setAccessLoading] = useState(false)
   const [accessError, setAccessError] = useState(null)
+  const [trainingLinkLoading, setTrainingLinkLoading] = useState(false)
 
   const scrollToPricing = () => {
     document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })
@@ -49,6 +50,18 @@ export default function HomePage({ forceLocale }) {
       setAccessError(accessErrorMsg)
       setAccess(null)
       setAccessLoading(false)
+    }
+  }
+
+  const handleGoToTraining = async () => {
+    setTrainingLinkLoading(true)
+    try {
+      const url = await getTrainingAccessLink(customerEmail)
+      window.open(url, '_blank', 'noopener,noreferrer')
+    } catch {
+      window.open('/anatomija/', '_blank', 'noopener,noreferrer')
+    } finally {
+      setTrainingLinkLoading(false)
     }
   }
 
@@ -137,14 +150,14 @@ export default function HomePage({ forceLocale }) {
                       style={{ width: `${(access.highest_plan / 6) * 100}%` }}
                     />
                   </div>
-                  <a
-                    href="/anatomija/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full py-3 rounded-xl text-center font-black text-sm text-brand-dark bg-accent-gradient hover:shadow-glow-accent active:scale-[0.98] transition-all duration-200"
+                  <button
+                    type="button"
+                    disabled={trainingLinkLoading}
+                    onClick={handleGoToTraining}
+                    className="block w-full py-3 rounded-xl text-center font-black text-sm text-brand-dark bg-accent-gradient hover:shadow-glow-accent active:scale-[0.98] transition-all duration-200 disabled:opacity-70"
                   >
-                    {t('pricing.goToTraining')} →
-                  </a>
+                    {trainingLinkLoading ? t('pricing.loading') : `${t('pricing.goToTraining')} →`}
+                  </button>
                 </div>
               )}
             </div>
@@ -154,6 +167,7 @@ export default function HomePage({ forceLocale }) {
               error={error}
               access={access}
               customerEmail={customerEmail.trim() || undefined}
+              onGoToTraining={handleGoToTraining}
             />
           </div>
         </section>
