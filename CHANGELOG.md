@@ -1,6 +1,11 @@
 # Changelog
 
-## [Unreleased] / 2026-03-09
+## [Unreleased] / 2026-03-12
+
+### Prideta
+- **Mokymų repo integracija (submodule):** DITreneris/inzinerija prijungtas kaip git submodule `apps/prompt-anatomy/`. Mokymų SPA (React+TS+Vite, 6 moduliai) pasiekiamas per `/anatomija/` kelią tame pačiame domene. `vercel.json` – atnaujintas installCommand (su `git submodule update --init --recursive`), buildCommand (mokymų SPA build su `VITE_BASE_PATH=/anatomija/ VITE_MVP_MODE=1`, kopija į `frontend/dist/anatomija/`), rewrites (`/anatomija/:path*` → SPA fallback). Naujas `api/verify-access.ts` – HMAC-SHA256 magic-link tokeno validacija (nukopijuotas iš mokymų repo, naudoja `node:crypto`, Phase 1: tik access_tier 3 ir 6). `TRAINING_REDIRECT_BASE` default atnaujintas į `https://www.promptanatomy.app/anatomija` (`api/success-redirect.js`, `backend/core/config.py`, `backend/.env.example`, `README.md`).
+
+## 2026-03-09
 
 ### Prideta
 - **Mobilus UI (Hero, Navbar, drawer):** Hero.jsx – sutrumpinto teksto mobilėje pataisa: `overflow-hidden` perkeltas tik ant glow wrapper, turinio blokas su `overflow-y-visible`; padding `p-5 sm:p-10`; liveFeed ir scriptName vienodas pill stilius, `gap-2`; kodo eilučių labeliai mobilėje `text-sm sm:text-xs`. Navbar.jsx – tagline kontrastas `text-slate-500 sm:text-slate-400`; ne scrolled `py-4 md:py-6`; drawer overlay `bg-black/60`. docs/audit-mobile-ux-user-journey.md – skyrius 1.5 „Mobile UI pataisymai (2026-03)“.
@@ -52,6 +57,7 @@
 - **Micro copy ir UI/UX planas (low-hanging fruits):** i18n LT: `hero.systemStatus` „Sistemos būsena: stabili“, `hero.commits` „2 481 commit'ai“, `pricing.upgradeTo` „Pagerinti į %s“, `cancel.tryAgain` „Bandyti dar kartą“, `ecosystem.stableLabel` „v2.4 Stable“. i18n EN: `footer.copyright` „Prompt Anatomy“, `ecosystem.stableLabel` „v2.4 Stable“. Legal puslapių (Terms, Privacy) „Back“ nuoroda su `ArrowLeft` ir tais pačiais focus ring. CancelPage breadcrumb – `relative z-10` virš noise overlay. Kontrastas (WCAG): ant baltos – `slate-600` (Footer, Pricing, Methodology, Success, Cancel), ant dark – Ecosystem `slate-300`. Hero CTA mygtukas – accent gradient fonas. TODO.md – Frontend UX skyrius atnaujintas, kontrastas pažymėtas atliktu.
 
 ### Pakeista
+- **Footer – Network sutrumpintas:** Facebook nuoroda pašalinta iš „Tinklas“ skilties; lieka Support (WhatsApp), LinkedIn, X (Twitter). Pašalintas i18n raktas `footer.facebook` (lt.json, en.json).
 - **i18n (LT/EN) – metodologija, pricing, footer, stat:** LT methodology.paragraph – „Siūlome mąstymo grandinę kiekvieno modulio metu: patirtis → patikrinimas → praktika.“; methodology.sectionLabel „Veiklos modelis“; Skaidymas/Inžinerija/Skalės augimas aprašai (hierarchinė struktūra, kelių lygių inžinerija, sistema lengvai integruojama). pricing.features – „Promptų Repo (500+ šablonų ir įrankių)“, pridėta „Konteksto inžinerija“ / „Context engineering“. footer.tagline – „Promptų anatomija – tai ne mokymai, tai – operacinė sistema tavo ateičiai.“ whatIs stat2Number „~60“ (LT/EN).
 - **Premium UX (gradientai, fonai, brand):** Visi primary CTA naudoja `bg-accent-gradient` (Hero, Navbar, Pricing, Ecosystem, CancelPage, HomePage skip link). Hero – pašalintas hardcoded `ACCENT_GRADIENT`, H1 span ir CTA per Tailwind klasę; code glow `from-brand-accent to-indigo-500` → `to-brand-dark`. WhatIs – sekcija `bg-slate-50` (be border), PROOF figure su `shadow-soft rounded-2xl p-6`, PROCESS pills su `shadow-soft`. Ecosystem – spalvos iš theme (`ECOSYSTEM_URL_INDEX`, `ECOSYSTEM_BG_CLASSES`, `ECOSYSTEM_HOVER_RING`), ikonų wrapper `bg-ecosystem-{n}` ir `group-hover:ring-ecosystem-{n}`; CTA `bg-accent-gradient`, `text-brand-dark`.
 - **WhatIsPromptAnatomy (micro UX + a11y):** Spacing pagal auditą – VALUE mb-8, PROCESS mb-12; PROCESS aria-label naudoja processAriaLabel („Kaip veikia: 6 metodikos blokai“); PROOF kortelės – figure/figcaption semantika, skaičiai aria-hidden. PROOF grid grid-cols-1 sm:grid-cols-3, gap-8 sm:gap-12 mobilėje.

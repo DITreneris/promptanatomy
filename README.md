@@ -67,7 +67,7 @@ Frontend: `http://localhost:5173`
 | `SUPABASE_URL` | (Optional) Supabase projekto URL – prieigos tikrinimui ir webhook upsert į `user_access`. |
 | `SUPABASE_SERVICE_ROLE_KEY` | (Optional) Supabase service role key – backend naudoja tik serverio pusėje. |
 | `ACCESS_TOKEN_SECRET` | (Optional) Bendras secret su mokymų app – magic-link redirect (`GET /api/success-redirect`). Sugeneruoti: `openssl rand -base64 32`. |
-| `TRAINING_REDIRECT_BASE` | (Optional) Base URL į mokymų app (default `https://www.promptanatomy.app`). |
+| `TRAINING_REDIRECT_BASE` | (Optional) Base URL į mokymų app (default `https://www.promptanatomy.app/anatomija`). |
 | `ACCESS_TOKEN_EXPIRY_DAYS` | (Optional) Kiek dienų galioja magic-link (default 30). |
 
 ### Frontend (`frontend/.env`)

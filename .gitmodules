@@ -1,0 +1,3 @@
+[submodule "apps/prompt-anatomy"]
+	path = apps/prompt-anatomy
+	url = https://github.com/DITreneris/inzinerija.git

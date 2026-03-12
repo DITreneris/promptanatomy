@@ -92,7 +92,7 @@ module.exports = async function handler(req, res) {
   const expiryDays = parseInt(process.env.ACCESS_TOKEN_EXPIRY_DAYS || '30', 10) || 30;
   const expires = Math.floor(Date.now() / 1000) + expiryDays * 86400;
   const token = buildMagicLinkToken(accessTier, expires, secret);
-  const base = (process.env.TRAINING_REDIRECT_BASE || 'https://www.promptanatomy.app').replace(/\/$/, '');
+  const base = (process.env.TRAINING_REDIRECT_BASE || 'https://www.promptanatomy.app/anatomija').replace(/\/$/, '');
   const redirectUrl = `${base}/?access_tier=${accessTier}&expires=${expires}&token=${token}`;
 
   return res.status(200).json({ redirect_url: redirectUrl });
