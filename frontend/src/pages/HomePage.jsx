@@ -139,6 +139,8 @@ export default function HomePage({ forceLocale }) {
                   </div>
                   <a
                     href="/anatomija/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block w-full py-3 rounded-xl text-center font-black text-sm text-brand-dark bg-accent-gradient hover:shadow-glow-accent active:scale-[0.98] transition-all duration-200"
                   >
                     {t('pricing.goToTraining')} →

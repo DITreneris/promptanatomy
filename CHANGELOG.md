@@ -3,6 +3,13 @@
 ## [Unreleased] / 2026-03-12
 
 ### Ištaisyta
+- **Modulių prieigos kontrolės bug fix (training app):** `getMaxAccessibleModuleId()` – pašalintas `VITE_MVP_MODE=1` fallback, kuris suteikdavo modulius 1–6 visiems be mokėjimo (default dabar 0). `sessionStorage` pakeistas į `localStorage`, kad verified tier išliktų tarp sesijų. `handleContinueToNextModule` – pridėtas tier ribos tikrinimas prieš navigaciją. `ModuleCompleteScreen` – kai kitas modulis viršija tier ribą, rodomas upgrade CTA su nuoroda į kainodarą vietoj „Tęsti į kitą modulį". Pridėtas gate ekranas kai `maxAccessible === 0` (prieiga nepatikrinta). Testai atnaujinti (207/207 pass). Failai: `accessTier.ts`, `App.tsx`, `ModuleCompleteScreen.tsx`, `lt.json`, `en.json`, testai.
+
+### Pakeista
+- **Mokymų nuorodos atsidaro naujame tabe:** Visos `/anatomija/` nuorodos (Navbar, Footer, Pricing, HomePage) dabar turi `target="_blank" rel="noopener noreferrer"` — training app atsidaro naujame tabe, landing page išlieka. Navbar – panaudotas esamas `external: true` flagas. Lankytojo pastebėjimas: stilius panašus, kalba gali skirtis, tame pačiame tabe klaidino.
+- **Hero bullet points (copy):** Iš apibendrinamojo stiliaus pakeista į imperatyvą — tiesiogiai kreipiasi į vartotoją, dera su „Nustok kalbėti. Pradėk programuoti." tonu. LT: „Kurk tikslius promptus ir sistemas", „Automatizuok pasikartojančias DI darbo eigas", „Pritaikyk viską realiems verslo atvejams". EN: „Build precise prompts and systems", „Automate repetitive AI workflows", „Apply everything to real business cases".
+
+### Anksčiau ištaisyta
 - **SPA routing 404 fix:** `vercel.json` – pridėta catch-all rewrite taisyklė `/((?!api|anatomija).*)` → `/index.html`. Be jos `/success`, `/cancel`, `/privacy`, `/terms`, `/en` puslapiai grąžindavo Vercel 404, nes React SPA maršrutai neturėjo server-side fallback. Stripe po apmokėjimo nukreipdavo į `/success?session_id=...` ir vartotojas matydavo 404 vietoj SuccessPage.
 - **Stripe checkout env konfigūracija:** Vercel aplinkoje nustatyti trūkę `STRIPE_PRICE_ID_PLAN_1`, `STRIPE_PRICE_ID_PLAN_2` ir `FRONTEND_ORIGIN` kintamieji – be jų `/api/create-checkout-session` grąžindavo 400.
 - **Stripe webhook konfigūracija:** Stripe Dashboard (Live mode) – sukonfigūruotas webhook endpoint `https://www.promptanatomy.app/api/stripe-webhook` su `checkout.session.completed` eventu. Be jo mokėjimai praeidavo Stripe pusėje, bet prieiga Supabase `user_access` lentelėje nebuvo registruojama. Patvirtinta: webhook grąžina 200, nauji vartotojai sėkmingai įrašomi.

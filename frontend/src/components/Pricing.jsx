@@ -87,6 +87,8 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail }
               {isOwned ? (
                 <a
                   href="/anatomija/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="mt-auto block w-full py-4 text-center font-bold rounded-2xl border-2 border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 hover:border-emerald-300 transition-all duration-200"
                 >
                   {t('pricing.goToTraining')} →
