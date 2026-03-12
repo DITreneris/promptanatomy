@@ -3,6 +3,7 @@
 ## [Unreleased] / 2026-03-12
 
 ### Prideta
+- **UX: Mokymų CTA visose kritinėse vietose:** Prieigos bloke (HomePage) – progress bar su modulių skaičiumi ir „Eiti į mokymus" CTA mygtukas į `/anatomija/`. Pricing kortelėse – „Jau turi" pakeistas iš dead-end į nuorodą „Eiti į mokymus →". Navbar – pridėta „Mokymai" nuoroda tarp Repo ir Kainodara. Footer – pridėta „Mokymai" nuoroda System skiltyje. i18n: `nav.training`, `pricing.goToTraining`, `footer.training` (LT/EN).
 - **Mokymų repo integracija (submodule):** DITreneris/inzinerija prijungtas kaip git submodule `apps/prompt-anatomy/`. Mokymų SPA (React+TS+Vite, 6 moduliai) pasiekiamas per `/anatomija/` kelią tame pačiame domene. `vercel.json` – atnaujintas installCommand (su `git submodule update --init --recursive`), buildCommand (mokymų SPA build su `VITE_BASE_PATH=/anatomija/ VITE_MVP_MODE=1`, kopija į `frontend/dist/anatomija/`), rewrites (`/anatomija/:path*` → SPA fallback). Naujas `api/verify-access.ts` – HMAC-SHA256 magic-link tokeno validacija (nukopijuotas iš mokymų repo, naudoja `node:crypto`, Phase 1: tik access_tier 3 ir 6). `TRAINING_REDIRECT_BASE` default atnaujintas į `https://www.promptanatomy.app/anatomija` (`api/success-redirect.js`, `backend/core/config.py`, `backend/.env.example`, `README.md`).
 
 ## 2026-03-09

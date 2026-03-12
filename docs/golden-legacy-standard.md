@@ -64,7 +64,7 @@
 - Methodology (section id metodologija).
 - Ecosystem (section id ekosistema).
 - Pricing (section id pricing, prieigos forma, 2 planai Phase 1).
-- Footer (brand, tagline, nuorodos, legal, copyright).
+- Footer (brand, tagline; System: Ekosistema, Metodologija, Kainodara; Network: Support/WhatsApp, LinkedIn, X (Twitter); legal, copyright).
 
 **i18n:** Visi raktai naudojami iš `lt.json` / `en.json`; nėra hardcoded teksto komponentuose (Hero, WhatIs, Methodology, Ecosystem, Pricing, Footer, Navbar, Success, Cancel). LT – terminas DI; EN – AI.
 

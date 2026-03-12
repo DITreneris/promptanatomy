@@ -30,6 +30,7 @@ export default function Navbar({ onCtaClick }) {
     ...(GLOSSARY_URL
       ? [{ name: t('nav.repo'), id: null, href: GLOSSARY_URL, external: true }]
       : []),
+    { name: t('nav.training'), id: null, href: '/anatomija/' },
     { name: t('nav.pricing'), id: 'pricing' },
   ]
 
@@ -62,7 +63,7 @@ export default function Navbar({ onCtaClick }) {
           {navItems.map((item) =>
             item.external ? (
               <a
-                key={item.id ?? 'repo'}
+                key={item.id || item.href}
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -70,9 +71,17 @@ export default function Navbar({ onCtaClick }) {
               >
                 {item.name}
               </a>
+            ) : item.href ? (
+              <a
+                key={item.href}
+                href={item.href}
+                className={navLinkClass}
+              >
+                {item.name}
+              </a>
             ) : (
               <a
-                key={item.id ?? 'repo'}
+                key={item.id}
                 href={`#${item.id}`}
                 className={navLinkClass}
               >
@@ -169,29 +178,39 @@ export default function Navbar({ onCtaClick }) {
               EN
             </button>
           </div>
-          {navItems.map((item) =>
-            item.external ? (
+          {navItems.map((item) => {
+            const mobileClass = "py-4 text-base font-black uppercase tracking-[0.15em] text-slate-500 hover:text-brand-dark border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded"
+            return item.external ? (
               <a
-                key={item.id ?? 'repo'}
+                key={item.id || item.href}
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={closeMobile}
-                className="py-4 text-base font-black uppercase tracking-[0.15em] text-slate-500 hover:text-brand-dark border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded"
+                className={mobileClass}
+              >
+                {item.name}
+              </a>
+            ) : item.href ? (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={closeMobile}
+                className={mobileClass}
               >
                 {item.name}
               </a>
             ) : (
               <a
-                key={item.id ?? 'repo'}
+                key={item.id}
                 href={`#${item.id}`}
                 onClick={closeMobile}
-                className="py-4 text-base font-black uppercase tracking-[0.15em] text-slate-500 hover:text-brand-dark border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded"
+                className={mobileClass}
               >
                 {item.name}
               </a>
             )
-          )}
+          })}
           <button
             type="button"
             onClick={() => { closeMobile(); onCtaClick() }}

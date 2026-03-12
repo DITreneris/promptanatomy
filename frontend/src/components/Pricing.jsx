@@ -85,9 +85,12 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail }
                 {plan.price}<span className="text-xl font-bold text-slate-500"> €</span>
               </p>
               {isOwned ? (
-                <div className="mt-auto py-4 text-center text-slate-500 font-bold rounded-2xl border border-slate-200 bg-slate-50">
-                  {state.label}
-                </div>
+                <a
+                  href="/anatomija/"
+                  className="mt-auto block w-full py-4 text-center font-bold rounded-2xl border-2 border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 hover:border-emerald-300 transition-all duration-200"
+                >
+                  {t('pricing.goToTraining')} →
+                </a>
               ) : isUpgradeOrBuy ? (
                 <button
                   type="button"

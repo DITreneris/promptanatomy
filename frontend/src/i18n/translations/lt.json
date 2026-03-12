@@ -25,6 +25,7 @@
     "ecosystem": "Ekosistema",
     "methodology": "Metodologija",
     "repo": "Repo",
+    "training": "Mokymai",
     "pricing": "Kainodara",
     "cta": "Žiūrėti planus",
     "brandPromptu": "PROMPTŲ",
@@ -165,6 +166,7 @@
     "yourAccess": "Tavo prieiga: 1–%s moduliai",
     "alreadyHave": "Jau turi",
     "upgradeTo": "Pagerinti į %s",
+    "goToTraining": "Eiti į mokymus",
     "modulesLocked": "Moduliai 7–15 bus vėlesnės fazės metu."
   },
   "footer": {
@@ -174,6 +176,7 @@
     "network": "Network",
     "ecosystem": "Ekosistema",
     "methodology": "Metodologija",
+    "training": "Mokymai",
     "pricing": "Kainodara",
     "support": "Pagalba (WhatsApp)",
     "biblioteka": "Biblioteka (DI automatizacija)",

@@ -122,9 +122,28 @@ export default function HomePage({ forceLocale }) {
                 </p>
               )}
               {access && access.highest_plan > 0 && (
-                <p className="mt-3 text-slate-700 font-medium">
-                  {t('pricing.yourAccess').replace('%s', access.highest_plan)}
-                </p>
+                <div className="mt-4 p-4 bg-emerald-50 rounded-xl border border-emerald-100">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-bold text-emerald-800">
+                      {t('pricing.yourAccess').replace('%s', access.highest_plan)}
+                    </span>
+                    <span className="text-xs font-bold text-emerald-600">
+                      {access.highest_plan}/6
+                    </span>
+                  </div>
+                  <div className="w-full h-2 bg-emerald-100 rounded-full mb-3">
+                    <div
+                      className="h-2 bg-emerald-500 rounded-full transition-all duration-500"
+                      style={{ width: `${(access.highest_plan / 6) * 100}%` }}
+                    />
+                  </div>
+                  <a
+                    href="/anatomija/"
+                    className="block w-full py-3 rounded-xl text-center font-black text-sm text-brand-dark bg-accent-gradient hover:shadow-glow-accent active:scale-[0.98] transition-all duration-200"
+                  >
+                    {t('pricing.goToTraining')} →
+                  </a>
+                </div>
               )}
             </div>
             <Pricing
