@@ -5,6 +5,7 @@
 ### Ištaisyta
 - **SPA routing 404 fix:** `vercel.json` – pridėta catch-all rewrite taisyklė `/((?!api|anatomija).*)` → `/index.html`. Be jos `/success`, `/cancel`, `/privacy`, `/terms`, `/en` puslapiai grąžindavo Vercel 404, nes React SPA maršrutai neturėjo server-side fallback. Stripe po apmokėjimo nukreipdavo į `/success?session_id=...` ir vartotojas matydavo 404 vietoj SuccessPage.
 - **Stripe checkout env konfigūracija:** Vercel aplinkoje nustatyti trūkę `STRIPE_PRICE_ID_PLAN_1`, `STRIPE_PRICE_ID_PLAN_2` ir `FRONTEND_ORIGIN` kintamieji – be jų `/api/create-checkout-session` grąžindavo 400.
+- **Stripe webhook konfigūracija:** Stripe Dashboard (Live mode) – sukonfigūruotas webhook endpoint `https://www.promptanatomy.app/api/stripe-webhook` su `checkout.session.completed` eventu. Be jo mokėjimai praeidavo Stripe pusėje, bet prieiga Supabase `user_access` lentelėje nebuvo registruojama. Patvirtinta: webhook grąžina 200, nauji vartotojai sėkmingai įrašomi.
 
 ### Prideta
 - **UX: Mokymų CTA visose kritinėse vietose:** Prieigos bloke (HomePage) – progress bar su modulių skaičiumi ir „Eiti į mokymus" CTA mygtukas į `/anatomija/`. Pricing kortelėse – „Jau turi" pakeistas iš dead-end į nuorodą „Eiti į mokymus →". Navbar – pridėta „Mokymai" nuoroda tarp Repo ir Kainodara. Footer – pridėta „Mokymai" nuoroda System skiltyje. i18n: `nav.training`, `pricing.goToTraining`, `footer.training` (LT/EN).
