@@ -5,6 +5,7 @@
   "outputDirectory": "frontend/dist",
   "framework": null,
   "rewrites": [
-    { "source": "/anatomija/:path*", "destination": "/anatomija/index.html" }
+    { "source": "/anatomija/:path*", "destination": "/anatomija/index.html" },
+    { "source": "/((?!api|anatomija).*)", "destination": "/index.html" }
   ]
 }
