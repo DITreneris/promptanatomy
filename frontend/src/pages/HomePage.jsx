@@ -58,7 +58,8 @@ export default function HomePage({ forceLocale }) {
     setTrainingLinkLoading(true)
     try {
       const url = await getTrainingAccessLink(customerEmail)
-      window.open(url, '_blank', 'noopener,noreferrer')
+      // Same-tab navigation: reliable on iOS/Safari (window.open after async is often blocked)
+      window.location.href = url
     } catch (e) {
       const msg = e?.message || ''
       const errorMsg =
