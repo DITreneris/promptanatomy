@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
+import SeoHead from './components/SeoHead'
 import HomePage from './pages/HomePage'
 import SuccessPage from './pages/SuccessPage'
 import CancelPage from './pages/CancelPage'
@@ -7,14 +8,18 @@ import TermsPage from './pages/TermsPage'
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/en" element={<HomePage forceLocale="en" />} />
-      <Route path="/success" element={<SuccessPage />} />
+    <>
+      <SeoHead />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/lt" element={<HomePage forceLocale="lt" />} />
+        <Route path="/en" element={<HomePage forceLocale="en" />} />
+        <Route path="/success" element={<SuccessPage />} />
       <Route path="/cancel" element={<CancelPage />} />
       <Route path="/privacy" element={<PrivacyPage />} />
       <Route path="/terms" element={<TermsPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+      </Routes>
+    </>
   )
 }

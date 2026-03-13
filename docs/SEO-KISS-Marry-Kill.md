@@ -7,7 +7,7 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 ## Geriausios praktikos – santrauka
 
 - **Daryti:** sitemap.xml, robots.txt, canonical, og:image meta (ir įkelti og-image.png), unikalūs title/description + noindex success ir cancel puslapiams.
-- **Vėliau:** hreflang, GitHub repo description ir 5–10 topics (kai repo viešas).
+- **Įgyvendinta (2026-03):** hreflang (SeoHead), dinaminis canonical ir og:url pagal route, Twitter Card, locale-aware URL (/lt, /en), sitemap su /lt ir /en. **Vėliau:** GitHub repo description ir 5–10 topics (kai repo viešas).
 - **Nedaryti:** migracija į SSR, sunkus pre-render, per daug GitHub topics.
 
 ---
@@ -33,7 +33,7 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 | **og:image** | Be nuotraukos dalijimasis socialuose atrodo silpnas. | 1200×630 px paveikslėlis, `<meta property="og:image">` + absoliutus URL. Meta įdėta; failą `og-image.png` įkelti į `frontend/public/`. | Meta įgyvendinta; paveikslas – įkelti |
 | **GitHub: description + topics** | Jei repo bus viešas – geresnis atpažinamumas paieškoje. | Repo description + 5–10 topics: `react`, `vite`, `stripe`, `landing-page`, `prompt-engineering`, `i18n`. | Vėliau |
 | **README pirmas blokas** | Ir žmonėms, ir paieškos varikliams – kas tai ir kam. | Pirmas paragrafas su raktažodžiais (jau gerai); gal pridėti 1–2 sakinius apie „AI mokymai“, „pardavimų puslapis“. | Opcionalu |
-| **hreflang / lang** | LT/EN – sumažina dubliavimą ir pagerina tikslinimą. | `document.documentElement.lang` jau keičiamas (LocaleContext); gal pridėti `<link rel="alternate" hreflang="lt|en">`. | Vėliau |
+| **hreflang / lang** | LT/EN – sumažina dubliavimą ir pagerina tikslinimą. | `SeoHead.jsx`: `<link rel="alternate" hreflang="lt|en|x-default">` ant home route'ų; canonical ir og:url dinamiškai pagal pathname. | Įgyvendinta |
 | **Unikalūs title/description pagal route** | Success/cancel turi turėti atskirą meta. | Home – esamas; `/success` ir `/cancel` – atskiri metaTitle/metaDescription + noindex. | Įgyvendinta |
 
 ---
@@ -69,17 +69,20 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 
 ---
 
-## Įgyvendinimo būsena (2025-03-08)
+## Įgyvendinimo būsena (2026-03-13)
 
-**Atlikta (KISS + dalis MARRY):**
+**Atlikta (KISS + MARRY):**
 
-- **sitemap.xml** – `frontend/public/sitemap.xml` su `/`, `/success`, `/cancel`.
+- **sitemap.xml** – `frontend/public/sitemap.xml` su `/`, `/lt`, `/en`, `/success`, `/cancel`.
 - **robots.txt** – `frontend/public/robots.txt` su `Sitemap:` nuoroda.
-- **Canonical ir og:image** – `frontend/index.html`: `<link rel="canonical">`, `<meta property="og:image">`, `<meta name="robots" content="index, follow">`.
+- **Canonical ir og:image** – `frontend/index.html`: `<link rel="canonical">`, `<meta property="og:image">`, `<meta name="robots" content="index, follow">`. **Dinamiškai:** `SeoHead.jsx` nustato canonical ir `og:url` pagal route (SITE_URL iš `config.js`).
+- **og:url ir Twitter Card** – `index.html`: `og:url`, `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`; `og:url` atnaujinamas per SeoHead.
 - **og:image failas** – į `frontend/public/` reikia įkelti 1200×630 px paveikslėlį kaip `og-image.png` (žr. `frontend/public/README.md`). Meta nuoroda jau nurodyta.
+- **hreflang** – `SeoHead.jsx`: ant home route'ų (`/`, `/lt`, `/en`) injektuojami `hreflang="lt"` (→ /lt), `hreflang="en"` (→ /en), `hreflang="x-default"` (→ /). Og:locale ir og:locale:alternate pagal locale.
+- **Locale-aware URL** – maršrutai `/lt` ir `/en`; Navbar logo ir „Home“ nuorodos pagal locale; perjungus kalbą – `navigate('/lt')` arba `navigate('/en')`, kad share'intas linkas atspindėtų kalbą.
 - **Success/Cancel puslapiai** – unikalūs `metaTitle` ir `metaDescription` vertimuose (en/lt); `SuccessPage.jsx` ir `CancelPage.jsx` nustato title, description ir `noindex, nofollow` per `useEffect`, cleanup atstato home meta ir `index, follow`.
 
-**Vėliau:** hreflang, GitHub description/topics (kai repo viešas).
+**Vėliau:** GitHub description/topics (kai repo viešas).
 
 ---
 

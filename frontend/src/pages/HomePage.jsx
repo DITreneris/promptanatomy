@@ -16,6 +16,7 @@ export default function HomePage({ forceLocale }) {
   const [loading, setLoading] = useState(false)
   useEffect(() => {
     if (forceLocale === 'en' || location.pathname === '/en') setLocale('en')
+    else if (forceLocale === 'lt' || location.pathname === '/lt') setLocale('lt')
   }, [forceLocale, location.pathname, setLocale])
   const [error, setError] = useState(null)
   const [access, setAccess] = useState(null)

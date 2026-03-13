@@ -9,3 +9,5 @@ function getApiUrl() {
 }
 export const API_URL = getApiUrl()
 export const GLOSSARY_URL = import.meta.env.VITE_GLOSSARY_URL || ''
+/** Base URL for SEO (canonical, og:url, hreflang). */
+export const SITE_URL = import.meta.env.VITE_SITE_URL || 'https://www.promptanatomy.app'

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Zap, Menu, X } from 'lucide-react'
 import { GLOSSARY_URL } from '../config'
 import { useLocale } from '../i18n/LocaleContext'
@@ -9,6 +9,8 @@ const FOCUS_RING = 'focus:outline-none focus-visible:ring-2 focus-visible:ring-b
 export default function Navbar({ onCtaClick }) {
   const { t, locale, setLocale } = useLocale()
   const location = useLocation()
+  const navigate = useNavigate()
+  const homePath = locale === 'en' ? '/en' : '/lt'
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -46,7 +48,7 @@ export default function Navbar({ onCtaClick }) {
       aria-label={t('nav.ariaNav')}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center gap-2 min-w-0">
-        <Link to="/" className={`flex items-center gap-3 sm:gap-4 group cursor-pointer min-w-0 ${FOCUS_RING} rounded-lg`}>
+        <Link to={homePath} className={`flex items-center gap-3 sm:gap-4 group cursor-pointer min-w-0 ${FOCUS_RING} rounded-lg`}>
           <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-brand-dark flex items-center justify-center text-brand-accent shadow-soft-lg group-hover:scale-105 group-hover:shadow-glow-accent transition-all duration-300 border border-white/10 shrink-0">
             <Zap className="w-6 h-6 sm:w-7 sm:h-7 fill-current" />
           </div>
@@ -93,7 +95,7 @@ export default function Navbar({ onCtaClick }) {
             <div className="flex items-center gap-1 p-1 rounded-lg bg-slate-100 border border-slate-200">
               <button
                 type="button"
-                onClick={() => setLocale('lt')}
+                onClick={() => { setLocale('lt'); navigate('/lt') }}
                 className={`px-2.5 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-500 hover:text-brand-dark'} ${FOCUS_RING}`}
                 aria-pressed={locale === 'lt'}
                 aria-label="Lietuvių"
@@ -102,7 +104,7 @@ export default function Navbar({ onCtaClick }) {
               </button>
               <button
                 type="button"
-                onClick={() => setLocale('en')}
+                onClick={() => { setLocale('en'); navigate('/en') }}
                 className={`px-2.5 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-500 hover:text-brand-dark'} ${FOCUS_RING}`}
                 aria-pressed={locale === 'en'}
                 aria-label="English"
@@ -147,10 +149,10 @@ export default function Navbar({ onCtaClick }) {
           className={`absolute top-0 right-0 h-full w-full max-w-sm bg-white shadow-2xl border-l border-slate-200 flex flex-col pt-24 px-6 transition-transform duration-300 ease-out ${mobileOpen ? 'translate-x-0' : 'translate-x-full'}`}
         >
           <Link
-            to="/"
+            to={homePath}
             onClick={() => {
               closeMobile()
-              if (location.pathname === '/' || location.pathname === '/en') {
+              if (['/', '/en', '/lt'].includes(location.pathname)) {
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }
             }}
@@ -161,7 +163,7 @@ export default function Navbar({ onCtaClick }) {
           <div className="mb-6 flex items-center gap-2 p-1 rounded-lg bg-slate-100 border border-slate-200 w-fit">
             <button
               type="button"
-              onClick={() => setLocale('lt')}
+              onClick={() => { closeMobile(); setLocale('lt'); navigate('/lt') }}
               className={`px-4 py-2.5 rounded-md text-sm font-bold uppercase tracking-wider transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-500 hover:text-brand-dark'} focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
               aria-pressed={locale === 'lt'}
               aria-label="Lietuvių"
@@ -170,7 +172,7 @@ export default function Navbar({ onCtaClick }) {
             </button>
             <button
               type="button"
-              onClick={() => setLocale('en')}
+              onClick={() => { closeMobile(); setLocale('en'); navigate('/en') }}
               className={`px-4 py-2.5 rounded-md text-sm font-bold uppercase tracking-wider transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-500 hover:text-brand-dark'} focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
               aria-pressed={locale === 'en'}
               aria-label="English"
