@@ -105,12 +105,13 @@ export default function HomePage({ forceLocale }) {
       <Navbar onCtaClick={scrollToPricing} />
       <main id="main-content" tabIndex={-1}>
         <Hero onCta={scrollToPricing} />
+        <div className="h-px bg-gradient-to-r from-transparent via-brand-accent/30 to-transparent" aria-hidden />
         <WhatIsPromptAnatomy />
         <Methodology />
         <Ecosystem />
-        <section id="pricing" className="py-16 md:py-32 bg-white px-4 sm:px-6 overflow-hidden">
+        <section id="pricing" className="py-16 md:py-32 bg-pricing-section px-4 sm:px-6 overflow-hidden">
           <div className="max-w-5xl mx-auto min-w-0">
-            <div className="mb-6 md:mb-10 p-4 md:p-6 bg-slate-50 rounded-2xl border border-slate-100">
+            <div className="mb-6 md:mb-10 p-[14px] md:p-5 rounded-xl bg-[rgba(15,23,42,0.04)] border border-slate-200/60">
               <label htmlFor="access-email" className="block text-sm font-bold text-slate-700 mb-2">
                 {t('pricing.checkAccess')}
               </label>

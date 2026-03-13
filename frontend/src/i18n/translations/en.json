@@ -170,7 +170,8 @@
     "goToTraining": "Go to training",
     "noAccessFound": "No access found",
     "noAccessBody": "No access found for this email. Choose a plan below to get started.",
-    "modulesLocked": "Modules 7–15 coming in a later phase."
+    "modulesLocked": "Modules 7–15 coming in a later phase.",
+    "trustSignals": ["Lifetime updates", "No subscription", "Instant access"]
   },
   "footer": {
     "brand": "Prompt Anatomy",

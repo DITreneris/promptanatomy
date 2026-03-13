@@ -170,7 +170,8 @@
     "goToTraining": "Eiti į mokymus",
     "noAccessFound": "Prieiga nerasta",
     "noAccessBody": "Šiam el. paštui prieiga dar nesuteikta. Pasirink planą žemiau ir gauk prieigą.",
-    "modulesLocked": "Moduliai 7–15 bus vėlesnės fazės metu."
+    "modulesLocked": "Moduliai 7–15 bus vėlesnės fazės metu.",
+    "trustSignals": ["Lifetime atnaujinimai", "Be abonimento", "Momentinė prieiga"]
   },
   "footer": {
     "brand": "Promptų Anatomija",

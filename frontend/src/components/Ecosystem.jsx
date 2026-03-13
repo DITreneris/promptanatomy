@@ -35,14 +35,35 @@ export default function Ecosystem() {
   const items = rawItems
 
   return (
-    <section id="ekosistema" className="py-20 md:py-32 bg-brand-dark px-4 sm:px-6 relative overflow-hidden">
-      <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+    <section id="ekosistema" className="pt-[100px] pb-20 md:pb-32 bg-brand-dark px-4 sm:px-6 relative overflow-hidden">
+      <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" aria-hidden />
+      <div className="absolute inset-0 pointer-events-none bg-ecosystem-center-glow opacity-100" aria-hidden />
+      <div
+        className="absolute inset-0 opacity-[0.04] pointer-events-none"
+        style={{
+          backgroundImage: 'linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)',
+          backgroundSize: '32px 32px',
+        }}
+        aria-hidden
+      />
       <div className="max-w-7xl mx-auto relative z-10 min-w-0">
         <div className="text-center mb-16 md:mb-28">
-          <h2 className="text-4xl md:text-6xl font-black text-white mb-8 tracking-tighter">{t('ecosystem.title')}</h2>
+          <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-8 tracking-[-0.02em]">{t('ecosystem.title')}</h2>
           <p className="text-slate-300 text-lg max-w-[600px] mx-auto font-medium mt-3 leading-relaxed">
             {t('ecosystem.paragraph')}
           </p>
+        </div>
+
+        {/* OS backbone: connector dots + lines */}
+        <div className="hidden lg:flex items-center justify-center gap-4 mb-2 max-w-3xl mx-auto">
+          {items.map((_, i) => (
+            <span key={i} className="flex items-center">
+              <span className="w-2 h-2 rounded-full bg-white/25" aria-hidden />
+              {i < items.length - 1 && (
+                <span className="w-8 md:w-12 h-px bg-white/20 mx-1" aria-hidden />
+              )}
+            </span>
+          ))}
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -51,17 +72,18 @@ export default function Ecosystem() {
             const ctaLabel = (typeof item.ctaLabel === 'string' && item.ctaLabel.trim()) || (typeof t('ecosystem.ctaOpen') === 'string' && t('ecosystem.ctaOpen').trim()) || null
             const useCtaLayout = hasBullets || ctaLabel
 
-            const cardBaseClass = "group relative rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+            const cardBaseClass = "group relative rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:-translate-y-2 hover:shadow-ecosystem-card-hover transition-all duration-[180ms] overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
             const cardClass = `${cardBaseClass} p-10 ${useCtaLayout ? '' : 'block'}`
             const titleClass = "text-xl font-black text-white mb-2 tracking-tight"
 
             const content = (
               <>
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-white/[0.04] to-white/[0.01] pointer-events-none" aria-hidden />
                 <div
                   className="absolute -bottom-10 -right-10 w-32 h-32 blur-[60px] opacity-20 transition-opacity group-hover:opacity-40 bg-white/5"
                 />
                 <div
-                  className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-2xl transition-all group-hover:scale-110 ring-2 ring-transparent group-hover:ring-2 ${ECOSYSTEM_BG_CLASSES[item.themeIndex - 1]} ${ECOSYSTEM_HOVER_RING[item.themeIndex - 1]} ${useCtaLayout ? 'mb-6' : 'mb-24'}`}
+                  className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-ecosystem-icon-glow transition-all duration-[180ms] group-hover:scale-110 ring-2 ring-transparent group-hover:ring-2 shadow-[0_0_0_1px_rgba(255,255,255,0.05)] ${ECOSYSTEM_BG_CLASSES[item.themeIndex - 1]} ${ECOSYSTEM_HOVER_RING[item.themeIndex - 1]} ${useCtaLayout ? 'mb-6' : 'mb-24'}`}
                 >
                   {item.icon}
                 </div>
@@ -78,7 +100,7 @@ export default function Ecosystem() {
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center min-h-[44px] px-6 py-3 rounded-xl font-black text-brand-dark bg-accent-gradient hover:opacity-90 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+                    className="inline-flex items-center justify-center min-h-[44px] px-6 py-3 rounded-xl font-black text-brand-dark bg-cta-gradient shadow-ecosystem-cta hover:scale-[1.04] hover:shadow-ecosystem-cta transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
                   >
                     {ctaLabel}
                   </a>

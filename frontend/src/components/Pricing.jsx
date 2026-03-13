@@ -33,8 +33,8 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
   return (
     <>
       <div className="text-center mb-8 md:mb-16">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-xs font-black uppercase tracking-[0.25em] text-slate-500 mb-4 md:mb-6 border border-slate-200">
-          <Globe size={10} className="text-brand-accent" /> {t('pricing.badge')}
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-black uppercase tracking-[0.25em] text-amber-800 mb-4 md:mb-6 bg-[rgba(255,193,7,0.15)] border border-[rgba(255,193,7,0.35)]">
+          <Globe size={10} className="text-amber-600" /> {t('pricing.badge')}
         </div>
         <h2 className="text-2xl md:text-5xl font-black text-brand-dark tracking-tighter mb-3 md:mb-4">
           {t('pricing.title')}
@@ -47,7 +47,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-4 md:gap-6 mb-10 md:mb-16">
+      <div className="grid md:grid-cols-2 gap-10 mb-10 md:mb-16">
         {plansToShow.map((plan) => {
           const state = getButtonState(plan)
           const isOwned = state?.action === 'owned'
@@ -56,10 +56,10 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
           return (
             <div
               key={plan.id}
-              className={`bg-white rounded-3xl border-2 p-8 shadow-soft hover:shadow-soft-lg hover:-translate-y-0.5 transition-all duration-300 flex flex-col relative ${isCore ? 'border-brand-accent/50' : 'border-slate-100 hover:border-brand-accent/30'}`}
+              className={`relative rounded-3xl border-2 p-8 shadow-pricing-card hover:shadow-soft-lg hover:-translate-y-1.5 transition-all duration-300 flex flex-col ${isCore ? 'bg-gradient-to-b from-[rgba(255,193,7,0.08)] to-[rgba(255,193,7,0.02)] border-[rgba(255,193,7,0.5)]' : 'bg-white border-slate-100 hover:border-brand-accent/30'}`}
             >
               {isCore && (
-                <span className="absolute top-6 right-6 px-3 py-1 rounded-full bg-brand-accent/15 text-brand-accent text-xs font-black uppercase tracking-widest">
+                <span className="absolute top-6 right-6 px-3 py-1 rounded-full bg-[rgba(255,193,7,0.15)] border border-[rgba(255,193,7,0.35)] text-amber-800 text-xs font-black uppercase tracking-widest">
                   {t('pricing.recommended')}
                 </span>
               )}
@@ -81,7 +81,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
                   </ul>
                 ) : null
               })()}
-              <p className="text-4xl font-black text-brand-dark mb-6">
+              <p className="text-[44px] font-extrabold leading-none text-brand-dark mb-6">
                 {plan.price}<span className="text-xl font-bold text-slate-500"> €</span>
               </p>
               {isOwned ? (
@@ -100,7 +100,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
                   onClick={() => onBuy(plan.id, customerEmail)}
                   disabled={loading}
                   aria-busy={loading}
-                  className="mt-auto w-full min-h-[48px] py-4 rounded-2xl text-base font-black text-brand-dark bg-accent-gradient hover:shadow-glow-accent active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
+                  className="mt-auto w-full min-h-[48px] py-4 rounded-2xl text-base font-black text-brand-dark bg-cta-gradient shadow-pricing-cta hover:scale-[1.05] hover:shadow-pricing-cta active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
                 >
                   {loading ? t('pricing.loading') : <>{state.label} <ArrowRight size={18} /></>}
                 </button>
@@ -136,6 +136,17 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
           ))}
         </div>
       </div>
+
+      {(t('pricing.trustSignals') || []).length > 0 && (
+        <div className="flex flex-wrap justify-center gap-6 md:gap-10 mb-10 text-slate-600 font-medium">
+          {(Array.isArray(t('pricing.trustSignals')) ? t('pricing.trustSignals') : []).map((item, i) => (
+            <span key={i} className="flex items-center gap-2">
+              <CheckCircle size={18} className="text-emerald-500 shrink-0" aria-hidden />
+              {item}
+            </span>
+          ))}
+        </div>
+      )}
 
       {error && (
         <p className="mb-6 text-red-600 text-sm font-medium text-center" role="alert" aria-live="polite">

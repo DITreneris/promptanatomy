@@ -53,9 +53,9 @@ export default function Hero({ onCta }) {
   const lineDone = (lineIdx) => phase > lineIdx + 1
 
   return (
-    <section className="relative pt-28 md:pt-48 pb-20 md:pb-32 overflow-hidden bg-white">
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-slate-50 -skew-x-12 translate-x-32 -z-10 border-l border-slate-100"></div>
+    <section className="relative pt-28 md:pt-48 pb-20 md:pb-32 overflow-hidden bg-hero-bg">
+      <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-slate-50/80 -skew-x-12 translate-x-32 -z-10 border-l border-slate-100"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-12 lg:gap-24 items-center min-w-0">
         <div className="relative z-10 text-left min-w-0">
@@ -95,7 +95,7 @@ export default function Hero({ onCta }) {
             <button
               type="button"
               onClick={onCta}
-              className="group w-full sm:w-auto min-h-[44px] px-12 py-6 rounded-2xl text-xl font-black text-brand-dark bg-accent-gradient transition-all duration-200 hover:shadow-glow-accent flex items-center justify-center gap-3 transform hover:-translate-y-0.5 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
+              className="group w-full sm:w-auto min-h-[44px] px-12 py-6 rounded-2xl text-xl font-black text-brand-dark bg-cta-gradient shadow-cta-shadow transition-all duration-200 hover:shadow-cta-shadow hover:scale-[1.03] active:scale-[0.98] flex items-center justify-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
             >
               {t('hero.cta')} <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
             </button>

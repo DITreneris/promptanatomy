@@ -38,7 +38,7 @@ export default function Navbar({ onCtaClick }) {
 
   const closeMobile = () => setMobileOpen(false)
 
-  const navLinkClass = `text-xs font-black uppercase tracking-[0.15em] text-slate-500 hover:text-brand-dark transition-colors duration-200 min-h-[44px] min-w-[44px] inline-flex items-center ${FOCUS_RING}`
+  const navLinkClass = `relative text-xs font-black uppercase tracking-[0.15em] text-slate-500 hover:text-brand-accent transition-colors duration-200 min-h-[44px] min-w-[44px] inline-flex items-center after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-200 after:w-0 hover:after:w-full ${FOCUS_RING}`
 
   return (
     <nav
@@ -49,7 +49,7 @@ export default function Navbar({ onCtaClick }) {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center gap-2 min-w-0">
         <Link to={homePath} className={`flex items-center gap-3 sm:gap-4 group cursor-pointer min-w-0 ${FOCUS_RING} rounded-lg`}>
-          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-brand-dark flex items-center justify-center text-brand-accent shadow-soft-lg group-hover:scale-105 group-hover:shadow-glow-accent transition-all duration-300 border border-white/10 shrink-0">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-brand-dark flex items-center justify-center text-brand-accent shadow-soft-lg drop-shadow-logo-glow group-hover:scale-105 group-hover:shadow-glow-accent transition-all duration-300 border border-white/10 shrink-0">
             <Zap className="w-6 h-6 sm:w-7 sm:h-7 fill-current" />
           </div>
           <div className="flex flex-col min-w-0 overflow-hidden">
@@ -115,7 +115,7 @@ export default function Navbar({ onCtaClick }) {
             <button
               type="button"
               onClick={onCtaClick}
-              className="px-8 py-3 rounded-xl text-sm font-black text-brand-dark bg-accent-gradient transition-all duration-200 hover:shadow-glow-accent hover:-translate-y-0.5 active:scale-[0.98] border border-white/20 min-h-[44px] focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus:outline-none"
+              className="px-8 py-3 rounded-xl text-sm font-black text-brand-dark bg-cta-gradient shadow-cta-shadow transition-all duration-200 hover:shadow-cta-shadow hover:scale-[1.03] active:scale-[0.98] border border-white/20 min-h-[44px] focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus:outline-none"
             >
               {t('nav.cta')}
             </button>
@@ -181,7 +181,7 @@ export default function Navbar({ onCtaClick }) {
             </button>
           </div>
           {navItems.map((item) => {
-            const mobileClass = "py-4 text-base font-black uppercase tracking-[0.15em] text-slate-500 hover:text-brand-dark border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded"
+            const mobileClass = "relative py-4 text-base font-black uppercase tracking-[0.15em] text-slate-500 hover:text-brand-accent border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-200 after:w-0 hover:after:w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded"
             return item.external ? (
               <a
                 key={item.id || item.href}
@@ -216,7 +216,7 @@ export default function Navbar({ onCtaClick }) {
           <button
             type="button"
             onClick={() => { closeMobile(); onCtaClick() }}
-            className="mt-8 py-4 rounded-xl text-base font-black text-brand-dark bg-accent-gradient border border-white/20 min-h-[48px] flex items-center justify-center active:scale-[0.98] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
+            className="mt-8 py-4 rounded-xl text-base font-black text-brand-dark bg-cta-gradient shadow-cta-shadow border border-white/20 min-h-[48px] flex items-center justify-center hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
           >
             {t('nav.cta')}
           </button>
