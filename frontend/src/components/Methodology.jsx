@@ -25,11 +25,11 @@ export default function Methodology() {
         <div className="flex flex-col lg:flex-row justify-between items-end mb-16 md:mb-24 gap-12">
           <div className="max-w-2xl">
             <h2 className="text-xs font-black uppercase tracking-[0.4em] text-brand-accent mb-8">{t('methodology.sectionLabel')}</h2>
-            <h3 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter leading-none bg-gradient-to-r from-[#0f172a] to-slate-700 bg-clip-text text-transparent">
+            <h3 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter leading-none bg-gradient-to-r from-brand-dark to-slate-700 bg-clip-text text-transparent">
               {t('methodology.titleLine1')} <br /> {t('methodology.titleLine2')}
             </h3>
           </div>
-          <div className="bg-brand-accent/10 rounded-lg pl-4 pr-5 py-4 border-l-4 border-[#ffc107] max-w-sm">
+          <div className="bg-brand-accent/10 rounded-lg pl-4 pr-5 py-4 border-l-4 border-brand-accent max-w-sm">
             <p className="text-slate-700 font-medium text-lg leading-relaxed">
               {t('methodology.paragraph')}
             </p>
@@ -42,7 +42,7 @@ export default function Methodology() {
               <div
                 className="group flex-1 min-w-0 p-8 md:p-10 rounded-2xl bg-white shadow-methodology-card border border-slate-100 transition-all duration-[180ms] hover:-translate-y-1.5 hover:shadow-soft-lg hover:border-brand-accent/20"
               >
-                <div className="w-14 h-14 rounded-[14px] bg-[#0f172a] text-[#ffc107] flex items-center justify-center mb-8 transition-all duration-[180ms] group-hover:rotate-[4deg] group-hover:shadow-[0_0_0_4px_rgba(255,193,7,0.12)] shadow-[0_0_0_4px_rgba(255,193,7,0.08)]">
+                <div className="w-14 h-14 rounded-[14px] bg-brand-dark text-brand-accent flex items-center justify-center mb-8 transition-all duration-[180ms] group-hover:rotate-[4deg] group-hover:shadow-[0_0_0_4px_rgba(207,167,58,0.12)] shadow-[0_0_0_4px_rgba(207,167,58,0.08)]">
                   {React.cloneElement(item.icon, { size: 26 })}
                 </div>
                 <span className="text-xs font-black text-slate-400 tracking-widest mb-2 block">{item.step}</span>

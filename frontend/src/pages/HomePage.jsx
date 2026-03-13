@@ -98,7 +98,7 @@ export default function HomePage({ forceLocale }) {
     <div className="min-h-screen w-full max-w-[100vw] bg-white text-brand-dark font-sans selection:bg-brand-accent/30 antialiased overflow-x-hidden">
       <a
         href="#main-content"
-        className="absolute left-6 top-4 z-[200] py-3 px-4 bg-accent-gradient text-brand-dark font-black rounded-xl -translate-y-24 focus:translate-y-0 focus:outline-none focus:ring-2 focus:ring-brand-dark focus:ring-offset-2 transition-transform duration-200"
+        className="absolute left-6 top-4 z-[200] py-3 px-4 bg-accent-gradient text-brand-dark font-black rounded-xl -translate-y-24 focus:outline-none focus-visible:translate-y-0 focus-visible:ring-2 focus-visible:ring-brand-dark focus-visible:ring-offset-2 transition-transform duration-200"
       >
         {t('common.skipToContent')}
       </a>
@@ -124,7 +124,7 @@ export default function HomePage({ forceLocale }) {
                   value={customerEmail}
                   onChange={(e) => setCustomerEmail(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleCheckAccess()}
-                  className="flex-1 min-w-[200px] px-4 py-3 rounded-xl border border-slate-200 text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-shadow duration-200"
+                  className="flex-1 min-w-[200px] px-4 py-3 rounded-xl border border-slate-200 text-brand-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:border-transparent transition-shadow duration-200"
                   aria-describedby={accessError ? 'access-error' : undefined}
                 />
                 <button
@@ -132,7 +132,7 @@ export default function HomePage({ forceLocale }) {
                   onClick={handleCheckAccess}
                   disabled={accessLoading}
                   aria-busy={accessLoading}
-                  className="px-6 py-3 rounded-xl font-bold bg-brand-dark text-white hover:brightness-110 active:scale-[0.98] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 disabled:opacity-70"
+                  className="px-6 py-3 rounded-xl font-bold bg-brand-dark text-white hover:brightness-110 active:scale-[0.98] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 disabled:opacity-70"
                 >
                   {accessLoading ? t('pricing.loading') : t('pricing.checkButton')}
                 </button>

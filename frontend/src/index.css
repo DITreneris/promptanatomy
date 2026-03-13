@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --color-brand-accent: #CFA73A;
+  }
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
@@ -22,10 +25,10 @@
   }
   @keyframes blink-caret {
     from, to { border-color: transparent; }
-    50% { border-color: #CFA73A; }
+    50% { border-color: var(--color-brand-accent); }
   }
   .animate-blink-caret {
-    border-right: 2px solid #CFA73A;
+    border-right: 2px solid var(--color-brand-accent);
     animation: blink-caret 0.75s step-end infinite;
   }
 }

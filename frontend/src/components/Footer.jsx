@@ -64,17 +64,17 @@ export default function Footer() {
             <span className="text-xs font-black uppercase tracking-[0.5em] text-slate-500">
               {t('footer.copyright', { year })}
             </span>
-            <span className="text-xs font-normal normal-case tracking-wider text-slate-400">
+            <span className="text-xs font-normal normal-case tracking-wider text-slate-500">
               {t('footer.creator')}
             </span>
             <a href="mailto:tomas@promptanatomy.app" className="text-xs font-normal normal-case tracking-wider text-slate-500 hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">
               tomas@promptanatomy.app
             </a>
           </div>
-          <div className="flex flex-wrap gap-8 md:gap-16 text-xs font-black uppercase tracking-[0.35em] text-slate-400">
+          <div className="flex flex-wrap gap-8 md:gap-16 text-xs font-black uppercase tracking-[0.35em] text-slate-500">
             <Link to="/privacy" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">{t('footer.privacyPolicy')}</Link>
             <Link to="/terms" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">{t('footer.termsOfService')}</Link>
-            <span title={t('footer.comingSoon')}>{t('footer.cookies')} <span className="text-slate-300 font-normal normal-case">{t('footer.comingSoon')}</span></span>
+            <span title={t('footer.comingSoon')}>{t('footer.cookies')} <span className="text-slate-500 font-normal normal-case">{t('footer.comingSoon')}</span></span>
           </div>
         </div>
       </div>

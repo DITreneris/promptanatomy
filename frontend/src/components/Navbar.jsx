@@ -27,6 +27,7 @@ export default function Navbar({ onCtaClick }) {
   }, [mobileOpen])
 
   const navItems = [
+    { name: t('nav.whatIs'), id: 'what-is' },
     { name: t('nav.ecosystem'), id: 'ekosistema' },
     { name: t('nav.methodology'), id: 'metodologija' },
     ...(GLOSSARY_URL

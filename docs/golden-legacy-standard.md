@@ -2,14 +2,15 @@
 
 **Tikslas:** Fiksuoti veikiančią būseną ir kritinius kelius, kad pakeitimai nepalaužtų to, kas jau veikia. Prieš didesnius refaktorinimus ar naujas funkcijas – patikrinti, kad šis standartas išlieka tenkinamas.
 
-**Data fiksavimo:** 2026-03-12 (atnaujinta po deploy)
+**Data fiksavimo:** 2026-03-13 (atnaujinta po SEO lokalizacijos)
 
 ---
 
 ## 1. Kas laikoma „veikiančiu“
 
 - LP rodomas, visos sekcijos matomos (Hero, Kas yra Prompt Anatomy, Methodology, Ecosystem, Pricing, Footer).
-- Kalbos perjungimas LT/EN veikia; LT naudoja DI, EN – AI (pagal [language-guidelines-en-lt.md](language-guidelines-en-lt.md)).
+- Kalbos perjungimas LT/EN veikia; LT naudoja DI, EN – AI (pagal [language-guidelines-en-lt.md](language-guidelines-en-lt.md)). Locale-aware URL: `/lt` ir `/en` rodo atitinkamą kalbą; perjungus kalbą Navbar nukreipia į `/lt` arba `/en` (share'inamas linkas atspindi kalbą).
+- SEO: `SeoHead.jsx` nustato canonical ir og:url pagal pathname; ant home route'ų (`/`, `/lt`, `/en`) – hreflang (lt, en, x-default). Twitter Card ir og:url įdiegti (`index.html` + dinamiškai).
 - Checkout srautas: prieigos tikrinimas (email) → planų pasirinkimas → Stripe Checkout → success/cancel puslapiai.
 - Prieigos srautas (susimokėjus): LP „Eiti į mokymus" → `GET /api/generate-access-link?email=...` → magic link su HMAC tokenu → training app atrakina modulius.
 - Backend API ir webhook atsako pagal aprašytas sutartis (žr. skyrių 2–3).
@@ -62,7 +63,8 @@
 | Kelias | Komponentas / elgsena |
 |--------|------------------------|
 | `/` | HomePage (LP, locale iš localStorage/naršyklės) |
-| `/en` | HomePage su locale EN (ne 404) |
+| `/lt` | HomePage su locale LT (forceLocale="lt") |
+| `/en` | HomePage su locale EN (forceLocale="en") |
 | `/success` | SuccessPage |
 | `/cancel` | CancelPage |
 | `/privacy` | PrivacyPage |
@@ -72,8 +74,8 @@
 **LP struktūra (HomePage):**
 
 - Skip link → `#main-content`.
-- Navbar (brand, nuorodos, kalbos LT|EN, CTA).
-- Hero (h1, subtitle, 3 bullet, CTA scroll į pricing).
+- Navbar (brand, nuorodos, kalbos LT|EN su navigate į `/lt`/`/en`, CTA). Logo ir „Home“ nuorodos – locale-aware (`/lt` arba `/en`).
+- Hero (h1, subtitle, 3 bullet, CTA scroll į pricing; kodo blokas su typing animacija).
 - WhatIsPromptAnatomy (h2, intro, 4 bullet).
 - Methodology (section id metodologija).
 - Ecosystem (section id ekosistema).
@@ -82,7 +84,9 @@
 
 **i18n:** Visi raktai naudojami iš `lt.json` / `en.json`; nėra hardcoded teksto komponentuose (Hero, WhatIs, Methodology, Ecosystem, Pricing, Footer, Navbar, Success, Cancel). LT – terminas DI; EN – AI.
 
-**Kaip tikrinti:** `cd frontend && npm run build` – build turi pavykti. `cd apps/prompt-anatomy && npm run build` – training app build turi pavykti. Rankinis smoke: atidaryti `/`, `/en`, `/success`, `/cancel`, perjungti kalbą, scroll į pricing, patikrinti prieigos formą. Magic link flow: patikrinti prieigą su susimokėjusio vartotojo email → spausti „Eiti į mokymus" → turi nukreipti į training app su `access_tier`, `expires`, `token` parametrais → moduliai atrakinti.
+**SEO (SeoHead):** Ant `/`, `/lt`, `/en` – canonical ir og:url atitinka dabartinį URL; hreflang linkai (lt, en, x-default) injektuojami į head. Ant success/cancel – hreflang pašalinami.
+
+**Kaip tikrinti:** `cd frontend && npm run build` – build turi pavykti. `cd apps/prompt-anatomy && npm run build` – training app build turi pavykti. Rankinis smoke: atidaryti `/`, `/lt`, `/en`, `/success`, `/cancel`, perjungti kalbą (turėtų navigate į `/lt` arba `/en`), scroll į pricing, patikrinti prieigos formą. Magic link flow: patikrinti prieigą su susimokėjusio vartotojo email → spausti „Eiti į mokymus" → turi nukreipti į training app su `access_tier`, `expires`, `token` parametrais → moduliai atrakinti.
 
 **UX smoke (po P0-P3 fix'ų):**
 - Email be prieigos (`highest_plan === 0`) → amber blokas „Prieiga nerasta" + CTA „Gauti prieigą →" (scroll į pricing).
@@ -92,6 +96,7 @@
 - `/success` be `session_id` – informacinis pranešimas „Jei ką tik sumokėjai – palauk".
 - Magic link su netinkamu/pasibaigusiu tokenu → „Grįžti į pradžią" nuoroda (ne Retry mygtukas).
 - Klaidos `api.js` – `detail` visada string (typeof safety).
+- Hero kodo blokas – typing animacija veikia (staggered fade-in + typing + blinking cursor + SYSTEM INIT fade-in po pabaigos).
 
 ---
 
@@ -106,6 +111,9 @@
 - **Training app submodule:** `apps/prompt-anatomy` → `DITreneris/inzinerija`. Magic link tier validacija naudoja `VALID_MAX_MODULE_IDS` iš `constants/pricing.ts` (ne hardcoded reikšmes).
 - **LT kalba:** visur vartotojui matomas tekstas – „Tu" forma (ne „Jūs"). Terminas „DI" (ne „AI").
 - **api.js error handling:** `detail` iš backend visada konvertuojamas į string (`typeof raw === 'string' ? raw : JSON.stringify(raw)`).
+- **Hero animacija:** `Hero.jsx` naudoja `phase` state (0→4) su `useEffect` + `setInterval` typing logika. CSS keyframes `fadeInUp` ir `blink-caret` yra `index.css`. Animacija gerbia `prefers-reduced-motion` (JS `matchMedia` check + CSS override). **Nekeisti timing sekos be vizualinio testavimo.** 0 išorinių priklausomybių.
+- **Ecosystem CTA:** EN naudoja trumpą formą („Open dashboard", „Open library", „Create content", „Assess candidates"). **Nevartoti ilgų CTA tekstų (>18 simb.) -- persilaužia mobilėje.**
+- **SEO (SeoHead):** `frontend/src/components/SeoHead.jsx` – atnaujina canonical, og:url, og:locale, hreflang pagal pathname ir locale. Naudoja `SITE_URL` iš `config.js`. HOME_ROUTES = `['/', '/lt', '/en']`. Keičiant home route'us ar hreflang strategiją – atnaujinti SeoHead ir sitemap.
 
 ---
 

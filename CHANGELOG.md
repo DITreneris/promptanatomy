@@ -1,6 +1,11 @@
 # Changelog
 
-## [Unreleased] / 2026-03-12
+## [Unreleased] / 2026-03-13
+
+### Pridėta
+- **SEO lokalizacija ir social share (2026-03):** Lokalizuotos nuorodos (EN → `/en`, LT → `/lt`), dinaminis canonical ir `og:url` pagal route, hreflang (lt, en, x-default) ant home route'ų, Twitter Card (summary_large_image, title, description, image). Naujas `SeoHead.jsx` – atnaujina canonical, og:url, og:locale, og:locale:alternate, injektuoja hreflang linkus ant `/`, `/lt`, `/en`; pašalina hreflang ant success/cancel. `config.js` – `SITE_URL` (VITE_SITE_URL arba fallback). Route `/lt` – HomePage su `forceLocale="lt"`. Navbar: logo ir „Home“ nuorodos pagal locale (`/lt` arba `/en`); LT/EN mygtukai daro `setLocale` + `navigate('/lt')` / `navigate('/en')` (share'inamas URL atspindi kalbą). HomePage: pathname `/lt` nustato locale lt. `index.html`: `og:url`, `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`. Sitemap: pridėti `/lt` ir `/en`. Docs: `docs/SEO-KISS-Marry-Kill.md` atnaujintas (hreflang, canonical, og:url, Twitter, įgyvendinimo būsena 2026-03-13).
+- **Hero kodo bloko animacija (typing efektas):** Juodasis kodo blokas Hero sekcijoje dabar turi gyvo terminalo efektą: 3 kodo eilutės atsiranda po vieną su staggered fade-in (slideUp 300ms), kiekvienos eilutės reikšmė rašoma po raidę (55ms/simbolis) su blinking cursor ant aktyvios eilutės. „SYSTEM INITIALIZING..." atsiranda tik kai visos eilutės baigtos. Pure CSS keyframes (`fadeInUp`, `blink-caret`) + React `useState`/`useEffect` – 0 naujų priklausomybių. Gerbia `prefers-reduced-motion` (JS tikrina `matchMedia`, CSS nuima animacijas). Failai: `Hero.jsx`, `index.css`.
+- **Ecosystem CTA sutrumpintas:** EN „Open operations center" (24 simb., persilaužė į 3 eilutes) → „Open dashboard" (14 simb.) – aiškesnis, telpa vienoje eilutėje. LT „Atidaryti OC" nepakeistas. Failas: `en.json`.
 
 ### Ištaisyta
 - **Backend testų fix (pre-existing):** `backend/limits.py` pervadinta į `backend/token_limits.py` – senas pavadinimas shadino `limits` PyPI paketą (naudojamą `slowapi`), todėl `test_api.py` negalėjo importuoti `main.py`. Atnaujinti importai `main.py` ir `tests/test_limits.py`. `backend/core/config.py` – `PLAN_VALUES`, `PHASE1_PLAN_IDS`, `PHASE1_PLAN_VALUES`, `PLAN_ID_TO_VALUE` konstantos pažymėtos `ClassVar` anotacijomis (Pydantic BaseSettings reikalavimas, be jų – `PydanticUserError`). Po fix'o: `test_limits.py` 8/8 PASSED.

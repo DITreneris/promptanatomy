@@ -37,7 +37,7 @@ Detali peržiūra: šriftai, dydžiai, spalvos, tarpai, mikro kopija. Ką galima
 | Problema | Kur | Rekomendacija |
 |----------|-----|----------------|
 | **Hardcoded hex** | `#F8FAFC` (Hero, Success, Cancel, Privacy), Ecosystem `#2E9E7E`, `#7C5CFF`… | `#F8FAFC` → `slate-50` arba į `tailwind.config` kaip `background: { page: '#F8FAFC' }`. Ecosystem spalvas į config kaip semantic (pvz. `ecosystem.1` …). |
-| **Kontrastas ant baltų** | `text-slate-300`, `text-slate-400` body/paragraph | Ant white: 400 mažesniems tekstams ok; 300 – tik labai dideliems arba ne kritiniam tekstui. Footer copyright `text-slate-300` – svarstyti `slate-500` arba `slate-600` dėl WCAG. |
+| **Kontrastas ant baltų** | `text-slate-300`, `text-slate-400` body/paragraph | Ant white: 400 mažesniems tekstams ok; 300 – tik labai dideliems. Footer creator, cookies/coming-soon ir nuorodos – **įgyvendinta:** `text-slate-500` (2026-03-13). |
 | **Klaidos / įspėjimai** | `text-red-600`, `text-amber-700` | Gerai. Palikti; jei reikia – vienas „error“ tokenas config. |
 | **Accent gradient** | Hero, mygtukai: `#CFA73A` → `#E8B93C` | **Įgyvendinta:** `tailwind.config.js` – `backgroundImage['accent-gradient']`; visi primary CTA naudoja `bg-accent-gradient`. |
 | **Ecosystem hex** | `#2E9E7E`, `#7C5CFF` ir kt. | **Įgyvendinta:** perkelta į `tailwind.config.js` kaip `colors.ecosystem` (1–4); Ecosystem.jsx naudoja theme klases. |
@@ -104,9 +104,12 @@ Jei nori, galiu išrašyti konkrečius pakeitimus failuose (pvz. tik tipografij�
 
 ---
 
-## Įgyvendinta (2025-03-08)
+## Įgyvendinta (2025-03-08, papildyta 2026-03-13)
 
 - **Tailwind:** `fontFamily.sans`, `fontSize.label`; visur `#F8FAFC` → `slate-50`.
+- **Methodology:** Hardcoded hex pakeisti į `brand-dark` ir `brand-accent` (heading gradient, border, icon box); shadow rgba atitinka brand.accent (#CFA73A).
+- **Focus-visible:** HomePage skip link ir prieigos forma (input, mygtukas „Tikrinti prieigą“) naudoja `focus-visible:ring` vietoj `focus:ring` – nuoseklu su likusiu UI.
+- **Blink-caret:** `index.css` – `--color-brand-accent` CSS kintamasis ir `var(--color-brand-accent)` keyframes/.animate-blink-caret.
 - **Tipografija:** maži dydžiai → `text-xs`; Hero H1 scale `text-4xl … lg:text-7xl`; Footer nuorodos `font-bold`; Methodology section label be italic; Footer copyright/h5 → `text-slate-500`.
 - **Rounded:** suvienodinta į `rounded-3xl` (Ecosystem, Methodology, Pricing, Hero, Success, Cancel).
 - **Tarpai:** Footer `pt-32 pb-16`, `gap-16 mb-24`; Methodology `mb-24`; Pricing error `mb-6`.

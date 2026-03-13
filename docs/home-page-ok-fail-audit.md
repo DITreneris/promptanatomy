@@ -15,7 +15,7 @@
 | H2 sekcijoms (Kas yra, Metodologija, Ekosistema, Kainodara) | **OK** | WhatIsPromptAnatomy, Methodology, Ecosystem, Pricing – h2/h3 naudojami. |
 | „Kas yra“ sekcija matoma be scroll (above the fold) | **FAIL** | Ekrane – tik hero + dalis turinio; „Kas yra“ dažnai žemiau. Priklauso nuo viewport; desktop OK, mažesniuose – ne. |
 | Nav nuorodos → teisingi section id | **OK** | `#ekosistema`, `#metodologija`, `#pricing` – atitinka. |
-| Nav **nenuveda** į „Kas yra“ | **FAIL** | Nėra nuorodos į `#what-is`; vartotojas negali greitai peršokti į apibrėžimą. |
+| Nav nuoroda į „Kas yra“ | **OK** | Pridėta nuoroda „Kas yra“ / „What is“ → `#what-is` (2026-03-13). |
 
 ---
 
@@ -55,7 +55,7 @@
 | Klaidos (access, checkout): role="alert", vertimai | **OK** | accessError, error per t(); scroll į pricing po klaidos. |
 | Loading būsenos (aria-busy, disabled) | **OK** | Check access, Get access. |
 | Reduced motion | **OK** | index.css prefers-reduced-motion. |
-| Kontrastas (WCAG AA) | **WARN** | Footer copyright slate-300 – svarstyti slate-500/600; micro-ui-ux-audit. |
+| Kontrastas (WCAG AA) | **OK** | Footer creator, cookies/coming-soon ir nuorodos – text-slate-500 (2026-03-13). |
 | Šriftų hierarchija / per daug font-black | **WARN** | micro-ui-ux-audit: daug 900; rekomenduota dalį – font-bold. |
 | Hero H1 scale (mažuose viewport) | **WARN** | Audit: text-4xl→md:text-6xl lg:text-7xl naudojamas; 94px pašalintas – OK. |
 | Overflow-x-hidden | **OK** | HomePage – mažina horizontalų scroll. |
@@ -79,12 +79,12 @@
 
 | Kategorija | OK | FAIL | WARN |
 |------------|----|------|------|
-| Struktūra ir turinys | 5 | 2 | 0 |
+| Struktūra ir turinys | 6 | 1 | 0 |
 | Navigacija ir CTA | 6 | 1 | 0 |
 | Kopija ir kalbos | 3 | 3 | 1 |
-| UI/UX ir prieinamumas | 7 | 0 | 3 |
+| UI/UX ir prieinamumas | 8 | 0 | 2 |
 | Techninis | 5 | 0 | 0 |
-| **Iš viso** | **26** | **6** | **4** |
+| **Iš viso** | **27** | **5** | **3** |
 
 ---
 
@@ -92,12 +92,12 @@
 
 **MUST (FAIL → OK)**  
 1. **Copy:** Įgyvendinti copy-audit-lp rekomendacijas – „6 blokų“ 2×, whatIs.intro pirmą sakinį nuo brand + rezultato.  
-2. **Nav:** Pridėti nuorodą į „Kas yra“ (pvz. „Kas yra“ → `#what-is`) arba palikti sąmoningai ir dokumentuoti.  
+2. **Nav:** Pridėti nuorodą į „Kas yra“ (pvz. „Kas yra“ → `#what-is`) – **įgyvendinta 2026-03-13.**  
 3. **Micro copy:** Taisyti „commit'ai“, success heading/breadcrumb vienodumą, moduliai 7–15 sakinį (micro-ui-ux-audit).
 
 **SHOULD (WARN / UX)**  
 4. **Focus trap:** Mobilaus meniu atidaryme laikyti fokusą drawer viduje, uždaryti su Escape.  
-5. **Kontrastas:** Footer copyright – pakeisti į slate-500 arba slate-600.  
+5. **Kontrastas:** Footer copyright – pakeisti į slate-500 arba slate-600 – **įgyvendinta 2026-03-13.**  
 6. **Tipografija:** Sumažinti font-black naudojimą kur nereikia (subheadings, antriniai blokai).
 
 **NICE**  
