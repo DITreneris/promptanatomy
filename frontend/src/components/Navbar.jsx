@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Zap, Menu, X } from 'lucide-react'
-import { GLOSSARY_URL } from '../config'
+import { GLOSSARY_URL, APP_VERSION } from '../config'
 import { useLocale } from '../i18n/LocaleContext'
 
 const FOCUS_RING = 'focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2'
@@ -55,7 +55,7 @@ export default function Navbar({ onCtaClick }) {
           <div className="flex flex-col min-w-0 overflow-hidden">
             <span className="text-lg sm:text-2xl font-black tracking-tighter leading-none text-brand-dark flex items-center gap-2 break-words">
               {t('nav.brandPromptu')} <span className="text-brand-accent">{t('nav.brandAnatomija')}</span>
-              <span className="hidden sm:inline-block px-1.5 py-0.5 rounded bg-slate-100 text-xs font-black text-slate-400 align-middle">{t('nav.version')}</span>
+              <span className="hidden sm:inline-block px-1.5 py-0.5 rounded bg-slate-100 text-xs font-black text-slate-400 align-middle">{APP_VERSION}</span>
             </span>
             <span className="text-xs font-black uppercase tracking-[0.2em] sm:tracking-[0.4em] text-slate-500 sm:text-slate-400 break-words">{t('nav.brandTagline')}</span>
           </div>

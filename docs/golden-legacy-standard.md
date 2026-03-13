@@ -2,13 +2,13 @@
 
 **Tikslas:** Fiksuoti veikiančią būseną ir kritinius kelius, kad pakeitimai nepalaužtų to, kas jau veikia. Prieš didesnius refaktorinimus ar naujas funkcijas – patikrinti, kad šis standartas išlieka tenkinamas.
 
-**Data fiksavimo:** 2026-03-13 (atnaujinta po SEO lokalizacijos)
+**Data fiksavimo:** 2026-03-13 (atnaujinta po SEO lokalizacijos ir UI/UX MUST–SHOULD–NICE)
 
 ---
 
 ## 1. Kas laikoma „veikiančiu“
 
-- LP rodomas, visos sekcijos matomos (Hero, Methodology, Ecosystem, Kas yra Prompt Anatomy, Pricing, Footer). „Kas yra“ – po Ecosystem, prieš Pricing; nav be „Kas yra“ (less is more).
+- LP rodomas, visos sekcijos matomos (Hero, Kas yra Prompt Anatomy, Methodology, Ecosystem, Pricing, Footer). „Kas yra“ – po Hero, prieš Methodology. Navbar neturi nuorodos „Kas yra“ (nuorodos: Ekosistema, Metodologija, Repo/Mokymai, Kainodara). Skip link ir prieigos forma naudoja `focus-visible:ring`; Methodology – `brand-dark` / `brand-accent` tokenai; Footer kritinis tekstas – `text-slate-500`; blink-caret – `var(--color-brand-accent)` (index.css).
 - Kalbos perjungimas LT/EN veikia; LT naudoja DI, EN – AI (pagal [language-guidelines-en-lt.md](language-guidelines-en-lt.md)). Locale-aware URL: `/lt` ir `/en` rodo atitinkamą kalbą; perjungus kalbą Navbar nukreipia į `/lt` arba `/en` (share'inamas linkas atspindi kalbą).
 - SEO: `SeoHead.jsx` nustato canonical ir og:url pagal pathname; ant home route'ų (`/`, `/lt`, `/en`) – hreflang (lt, en, x-default). Twitter Card ir og:url įdiegti (`index.html` + dinamiškai).
 - Checkout srautas: prieigos tikrinimas (email) → planų pasirinkimas → Stripe Checkout → success/cancel puslapiai.
@@ -74,12 +74,12 @@
 **LP struktūra (HomePage):**
 
 - Skip link → `#main-content`.
-- Navbar (brand, nuorodos, kalbos LT|EN su navigate į `/lt`/`/en`, CTA). Logo ir „Home“ nuorodos – locale-aware (`/lt` arba `/en`).
+- Navbar (brand, nuorodos: Ekosistema, Metodologija, Repo/Mokymai jei config, Kainodara; kalbos LT|EN su navigate į `/lt`/`/en`; CTA). Logo ir „Home“ nuorodos – locale-aware (`/lt` arba `/en`).
 - Hero (h1, subtitle, 3 bullet, CTA scroll į pricing; kodo blokas su typing animacija).
+- WhatIsPromptAnatomy (section id what-is; h2, value, 6 blokų piliai, 3 stat kortelės) – po Hero, prieš Methodology.
 - Methodology (section id metodologija).
 - Ecosystem (section id ekosistema).
-- WhatIsPromptAnatomy (section id what-is; h2, value, 6 blokų piliai, 3 stat kortelės) – po Ecosystem, prieš Pricing.
-- Pricing (section id pricing, prieigos forma, 2 planai Phase 1; „Eiti į mokymus" mygtukas kviečia `/api/generate-access-link` ir atidaro training app su magic link).
+- Pricing (section id pricing, prieigos forma, 2 planai Phase 1; „Eiti į mokymus" mygtukas kviečia `/api/generate-access-link` ir nukreipia tame pačiame lange į training app su magic link – same-tab navigation reikalinga iOS/Safari, kur `window.open` po async dažnai blokuojamas).
 - Footer (brand, tagline; System: Ekosistema, Metodologija, Kainodara; Network: Support/WhatsApp, LinkedIn, X (Twitter); legal, copyright).
 
 **i18n:** Visi raktai naudojami iš `lt.json` / `en.json`; nėra hardcoded teksto komponentuose (Hero, WhatIs, Methodology, Ecosystem, Pricing, Footer, Navbar, Success, Cancel). LT – terminas DI; EN – AI.
@@ -90,7 +90,7 @@
 
 **UX smoke (po P0-P3 fix'ų):**
 - Email be prieigos (`highest_plan === 0`) → amber blokas „Prieiga nerasta" + CTA „Gauti prieigą →" (scroll į pricing).
-- Email su prieiga (`highest_plan > 0`) → žalias blokas su progress bar + „Eiti į mokymus →" (magic link).
+- Email su prieiga (`highest_plan > 0`) → žalias blokas su progress bar + „Eiti į mokymus →" (magic link; navigacija tame pačiame lange, kad veiktų iPhone/Safari).
 - „Eiti į mokymus" mygtukas rodo loading state (`trainingLinkLoading`).
 - `/cancel` puslapis – „Bandyti dar kartą" nuoroda scroll'ina į `#pricing` (ne SPA navigate + hash).
 - `/success` be `session_id` – informacinis pranešimas „Jei ką tik sumokėjai – palauk".

@@ -33,7 +33,7 @@
     "brandPromptu": "PROMPTŲ",
     "brandAnatomija": "ANATOMIJA",
     "brandTagline": "DI OPERACINĖ SISTEMA",
-    "version": "v2.4"
+    "version": "v1.3"
   },
   "hero": {
     "systemStatus": "Sistemos būsena: stabili",
@@ -50,7 +50,7 @@
     "members": "500+ narių",
     "community": "DI Praktikų bendruomenė",
     "liveFeed": "Tiesioginis srautas",
-    "scriptName": "prompt_os_v2.sh",
+    "scriptName": "anatomy_os_v1.3.sh",
     "systemInit": "Sistema startuoja",
     "codeLine1": "01. Meta",
     "codeRole": "VAIDMUO:",
@@ -90,7 +90,7 @@
   "ecosystem": {
     "title": "DI darbo sistema verslui",
     "paragraph": "Viena DI operacinė sistema. Keturi darbo kontekstai verslui.",
-    "stableLabel": "v2.4 Stable",
+    "stableLabel": "v1.3 Stable",
     "ctaOpen": "Atidaryti sistemą",
     "items": [
       {

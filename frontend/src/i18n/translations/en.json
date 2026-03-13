@@ -33,7 +33,7 @@
     "brandPromptu": "PROMPT",
     "brandAnatomija": "ANATOMY",
     "brandTagline": "AI Operating System",
-    "version": "v2.4"
+    "version": "v1.3"
   },
   "hero": {
     "systemStatus": "System Status: Stable",
@@ -50,7 +50,7 @@
     "members": "500+ members",
     "community": "AI Practitioners community",
     "liveFeed": "Live Feed",
-    "scriptName": "prompt_os_v2.sh",
+    "scriptName": "anatomy_os_v1.3.sh",
     "systemInit": "System Initializing",
     "codeLine1": "01. Meta",
     "codeRole": "ROLE:",
@@ -90,7 +90,7 @@
   "ecosystem": {
     "title": "AI work system for business",
     "paragraph": "One AI operating system. Four work contexts for your business.",
-    "stableLabel": "v2.4 Stable",
+    "stableLabel": "v1.3 Stable",
     "ctaOpen": "Open system",
     "items": [
       {

@@ -1,5 +1,6 @@
 import { Users, BookOpen, Megaphone, LayoutDashboard } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
+import { APP_VERSION } from '../config'
 
 const FALLBACK_ICONS = [<BookOpen key="b" />, <Megaphone key="m" />, <Users key="u" />, <LayoutDashboard key="d" />]
 /** URL → theme index 1–4 (ecosystem-1 … ecosystem-4 in tailwind.config) */
@@ -124,7 +125,7 @@ export default function Ecosystem() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${cardClass} cursor-pointer`}
-                aria-label={`${item.title}, ${t('ecosystem.stableLabel')}`}
+                aria-label={`${item.title}, ${APP_VERSION} Stable`}
               >
                 {content}
               </a>

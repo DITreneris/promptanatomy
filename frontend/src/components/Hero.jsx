@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { ArrowRight, Activity } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
+import { SCRIPT_NAME } from '../config'
 
 export default function Hero({ onCta }) {
   const { t } = useLocale()
@@ -131,7 +132,7 @@ export default function Hero({ onCta }) {
                 <div className="px-2 py-1 rounded bg-white/5 border border-white/10 text-xs text-slate-500 font-black uppercase tracking-widest flex items-center gap-1.5 shrink-0">
                   <Activity size={10} className="text-emerald-500" /> {t('hero.liveFeed')}
                 </div>
-                <div className="px-2 py-1 rounded bg-white/5 border border-white/10 text-xs text-slate-500 font-bold uppercase tracking-widest truncate">{t('hero.scriptName')}</div>
+                <div className="px-2 py-1 rounded bg-white/5 border border-white/10 text-xs text-slate-500 font-bold uppercase tracking-widest truncate">{SCRIPT_NAME}</div>
               </div>
             </div>
 

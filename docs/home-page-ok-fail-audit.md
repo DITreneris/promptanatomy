@@ -9,7 +9,7 @@
 
 | Kriterijus | Būsena | Pastabos |
 |------------|--------|-----------|
-| LP sekcijų eilė (Hero → Metodologija → Ekosistema → Kas yra → Kainodara → Footer) | **OK** | HomePage.jsx; „Kas yra“ po Ecosystem (less is more); golden-legacy atnaujinta. |
+| LP sekcijų eilė (Hero → Kas yra → Metodologija → Ekosistema → Kainodara → Footer) | **OK** | HomePage.jsx; „Kas yra“ po Hero, prieš Metodologiją; nav be „Kas yra“. |
 | Semantika: `<main>`, `<section>`, `id` sekcijoms | **OK** | `#main-content`, `#what-is`, `#metodologija`, `#ekosistema`, `#pricing`. |
 | H1 vienas per puslapį (Hero) | **OK** | Hero turi vieną h1. |
 | H2 sekcijoms (Kas yra, Metodologija, Ekosistema, Kainodara) | **OK** | WhatIsPromptAnatomy, Methodology, Ecosystem, Pricing – h2/h3 naudojami. |
