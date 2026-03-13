@@ -171,7 +171,11 @@
     "noAccessFound": "No access found",
     "noAccessBody": "No access found for this email. Choose a plan below to get started.",
     "modulesLocked": "Modules 7–15 coming in a later phase.",
-    "trustSignals": ["Lifetime updates", "No subscription", "Instant access"]
+    "trustSignals": ["Lifetime updates", "One-time payment", "Instant access"],
+    "forTeamsTitle": "For teams & organizations",
+    "forTeamsBody": "Pilot 399€, 15 min demo – contact us.",
+    "forTeamsCta": "Book 15 min demo",
+    "forTeamsMailSubject": "Pilot 399€ / 15 min demo"
   },
   "footer": {
     "brand": "Prompt Anatomy",

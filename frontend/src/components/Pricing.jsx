@@ -123,6 +123,22 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
         </p>
       )}
 
+      <div className="mb-10 rounded-2xl border border-slate-200 bg-slate-50/80 p-6 md:p-8 text-center">
+        <h3 className="text-lg md:text-xl font-black text-brand-dark tracking-tight mb-2">
+          {t('pricing.forTeamsTitle')}
+        </h3>
+        <p className="text-slate-600 text-sm md:text-base font-medium mb-4 max-w-xl mx-auto">
+          {t('pricing.forTeamsBody')}
+        </p>
+        <a
+          href={`mailto:info@promptanatomy.app?subject=${encodeURIComponent(t('pricing.forTeamsMailSubject'))}`}
+          className="inline-flex items-center justify-center gap-2 min-h-[48px] px-6 py-3 rounded-xl text-base font-bold text-brand-dark bg-white border-2 border-slate-200 hover:border-brand-accent/40 hover:bg-slate-50 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
+          aria-label={t('pricing.forTeamsCta')}
+        >
+          {t('pricing.forTeamsCta')} <ArrowRight size={18} aria-hidden />
+        </a>
+      </div>
+
       <div className="bg-slate-50 rounded-3xl p-10 border border-slate-100 mb-10">
         <p className="text-slate-600 font-bold mb-6">{t('pricing.allPlansInclude')}</p>
         <div className="grid md:grid-cols-2 gap-4">

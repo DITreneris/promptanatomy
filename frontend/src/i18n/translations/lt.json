@@ -171,7 +171,11 @@
     "noAccessFound": "Prieiga nerasta",
     "noAccessBody": "Šiam el. paštui prieiga dar nesuteikta. Pasirink planą žemiau ir gauk prieigą.",
     "modulesLocked": "Moduliai 7–15 bus vėlesnės fazės metu.",
-    "trustSignals": ["Lifetime atnaujinimai", "Be abonimento", "Momentinė prieiga"]
+    "trustSignals": ["Lifetime atnaujinimai", "Vienkartinis mokėjimas", "Momentinė prieiga"],
+    "forTeamsTitle": "Komandoms ir organizacijoms",
+    "forTeamsBody": "Pilotas 399 €, 15 min demo – parašykite mums.",
+    "forTeamsCta": "Užsakyti 15 min demo",
+    "forTeamsMailSubject": "Pilot 399€ / 15 min demo"
   },
   "footer": {
     "brand": "Promptų Anatomija",

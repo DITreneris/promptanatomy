@@ -67,8 +67,8 @@ export default function Footer() {
             <span className="text-xs font-normal normal-case tracking-wider text-slate-500">
               {t('footer.creator')}
             </span>
-            <a href="mailto:tomas@promptanatomy.app" className="text-xs font-normal normal-case tracking-wider text-slate-500 hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">
-              tomas@promptanatomy.app
+            <a href="mailto:info@promptanatomy.app" className="text-xs font-normal normal-case tracking-wider text-slate-500 hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">
+              info@promptanatomy.app
             </a>
           </div>
           <div className="flex flex-wrap gap-8 md:gap-16 text-xs font-black uppercase tracking-[0.35em] text-slate-500">
