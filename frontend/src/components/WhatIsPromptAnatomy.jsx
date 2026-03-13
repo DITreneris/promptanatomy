@@ -28,28 +28,34 @@ export default function WhatIsPromptAnatomy() {
           {t('whatIs.title')}
         </h2>
 
-        {/* 2. VALUE – soft highlight container */}
-        <div className="max-w-[720px] mx-auto mb-8">
-          <div className="bg-brand-accent/10 rounded-lg px-5 py-4 border border-brand-accent/20">
-            <p className="text-lg text-slate-700 font-medium leading-relaxed">
+        {/* 2. VALUE – hero definition block (premium SaaS weight) */}
+        <div className="max-w-[820px] mx-auto mb-8">
+          <div className="bg-brand-accent/10 rounded-2xl px-8 py-8 sm:px-10 sm:py-8 border border-slate-200/80 shadow-hero-value">
+            <p className="text-lg text-slate-700 font-medium leading-[1.6]">
               {t('whatIs.valueLine1')}
             </p>
-            <p className="text-lg text-slate-700 font-medium leading-relaxed mt-2">
+            <p className="text-lg text-slate-700 font-medium leading-[1.6] mt-2">
               {t('whatIs.valueLine2')}
             </p>
           </div>
         </div>
 
-        {/* 3. PROCESS – pills with connector arrows */}
+        {/* 3. PROCESS – pipeline pills (INPUT = active step) */}
         <div className="flex flex-wrap justify-center items-center gap-4 mb-12" role="list" aria-label={t('whatIs.processAriaLabel')}>
-          {blocks.map((label, i) => (
-            <span key={i} className="inline-flex items-center gap-4">
-              <span className="px-4 py-2 rounded-full bg-slate-100 border border-slate-200 text-sm font-bold text-slate-700 shadow-[0_2px_6px_rgba(0,0,0,0.05),0_0_0_1px_rgba(255,196,0,0.15)] transition-all duration-150 hover:-translate-y-0.5">
-                {label}
+          {blocks.map((label, i) => {
+            const isActive = i === 1
+            const pillClass = isActive
+              ? 'px-4 py-2 rounded-full bg-brand-accent/15 border-2 border-brand-accent/40 text-sm font-bold text-brand-dark shadow-[0_2px_8px_rgba(207,167,58,0.2)] ring-2 ring-brand-accent/20 transition-all duration-150'
+              : 'px-4 py-2 rounded-full bg-slate-100 border border-slate-200 text-sm font-bold text-slate-700 shadow-[0_2px_6px_rgba(0,0,0,0.05),0_0_0_1px_rgba(255,196,0,0.15)] transition-all duration-150 hover:-translate-y-0.5'
+            return (
+              <span key={i} className="inline-flex items-center gap-4">
+                <span className={pillClass}>
+                  {label}
+                </span>
+                {i < blocks.length - 1 && <ArrowConnector />}
               </span>
-              {i < blocks.length - 1 && <ArrowConnector />}
-            </span>
-          ))}
+            )
+          })}
         </div>
 
         {/* 4. PROOF – 3 stat cards */}

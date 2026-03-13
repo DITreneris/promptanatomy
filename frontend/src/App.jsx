@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import SeoHead from './components/SeoHead'
 import HomePage from './pages/HomePage'
 import SuccessPage from './pages/SuccessPage'
@@ -20,6 +21,7 @@ export default function App() {
       <Route path="/terms" element={<TermsPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+      <Analytics />
     </>
   )
 }

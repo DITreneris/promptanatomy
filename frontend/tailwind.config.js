@@ -48,6 +48,7 @@ export default {
         'ecosystem-card-rim': '0 0 30px rgba(255, 200, 0, 0.15)',
         'pricing-card': '0 20px 40px rgba(0, 0, 0, 0.06)',
         'pricing-cta': '0 8px 20px rgba(255, 193, 7, 0.35)',
+        'hero-value': '0 8px 24px rgba(0, 0, 0, 0.06)',
       },
       dropShadow: {
         'logo-glow': '0 0 6px rgba(255, 196, 0, 0.4)',
