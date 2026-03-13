@@ -2,6 +2,9 @@
 
 ## [Unreleased] / 2026-03-13
 
+### Ištaisyta
+- **Mobile drawer glitch fix (5 root causes):** Ištaisytas 0.1s vizualus glitch atidarant/uždarant mobilų meniu po scrollinimo. (1) `mobileOpenRef` guard scroll handleryje – neleidžia `scrolled` flipinti į `false` kai `position: fixed` nuleidžia `scrollY` iki 0. (2) `useLayoutEffect` vietoj `useEffect` scroll lock'ui – body styles keičiami sinchroniškai prieš browser paint, be destruktyvaus cleanup. (3) `behavior: 'instant'` `scrollTo` kvietime – aplenkia CSS `scroll-behavior: smooth` ir atkuria poziciją momentaliai. (4) `#mobile-nav` drawer iškeltas už `<nav>` ribų kaip sibling – `backdrop-filter: blur()` ant `<nav>` nebepalaužia drawer `position: fixed` (CSS containing block). (5) Close sąlyga pakeista iš `savedScrollY > 0` į `document.body.style.position === 'fixed'` – drawer teisingai atlaisvinamas net kai scrollY=0. Failas: `Navbar.jsx`.
+
 ### Pridėta
 - **Vercel Web Analytics:** Įdiegtas `@vercel/analytics` frontende (Vite + React). `App.jsx` – importuoja `<Analytics />` iš `@vercel/analytics/react`, komponentas įdėtas vieną kartą šaknyje. Page views ir lankomumas matomi Vercel projekto Analytics skiltyje po deploy; reikia įjungti Web Analytics projekte (Vercel Dashboard → Analytics → Enable).
 - **WhatIs skaidrės mikro UX (hero blokas + pipeline):** Hero tekstinis blokas sustiprintas – `max-w-[820px]`, `px-8 py-8 sm:px-10 sm:py-8`, `rounded-2xl`, `border-slate-200/80`, `shadow-hero-value` (naujas raktas `tailwind.config.js`), `leading-[1.6]`. Pipeline – antrasis žingsnis (INPUT) rodomas kaip aktyvus: `bg-brand-accent/15`, `border-2 border-brand-accent/40`, `ring-2 ring-brand-accent/20`. Statistikos (115+ / ~60 / 100) ir etiketės be pakeitimų. Failai: `WhatIsPromptAnatomy.jsx`, `tailwind.config.js`.

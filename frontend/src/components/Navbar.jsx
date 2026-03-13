@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useLayoutEffect, useRef } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Zap, Menu, X } from 'lucide-react'
 import { GLOSSARY_URL, APP_VERSION } from '../config'
@@ -13,35 +13,43 @@ export default function Navbar({ onCtaClick }) {
   const homePath = locale === 'en' ? '/en' : '/lt'
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const mobileOpenRef = useRef(false)
+  const savedScrollY = useRef(0)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20)
+    const handleScroll = () => {
+      if (mobileOpenRef.current) return
+      setScrolled(window.scrollY > 20)
+    }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   useEffect(() => {
-    if (mobileOpen) {
-      const scrollY = window.scrollY
-      document.body.style.position = 'fixed'
-      document.body.style.top = `-${scrollY}px`
-      document.body.style.width = '100%'
-      document.body.style.overflow = 'hidden'
-    } else {
-      const scrollY = document.body.style.top
-      setTimeout(() => {
-        document.body.style.position = ''
-        document.body.style.top = ''
-        document.body.style.width = ''
-        document.body.style.overflow = ''
-        window.scrollTo(0, parseInt(scrollY || '0', 10) * -1)
-      }, 300)
-    }
     return () => {
       document.body.style.position = ''
       document.body.style.top = ''
       document.body.style.width = ''
       document.body.style.overflow = ''
+    }
+  }, [])
+
+  useLayoutEffect(() => {
+    mobileOpenRef.current = mobileOpen
+    if (mobileOpen) {
+      savedScrollY.current = window.scrollY
+      document.body.style.position = 'fixed'
+      document.body.style.top = `-${savedScrollY.current}px`
+      document.body.style.width = '100%'
+      document.body.style.overflow = 'hidden'
+    } else if (document.body.style.position === 'fixed') {
+      const restoreY = savedScrollY.current
+      savedScrollY.current = 0
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.width = ''
+      document.body.style.overflow = ''
+      window.scrollTo({ top: restoreY, behavior: 'instant' })
     }
   }, [mobileOpen])
 
@@ -60,6 +68,7 @@ export default function Navbar({ onCtaClick }) {
   const navLinkClass = `relative text-xs font-black uppercase tracking-[0.15em] text-slate-500 hover:text-brand-accent transition-colors duration-200 min-h-[44px] min-w-[44px] inline-flex items-center after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-200 after:w-0 hover:after:w-full ${FOCUS_RING}`
 
   return (
+    <>
     <nav
       className={`fixed top-0 w-full z-[100] [-webkit-backface-visibility:hidden] [backface-visibility:hidden] transition-all duration-500 ${
         scrolled ? 'py-3 bg-white/70 backdrop-blur-2xl border-b border-slate-200 shadow-sm' : 'py-4 md:py-6 bg-transparent'
@@ -152,95 +161,96 @@ export default function Navbar({ onCtaClick }) {
           {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
+    </nav>
 
+    <div
+      id="mobile-nav"
+      className={`fixed inset-0 z-[99] md:hidden ${mobileOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
+      aria-hidden={!mobileOpen}
+    >
+      {/* Overlay without backdrop-blur to avoid mobile GPU freeze */}
       <div
-        id="mobile-nav"
-        className={`fixed inset-0 z-[99] md:hidden ${mobileOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
-        aria-hidden={!mobileOpen}
+        className={`absolute inset-0 bg-black/80 transition-opacity duration-300 ${mobileOpen ? 'opacity-100' : 'opacity-0'}`}
+        onClick={closeMobile}
+        aria-hidden
+      />
+      <div
+        className={`absolute top-0 right-0 h-full w-full max-w-sm bg-white shadow-2xl border-l border-slate-200 flex flex-col pt-24 px-6 transition-transform duration-300 ease-out ${mobileOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
-        {/* Overlay without backdrop-blur to avoid mobile GPU freeze */}
-        <div
-          className={`absolute inset-0 bg-black/80 transition-opacity duration-300 ${mobileOpen ? 'opacity-100' : 'opacity-0'}`}
-          onClick={closeMobile}
-          aria-hidden
-        />
-        <div
-          className={`absolute top-0 right-0 h-full w-full max-w-sm bg-white shadow-2xl border-l border-slate-200 flex flex-col pt-24 px-6 transition-transform duration-300 ease-out ${mobileOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        <Link
+          to={homePath}
+          onClick={() => {
+            closeMobile()
+            if (['/', '/en', '/lt'].includes(location.pathname)) {
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+            }
+          }}
+          className="py-4 text-base font-black uppercase tracking-[0.15em] text-slate-500 hover:text-brand-dark border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded"
         >
-          <Link
-            to={homePath}
-            onClick={() => {
-              closeMobile()
-              if (['/', '/en', '/lt'].includes(location.pathname)) {
-                window.scrollTo({ top: 0, behavior: 'smooth' })
-              }
-            }}
-            className="py-4 text-base font-black uppercase tracking-[0.15em] text-slate-500 hover:text-brand-dark border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded"
-          >
-            {t('common.home')}
-          </Link>
-          <div className="mb-6 flex items-center gap-2 p-1 rounded-lg bg-slate-100 border border-slate-200 w-fit">
-            <button
-              type="button"
-              onClick={() => { closeMobile(); setLocale('lt'); navigate('/lt') }}
-              className={`px-4 py-2.5 rounded-md text-sm font-bold uppercase tracking-wider transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-500 hover:text-brand-dark'} focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
-              aria-pressed={locale === 'lt'}
-              aria-label="Lietuvių"
-            >
-              LT
-            </button>
-            <button
-              type="button"
-              onClick={() => { closeMobile(); setLocale('en'); navigate('/en') }}
-              className={`px-4 py-2.5 rounded-md text-sm font-bold uppercase tracking-wider transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-500 hover:text-brand-dark'} focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
-              aria-pressed={locale === 'en'}
-              aria-label="English"
-            >
-              EN
-            </button>
-          </div>
-          {navItems.map((item) => {
-            const mobileClass = "relative py-4 text-base font-black uppercase tracking-[0.15em] text-slate-500 hover:text-brand-accent border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-200 after:w-0 hover:after:w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded"
-            return item.external ? (
-              <a
-                key={item.id || item.href}
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={closeMobile}
-                className={mobileClass}
-              >
-                {item.name}
-              </a>
-            ) : item.href ? (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={closeMobile}
-                className={mobileClass}
-              >
-                {item.name}
-              </a>
-            ) : (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                onClick={closeMobile}
-                className={mobileClass}
-              >
-                {item.name}
-              </a>
-            )
-          })}
+          {t('common.home')}
+        </Link>
+        <div className="mb-6 flex items-center gap-2 p-1 rounded-lg bg-slate-100 border border-slate-200 w-fit">
           <button
             type="button"
-            onClick={() => { closeMobile(); onCtaClick() }}
-            className="mt-8 py-4 rounded-xl text-base font-black text-brand-dark bg-cta-gradient shadow-cta-shadow border border-white/20 min-h-[48px] flex items-center justify-center hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
+            onClick={() => { closeMobile(); setLocale('lt'); navigate('/lt') }}
+            className={`px-4 py-2.5 rounded-md text-sm font-bold uppercase tracking-wider transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-500 hover:text-brand-dark'} focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
+            aria-pressed={locale === 'lt'}
+            aria-label="Lietuvių"
           >
-            {t('nav.cta')}
+            LT
+          </button>
+          <button
+            type="button"
+            onClick={() => { closeMobile(); setLocale('en'); navigate('/en') }}
+            className={`px-4 py-2.5 rounded-md text-sm font-bold uppercase tracking-wider transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-500 hover:text-brand-dark'} focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
+            aria-pressed={locale === 'en'}
+            aria-label="English"
+          >
+            EN
           </button>
         </div>
+        {navItems.map((item) => {
+          const mobileClass = "relative py-4 text-base font-black uppercase tracking-[0.15em] text-slate-500 hover:text-brand-accent border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-200 after:w-0 hover:after:w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded"
+          return item.external ? (
+            <a
+              key={item.id || item.href}
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={closeMobile}
+              className={mobileClass}
+            >
+              {item.name}
+            </a>
+          ) : item.href ? (
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={closeMobile}
+              className={mobileClass}
+            >
+              {item.name}
+            </a>
+          ) : (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              onClick={closeMobile}
+              className={mobileClass}
+            >
+              {item.name}
+            </a>
+          )
+        })}
+        <button
+          type="button"
+          onClick={() => { closeMobile(); onCtaClick() }}
+          className="mt-8 py-4 rounded-xl text-base font-black text-brand-dark bg-cta-gradient shadow-cta-shadow border border-white/20 min-h-[48px] flex items-center justify-center hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
+        >
+          {t('nav.cta')}
+        </button>
       </div>
-    </nav>
+    </div>
+    </>
   )
 }

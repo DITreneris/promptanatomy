@@ -2,7 +2,7 @@
 
 **Tikslas:** Fiksuoti veikiančią būseną ir kritinius kelius, kad pakeitimai nepalaužtų to, kas jau veikia. Prieš didesnius refaktorinimus ar naujas funkcijas – patikrinti, kad šis standartas išlieka tenkinamas.
 
-**Data fiksavimo:** 2026-03-13 (atnaujinta po SEO lokalizacijos ir UI/UX MUST–SHOULD–NICE)
+**Data fiksavimo:** 2026-03-13 (atnaujinta po mobile drawer glitch fix)
 
 ---
 
@@ -97,6 +97,7 @@
 - Magic link su netinkamu/pasibaigusiu tokenu → „Grįžti į pradžią" nuoroda (ne Retry mygtukas).
 - Klaidos `api.js` – `detail` visada string (typeof safety).
 - Hero kodo blokas – typing animacija veikia (staggered fade-in + typing + blinking cursor + SYSTEM INIT fade-in po pabaigos).
+- Mobile drawer: (1) scroll ~500px, atidaryti meniu -- navbar neblyksteli (scrolled state islaikomas); (2) uzdaryti meniu -- puslapis grizta i ta pacia scroll pozicija; (3) atidaryti meniu is virso (scrollY=0) ir uzdaryti -- scrollinimas veikia; (4) drawer overlay tamsus, baltas panelis desiniajame sone -- turi buti matomas bet kurioje scroll pozicijoje.
 
 ---
 
@@ -112,6 +113,7 @@
 - **LT kalba:** visur vartotojui matomas tekstas – „Tu" forma (ne „Jūs"). Terminas „DI" (ne „AI").
 - **api.js error handling:** `detail` iš backend visada konvertuojamas į string (`typeof raw === 'string' ? raw : JSON.stringify(raw)`).
 - **Hero animacija:** `Hero.jsx` naudoja `phase` state (0→4) su `useEffect` + `setInterval` typing logika. CSS keyframes `fadeInUp` ir `blink-caret` yra `index.css`. Animacija gerbia `prefers-reduced-motion` (JS `matchMedia` check + CSS override). **Nekeisti timing sekos be vizualinio testavimo.** 0 išorinių priklausomybių.
+- **Mobile drawer (Navbar.jsx):** `#mobile-nav` div **privalo buti sibling `<nav>` elemento, NE vaikas**. Komponentas grazina `<>...</>` fragmenta su `<nav>` ir `<div id="mobile-nav">` greta. Priezastis: kai `scrolled=true`, `<nav>` gauna `backdrop-blur-2xl` (`backdrop-filter`), kuris pagal CSS spec sukuria nauja containing block -- jei drawer yra vaikas, jo `position: fixed` tampa relatyvus siaurum navbar, o ne viewport. **Scroll lock mechanizmas:** (1) `useLayoutEffect` (ne `useEffect`) su `[mobileOpen]` -- sinchroniskai pries paint; (2) Scroll pozicija saugoma `savedScrollY` ref (ne `body.style.top`); (3) `mobileOpenRef` guard scroll handleryje -- neleidzia `scrolled` flipinti kai body tampa `position: fixed`; (4) `window.scrollTo({ behavior: 'instant' })` -- aplenkia CSS `scroll-behavior: smooth`; (5) Close salyga tikrina `document.body.style.position === 'fixed'` (ne `savedScrollY > 0`, nes scrollY gali buti 0). Atskiras unmount-only `useEffect([], [])` isvalo body styles tik unmount metu.
 - **Ecosystem CTA:** EN naudoja trumpą formą („Open dashboard", „Open library", „Create content", „Assess candidates"). **Nevartoti ilgų CTA tekstų (>18 simb.) -- persilaužia mobilėje.**
 - **SEO (SeoHead):** `frontend/src/components/SeoHead.jsx` – atnaujina canonical, og:url, og:locale, hreflang pagal pathname ir locale. Naudoja `SITE_URL` iš `config.js`. HOME_ROUTES = `['/', '/lt', '/en']`. Keičiant home route'us ar hreflang strategiją – atnaujinti SeoHead ir sitemap.
 
