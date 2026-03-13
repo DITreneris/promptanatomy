@@ -36,7 +36,7 @@ export default function Ecosystem() {
   const items = rawItems
 
   return (
-    <section id="ekosistema" className="pt-[100px] pb-20 md:pb-32 bg-brand-dark px-4 sm:px-6 relative overflow-hidden">
+    <section id="ekosistema" className="pt-20 sm:pt-[100px] pb-20 md:pb-32 bg-brand-dark px-4 sm:px-6 relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" aria-hidden />
       <div className="absolute inset-0 pointer-events-none bg-ecosystem-center-glow opacity-100" aria-hidden />
       <div
@@ -75,14 +75,14 @@ export default function Ecosystem() {
             const isPrimaryCta = i === 0
 
             const cardBaseClass = "group relative rounded-3xl bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] backdrop-blur-[12px] hover:border-[rgba(255,200,0,0.5)] hover:shadow-ecosystem-card-rim hover:-translate-y-1.5 transition-all duration-[220ms] overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
-            const cardClass = `${cardBaseClass} p-10 ${useCtaLayout ? '' : 'block'}`
+            const cardClass = `${cardBaseClass} p-6 sm:p-10 ${useCtaLayout ? '' : 'block'}`
             const titleClass = "text-xl font-black text-white mb-2 tracking-tight"
 
             const content = (
               <>
                 <div className="absolute -bottom-10 -right-10 w-32 h-32 blur-[60px] opacity-20 transition-opacity group-hover:opacity-40 bg-white/5" aria-hidden />
                 <div
-                  className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-ecosystem-icon-card transition-all duration-[220ms] group-hover:scale-110 ring-2 ring-transparent group-hover:ring-2 ${ECOSYSTEM_BG_CLASSES[item.themeIndex - 1]} ${ECOSYSTEM_HOVER_RING[item.themeIndex - 1]} ${useCtaLayout ? 'mb-6' : 'mb-24'}`}
+                  className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-ecosystem-icon-card transition-all duration-[220ms] group-hover:scale-110 ring-2 ring-transparent group-hover:ring-2 ${ECOSYSTEM_BG_CLASSES[item.themeIndex - 1]} ${ECOSYSTEM_HOVER_RING[item.themeIndex - 1]} ${useCtaLayout ? 'mb-6' : 'mb-12 sm:mb-24'}`}
                 >
                   {item.icon}
                 </div>

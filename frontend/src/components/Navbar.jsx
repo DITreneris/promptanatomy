@@ -21,9 +21,26 @@ export default function Navbar({ onCtaClick }) {
   }, [])
 
   useEffect(() => {
-    if (mobileOpen) document.body.style.overflow = 'hidden'
-    else document.body.style.overflow = ''
-    return () => { document.body.style.overflow = '' }
+    if (mobileOpen) {
+      const scrollY = window.scrollY
+      document.body.style.position = 'fixed'
+      document.body.style.top = `-${scrollY}px`
+      document.body.style.width = '100%'
+      document.body.style.overflow = 'hidden'
+    } else {
+      const scrollY = document.body.style.top
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.width = ''
+      document.body.style.overflow = ''
+      window.scrollTo(0, parseInt(scrollY || '0', 10) * -1)
+    }
+    return () => {
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.width = ''
+      document.body.style.overflow = ''
+    }
   }, [mobileOpen])
 
   const navItems = [
@@ -42,7 +59,7 @@ export default function Navbar({ onCtaClick }) {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-[100] transition-all duration-500 ${
+      className={`fixed top-0 w-full z-[100] [-webkit-backface-visibility:hidden] [backface-visibility:hidden] transition-all duration-500 ${
         scrolled ? 'py-3 bg-white/70 backdrop-blur-2xl border-b border-slate-200 shadow-sm' : 'py-4 md:py-6 bg-transparent'
       }`}
       aria-label={t('nav.ariaNav')}
@@ -141,7 +158,7 @@ export default function Navbar({ onCtaClick }) {
       >
         {/* Overlay without backdrop-blur to avoid mobile GPU freeze */}
         <div
-          className={`absolute inset-0 bg-black/60 transition-opacity duration-300 ${mobileOpen ? 'opacity-100' : 'opacity-0'}`}
+          className={`absolute inset-0 bg-black/80 transition-opacity duration-300 ${mobileOpen ? 'opacity-100' : 'opacity-0'}`}
           onClick={closeMobile}
           aria-hidden
         />

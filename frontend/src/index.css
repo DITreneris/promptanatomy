@@ -8,10 +8,11 @@
   }
   html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
+    overflow-x: clip;
+    overscroll-behavior-x: none;
   }
   body {
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 }
 

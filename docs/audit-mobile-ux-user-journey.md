@@ -154,3 +154,27 @@ Explainer struktūra (TITLE → VALUE → PROCESS → PROOF) atitinka „Kas tai
 **Įgyvendinta (2025-03-09):** Explainer spacing, processAriaLabel, PROOF figure/figcaption; Methodology ir Ecosystem responsive padding/grid; Pricing plan label text-xs; audit papildytas Explainer mobile ir vartotojo kelionės skyriumi.
 
 Rekomenduojama: focus trap mobilaus meniu; kontrasto pataisymai; Success teksto išlyga; Hero code block (optional).
+
+---
+
+## 6. WebView (Messenger / Instagram) – kritinis fix (2026-03-13)
+
+### 6.1 Problema (3x raportuota)
+
+Mobile navigation drawer turėjo sugriuvusi renderinga Messenger ir Instagram in-app browser (WebView): navigacijos drawer turinys (LT/EN, EKOSISTEMA, MOKYMAI, KAINODARA) ir foninis puslapio turinys (Ecosystem kortelės) buvo maišosi vienoje kolonnoje. Vartotojas negalėjo atskirti navigacijos nuo turinio.
+
+### 6.2 Root cause
+
+`overflow-x: hidden` ant `html` ir `body` (`index.css`, commit `1a7f0a3` Mar 8) sukūrė naują containing block, kuris palaužė `position: fixed` elementus (`Navbar.jsx` :45, :139) WebView aplinkose. Tai dokumentuota CSS bug (SO #47095596, #19254146).
+
+### 6.3 Fix
+
+| Failas | Pakeitimas |
+|--------|-----------|
+| `index.css` | `overflow-x: hidden` → `overflow-x: clip` + `overscroll-behavior-x: none` |
+| `Navbar.jsx` | Overlay `bg-black/60` → `bg-black/80`; `backface-visibility: hidden` ant fixed nav; scroll lock: `body position: fixed` pattern vietoj tik `overflow: hidden` |
+| `Ecosystem.jsx` | Responsive padding: `p-6 sm:p-10`, `pt-20 sm:pt-[100px]`, `mb-12 sm:mb-24` |
+
+### 6.4 Testavimo reikalavimai
+
+Prieš merge testuoti: Desktop Chrome/Firefox, Mobile Safari, **Messenger WebView**, Instagram WebView.
