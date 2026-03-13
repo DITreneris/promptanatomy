@@ -10,7 +10,7 @@
 
 - LP rodomas, visos sekcijos matomos (Hero, Kas yra Prompt Anatomy, Methodology, Ecosystem, Pricing, Footer). „Kas yra“ – po Hero, prieš Methodology. Navbar neturi nuorodos „Kas yra“ (nuorodos: Ekosistema, Metodologija, Repo/Mokymai, Kainodara). Skip link ir prieigos forma naudoja `focus-visible:ring`; Methodology – `brand-dark` / `brand-accent` tokenai; Footer kritinis tekstas – `text-slate-500`; blink-caret – `var(--color-brand-accent)` (index.css).
 - Kalbos perjungimas LT/EN veikia; LT naudoja DI, EN – AI (pagal [language-guidelines-en-lt.md](language-guidelines-en-lt.md)). Locale-aware URL: `/lt` ir `/en` rodo atitinkamą kalbą; perjungus kalbą Navbar nukreipia į `/lt` arba `/en` (share'inamas linkas atspindi kalbą).
-- SEO: `SeoHead.jsx` nustato canonical ir og:url pagal pathname; ant home route'ų (`/`, `/lt`, `/en`) – hreflang (lt, en, x-default). Twitter Card ir og:url įdiegti (`index.html` + dinamiškai).
+- SEO: `SeoHead.jsx` nustato canonical ir og:url pagal pathname; ant home route'ų (`/`, `/lt`, `/en`) – hreflang (lt, en, x-default). Twitter Card ir og:url įdiegti (`index.html` + dinamiškai). **og-image.png** – socialiniam preview (Twitter, LinkedIn, Facebook) laikomas `frontend/public/og-image.png`; build kopijuoja į `dist/`; `index.html` nurodo `og:image` ir `twitter:image` į `https://www.promptanatomy.app/og-image.png`. Nepašalinti failo iš `public/`.
 - Checkout srautas: prieigos tikrinimas (email) → planų pasirinkimas → Stripe Checkout → success/cancel puslapiai.
 - Prieigos srautas (susimokėjus): LP „Eiti į mokymus" → `GET /api/generate-access-link?email=...` → magic link su HMAC tokenu → training app atrakina modulius.
 - Backend API ir webhook atsako pagal aprašytas sutartis (žr. skyrių 2–3).
