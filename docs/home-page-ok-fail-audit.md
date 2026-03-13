@@ -9,13 +9,13 @@
 
 | Kriterijus | Būsena | Pastabos |
 |------------|--------|-----------|
-| LP sekcijų eilė (Hero → Kas yra → Metodologija → Ekosistema → Kainodara → Footer) | **OK** | HomePage.jsx atitinka; golden-legacy fiksuota. |
+| LP sekcijų eilė (Hero → Metodologija → Ekosistema → Kas yra → Kainodara → Footer) | **OK** | HomePage.jsx; „Kas yra“ po Ecosystem (less is more); golden-legacy atnaujinta. |
 | Semantika: `<main>`, `<section>`, `id` sekcijoms | **OK** | `#main-content`, `#what-is`, `#metodologija`, `#ekosistema`, `#pricing`. |
 | H1 vienas per puslapį (Hero) | **OK** | Hero turi vieną h1. |
 | H2 sekcijoms (Kas yra, Metodologija, Ekosistema, Kainodara) | **OK** | WhatIsPromptAnatomy, Methodology, Ecosystem, Pricing – h2/h3 naudojami. |
 | „Kas yra“ sekcija matoma be scroll (above the fold) | **FAIL** | Ekrane – tik hero + dalis turinio; „Kas yra“ dažnai žemiau. Priklauso nuo viewport; desktop OK, mažesniuose – ne. |
 | Nav nuorodos → teisingi section id | **OK** | `#ekosistema`, `#metodologija`, `#pricing` – atitinka. |
-| Nav nuoroda į „Kas yra“ | **OK** | Pridėta nuoroda „Kas yra“ / „What is“ → `#what-is` (2026-03-13). |
+| Nav be „Kas yra“ (less is more) | **OK** | „Kas yra“ pašalinta iš nav; sekcija lieka puslapyje po Ecosystem, prieš Pricing (2026-03). |
 
 ---
 

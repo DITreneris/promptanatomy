@@ -8,7 +8,7 @@
 
 ## 1. Kas laikoma „veikiančiu“
 
-- LP rodomas, visos sekcijos matomos (Hero, Kas yra Prompt Anatomy, Methodology, Ecosystem, Pricing, Footer).
+- LP rodomas, visos sekcijos matomos (Hero, Methodology, Ecosystem, Kas yra Prompt Anatomy, Pricing, Footer). „Kas yra“ – po Ecosystem, prieš Pricing; nav be „Kas yra“ (less is more).
 - Kalbos perjungimas LT/EN veikia; LT naudoja DI, EN – AI (pagal [language-guidelines-en-lt.md](language-guidelines-en-lt.md)). Locale-aware URL: `/lt` ir `/en` rodo atitinkamą kalbą; perjungus kalbą Navbar nukreipia į `/lt` arba `/en` (share'inamas linkas atspindi kalbą).
 - SEO: `SeoHead.jsx` nustato canonical ir og:url pagal pathname; ant home route'ų (`/`, `/lt`, `/en`) – hreflang (lt, en, x-default). Twitter Card ir og:url įdiegti (`index.html` + dinamiškai).
 - Checkout srautas: prieigos tikrinimas (email) → planų pasirinkimas → Stripe Checkout → success/cancel puslapiai.
@@ -76,9 +76,9 @@
 - Skip link → `#main-content`.
 - Navbar (brand, nuorodos, kalbos LT|EN su navigate į `/lt`/`/en`, CTA). Logo ir „Home“ nuorodos – locale-aware (`/lt` arba `/en`).
 - Hero (h1, subtitle, 3 bullet, CTA scroll į pricing; kodo blokas su typing animacija).
-- WhatIsPromptAnatomy (h2, intro, 4 bullet).
 - Methodology (section id metodologija).
 - Ecosystem (section id ekosistema).
+- WhatIsPromptAnatomy (section id what-is; h2, value, 6 blokų piliai, 3 stat kortelės) – po Ecosystem, prieš Pricing.
 - Pricing (section id pricing, prieigos forma, 2 planai Phase 1; „Eiti į mokymus" mygtukas kviečia `/api/generate-access-link` ir atidaro training app su magic link).
 - Footer (brand, tagline; System: Ekosistema, Metodologija, Kainodara; Network: Support/WhatsApp, LinkedIn, X (Twitter); legal, copyright).
 
