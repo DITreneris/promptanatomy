@@ -29,7 +29,7 @@ export default {
         'accent-gradient': 'linear-gradient(135deg, #CFA73A 0%, #E8B93C 100%)',
         'cta-gradient': 'linear-gradient(135deg, #ffcc33 0%, #ffb300 100%)',
         'hero-bg': 'radial-gradient(circle at 50% 20%, rgba(255, 196, 0, 0.12), transparent 60%), linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%)',
-        'ecosystem-center-glow': 'radial-gradient(circle at 50% 40%, rgba(255, 196, 0, 0.15), transparent 60%)',
+        'ecosystem-center-glow': 'radial-gradient(circle at 50% 10%, rgba(255, 190, 0, 0.18), transparent 60%)',
         'pricing-section': 'linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%)',
       },
       boxShadow: {
@@ -43,6 +43,9 @@ export default {
         'ecosystem-card-hover': '0 20px 50px rgba(0, 0, 0, 0.35)',
         'ecosystem-cta': '0 6px 18px rgba(255, 193, 7, 0.35)',
         'ecosystem-icon-glow': '0 0 0 6px rgba(255, 193, 7, 0.05), 0 0 30px rgba(255, 193, 7, 0.15)',
+        'ecosystem-icon-depth': '0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1)',
+        'ecosystem-icon-card': '0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1), 0 0 0 6px rgba(255, 193, 7, 0.05), 0 0 30px rgba(255, 193, 7, 0.15)',
+        'ecosystem-card-rim': '0 0 30px rgba(255, 200, 0, 0.15)',
         'pricing-card': '0 20px 40px rgba(0, 0, 0, 0.06)',
         'pricing-cta': '0 8px 20px rgba(255, 193, 7, 0.35)',
       },

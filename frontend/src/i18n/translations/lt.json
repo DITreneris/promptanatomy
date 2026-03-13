@@ -87,8 +87,8 @@
     ]
   },
   "ecosystem": {
-    "title": "Vertikalūs varikliai",
-    "paragraph": "Viena DI operacinė sistema. Keturi darbo kontekstai.",
+    "title": "DI darbo sistema verslui",
+    "paragraph": "Viena DI operacinė sistema. Keturi darbo kontekstai verslui.",
     "stableLabel": "v2.4 Stable",
     "ctaOpen": "Atidaryti sistemą",
     "items": [
@@ -106,8 +106,7 @@
         "url": "https://ditreneris.github.io/marketingas/",
         "outcome": "Rinkodaros turinio promptai ir šablonai.",
         "bullets": ["Turinio planavimas", "DI šablonai"],
-        "ctaLabel": "Kurti turinį",
-        "primary": true
+        "ctaLabel": "Kurti turinį"
       },
       {
         "title": "Atrankos sistema (personalas)",

@@ -66,24 +66,22 @@ export default function Ecosystem() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {items.map((item, i) => {
             const hasBullets = Array.isArray(item.bullets) && item.bullets.length > 0
             const ctaLabel = (typeof item.ctaLabel === 'string' && item.ctaLabel.trim()) || (typeof t('ecosystem.ctaOpen') === 'string' && t('ecosystem.ctaOpen').trim()) || null
             const useCtaLayout = hasBullets || ctaLabel
+            const isPrimaryCta = i === 0
 
-            const cardBaseClass = "group relative rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:-translate-y-2 hover:shadow-ecosystem-card-hover transition-all duration-[180ms] overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+            const cardBaseClass = "group relative rounded-3xl bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] backdrop-blur-[12px] hover:border-[rgba(255,200,0,0.5)] hover:shadow-ecosystem-card-rim hover:-translate-y-1.5 transition-all duration-[220ms] overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
             const cardClass = `${cardBaseClass} p-10 ${useCtaLayout ? '' : 'block'}`
             const titleClass = "text-xl font-black text-white mb-2 tracking-tight"
 
             const content = (
               <>
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-white/[0.04] to-white/[0.01] pointer-events-none" aria-hidden />
+                <div className="absolute -bottom-10 -right-10 w-32 h-32 blur-[60px] opacity-20 transition-opacity group-hover:opacity-40 bg-white/5" aria-hidden />
                 <div
-                  className="absolute -bottom-10 -right-10 w-32 h-32 blur-[60px] opacity-20 transition-opacity group-hover:opacity-40 bg-white/5"
-                />
-                <div
-                  className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-ecosystem-icon-glow transition-all duration-[180ms] group-hover:scale-110 ring-2 ring-transparent group-hover:ring-2 shadow-[0_0_0_1px_rgba(255,255,255,0.05)] ${ECOSYSTEM_BG_CLASSES[item.themeIndex - 1]} ${ECOSYSTEM_HOVER_RING[item.themeIndex - 1]} ${useCtaLayout ? 'mb-6' : 'mb-24'}`}
+                  className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-ecosystem-icon-card transition-all duration-[220ms] group-hover:scale-110 ring-2 ring-transparent group-hover:ring-2 ${ECOSYSTEM_BG_CLASSES[item.themeIndex - 1]} ${ECOSYSTEM_HOVER_RING[item.themeIndex - 1]} ${useCtaLayout ? 'mb-6' : 'mb-24'}`}
                 >
                   {item.icon}
                 </div>
@@ -100,7 +98,11 @@ export default function Ecosystem() {
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center min-h-[44px] px-6 py-3 rounded-xl font-black text-brand-dark bg-cta-gradient shadow-ecosystem-cta hover:scale-[1.04] hover:shadow-ecosystem-cta transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+                    className={
+                      isPrimaryCta
+                        ? "inline-flex items-center justify-center min-h-[44px] px-6 py-3 rounded-xl font-black text-brand-dark bg-cta-gradient shadow-ecosystem-cta hover:scale-[1.04] hover:shadow-ecosystem-cta transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+                        : "inline-flex items-center justify-center min-h-[44px] px-6 py-3 rounded-xl font-black text-white border border-white/20 bg-transparent hover:bg-white/10 hover:border-white/30 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+                    }
                   >
                     {ctaLabel}
                   </a>

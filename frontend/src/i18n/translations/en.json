@@ -87,8 +87,8 @@
     ]
   },
   "ecosystem": {
-    "title": "Vertical Engines",
-    "paragraph": "One system. Four work verticals.",
+    "title": "AI work system for business",
+    "paragraph": "One AI operating system. Four work contexts for your business.",
     "stableLabel": "v2.4 Stable",
     "ctaOpen": "Open system",
     "items": [
@@ -106,8 +106,7 @@
         "url": "https://ditreneris.github.io/marketingas/",
         "outcome": "Marketing content prompts and templates.",
         "bullets": ["Content planning", "AI templates"],
-        "ctaLabel": "Create content",
-        "primary": true
+        "ctaLabel": "Create content"
       },
       {
         "title": "Recruitment system (HR)",
