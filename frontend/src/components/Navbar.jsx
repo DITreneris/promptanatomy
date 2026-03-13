@@ -29,11 +29,13 @@ export default function Navbar({ onCtaClick }) {
       document.body.style.overflow = 'hidden'
     } else {
       const scrollY = document.body.style.top
-      document.body.style.position = ''
-      document.body.style.top = ''
-      document.body.style.width = ''
-      document.body.style.overflow = ''
-      window.scrollTo(0, parseInt(scrollY || '0', 10) * -1)
+      setTimeout(() => {
+        document.body.style.position = ''
+        document.body.style.top = ''
+        document.body.style.width = ''
+        document.body.style.overflow = ''
+        window.scrollTo(0, parseInt(scrollY || '0', 10) * -1)
+      }, 300)
     }
     return () => {
       document.body.style.position = ''
@@ -153,7 +155,7 @@ export default function Navbar({ onCtaClick }) {
 
       <div
         id="mobile-nav"
-        className={`fixed inset-0 z-[99] md:hidden ${mobileOpen ? 'visible' : 'invisible'}`}
+        className={`fixed inset-0 z-[99] md:hidden ${mobileOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
         aria-hidden={!mobileOpen}
       >
         {/* Overlay without backdrop-blur to avoid mobile GPU freeze */}
