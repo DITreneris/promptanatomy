@@ -7,6 +7,10 @@ updates:
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 5
+    # Atnaujinti rankiniu būdu kartu (peer dependency: plugin-react 6 reikalauja Vite 8)
+    ignore:
+      - dependency-name: "vite"
+      - dependency-name: "@vitejs/plugin-react"
 
   - package-ecosystem: "pip"
     directory: "/backend"
