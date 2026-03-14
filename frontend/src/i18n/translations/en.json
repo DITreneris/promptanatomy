@@ -163,6 +163,7 @@
     "refundContact": "Refund terms – contact us",
     "aiPowered": "AI Powered",
     "checkAccess": "Check your access",
+    "accessHow": "Email → Check → Go to training. No password.",
     "checkButton": "Check",
     "emailPlaceholder": "Email",
     "yourAccess": "Your access: 1–%s modules",
@@ -182,7 +183,7 @@
     "title": "Frequently asked questions",
     "items": [
       { "q": "What do I get when I pay?", "a": "Access to the training system: ~6 modules, ~150 slides, exercises, tests and tasks. Complete and pass (from 70%) – certificate. Support in the WhatsApp group. Lifetime access." },
-      { "q": "How do I access the training?", "a": "After payment you get a link to the training platform. You can also use the \"Go to training\" button on this site anytime." },
+      { "q": "How do I access the training?", "a": "No password. Enter your payment email → Check → Go to training. Same steps anytime from this site, Pricing section." },
       { "q": "What's included in the plan?", "a": "Modules by plan (Starter: 1–3, Core: 1–6), Prompt Repo 500+, 6-block methodology, context engineering, certificate, WhatsApp community, lifetime access." },
       { "q": "Is my data secure?", "a": "Yes. We store only the purchase ID; payments via Stripe. Data handled per EU and US security practices." },
       { "q": "Where do I get support?", "a": "Support in the WhatsApp group (link in the footer and after payment)." },
@@ -248,6 +249,7 @@
     "redirecting": "Redirecting…",
     "redirectError": "Could not prepare the link. You can return home or contact us.",
     "noSession": "If you just paid – please wait, the system is preparing your access.",
+    "nextTime": "Next time: promptanatomy.app → Pricing → enter email → Check → Go to training.",
     "metaTitle": "Payment successful",
     "metaDescription": "Thank you for your purchase."
   },

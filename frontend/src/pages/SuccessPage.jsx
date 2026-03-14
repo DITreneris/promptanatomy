@@ -65,6 +65,9 @@ export default function SuccessPage() {
           <p className="text-slate-500 text-sm mb-6 max-w-sm mx-auto">
             {t('success.emailDisclaimer')}
           </p>
+          <p className="text-slate-500 text-sm mb-6 max-w-sm mx-auto">
+            {t('success.nextTime')}
+          </p>
           {!sessionId && (
             <p className="text-slate-500 text-sm mb-6 max-w-sm mx-auto">
               {t('success.noSession')}

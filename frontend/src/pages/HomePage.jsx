@@ -117,6 +117,9 @@ export default function HomePage({ forceLocale }) {
               <label htmlFor="access-email" className="block text-sm font-bold text-slate-700 mb-2">
                 {t('pricing.checkAccess')}
               </label>
+              <p className="text-sm text-slate-600 mb-2">
+                {t('pricing.accessHow')}
+              </p>
               <div className="flex flex-wrap gap-3 items-center">
                 <input
                   id="access-email"
