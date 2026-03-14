@@ -29,6 +29,7 @@
     "repo": "Repo",
     "training": "Mokymai",
     "pricing": "Kainodara",
+    "faq": "DUK",
     "cta": "Žiūrėti planus",
     "brandPromptu": "PROMPTŲ",
     "brandAnatomija": "ANATOMIJA",
@@ -176,6 +177,20 @@
     "forTeamsBody": "Pilotas 399 €, 15 min demo – parašykite mums.",
     "forTeamsCta": "Užsakyti 15 min demo",
     "forTeamsMailSubject": "Pilot 399€ / 15 min demo"
+  },
+  "faq": {
+    "title": "Dažniausiai užduodami klausimai",
+    "items": [
+      { "q": "Ką gaunu sumokėjęs?", "a": "Prieigą prie mokymų sistemos: ~6 moduliai, ~150 skaidrių, pratimai, testai ir užduotys. Užbaigę ir išlaikę (nuo 70%) – sertifikatą. Palaikymas – WhatsApp grupėje. Prieiga suteikiama visam laikui." },
+      { "q": "Kaip pateksiu į mokymus?", "a": "Po apmokėjimo gausi nuorodą į mokymų platformą. Taip pat bet kuriuo metu gali eiti per šios svetainės mygtuką „Eiti į mokymus“." },
+      { "q": "Kas įeina į planą?", "a": "Moduliai pagal planą (Starter: 1–3, Core: 1–6), Prompt Repo 500+, 6 blokų metodika, konteksto inžinerija, sertifikatas, WhatsApp bendruomenė, prieiga visam laikui." },
+      { "q": "Ar mano duomenys saugūs?", "a": "Taip. Saugomas tik įsigijimo ID; mokėjimai per Stripe. Duomenys tvarkomi pagal ES ir JAV saugumo praktikas." },
+      { "q": "Kur gauti pagalbos?", "a": "Palaikymas – WhatsApp grupėje (nuoroda po apačioje ir po apmokėjimo)." },
+      { "q": "Ar prieiga laikina?", "a": "Ne. Vienkartinis mokėjimas – prieiga visam laikui." },
+      { "q": "Kuo skiriasi Starter ir Core?", "a": "Starter: moduliai 1–3. Core: moduliai 1–6 (pilnas kursas). Prieiga kaupiama – gali vėliau atnaujinti į Core." },
+      { "q": "Ar galima grąžinti pinigus?", "a": "Grąžinimo sąlygos – rašyk mums (info@promptanatomy.app)." },
+      { "q": "Kokiomis kalbomis mokymai?", "a": "Mokymai pateikiami lietuvių ir anglų kalbomis." }
+    ]
   },
   "footer": {
     "brand": "Promptų Anatomija",

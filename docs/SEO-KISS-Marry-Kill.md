@@ -69,18 +69,20 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 
 ---
 
-## Įgyvendinimo būsena (2026-03-13)
+## Įgyvendinimo būsena (2026-03-14)
 
-**Atlikta (KISS + MARRY):**
+**Atlikta (KISS + MARRY + GEO):**
 
-- **sitemap.xml** – `frontend/public/sitemap.xml` su `/`, `/lt`, `/en`, `/success`, `/cancel`.
-- **robots.txt** – `frontend/public/robots.txt` su `Sitemap:` nuoroda.
+- **sitemap.xml** – `frontend/public/sitemap.xml` su `/`, `/lt`, `/en`, `/success`, `/cancel`, `/privacy`, `/terms`.
+- **robots.txt** – `frontend/public/robots.txt` su `Sitemap:` nuoroda; **AI crawlerių leidimai (GEO):** GPTBot, Claude-Web, Google-Extended su `Allow: /`.
+- **JSON-LD** – `frontend/index.html`: Organization (name, alternateName, url, logo, description, contactPoint su info@promptanatomy.app), WebSite (publisher, inLanguage), WebPage (isPartOf, about, dateModified). Vienas `<script type="application/ld+json">` su visais trimis tipais.
 - **Canonical ir og:image** – `frontend/index.html`: `<link rel="canonical">`, `<meta property="og:image">`, `<meta name="robots" content="index, follow">`. **Dinamiškai:** `SeoHead.jsx` nustato canonical ir `og:url` pagal route (SITE_URL iš `config.js`).
 - **og:url ir Twitter Card** – `index.html`: `og:url`, `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`; `og:url` atnaujinamas per SeoHead.
-- **og:image failas** – į `frontend/public/` reikia įkelti 1200×630 px paveikslėlį kaip `og-image.png` (žr. `frontend/public/README.md`). Meta nuoroda jau nurodyta.
+- **og:image failas** – įkeltas į `frontend/public/og-image.png`.
 - **hreflang** – `SeoHead.jsx`: ant home route'ų (`/`, `/lt`, `/en`) injektuojami `hreflang="lt"` (→ /lt), `hreflang="en"` (→ /en), `hreflang="x-default"` (→ /). Og:locale ir og:locale:alternate pagal locale.
 - **Locale-aware URL** – maršrutai `/lt` ir `/en`; Navbar logo ir „Home“ nuorodos pagal locale; perjungus kalbą – `navigate('/lt')` arba `navigate('/en')`, kad share'intas linkas atspindėtų kalbą.
 - **Success/Cancel puslapiai** – unikalūs `metaTitle` ir `metaDescription` vertimuose (en/lt); `SuccessPage.jsx` ir `CancelPage.jsx` nustato title, description ir `noindex, nofollow` per `useEffect`, cleanup atstato home meta ir `index, follow`.
+- **DUK (FAQ) skyrius** – `frontend/src/components/Faq.jsx`: sekcija `id="faq"`, 9 klausimai/atsakymai iš i18n `faq.title`, `faq.items` (LT/EN). Navbar nuoroda „DUK“ / „FAQ“ į `#faq`. **FAQPage JSON-LD** – dinamiškai injektuojamas į `<head>` per `useEffect` (turinis iš to paties `faq.items`), atnaujinamas pagal locale.
 
 **Vėliau:** GitHub description/topics (kai repo viešas).
 

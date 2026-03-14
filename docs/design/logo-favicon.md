@@ -47,3 +47,11 @@ Generavimas: iš repo root vykdykite `npm run generate-favicons` (reikia `sharp`
 
 - Esamas failas: [frontend/public/og-image.png](../frontend/public/og-image.png) – **nekeisti** formatu (.png).
 - Jei reikia atnaujinti vizualą: galima naudoti atskirą HTML puslapį su snippet'o stiliaus konteineriu ir html2canvas eksportu – dokumentuoti kaip ad-hoc įrankis, ne production dalis.
+
+### Saugi zona (X / Twitter Card ir kiti social)
+
+Kad link preview (X, LinkedIn, Facebook) nekirstų svarbaus teksto ar logotipo:
+
+- **Dydis:** 1200×630 px (OG standartas) arba 1200×628 px (Twitter 2:1 – mažesnis apkarpymas).
+- **Saugi zona:** Visas kritinis tekstas ir logotipas – **centrinėje ~80%** paveikslėlio (horizontaliai ir vertikaliai). **Ne kampuose** – X apvalina kortelės kampus ir gali apkirsti.
+- **Rekomendacija:** Jei dabartiniame og-image.png yra tekstas (pvz. „Stop talking. Start building.“) ir X/link preview jį rodo nukirstą arba neįskaitomai – pakeisti asset taip, kad tekstas būtų saugioje zonoje, arba išimti tą tekstą iš paveikslėlio ir pasikliauti tik meta title/description. Po pakeitimo – [Twitter Card Validator](https://cards-dev.twitter.com/validator) ir „Scrape again“.

@@ -53,8 +53,8 @@ export default function SuccessPage() {
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
       <div className="max-w-2xl w-full bg-brand-dark rounded-3xl p-2 shadow-soft-lg border border-white/5 relative z-10">
         <div className="bg-white rounded-3xl p-16 md:p-28 text-center shadow-inner">
-          <div className="w-32 h-32 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-12 shadow-[0_20px_40px_rgba(16,185,129,0.1)] border-4 border-white">
-            <ShieldCheck size={64} strokeWidth={1.5} />
+          <div className="w-24 h-24 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-10 shadow-[0_20px_40px_rgba(16,185,129,0.1)] border-4 border-white">
+            <ShieldCheck size={48} strokeWidth={1.5} />
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-brand-dark mb-8 tracking-tighter uppercase leading-none">
             {t('success.heading')}

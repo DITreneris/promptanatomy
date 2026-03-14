@@ -114,6 +114,7 @@ export default function Navbar({ onCtaClick }) {
       ? [{ name: t('nav.repo'), id: null, href: GLOSSARY_URL, external: true }]
       : []),
     { name: t('nav.training'), id: null, href: '/anatomija/', external: true },
+    { name: t('nav.faq'), id: 'faq' },
     { name: t('nav.pricing'), id: 'pricing' },
   ]
 

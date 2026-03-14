@@ -6,6 +6,7 @@ import WhatIsPromptAnatomy from '../components/WhatIsPromptAnatomy'
 import Methodology from '../components/Methodology'
 import Ecosystem from '../components/Ecosystem'
 import Pricing from '../components/Pricing'
+import Faq from '../components/Faq'
 import Footer from '../components/Footer'
 import { createCheckoutSession, getAccess, getTrainingAccessLink } from '../api'
 import { useLocale } from '../i18n/LocaleContext'
@@ -198,6 +199,7 @@ export default function HomePage({ forceLocale }) {
             />
           </div>
         </section>
+        <Faq />
       </main>
       <Footer />
     </div>

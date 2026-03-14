@@ -14,4 +14,4 @@ export const SITE_URL = import.meta.env.VITE_SITE_URL || 'https://www.promptanat
 
 /** Single source for app version and Hero script name; change here to update Navbar, Hero, Ecosystem. */
 export const APP_VERSION = 'v1.3'
-export const SCRIPT_NAME = `anatomu_os_${APP_VERSION}.sh`
+export const SCRIPT_NAME = `${APP_VERSION}_os.sh`
