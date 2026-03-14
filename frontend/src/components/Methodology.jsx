@@ -20,12 +20,12 @@ export default function Methodology() {
   const itemsWithIcons = Array.isArray(items) ? items.map((item, i) => ({ ...item, icon: ICONS[i], step: String(i + 1).padStart(2, '0') })) : []
 
   return (
-    <section id="metodologija" className="pt-20 md:pt-32 pb-20 md:pb-32 mt-20 bg-gradient-to-b from-slate-50 to-slate-100/80 px-4 sm:px-6 border-y border-slate-100 overflow-hidden">
+    <section id="metodologija" className="py-20 md:py-28 mt-20 bg-gradient-to-b from-slate-50 to-slate-100/80 px-4 sm:px-6 md:px-8 border-y border-slate-100 overflow-hidden">
       <div className="max-w-7xl mx-auto min-w-0">
         <div className="flex flex-col lg:flex-row justify-between items-end mb-16 md:mb-24 gap-12">
           <div className="max-w-2xl">
-            <h2 className="text-xs font-black uppercase tracking-[0.4em] text-brand-accent mb-8">{t('methodology.sectionLabel')}</h2>
-            <h3 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter leading-none bg-gradient-to-r from-brand-dark to-slate-700 bg-clip-text text-transparent">
+            <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-brand-accent mb-8">{t('methodology.sectionLabel')}</h2>
+            <h3 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-none bg-gradient-to-r from-brand-dark to-slate-700 bg-clip-text text-transparent">
               {t('methodology.titleLine1')} <br /> {t('methodology.titleLine2')}
             </h3>
           </div>
@@ -45,8 +45,8 @@ export default function Methodology() {
                 <div className="w-14 h-14 rounded-[14px] bg-brand-dark text-brand-accent flex items-center justify-center mb-8 transition-all duration-[180ms] group-hover:rotate-[4deg] group-hover:shadow-[0_0_0_4px_rgba(207,167,58,0.12)] shadow-[0_0_0_4px_rgba(207,167,58,0.08)]">
                   {React.cloneElement(item.icon, { size: 26 })}
                 </div>
-                <span className="text-xs font-black text-slate-400 tracking-widest mb-2 block">{item.step}</span>
-                <h4 className="text-2xl font-black text-brand-dark mb-4 tracking-tight">{item.title}</h4>
+                <span className="text-xs font-bold text-slate-400 tracking-widest mb-2 block">{item.step}</span>
+                <h4 className="text-2xl font-bold text-brand-dark mb-4 tracking-tight">{item.title}</h4>
                 <p className="text-[#475569] font-medium leading-relaxed text-base">{item.desc}</p>
               </div>
               {i < itemsWithIcons.length - 1 && <ProcessArrow />}

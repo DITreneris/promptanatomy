@@ -71,9 +71,9 @@
 
 ### 2.2 Trūkumai / rekomendacijos
 
-| Problema | Vieta | Rekomendacija |
-|----------|--------|----------------|
-| **Focus trap mobilaus meniu** | `Navbar.jsx` – drawer atidaromas, bet fokusas neįtrapintas | Kai `mobileOpen === true`, fokusą laikyti drawer viduje ir uždaryti su Escape; naudoti `useEffect` + `ref` į pirmą nuorodą/mygtuką ir `focus()` atidaryme. |
+| Problema | Vieta | Rekomendacija / būsena |
+|----------|--------|-------------------------|
+| **Focus trap mobilaus meniu** | `Navbar.jsx` | **Įgyvendinta 2026-03-14:** atidaryme fokusas perkeliamas į pirmą focusable drawer viduje; Tab/Shift+Tab ciklas; Escape uždaro; uždaryme fokusas grąžinamas į hamburgerio mygtuką. |
 | **Kontrastas** | TODO.md jau nurodo: slate-500 / slate-400 | Patikrinti ant baltos ir ant `#0B1320` (WCAG AA 4.5:1); pataisyti pagal auditą. |
 | **Success po mokėjimo** | TODO: „nepažadėti el. laiško“ | SuccessPage tekste aiškiai nurodyti „Jei per X min negausite – susisiekite“ arba panašiai, kad vartotojas žinotų, ko tikėtis. |
 

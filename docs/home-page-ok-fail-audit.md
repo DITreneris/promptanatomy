@@ -29,7 +29,7 @@
 | CTA scroll į #pricing | **OK** | `scrollToPricing`, smooth scroll. |
 | Skip to content | **OK** | Focus – atsiranda, `#main-content`. |
 | Mobilus meniu (hamburgeris, drawer) | **OK** | body overflow, aria-expanded, aria-controls (docs/audit-mobile). |
-| Focus trap mobilaus meniu | **FAIL** | Fokusas neįtrapintas drawer viduje; Escape neuždaro (audit-mobile). |
+| Focus trap mobilaus meniu | **OK** | Įgyvendinta 2026-03-14: fokusas drawer viduje atidaryme, Tab ciklas, Escape uždaro, fokusas grąžinamas į hamburgerį (audit-mobile). |
 
 ---
 
@@ -80,11 +80,11 @@
 | Kategorija | OK | FAIL | WARN |
 |------------|----|------|------|
 | Struktūra ir turinys | 6 | 1 | 0 |
-| Navigacija ir CTA | 6 | 1 | 0 |
+| Navigacija ir CTA | 7 | 0 | 0 |
 | Kopija ir kalbos | 3 | 3 | 1 |
 | UI/UX ir prieinamumas | 8 | 0 | 2 |
 | Techninis | 5 | 0 | 0 |
-| **Iš viso** | **27** | **5** | **3** |
+| **Iš viso** | **28** | **4** | **3** |
 
 ---
 
@@ -96,9 +96,9 @@
 3. **Micro copy:** Taisyti „commit'ai“, success heading/breadcrumb vienodumą, moduliai 7–15 sakinį (micro-ui-ux-audit).
 
 **SHOULD (WARN / UX)**  
-4. **Focus trap:** Mobilaus meniu atidaryme laikyti fokusą drawer viduje, uždaryti su Escape.  
+4. **Focus trap:** Mobilaus meniu atidaryme laikyti fokusą drawer viduje, uždaryti su Escape – **įgyvendinta 2026-03-14.**  
 5. **Kontrastas:** Footer copyright – pakeisti į slate-500 arba slate-600 – **įgyvendinta 2026-03-13.**  
-6. **Tipografija:** Sumažinti font-black naudojimą kur nereikia (subheadings, antriniai blokai).
+6. **Tipografija:** Sumažinti font-black naudojimą kur nereikia (subheadings, antriniai blokai) – **įgyvendinta 2026-03-14.**
 
 **NICE**  
 7. „Kas yra“ above the fold – optional layout/turinio sutrumpinimas mažiems ekranams.  

@@ -110,7 +110,7 @@ export default function HomePage({ forceLocale }) {
         <WhatIsPromptAnatomy />
         <Methodology />
         <Ecosystem />
-        <section id="pricing" className="py-16 md:py-32 bg-pricing-section px-4 sm:px-6 overflow-hidden">
+        <section id="pricing" className="py-20 md:py-28 bg-pricing-section px-4 sm:px-6 md:px-8 overflow-hidden">
           <div className="max-w-5xl mx-auto min-w-0">
             <div className="mb-6 md:mb-10 p-[14px] md:p-5 rounded-xl bg-[rgba(15,23,42,0.04)] border border-slate-200/60">
               <label htmlFor="access-email" className="block text-sm font-bold text-slate-700 mb-2">

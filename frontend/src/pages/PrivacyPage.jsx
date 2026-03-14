@@ -20,7 +20,7 @@ export default function PrivacyPage() {
   return (
     <div className="min-h-screen bg-slate-50 antialiased">
       <div className="max-w-2xl mx-auto px-6 py-16">
-        <nav aria-label="Breadcrumb" className="mb-8 text-xs font-black uppercase tracking-[0.2em] text-slate-400">
+        <nav aria-label="Breadcrumb" className="mb-8 text-xs font-bold uppercase tracking-[0.2em] text-slate-400">
           <ol className="flex items-center gap-2">
             <li><Link to="/" className="hover:text-brand-accent transition-colors duration-200">{t('common.home')}</Link></li>
             <li aria-hidden>/</li>
@@ -33,15 +33,15 @@ export default function PrivacyPage() {
         <p className="text-slate-500 text-sm mb-8">{t('legal.privacyIntro')}</p>
         <div className="space-y-8 mb-10">
           <section>
-            <h2 className="text-lg font-black text-brand-dark uppercase tracking-wide mb-2">{t('legal.privacyPrinciplesTitle')}</h2>
+            <h2 className="text-lg font-bold text-brand-dark uppercase tracking-wide mb-2">{t('legal.privacyPrinciplesTitle')}</h2>
             <p className="text-slate-600 font-medium leading-relaxed">{t('legal.privacyPrinciples')}</p>
           </section>
           <section>
-            <h2 className="text-lg font-black text-brand-dark uppercase tracking-wide mb-2">{t('legal.privacyDataTitle')}</h2>
+            <h2 className="text-lg font-bold text-brand-dark uppercase tracking-wide mb-2">{t('legal.privacyDataTitle')}</h2>
             <p className="text-slate-600 font-medium leading-relaxed">{t('legal.privacyData')}</p>
           </section>
           <section>
-            <h2 className="text-lg font-black text-brand-dark uppercase tracking-wide mb-2">{t('legal.privacyRightsTitle')}</h2>
+            <h2 className="text-lg font-bold text-brand-dark uppercase tracking-wide mb-2">{t('legal.privacyRightsTitle')}</h2>
             <p className="text-slate-600 font-medium leading-relaxed">{t('legal.privacyRights')}</p>
           </section>
         </div>

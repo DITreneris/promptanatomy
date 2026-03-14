@@ -43,7 +43,7 @@ export default function SuccessPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-6 antialiased overflow-hidden relative">
-      <nav aria-label="Breadcrumb" className="relative z-10 mb-8 text-xs font-black uppercase tracking-[0.2em] text-slate-400">
+      <nav aria-label="Breadcrumb" className="relative z-10 mb-8 text-xs font-bold uppercase tracking-[0.2em] text-slate-400">
         <ol className="flex items-center gap-2">
           <li><Link to="/" className="hover:text-brand-accent transition-colors duration-200">{t('common.home')}</Link></li>
           <li aria-hidden>/</li>
@@ -56,7 +56,7 @@ export default function SuccessPage() {
           <div className="w-32 h-32 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-12 shadow-[0_20px_40px_rgba(16,185,129,0.1)] border-4 border-white">
             <ShieldCheck size={64} strokeWidth={1.5} />
           </div>
-          <h2 className="text-5xl font-black text-brand-dark mb-8 tracking-tighter uppercase leading-none">
+          <h2 className="text-4xl md:text-5xl font-black text-brand-dark mb-8 tracking-tighter uppercase leading-none">
             {t('success.heading')}
           </h2>
           <p className="text-slate-600 mb-4 text-xl font-medium leading-relaxed italic max-w-sm mx-auto">

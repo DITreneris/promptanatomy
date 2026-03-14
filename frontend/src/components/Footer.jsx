@@ -7,7 +7,7 @@ export default function Footer() {
   // Dinamiški metai – tik einami (vienas skaičius, ne intervalas 2024–2026)
   const year = new Date().getFullYear()
   return (
-    <footer className="bg-slate-50 pt-32 pb-16 px-4 sm:px-6 border-t border-slate-100 shadow-soft-top overflow-hidden">
+    <footer className="bg-slate-50 pt-32 pb-16 px-4 sm:px-6 md:px-8 border-t border-slate-100 shadow-soft-top overflow-hidden">
       <div className="max-w-7xl mx-auto min-w-0">
         <div className="grid md:grid-cols-4 gap-16 mb-24">
           <div className="md:col-span-2">
@@ -22,7 +22,7 @@ export default function Footer() {
             </p>
           </div>
           <div>
-            <h5 className="font-black uppercase text-xs tracking-[0.45em] text-slate-500 mb-12">{t('footer.system')}</h5>
+            <h5 className="font-bold uppercase text-xs tracking-[0.45em] text-slate-500 mb-12">{t('footer.system')}</h5>
             <ul className="space-y-6 text-sm font-bold text-slate-600 uppercase tracking-widest">
               <li>
                 <a href="#ekosistema" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">{t('footer.ecosystem')}</a>
@@ -61,7 +61,7 @@ export default function Footer() {
         </div>
         <div className="pt-20 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-10">
           <div className="flex flex-col gap-1">
-            <span className="text-xs font-black uppercase tracking-[0.5em] text-slate-500">
+            <span className="text-xs font-bold uppercase tracking-[0.5em] text-slate-500">
               {t('footer.copyright', { year })}
             </span>
             <span className="text-xs font-normal normal-case tracking-wider text-slate-500">
@@ -71,7 +71,7 @@ export default function Footer() {
               info@promptanatomy.app
             </a>
           </div>
-          <div className="flex flex-wrap gap-8 md:gap-16 text-xs font-black uppercase tracking-[0.35em] text-slate-500">
+          <div className="flex flex-wrap gap-8 md:gap-16 text-xs font-bold uppercase tracking-[0.35em] text-slate-500">
             <Link to="/privacy" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">{t('footer.privacyPolicy')}</Link>
             <Link to="/terms" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">{t('footer.termsOfService')}</Link>
             <span title={t('footer.comingSoon')}>{t('footer.cookies')} <span className="text-slate-500 font-normal normal-case">{t('footer.comingSoon')}</span></span>

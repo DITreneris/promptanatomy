@@ -15,6 +15,8 @@ export default function Navbar({ onCtaClick }) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const mobileOpenRef = useRef(false)
   const savedScrollY = useRef(0)
+  const drawerRef = useRef(null)
+  const hamburgerRef = useRef(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,6 +55,58 @@ export default function Navbar({ onCtaClick }) {
     }
   }, [mobileOpen])
 
+  // Focus: move into drawer on open, restore to hamburger on close
+  useEffect(() => {
+    if (!mobileOpen) return
+    const frame = requestAnimationFrame(() => {
+      const first = drawerRef.current?.querySelector('a[href], button:not([disabled])')
+      if (first) first.focus()
+    })
+    return () => {
+      cancelAnimationFrame(frame)
+      hamburgerRef.current?.focus()
+    }
+  }, [mobileOpen])
+
+  // Escape closes drawer
+  useEffect(() => {
+    if (!mobileOpen) return
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') closeMobile()
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [mobileOpen])
+
+  // Focus trap: Tab cycles within drawer
+  useEffect(() => {
+    if (!mobileOpen || !drawerRef.current) return
+    const getFocusables = () => {
+      const sel = 'a[href], button:not([disabled])'
+      return Array.from(drawerRef.current.querySelectorAll(sel))
+    }
+    const onKeyDown = (e) => {
+      if (e.key !== 'Tab') return
+      const focusables = getFocusables()
+      if (focusables.length === 0) return
+      const first = focusables[0]
+      const last = focusables[focusables.length - 1]
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault()
+          last.focus()
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault()
+          first.focus()
+        }
+      }
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [mobileOpen])
+
   const navItems = [
     { name: t('nav.ecosystem'), id: 'ekosistema' },
     { name: t('nav.methodology'), id: 'metodologija' },
@@ -65,7 +119,7 @@ export default function Navbar({ onCtaClick }) {
 
   const closeMobile = () => setMobileOpen(false)
 
-  const navLinkClass = `relative text-xs font-black uppercase tracking-[0.15em] text-slate-500 hover:text-brand-accent transition-colors duration-200 min-h-[44px] min-w-[44px] inline-flex items-center after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-200 after:w-0 hover:after:w-full ${FOCUS_RING}`
+  const navLinkClass = `relative text-xs font-bold uppercase tracking-[0.15em] text-slate-500 hover:text-brand-accent transition-colors duration-200 min-h-[44px] min-w-[44px] inline-flex items-center after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-200 after:w-0 hover:after:w-full ${FOCUS_RING}`
 
   return (
     <>
@@ -75,7 +129,7 @@ export default function Navbar({ onCtaClick }) {
       }`}
       aria-label={t('nav.ariaNav')}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center gap-2 min-w-0">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex justify-between items-center gap-2 min-w-0">
         <Link to={homePath} className={`flex items-center gap-3 sm:gap-4 group cursor-pointer min-w-0 ${FOCUS_RING} rounded-lg`}>
           <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-brand-dark flex items-center justify-center text-brand-accent shadow-soft-lg drop-shadow-logo-glow group-hover:scale-105 group-hover:shadow-glow-accent transition-all duration-300 border border-white/10 shrink-0">
             <Zap className="w-6 h-6 sm:w-7 sm:h-7 fill-current" />
@@ -151,6 +205,7 @@ export default function Navbar({ onCtaClick }) {
         </div>
 
         <button
+          ref={hamburgerRef}
           type="button"
           onClick={() => setMobileOpen((o) => !o)}
           className="md:hidden p-3 rounded-xl text-brand-dark hover:bg-slate-100 active:scale-[0.98] transition-all duration-200 min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
@@ -175,6 +230,7 @@ export default function Navbar({ onCtaClick }) {
         aria-hidden
       />
       <div
+        ref={drawerRef}
         className={`absolute top-0 right-0 h-full w-full max-w-sm bg-white shadow-2xl border-l border-slate-200 flex flex-col pt-24 px-6 transition-transform duration-300 ease-out ${mobileOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <Link
@@ -185,7 +241,7 @@ export default function Navbar({ onCtaClick }) {
               window.scrollTo({ top: 0, behavior: 'smooth' })
             }
           }}
-          className="py-4 text-base font-black uppercase tracking-[0.15em] text-slate-500 hover:text-brand-dark border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded"
+          className="py-4 text-base font-bold uppercase tracking-[0.15em] text-slate-500 hover:text-brand-dark border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded"
         >
           {t('common.home')}
         </Link>
@@ -210,7 +266,7 @@ export default function Navbar({ onCtaClick }) {
           </button>
         </div>
         {navItems.map((item) => {
-          const mobileClass = "relative py-4 text-base font-black uppercase tracking-[0.15em] text-slate-500 hover:text-brand-accent border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-200 after:w-0 hover:after:w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded"
+          const mobileClass = "relative py-4 text-base font-bold uppercase tracking-[0.15em] text-slate-500 hover:text-brand-accent border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-200 after:w-0 hover:after:w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded"
           return item.external ? (
             <a
               key={item.id || item.href}

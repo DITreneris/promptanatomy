@@ -33,10 +33,10 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
   return (
     <>
       <div className="text-center mb-8 md:mb-16">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-black uppercase tracking-[0.25em] text-amber-800 mb-4 md:mb-6 bg-[rgba(255,193,7,0.15)] border border-[rgba(255,193,7,0.35)]">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-[0.25em] text-amber-800 mb-4 md:mb-6 bg-[rgba(255,193,7,0.15)] border border-[rgba(255,193,7,0.35)]">
           <Globe size={10} className="text-amber-600" /> {t('pricing.badge')}
         </div>
-        <h2 className="text-2xl md:text-5xl font-black text-brand-dark tracking-tighter mb-3 md:mb-4">
+        <h2 className="text-4xl md:text-5xl font-black text-brand-dark tracking-tighter mb-3 md:mb-4">
           {t('pricing.title')}
         </h2>
         <p className="text-slate-600 text-base md:text-lg font-medium max-w-xl mx-auto">
@@ -47,7 +47,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-10 mb-10 md:mb-16">
+      <div className="grid md:grid-cols-2 gap-8 mb-10 md:mb-16">
         {plansToShow.map((plan) => {
           const state = getButtonState(plan)
           const isOwned = state?.action === 'owned'
@@ -59,11 +59,11 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
               className={`relative rounded-3xl border-2 p-8 shadow-pricing-card hover:shadow-soft-lg hover:-translate-y-1.5 transition-all duration-300 flex flex-col ${isCore ? 'bg-gradient-to-b from-[rgba(255,193,7,0.08)] to-[rgba(255,193,7,0.02)] border-[rgba(255,193,7,0.5)]' : 'bg-white border-slate-100 hover:border-brand-accent/30'}`}
             >
               {isCore && (
-                <span className="absolute top-6 right-6 px-3 py-1 rounded-full bg-[rgba(255,193,7,0.15)] border border-[rgba(255,193,7,0.35)] text-amber-800 text-xs font-black uppercase tracking-widest">
+                <span className="absolute top-6 right-6 px-3 py-1 rounded-full bg-[rgba(255,193,7,0.15)] border border-[rgba(255,193,7,0.35)] text-amber-800 text-xs font-bold uppercase tracking-widest">
                   {t('pricing.recommended')}
                 </span>
               )}
-              <span className="text-xs font-black uppercase tracking-widest text-slate-400 mb-2">
+              <span className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">
                 {t(`pricing.plans.${plan.labelKey}`)}
               </span>
               <p className="text-slate-600 font-bold mb-3">{plan.mods} {t('pricing.mods')}</p>
@@ -89,6 +89,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
                   type="button"
                   disabled={trainingLinkLoading}
                   aria-busy={trainingLinkLoading}
+                  aria-live={trainingLinkLoading ? 'polite' : undefined}
                   onClick={() => onGoToTraining?.()}
                   className="mt-auto block w-full py-4 text-center font-bold rounded-2xl border-2 border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 hover:border-emerald-300 transition-all duration-200 disabled:opacity-70"
                 >
@@ -100,6 +101,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
                   onClick={() => onBuy(plan.id, customerEmail)}
                   disabled={loading}
                   aria-busy={loading}
+                  aria-live={loading ? 'polite' : undefined}
                   className="mt-auto w-full min-h-[48px] py-4 rounded-2xl text-base font-black text-brand-dark bg-cta-gradient shadow-pricing-cta hover:scale-[1.05] hover:shadow-pricing-cta active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
                 >
                   {loading ? t('pricing.loading') : <>{state.label} <ArrowRight size={18} /></>}
@@ -124,7 +126,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
       )}
 
       <div className="mb-10 rounded-2xl border border-slate-200 bg-slate-50/80 p-6 md:p-8 text-center">
-        <h3 className="text-lg md:text-xl font-black text-brand-dark tracking-tight mb-2">
+        <h3 className="text-lg md:text-xl font-bold text-brand-dark tracking-tight mb-2">
           {t('pricing.forTeamsTitle')}
         </h3>
         <p className="text-slate-600 text-sm md:text-base font-medium mb-4 max-w-xl mx-auto">
@@ -154,7 +156,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
       </div>
 
       {(t('pricing.trustSignals') || []).length > 0 && (
-        <div className="flex flex-wrap justify-center gap-6 md:gap-10 mb-10 text-slate-600 font-medium">
+        <div className="flex flex-wrap justify-center gap-6 md:gap-8 mb-10 text-slate-600 font-medium">
           {(Array.isArray(t('pricing.trustSignals')) ? t('pricing.trustSignals') : []).map((item, i) => (
             <span key={i} className="flex items-center gap-2">
               <CheckCircle size={18} className="text-emerald-500 shrink-0" aria-hidden />
@@ -171,13 +173,13 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
       )}
 
       <div className="flex flex-wrap justify-center gap-14 text-slate-400">
-        <div className="flex items-center gap-3 text-xs font-black uppercase tracking-[0.25em]">
+        <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em]">
           <Lock size={14} /> {t('pricing.stripeVerified')}
         </div>
-        <div className="flex items-center gap-3 text-xs font-black uppercase tracking-[0.25em]">
+        <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em]">
           <ShieldCheck size={14} /> {t('pricing.refundContact')}
         </div>
-        <div className="flex items-center gap-3 text-xs font-black uppercase tracking-[0.25em]">
+        <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em]">
           <Cpu size={14} /> {t('pricing.aiPowered')}
         </div>
       </div>

@@ -58,7 +58,7 @@ export default function Hero({ onCta }) {
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
       <div className="absolute top-0 right-0 w-1/2 h-full bg-slate-50/80 -skew-x-12 translate-x-32 -z-10 border-l border-slate-100"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-12 lg:gap-24 items-center min-w-0">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 grid lg:grid-cols-2 gap-12 lg:gap-24 items-center min-w-0">
         <div className="relative z-10 text-left min-w-0">
           <div className="inline-flex items-center gap-3 bg-brand-dark text-white px-4 py-2 rounded-full mb-10 shadow-soft border border-white/10">
             <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
@@ -67,7 +67,7 @@ export default function Hero({ onCta }) {
             <span className="text-xs font-bold text-slate-400">{t('hero.commits')}</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-brand-dark mb-4 md:mb-6 leading-[0.85] tracking-tighter break-words">
+          <h1 className="max-[359px]:text-3xl text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-brand-dark mb-4 md:mb-6 leading-[0.85] tracking-tighter break-words">
             {t('hero.headline1')}<br />
             <span className="text-transparent bg-clip-text bg-accent-gradient break-words">
               {t('hero.headline2')}
@@ -132,7 +132,7 @@ export default function Hero({ onCta }) {
                 <div className="px-2 py-1 rounded bg-white/5 border border-white/10 text-xs text-slate-500 font-black uppercase tracking-widest flex items-center gap-1.5 shrink-0">
                   <Activity size={10} className="text-emerald-500" /> {t('hero.liveFeed')}
                 </div>
-                <div className="px-2 py-1 rounded bg-white/5 border border-white/10 text-xs text-slate-500 font-bold uppercase tracking-widest truncate">{SCRIPT_NAME}</div>
+                <div className="px-2 py-1 rounded bg-white/5 border border-white/10 text-xs text-slate-500 font-bold uppercase tracking-widest min-w-0 break-words">{SCRIPT_NAME}</div>
               </div>
             </div>
 
@@ -144,7 +144,7 @@ export default function Hero({ onCta }) {
                 <div className="text-sm sm:text-xs text-slate-600 mb-1 font-black tracking-[0.2em]">{t('hero.codeLine1')}</div>
                 <div className="text-sm border-l-2 border-brand-accent/50 group-hover/line:border-brand-accent transition-colors duration-200 pl-5 py-1 break-words min-w-0">
                   <span className="text-brand-accent font-black">{t('hero.codeRole')}</span>
-                  <span className="text-slate-300 italic opacity-80 group-hover/line:opacity-100 break-all">
+                  <span className="text-slate-300 italic opacity-80 group-hover/line:opacity-100 break-words">
                     {displayed[0] && <>&quot;{displayed[0]}&quot;</>}
                     {phase === 1 && <span className="animate-blink-caret pl-px">&nbsp;</span>}
                   </span>
@@ -157,7 +157,7 @@ export default function Hero({ onCta }) {
                 <div className="text-sm sm:text-xs text-slate-600 mb-1 font-black tracking-[0.2em]">{t('hero.codeLine2')}</div>
                 <div className="text-sm border-l-2 border-indigo-500/50 group-hover/line:border-indigo-500 transition-colors pl-5 py-1 break-words min-w-0">
                   <span className="text-indigo-400 font-black">{t('hero.codeContext')}</span>
-                  <span className="text-slate-300 italic opacity-80 group-hover/line:opacity-100 break-all">
+                  <span className="text-slate-300 italic opacity-80 group-hover/line:opacity-100 break-words">
                     {displayed[1] && <>&quot;{displayed[1]}&quot;</>}
                     {phase === 2 && <span className="animate-blink-caret pl-px">&nbsp;</span>}
                   </span>
@@ -170,7 +170,7 @@ export default function Hero({ onCta }) {
                 <div className="text-sm sm:text-xs text-slate-600 mb-1 font-black tracking-[0.2em]">{t('hero.codeLine3')}</div>
                 <div className="text-sm border-l-2 border-emerald-500/50 group-hover/line:border-emerald-500 transition-colors pl-5 py-1 break-words min-w-0">
                   <span className="text-emerald-400 font-black">{t('hero.codeSchema')}</span>
-                  <span className="text-slate-300 italic opacity-80 group-hover/line:opacity-100 break-all">
+                  <span className="text-slate-300 italic opacity-80 group-hover/line:opacity-100 break-words">
                     {displayed[2] && <>&quot;{displayed[2]}&quot;</>}
                     {phase === 3 && <span className="animate-blink-caret pl-px">&nbsp;</span>}
                   </span>

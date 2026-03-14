@@ -36,7 +36,7 @@ export default function Ecosystem() {
   const items = rawItems
 
   return (
-    <section id="ekosistema" className="pt-20 sm:pt-[100px] pb-20 md:pb-32 bg-brand-dark px-4 sm:px-6 relative overflow-hidden">
+    <section id="ekosistema" className="pt-20 sm:pt-[100px] pb-20 md:pb-28 bg-brand-dark px-4 sm:px-6 md:px-8 relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" aria-hidden />
       <div className="absolute inset-0 pointer-events-none bg-ecosystem-center-glow opacity-100" aria-hidden />
       <div
@@ -49,7 +49,7 @@ export default function Ecosystem() {
       />
       <div className="max-w-7xl mx-auto relative z-10 min-w-0">
         <div className="text-center mb-16 md:mb-28">
-          <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-8 tracking-[-0.02em]">{t('ecosystem.title')}</h2>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-8 tracking-[-0.02em]">{t('ecosystem.title')}</h2>
           <p className="text-slate-300 text-lg max-w-[600px] mx-auto font-medium mt-3 leading-relaxed">
             {t('ecosystem.paragraph')}
           </p>
@@ -67,7 +67,7 @@ export default function Ecosystem() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {items.map((item, i) => {
             const hasBullets = Array.isArray(item.bullets) && item.bullets.length > 0
             const ctaLabel = (typeof item.ctaLabel === 'string' && item.ctaLabel.trim()) || (typeof t('ecosystem.ctaOpen') === 'string' && t('ecosystem.ctaOpen').trim()) || null

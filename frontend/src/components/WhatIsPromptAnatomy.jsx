@@ -16,7 +16,7 @@ export default function WhatIsPromptAnatomy() {
   return (
     <section
       id="what-is"
-      className="py-20 md:py-28 bg-slate-50 px-4 sm:px-6 overflow-hidden"
+      className="py-20 md:py-28 bg-slate-50 px-4 sm:px-6 md:px-8 overflow-hidden"
       aria-labelledby="what-is-heading"
     >
       <div className="max-w-4xl mx-auto text-center min-w-0">
