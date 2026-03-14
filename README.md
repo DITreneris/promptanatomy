@@ -6,6 +6,7 @@ Marketinginis tinklalapis ir minimalus backend mokėjimams per Stripe. Tikslas: 
 
 - **frontend/** – Vite + React, landing puslapis, pricing, CTA → Stripe Checkout, puslapiai `/success` ir `/cancel`.
 - **backend/** – FastAPI, entry point `backend/main.py`: `GET /health`, `GET /api/access` (prieiga pagal email), `POST /api/create-checkout-session`, `POST /api/webhooks/stripe`, `POST /api/validate-token-limit`. Konfigūracija per Pydantic Settings (`backend/core/config.py`). MVP upgrade: Supabase lentelė `user_access` (highest_plan), webhook įrašo prieigą, checkout blokuoja jei jau turi planą – žr. [docs/supabase-user-access.sql](docs/supabase-user-access.sql).
+- **apps/prompt-anatomy/** – mokymų app (SPA) kaip git submodulis iš [DITreneris/inzinerija](https://github.com/DITreneris/inzinerija); pasiekiamas per `/anatomija/` tame pačiame domene (Vercel build į `frontend/dist/anatomija/`).
 
 ## Reikalavimai
 
@@ -14,6 +15,22 @@ Marketinginis tinklalapis ir minimalus backend mokėjimams per Stripe. Tikslas: 
 - Stripe paskyra (test režimui – test raktai)
 
 ## Greitas startas
+
+### 0. Clone ir submodulis
+
+Repozitorijoje yra submodulis `apps/prompt-anatomy` (inzinerija). Po clone įsitikinkite, kad jis įkeltas:
+
+```bash
+git clone --recurse-submodules <repo-url>
+```
+
+Arba po įprasto `git clone`:
+
+```bash
+git submodule update --init --recursive
+```
+
+**Submodulio atnaujinimas** (į naujausią inzinerija `main`): `cd apps/prompt-anatomy && git pull origin main`, tada iš repo šaknies `git add apps/prompt-anatomy && git commit -m "chore: update prompt-anatomy submodule"`.
 
 ### 1. Backend
 

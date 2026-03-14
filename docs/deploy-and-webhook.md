@@ -12,6 +12,7 @@ Vienas dokumentas: kas įdiegta produkcijoje (Vercel + Stripe webhook), kaip tik
 - **Stripe Dashboard:** Webhook URL – `https://www.promptanatomy.app/api/stripe-webhook`, event `checkout.session.completed`. Signing secret → env `STRIPE_WEBHOOK_SECRET`.
 - **Create-checkout-session ir GET /api/access:** Kol FastAPI backend nedeployintas atskirai, šie endpointai produkcijoje veikia per tą patį frontend deploy tik jei pridėti atitinkamos Vercel functions; dabar frontend naudoja `VITE_API_URL` (lokaliai `localhost:8000`). Produkcijoje reikia arba atskiro backend deploy, arba tų pačių endpointų kaip Vercel functions.
 - **Success-redirect (magic-link):** Vercel serverless `api/success-redirect.js` – pagal `session_id` grąžina `redirect_url` į mokymų app su `access_tier`, `expires`, `token`. Reikia env: `ACCESS_TOKEN_SECRET`, `STRIPE_SECRET_KEY`; optional: `TRAINING_REDIRECT_BASE`, `ACCESS_TOKEN_EXPIRY_DAYS`.
+- **Training app (submodulis):** `apps/prompt-anatomy` → [DITreneris/inzinerija](https://github.com/DITreneris/inzinerija). Vercel build metu: `installCommand` inicijuoja submodulį (`git submodule update --init --recursive`), `buildCommand` buildina frontend, po to training app su `VITE_BASE_PATH=/anatomija/` ir `VITE_MVP_MODE=1`, rezultatas kopijuojamas į `frontend/dist/anatomija/`. Maršrutas `/anatomija/*` aptarnaujamas iš to katalogo.
 
 **Vercel env (būtina webhook + prieigai + success-redirect):** `STRIPE_WEBHOOK_SECRET`, `STRIPE_SECRET_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `ACCESS_TOKEN_SECRET` (bendras su mokymų app; success-redirect funkcijai). Optional: `TRAINING_REDIRECT_BASE`, `ACCESS_TOKEN_EXPIRY_DAYS`.
 
@@ -21,6 +22,7 @@ Vienas dokumentas: kas įdiegta produkcijoje (Vercel + Stripe webhook), kaip tik
 
 Prieš deploy į produkciją patikrinkite:
 
+- **Submodulio build** – įsitikinkite, kad training app buildina lokaliai: `cd apps/prompt-anatomy && VITE_BASE_PATH=/anatomija/ VITE_MVP_MODE=1 npm run build` (Windows: nustatykite env kintamuosius atitinkamai arba naudokite cross-env).
 - **STRIPE_WEBHOOK_SECRET** – būtina; be jo webhook grąžina 503.
 - **ALLOW_WEBHOOK_WITHOUT_SECRET** – **niekada** įjungti prod (tik lokaliai dev).
 - **FRONTEND_ORIGIN** – pilnas https URL (pvz. `https://www.promptanatomy.app`) be galinio `/` (CORS ir redirectai).
