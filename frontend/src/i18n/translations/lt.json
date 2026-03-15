@@ -113,7 +113,7 @@
         "title": "Atrankos sistema (personalas)",
         "count": "120+ Repo",
         "url": "https://ditreneris.github.io/personalas/",
-        "outcome": "Atrankos ir įvertinimo promptai.",
+        "outcome": "Paieškos, atrankos ir įvertinimo promptai.",
         "bullets": ["Skelbimai", "Įvertinimas"]
       },
       {
@@ -209,7 +209,8 @@
     "linkedIn": "LinkedIn",
     "twitter": "X (Twitter)",
     "comingSoon": "(Netrukus)",
-    "copyright": "© {{year}} Promptų Anatomija. DI operacinė sistema.",
+    "copyrightLine1": "© {{year}} Promptų Anatomija.",
+    "copyrightLine2": "DI operacinė sistema.",
     "creator": "kūrėjas: tomas staniulis",
     "privacyPolicy": "Privatumo politika",
     "termsOfService": "Paslaugų teikimo sąlygos",

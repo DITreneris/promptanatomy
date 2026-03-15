@@ -61,8 +61,11 @@ export default function Footer() {
         </div>
         <div className="pt-20 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-10">
           <div className="flex flex-col gap-1">
-            <span className="text-xs font-bold uppercase tracking-[0.5em] text-slate-500">
-              {t('footer.copyright', { year })}
+            <span className="block text-xs font-bold uppercase tracking-[0.5em] text-slate-500">
+              {t('footer.copyrightLine1', { year })}
+            </span>
+            <span className="block text-xs font-bold uppercase tracking-[0.5em] text-slate-500">
+              {t('footer.copyrightLine2')}
             </span>
             <span className="text-xs font-normal normal-case tracking-wider text-slate-500">
               {t('footer.creator')}

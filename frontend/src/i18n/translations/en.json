@@ -113,7 +113,7 @@
         "title": "Recruitment system (HR)",
         "count": "120+ Repo",
         "url": "https://ditreneris.github.io/personalas/",
-        "outcome": "Recruitment and assessment prompts.",
+        "outcome": "Search, recruitment and assessment prompts.",
         "bullets": ["Job ads", "Assessment"]
       },
       {
@@ -209,7 +209,8 @@
     "linkedIn": "LinkedIn",
     "twitter": "X (Twitter)",
     "comingSoon": "(Coming soon)",
-    "copyright": "© {{year}} Prompt Anatomy. AI Operating System.",
+    "copyrightLine1": "© {{year}} Prompt Anatomy.",
+    "copyrightLine2": "AI Operating System.",
     "creator": "creator: tomas staniulis",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
