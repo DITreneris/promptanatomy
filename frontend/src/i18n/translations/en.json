@@ -41,14 +41,14 @@
     "commits": "2,481 Commits",
     "headline1": "Stop talking.",
     "headline2": "Start building.",
-    "subtitle": "Prompt Anatomy helps you work with GPT, agents and automation as one clear AI work system.",
-    "bullet1": "A 6-block method for clearer AI work",
-    "bullet2": "Prompts, context engineering and workflows in one place",
-    "bullet3": "Built for real work tasks and business use cases",
+    "subtitle": "Prompt Anatomy is a practical system for working with AI tools, agents and automation.",
+    "bullet1": "6-block methodology",
+    "bullet2": "Prompts + templates + workflows",
+    "bullet3": "Real business use cases",
     "valueLine": "Master AI prompting for real work",
     "subtext": "Learn to run AI like an operating system. Prompt engineering, automation and AI agents for real business results.",
     "cta": "Choose a plan",
-    "socialProof": "500+ community members are already learning the 6-block method",
+    "socialProof": "500+ already learning the 6-block method",
     "members": "500+ members",
     "community": "AI Practitioners community",
     "liveFeed": "Live Feed",
@@ -67,8 +67,8 @@
   },
   "whatIs": {
     "title": "What is Prompt Anatomy",
-    "valueLine1": "Prompt Anatomy is an AI work system with a clear learning path.",
-    "valueLine2": "Instead of random prompts, you get structure: a 6-block method, a prompt library and a practical path for GPT, agents and automation.",
+    "valueLine1": "Prompt Anatomy is an operating system for working with AI.",
+    "valueLine2": "Instead of random prompts, you get structure: a 6-block methodology, a template library and a practical guide to building GPTs, agents and automation.",
     "processAriaLabel": "How it works: 6 methodology blocks",
     "processBlocks": ["META", "INPUT", "OUTPUT", "REASONING", "QUALITY", "ADVANCED"],
     "stat1Number": "115+",
@@ -90,8 +90,8 @@
     ]
   },
   "ecosystem": {
-    "title": "Extend the system by work context",
-    "paragraph": "When you're ready to go further, you can apply the core method in specialized contexts: automation, content, hiring and leadership.",
+    "title": "Adapt the system to real work",
+    "paragraph": "For automation, content, hiring and leadership decisions.",
     "stableLabel": "v1.3 Stable",
     "ctaOpen": "View system",
     "items": [
@@ -100,40 +100,36 @@
         "count": "100+ Repo",
         "url": "https://ditreneris.github.io/biblioteka/",
         "outcome": "Ready-made prompts and workflow templates.",
-        "bullets": ["100+ prompts", "AI workflow"],
-        "ctaLabel": "View library"
+        "bullets": ["100+ prompts", "AI workflow"]
       },
       {
         "title": "Content system (marketing)",
         "count": "150+ Repo",
         "url": "https://ditreneris.github.io/marketingas/",
         "outcome": "Marketing content prompts and templates.",
-        "bullets": ["Content planning", "AI templates"],
-        "ctaLabel": "View content system"
+        "bullets": ["Content planning", "AI templates"]
       },
       {
         "title": "Recruitment system (HR)",
         "count": "120+ Repo",
         "url": "https://ditreneris.github.io/personalas/",
         "outcome": "Recruitment and assessment prompts.",
-        "bullets": ["Job ads", "Assessment"],
-        "ctaLabel": "View hiring system"
+        "bullets": ["Job ads", "Assessment"]
       },
       {
         "title": "Operations center (CEO/COO)",
         "count": "CEO/COO",
         "url": "https://ditreneris.github.io/ceo/",
         "outcome": "Prompts and templates for leadership.",
-        "bullets": ["Decisions", "Operations"],
-        "ctaLabel": "View operations center"
+        "bullets": ["Decisions", "Operations"]
       }
     ]
   },
   "pricing": {
     "badge": "Lifetime System Access",
-    "title": "Choose your access",
-    "subtext": "Pick a plan and get the training, prompt library and 6-block method in one place.",
-    "cumulativeNote": "Access is cumulative.",
+    "title": "Choose a plan",
+    "subtext": "Get access to the training, prompt library and 6-block methodology.",
+    "cumulativeNote": "You can upgrade to a higher plan later.",
     "recommended": "Recommended",
     "coreIncludesStarter": "Everything in Starter plus Context engineering.",
     "plans": {
@@ -191,7 +187,7 @@
       { "q": "Is my data secure?", "a": "Yes. We store only the purchase ID; payments via Stripe. Data handled per EU and US security practices." },
       { "q": "Where do I get support?", "a": "Support in the WhatsApp group (link in the footer and after payment)." },
       { "q": "Is access temporary?", "a": "No. One-time payment – lifetime access." },
-      { "q": "What's the difference between Starter and Core?", "a": "Starter: modules 1–3. Core: modules 1–6 (full course). Access is cumulative – you can upgrade to Core later." },
+      { "q": "What's the difference between Starter and Core?", "a": "Starter: modules 1–3. Core: modules 1–6 (full course). If you start with Starter, you can upgrade to Core later." },
       { "q": "Can I get a refund?", "a": "Refund terms – contact us (info@promptanatomy.app)." },
       { "q": "What languages are the trainings in?", "a": "Trainings are available in Lithuanian and English." }
     ]
@@ -213,7 +209,7 @@
     "linkedIn": "LinkedIn",
     "twitter": "X (Twitter)",
     "comingSoon": "(Coming soon)",
-    "copyright": "© {{year}} Prompt Anatomy. Built for Professionals.",
+    "copyright": "© {{year}} Prompt Anatomy. AI Operating System.",
     "creator": "creator: tomas staniulis",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",

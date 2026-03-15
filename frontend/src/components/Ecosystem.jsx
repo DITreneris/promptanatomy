@@ -70,7 +70,8 @@ export default function Ecosystem() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {items.map((item, i) => {
             const hasBullets = Array.isArray(item.bullets) && item.bullets.length > 0
-            const ctaLabel = (typeof item.ctaLabel === 'string' && item.ctaLabel.trim()) || (typeof t('ecosystem.ctaOpen') === 'string' && t('ecosystem.ctaOpen').trim()) || null
+            const outcome = typeof item.outcome === 'string' && item.outcome.trim() ? item.outcome.trim() : null
+            const ctaLabel = (typeof t('ecosystem.ctaOpen') === 'string' && t('ecosystem.ctaOpen').trim()) || null
             const useCtaLayout = hasBullets || ctaLabel
 
             const cardBaseClass = "group relative rounded-3xl bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] backdrop-blur-[12px] hover:border-[rgba(255,200,0,0.5)] hover:shadow-ecosystem-card-rim hover:-translate-y-1.5 transition-all duration-[220ms] overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
@@ -86,6 +87,11 @@ export default function Ecosystem() {
                   {item.icon}
                 </div>
                 <h4 className={titleClass}>{item.title}</h4>
+                {outcome && (
+                  <p className="text-sm text-slate-300 leading-relaxed mb-4">
+                    {outcome}
+                  </p>
+                )}
                 {hasBullets && (
                   <ul className="list-disc list-inside text-slate-400 text-sm space-y-2 leading-relaxed mb-4">
                     {(item.bullets.slice(0, 2)).map((bullet, bi) => (

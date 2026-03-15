@@ -41,14 +41,14 @@
     "commits": "2 480 commit'ų",
     "headline1": "Nustok kalbėti.",
     "headline2": "Pradėk programuoti.",
-    "subtitle": "Promptų Anatomija padeda aiškiai dirbti su GPT, agentais ir automatizacija kaip su viena DI darbo sistema.",
-    "bullet1": "6 blokų metodika aiškesniam DI darbui",
-    "bullet2": "Promptai, konteksto inžinerija ir workflow vienoje vietoje",
-    "bullet3": "Pritaikyta realioms darbo užduotims ir verslo atvejams",
+    "subtitle": "Promptų Anatomija - praktinė sistema darbui su dirbtinio intelekto įrankiais, agentais ir automatizacija.",
+    "bullet1": "6 blokų metodika",
+    "bullet2": "Promptai + šablonai + procesai",
+    "bullet3": "Tikri verslo naudojimo scenarijai",
     "valueLine": "Išmok naudoti DI 10x efektyviau",
     "subtext": "Išmok valdyti DI kaip operacinę sistemą. Promptų inžinerija, automatizacija ir DI agentai realiems verslo rezultatams.",
     "cta": "Rinktis planą",
-    "socialProof": "500+ bendruomenės narių jau mokosi dirbti su 6 blokų metodika",
+    "socialProof": "500+ jau mokosi su 6 blokų metodika",
     "members": "500+ narių",
     "community": "DI Praktikų bendruomenė",
     "liveFeed": "Tiesioginis srautas",
@@ -67,8 +67,8 @@
   },
   "whatIs": {
     "title": "Kas yra Promptų Anatomija",
-    "valueLine1": "Promptų Anatomija yra DI darbo sistema su aiškiu mokymosi keliu.",
-    "valueLine2": "Vietoje atsitiktinių promptų gauni struktūrą: 6 blokų metodiką, promptų biblioteką ir praktinį kelią GPT, agentams bei automatizacijai.",
+    "valueLine1": "Promptų Anatomija - operacinė sistema darbui su DI.",
+    "valueLine2": "Vietoje atsitiktinių promptų gauni struktūrą: 6 blokų metodiką, šablonų biblioteką ir praktinį gidą, padedantį kurti GPT, agentus bei automatizuoti.",
     "processAriaLabel": "Kaip veikia: 6 metodikos blokai",
     "processBlocks": ["META", "INPUT", "OUTPUT", "REASONING", "QUALITY", "ADVANCED"],
     "stat1Number": "115+",
@@ -90,8 +90,8 @@
     ]
   },
   "ecosystem": {
-    "title": "Plėsk sistemą pagal darbo kontekstą",
-    "paragraph": "Kai norėsi plėsti bazinę metodiką, galėsi ją taikyti specializuotuose kontekstuose: automatizacijai, turiniui, atrankai ir vadovų darbui.",
+    "title": "Pritaikyk sistemą realiam darbui",
+    "paragraph": "Automatizacijai, turiniui, atrankai ir vadovų sprendimams.",
     "stableLabel": "v1.3 Stable",
     "ctaOpen": "Peržiūrėti sistemą",
     "items": [
@@ -100,40 +100,36 @@
         "count": "100+ Repo",
         "url": "https://ditreneris.github.io/biblioteka/",
         "outcome": "Paruošti promptai ir workflow šablonai.",
-        "bullets": ["100+ promptų", "DI workflow"],
-        "ctaLabel": "Peržiūrėti biblioteką"
+        "bullets": ["100+ promptų", "DI workflow"]
       },
       {
         "title": "Turinio DI sistema (rinkodara)",
         "count": "150+ Repo",
         "url": "https://ditreneris.github.io/marketingas/",
         "outcome": "Rinkodaros turinio promptai ir šablonai.",
-        "bullets": ["Turinio planavimas", "DI šablonai"],
-        "ctaLabel": "Peržiūrėti turinio sistemą"
+        "bullets": ["Turinio planavimas", "DI šablonai"]
       },
       {
         "title": "Atrankos sistema (personalas)",
         "count": "120+ Repo",
         "url": "https://ditreneris.github.io/personalas/",
         "outcome": "Atrankos ir įvertinimo promptai.",
-        "bullets": ["Skelbimai", "Įvertinimas"],
-        "ctaLabel": "Peržiūrėti atrankos sistemą"
+        "bullets": ["Skelbimai", "Įvertinimas"]
       },
       {
         "title": "DI operacinis centras (vadovybė)",
         "count": "Vadovybė",
         "url": "https://ditreneris.github.io/ceo/",
         "outcome": "Vadovams skirti promptai ir šablonai.",
-        "bullets": ["Sprendimai", "Operacijos"],
-        "ctaLabel": "Peržiūrėti operacinį centrą"
+        "bullets": ["Sprendimai", "Operacijos"]
       }
     ]
   },
   "pricing": {
     "badge": "Lifetime System Access",
-    "title": "Rinkis prieigą prie sistemos",
-    "subtext": "Pasirink planą ir gauk mokymus, promptų biblioteką bei 6 blokų metodiką vienoje vietoje.",
-    "cumulativeNote": "Prieiga kaupiama.",
+    "title": "Rinkis planą",
+    "subtext": "Gauk prieigą prie mokymų, promptų bibliotekos ir 6 blokų metodikos.",
+    "cumulativeNote": "Vėliau galėsi atnaujinti į aukštesnį planą.",
     "recommended": "Rekomenduojama",
     "coreIncludesStarter": "Viskas iš Starter plius Konteksto inžinerija.",
     "plans": {
@@ -191,7 +187,7 @@
       { "q": "Ar mano duomenys saugūs?", "a": "Taip. Saugomas tik įsigijimo ID; mokėjimai per Stripe. Duomenys tvarkomi pagal ES ir JAV saugumo praktikas." },
       { "q": "Kur gauti pagalbos?", "a": "Palaikymas – WhatsApp grupėje (nuoroda po apačioje ir po apmokėjimo)." },
       { "q": "Ar prieiga laikina?", "a": "Ne. Vienkartinis mokėjimas – prieiga visam laikui." },
-      { "q": "Kuo skiriasi Starter ir Core?", "a": "Starter: moduliai 1–3. Core: moduliai 1–6 (pilnas kursas). Prieiga kaupiama – gali vėliau atnaujinti į Core." },
+      { "q": "Kuo skiriasi Starter ir Core?", "a": "Starter: moduliai 1–3. Core: moduliai 1–6 (pilnas kursas). Jei pradėsi nuo Starter, vėliau galėsi atnaujinti į Core." },
       { "q": "Ar galima grąžinti pinigus?", "a": "Grąžinimo sąlygos – rašyk mums (info@promptanatomy.app)." },
       { "q": "Kokiomis kalbomis mokymai?", "a": "Mokymai pateikiami lietuvių ir anglų kalbomis." }
     ]
@@ -213,7 +209,7 @@
     "linkedIn": "LinkedIn",
     "twitter": "X (Twitter)",
     "comingSoon": "(Netrukus)",
-    "copyright": "© {{year}} Promptų Anatomija. Built for Professionals.",
+    "copyright": "© {{year}} Promptų Anatomija. DI operacinė sistema.",
     "creator": "kūrėjas: tomas staniulis",
     "privacyPolicy": "Privatumo politika",
     "termsOfService": "Paslaugų teikimo sąlygos",
