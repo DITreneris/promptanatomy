@@ -30,7 +30,7 @@
     "training": "Training",
     "pricing": "Pricing",
     "faq": "FAQ",
-    "cta": "See plans",
+    "cta": "Choose a plan",
     "brandPromptu": "PROMPT",
     "brandAnatomija": "ANATOMY",
     "brandTagline": "AI Operating System",
@@ -41,13 +41,14 @@
     "commits": "2,481 Commits",
     "headline1": "Stop talking.",
     "headline2": "Start building.",
-    "subtitle": "This system teaches you to work with GPT, agents and automation.",
-    "bullet1": "Build precise prompts and systems",
-    "bullet2": "Automate repetitive AI workflows",
-    "bullet3": "Apply everything to real business cases",
+    "subtitle": "Prompt Anatomy helps you work with GPT, agents and automation as one clear AI work system.",
+    "bullet1": "A 6-block method for clearer AI work",
+    "bullet2": "Prompts, context engineering and workflows in one place",
+    "bullet3": "Built for real work tasks and business use cases",
     "valueLine": "Master AI prompting for real work",
     "subtext": "Learn to run AI like an operating system. Prompt engineering, automation and AI agents for real business results.",
-    "cta": "See plans",
+    "cta": "Choose a plan",
+    "socialProof": "500+ community members are already learning the 6-block method",
     "members": "500+ members",
     "community": "AI Practitioners community",
     "liveFeed": "Live Feed",
@@ -66,8 +67,8 @@
   },
   "whatIs": {
     "title": "What is Prompt Anatomy",
-    "valueLine1": "It's an AI operating system for effective work.",
-    "valueLine2": "The system teaches you to formulate structured prompts so that answers are clear, predictable and verifiable – standardized and repeatable.",
+    "valueLine1": "Prompt Anatomy is an AI work system with a clear learning path.",
+    "valueLine2": "Instead of random prompts, you get structure: a 6-block method, a prompt library and a practical path for GPT, agents and automation.",
     "processAriaLabel": "How it works: 6 methodology blocks",
     "processBlocks": ["META", "INPUT", "OUTPUT", "REASONING", "QUALITY", "ADVANCED"],
     "stat1Number": "115+",
@@ -89,10 +90,10 @@
     ]
   },
   "ecosystem": {
-    "title": "AI work system for business",
-    "paragraph": "One AI operating system. Four work contexts for your business.",
+    "title": "Extend the system by work context",
+    "paragraph": "When you're ready to go further, you can apply the core method in specialized contexts: automation, content, hiring and leadership.",
     "stableLabel": "v1.3 Stable",
-    "ctaOpen": "Open system",
+    "ctaOpen": "View system",
     "items": [
       {
         "title": "Library (AI automation)",
@@ -100,7 +101,7 @@
         "url": "https://ditreneris.github.io/biblioteka/",
         "outcome": "Ready-made prompts and workflow templates.",
         "bullets": ["100+ prompts", "AI workflow"],
-        "ctaLabel": "Open library"
+        "ctaLabel": "View library"
       },
       {
         "title": "Content system (marketing)",
@@ -108,7 +109,7 @@
         "url": "https://ditreneris.github.io/marketingas/",
         "outcome": "Marketing content prompts and templates.",
         "bullets": ["Content planning", "AI templates"],
-        "ctaLabel": "Create content"
+        "ctaLabel": "View content system"
       },
       {
         "title": "Recruitment system (HR)",
@@ -116,7 +117,7 @@
         "url": "https://ditreneris.github.io/personalas/",
         "outcome": "Recruitment and assessment prompts.",
         "bullets": ["Job ads", "Assessment"],
-        "ctaLabel": "Assess candidates"
+        "ctaLabel": "View hiring system"
       },
       {
         "title": "Operations center (CEO/COO)",
@@ -124,14 +125,14 @@
         "url": "https://ditreneris.github.io/ceo/",
         "outcome": "Prompts and templates for leadership.",
         "bullets": ["Decisions", "Operations"],
-        "ctaLabel": "Open dashboard"
+        "ctaLabel": "View operations center"
       }
     ]
   },
   "pricing": {
     "badge": "Lifetime System Access",
-    "title": "Choose your plan",
-    "subtext": "Get access to the Prompt Anatomy training according to the number of modules you choose.",
+    "title": "Choose your access",
+    "subtext": "Pick a plan and get the training, prompt library and 6-block method in one place.",
     "cumulativeNote": "Access is cumulative.",
     "recommended": "Recommended",
     "coreIncludesStarter": "Everything in Starter plus Context engineering.",
@@ -152,9 +153,9 @@
     "loading": "Loading...",
     "allPlansInclude": "All plans include:",
     "features": [
-      "Prompt Repo (500+ prompts and templates)",
+      "Prompt library (500+ prompts and templates)",
       "6-block system",
-      "Context engineering",
+      "Hands-on exercises",
       "Certificate (from 70% score)",
       "Community (WhatsApp)",
       "Lifetime access"
@@ -163,6 +164,8 @@
     "refundContact": "Refund terms – contact us",
     "aiPowered": "AI Powered",
     "checkAccess": "Check your access",
+    "returningTitle": "Already purchased?",
+    "returningBody": "Enter the email you used at checkout and continue your training without a password.",
     "accessHow": "Email → Check → Go to training. No password.",
     "checkButton": "Check",
     "emailPlaceholder": "Email",
@@ -182,9 +185,9 @@
   "faq": {
     "title": "Frequently asked questions",
     "items": [
-      { "q": "What do I get when I pay?", "a": "Access to the training system: ~6 modules, ~150 slides, exercises, tests and tasks. Complete and pass (from 70%) – certificate. Support in the WhatsApp group. Lifetime access." },
+      { "q": "What do I get when I pay?", "a": "Access to the modules in your selected plan, the training content, hands-on exercises and the prompt library. Starter includes modules 1–3, Core includes 1–6. Complete and pass (from 70%) to receive the certificate. Support is provided in the WhatsApp community. Lifetime access." },
       { "q": "How do I access the training?", "a": "No password. Enter your payment email → Check → Go to training. Same steps anytime from this site, Pricing section." },
-      { "q": "What's included in the plan?", "a": "Modules by plan (Starter: 1–3, Core: 1–6), Prompt Repo 500+, 6-block methodology, context engineering, certificate, WhatsApp community, lifetime access." },
+      { "q": "What's included in the plan?", "a": "Modules by plan (Starter: 1–3, Core: 1–6), the prompt library, the 6-block methodology, hands-on exercises, a certificate from 70% and the WhatsApp community. Core additionally includes context engineering." },
       { "q": "Is my data secure?", "a": "Yes. We store only the purchase ID; payments via Stripe. Data handled per EU and US security practices." },
       { "q": "Where do I get support?", "a": "Support in the WhatsApp group (link in the footer and after payment)." },
       { "q": "Is access temporary?", "a": "No. One-time payment – lifetime access." },

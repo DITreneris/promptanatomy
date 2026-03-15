@@ -30,7 +30,7 @@
     "training": "Mokymai",
     "pricing": "Kainodara",
     "faq": "DUK",
-    "cta": "Žiūrėti planus",
+    "cta": "Rinktis planą",
     "brandPromptu": "PROMPTŲ",
     "brandAnatomija": "ANATOMIJA",
     "brandTagline": "DI OPERACINĖ SISTEMA",
@@ -41,13 +41,14 @@
     "commits": "2 480 commit'ų",
     "headline1": "Nustok kalbėti.",
     "headline2": "Pradėk programuoti.",
-    "subtitle": "Ši sistema moko dirbti su GPT, agentais ir automatizacija.",
-    "bullet1": "Kurk tikslius promptus ir sistemas",
-    "bullet2": "Automatizuok pasikartojančias DI darbo eigas",
-    "bullet3": "Pritaikyk viską realiems verslo atvejams",
+    "subtitle": "Promptų Anatomija padeda aiškiai dirbti su GPT, agentais ir automatizacija kaip su viena DI darbo sistema.",
+    "bullet1": "6 blokų metodika aiškesniam DI darbui",
+    "bullet2": "Promptai, konteksto inžinerija ir workflow vienoje vietoje",
+    "bullet3": "Pritaikyta realioms darbo užduotims ir verslo atvejams",
     "valueLine": "Išmok naudoti DI 10x efektyviau",
     "subtext": "Išmok valdyti DI kaip operacinę sistemą. Promptų inžinerija, automatizacija ir DI agentai realiems verslo rezultatams.",
-    "cta": "Žiūrėti planus",
+    "cta": "Rinktis planą",
+    "socialProof": "500+ bendruomenės narių jau mokosi dirbti su 6 blokų metodika",
     "members": "500+ narių",
     "community": "DI Praktikų bendruomenė",
     "liveFeed": "Tiesioginis srautas",
@@ -66,8 +67,8 @@
   },
   "whatIs": {
     "title": "Kas yra Promptų Anatomija",
-    "valueLine1": "Tai DI operacinė sistema efektyviam darbui.",
-    "valueLine2": "Sistema moko formuluoti struktūruotas užklausas, kad atsakymai būtų aiškūs, prognozuojami ir patikrinami – standartizuotai ir pakartojamai.",
+    "valueLine1": "Promptų Anatomija yra DI darbo sistema su aiškiu mokymosi keliu.",
+    "valueLine2": "Vietoje atsitiktinių promptų gauni struktūrą: 6 blokų metodiką, promptų biblioteką ir praktinį kelią GPT, agentams bei automatizacijai.",
     "processAriaLabel": "Kaip veikia: 6 metodikos blokai",
     "processBlocks": ["META", "INPUT", "OUTPUT", "REASONING", "QUALITY", "ADVANCED"],
     "stat1Number": "115+",
@@ -89,10 +90,10 @@
     ]
   },
   "ecosystem": {
-    "title": "DI darbo sistema verslui",
-    "paragraph": "Viena DI operacinė sistema. Keturi darbo kontekstai verslui.",
+    "title": "Plėsk sistemą pagal darbo kontekstą",
+    "paragraph": "Kai norėsi plėsti bazinę metodiką, galėsi ją taikyti specializuotuose kontekstuose: automatizacijai, turiniui, atrankai ir vadovų darbui.",
     "stableLabel": "v1.3 Stable",
-    "ctaOpen": "Atidaryti sistemą",
+    "ctaOpen": "Peržiūrėti sistemą",
     "items": [
       {
         "title": "Biblioteka (DI automatizacija)",
@@ -100,7 +101,7 @@
         "url": "https://ditreneris.github.io/biblioteka/",
         "outcome": "Paruošti promptai ir workflow šablonai.",
         "bullets": ["100+ promptų", "DI workflow"],
-        "ctaLabel": "Atidaryti biblioteką"
+        "ctaLabel": "Peržiūrėti biblioteką"
       },
       {
         "title": "Turinio DI sistema (rinkodara)",
@@ -108,7 +109,7 @@
         "url": "https://ditreneris.github.io/marketingas/",
         "outcome": "Rinkodaros turinio promptai ir šablonai.",
         "bullets": ["Turinio planavimas", "DI šablonai"],
-        "ctaLabel": "Kurti turinį"
+        "ctaLabel": "Peržiūrėti turinio sistemą"
       },
       {
         "title": "Atrankos sistema (personalas)",
@@ -116,7 +117,7 @@
         "url": "https://ditreneris.github.io/personalas/",
         "outcome": "Atrankos ir įvertinimo promptai.",
         "bullets": ["Skelbimai", "Įvertinimas"],
-        "ctaLabel": "Vertinti kandidatus"
+        "ctaLabel": "Peržiūrėti atrankos sistemą"
       },
       {
         "title": "DI operacinis centras (vadovybė)",
@@ -124,14 +125,14 @@
         "url": "https://ditreneris.github.io/ceo/",
         "outcome": "Vadovams skirti promptai ir šablonai.",
         "bullets": ["Sprendimai", "Operacijos"],
-        "ctaLabel": "Atidaryti OC"
+        "ctaLabel": "Peržiūrėti operacinį centrą"
       }
     ]
   },
   "pricing": {
     "badge": "Lifetime System Access",
-    "title": "Pasirink planą",
-    "subtext": "Gauk prieigą prie mokymų „Promptų Anatomija“ pagal pasirinktą modulių skaičių.",
+    "title": "Rinkis prieigą prie sistemos",
+    "subtext": "Pasirink planą ir gauk mokymus, promptų biblioteką bei 6 blokų metodiką vienoje vietoje.",
     "cumulativeNote": "Prieiga kaupiama.",
     "recommended": "Rekomenduojama",
     "coreIncludesStarter": "Viskas iš Starter plius Konteksto inžinerija.",
@@ -152,9 +153,9 @@
     "loading": "Kraunama...",
     "allPlansInclude": "Visi planai apima:",
     "features": [
-      "Promptų Repo (500+ šablonų ir įrankių)",
+      "Promptų biblioteka (500+ promptų ir šablonų)",
       "6 blokų sistema",
-      "Konteksto inžinerija",
+      "Praktinės užduotys",
       "Sertifikatas (nuo 70% įvertinimo)",
       "Bendruomenė (WhatsApp)",
       "Lifetime prieiga"
@@ -163,6 +164,8 @@
     "refundContact": "Grąžinimo sąlygos – susisiek",
     "aiPowered": "DI Powered",
     "checkAccess": "Patikrink prieigą",
+    "returningTitle": "Jau pirkai?",
+    "returningBody": "Įvesk el. paštą, su kuriuo mokėjai, ir tęsk mokymus be slaptažodžio.",
     "accessHow": "El. paštas → Patikrinti → Eiti į mokymus. Slaptažodžio nėra.",
     "checkButton": "Tikrinti",
     "emailPlaceholder": "El. paštas",
@@ -182,9 +185,9 @@
   "faq": {
     "title": "Dažniausiai užduodami klausimai",
     "items": [
-      { "q": "Ką gaunu sumokėjęs?", "a": "Prieigą prie mokymų sistemos: ~6 moduliai, ~150 skaidrių, pratimai, testai ir užduotys. Užbaigę ir išlaikę (nuo 70%) – sertifikatą. Palaikymas – WhatsApp grupėje. Prieiga suteikiama visam laikui." },
+      { "q": "Ką gaunu sumokėjęs?", "a": "Prieigą prie pasirinkto plano modulių, mokymų turinio, praktinių užduočių ir promptų bibliotekos. Starter apima 1–3 modulius, Core – 1–6. Užbaigę ir išlaikę (nuo 70%) gaunate sertifikatą. Palaikymas – WhatsApp bendruomenėje. Prieiga suteikiama visam laikui." },
       { "q": "Kaip pateksiu į mokymus?", "a": "Slaptažodžio nėra. Įvesk el. paštą (su kuriuo mokėjai) → Patikrinti → Eiti į mokymus. Tą patį gali daryti bet kada iš šio puslapio, skyriuje Kainodara." },
-      { "q": "Kas įeina į planą?", "a": "Moduliai pagal planą (Starter: 1–3, Core: 1–6), Prompt Repo 500+, 6 blokų metodika, konteksto inžinerija, sertifikatas, WhatsApp bendruomenė, prieiga visam laikui." },
+      { "q": "Kas įeina į planą?", "a": "Moduliai pagal planą (Starter: 1–3, Core: 1–6), promptų biblioteka, 6 blokų metodika, praktinės užduotys, sertifikatas nuo 70% ir WhatsApp bendruomenė. Core papildomai įtraukia konteksto inžineriją." },
       { "q": "Ar mano duomenys saugūs?", "a": "Taip. Saugomas tik įsigijimo ID; mokėjimai per Stripe. Duomenys tvarkomi pagal ES ir JAV saugumo praktikas." },
       { "q": "Kur gauti pagalbos?", "a": "Palaikymas – WhatsApp grupėje (nuoroda po apačioje ir po apmokėjimo)." },
       { "q": "Ar prieiga laikina?", "a": "Ne. Vienkartinis mokėjimas – prieiga visam laikui." },

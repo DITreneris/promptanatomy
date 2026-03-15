@@ -110,10 +110,26 @@ export default function HomePage({ forceLocale }) {
         <div className="h-px bg-gradient-to-r from-transparent via-brand-accent/30 to-transparent" aria-hidden />
         <WhatIsPromptAnatomy />
         <Methodology />
-        <Ecosystem />
         <section id="pricing" className="py-20 md:py-28 bg-pricing-section px-4 sm:px-6 md:px-8 overflow-hidden">
           <div className="max-w-5xl mx-auto min-w-0">
-            <div className="mb-6 md:mb-10 p-[14px] md:p-5 rounded-xl bg-[rgba(15,23,42,0.04)] border border-slate-200/60">
+            <Pricing
+              onBuy={handleBuy}
+              loading={loading}
+              error={error}
+              access={access}
+              customerEmail={customerEmail.trim() || undefined}
+              onGoToTraining={handleGoToTraining}
+              trainingLinkLoading={trainingLinkLoading}
+            />
+            <div className="mt-8 md:mt-10 p-[14px] md:p-5 rounded-xl bg-[rgba(15,23,42,0.04)] border border-slate-200/60">
+              <div className="mb-4">
+                <p className="text-sm font-black uppercase tracking-[0.2em] text-slate-400 mb-2">
+                  {t('pricing.returningTitle')}
+                </p>
+                <p className="text-sm text-slate-600">
+                  {t('pricing.returningBody')}
+                </p>
+              </div>
               <label htmlFor="access-email" className="block text-sm font-bold text-slate-700 mb-2">
                 {t('pricing.checkAccess')}
               </label>
@@ -191,17 +207,9 @@ export default function HomePage({ forceLocale }) {
                 </div>
               )}
             </div>
-            <Pricing
-              onBuy={handleBuy}
-              loading={loading}
-              error={error}
-              access={access}
-              customerEmail={customerEmail.trim() || undefined}
-              onGoToTraining={handleGoToTraining}
-              trainingLinkLoading={trainingLinkLoading}
-            />
           </div>
         </section>
+        <Ecosystem />
         <Faq />
       </main>
       <Footer />

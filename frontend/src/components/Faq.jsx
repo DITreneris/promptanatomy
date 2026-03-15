@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { ChevronDown } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
 
 const FAQ_SCHEMA_SCRIPT_ID = 'faq-ldjson'
@@ -45,18 +46,29 @@ export default function Faq() {
         >
           {title}
         </h2>
-        <dl className="space-y-10">
+        <div className="space-y-4">
           {list.map((item, i) => (
-            <div key={i}>
-              <dt className="text-lg font-bold text-brand-dark mb-2">
-                {item?.q}
-              </dt>
-              <dd className="text-slate-600 font-medium leading-relaxed">
-                {item?.a}
-              </dd>
-            </div>
+            <details
+              key={i}
+              className="group rounded-2xl border border-slate-200 bg-slate-50/70 transition-colors duration-200 open:bg-white open:shadow-sm"
+            >
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 [&::-webkit-details-marker]:hidden">
+                <span className="text-lg font-bold text-brand-dark">
+                  {item?.q}
+                </span>
+                <ChevronDown
+                  className="h-5 w-5 shrink-0 text-slate-400 transition-transform duration-200 group-open:rotate-180"
+                  aria-hidden="true"
+                />
+              </summary>
+              <div className="px-6 pb-5">
+                <p className="text-slate-600 font-medium leading-relaxed">
+                  {item?.a}
+                </p>
+              </div>
+            </details>
           ))}
-        </dl>
+        </div>
       </div>
     </section>
   )

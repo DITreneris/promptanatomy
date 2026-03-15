@@ -135,10 +135,10 @@ export default function Navbar({ onCtaClick }) {
           <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-brand-dark flex items-center justify-center text-brand-accent shadow-soft-lg drop-shadow-logo-glow group-hover:scale-105 group-hover:shadow-glow-accent transition-all duration-300 border border-white/10 shrink-0">
             <Zap className="w-6 h-6 sm:w-7 sm:h-7 fill-current" />
           </div>
-          <div className="flex flex-col min-w-0 overflow-hidden">
-            <span className="text-lg sm:text-2xl font-black tracking-tighter leading-none text-brand-dark flex items-center gap-2 break-words">
+          <div className="flex flex-col min-w-0 overflow-visible">
+            <span className="text-lg sm:text-2xl font-black tracking-tighter leading-tight text-brand-dark flex items-center gap-2 break-words">
               {t('nav.brandPromptu')} <span className="text-brand-accent">{t('nav.brandAnatomija')}</span>
-              <span className="hidden sm:inline-block px-1.5 py-0.5 rounded bg-slate-100 text-xs font-black text-slate-400 align-middle">{APP_VERSION}</span>
+              <span className="hidden sm:inline-flex items-center shrink-0 px-1.5 py-0.5 rounded bg-slate-100 text-xs font-black text-slate-400 leading-none">{APP_VERSION}</span>
             </span>
             <span className="text-xs font-black uppercase tracking-[0.2em] sm:tracking-[0.4em] text-slate-500 sm:text-slate-400 break-words">{t('nav.brandTagline')}</span>
           </div>

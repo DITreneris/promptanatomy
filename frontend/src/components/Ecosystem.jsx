@@ -72,7 +72,6 @@ export default function Ecosystem() {
             const hasBullets = Array.isArray(item.bullets) && item.bullets.length > 0
             const ctaLabel = (typeof item.ctaLabel === 'string' && item.ctaLabel.trim()) || (typeof t('ecosystem.ctaOpen') === 'string' && t('ecosystem.ctaOpen').trim()) || null
             const useCtaLayout = hasBullets || ctaLabel
-            const isPrimaryCta = i === 0
 
             const cardBaseClass = "group relative rounded-3xl bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] backdrop-blur-[12px] hover:border-[rgba(255,200,0,0.5)] hover:shadow-ecosystem-card-rim hover:-translate-y-1.5 transition-all duration-[220ms] overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
             const cardClass = `${cardBaseClass} p-6 sm:p-10 ${useCtaLayout ? '' : 'block'}`
@@ -99,11 +98,7 @@ export default function Ecosystem() {
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={
-                      isPrimaryCta
-                        ? "inline-flex items-center justify-center min-h-[44px] px-6 py-3 rounded-xl font-black text-brand-dark bg-cta-gradient shadow-ecosystem-cta hover:scale-[1.04] hover:shadow-ecosystem-cta transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
-                        : "inline-flex items-center justify-center min-h-[44px] px-6 py-3 rounded-xl font-black text-white border border-white/20 bg-transparent hover:bg-white/10 hover:border-white/30 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
-                    }
+                    className="inline-flex items-center justify-center min-h-[44px] px-6 py-3 rounded-xl font-black text-white border border-white/20 bg-white/5 hover:bg-white/10 hover:border-white/30 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
                   >
                     {ctaLabel}
                   </a>

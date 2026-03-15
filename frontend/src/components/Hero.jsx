@@ -92,7 +92,7 @@ export default function Hero({ onCta }) {
             </li>
           </ul>
 
-          <div className="flex flex-col sm:flex-row gap-6 items-center">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center">
             <button
               type="button"
               onClick={onCta}
@@ -101,18 +101,9 @@ export default function Hero({ onCta }) {
               {t('hero.cta')} <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
             </button>
 
-            <div className="flex items-center gap-4 text-slate-400 font-bold text-sm">
-              <div className="flex -space-x-3">
-                {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="w-10 h-10 rounded-full border-4 border-white bg-slate-200 overflow-hidden shadow-sm">
-                    <img src={`https://i.pravatar.cc/100?u=user${i}`} alt="" />
-                  </div>
-                ))}
-              </div>
-              <div className="flex flex-col">
-                <span className="text-brand-dark font-black leading-none mb-1">{t('hero.members')}</span>
-                <span className="text-xs uppercase tracking-widest opacity-60">{t('hero.community')}</span>
-              </div>
+            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/90 px-4 py-3 text-sm font-semibold text-slate-600 shadow-sm">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" aria-hidden="true" />
+              <span>{t('hero.socialProof')}</span>
             </div>
           </div>
         </div>

@@ -14,6 +14,7 @@ const PLANS = PLANS_ALL.filter((p) => p.planValue <= PHASE1_MAX_MODULES)
 export default function Pricing({ onBuy, loading, error, access, customerEmail, onGoToTraining, trainingLinkLoading }) {
   const { t } = useLocale()
   const features = t('pricing.features') || []
+  const trustSignals = t('pricing.trustSignals') || []
   const highest_plan = access?.highest_plan ?? 0
   const can_upgrade_to = access?.can_upgrade_to ?? []
 
@@ -45,6 +46,16 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
         <p className="text-slate-500 text-sm font-medium mt-2">
           {t('pricing.cumulativeNote')}
         </p>
+        {Array.isArray(trustSignals) && trustSignals.length > 0 && (
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-6 text-slate-600 font-medium">
+            {trustSignals.map((item, i) => (
+              <span key={i} className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-4 py-2 text-sm">
+                <CheckCircle size={16} className="text-emerald-500 shrink-0" aria-hidden />
+                {item}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="grid md:grid-cols-2 gap-8 mb-10 md:mb-16">
@@ -154,17 +165,6 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
           ))}
         </div>
       </div>
-
-      {(t('pricing.trustSignals') || []).length > 0 && (
-        <div className="flex flex-wrap justify-center gap-6 md:gap-8 mb-10 text-slate-600 font-medium">
-          {(Array.isArray(t('pricing.trustSignals')) ? t('pricing.trustSignals') : []).map((item, i) => (
-            <span key={i} className="flex items-center gap-2">
-              <CheckCircle size={18} className="text-emerald-500 shrink-0" aria-hidden />
-              {item}
-            </span>
-          ))}
-        </div>
-      )}
 
       {error && (
         <p className="mb-6 text-red-600 text-sm font-medium text-center" role="alert" aria-live="polite">
