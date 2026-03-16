@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { Analytics } from '@vercel/analytics/react'
 import SeoHead from './components/SeoHead'
+import XPixel from './components/XPixel'
 import HomePage from './pages/HomePage'
 import SuccessPage from './pages/SuccessPage'
 import CancelPage from './pages/CancelPage'
@@ -11,6 +12,7 @@ export default function App() {
   return (
     <>
       <SeoHead />
+      <XPixel />
       <Routes>
         <Route path="/" element={<HomePage forceLocale="en" />} />
         <Route path="/lt" element={<HomePage forceLocale="lt" />} />
