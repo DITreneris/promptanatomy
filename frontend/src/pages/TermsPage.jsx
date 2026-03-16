@@ -1,21 +1,9 @@
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
-import { useLocale } from '../i18n/LocaleContext'
+import { translateLocale } from '../i18n/LocaleContext'
 
 export default function TermsPage() {
-  const { t } = useLocale()
-
-  useEffect(() => {
-    document.title = t('legal.termsTitle')
-    const desc = document.querySelector('meta[name="description"]')
-    if (desc) desc.setAttribute('content', t('legal.termsDescription'))
-    return () => {
-      document.title = t('meta.title')
-      const d = document.querySelector('meta[name="description"]')
-      if (d) d.setAttribute('content', t('meta.description'))
-    }
-  }, [t])
+  const t = (key, params) => translateLocale('en', key, params)
 
   return (
     <div className="min-h-screen bg-slate-50 antialiased">

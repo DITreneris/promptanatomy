@@ -96,7 +96,7 @@ Frontend: `http://localhost:5173`
 
 ## Daugiakalbis režimas (LT/EN)
 
-Frontende įdiegtas LT/EN perjungimas (Navbar). Numatytoji kalba – **EN**; pirmą kartą atėjusiam vartotojui kalba nustatoma automatiškai pagal naršyklės kalbą (`navigator.language` / `navigator.languages`). Vėliau galima pridėti kitas kalbas pagal tą patį principą. Vertimai – `frontend/src/i18n/translations/lt.json`, `en.json`. Pasirinkimas išsaugomas į `localStorage` ir atnaujina `document.lang`, `<title>` ir meta. Naujam tekstui – raktas į abu JSON ir `t('key')` per `useLocale()` (`frontend/src/i18n/LocaleContext.jsx`).
+Frontende įdiegtas LT/EN perjungimas (Navbar). Stabilūs public URL: **`/` ir `/en` – EN**, **`/lt` – LT**. `privacy` ir `terms` šiuo metu laikomi **EN-only canonical** puslapiais. Vartotojo pasirinkimas išsaugomas į `localStorage`, bet SEO signalai (`document.lang`, `canonical`, `hreflang`, `og:*`, `twitter:*`) valdomi pagal route per `frontend/src/components/SeoHead.jsx`, kad URL liktų nuoseklūs. Vertimai – `frontend/src/i18n/translations/lt.json`, `en.json`; `useLocale()` per `frontend/src/i18n/LocaleContext.jsx` valdo locale state ir `t('key')`.
 
 ## Backend testai
 

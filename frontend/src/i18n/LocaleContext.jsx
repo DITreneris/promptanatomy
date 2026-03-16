@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback, useEffect } from 'react'
+import { createContext, useContext, useState, useCallback } from 'react'
 import lt from './translations/lt.json'
 import en from './translations/en.json'
 
@@ -36,6 +36,12 @@ function translate(tr, key, params = {}) {
 
 const LocaleContext = createContext(null)
 
+export function translateLocale(locale, key, params) {
+  const loc = normalizeLocale(locale)
+  const tr = translations[loc] || translations[DEFAULT_LOCALE]
+  return translate(tr, key, params)
+}
+
 export function LocaleProvider({ children }) {
   const [locale, setLocaleState] = useState(() => {
     if (typeof window === 'undefined') return DEFAULT_LOCALE
@@ -62,22 +68,6 @@ export function LocaleProvider({ children }) {
     },
     [locale]
   )
-
-  useEffect(() => {
-    const loc = normalizeLocale(locale)
-    document.documentElement.lang = loc
-    const tr = translations[loc] || translations[DEFAULT_LOCALE]
-    const title = translate(tr, 'meta.title')
-    const description = translate(tr, 'meta.description')
-    document.title = title
-    let metaDesc = document.querySelector('meta[name="description"]')
-    if (metaDesc) metaDesc.setAttribute('content', description)
-    let ogTitle = document.querySelector('meta[property="og:title"]')
-    if (ogTitle) ogTitle.setAttribute('content', title)
-    let ogDesc = document.querySelector('meta[property="og:description"]')
-    if (ogDesc) ogDesc.setAttribute('content', description)
-  }, [locale])
-
   return (
     <LocaleContext.Provider value={{ locale, setLocale, t }}>
       {children}

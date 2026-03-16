@@ -7,7 +7,7 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 ## Geriausios praktikos – santrauka
 
 - **Daryti:** sitemap.xml, robots.txt, canonical, og:image meta (ir įkelti og-image.png), unikalūs title/description + noindex success ir cancel puslapiams.
-- **Įgyvendinta (2026-03):** hreflang (SeoHead), dinaminis canonical ir og:url pagal route, Twitter Card, locale-aware URL (/lt, /en), sitemap su /lt ir /en. **Vėliau:** GitHub repo description ir 5–10 topics (kai repo viešas).
+- **Įgyvendinta (2026-03):** hreflang (SeoHead), dinaminis canonical ir pilnas `og:*` / `twitter:*` pagal route, locale-aware URL (`/`, `/lt`, `/en`), sitemap tik indeksuojamiems URL, `Course` + `Offer` schema, `llms.txt`. **Vėliau:** GitHub repo description ir 5–10 topics (kai repo viešas).
 - **Nedaryti:** migracija į SSR, sunkus pre-render, per daug GitHub topics.
 
 ---
@@ -28,13 +28,13 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 
 | Praktika | Kodėl MARRY | Ką daryti | Būsena |
 |----------|-------------|-----------|--------|
-| **sitemap.xml** | Lengva, standartas, padeda paieškos varikliams rasti puslapius. | Pridėti `public/sitemap.xml` su `/`, `/success`, `/cancel`; į build output. | Įgyvendinta |
+| **sitemap.xml** | Lengva, standartas, padeda paieškos varikliams rasti puslapius. | Pridėti `public/sitemap.xml` tik su canonical ir indeksuojamais URL. | Įgyvendinta |
 | **robots.txt** | Valdo, ką crawleriai gali crawlinti; gali nurodyti sitemap. | Pridėti `public/robots.txt` su `Sitemap:`. | Įgyvendinta |
 | **og:image** | Be nuotraukos dalijimasis socialuose atrodo silpnas. | 1200×630 px paveikslėlis, `<meta property="og:image">` + absoliutus URL. Meta įdėta; failą `og-image.png` įkelti į `frontend/public/`. | Meta įgyvendinta; paveikslas – įkelti |
 | **GitHub: description + topics** | Jei repo bus viešas – geresnis atpažinamumas paieškoje. | Repo description + 5–10 topics: `react`, `vite`, `stripe`, `landing-page`, `prompt-engineering`, `i18n`. | Vėliau |
 | **README pirmas blokas** | Ir žmonėms, ir paieškos varikliams – kas tai ir kam. | Pirmas paragrafas su raktažodžiais (jau gerai); gal pridėti 1–2 sakinius apie „AI mokymai“, „pardavimų puslapis“. | Opcionalu |
 | **hreflang / lang** | LT/EN – sumažina dubliavimą ir pagerina tikslinimą. | `SeoHead.jsx`: `<link rel="alternate" hreflang="lt|en|x-default">` ant home route'ų; canonical ir og:url dinamiškai pagal pathname. | Įgyvendinta |
-| **Unikalūs title/description pagal route** | Success/cancel turi turėti atskirą meta. | Home – esamas; `/success` ir `/cancel` – atskiri metaTitle/metaDescription + noindex. | Įgyvendinta |
+| **Unikalūs title/description pagal route** | Success/cancel turi turėti atskirą meta. | `SeoHead.jsx` valdo Home, `/privacy`, `/terms`, `/success`, `/cancel` title/description + `robots`; atnaujina ir `twitter:*`. | Įgyvendinta |
 
 ---
 
@@ -73,16 +73,17 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 
 **Atlikta (KISS + MARRY + GEO):**
 
-- **sitemap.xml** – `frontend/public/sitemap.xml` su `/`, `/lt`, `/en`, `/success`, `/cancel`, `/privacy`, `/terms`.
+- **sitemap.xml** – `frontend/public/sitemap.xml` tik su indeksuojamais canonical URL: `/`, `/lt`, `/en`, `/privacy`, `/terms`. `success` ir `cancel` palikti routable, bet išimti iš sitemap.
 - **robots.txt** – `frontend/public/robots.txt` su `Sitemap:` nuoroda; **AI crawlerių leidimai (GEO):** GPTBot, Claude-Web, Google-Extended su `Allow: /`.
-- **JSON-LD** – `frontend/index.html`: Organization (name, alternateName, url, logo, description, contactPoint su info@promptanatomy.app), WebSite (publisher, inLanguage), WebPage (isPartOf, about, dateModified). Vienas `<script type="application/ld+json">` su visais trimis tipais.
-- **Canonical ir og:image** – `frontend/index.html`: `<link rel="canonical">`, `<meta property="og:image">`, `<meta name="robots" content="index, follow">`. **Dinamiškai:** `SeoHead.jsx` nustato canonical ir `og:url` pagal route (SITE_URL iš `config.js`).
-- **og:url ir Twitter Card** – `index.html`: `og:url`, `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`; `og:url` atnaujinamas per SeoHead.
+- **JSON-LD** – `frontend/index.html`: statiniai `Organization` ir `WebSite`. `frontend/src/components/SeoHead.jsx`: route-aware `WebPage`, o ant home route'ų – papildomai `Course` ir du aktyvūs `Offer` objektai (39 EUR, 99 EUR).
+- **Canonical ir og:image** – `frontend/index.html`: fallback `<link rel="canonical">`, `<meta property="og:image">`, `<meta name="robots" content="index, follow">`. **Dinamiškai:** `SeoHead.jsx` nustato canonical, `robots`, `og:url`, `og:title`, `og:description`, `twitter:title`, `twitter:description`, `twitter:image` pagal route.
+- **og:url ir Twitter Card** – `index.html`: fallback `og:url`, `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`; `SeoHead.jsx` juos pilnai atnaujina pagal locale ir route.
 - **og:image failas** – įkeltas į `frontend/public/og-image.png`.
 - **hreflang** – `SeoHead.jsx`: ant home route'ų (`/`, `/lt`, `/en`) injektuojami `hreflang="lt"` (→ /lt), `hreflang="en"` (→ /en), `hreflang="x-default"` (→ /). Og:locale ir og:locale:alternate pagal locale.
 - **Locale-aware URL** – maršrutai `/lt` ir `/en`; Navbar logo ir „Home“ nuorodos pagal locale; perjungus kalbą – `navigate('/lt')` arba `navigate('/en')`, kad share'intas linkas atspindėtų kalbą.
-- **Success/Cancel puslapiai** – unikalūs `metaTitle` ir `metaDescription` vertimuose (en/lt); `SuccessPage.jsx` ir `CancelPage.jsx` nustato title, description ir `noindex, nofollow` per `useEffect`, cleanup atstato home meta ir `index, follow`.
+- **Success/Cancel puslapiai** – unikalūs `metaTitle` ir `metaDescription` vertimuose (en/lt); `SeoHead.jsx` nustato `title`, `description`, `robots=noindex, nofollow` ir canonical į patį URL. Puslapių funkcionalumas nekeistas.
 - **DUK (FAQ) skyrius** – `frontend/src/components/Faq.jsx`: sekcija `id="faq"`, 9 klausimai/atsakymai iš i18n `faq.title`, `faq.items` (LT/EN). Navbar nuoroda „DUK“ / „FAQ“ į `#faq`. **FAQPage JSON-LD** – dinamiškai injektuojamas į `<head>` per `useEffect` (turinis iš to paties `faq.items`), atnaujinamas pagal locale.
+- **llms.txt** – `frontend/public/llms.txt` su trumpu produkto aprašu, pagrindiniais public URL ir pastaba, kad `success` / `cancel` yra transakciniai, ne indeksuojami route'ai.
 
 **Vėliau:** GitHub description/topics (kai repo viešas).
 

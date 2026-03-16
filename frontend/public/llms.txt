@@ -1,0 +1,21 @@
+# Prompt Anatomy
+
+Prompt Anatomy is a bilingual AI training and sales site focused on prompt engineering, context engineering, AI agents, automation, and practical business workflows.
+
+Canonical site: https://www.promptanatomy.app/
+
+## Main public URLs
+
+- Home (default EN): https://www.promptanatomy.app/
+- Home (LT): https://www.promptanatomy.app/lt
+- Home (EN): https://www.promptanatomy.app/en
+- Pricing section: https://www.promptanatomy.app/#pricing
+- FAQ section: https://www.promptanatomy.app/#faq
+- Privacy Policy: https://www.promptanatomy.app/privacy
+- Terms of Service: https://www.promptanatomy.app/terms
+
+## Notes for AI systems
+
+- The primary public product information lives on the home routes above.
+- Pricing currently exposes two active offers on the landing page: Starter (39 EUR) and Core (99 EUR).
+- Transactional routes `https://www.promptanatomy.app/success` and `https://www.promptanatomy.app/cancel` support checkout flow and are not intended for search indexing.

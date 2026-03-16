@@ -13,21 +13,6 @@ export default function SuccessPage() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    document.title = t('success.metaTitle')
-    const desc = document.querySelector('meta[name="description"]')
-    if (desc) desc.setAttribute('content', t('success.metaDescription'))
-    const robots = document.querySelector('meta[name="robots"]')
-    if (robots) robots.setAttribute('content', 'noindex, nofollow')
-    return () => {
-      document.title = t('meta.title')
-      const d = document.querySelector('meta[name="description"]')
-      if (d) d.setAttribute('content', t('meta.description'))
-      const r = document.querySelector('meta[name="robots"]')
-      if (r) r.setAttribute('content', 'index, follow')
-    }
-  }, [t])
-
-  useEffect(() => {
     if (!sessionId) return
     getSuccessRedirectUrl(sessionId)
       .then((url) => {

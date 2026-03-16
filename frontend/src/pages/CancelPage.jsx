@@ -1,25 +1,9 @@
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
 
 export default function CancelPage() {
   const { t } = useLocale()
-
-  useEffect(() => {
-    document.title = t('cancel.metaTitle')
-    const desc = document.querySelector('meta[name="description"]')
-    if (desc) desc.setAttribute('content', t('cancel.metaDescription'))
-    const robots = document.querySelector('meta[name="robots"]')
-    if (robots) robots.setAttribute('content', 'noindex, nofollow')
-    return () => {
-      document.title = t('meta.title')
-      const d = document.querySelector('meta[name="description"]')
-      if (d) d.setAttribute('content', t('meta.description'))
-      const r = document.querySelector('meta[name="robots"]')
-      if (r) r.setAttribute('content', 'index, follow')
-    }
-  }, [t])
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-6 antialiased overflow-hidden relative">

@@ -12,6 +12,7 @@ export default function Faq() {
 
   useEffect(() => {
     if (list.length === 0) return
+    document.getElementById(FAQ_SCHEMA_SCRIPT_ID)?.remove()
     const script = document.createElement('script')
     script.id = FAQ_SCHEMA_SCRIPT_ID
     script.type = 'application/ld+json'
