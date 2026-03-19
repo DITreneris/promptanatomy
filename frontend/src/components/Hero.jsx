@@ -60,11 +60,9 @@ export default function Hero({ onCta }) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 grid lg:grid-cols-2 gap-12 lg:gap-24 items-center min-w-0">
         <div className="relative z-10 text-left min-w-0">
-          <div className="inline-flex items-center gap-3 bg-brand-dark text-white px-4 py-2 rounded-full mb-10 shadow-soft border border-white/10">
-            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+          <div className="inline-flex items-center gap-3 bg-brand-dark text-white px-4 py-2 rounded-full mb-10 shadow-soft border border-white/10" role="status">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
             <span className="text-xs font-black uppercase tracking-[0.25em]">{t('hero.systemStatus')}</span>
-            <div className="w-px h-3 bg-white/20"></div>
-            <span className="text-xs font-bold text-slate-400">{t('hero.commits')}</span>
           </div>
 
           <h1 className="max-[359px]:text-3xl text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-brand-dark mb-4 md:mb-6 leading-[0.85] tracking-tighter break-words">
