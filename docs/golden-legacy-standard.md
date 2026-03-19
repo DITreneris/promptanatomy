@@ -2,13 +2,13 @@
 
 **Tikslas:** Fiksuoti veikiančią būseną ir kritinius kelius, kad pakeitimai nepalaužtų to, kas jau veikia. Prieš didesnius refaktorinimus ar naujas funkcijas – patikrinti, kad šis standartas išlieka tenkinamas.
 
-**Data fiksavimo:** 2026-03-13 (atnaujinta po mobile drawer glitch fix)
+**Data fiksavimo:** 2026-03-19 (atnaujinta pagal CHANGELOG Unreleased: Navbar tankumas, Hero badge/bullets, Footer #faq, XPixel)
 
 ---
 
 ## 1. Kas laikoma „veikiančiu“
 
-- LP rodomas, visos sekcijos matomos (Hero, Kas yra Prompt Anatomy, Methodology, Ecosystem, Pricing, Footer). „Kas yra“ – po Hero, prieš Methodology. Navbar neturi nuorodos „Kas yra“ (nuorodos: Ekosistema, Metodologija, Repo/Mokymai, Kainodara). Skip link ir prieigos forma naudoja `focus-visible:ring`; Methodology – `brand-dark` / `brand-accent` tokenai; Footer kritinis tekstas – `text-slate-500`; blink-caret – `var(--color-brand-accent)` (index.css).
+- LP rodomas, visos sekcijos matomos (Hero, Kas yra Prompt Anatomy, Methodology, Ecosystem, Pricing, Footer). **Navbar (desktop):** viršutiniame meniu rodomi tik **Kas yra** (#what-is) ir **Kainodara** (#pricing) + LT/EN + CTA; Ecosystem, Methodology, Repo, Training, FAQ – tik **mobile drawer** (visi pasiekiami). **Footer** System skyriuje – nuoroda į #faq (`footer.faq`). **Hero:** badge rodo tik „Sistemos būsena: stabili“ (be commitų skaičiaus); antraštė LT „Pradėk kurti.“; 3 bullet'ai (i18n `hero.bullet1`–`bullet3`). Skip link ir prieigos forma naudoja `focus-visible:ring`; Methodology – `brand-dark` / `brand-accent` tokenai; Footer kritinis tekstas – `text-slate-500`; blink-caret – `var(--color-brand-accent)` (index.css).
 - Kalbos perjungimas LT/EN veikia; LT naudoja DI, EN – AI (pagal [language-guidelines-en-lt.md](language-guidelines-en-lt.md)). Locale-aware URL: `/lt` ir `/en` rodo atitinkamą kalbą; perjungus kalbą Navbar nukreipia į `/lt` arba `/en` (share'inamas linkas atspindi kalbą).
 - SEO: `SeoHead.jsx` nustato canonical ir og:url pagal pathname; ant home route'ų (`/`, `/lt`, `/en`) – hreflang (lt, en, x-default). Twitter Card ir og:url įdiegti (`index.html` + dinamiškai). **og-image.png** – socialiniam preview (Twitter, LinkedIn, Facebook) laikomas `frontend/public/og-image.png`; build kopijuoja į `dist/`; `index.html` nurodo `og:image` ir `twitter:image` į `https://www.promptanatomy.app/og-image.png`. Nepašalinti failo iš `public/`.
 - Checkout srautas: prieigos tikrinimas (email) → planų pasirinkimas → Stripe Checkout → success/cancel puslapiai.
@@ -74,17 +74,19 @@
 **LP struktūra (HomePage):**
 
 - Skip link → `#main-content`.
-- Navbar (brand, nuorodos: Ekosistema, Metodologija, Repo/Mokymai jei config, Kainodara; kalbos LT|EN su navigate į `/lt`/`/en`; CTA). Logo ir „Home“ nuorodos – locale-aware (`/lt` arba `/en`).
-- Hero (h1, subtitle, 3 bullet, CTA scroll į pricing; kodo blokas su typing animacija).
+- Navbar: `primaryNavItems` (Kas yra #what-is, Kainodara #pricing) – desktop viršutinis meniu; `secondaryNavItems` (Ecosystem, Methodology, Repo jei config, Training, FAQ) – tik mobile drawer (`allNavItems`). Brand, kalbos LT|EN su navigate į `/lt`/`/en`, CTA. Logo ir „Home“ – locale-aware (`/lt` arba `/en`).
+- Hero (h1, badge „Sistemos būsena: stabili“, subtitle, 3 bullet, CTA scroll į pricing; kodo blokas su typing animacija).
 - WhatIsPromptAnatomy (section id what-is; h2, value, 6 blokų piliai, 3 stat kortelės) – po Hero, prieš Methodology.
 - Methodology (section id metodologija).
 - Ecosystem (section id ekosistema).
 - Pricing (section id pricing, prieigos forma, 2 planai Phase 1; „Eiti į mokymus" mygtukas kviečia `/api/generate-access-link` ir nukreipia tame pačiame lange į training app su magic link – same-tab navigation reikalinga iOS/Safari, kur `window.open` po async dažnai blokuojamas).
-- Footer (brand, tagline; System: Ekosistema, Metodologija, Kainodara; Network: Support/WhatsApp, LinkedIn, X (Twitter); legal, copyright).
+- Footer (brand, tagline; System: Ekosistema, Metodologija, Mokymai, Kainodara, DUK (#faq); Network: Support/WhatsApp, LinkedIn, X (Twitter); legal, copyright).
 
 **i18n:** Visi raktai naudojami iš `lt.json` / `en.json`; nėra hardcoded teksto komponentuose (Hero, WhatIs, Methodology, Ecosystem, Pricing, Footer, Navbar, Success, Cancel). LT – terminas DI; EN – AI.
 
 **SEO (SeoHead):** Ant `/`, `/lt`, `/en` – canonical ir og:url atitinka dabartinį URL; hreflang linkai (lt, en, x-default) injektuojami į head. Ant success/cancel – hreflang pašalinami.
+
+**X (Twitter) pixel:** Komponentas `XPixel.jsx` – įkelia X conversion tracking base tag tik kai `VITE_X_PIXEL_ID` nustatytas (config `X_PIXEL_ID`); be jo – dev be tracking. `App.jsx` – `<XPixel />` šaknyje.
 
 **Kaip tikrinti:** `cd frontend && npm run build` – build turi pavykti. `cd apps/prompt-anatomy && npm run build` – training app build turi pavykti. Rankinis smoke: atidaryti `/`, `/lt`, `/en`, `/success`, `/cancel`, perjungti kalbą (turėtų navigate į `/lt` arba `/en`), scroll į pricing, patikrinti prieigos formą. Magic link flow: patikrinti prieigą su susimokėjusio vartotojo email → spausti „Eiti į mokymus" → turi nukreipti į training app su `access_tier`, `expires`, `token` parametrais → moduliai atrakinti.
 
@@ -107,7 +109,7 @@
 - **Stripe flow** – create-checkout-session → Stripe Checkout → success/cancel; webhook `checkout.session.completed` → Supabase `user_access`. Nepažeisti endpointų kontraktų.
 - **Magic link flow** – `success-redirect.js` ir `generate-access-link.js` naudoja tą pačią `buildMagicLinkToken()` logiką (HMAC-SHA256, base64url, `ACCESS_TOKEN_SECRET`). `verify-access.js` tikrina tokeną. Keičiant vieno token formatą – keisti visus tris.
 - **API:** `api.js` – `getAccess`, `createCheckoutSession`, `getSuccessRedirectUrl`, `getTrainingAccessLink`; backend atsakymų formatai (JSON su `url`, `highest_plan`, `can_upgrade_to`, `redirect_url` ir t. t.).
-- **Env:** Backend – Pydantic Settings, `STRIPE_*`, `SUPABASE_*`, `FRONTEND_ORIGIN`. Frontend – `VITE_API_URL` (optional). Nepašalinti naudojamų kintamųjų.
+- **Env:** Backend – Pydantic Settings, `STRIPE_*`, `SUPABASE_*`, `FRONTEND_ORIGIN`. Frontend – `VITE_API_URL` (optional), `VITE_X_PIXEL_ID` (optional, X conversion tracking; jei tuščias – XPixel neįkelia skripto). Nepašalinti naudojamų kintamųjų.
 - **Backend failo pavadinimas:** `token_limits.py` (ne `limits.py`). `limits` vardas shadina PyPI paketą – neleistina.
 - **Training app submodule:** `apps/prompt-anatomy` → `DITreneris/inzinerija`. Magic link tier validacija naudoja `VALID_MAX_MODULE_IDS` iš `constants/pricing.ts` (ne hardcoded reikšmes).
 - **LT kalba:** visur vartotojui matomas tekstas – „Tu" forma (ne „Jūs"). Terminas „DI" (ne „AI").

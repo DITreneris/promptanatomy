@@ -13,6 +13,7 @@
 | Roadmap | [roadmap.md](../roadmap.md) | Fazės, prioritetai, deploy ir webhook žingsniai; nuoroda į phase-1-scope. |
 | Darbų sąrašas | [TODO.md](../TODO.md) | Artimi darbai, žinomi trūkumai. |
 | Changelog | [CHANGELOG.md](../CHANGELOG.md) | Pridėta / pakeista / taisymai. Šablonas: [templates/changelog-entry.md](templates/changelog-entry.md). |
+| Versijų ir release valdymas | [docs/versioning-and-release.md](versioning-and-release.md) | Kur laikoma versija (config.js, package.json), SemVer, release žingsniai, git tag. |
 
 ---
 
@@ -40,6 +41,7 @@
 | Dokumentas | Kelias | Paskirtis |
 |------------|--------|-----------|
 | Deploy ir webhook | [docs/deploy-and-webhook.md](deploy-and-webhook.md) | Kas įdiegta (Vercel, serverless webhook), troubleshooting (user_access tuščia), logai. |
+| Test report | [docs/test_report.md](test_report.md) | SSL/TLS ir kiti patikrinimai, atsiliepimų fiksavimas (produkcija). |
 
 ---
 

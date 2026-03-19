@@ -5,6 +5,7 @@ Visi pakeitimai šiame faile dokumentuojami pagal [Keep a Changelog](https://kee
 ## [Unreleased]
 
 ### Pakeista
+- **Nav tankumas (LP, konversija):** Desktop viršutiniame meniu rodomi tik **Kas yra** (#what-is) ir **Kainodara** (#pricing) + LT/EN + CTA; Ecosystem, Methodology, Repo, Training, FAQ perkelti į mobile drawer (visi lieka pasiekiami). Footer skyriuje „System“ pridėta nuoroda į #faq (`footer.faq`). Failai: `Navbar.jsx` (primaryNavItems / secondaryNavItems / allNavItems), `Footer.jsx`, `lt.json`, `en.json`.
 - **Hero (LP):** Badge rodo tik „Sistemos būsena: stabili“ (pašalintas commitų skaičius). LT antraštė „Pradėk programuoti.“ → „Pradėk kurti.“ Hero punktai (LT): „Gauk aiškią 6 blokų mokymų metodiką“, „Taupyk laiką po 2-5 val. per savaitę“, „Išbandyk realius verslo naudojimo scenarijus“. EN atitikmenys: „Get a clear 6-block learning methodology“, „Save 2–5 hours per week“, „Try real business use cases“. Failai: `Hero.jsx`, `lt.json`, `en.json`.
 
 ### Pridėta

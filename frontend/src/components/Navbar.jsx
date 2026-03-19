@@ -107,7 +107,11 @@ export default function Navbar({ onCtaClick }) {
     return () => document.removeEventListener('keydown', onKeyDown)
   }, [mobileOpen])
 
-  const navItems = [
+  const primaryNavItems = [
+    { name: t('nav.whatIs'), id: 'what-is' },
+    { name: t('nav.pricing'), id: 'pricing' },
+  ]
+  const secondaryNavItems = [
     { name: t('nav.ecosystem'), id: 'ekosistema' },
     { name: t('nav.methodology'), id: 'metodologija' },
     ...(GLOSSARY_URL
@@ -115,8 +119,8 @@ export default function Navbar({ onCtaClick }) {
       : []),
     { name: t('nav.training'), id: null, href: '/anatomija/', external: true },
     { name: t('nav.faq'), id: 'faq' },
-    { name: t('nav.pricing'), id: 'pricing' },
   ]
+  const allNavItems = [...primaryNavItems, ...secondaryNavItems]
 
   const closeMobile = () => setMobileOpen(false)
 
@@ -145,7 +149,7 @@ export default function Navbar({ onCtaClick }) {
         </Link>
 
         <div className="hidden md:flex items-center space-x-10">
-          {navItems.map((item) =>
+          {primaryNavItems.map((item) =>
             item.external ? (
               <a
                 key={item.id || item.href}
@@ -266,7 +270,7 @@ export default function Navbar({ onCtaClick }) {
             EN
           </button>
         </div>
-        {navItems.map((item) => {
+        {allNavItems.map((item) => {
           const mobileClass = "relative py-4 text-base font-bold uppercase tracking-[0.15em] text-slate-500 hover:text-brand-accent border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-200 after:w-0 hover:after:w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded"
           return item.external ? (
             <a
