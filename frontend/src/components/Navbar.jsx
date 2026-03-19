@@ -6,7 +6,7 @@ import { useLocale } from '../i18n/LocaleContext'
 
 const FOCUS_RING = 'focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2'
 
-export default function Navbar({ onCtaClick }) {
+export default function Navbar({ onCtaClick, hasAccess = false }) {
   const { t, locale, setLocale } = useLocale()
   const location = useLocation()
   const navigate = useNavigate()
@@ -110,6 +110,7 @@ export default function Navbar({ onCtaClick }) {
   const primaryNavItems = [
     { name: t('nav.whatIs'), id: 'what-is' },
     { name: t('nav.pricing'), id: 'pricing' },
+    ...(hasAccess ? [{ name: t('nav.training'), id: null, href: '/anatomija/', external: true }] : []),
   ]
   const secondaryNavItems = [
     { name: t('nav.ecosystem'), id: 'ekosistema' },

@@ -8,7 +8,7 @@
 
 ## 1. Kas laikoma „veikiančiu“
 
-- LP rodomas, visos sekcijos matomos (Hero, Kas yra Prompt Anatomy, Methodology, Ecosystem, Pricing, Footer). **Navbar (desktop):** viršutiniame meniu rodomi tik **Kas yra** (#what-is) ir **Kainodara** (#pricing) + LT/EN + CTA; Ecosystem, Methodology, Repo, Training, FAQ – tik **mobile drawer** (visi pasiekiami). **Footer** System skyriuje – nuoroda į #faq (`footer.faq`). **Hero:** badge rodo tik „Sistemos būsena: stabili“ (be commitų skaičiaus); antraštė LT „Pradėk kurti.“; 3 bullet'ai (i18n `hero.bullet1`–`bullet3`). Skip link ir prieigos forma naudoja `focus-visible:ring`; Methodology – `brand-dark` / `brand-accent` tokenai; Footer kritinis tekstas – `text-slate-500`; blink-caret – `var(--color-brand-accent)` (index.css).
+- LP rodomas, visos sekcijos matomos (Hero, Kas yra Prompt Anatomy, Methodology, Ecosystem, Pricing, Footer). **Navbar (desktop):** viršutiniame meniu rodomi **Kas yra Promptų Anatomija** / **What is Prompt Anatomy** (#what-is, `nav.whatIs`) ir **Kainodara** (#pricing) + LT/EN + CTA; kai vartotojas turi prieigą (`hasAccess` iš HomePage, t. y. `access?.highest_plan > 0`), papildomai rodomas **Mokymai** (nuoroda į `/anatomija/`). Ecosystem, Methodology, Repo, Training, FAQ – tik **mobile drawer** (visi pasiekiami). **Footer** System skyriuje – nuoroda į #faq (`footer.faq`). **Hero:** badge rodo tik „Sistemos būsena: stabili“ (be commitų skaičiaus); antraštė LT „Pradėk kurti.“; 3 bullet'ai (i18n `hero.bullet1`–`bullet3`). Skip link ir prieigos forma naudoja `focus-visible:ring`; Methodology – `brand-dark` / `brand-accent` tokenai; Footer kritinis tekstas – `text-slate-500`; blink-caret – `var(--color-brand-accent)` (index.css).
 - Kalbos perjungimas LT/EN veikia; LT naudoja DI, EN – AI (pagal [language-guidelines-en-lt.md](language-guidelines-en-lt.md)). Locale-aware URL: `/lt` ir `/en` rodo atitinkamą kalbą; perjungus kalbą Navbar nukreipia į `/lt` arba `/en` (share'inamas linkas atspindi kalbą).
 - SEO: `SeoHead.jsx` nustato canonical ir og:url pagal pathname; ant home route'ų (`/`, `/lt`, `/en`) – hreflang (lt, en, x-default). Twitter Card ir og:url įdiegti (`index.html` + dinamiškai). **og-image.png** – socialiniam preview (Twitter, LinkedIn, Facebook) laikomas `frontend/public/og-image.png`; build kopijuoja į `dist/`; `index.html` nurodo `og:image` ir `twitter:image` į `https://www.promptanatomy.app/og-image.png`. Nepašalinti failo iš `public/`.
 - Checkout srautas: prieigos tikrinimas (email) → planų pasirinkimas → Stripe Checkout → success/cancel puslapiai.
@@ -74,7 +74,7 @@
 **LP struktūra (HomePage):**
 
 - Skip link → `#main-content`.
-- Navbar: `primaryNavItems` (Kas yra #what-is, Kainodara #pricing) – desktop viršutinis meniu; `secondaryNavItems` (Ecosystem, Methodology, Repo jei config, Training, FAQ) – tik mobile drawer (`allNavItems`). Brand, kalbos LT|EN su navigate į `/lt`/`/en`, CTA. Logo ir „Home“ – locale-aware (`/lt` arba `/en`).
+- Navbar: `primaryNavItems` priklauso nuo `hasAccess` (perduodamas iš HomePage): bazė – Kas yra Promptų Anatomija / What is Prompt Anatomy (#what-is, `nav.whatIs`), Kainodara #pricing; jei `hasAccess === true` – įtraukiamas ir Mokymai (nuoroda į `/anatomija/`). Desktop viršutinis meniu rodo šiuos punktus; `secondaryNavItems` (Ecosystem, Methodology, Repo jei config, Training, FAQ) – tik mobile drawer (`allNavItems`). Brand, kalbos LT|EN su navigate į `/lt`/`/en`, CTA. Logo ir „Home“ – locale-aware (`/lt` arba `/en`).
 - Hero (h1, badge „Sistemos būsena: stabili“, subtitle, 3 bullet, CTA scroll į pricing; kodo blokas su typing animacija).
 - WhatIsPromptAnatomy (section id what-is; h2, value, 6 blokų piliai, 3 stat kortelės) – po Hero, prieš Methodology.
 - Methodology (section id metodologija).
@@ -92,7 +92,7 @@
 
 **UX smoke (po P0-P3 fix'ų):**
 - Email be prieigos (`highest_plan === 0`) → amber blokas „Prieiga nerasta" + CTA „Gauti prieigą →" (scroll į pricing).
-- Email su prieiga (`highest_plan > 0`) → žalias blokas su progress bar + „Eiti į mokymus →" (magic link; navigacija tame pačiame lange, kad veiktų iPhone/Safari).
+- Email su prieiga (`highest_plan > 0`) → žalias blokas su progress bar + „Eiti į mokymus →" (magic link; navigacija tame pačiame lange, kad veiktų iPhone/Safari). Desktop Navbar tą pačią sesiją rodo ir **Mokymai** viršutiniame meniu (hasAccess).
 - „Eiti į mokymus" mygtukas rodo loading state (`trainingLinkLoading`).
 - `/cancel` puslapis – „Bandyti dar kartą" nuoroda scroll'ina į `#pricing` (ne SPA navigate + hash).
 - `/success` be `session_id` – informacinis pranešimas „Jei ką tik sumokėjai – palauk".

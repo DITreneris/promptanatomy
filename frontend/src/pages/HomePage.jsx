@@ -104,7 +104,7 @@ export default function HomePage({ forceLocale }) {
       >
         {t('common.skipToContent')}
       </a>
-      <Navbar onCtaClick={scrollToPricing} />
+      <Navbar onCtaClick={scrollToPricing} hasAccess={access?.highest_plan > 0} />
       <main id="main-content" tabIndex={-1}>
         <Hero onCta={scrollToPricing} />
         <div className="h-px bg-gradient-to-r from-transparent via-brand-accent/30 to-transparent" aria-hidden />

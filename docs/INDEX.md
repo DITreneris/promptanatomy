@@ -22,6 +22,8 @@
 | Dokumentas | Kelias | Paskirtis |
 |------------|--------|-----------|
 | Production readiness (analizė, bugai, checklist) | [docs/production-readiness-analysis.md](production-readiness-analysis.md) | Gili kodo bazės analizė prieš production; atlikti pataisymai ir rekomendacijos. |
+| Anatomija mokamas turinys atviras – analizė | [docs/anatomija-paid-content-open-analysis.md](anatomija-paid-content-open-analysis.md) | Kodėl /anatomija/ atviras; architektūra (gate tik kliente); galimos priežastys ir žingsniai. |
+| Inzinerija: prieigos vartos (gate) memo | [docs/inzinerija-prieigos-vartos-memo.md](inzinerija-prieigos-vartos-memo.md) | Ką inzinerija komanda turi sukonfigūruoti – gate tik be prieigos, neperrakinti mokėjusių; checklist. |
 | Saugumas | [docs/security.md](security.md) | Secrets, CORS, validacija, rate limit, headers, produkcija. |
 | Saugumo auditas (gilus) | [docs/security-audit-deep.md](security-audit-deep.md) | Architektūra, jautrūs taškai, rizikos, industrijos praktikos, MOSCOW prioritetai. |
 | Mokėjimų praktikos | [docs/payment-best-practices.md](payment-best-practices.md) | Plan_id/plan_value, Stripe/Supabase/Vercel konvencijos, env, pitfalls. |
