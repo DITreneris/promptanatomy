@@ -3,6 +3,8 @@ import { ArrowRight, Activity } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
 import { SCRIPT_NAME } from '../config'
 
+const HERO_BULLET_KEYS = ['hero.bullet1', 'hero.bullet2', 'hero.bullet3', 'hero.bullet4']
+
 export default function Hero({ onCta }) {
   const { t } = useLocale()
 
@@ -76,18 +78,12 @@ export default function Hero({ onCta }) {
             {t('hero.subtitle')}
           </p>
           <ul id="hero-bullets" className="list-none space-y-2 mb-8 md:mb-10 max-w-xl text-base md:text-lg text-slate-600 font-medium">
-            <li className="flex items-center gap-2">
-              <span className="text-brand-accent font-bold" aria-hidden="true">•</span>
-              {t('hero.bullet1')}
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="text-brand-accent font-bold" aria-hidden="true">•</span>
-              {t('hero.bullet2')}
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="text-brand-accent font-bold" aria-hidden="true">•</span>
-              {t('hero.bullet3')}
-            </li>
+            {HERO_BULLET_KEYS.map((key) => (
+              <li key={key} className="flex items-center gap-2">
+                <span className="text-brand-accent font-bold" aria-hidden="true">•</span>
+                {t(key)}
+              </li>
+            ))}
           </ul>
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center">
