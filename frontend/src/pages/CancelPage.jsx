@@ -28,13 +28,13 @@ export default function CancelPage() {
             onClick={() => setTimeout(() => {
               document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })
             }, 100)}
-            className="min-h-[44px] inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-lg font-black text-brand-dark bg-accent-gradient hover:shadow-glow-accent active:scale-[0.98] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
+            className="min-h-[44px] inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-lg font-black text-brand-dark bg-accent-gradient hover:shadow-glow-accent active:scale-[0.98] transition-all duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
           >
             {t('cancel.tryAgain')} <ArrowLeft className="w-5 h-5 rotate-180" />
           </Link>
           <Link
             to="/"
-            className="min-h-[44px] inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-lg font-black text-slate-600 bg-slate-100 hover:bg-slate-200 active:scale-[0.98] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
+            className="min-h-[44px] inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-lg font-black text-slate-600 bg-slate-100 hover:bg-slate-200 active:scale-[0.98] transition-all duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
           >
             <ArrowLeft className="w-5 h-5" /> {t('common.backToHome')}
           </Link>

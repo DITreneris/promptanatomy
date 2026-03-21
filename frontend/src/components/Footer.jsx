@@ -25,19 +25,19 @@ export default function Footer() {
             <h5 className="font-bold uppercase text-xs tracking-[0.45em] text-slate-500 mb-12">{t('footer.system')}</h5>
             <ul className="space-y-6 text-sm font-bold text-slate-600 uppercase tracking-widest">
               <li>
-                <a href="#ekosistema" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">{t('footer.ecosystem')}</a>
+                <a href="#ekosistema" className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">{t('footer.ecosystem')}</a>
               </li>
               <li>
-                <a href="#metodologija" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">{t('footer.methodology')}</a>
+                <a href="#metodologija" className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">{t('footer.methodology')}</a>
               </li>
               <li>
-                <a href="/anatomija/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">{t('footer.training')}</a>
+                <a href="/anatomija/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">{t('footer.training')}</a>
               </li>
               <li>
-                <a href="#pricing" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">{t('footer.pricing')}</a>
+                <a href="#pricing" className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">{t('footer.pricing')}</a>
               </li>
               <li>
-                <a href="#faq" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">{t('footer.faq')}</a>
+                <a href="#faq" className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">{t('footer.faq')}</a>
               </li>
             </ul>
           </div>
@@ -45,17 +45,17 @@ export default function Footer() {
             <h5 className="font-black uppercase text-xs tracking-[0.45em] text-slate-500 mb-12">{t('footer.network')}</h5>
             <ul className="space-y-6 text-sm font-bold text-slate-600 uppercase tracking-widest">
               <li>
-                <a href="https://chat.whatsapp.com/GqjIo2lB4vG6Yps8kanyxA" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">
+                <a href="https://chat.whatsapp.com/GqjIo2lB4vG6Yps8kanyxA" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">
                   {t('footer.support')}
                 </a>
               </li>
               <li>
-                <a href="https://www.linkedin.com/in/staniulis/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">
+                <a href="https://www.linkedin.com/in/staniulis/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">
                   {t('footer.linkedIn')}
                 </a>
               </li>
               <li>
-                <a href="https://x.com/PromptAnatom" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">
+                <a href="https://x.com/PromptAnatom" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">
                   {t('footer.twitter')}
                 </a>
               </li>
@@ -73,13 +73,13 @@ export default function Footer() {
             <span className="text-xs font-normal normal-case tracking-wider text-slate-500">
               {t('footer.creator')}
             </span>
-            <a href="mailto:info@promptanatomy.app" className="text-xs font-normal normal-case tracking-wider text-slate-500 hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">
+            <a href="mailto:info@promptanatomy.app" className="text-xs font-normal normal-case tracking-wider text-slate-500 hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">
               info@promptanatomy.app
             </a>
           </div>
           <div className="flex flex-wrap gap-8 md:gap-16 text-xs font-bold uppercase tracking-[0.35em] text-slate-500">
-            <Link to="/privacy" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">{t('footer.privacyPolicy')}</Link>
-            <Link to="/terms" className="hover:text-brand-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded">{t('footer.termsOfService')}</Link>
+            <Link to="/privacy" className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">{t('footer.privacyPolicy')}</Link>
+            <Link to="/terms" className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">{t('footer.termsOfService')}</Link>
             <span title={t('footer.comingSoon')}>{t('footer.cookies')} <span className="text-slate-500 font-normal normal-case">{t('footer.comingSoon')}</span></span>
           </div>
         </div>

@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "git submodule update --init --recursive && npm install && cd frontend && npm install && cd ../apps/prompt-anatomy && npm ci",
+  "installCommand": "git submodule update --init --recursive && npm ci && cd frontend && npm ci && cd ../apps/prompt-anatomy && npm ci",
   "buildCommand": "cd frontend && npm run build && cd ../apps/prompt-anatomy && VITE_BASE_PATH=/anatomija/ VITE_MVP_MODE=1 npm run build && mkdir -p ../../frontend/dist/anatomija && cp -r dist/* ../../frontend/dist/anatomija/",
   "outputDirectory": "frontend/dist",
   "framework": null,

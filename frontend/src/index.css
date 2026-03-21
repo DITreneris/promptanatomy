@@ -1,6 +1,106 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+
+  --text-label: 10px;
+  --text-label--line-height: 1.25;
+
+  --color-brand-dark: #0b1320;
+  --color-brand-accent: #cfa73a;
+  --color-brand-accent-hover: #e8b93c;
+
+  --color-ecosystem-1: #2e9e7e;
+  --color-ecosystem-2: #7c5cff;
+  --color-ecosystem-3: #3f6fff;
+  --color-ecosystem-4: #f38a3f;
+
+  --background-image-accent-gradient: linear-gradient(
+    135deg,
+    #cfa73a 0%,
+    #e8b93c 100%
+  );
+  --background-image-cta-gradient: linear-gradient(
+    135deg,
+    #ffcc33 0%,
+    #ffb300 100%
+  );
+  --background-image-hero-bg:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(255, 196, 0, 0.12),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+  --background-image-ecosystem-center-glow: radial-gradient(
+    circle at 50% 10%,
+    rgba(255, 190, 0, 0.18),
+    transparent 60%
+  );
+  --background-image-pricing-section: linear-gradient(
+    180deg,
+    #f8fafc 0%,
+    #eef2f7 100%
+  );
+
+  --shadow-soft:
+    0 2px 8px -2px rgba(11, 19, 32, 0.08),
+    0 4px 16px -4px rgba(11, 19, 32, 0.06);
+  --shadow-soft-lg:
+    0 8px 24px -4px rgba(11, 19, 32, 0.08),
+    0 16px 48px -8px rgba(11, 19, 32, 0.06);
+  --shadow-glow-accent:
+    0 0 20px -4px rgba(207, 167, 58, 0.35),
+    0 10px 25px -5px rgba(207, 167, 58, 0.15);
+  --shadow-soft-top: 0 -4px 12px -4px rgba(11, 19, 32, 0.06);
+  --shadow-cta-shadow: 0 6px 14px rgba(255, 179, 0, 0.3);
+  --shadow-stat-card: 0 10px 25px rgba(0, 0, 0, 0.05);
+  --shadow-methodology-card: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --shadow-ecosystem-card-hover: 0 20px 50px rgba(0, 0, 0, 0.35);
+  --shadow-ecosystem-cta: 0 6px 18px rgba(255, 193, 7, 0.35);
+  --shadow-ecosystem-icon-glow:
+    0 0 0 6px rgba(255, 193, 7, 0.05), 0 0 30px rgba(255, 193, 7, 0.15);
+  --shadow-ecosystem-icon-depth:
+    0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  --shadow-ecosystem-icon-card:
+    0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1),
+    0 0 0 6px rgba(255, 193, 7, 0.05), 0 0 30px rgba(255, 193, 7, 0.15);
+  --shadow-ecosystem-card-rim: 0 0 30px rgba(255, 200, 0, 0.15);
+  --shadow-pricing-card: 0 20px 40px rgba(0, 0, 0, 0.06);
+  --shadow-pricing-cta: 0 8px 20px rgba(255, 193, 7, 0.35);
+  --shadow-hero-value: 0 8px 24px rgba(0, 0, 0, 0.06);
+
+  --drop-shadow-logo-glow: 0 0 6px rgba(255, 196, 0, 0.4);
+
+  --transition-duration-400: 400ms;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility animate-fade-in-up {
+  animation: fadeInUp 0.3s ease-out forwards;
+}
+
+@utility animate-blink-caret {
+  border-right: 2px solid var(--color-brand-accent);
+  animation: blink-caret 0.75s step-end infinite;
+}
 
 @layer base {
   :root {
@@ -21,16 +121,9 @@
     from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
   }
-  .animate-fade-in-up {
-    animation: fadeInUp 0.3s ease-out forwards;
-  }
   @keyframes blink-caret {
     from, to { border-color: transparent; }
     50% { border-color: var(--color-brand-accent); }
-  }
-  .animate-blink-caret {
-    border-right: 2px solid var(--color-brand-accent);
-    animation: blink-caret 0.75s step-end infinite;
   }
 }
 

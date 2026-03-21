@@ -72,14 +72,14 @@ export default function SuccessPage() {
             {redirectUrl && (
               <a
                 href={redirectUrl}
-                className="block w-full min-h-[48px] py-6 bg-brand-dark text-white rounded-3xl font-black uppercase tracking-widest text-sm hover:brightness-110 transition-all duration-200 shadow-soft-lg hover:scale-[1.02] active:scale-[0.98] transform text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
+                className="block w-full min-h-[48px] py-6 bg-brand-dark text-white rounded-3xl font-black uppercase tracking-widest text-sm hover:brightness-110 transition-all duration-200 shadow-soft-lg hover:scale-[1.02] active:scale-[0.98] transform text-center focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
               >
                 {t('success.goToTraining')}
               </a>
             )}
             <Link
               to="/"
-              className="inline-block mt-2 py-3 text-brand-dark font-bold hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded"
+              className="inline-block mt-2 py-3 text-brand-dark font-bold hover:underline focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm"
             >
               {t('common.backToHome')}
             </Link>

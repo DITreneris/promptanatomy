@@ -51,7 +51,7 @@ export default function Faq() {
           {list.map((item, i) => (
             <details
               key={i}
-              className="group rounded-2xl border border-slate-200 bg-slate-50/70 transition-colors duration-200 open:bg-white open:shadow-sm"
+              className="group rounded-2xl border border-slate-200 bg-slate-50/70 transition-colors duration-200 open:bg-white open:shadow-xs"
             >
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 [&::-webkit-details-marker]:hidden">
                 <span className="text-lg font-bold text-brand-dark">

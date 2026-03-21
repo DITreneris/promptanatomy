@@ -35,7 +35,7 @@ export default function PrivacyPage() {
         </div>
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-brand-accent font-bold hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded"
+          className="inline-flex items-center gap-2 text-brand-accent font-bold hover:underline focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm"
         >
           <ArrowLeft className="w-5 h-5" /> {t('common.backToHome')}
         </Link>

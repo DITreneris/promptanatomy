@@ -67,7 +67,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
           return (
             <div
               key={plan.id}
-              className={`relative rounded-3xl border-2 p-8 shadow-pricing-card hover:shadow-soft-lg hover:-translate-y-1.5 transition-all duration-300 flex flex-col ${isCore ? 'bg-gradient-to-b from-[rgba(255,193,7,0.08)] to-[rgba(255,193,7,0.02)] border-[rgba(255,193,7,0.5)]' : 'bg-white border-slate-100 hover:border-brand-accent/30'}`}
+              className={`relative rounded-3xl border-2 p-8 shadow-pricing-card hover:shadow-soft-lg hover:-translate-y-1.5 transition-all duration-300 flex flex-col ${isCore ? 'bg-linear-to-b from-[rgba(255,193,7,0.08)] to-[rgba(255,193,7,0.02)] border-[rgba(255,193,7,0.5)]' : 'bg-white border-slate-100 hover:border-brand-accent/30'}`}
             >
               {isCore && (
                 <span className="absolute top-6 right-6 px-3 py-1 rounded-full bg-[rgba(255,193,7,0.15)] border border-[rgba(255,193,7,0.35)] text-amber-800 text-xs font-bold uppercase tracking-widest">
@@ -113,7 +113,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
                   disabled={loading}
                   aria-busy={loading}
                   aria-live={loading ? 'polite' : undefined}
-                  className="mt-auto w-full min-h-[48px] py-4 rounded-2xl text-base font-black text-brand-dark bg-cta-gradient shadow-pricing-cta hover:scale-[1.05] hover:shadow-pricing-cta active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
+                  className="mt-auto w-full min-h-[48px] py-4 rounded-2xl text-base font-black text-brand-dark bg-cta-gradient shadow-pricing-cta hover:scale-[1.05] hover:shadow-pricing-cta active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
                 >
                   {loading ? t('pricing.loading') : <>{state.label} <ArrowRight size={18} /></>}
                 </button>
@@ -145,7 +145,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
         </p>
         <a
           href={`mailto:info@promptanatomy.app?subject=${encodeURIComponent(t('pricing.forTeamsMailSubject'))}`}
-          className="inline-flex items-center justify-center gap-2 min-h-[48px] px-6 py-3 rounded-xl text-base font-bold text-brand-dark bg-white border-2 border-slate-200 hover:border-brand-accent/40 hover:bg-slate-50 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
+          className="inline-flex items-center justify-center gap-2 min-h-[48px] px-6 py-3 rounded-xl text-base font-bold text-brand-dark bg-white border-2 border-slate-200 hover:border-brand-accent/40 hover:bg-slate-50 transition-all duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
           aria-label={t('pricing.forTeamsCta')}
         >
           {t('pricing.forTeamsCta')} <ArrowRight size={18} aria-hidden />
