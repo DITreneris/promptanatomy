@@ -64,7 +64,36 @@ Lentelė **user_access** turi turėti: `email` (text, NOT NULL, UNIQUE), `highes
 
 ---
 
-## 4. Nuorodos
+## 4. Vercel Firewall (masiniai skeneriai) ir saugos antraštės
+
+Masininiai botai dažnai zondina neegzistuojančius WordPress/PHP kelius (`/wp-admin/setup-config.php` ir pan.). Mūsų statinis SPA per [vercel.json](../vercel.json) rewrite gali jiems vis tiek grąžinti `index.html` – Edge **Firewall** sumažina triukšmą ir apkrovą.
+
+### 4.1 Įjungti Firewall taisykles (Vercel Dashboard)
+
+Atlikite projekte **promptanatomy** (arba atitinkamame Vercel projekte):
+
+1. **Vercel → Project → Firewall** (arba Security / WAF, priklausomai nuo UI versijos).
+2. Pridėkite šabloną **[Block WordPress URLs](https://vercel.com/templates/vercel-firewall/block-wordpress-urls-firewall-rule)** ([šaltinis GitHub](https://github.com/vercel/firewall-templates/tree/main/wordpress-firewall-rule)).
+3. Papildomai – **Custom rule**, jei reikia: kelias atitinka `.*\.php($|\?)` arba **Contains** `wp-login`, `xmlrpc.php` – veiksmas **Deny** (arba **Challenge**, jei planas leidžia).
+4. **Netaikykite** plataus blokavimo visiems `User-Agent` „botams“ – kenktų SEO (`/robots.txt`, paieškos indeksavimas).
+5. Path taisyklės **neturėtų** liesti **`/api/*`** – Stripe webhook (`POST /api/stripe-webhook`) ir kiti serverless maršrutai turi likti pasiekiami.
+
+### 4.2 Saugos antraštės (repo)
+
+Root [vercel.json](../vercel.json) turi `headers` visiems keliams: `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`. **Content-Security-Policy** čia sąmoningai neįtraukta (inline JSON-LD, `@vercel/analytics`, optional X pixel – reikalautų atskiros CSP iteracijos).
+
+### 4.3 Regresijos patikra po Firewall pakeitimų
+
+Po naujų Firewall taisyklių visada patikrinkite produkcijoje (arba preview su tomis pačiomis taisyklėmis):
+
+- [ ] **Stripe webhook:** Dashboard → Webhooks → Send test event `checkout.session.completed` → Vercel Function loguose 200, be netikėtų blokavimų.
+- [ ] **Checkout:** Pricing → mokėjimo srautas iki Stripe Checkout puslapio.
+- [ ] **Success / magic link:** grįžimas su `session_id` → `GET /api/success-redirect` veikia.
+- [ ] **`/anatomija/`** – puslapis kraunasi, navigacija ir asset’ai.
+
+---
+
+## 5. Nuorodos
 
 - Planų ir webhook konvencijos: [docs/payment-best-practices.md](payment-best-practices.md)
 - Lentelės SQL: [docs/supabase-user-access.sql](supabase-user-access.sql)

@@ -4,6 +4,20 @@
   "buildCommand": "cd frontend && npm run build && cd ../apps/prompt-anatomy && VITE_BASE_PATH=/anatomija/ VITE_MVP_MODE=1 npm run build && mkdir -p ../../frontend/dist/anatomija && cp -r dist/* ../../frontend/dist/anatomija/",
   "outputDirectory": "frontend/dist",
   "framework": null,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        {
+          "key": "Permissions-Policy",
+          "value": "geolocation=(), microphone=(), camera=()"
+        }
+      ]
+    }
+  ],
   "rewrites": [
     { "source": "/anatomija/:path*", "destination": "/anatomija/index.html" },
     { "source": "/((?!api|anatomija).*)", "destination": "/index.html" }

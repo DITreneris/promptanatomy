@@ -42,7 +42,7 @@
 
 | Dokumentas | Kelias | Paskirtis |
 |------------|--------|-----------|
-| Deploy ir webhook | [docs/deploy-and-webhook.md](deploy-and-webhook.md) | Kas įdiegta (Vercel, serverless webhook), troubleshooting (user_access tuščia), logai. |
+| Deploy ir webhook | [docs/deploy-and-webhook.md](deploy-and-webhook.md) | Kas įdiegta (Vercel, serverless webhook), Vercel Firewall + saugos antraštės, troubleshooting (user_access tuščia), logai. |
 | Test report | [docs/test_report.md](test_report.md) | SSL/TLS ir kiti patikrinimai, atsiliepimų fiksavimas (produkcija). |
 
 ---
