@@ -3,7 +3,7 @@ import { ArrowRight, Activity } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
 import { SCRIPT_NAME } from '../config'
 
-const HERO_BULLET_KEYS = ['hero.bullet1', 'hero.bullet2', 'hero.bullet3', 'hero.bullet4']
+const HERO_BULLET_KEYS = ['hero.bullet1', 'hero.bullet2', 'hero.bullet3']
 
 export default function Hero({ onCta }) {
   const { t } = useLocale()

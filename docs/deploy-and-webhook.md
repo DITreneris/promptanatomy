@@ -78,6 +78,8 @@ Atlikite projekte **promptanatomy** (arba atitinkamame Vercel projekte):
 4. **Netaikykite** plataus blokavimo visiems `User-Agent` „botams“ – kenktų SEO (`/robots.txt`, paieškos indeksavimas).
 5. Path taisyklės **neturėtų** liesti **`/api/*`** – Stripe webhook (`POST /api/stripe-webhook`) ir kiti serverless maršrutai turi likti pasiekiami.
 
+**Produkcijoje įjungta (Vercel Firewall):** užklausos su **`.php`**, keliais su **`wp-login`**, ir **`xmlrpc`** – **blocked** (atitinka masinius WordPress/PHP zondus; `/api/*` lieka atskiru keliu ir šių taisyklių paprastai neliečia).
+
 ### 4.2 Saugos antraštės (repo)
 
 Root [vercel.json](../vercel.json) turi `headers` visiems keliams: `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`. **Content-Security-Policy** čia sąmoningai neįtraukta (inline JSON-LD, `@vercel/analytics`, optional X pixel – reikalautų atskiros CSP iteracijos).
