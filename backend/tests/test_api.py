@@ -152,7 +152,7 @@ class TestValidateTokenLimit:
 
     def test_text_over_limit_returns_429(self, monkeypatch):
         # Lower limit so we don't send a huge body
-        monkeypatch.setattr("limits.get_max_tokens_per_request", lambda: 2)
+        monkeypatch.setattr("token_limits.get_max_tokens_per_request", lambda: 2)
         r = client.post("/api/validate-token-limit", json={"text": "hello world enough to exceed two tokens"})
         assert r.status_code == 429
         assert "Token limit exceeded" in r.json().get("detail", "")
