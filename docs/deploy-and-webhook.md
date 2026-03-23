@@ -47,6 +47,8 @@ Webhook įrašo į DB tik jei `session.metadata.plan` yra **plan_id** ("1"–"4"
 
 ### 3.3 Vercel function logai
 
+LP **Check** el. paštui naudoja **`GET /api/access`** (lentelė **`user_access`**). Jei vartotojas mato **„No access found“**, bet „yra Supabase“ – žr. operacinį checklist [docs/test_report.md](test_report.md) (2026-03-23 įrašas).
+
 **Vercel → Deployments → pasirink deployment → Functions → stripe-webhook → Logs.** Ieškok:
 
 - `Supabase not configured` – trūksta SUPABASE_URL arba SUPABASE_SERVICE_ROLE_KEY  
@@ -61,6 +63,10 @@ Lentelė **user_access** turi turėti: `email` (text, NOT NULL, UNIQUE), `highes
 ### 3.5 Testas iš Stripe
 
 **Stripe Dashboard → Webhooks → endpoint → Send test webhook** → `checkout.session.completed`. Patikrink Vercel logs ir Supabase Table Editor.
+
+### 3.6 Logai: Node DEP0169 (`url.parse`)
+
+Jei loguose matote **`[DEP0169] DeprecationWarning`** dėl **`url.parse()`**, bet HTTP statusas **200** – tai dažniausiai **Node įspėjimas**, ne API klaida; Vercel jį gali rodyti kaip „Error“. Šiame repo **`api/*` handleriai `url.parse` nenaudoja**; tikslų šaltinį (stack trace) galima gauti su laikinu env **`NODE_OPTIONS=--trace-deprecation`** (žr. pilną diagnostiką: [docs/diagnostics-dep0169-vercel.md](diagnostics-dep0169-vercel.md)).
 
 ---
 

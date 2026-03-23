@@ -3,6 +3,7 @@
   "private": true,
   "description": "Root package for Vercel serverless API (api/*). Frontend build via vercel.json.",
   "scripts": {
+    "diagnose:dep0169": "npx -y node@24 --trace-deprecation -e \"require('./api/access.js'); console.log('access handler loaded');\"",
     "audit:frontend": "cd frontend && npm audit",
     "audit:backend": "cd backend && pip-audit",
     "generate-favicons": "node scripts/generate-favicons.mjs"

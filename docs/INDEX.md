@@ -43,7 +43,8 @@
 | Dokumentas | Kelias | Paskirtis |
 |------------|--------|-----------|
 | Deploy ir webhook | [docs/deploy-and-webhook.md](deploy-and-webhook.md) | Kas įdiegta (Vercel, serverless webhook), Vercel Firewall + saugos antraštės, troubleshooting (user_access tuščia), logai. |
-| Test report | [docs/test_report.md](test_report.md) | SSL/TLS ir kiti patikrinimai, atsiliepimų fiksavimas (produkcija). |
+| Vercel DEP0169 diagnostika (`url.parse` logai) | [docs/diagnostics-dep0169-vercel.md](diagnostics-dep0169-vercel.md) | Kas tai, repo tikrinimai, `NODE_OPTIONS=--trace-deprecation` produkcijoje, tolimesni žingsniai. |
+| Test report | [docs/test_report.md](test_report.md) | SSL/TLS, LP prieigos tikrinimas (`user_access` / „No access found“), atsiliepimų fiksavimas (produkcija). |
 
 ---
 
