@@ -8,6 +8,9 @@ Visi pakeitimai šiame faile dokumentuojami pagal [Keep a Changelog](https://kee
 - **GitHub CI (Golden Legacy):** [`.github/workflows/ci.yml`](.github/workflows/ci.yml) — ant `push` / `pull_request` į `main`: submoduliai, `frontend` + `apps/prompt-anatomy` build (training su `VITE_BASE_PATH=/anatomija/`, `VITE_MVP_MODE=1`, `HUSKY=0`), `backend` `pytest`. Dokumentacija: [docs/golden-legacy-standard.md](docs/golden-legacy-standard.md) §5–6, [docs/process/development.md](docs/process/development.md), [docs/INDEX.md](docs/INDEX.md). Rekomenduojama įjungti *required status check* **Golden Legacy** GitHub branch protection.
 - **Production analytics (14d benchmark):** [docs/production-analytics-14d-benchmark.md](docs/production-analytics-14d-benchmark.md) — ~14 d. produkcijos serverio metrikos (lankytojai, šaltiniai, puslapiai, GEO, įrenginiai, OS, bounce); komercinis sluoksnis: **4** B2B klientai, **3** Stripe mokėjimai, planų mišinys **1× 3 moduliai** + **2× 6 moduliai** (kanonas Stripe), paaiškinimas kad LP veikia kaip **rinkodaros** kanalas ir kad `/success` puslapio peržiūros gali neatitikti pardavimų; rekomendacijos analytics ↔ Stripe suderinimui. [docs/INDEX.md](docs/INDEX.md) — §3 deploy lentelėje nauja eilutė.
 
+### Ištaisyta
+- **GitHub CI / pytest kolekcija:** [backend/requirements.txt](backend/requirements.txt) — pridėtas `email-validator>=2.0.0` (Pydantic `EmailStr` importuojant `main.py`; GitHub Actions švariame venv buvo `ModuleNotFoundError`).
+
 ## [1.3.1] - 2026-03-24
 
 ### Pridėta
