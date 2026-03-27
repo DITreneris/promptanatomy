@@ -5,7 +5,7 @@ Marketinginis tinklalapis ir minimalus backend mokėjimams per Stripe. Tikslas: 
 ## Struktūra
 
 - **frontend/** – Vite + React, landing puslapis, pricing, CTA → Stripe Checkout, puslapiai `/success` ir `/cancel`.
-- **backend/** – FastAPI, entry point `backend/main.py`: `GET /health`, `GET /api/access` (prieiga pagal email), `POST /api/create-checkout-session`, `POST /api/webhooks/stripe`, `POST /api/validate-token-limit`. Konfigūracija per Pydantic Settings (`backend/core/config.py`). MVP upgrade: Supabase lentelė `user_access` (highest_plan), webhook įrašo prieigą, checkout blokuoja jei jau turi planą – žr. [docs/supabase-user-access.sql](docs/supabase-user-access.sql).
+- **backend/** – FastAPI, entry point `backend/main.py`: `GET /health`, `GET /api/access` (prieiga pagal email), `POST /api/create-checkout-session`, `POST /api/webhooks/stripe`, `POST /api/validate-token-limit`. Konfigūracija per Pydantic Settings (`backend/core/config.py`). MVP upgrade: Supabase lentelė `user_access` (highest_plan), webhook įrašo prieigą, checkout blokuoja jei jau turi planą – schema: [supabase/migrations/](supabase/migrations/), santrauka: [docs/supabase-user-access.sql](docs/supabase-user-access.sql), procedūra: [docs/supabase-migrations.md](docs/supabase-migrations.md).
 - **apps/prompt-anatomy/** – mokymų app (SPA) kaip git submodulis iš [DITreneris/inzinerija](https://github.com/DITreneris/inzinerija); pasiekiamas per `/anatomija/` tame pačiame domene (Vercel build į `frontend/dist/anatomija/`).
 
 ## Reikalavimai
@@ -107,6 +107,8 @@ pip install -r requirements.txt
 python -m pytest tests/ -v
 ```
 (Jei naudojate venv, pirmiausia: `python -m venv .venv` ir aktyvuokite jį.)
+
+**GitHub:** `push` ir pull request į `main` paleidžia [`.github/workflows/ci.yml`](.github/workflows/ci.yml) (job **Golden Legacy**): `frontend` build, `apps/prompt-anatomy` build su tomis pačiomis `VITE_*` reikšmėmis kaip [vercel.json](vercel.json), `backend` `pytest`. Pilnas regresijos aprašas: [docs/golden-legacy-standard.md](docs/golden-legacy-standard.md).
 
 ## Priklausomybių saugumo auditą
 

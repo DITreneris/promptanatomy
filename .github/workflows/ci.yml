@@ -1,0 +1,53 @@
+# Golden Legacy: docs/golden-legacy-standard.md — pytest, LP build, training build.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  golden-legacy:
+    name: Golden Legacy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: |
+            frontend/package-lock.json
+            apps/prompt-anatomy/package-lock.json
+
+      - name: Frontend install and build
+        working-directory: frontend
+        run: npm ci && npm run build
+
+      - name: Training app install and build
+        working-directory: apps/prompt-anatomy
+        env:
+          HUSKY: "0"
+          VITE_BASE_PATH: /anatomija/
+          VITE_MVP_MODE: "1"
+        run: npm ci && npm run build
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+
+      - name: Backend install and tests
+        working-directory: backend
+        run: |
+          python -m pip install -r requirements.txt
+          python -m pytest

@@ -127,6 +127,8 @@
 2. **Parent repo:** `git add -A && commit && push origin main` (į `DITreneris/promptanatomy`). Commit'e turi būti atnaujintas submodule reference.
 3. **Vercel:** auto-deploy iš GitHub main branch. `vercel.json` – `installCommand` su `git submodule update --init --recursive`, build'ina abu frontendus.
 4. **Regresijos prieš push:** `frontend: npm run build`, `apps/prompt-anatomy: npm run build`, `backend: pytest`.
+5. **GitHub Actions:** pull request ir push į `main` paleidžia [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) (job **Golden Legacy**): `frontend` — `npm ci` + `npm run build`; `apps/prompt-anatomy` — `npm ci` + `npm run build` su `VITE_BASE_PATH=/anatomija/`, `VITE_MVP_MODE=1`, `HUSKY=0` (submodulio husky nevykdomas CI); `backend` — `pip install -r requirements.txt` + `pytest`. Submoduliai: `actions/checkout` su `submodules: recursive`.
+6. **Branch protection (rankinis GitHub):** rekomenduojama įjungti *required status check* jobui **Golden Legacy** (workflow **CI**), kad merge be žalio CI nebūtų galimas. Kelias: *Settings → Rules → Rulesets* (arba *Branches → Branch protection*) — pridėti taisyklę `main` ir pažymėti reikiamą check.
 
 ---
 
@@ -140,4 +142,4 @@
 - Po kiekvieno deploy – patikrinti ar 5 skyriaus procesas vis dar aktualus.
 
 
-**Regresijos tikrinimas:** prieš merge/release – paleisti `backend`: `pytest`, `frontend`: `npm run build`, `apps/prompt-anatomy`: `npm run build`; pagal poreikį – rankinis smoke pagal 3 skyrių.
+**Regresijos tikrinimas:** prieš merge/release – paleisti `backend`: `pytest`, `frontend`: `npm run build`, `apps/prompt-anatomy`: `npm run build`; tas pats rinkinys automatiškai CI (žr. 5 skyrių). Pagal poreikį – rankinis smoke pagal 3 skyrių.

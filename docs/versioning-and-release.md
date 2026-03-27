@@ -11,8 +11,8 @@
 | Vieta | Reikšmė | Paskirtis |
 |-------|---------|-----------|
 | **frontend/src/config.js** | `APP_VERSION = 'v1.3'` | Vienas šaltinis UI: Navbar badge, Hero script name (`SCRIPT_NAME`), Ecosystem „Stable“. Keičiant čia – atsinaujina visur. |
-| **frontend/package.json** | `"version": "1.3.0"` | NPM package versija (build, artefaktai). Siūloma sulyginti su release. |
-| **CHANGELOG.md** | `## [1.3.0] - 2026-03-16` | Release istorija; po release nauji pakeitimai rašomi po `[Unreleased]`. |
+| **frontend/package.json** | `"version": "1.3.1"` | NPM package versija (build, artefaktai). Siūloma sulyginti su release. |
+| **CHANGELOG.md** | `## [1.3.1] - 2026-03-24` (naujausias patch) | Release istorija; po release nauji pakeitimai rašomi po `[Unreleased]`. |
 | **Git tag** | `v1.3.0` | Fiksuoja commit, atkuriama būsena. |
 
 **Pastaba:** Rodomoji versija UI gali būti trumpesnė (`v1.3`) arba pilna (`1.3.0`). Abu variantai priimtini; `v1.3` – kompaktiškesnis badge.
@@ -25,7 +25,7 @@
 - **MINOR** (1.x.0): naujos funkcijos atgal suderinamos.
 - **PATCH** (1.3.x): klaidų taisymai, saugumą nekeičiantys pakeitimai.
 
-Dabartinė versija **1.3.0** atitinka: stabilus produktas su planais 1–2, Stripe, Supabase, magic link, mokymų app, SEO, DUK, B2B bloku.
+Naujausias release **1.3.1** (2026-03-24) – patch (Supabase migracijos repo, doc). Bazė **1.3.0** – stabilus produktas su planais 1–2, Stripe, Supabase, magic link, mokymų app, SEO, DUK, B2B bloku.
 
 ---
 

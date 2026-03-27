@@ -25,6 +25,9 @@ yarn-error.log*
 TODO.md
 roadmap.md
 
+# Supabase CLI (lokalūs temp failai; commitiname tik supabase/migrations/)
+.supabase/
+
 # IDE / OS
 .idea/
 .vscode/

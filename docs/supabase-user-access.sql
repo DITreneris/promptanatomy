@@ -1,5 +1,7 @@
 -- MVP upgrade: user_access table for Supabase.
--- Run in Supabase SQL Editor. Email stored lowercased; unique on email for upsert.
+-- Kanonas (versijuojama): supabase/migrations/20260324120000_user_access_baseline.sql
+-- Šis failas – santrauka / rankinis atsarginis paleidimas per SQL Editor.
+-- Email stored lowercased; unique on email for upsert. Žr. docs/supabase-migrations.md
 
 create table if not exists user_access (
   id uuid primary key default gen_random_uuid(),

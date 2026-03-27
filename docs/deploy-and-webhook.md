@@ -58,7 +58,7 @@ LP **Check** el. paštui naudoja **`GET /api/access`** (lentelė **`user_access`
 
 ### 3.4 Supabase lentelė
 
-Lentelė **user_access** turi turėti: `email` (text, NOT NULL, UNIQUE), `highest_plan` (integer, NOT NULL, default 0), `stripe_customer_id` (text, nullable). Schema: [docs/supabase-user-access.sql](supabase-user-access.sql).
+Lentelė **user_access** turi turėti: `email` (text, NOT NULL, UNIQUE), `highest_plan` (integer, NOT NULL, default 0), `stripe_customer_id` (text, nullable). DDL kanonas: [supabase/migrations/](../supabase/migrations/) (baseline migracija); santrauka: [docs/supabase-user-access.sql](supabase-user-access.sql). **Vercel deploy SQL nevykdo** – migracijas pritaikykite Supabase (žr. [docs/supabase-migrations.md](supabase-migrations.md)).
 
 ### 3.5 Testas iš Stripe
 
