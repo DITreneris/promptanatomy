@@ -93,7 +93,7 @@ export default function Ecosystem() {
                   </p>
                 )}
                 {hasBullets && (
-                  <ul className="list-disc list-inside text-slate-400 text-sm space-y-2 leading-relaxed mb-4">
+                  <ul className="list-disc list-inside text-slate-300 text-sm space-y-2 leading-relaxed mb-4">
                     {(item.bullets.slice(0, 2)).map((bullet, bi) => (
                       <li key={bi}>{bullet}</li>
                     ))}

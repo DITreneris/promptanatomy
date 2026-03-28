@@ -175,7 +175,10 @@
     "forTeamsTitle": "For teams & organizations",
     "forTeamsBody": "Pilot 399€, 15 min demo – contact us.",
     "forTeamsCta": "Book 15 min demo",
-    "forTeamsMailSubject": "Pilot 399€ / 15 min demo"
+    "forTeamsMailSubject": "Pilot 399€ / 15 min demo",
+    "accessStepsHint": "1. Enter your email · 2. Tap Check · 3. Go to training",
+    "accessStoragePrivacy": "Your email may be saved in this browser only so you don’t have to re-enter it each time (not a login account).",
+    "clearStoredEmail": "Forget saved email on this device"
   },
   "faq": {
     "title": "Frequently asked questions",

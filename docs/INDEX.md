@@ -26,6 +26,7 @@
 | Inzinerija: prieigos vartos (gate) memo | [docs/inzinerija-prieigos-vartos-memo.md](inzinerija-prieigos-vartos-memo.md) | Ką inzinerija komanda turi sukonfigūruoti – gate tik be prieigos, neperrakinti mokėjusių; checklist. |
 | Saugumas | [docs/security.md](security.md) | Secrets, CORS, validacija, rate limit, headers, produkcija. |
 | Saugumo auditas (gilus) | [docs/security-audit-deep.md](security-audit-deep.md) | Architektūra, jautrūs taškai, rizikos, industrijos praktikos, MOSCOW prioritetai. |
+| Prieigos architektūra (kanonas) | [docs/access-architecture-canon.md](access-architecture-canon.md) | Viena tiesa: `user_access` po webhook; LP / magic link / antriniai keliai. |
 | Mokėjimų praktikos | [docs/payment-best-practices.md](payment-best-practices.md) | Plan_id/plan_value, Stripe/Supabase/Vercel konvencijos, env, pitfalls. |
 | Memo integracija (saugumas, 2025–2026) | [docs/memo-integration-security-analysis.md](memo-integration-security-analysis.md) | Magic-link su Mokymų sistema: HMAC, timing-safe, secret, redirect; geriausios praktikos. |
 | Supabase user_access | [docs/supabase-user-access.sql](supabase-user-access.sql) | SQL lentelė: email, highest_plan, stripe_customer_id (santrauka). |

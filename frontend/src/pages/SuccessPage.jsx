@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { ShieldCheck } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
 import { getSuccessRedirectUrl } from '../api'
+import { LP_ACCESS_EMAIL_STORAGE_KEY } from '../config'
 
 export default function SuccessPage() {
   const { t } = useLocale()
@@ -15,9 +16,16 @@ export default function SuccessPage() {
   useEffect(() => {
     if (!sessionId) return
     getSuccessRedirectUrl(sessionId)
-      .then((url) => {
+      .then(({ redirect_url: url, customer_email: customerEmail }) => {
         setRedirectUrl(url)
         setError(null)
+        if (customerEmail) {
+          try {
+            localStorage.setItem(LP_ACCESS_EMAIL_STORAGE_KEY, customerEmail)
+          } catch {
+            /* private mode */
+          }
+        }
       })
       .catch((err) => {
         setError(err?.message || t('success.redirectError'))
@@ -28,7 +36,7 @@ export default function SuccessPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-6 antialiased overflow-hidden relative">
-      <nav aria-label="Breadcrumb" className="relative z-10 mb-8 text-xs font-bold uppercase tracking-[0.2em] text-slate-400">
+      <nav aria-label="Breadcrumb" className="relative z-10 mb-8 text-xs font-bold uppercase tracking-[0.2em] text-slate-600">
         <ol className="flex items-center gap-2">
           <li><Link to="/" className="hover:text-brand-accent transition-colors duration-200">{t('common.home')}</Link></li>
           <li aria-hidden>/</li>
@@ -47,19 +55,19 @@ export default function SuccessPage() {
           <p className="text-slate-600 mb-4 text-xl font-medium leading-relaxed italic max-w-sm mx-auto">
             {t('success.body')}
           </p>
-          <p className="text-slate-500 text-sm mb-6 max-w-sm mx-auto">
+          <p className="text-slate-600 text-sm mb-6 max-w-sm mx-auto">
             {t('success.emailDisclaimer')}
           </p>
-          <p className="text-slate-500 text-sm mb-6 max-w-sm mx-auto">
+          <p className="text-slate-600 text-sm mb-6 max-w-sm mx-auto">
             {t('success.nextTime')}
           </p>
           {!sessionId && (
-            <p className="text-slate-500 text-sm mb-6 max-w-sm mx-auto">
+            <p className="text-slate-600 text-sm mb-6 max-w-sm mx-auto">
               {t('success.noSession')}
             </p>
           )}
           {loading && (
-            <p className="text-slate-500 text-sm mb-8" aria-live="polite">
+            <p className="text-slate-600 text-sm mb-8" aria-live="polite">
               {t('success.redirecting')}
             </p>
           )}

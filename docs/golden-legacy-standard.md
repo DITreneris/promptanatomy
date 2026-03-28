@@ -12,7 +12,7 @@
 - Kalbos perjungimas LT/EN veikia; LT naudoja DI, EN – AI (pagal [language-guidelines-en-lt.md](language-guidelines-en-lt.md)). Locale-aware URL: `/lt` ir `/en` rodo atitinkamą kalbą; perjungus kalbą Navbar nukreipia į `/lt` arba `/en` (share'inamas linkas atspindi kalbą).
 - SEO: `SeoHead.jsx` nustato canonical ir og:url pagal pathname; ant home route'ų (`/`, `/lt`, `/en`) – hreflang (lt, en, x-default). Twitter Card ir og:url įdiegti (`index.html` + dinamiškai). **og-image.png** – socialiniam preview (Twitter, LinkedIn, Facebook) laikomas `frontend/public/og-image.png`; build kopijuoja į `dist/`; `index.html` nurodo `og:image` ir `twitter:image` į `https://www.promptanatomy.app/og-image.png`. Nepašalinti failo iš `public/`.
 - Checkout srautas: prieigos tikrinimas (email) → planų pasirinkimas → Stripe Checkout → success/cancel puslapiai.
-- Prieigos srautas (susimokėjus): LP „Eiti į mokymus" → `GET /api/generate-access-link?email=...` → magic link su HMAC tokenu → training app atrakina modulius.
+- Prieigos srautas (susimokėjus): LP „Eiti į mokymus" → `GET /api/generate-access-link?email=...` → magic link su HMAC tokenu → training app atrakina modulius. **Kanonas** (kas yra „tiesa“, antriniai keliai): [access-architecture-canon.md](access-architecture-canon.md).
 - Backend API ir webhook atsako pagal aprašytas sutartis (žr. skyrių 2–3).
 - Frontend build (`npm run build`) ir backend testai (`pytest`) eina sėkmingai.
 - Training app build (`cd apps/prompt-anatomy && npm run build`) eina sėkmingai.
@@ -28,7 +28,7 @@
 |--------------------|-------------------------------|--------|
 | `GET /health` | 200, `{"status": "ok"}` | `TestHealth.test_health_returns_200_and_ok` |
 | `GET /api/success-redirect` be `session_id` arba netinkamas session | 400, detail "session_id required" / "Invalid or unpaid session" | (rankinis arba testas) |
-| `GET /api/success-redirect?session_id=cs_xxx` (validus paid session) | 200, `{ "redirect_url": "https://...?access_tier=...&expires=...&token=..." }` | (rankinis arba testas) |
+| `GET /api/success-redirect?session_id=cs_xxx` (validus paid session) | 200, `{ "redirect_url": "https://...?access_tier=...&expires=...&token=..." }`; neprivalomas `customer_email` (Stripe sesijos el. paštas, LP `localStorage`) | (rankinis arba testas) |
 | `GET /api/access` be `email` | 400, detail apie email | `TestGetAccess.test_missing_email_returns_400` |
 | `GET /api/access?email=invalid` | 400 | `TestGetAccess.test_invalid_email_returns_400` |
 | `GET /api/access` (Supabase nekonfigūruotas) | 503, "not configured" | `TestGetAccess.test_access_not_configured_returns_503` |
@@ -108,7 +108,7 @@
 - **React + Vite** – struktūra, routing (React Router), build pipeline. Nėra migracijos į Next.js ar SSR (pagal [UI_UX_SEO_MOSCOW_PLAN.md](UI_UX_SEO_MOSCOW_PLAN.md) WON'T).
 - **Stripe flow** – create-checkout-session → Stripe Checkout → success/cancel; webhook `checkout.session.completed` → Supabase `user_access`. Nepažeisti endpointų kontraktų.
 - **Magic link flow** – `success-redirect.js` ir `generate-access-link.js` naudoja tą pačią `buildMagicLinkToken()` logiką (HMAC-SHA256, base64url, `ACCESS_TOKEN_SECRET`). `verify-access.js` tikrina tokeną. Keičiant vieno token formatą – keisti visus tris.
-- **API:** `api.js` – `getAccess`, `createCheckoutSession`, `getSuccessRedirectUrl`, `getTrainingAccessLink`; backend atsakymų formatai (JSON su `url`, `highest_plan`, `can_upgrade_to`, `redirect_url` ir t. t.).
+- **API:** `api.js` – `getAccess`, `createCheckoutSession`, `getSuccessRedirectUrl` (grąžina `{ redirect_url, customer_email? }`), `getTrainingAccessLink`; backend atsakymų formatai (JSON su `url`, `highest_plan`, `can_upgrade_to`, `redirect_url` ir t. t.).
 - **Env:** Backend – Pydantic Settings, `STRIPE_*`, `SUPABASE_*`, `FRONTEND_ORIGIN`. Frontend – `VITE_API_URL` (optional), `VITE_X_PIXEL_ID` (optional, X conversion tracking; jei tuščias – XPixel neįkelia skripto). Nepašalinti naudojamų kintamųjų.
 - **Backend failo pavadinimas:** `token_limits.py` (ne `limits.py`). `limits` vardas shadina PyPI paketą – neleistina.
 - **Training app submodule:** `apps/prompt-anatomy` → `DITreneris/inzinerija`. Magic link tier validacija naudoja `VALID_MAX_MODULE_IDS` iš `constants/pricing.ts` (ne hardcoded reikšmes).
@@ -128,7 +128,38 @@
 3. **Vercel:** auto-deploy iš GitHub main branch. `vercel.json` – `installCommand` su `git submodule update --init --recursive`, build'ina abu frontendus.
 4. **Regresijos prieš push:** `frontend: npm run build`, `apps/prompt-anatomy: npm run build`, `backend: pytest`.
 5. **GitHub Actions:** pull request ir push į `main` paleidžia [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) (job **Golden Legacy**): `frontend` — `npm ci` + `npm run build`; `apps/prompt-anatomy` — `npm ci` + `npm run build` su `VITE_BASE_PATH=/anatomija/`, `VITE_MVP_MODE=1`, `HUSKY=0` (submodulio husky nevykdomas CI); `backend` — `pip install -r requirements.txt` + `pytest`. Submoduliai: `actions/checkout` su `submodules: recursive`.
-6. **Branch protection (rankinis GitHub):** rekomenduojama įjungti *required status check* jobui **Golden Legacy** (workflow **CI**), kad merge be žalio CI nebūtų galimas. Kelias: *Settings → Rules → Rulesets* (arba *Branches → Branch protection*) — pridėti taisyklę `main` ir pažymėti reikiamą check.
+6. **Branch ruleset (rankinis GitHub):** žr. §5.1.
+
+### 5.1 Ruleset `main` — žingsnis po žingsnio
+
+Repozitorija: *Settings → Code and automation → Rules → Rulesets* → **New ruleset** → **New branch ruleset**.
+
+| Laukas | Rekomenduojama reikšmė |
+|--------|-------------------------|
+| **Ruleset name** | pvz. `main-require-ci` |
+| **Enforcement status** | **Active** (ne „Disabled“; „Evaluate“ — tik bandymui) |
+| **Bypass list** | Palik tuščią arba tik admin / būtinas bot’as (pvz. prireikus release bot’ui) |
+
+**Target branches:** **Add target** → *Include by pattern* → įrašyk `main` (arba *Default branch*, jei ji yra `main`).
+
+**Rules** (slink žemyn ir įjunk reikiamus):
+
+1. **Require a pull request before merging** — įjungti, jei nori, kad pakeitimai į `main` eitų per PR (rekomenduojama komandai).
+2. **Require status checks to pass** — **įjungti**. Po to:
+   - **Add checks** → paieškoje įvesk `Golden Legacy` arba `CI`.
+   - Pasirink jobą, kuris atitinka workflow [`.github/workflows/ci.yml`](../.github/workflows/ci.yml): job pavadinimas faile yra **`Golden Legacy`**, workflow pavadinimas **`CI`**. GitHub sąraše dažnai matysis kaip **`Golden Legacy`** arba **`CI / Golden Legacy`**.
+   - Jei sąraše nieko nėra: paleisk bent vieną sėkmingą **Actions** run ant `main` ir grįžk čia — check’ai atsiranda po pirmo paleidimo.
+
+Papildomai (nebūtina, bet naudinga):
+
+- **Block force pushes** — apsauga nuo `git push --force` į `main`.
+- **Require linear history** — tik jei nori griežtos linijinės istorijos (gali apsunkinti merge strategijas).
+
+**Išsaugoti:** **Create** / **Save changes**.
+
+*Klasikinė alternatyva:* *Settings → Branches → Add branch protection rule* — branch name pattern `main`, įjungti *Require status checks to pass* ir pasirinkti tą patį **Golden Legacy** check.
+
+**Pastaba:** seni raudoni workflow run’ai istorijoje lieka raudoni; svarbu, kad **paskutinis** run ant `main` būtų žalias.
 
 ---
 

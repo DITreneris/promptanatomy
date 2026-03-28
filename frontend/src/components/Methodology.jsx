@@ -45,7 +45,7 @@ export default function Methodology() {
                 <div className="w-14 h-14 rounded-[14px] bg-brand-dark text-brand-accent flex items-center justify-center mb-8 transition-all duration-180 group-hover:rotate-[4deg] group-hover:shadow-[0_0_0_4px_rgba(207,167,58,0.12)] shadow-[0_0_0_4px_rgba(207,167,58,0.08)]">
                   {React.cloneElement(item.icon, { size: 26 })}
                 </div>
-                <span className="text-xs font-bold text-slate-400 tracking-widest mb-2 block">{item.step}</span>
+                <span className="text-xs font-bold text-slate-600 tracking-widest mb-2 block">{item.step}</span>
                 <h4 className="text-2xl font-bold text-brand-dark mb-4 tracking-tight">{item.title}</h4>
                 <p className="text-[#475569] font-medium leading-relaxed text-base">{item.desc}</p>
               </div>
