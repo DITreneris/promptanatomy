@@ -1,6 +1,6 @@
 /**
  * Vercel serverless: GET /api/success-redirect?session_id=...
- * Returns { redirect_url } for magic-link to training app (access_tier, expires, token).
+ * Returns { redirect_url }; optional customer_email when Stripe session has it (LP localStorage).
  * Requires paid Stripe Checkout session.
  * Env: ACCESS_TOKEN_SECRET, STRIPE_SECRET_KEY; optional TRAINING_REDIRECT_BASE, ACCESS_TOKEN_EXPIRY_DAYS
  */
@@ -95,5 +95,14 @@ module.exports = async function handler(req, res) {
   const base = (process.env.TRAINING_REDIRECT_BASE || 'https://www.promptanatomy.app/anatomija').replace(/\/$/, '');
   const redirectUrl = `${base}/?access_tier=${accessTier}&expires=${expires}&token=${token}`;
 
-  return res.status(200).json({ redirect_url: redirectUrl });
+  const customerEmail = (
+    session.customer_email ||
+    session.customer_details?.email ||
+    ''
+  )
+    .trim() || undefined;
+
+  const payload = { redirect_url: redirectUrl };
+  if (customerEmail) payload.customer_email = customerEmail;
+  return res.status(200).json(payload);
 };

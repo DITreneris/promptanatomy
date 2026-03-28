@@ -25,8 +25,9 @@ export async function createCheckoutSession(planId, customerEmail = null) {
 
 /**
  * Get redirect URL for success page: magic-link to training app (access_tier, expires, token).
+ * Optional customer_email from Stripe session (for LP localStorage).
  * @param {string} sessionId - Stripe Checkout session ID from URL
- * @returns {Promise<string>} redirect_url
+ * @returns {Promise<{ redirect_url: string, customer_email?: string }>}
  */
 export async function getSuccessRedirectUrl(sessionId) {
   const params = new URLSearchParams({ session_id: sessionId })
@@ -38,7 +39,11 @@ export async function getSuccessRedirectUrl(sessionId) {
   }
   const data = await res.json().catch(() => null)
   if (!data?.redirect_url) throw new Error(data === null ? 'Invalid response' : 'No redirect URL')
-  return data.redirect_url
+  const email = typeof data.customer_email === 'string' ? data.customer_email.trim() : ''
+  return {
+    redirect_url: data.redirect_url,
+    ...(email ? { customer_email: email } : {}),
+  }
 }
 
 /**

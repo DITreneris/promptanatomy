@@ -2,6 +2,8 @@
 
 Vienas atskaitos dokumentas: kaip žymėti planus, env, Stripe/Supabase/Vercel konvencijos, kad kiti moduliai ir ateities pakeitimai būtų nuoseklūs.
 
+**Pilnas prieigos kanonas** (kas yra „tiesa“, LP vs mokymų tiltas): [access-architecture-canon.md](access-architecture-canon.md).
+
 ---
 
 ## 1. Planų hierarchija (vienas šaltinis tiesos)

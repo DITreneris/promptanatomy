@@ -112,20 +112,20 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
     { name: t('nav.pricing'), id: 'pricing' },
     ...(hasAccess ? [{ name: t('nav.training'), id: null, href: '/anatomija/', external: true }] : []),
   ]
+  // „Mokymai“ tik primaryNavItems kai hasAccess – vienodai desktop ir mobile (be dublikato).
   const secondaryNavItems = [
     { name: t('nav.ecosystem'), id: 'ekosistema' },
     { name: t('nav.methodology'), id: 'metodologija' },
     ...(GLOSSARY_URL
       ? [{ name: t('nav.repo'), id: null, href: GLOSSARY_URL, external: true }]
       : []),
-    { name: t('nav.training'), id: null, href: '/anatomija/', external: true },
     { name: t('nav.faq'), id: 'faq' },
   ]
   const allNavItems = [...primaryNavItems, ...secondaryNavItems]
 
   const closeMobile = () => setMobileOpen(false)
 
-  const navLinkClass = `relative text-xs font-bold uppercase tracking-[0.15em] text-slate-500 hover:text-brand-accent transition-colors duration-200 min-h-[44px] min-w-[44px] inline-flex items-center after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-200 after:w-0 hover:after:w-full ${FOCUS_RING}`
+  const navLinkClass = `relative text-xs font-bold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-accent transition-colors duration-200 min-h-[44px] min-w-[44px] inline-flex items-center after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-200 after:w-0 hover:after:w-full ${FOCUS_RING}`
 
   return (
     <>
@@ -143,9 +143,9 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
           <div className="flex flex-col min-w-0 overflow-visible">
             <span className="text-lg sm:text-2xl font-black tracking-tighter leading-tight text-brand-dark flex items-center gap-2 wrap-break-word">
               {t('nav.brandPromptu')} <span className="text-brand-accent">{t('nav.brandAnatomija')}</span>
-              <span className="hidden sm:inline-flex items-center shrink-0 px-1.5 py-0.5 rounded-sm bg-slate-100 text-xs font-black text-slate-400 leading-none">{APP_VERSION}</span>
+              <span className="hidden sm:inline-flex items-center shrink-0 px-1.5 py-0.5 rounded-sm bg-slate-100 text-xs font-black text-slate-600 leading-none">{APP_VERSION}</span>
             </span>
-            <span className="text-xs font-black uppercase tracking-[0.2em] sm:tracking-[0.4em] text-slate-500 sm:text-slate-400 wrap-break-word">{t('nav.brandTagline')}</span>
+            <span className="text-xs font-black uppercase tracking-[0.2em] sm:tracking-[0.4em] text-slate-600 wrap-break-word">{t('nav.brandTagline')}</span>
           </div>
         </Link>
 
@@ -184,7 +184,7 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
               <button
                 type="button"
                 onClick={() => { setLocale('lt'); navigate('/lt') }}
-                className={`px-2.5 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-500 hover:text-brand-dark'} ${FOCUS_RING}`}
+                className={`px-2.5 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} ${FOCUS_RING}`}
                 aria-pressed={locale === 'lt'}
                 aria-label="Lietuvių"
               >
@@ -193,7 +193,7 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
               <button
                 type="button"
                 onClick={() => { setLocale('en'); navigate('/en') }}
-                className={`px-2.5 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-500 hover:text-brand-dark'} ${FOCUS_RING}`}
+                className={`px-2.5 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} ${FOCUS_RING}`}
                 aria-pressed={locale === 'en'}
                 aria-label="English"
               >
@@ -247,7 +247,7 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
               window.scrollTo({ top: 0, behavior: 'smooth' })
             }
           }}
-          className="py-4 text-base font-bold uppercase tracking-[0.15em] text-slate-500 hover:text-brand-dark border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm"
+          className="py-4 text-base font-bold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-dark border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm"
         >
           {t('common.home')}
         </Link>
@@ -255,7 +255,7 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
           <button
             type="button"
             onClick={() => { closeMobile(); setLocale('lt'); navigate('/lt') }}
-            className={`px-4 py-2.5 rounded-md text-sm font-bold uppercase tracking-wider transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-500 hover:text-brand-dark'} focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
+            className={`px-4 py-2.5 rounded-md text-sm font-bold uppercase tracking-wider transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
             aria-pressed={locale === 'lt'}
             aria-label="Lietuvių"
           >
@@ -264,7 +264,7 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
           <button
             type="button"
             onClick={() => { closeMobile(); setLocale('en'); navigate('/en') }}
-            className={`px-4 py-2.5 rounded-md text-sm font-bold uppercase tracking-wider transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-500 hover:text-brand-dark'} focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
+            className={`px-4 py-2.5 rounded-md text-sm font-bold uppercase tracking-wider transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
             aria-pressed={locale === 'en'}
             aria-label="English"
           >
@@ -272,7 +272,7 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
           </button>
         </div>
         {allNavItems.map((item) => {
-          const mobileClass = "relative py-4 text-base font-bold uppercase tracking-[0.15em] text-slate-500 hover:text-brand-accent border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-200 after:w-0 hover:after:w-full focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm"
+          const mobileClass = "relative py-4 text-base font-bold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-accent border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-200 after:w-0 hover:after:w-full focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm"
           return item.external ? (
             <a
               key={item.id || item.href}

@@ -43,7 +43,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
         <p className="text-slate-600 text-base md:text-lg font-medium max-w-xl mx-auto">
           {t('pricing.subtext')}
         </p>
-        <p className="text-slate-500 text-sm font-medium mt-2">
+        <p className="text-slate-600 text-sm font-medium mt-2">
           {t('pricing.cumulativeNote')}
         </p>
         {Array.isArray(trustSignals) && trustSignals.length > 0 && (
@@ -74,7 +74,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
                   {t('pricing.recommended')}
                 </span>
               )}
-              <span className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">
+              <span className="text-xs font-bold uppercase tracking-widest text-slate-600 mb-2">
                 {t(`pricing.plans.${plan.labelKey}`)}
               </span>
               <p className="text-slate-600 font-bold mb-3">{plan.mods} {t('pricing.mods')}</p>
@@ -93,7 +93,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
                 ) : null
               })()}
               <p className="text-[44px] font-extrabold leading-none text-brand-dark mb-6">
-                {plan.price}<span className="text-xl font-bold text-slate-500"> €</span>
+                {plan.price}<span className="text-xl font-bold text-slate-600"> €</span>
               </p>
               {isOwned ? (
                 <button
@@ -130,7 +130,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
       )}
 
       {showModulesLockedNote && (
-        <p className="text-center text-slate-400 text-sm font-medium mb-6 flex items-center justify-center gap-2">
+        <p className="text-center text-slate-600 text-sm font-medium mb-6 flex items-center justify-center gap-2">
           <Lock size={14} aria-hidden />
           {t('pricing.modulesLocked')}
         </p>
@@ -172,7 +172,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
         </p>
       )}
 
-      <div className="flex flex-wrap justify-center gap-14 text-slate-400">
+      <div className="flex flex-wrap justify-center gap-14 text-slate-600">
         <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em]">
           <Lock size={14} /> {t('pricing.stripeVerified')}
         </div>

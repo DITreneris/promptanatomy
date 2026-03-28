@@ -88,6 +88,23 @@ class AccessQuery(BaseModel):
     email: EmailStr
 
 
+def _checkout_session_customer_email(session) -> str | None:
+    """Stripe Checkout.Session may expose customer_email or customer_details.email."""
+    raw = session.get("customer_email")
+    if raw:
+        s = str(raw).strip()
+        if s:
+            return s
+    details = session.get("customer_details")
+    if not details:
+        return None
+    email = details.get("email") if isinstance(details, dict) else getattr(details, "email", None)
+    if not email:
+        return None
+    s = str(email).strip()
+    return s or None
+
+
 def _build_magic_link_token(access_tier: int, expires: int, secret: str) -> str:
     """Build HMAC-SHA256 token (base64url) for payload access_tier:expires."""
     payload = f"{access_tier}:{expires}"
@@ -140,7 +157,11 @@ async def success_redirect(request: Request, session_id: str = ""):
     token = _build_magic_link_token(access_tier, expires, secret)
     base_url = settings.training_redirect_base.rstrip("/")
     redirect_url = f"{base_url}/?access_tier={access_tier}&expires={expires}&token={token}"
-    return {"redirect_url": redirect_url}
+    out: dict = {"redirect_url": redirect_url}
+    ce = _checkout_session_customer_email(session)
+    if ce:
+        out["customer_email"] = ce
+    return out
 
 
 @app.get("/api/access")

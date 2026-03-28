@@ -114,10 +114,10 @@ export default function Hero({ onCta }) {
                 <div className="w-3 h-3 rounded-full bg-emerald-500/80"></div>
               </div>
               <div className="flex items-center gap-2 min-w-0">
-                <div className="px-2 py-1 rounded-sm bg-white/5 border border-white/10 text-xs text-slate-500 font-black uppercase tracking-widest flex items-center gap-1.5 shrink-0">
-                  <Activity size={10} className="text-emerald-500" /> {t('hero.liveFeed')}
+                <div className="px-2 py-1 rounded-sm bg-white/5 border border-white/10 text-xs text-slate-300 font-black uppercase tracking-widest flex items-center gap-1.5 shrink-0">
+                  <Activity size={10} className="text-emerald-400" aria-hidden /> {t('hero.liveFeed')}
                 </div>
-                <div className="px-2 py-1 rounded-sm bg-white/5 border border-white/10 text-xs text-slate-500 font-bold uppercase tracking-widest min-w-0 wrap-break-word">{SCRIPT_NAME}</div>
+                <div className="px-2 py-1 rounded-sm bg-white/5 border border-white/10 text-xs text-slate-300 font-bold uppercase tracking-widest min-w-0 wrap-break-word">{SCRIPT_NAME}</div>
               </div>
             </div>
 
@@ -126,10 +126,10 @@ export default function Hero({ onCta }) {
                 className="group/line cursor-default transition-all hover:translate-x-1"
                 style={{ opacity: lineVisible(0) ? 1 : 0, transform: lineVisible(0) ? 'none' : 'translateY(8px)', transition: 'opacity 0.3s ease-out, transform 0.3s ease-out' }}
               >
-                <div className="text-sm sm:text-xs text-slate-600 mb-1 font-black tracking-[0.2em]">{t('hero.codeLine1')}</div>
+                <div className="text-sm sm:text-xs text-slate-400 mb-1 font-black tracking-[0.2em]">{t('hero.codeLine1')}</div>
                 <div className="text-sm border-l-2 border-brand-accent/50 group-hover/line:border-brand-accent transition-colors duration-200 pl-5 py-1 wrap-break-word min-w-0">
                   <span className="text-brand-accent font-black">{t('hero.codeRole')}</span>
-                  <span className="text-slate-300 italic opacity-80 group-hover/line:opacity-100 wrap-break-word">
+                  <span className="text-slate-200 italic wrap-break-word">
                     {displayed[0] && <>&quot;{displayed[0]}&quot;</>}
                     {phase === 1 && <span className="animate-blink-caret pl-px">&nbsp;</span>}
                   </span>
@@ -139,10 +139,10 @@ export default function Hero({ onCta }) {
                 className="group/line cursor-default transition-all hover:translate-x-1"
                 style={{ opacity: lineVisible(1) ? 1 : 0, transform: lineVisible(1) ? 'none' : 'translateY(8px)', transition: 'opacity 0.3s ease-out, transform 0.3s ease-out' }}
               >
-                <div className="text-sm sm:text-xs text-slate-600 mb-1 font-black tracking-[0.2em]">{t('hero.codeLine2')}</div>
+                <div className="text-sm sm:text-xs text-slate-400 mb-1 font-black tracking-[0.2em]">{t('hero.codeLine2')}</div>
                 <div className="text-sm border-l-2 border-indigo-500/50 group-hover/line:border-indigo-500 transition-colors pl-5 py-1 wrap-break-word min-w-0">
-                  <span className="text-indigo-400 font-black">{t('hero.codeContext')}</span>
-                  <span className="text-slate-300 italic opacity-80 group-hover/line:opacity-100 wrap-break-word">
+                  <span className="text-indigo-300 font-black">{t('hero.codeContext')}</span>
+                  <span className="text-slate-200 italic wrap-break-word">
                     {displayed[1] && <>&quot;{displayed[1]}&quot;</>}
                     {phase === 2 && <span className="animate-blink-caret pl-px">&nbsp;</span>}
                   </span>
@@ -152,10 +152,10 @@ export default function Hero({ onCta }) {
                 className="group/line cursor-default transition-all hover:translate-x-1"
                 style={{ opacity: lineVisible(2) ? 1 : 0, transform: lineVisible(2) ? 'none' : 'translateY(8px)', transition: 'opacity 0.3s ease-out, transform 0.3s ease-out' }}
               >
-                <div className="text-sm sm:text-xs text-slate-600 mb-1 font-black tracking-[0.2em]">{t('hero.codeLine3')}</div>
+                <div className="text-sm sm:text-xs text-slate-400 mb-1 font-black tracking-[0.2em]">{t('hero.codeLine3')}</div>
                 <div className="text-sm border-l-2 border-emerald-500/50 group-hover/line:border-emerald-500 transition-colors pl-5 py-1 wrap-break-word min-w-0">
-                  <span className="text-emerald-400 font-black">{t('hero.codeSchema')}</span>
-                  <span className="text-slate-300 italic opacity-80 group-hover/line:opacity-100 wrap-break-word">
+                  <span className="text-emerald-300 font-black">{t('hero.codeSchema')}</span>
+                  <span className="text-slate-200 italic wrap-break-word">
                     {displayed[2] && <>&quot;{displayed[2]}&quot;</>}
                     {phase === 3 && <span className="animate-blink-caret pl-px">&nbsp;</span>}
                   </span>
@@ -166,7 +166,7 @@ export default function Hero({ onCta }) {
                 style={{ opacity: phase >= 4 ? 1 : 0, transition: 'opacity 0.5s ease-out' }}
               >
                 <div className="w-2 h-2 rounded-full bg-brand-accent animate-ping"></div>
-                <span className="text-xs font-black tracking-[0.2em] uppercase opacity-70">
+                <span className="text-xs font-black tracking-[0.2em] uppercase text-slate-200">
                   {t('hero.systemInit')}<span className="animate-pulse">...</span>
                 </span>
               </div>

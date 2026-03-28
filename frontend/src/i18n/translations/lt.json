@@ -175,7 +175,10 @@
     "forTeamsTitle": "Komandoms ir organizacijoms",
     "forTeamsBody": "Pilotas 399 €, 15 min demo – parašykite mums.",
     "forTeamsCta": "Užsakyti 15 min demo",
-    "forTeamsMailSubject": "Pilot 399€ / 15 min demo"
+    "forTeamsMailSubject": "Pilot 399€ / 15 min demo",
+    "accessStepsHint": "1. Įvesk el. paštą · 2. Paspausk „Tikrinti“ · 3. „Eiti į mokymus“",
+    "accessStoragePrivacy": "Šiame naršyklėje el. paštas gali būti išsaugotas tik tam, kad nereikėtų įvedinėti jo kaskart (tai ne prisijungimo paskyra).",
+    "clearStoredEmail": "Nebeatsiminti el. pašto šiame įrenginyje"
   },
   "faq": {
     "title": "Dažniausiai užduodami klausimai",
