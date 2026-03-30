@@ -28,7 +28,7 @@
 | LT/EN perjungiklis | **OK** | `aria-pressed`, `aria-label`; LocaleContext. |
 | CTA scroll į #pricing | **OK** | `scrollToPricing`, smooth scroll. |
 | Skip to content | **OK** | Focus – atsiranda, `#main-content`. |
-| Mobilus meniu (hamburgeris, drawer) | **OK** | body overflow, aria-expanded, aria-controls (docs/audit-mobile). |
+| Mobilus meniu (hamburgeris, drawer) | **OK** | body overflow, aria-expanded, aria-controls (žr. archyvo [audit-mobile-ux-user-journey.md](audit-mobile-ux-user-journey.md)). |
 | Focus trap mobilaus meniu | **OK** | Įgyvendinta 2026-03-14: fokusas drawer viduje atidaryme, Tab ciklas, Escape uždaro, fokusas grąžinamas į hamburgerį (audit-mobile). |
 
 ---
@@ -111,7 +111,7 @@
 - [copy-audit-lp.md](copy-audit-lp.md) – 6 blokų kartojimai, esmė.  
 - [micro-ui-ux-audit.md](micro-ui-ux-audit.md) – šriftai, spalvos, micro copy.  
 - [audit-mobile-ux-user-journey.md](audit-mobile-ux-user-journey.md) – mobilus meniu, focus trap.  
-- [golden-legacy-standard.md](golden-legacy-standard.md) – LP struktūra, regresija.  
+- [golden-legacy-standard.md](../../golden-legacy-standard.md) – LP struktūra, regresija.  
 - [UI_UX_SEO_MOSCOW_PLAN.md](UI_UX_SEO_MOSCOW_PLAN.md) – Hero aiškumas, SEO.
 
-**Indeksas:** Šis dokumentas įtrauktas į [docs/INDEX.md](INDEX.md) skyrių „Auditas ir kalbos“.
+**Indeksas:** Šis dokumentas įtrauktas į [INDEX.md](../../INDEX.md) (archyvas).

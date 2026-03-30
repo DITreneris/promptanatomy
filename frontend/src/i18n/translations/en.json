@@ -152,7 +152,7 @@
       "6-block system",
       "Hands-on exercises",
       "Certificate (from 70% score)",
-      "Community (WhatsApp)",
+      "Public Telegram group",
       "Lifetime access"
     ],
     "stripeVerified": "Stripe Verified",
@@ -183,11 +183,11 @@
   "faq": {
     "title": "Frequently asked questions",
     "items": [
-      { "q": "What do I get when I pay?", "a": "Access to the modules in your selected plan, the training content, hands-on exercises and the prompt library. Starter includes modules 1–3, Core includes 1–6. Complete and pass (from 70%) to receive the certificate. Support is provided in the WhatsApp community. Lifetime access." },
+      { "q": "What do I get when I pay?", "a": "Access to the modules in your selected plan, the training content, hands-on exercises and the prompt library. Starter includes modules 1–3, Core includes 1–6. Complete and pass (from 70%) to receive the certificate. Support is provided in our public Telegram group. Lifetime access." },
       { "q": "How do I access the training?", "a": "No password. Enter your payment email → Check → Go to training. Same steps anytime from this site, Pricing section." },
-      { "q": "What's included in the plan?", "a": "Modules by plan (Starter: 1–3, Core: 1–6), the prompt library, the 6-block methodology, hands-on exercises, a certificate from 70% and the WhatsApp community. Core additionally includes context engineering." },
+      { "q": "What's included in the plan?", "a": "Modules by plan (Starter: 1–3, Core: 1–6), the prompt library, the 6-block methodology, hands-on exercises, a certificate from 70% and the public Telegram group. Core additionally includes context engineering." },
       { "q": "Is my data secure?", "a": "Yes. We store only the purchase ID; payments via Stripe. Data handled per EU and US security practices." },
-      { "q": "Where do I get support?", "a": "Support in the WhatsApp group (link in the footer and after payment)." },
+      { "q": "Where do I get support?", "a": "Support in the public Telegram group (link in the footer and after payment)." },
       { "q": "Is access temporary?", "a": "No. One-time payment – lifetime access." },
       { "q": "What's the difference between Starter and Core?", "a": "Starter: modules 1–3. Core: modules 1–6 (full course). If you start with Starter, you can upgrade to Core later." },
       { "q": "Can I get a refund?", "a": "Refund terms – contact us (info@promptanatomy.app)." },
@@ -204,7 +204,7 @@
     "training": "Training",
     "pricing": "Pricing",
     "faq": "FAQ",
-    "support": "Support (WhatsApp)",
+    "support": "Public group (Telegram)",
     "biblioteka": "Library (AI automation)",
     "marketingas": "Content system (marketing)",
     "personalas": "Recruitment system (HR)",
@@ -241,7 +241,7 @@
     "termsVatTitle": "Price and VAT",
     "termsVat": "VAT is included in the price.",
     "termsSupportTitle": "Support",
-    "termsSupport": "In case of payment issues we provide full support: access to content via GitHub, help via WhatsApp."
+    "termsSupport": "In case of payment issues we provide full support: access to content via GitHub, help via our public Telegram group."
   },
   "success": {
     "breadcrumb": "Payment successful",

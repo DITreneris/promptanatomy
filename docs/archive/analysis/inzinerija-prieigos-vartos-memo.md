@@ -40,7 +40,7 @@ Mes jau turime endpointą **`GET /api/verify-access`**, kuris tikrina magic link
 - **200** – prieiga validi, atsakyme `{ "access_tier": 3 }` arba `{ "access_tier": 6 }`. Tada išsaugoti į `localStorage` ir atrakinti atitinkamus modulius.
 - **400/401** – netinkami parametrai arba pasibaigęs linkas. Nerodyti turinio; rodyti gate.
 
-Detalūs parametrų ir HMAC formatas – žr. [mokymu_komanda_memo.md](../mokymu_komanda_memo.md).
+Detalūs parametrų ir HMAC formatas – žr. [mokymu_komanda_memo.md](../../mokymu_komanda_memo.md).
 
 ### 3.2 Pirmas apsilankymas (be parametrų)
 
@@ -94,4 +94,4 @@ Kai **`maxAccessible === 0`** (arba panašus jūsų kintamasis – prieiga nepat
 
 **Klausimai:** kreiptis į pagrindinės platformos atsakingą asmenį.
 
-**Nuorodos:** Magic link formato ir HMAC spec – [mokymu_komanda_memo.md](../mokymu_komanda_memo.md). Analizė, kodėl turinys dabar atviras – [docs/anatomija-paid-content-open-analysis.md](anatomija-paid-content-open-analysis.md).
+**Nuorodos:** Magic link formato ir HMAC spec – [mokymu_komanda_memo.md](../../mokymu_komanda_memo.md). Analizė, kodėl turinys dabar atviras – [anatomija-paid-content-open-analysis.md](anatomija-paid-content-open-analysis.md).
