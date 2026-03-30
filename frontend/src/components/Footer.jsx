@@ -45,7 +45,7 @@ export default function Footer() {
             <h5 className="font-black uppercase text-xs tracking-[0.45em] text-slate-600 mb-12">{t('footer.network')}</h5>
             <ul className="space-y-6 text-sm font-bold text-slate-600 uppercase tracking-widest">
               <li>
-                <a href="https://chat.whatsapp.com/GqjIo2lB4vG6Yps8kanyxA" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">
+                <a href="https://t.me/prompt_anatomy" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">
                   {t('footer.support')}
                 </a>
               </li>

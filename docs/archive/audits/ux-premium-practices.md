@@ -48,6 +48,6 @@ Geriausių praktikų (GitHub, Vercel, Linear, Stripe stilius) pritaikymas projek
 
 ## Nuorodos
 
-- [docs/INDEX.md](INDEX.md) – dokumentų indeksas
-- [docs/audit-mobile-ux-user-journey.md](audit-mobile-ux-user-journey.md) – mobilus UX auditas
+- [INDEX.md](../../INDEX.md) – dokumentų indeksas
+- [audit-mobile-ux-user-journey.md](audit-mobile-ux-user-journey.md) – mobilus UX auditas
 - Tailwind theme: `frontend/tailwind.config.js` (colors, boxShadow)

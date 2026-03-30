@@ -49,11 +49,11 @@
 
 ## 3. Production checklist (santrauka)
 
-- [ ] **Env:** Backend/Vercel – `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `FRONTEND_ORIGIN` (pvz. `https://www.promptanatomy.app`), Supabase (`SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`). Žr. [deploy-and-webhook.md](deploy-and-webhook.md) § 2.
+- [ ] **Env:** Backend/Vercel – `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `FRONTEND_ORIGIN` (pvz. `https://www.promptanatomy.app`), Supabase (`SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`). Žr. [deploy-and-webhook.md](../../deploy-and-webhook.md) § 2.
 - [ ] **ALLOW_WEBHOOK_WITHOUT_SECRET** – produkcijoje **ne** naudoti.
 - [ ] **Stripe webhook URL** – nukreipti į deployintą backend arba Vercel `https://<domain>/api/stripe-webhook`, event `checkout.session.completed`.
 - [ ] **HTTPS** – užtikrintas hostingo (Vercel) pusėje.
-- [ ] Prieš release: `pytest` (backend) + `npm run build` (frontend); pagal poreikį – rankinis smoke pagal [golden-legacy-standard.md](golden-legacy-standard.md).
+- [ ] Prieš release: `pytest` (backend) + `npm run build` (frontend); pagal poreikį – rankinis smoke pagal [golden-legacy-standard.md](../../golden-legacy-standard.md).
 
 ---
 
@@ -67,6 +67,6 @@
 
 ## 5. Nuorodos
 
-- [docs/security.md](security.md) – saugumo praktikos
-- [docs/deploy-and-webhook.md](deploy-and-webhook.md) – deploy ir webhook troubleshooting
-- [docs/golden-legacy-standard.md](golden-legacy-standard.md) – regresijos apsauga
+- [security.md](../../security.md) – saugumo praktikos
+- [deploy-and-webhook.md](../../deploy-and-webhook.md) – deploy ir webhook troubleshooting
+- [golden-legacy-standard.md](../../golden-legacy-standard.md) – regresijos apsauga

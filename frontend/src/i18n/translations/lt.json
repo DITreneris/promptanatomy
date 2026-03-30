@@ -152,7 +152,7 @@
       "6 blokų sistema",
       "Praktinės užduotys",
       "Sertifikatas (nuo 70% įvertinimo)",
-      "Bendruomenė (WhatsApp)",
+      "Vieša Telegram grupė",
       "Lifetime prieiga"
     ],
     "stripeVerified": "Stripe Verified",
@@ -183,11 +183,11 @@
   "faq": {
     "title": "Dažniausiai užduodami klausimai",
     "items": [
-      { "q": "Ką gaunu sumokėjęs?", "a": "Prieigą prie pasirinkto plano modulių, mokymų turinio, praktinių užduočių ir promptų bibliotekos. Starter apima 1–3 modulius, Core – 1–6. Užbaigę ir išlaikę (nuo 70%) gaunate sertifikatą. Palaikymas – WhatsApp bendruomenėje. Prieiga suteikiama visam laikui." },
+      { "q": "Ką gaunu sumokėjęs?", "a": "Prieigą prie pasirinkto plano modulių, mokymų turinio, praktinių užduočių ir promptų bibliotekos. Starter apima 1–3 modulius, Core – 1–6. Užbaigę ir išlaikę (nuo 70%) gaunate sertifikatą. Palaikymas – viešoje Telegram grupėje. Prieiga suteikiama visam laikui." },
       { "q": "Kaip pateksiu į mokymus?", "a": "Slaptažodžio nėra. Įvesk el. paštą (su kuriuo mokėjai) → Patikrinti → Eiti į mokymus. Tą patį gali daryti bet kada iš šio puslapio, skyriuje Kainodara." },
-      { "q": "Kas įeina į planą?", "a": "Moduliai pagal planą (Starter: 1–3, Core: 1–6), promptų biblioteka, 6 blokų metodika, praktinės užduotys, sertifikatas nuo 70% ir WhatsApp bendruomenė. Core papildomai įtraukia konteksto inžineriją." },
+      { "q": "Kas įeina į planą?", "a": "Moduliai pagal planą (Starter: 1–3, Core: 1–6), promptų biblioteka, 6 blokų metodika, praktinės užduotys, sertifikatas nuo 70% ir vieša Telegram grupė. Core papildomai įtraukia konteksto inžineriją." },
       { "q": "Ar mano duomenys saugūs?", "a": "Taip. Saugomas tik įsigijimo ID; mokėjimai per Stripe. Duomenys tvarkomi pagal ES ir JAV saugumo praktikas." },
-      { "q": "Kur gauti pagalbos?", "a": "Palaikymas – WhatsApp grupėje (nuoroda po apačioje ir po apmokėjimo)." },
+      { "q": "Kur gauti pagalbos?", "a": "Palaikymas – viešoje Telegram grupėje (nuoroda po apačioje ir po apmokėjimo)." },
       { "q": "Ar prieiga laikina?", "a": "Ne. Vienkartinis mokėjimas – prieiga visam laikui." },
       { "q": "Kuo skiriasi Starter ir Core?", "a": "Starter: moduliai 1–3. Core: moduliai 1–6 (pilnas kursas). Jei pradėsi nuo Starter, vėliau galėsi atnaujinti į Core." },
       { "q": "Ar galima grąžinti pinigus?", "a": "Grąžinimo sąlygos – rašyk mums (info@promptanatomy.app)." },
@@ -204,7 +204,7 @@
     "training": "Mokymai",
     "pricing": "Kainodara",
     "faq": "DUK",
-    "support": "Pagalba (WhatsApp)",
+    "support": "Vieša grupė (Telegram)",
     "biblioteka": "Biblioteka (DI automatizacija)",
     "marketingas": "Turinio DI sistema (rinkodara)",
     "personalas": "Atrankos sistema (personalas)",
@@ -241,7 +241,7 @@
     "termsVatTitle": "Kaina ir PVM",
     "termsVat": "PVM įskaičiuotas į kainą.",
     "termsSupportTitle": "Palaikymas",
-    "termsSupport": "Esant mokėjimo sutrikimams – suteikiame pilną palaikymą: prieiga prie turinio per GitHub, pagalba per WhatsApp."
+    "termsSupport": "Esant mokėjimo sutrikimams – suteikiame pilną palaikymą: prieiga prie turinio per GitHub, pagalba per viešą Telegram grupę."
   },
   "success": {
     "breadcrumb": "Apmokėjimas sėkmingas",

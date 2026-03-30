@@ -80,7 +80,7 @@
 - Methodology (section id metodologija).
 - Ecosystem (section id ekosistema).
 - Pricing (section id pricing, prieigos forma, 2 planai Phase 1; „Eiti į mokymus" mygtukas kviečia `/api/generate-access-link` ir nukreipia tame pačiame lange į training app su magic link – same-tab navigation reikalinga iOS/Safari, kur `window.open` po async dažnai blokuojamas).
-- Footer (brand, tagline; System: Ekosistema, Metodologija, Mokymai (`/anatomija/`, naujas tabas), Kainodara, DUK (#faq); Network: Support/WhatsApp, LinkedIn, X (Twitter); legal, copyright).
+- Footer (brand, tagline; System: Ekosistema, Metodologija, Mokymai (`/anatomija/`, naujas tabas), Kainodara, DUK (#faq); Network: vieša Telegram grupė (`t.me/prompt_anatomy`), LinkedIn, X (Twitter); legal, copyright).
 
 **i18n:** Visi raktai naudojami iš `lt.json` / `en.json`; nėra hardcoded teksto komponentuose (Hero, WhatIs, Methodology, Ecosystem, Pricing, Footer, Navbar, Success, Cancel). LT – terminas DI; EN – AI.
 
@@ -105,7 +105,7 @@
 
 ## 4. Kas nekeičiama (golden legacy)
 
-- **React + Vite** – struktūra, routing (React Router), build pipeline. Nėra migracijos į Next.js ar SSR (pagal [UI_UX_SEO_MOSCOW_PLAN.md](UI_UX_SEO_MOSCOW_PLAN.md) WON'T).
+- **React + Vite** – struktūra, routing (React Router), build pipeline. Nėra migracijos į Next.js ar SSR (pagal [UI_UX_SEO_MOSCOW_PLAN.md](archive/audits/UI_UX_SEO_MOSCOW_PLAN.md) WON'T).
 - **Stripe flow** – create-checkout-session → Stripe Checkout → success/cancel; webhook `checkout.session.completed` → Supabase `user_access`. Nepažeisti endpointų kontraktų.
 - **Magic link flow** – `success-redirect.js` ir `generate-access-link.js` naudoja tą pačią `buildMagicLinkToken()` logiką (HMAC-SHA256, base64url, `ACCESS_TOKEN_SECRET`). `verify-access.js` tikrina tokeną. Keičiant vieno token formatą – keisti visus tris.
 - **API:** `api.js` – `getAccess`, `createCheckoutSession`, `getSuccessRedirectUrl` (grąžina `{ redirect_url, customer_email? }`), `getTrainingAccessLink`; backend atsakymų formatai (JSON su `url`, `highest_plan`, `can_upgrade_to`, `redirect_url` ir t. t.).

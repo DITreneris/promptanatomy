@@ -174,7 +174,7 @@ src/
 - **Autorius:** Tomas Staniulis
 - **GitHub:** [DITreneris](https://github.com/DITreneris)
 - **Klausimai:** Sukurkite issue GitHub repozitorijoje
-- **Bendruomenė (CTA):** [Prisijunk prie WhatsApp kanalo](https://chat.whatsapp.com/It49fzTl1n90huRCoWWkwu?mode=gi_t) – diskusijos apie promptus, atnaujimai, pasiūlymai toliau (Modulis 4 ir kt.)
+- **Bendruomenė (CTA):** [Vieša Telegram grupė](https://t.me/prompt_anatomy) – diskusijos apie promptus, atnaujimai, pasiūlymai toliau (Modulis 4 ir kt.)
 
 ---
 

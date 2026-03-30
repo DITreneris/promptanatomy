@@ -9,7 +9,7 @@ Dokumentas apjungia repo analizę, produkto aprašymą, geriausias praktikas ir 
 | Aspektas | Būsena |
 |----------|--------|
 | **Repo** | `059_home_page` – marketinginis landing (Vite+React) + backend (FastAPI) su Stripe Checkout. Vienas produktas, vienkartinis mokestis. |
-| **Produktas** | **Promptų anatomija** – interaktyvus DI mokymas: 6 moduliai, 6 blokų sistema, žodynėlis, įrankiai, apklausa, promptų biblioteka (500+), sertifikatas (nuo 70%), bendruomenė (WhatsApp). Lifetime prieiga. |
+| **Produktas** | **Promptų anatomija** – interaktyvus DI mokymas: 6 moduliai, 6 blokų sistema, žodynėlis, įrankiai, apklausa, promptų biblioteka (500+), sertifikatas (nuo 70%), vieša Telegram grupė. Lifetime prieiga. |
 | **Techninė kainodara** | Vienas `STRIPE_PRICE_ID` backend'e; vienas planas UI (Pricing.jsx). Kaina rodoma statiniu tekstu: 99€ (perbraukta 199€), „Liko 14 licencijų“. |
 
 ---

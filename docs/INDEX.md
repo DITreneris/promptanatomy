@@ -17,13 +17,10 @@
 
 ---
 
-## 2. Nuoroda (konfigūracija, saugumas, mokėjimai, SEO)
+## 2. Nuoroda (kanonas, saugumas, mokėjimai, SEO)
 
 | Dokumentas | Kelias | Paskirtis |
 |------------|--------|-----------|
-| Production readiness (analizė, bugai, checklist) | [docs/production-readiness-analysis.md](production-readiness-analysis.md) | Gili kodo bazės analizė prieš production; atlikti pataisymai ir rekomendacijos. |
-| Anatomija mokamas turinys atviras – analizė | [docs/anatomija-paid-content-open-analysis.md](anatomija-paid-content-open-analysis.md) | Kodėl /anatomija/ atviras; architektūra (gate tik kliente); galimos priežastys ir žingsniai. |
-| Inzinerija: prieigos vartos (gate) memo | [docs/inzinerija-prieigos-vartos-memo.md](inzinerija-prieigos-vartos-memo.md) | Ką inzinerija komanda turi sukonfigūruoti – gate tik be prieigos, neperrakinti mokėjusių; checklist. |
 | Saugumas | [docs/security.md](security.md) | Secrets, CORS, validacija, rate limit, headers, produkcija. |
 | Saugumo auditas (gilus) | [docs/security-audit-deep.md](security-audit-deep.md) | Architektūra, jautrūs taškai, rizikos, industrijos praktikos, MOSCOW prioritetai. |
 | Prieigos architektūra (kanonas) | [docs/access-architecture-canon.md](access-architecture-canon.md) | Viena tiesa: `user_access` po webhook; LP / magic link / antriniai keliai. |
@@ -38,6 +35,8 @@
 | Public assets (frontend) | [frontend/public/README.md](../frontend/public/README.md) | Og-image ir statiniai failai (sitemap, robots). |
 | Logo / favicon gairės | [docs/design/logo-favicon.md](design/logo-favicon.md) | Šaltinis, spalvos, dydžiai, Kiss–Marry–Kill taisyklės; generavimo scriptas. |
 
+*Istorinės analizės ir uždaryti auditai: [docs/archive/README.md](archive/README.md) (taip pat §4 žemiau).*
+
 ---
 
 ## 3. Deploy ir webhook
@@ -47,21 +46,15 @@
 | Deploy ir webhook | [docs/deploy-and-webhook.md](deploy-and-webhook.md) | Kas įdiegta (Vercel, serverless webhook), Vercel Firewall + saugos antraštės, troubleshooting (user_access tuščia), logai. |
 | Vercel DEP0169 diagnostika (`url.parse` logai) | [docs/diagnostics-dep0169-vercel.md](diagnostics-dep0169-vercel.md) | Kas tai, repo tikrinimai, `NODE_OPTIONS=--trace-deprecation` produkcijoje, tolimesni žingsniai. |
 | Test report | [docs/test_report.md](test_report.md) | SSL/TLS, LP prieigos tikrinimas (`user_access` / „No access found“), atsiliepimų fiksavimas (produkcija). |
-| Production analytics (14d benchmark) | [docs/production-analytics-14d-benchmark.md](production-analytics-14d-benchmark.md) | Post-deploy ~14 d. serverio metrikos (lankytojai, šaltiniai, puslapiai, GEO, įrenginiai, bounce, tendencijos). |
+| Production analytics (14d benchmark, archyvas) | [docs/archive/snapshots/production-analytics-14d-benchmark.md](archive/snapshots/production-analytics-14d-benchmark.md) | Post-deploy ~14 d. serverio metrikos (snapshot). |
 
 ---
 
-## 4. Auditas ir kalbos
+## 4. Archyvuoti auditai ir analizės
 
 | Dokumentas | Kelias | Paskirtis |
 |------------|--------|-----------|
-| Mobilus UI / UX auditas | [docs/audit-mobile-ux-user-journey.md](audit-mobile-ux-user-journey.md) | Mobilus meniu, vartotojo kelionė, LT/EN. |
-| Kalbos auditas (EN/LT) | [docs/audit-language-en-lt.md](audit-language-en-lt.md) | Gramatika, stilius, vertimai. |
-| LP copy auditas | [docs/copy-audit-lp.md](copy-audit-lp.md) | Kartojimai, 6 blokų, esmė (brand + rezultatas); rekomendacijos. |
-| Home page OK/FAIL auditas | [docs/home-page-ok-fail-audit.md](home-page-ok-fail-audit.md) | Gili LP analizė: struktūra, nav, kopija, UI/UX, techninis; prioritetai. |
-| Premium UI/UX (MUST-SHOULD-WANT) | [docs/ux-premium-practices.md](ux-premium-practices.md) | Spalvos, šešėliai, micro-interactions, geriausios praktikos. |
-| UI/UX/SEO MOSCOW planas | [docs/UI_UX_SEO_MOSCOW_PLAN.md](UI_UX_SEO_MOSCOW_PLAN.md) | Hero, konversija, SEO, turinys – ką keisti (tik front-end/turinys), ko neliesti. |
-| Micro UI / UX / copy auditas | [docs/micro-ui-ux-audit.md](micro-ui-ux-audit.md) | Šriftai, dydžiai, spalvos, tarpai, mikro kopija – ką patobulinti. |
+| Archyvo katalogas ir failų sąrašas | [docs/archive/README.md](archive/README.md) | Uždaryti LP/UI/SEO auditai, prieš-produkcinės analizės, metrikų snapshot'ai. |
 
 ---
 
@@ -106,7 +99,7 @@ Agentai ir `.cursor/rules/` remiasi **šiuo indeksu** (docs/INDEX.md) – dokume
 
 | Dokumentas | Kelias | Paskirtis |
 |------------|--------|-----------|
-| Archyvo įvadas | [docs/archive/README.md](archive/README.md) | Istorinė dokumentacija. |
+| Archyvo įvadas ir sąrašas | [docs/archive/README.md](archive/README.md) | Istorinė dokumentacija; `analysis/`, `audits/`, `snapshots/`. |
 | Kodo bazės analizė (istorinė) | [docs/archive/ANALIZE_KODO_BAZE.md](archive/ANALIZE_KODO_BAZE.md) | Analizė iš laikotarpio, kai buvo tik react.txt + SOT. |
 
 ---

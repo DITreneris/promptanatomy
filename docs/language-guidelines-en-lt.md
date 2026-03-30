@@ -40,4 +40,4 @@ Trumpas vadovas rašant ir vertinant vartotojui matomą tekstą (LP, puslapiai, 
 - Vertimai: [frontend/src/i18n/translations/lt.json](../frontend/src/i18n/translations/lt.json), [en.json](../frontend/src/i18n/translations/en.json).
 - Naujas tekstas: tas pats raktas abiejuose failuose, vertimas pagal šias gaires.
 - Raktų struktūra: `meta.*`, `nav.*`, `hero.*`, `methodology.*`, `ecosystem.*`, `pricing.*`, `footer.*`, `success.*`, `cancel.*`, `common.*`, `errors.*` (žr. [documentation.md](process/documentation.md)).
-- Gramatika ir stilius: remtis [audit-language-en-lt.md](audit-language-en-lt.md).
+- Gramatika ir stilius: remtis [audit-language-en-lt.md](archive/audits/audit-language-en-lt.md).

@@ -58,7 +58,7 @@ Ankstesnės rekomendacijos **jau įgyvendintos** (žr. skyrių 8): hero.members,
 - **LT:** „per 24 val.“ – sutrumpinimas priimtinas UI kontekste; jei norima formaliau – „per 24 valandas“.
 - **EN:** „24 hours“ – pilna forma, aišku.
 
-### 3.4 AI / DI nuoseklumas (pagal [language-guidelines-en-lt.md](language-guidelines-en-lt.md))
+### 3.4 AI / DI nuoseklumas (pagal [language-guidelines-en-lt.md](../../language-guidelines-en-lt.md))
 
 | Kalba | Terminas | Paskirtis |
 |-------|----------|-----------|
@@ -111,8 +111,8 @@ Audito metu patikrinti, kad LT vertime nėra likusių „AI“ ten, kur kalbama 
 
 ## 6. Nuorodos į failus
 
-- Vertimai: [frontend/src/i18n/translations/lt.json](../frontend/src/i18n/translations/lt.json), [frontend/src/i18n/translations/en.json](../frontend/src/i18n/translations/en.json).
-- Raktų naudojimas: `t('key')` per [LocaleContext.jsx](../frontend/src/i18n/LocaleContext.jsx); komponentai – [Navbar](../frontend/src/components/Navbar.jsx), [Hero](../frontend/src/components/Hero.jsx), [WhatIsPromptAnatomy](../frontend/src/components/WhatIsPromptAnatomy.jsx), [Methodology](../frontend/src/components/Methodology.jsx), [Ecosystem](../frontend/src/components/Ecosystem.jsx), [Pricing](../frontend/src/components/Pricing.jsx), [Footer](../frontend/src/components/Footer.jsx), puslapiai Success/Cancel.
+- Vertimai: [frontend/src/i18n/translations/lt.json](../../../frontend/src/i18n/translations/lt.json), [frontend/src/i18n/translations/en.json](../../../frontend/src/i18n/translations/en.json).
+- Raktų naudojimas: `t('key')` per [LocaleContext.jsx](../../../frontend/src/i18n/LocaleContext.jsx); komponentai – [Navbar](../../../frontend/src/components/Navbar.jsx), [Hero](../../../frontend/src/components/Hero.jsx), [WhatIsPromptAnatomy](../../../frontend/src/components/WhatIsPromptAnatomy.jsx), [Methodology](../../../frontend/src/components/Methodology.jsx), [Ecosystem](../../../frontend/src/components/Ecosystem.jsx), [Pricing](../../../frontend/src/components/Pricing.jsx), [Footer](../../../frontend/src/components/Footer.jsx), puslapiai Success/Cancel.
 
 ---
 

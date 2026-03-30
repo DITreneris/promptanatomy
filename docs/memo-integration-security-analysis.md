@@ -16,7 +16,7 @@
 | Parašo tikrinimas (timing-safe) | ✅ Stripe SDK viduje naudoja saugų palyginimą | Industrijos standartas |
 | Fulfillment pagal webhook, ne tik redirect | ✅ Webhook upsertina `user_access`; success page – tik UI | Stripe: „webhooks as primary fulfillment“ |
 | Idempotentiškumas | ✅ Supabase upsert pagal email – kelis kartus saugu | Stripe docs |
-| Jautrios klaidos neatskleidžiamos | ✅ 400/503 grąžina `detail`, ne `err.message` | production-readiness-analysis.md |
+| Jautrios klaidos neatskleidžiamos | ✅ 400/503 grąžina `detail`, ne `err.message` | [archive/analysis/production-readiness-analysis.md](archive/analysis/production-readiness-analysis.md) |
 
 **Išvada:** Stripe srautas atitinka geriausias praktikas. Nereikia keisti.
 
