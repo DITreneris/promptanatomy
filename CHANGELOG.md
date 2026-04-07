@@ -18,6 +18,7 @@ Visi pakeitimai šiame faile dokumentuojami pagal [Keep a Changelog](https://kee
 - **Backend priklausomybės (Dependabot, CI patvirtinta PR šakose):** [backend/requirements.txt](backend/requirements.txt) — `stripe` **11.1.0 → 14.4.1** (major: Stripe Python SDK; checkout session + webhook naudojimas lieka tas pats paviršiuje, bet verta peržvelgti [stripe-python migration](https://github.com/stripe/stripe-python/wiki) ir Stripe Dashboard API versiją); `python-dotenv` **1.0.1 → 1.2.2** (patch/minor, `.env` įkėlimas). *Pastaba:* atskiri Dependabot atnaujinimai gali siūlyti ir `uvicorn[standard]` — įrašykite tikslią versiją čia ir changelog’e, kai sujungsite tą PR.
 
 ### Ištaisyta
+- **Vercel Web Analytics (LP maršrutai, 2026-04-07):** [App.jsx](frontend/src/App.jsx) – `useLocation()` + `<Analytics route={pathname} path={pathname} />`, kad kiekviena React Router navigacija (`/`, `/lt`, `/en`, `/success`, `/cancel`, `/privacy`, `/terms`) siųstų `pageview`. Anksčiau – tik `<Analytics />` su automatiniu `history` stebėjimu įterptame skripte; su **React 19** / **Vite 8** dalis SPA perėjimų galėjo nebepatekti į Vercel „Pages“. Dabar naudojamas SDK režimas: `disableAutoTrack` + rankinis `pageview` pagal `pathname`. *Po deploy:* incognito testas (keli maršrutai) ir po 10–30 min patikra Dashboard → Analytics → Pages.
 - **GitHub CI / pytest kolekcija:** [backend/requirements.txt](backend/requirements.txt) — pridėtas `email-validator>=2.0.0` (Pydantic `EmailStr` importuojant `main.py`; GitHub Actions švariame venv buvo `ModuleNotFoundError`).
 
 ## [1.3.1] - 2026-03-24
