@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { ShieldCheck } from 'lucide-react'
+import { capturePosthogEvent } from '../analytics/posthog'
 import { useLocale } from '../i18n/LocaleContext'
 import { getSuccessRedirectUrl } from '../api'
 import { LP_ACCESS_EMAIL_STORAGE_KEY } from '../config'
@@ -14,10 +15,15 @@ export default function SuccessPage() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
+    if (sessionId) capturePosthogEvent('checkout_success_landed', { has_session: true })
+  }, [sessionId])
+
+  useEffect(() => {
     if (!sessionId) return
     getSuccessRedirectUrl(sessionId)
       .then(({ redirect_url: url, customer_email: customerEmail }) => {
         setRedirectUrl(url)
+        if (url) capturePosthogEvent('checkout_success_magic_link_ready')
         setError(null)
         if (customerEmail) {
           try {

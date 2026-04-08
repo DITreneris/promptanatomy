@@ -94,6 +94,8 @@ Frontend: `http://localhost:5173`
 | `VITE_API_URL` | Backend / API base URL. Lokaliai default `http://localhost:8000`. Produkcijoje (Vercel) jei nenustatyta – naudojamas `window.location.origin`, t. y. kvietimai eina į tą patį domeną (`/api/access`, `/api/stripe-webhook`). |
 | `VITE_GLOSSARY_URL` | (Optional) Training app žodyno nuoroda; jei nustatyta, meniu „Repo“ atidaro šią nuorodą naujame skirtuke |
 | `VITE_X_PIXEL_ID` | (Optional) X (Twitter) conversion tracking pixel ID; jei nustatyta, base kodas įkeliamas visuose puslapiuose (Events Manager → Website). |
+| `VITE_POSTHOG_KEY` | (Optional) PostHog Project API Key – produktinė analitika ir funnel’ai; jei nenurodyta, PostHog neįjungiamas. |
+| `VITE_POSTHOG_HOST` | (Optional) PostHog ingest URL; default `https://us.i.posthog.com`. EU projektams: `https://eu.i.posthog.com`. |
 
 ## Daugiakalbis režimas (LT/EN)
 

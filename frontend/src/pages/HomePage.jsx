@@ -8,6 +8,7 @@ import Ecosystem from '../components/Ecosystem'
 import Pricing from '../components/Pricing'
 import Faq from '../components/Faq'
 import Footer from '../components/Footer'
+import { capturePosthogEvent } from '../analytics/posthog'
 import { createCheckoutSession, getAccess, getTrainingAccessLink } from '../api'
 import { LP_ACCESS_EMAIL_STORAGE_KEY } from '../config'
 import { useLocale } from '../i18n/LocaleContext'
@@ -109,6 +110,7 @@ export default function HomePage({ forceLocale }) {
     setLoading(true)
     try {
       const url = await createCheckoutSession(planId, email || customerEmail || undefined)
+      capturePosthogEvent('checkout_stripe_redirect', { plan_id: String(planId) })
       window.location.href = url
       setTimeout(() => setLoading(false), 10_000)
     } catch (e) {
