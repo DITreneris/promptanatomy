@@ -11,6 +11,10 @@ export const API_URL = getApiUrl()
 export const GLOSSARY_URL = import.meta.env.VITE_GLOSSARY_URL || ''
 /** X (Twitter) conversion tracking pixel ID. When set, base code is loaded on all pages. */
 export const X_PIXEL_ID = import.meta.env.VITE_X_PIXEL_ID || ''
+/** PostHog project API key (Project API Key). When unset, PostHog is disabled. */
+export const POSTHOG_KEY = import.meta.env.VITE_POSTHOG_KEY || ''
+/** PostHog ingest host. EU projects: https://eu.i.posthog.com */
+export const POSTHOG_HOST = import.meta.env.VITE_POSTHOG_HOST || 'https://us.i.posthog.com'
 /** Base URL for SEO (canonical, og:url, hreflang). */
 export const SITE_URL = import.meta.env.VITE_SITE_URL || 'https://www.promptanatomy.app'
 

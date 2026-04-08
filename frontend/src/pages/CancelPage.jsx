@@ -1,9 +1,15 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
+import { capturePosthogEvent } from '../analytics/posthog'
 import { useLocale } from '../i18n/LocaleContext'
 
 export default function CancelPage() {
   const { t } = useLocale()
+
+  useEffect(() => {
+    capturePosthogEvent('checkout_cancel_viewed')
+  }, [])
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-6 antialiased overflow-hidden relative">

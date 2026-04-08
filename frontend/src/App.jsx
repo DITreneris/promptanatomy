@@ -1,5 +1,7 @@
+import { useEffect } from 'react'
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { Analytics } from '@vercel/analytics/react'
+import { capturePosthogPageview, isPosthogEnabled } from './analytics/posthog'
 import SeoHead from './components/SeoHead'
 import XPixel from './components/XPixel'
 import HomePage from './pages/HomePage'
@@ -17,6 +19,11 @@ import TermsPage from './pages/TermsPage'
 export default function App() {
   const location = useLocation()
   const pathname = location.pathname
+
+  useEffect(() => {
+    if (!isPosthogEnabled()) return
+    capturePosthogPageview()
+  }, [pathname, location.search])
 
   return (
     <>
