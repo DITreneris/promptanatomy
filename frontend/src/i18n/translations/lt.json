@@ -36,6 +36,9 @@
     "brandTagline": "DI PRAKTINĖ SISTEMA",
     "version": "v1.3"
   },
+  "trustedBy": {
+    "title": "Mūsų klientai"
+  },
   "hero": {
     "systemStatus": "Sistemos būsena: stabili",
     "headline1": "Nustok kalbėti.",

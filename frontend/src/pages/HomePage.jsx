@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
+import TrustedBy from '../components/TrustedBy'
 import WhatIsPromptAnatomy from '../components/WhatIsPromptAnatomy'
 import Methodology from '../components/Methodology'
 import Ecosystem from '../components/Ecosystem'
@@ -154,6 +155,7 @@ export default function HomePage({ forceLocale }) {
       <Navbar onCtaClick={scrollToPricing} hasAccess={access?.highest_plan > 0} />
       <main id="main-content" tabIndex={-1}>
         <Hero onCta={scrollToPricing} />
+        <TrustedBy />
         <div className="h-px bg-linear-to-r from-transparent via-brand-accent/30 to-transparent" aria-hidden />
         <WhatIsPromptAnatomy />
         <Methodology />
