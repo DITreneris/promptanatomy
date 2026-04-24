@@ -14,6 +14,7 @@ __pycache__/
 .pytest_cache/
 .coverage
 htmlcov/
+.tmp_stripe_test/
 
 # Node
 node_modules/
