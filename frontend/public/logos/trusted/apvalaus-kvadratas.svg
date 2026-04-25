@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" role="img" aria-label="Apvalaus kvadrato mokykla">
-  <title>Apvalaus kvadrato mokykla</title>
-  <desc>Placeholder wordmark; replace when brand asset arrives.</desc>
-  <g fill="#334155" font-family="'Inter','Segoe UI',system-ui,sans-serif">
-    <rect x="14" y="18" width="24" height="24" rx="6" fill="none" stroke="#334155" stroke-width="2.5"/>
-    <text x="48" y="28" font-size="13" font-weight="700" letter-spacing="0.5">APVALAUS</text>
-    <text x="48" y="44" font-size="13" font-weight="700" letter-spacing="0.5">KVADRATO</text>
-  </g>
-</svg>
