@@ -8,6 +8,20 @@ Produkcijoje Vercel **Logs** gali rodyti „Error“ su tekstu:
 
 **HTTP atsakas dažnai lieka 200** – tai **įspėjimas** (stderr), ne aplikacijos klaida. Vercel UI dažnai jį klasifikuoja kaip error.
 
+**Lankytojai naršyklėje šito nemato.** DEP0169 yra tik Node proceso stderr; tai **nesusiję** su „Mac / Safari negali įeiti“ ar „trumpai iššokusi klaida naršyklėje“ – tokiems simptomams reikia konsolės / tinklo diagnostikos kliento pusėje.
+
+## Frontend: Vite (patvirtinta šiame repo, 2026-04-10)
+
+`frontend/` dev serveris ir `vite build` naudoja **Vite 8.x**. Sujungtame Node kode yra `parseUrl()`, kuris **gali** iškviesti `url.parse()` (senasis `url` modulis), kai vidinis `useNativeURL` lieka `false` – tipiškas **proxy / HTTP redirect** sluoksnis.
+
+| Vieta | Pastaba |
+|-------|---------|
+| `frontend/node_modules/vite/dist/node/chunks/node.js` | Funkcija `parseUrl` → `url$1.parse(input)` (legacy šaka) |
+
+**Jūsų `frontend/src/` ir `backend/`** šaltiniuose `url.parse()` **nenaudojama** – įspėjimas ateina iš **Vite priklausomybės**, ne iš LP aplikacijos logikos.
+
+**Ką daryti:** sekti Vite versijų atnaujinimus; laikinai slopinti logus galima `NODE_OPTIONS=--no-deprecation` (tik triukšmui, ne „fix“). Tikslų stack trace – vis tiek `NODE_OPTIONS=--trace-deprecation` paleidus tą patį komandą, kuri rodo įspėjimą (`npm run dev`, `vite build`, arba Vercel build).
+
 ## Ką patikrinome šiame repo (2026-03-23)
 
 | Tikrinimas | Rezultatas |
