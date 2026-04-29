@@ -7,12 +7,16 @@ const FALLBACK_ICONS = [<BookOpen key="b" />, <Megaphone key="m" />, <Users key=
 /** URL → theme index 1–4 (ecosystem-1 … ecosystem-4 in index.css @theme) */
 const ECOSYSTEM_URL_INDEX = {
   'https://ditreneris.github.io/biblioteka/': 4,
+  'https://www.promptanatomy.info/lt/': 4,
+  'https://www.promptanatomy.info/en/': 4,
   'https://ditreneris.github.io/marketingas/': 2,
   'https://ditreneris.github.io/personalas/': 1,
   'https://ditreneris.github.io/ceo/': 3,
 }
 const ECOSYSTEM_URL_ICON = {
   'https://ditreneris.github.io/biblioteka/': <BookOpen key="b" />,
+  'https://www.promptanatomy.info/lt/': <BookOpen key="b" />,
+  'https://www.promptanatomy.info/en/': <BookOpen key="b" />,
   'https://ditreneris.github.io/marketingas/': <Megaphone key="m" />,
   'https://ditreneris.github.io/personalas/': <Users key="u" />,
   'https://ditreneris.github.io/ceo/': <LayoutDashboard key="d" />,

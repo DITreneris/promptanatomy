@@ -9,6 +9,8 @@ Canonical site: https://www.promptanatomy.app/
 - Home (default EN): https://www.promptanatomy.app/
 - Home (LT): https://www.promptanatomy.app/lt
 - Home (EN): https://www.promptanatomy.app/en
+- Prompt library / spin-off (LT): https://www.promptanatomy.info/lt/
+- Prompt library / spin-off (EN): https://www.promptanatomy.info/en/
 - Pricing section: https://www.promptanatomy.app/#pricing
 - FAQ section: https://www.promptanatomy.app/#faq
 - Privacy Policy: https://www.promptanatomy.app/privacy

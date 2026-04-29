@@ -9,6 +9,7 @@ Išlaikyti vieną brandą su trimis domenais taip, kad jie vienas kitą stiprint
 - `promptanatomy.app` — pagrindinis hub: kainodara, checkout, prieiga, konversija.
 - `promptanatomy.cloud` — edukacinis/praktinis srautas: įžanginis turinys, šablonai, nukreipimas į hub.
 - `promptanatomy.pro` — profesionalus/B2B srautas: pilotai, komandos, paslaugos, nukreipimas į hub.
+- `promptanatomy.info` — viešas „spin-off“ / promptų bibliotekos landing: greitas vertės demonstravimas (pvz. 8 pratimai), nukreipimas į hub.
 
 ## SEO/GEO/AI taisyklės
 
@@ -21,5 +22,6 @@ Išlaikyti vieną brandą su trimis domenais taip, kad jie vienas kitą stiprint
 ## KPI minimumas (14 dienų ciklas)
 
 - Outbound CTR į `.cloud` ir `.pro` iš `routing_block`, `ecosystem_card`, `footer_network`, `navbar_mobile`.
+- Outbound CTR į `promptanatomy.info` iš `ecosystem_card` („Biblioteka / AI automation“) pagal locale (LT/EN).
 - Assisted conversion (srautas iš `.cloud/.pro` į `.app` ir checkout/success santykis).
 - LT/EN split ir GEO split (LT vs US/EU) pagal įėjimo kanalą.
