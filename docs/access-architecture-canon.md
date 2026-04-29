@@ -54,3 +54,11 @@
 ## 6. Santrauka vienu sakiniu
 
 **Webhook → `user_access` = kanonas; LP ir „generuok nuorodą“ skaito DB; po checkout redirect dar gali skaityti Stripe metadata; mokymuose HMAC + verify = tiltas.**
+
+---
+
+## 7. Ekosistemos domenų srautas (hub-and-spoke)
+
+- `promptanatomy.app` yra **hub** (checkout, prieiga, konversija).
+- `promptanatomy.cloud` ir `promptanatomy.pro` yra **spokes**, kurie siunčia kvalifikuotą srautą atgal į hub.
+- LP sluoksnyje outbound į šiuos domenus matuojamas per `ecosystem_outbound_click` (placement + locale + page_path), kad būtų galima vertinti kanalų kokybę be spėjimų.

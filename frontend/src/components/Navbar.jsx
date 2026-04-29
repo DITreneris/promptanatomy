@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Zap, Menu, X } from 'lucide-react'
 import { GLOSSARY_URL, APP_VERSION } from '../config'
 import { useLocale } from '../i18n/LocaleContext'
+import { captureEcosystemOutboundClick } from '../analytics/posthog'
 
 const FOCUS_RING = 'focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2'
 
@@ -116,6 +117,8 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
   const secondaryNavItems = [
     { name: t('nav.ecosystem'), id: 'ekosistema' },
     { name: t('nav.methodology'), id: 'metodologija' },
+    { name: t('nav.cloud'), id: null, href: 'https://promptanatomy.cloud/', external: true },
+    { name: t('nav.pro'), id: null, href: 'https://promptanatomy.pro/', external: true },
     ...(GLOSSARY_URL
       ? [{ name: t('nav.repo'), id: null, href: GLOSSARY_URL, external: true }]
       : []),
@@ -279,7 +282,11 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={closeMobile}
+              onClick={() => {
+                if (item.href?.includes('promptanatomy.cloud')) captureEcosystemOutboundClick({ target: 'promptanatomy_cloud', placement: 'navbar_mobile', locale, pagePath: location.pathname })
+                if (item.href?.includes('promptanatomy.pro')) captureEcosystemOutboundClick({ target: 'promptanatomy_pro', placement: 'navbar_mobile', locale, pagePath: location.pathname })
+                closeMobile()
+              }}
               className={mobileClass}
             >
               {item.name}

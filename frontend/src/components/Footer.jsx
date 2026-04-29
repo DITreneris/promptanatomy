@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom'
 import { Zap } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
+import { captureEcosystemOutboundClick } from '../analytics/posthog'
 
 export default function Footer() {
-  const { t } = useLocale()
+  const { t, locale } = useLocale()
   // Dinamiški metai – tik einami (vienas skaičius, ne intervalas 2024–2026)
   const year = new Date().getFullYear()
+  const pagePath = typeof window !== 'undefined' ? window.location.pathname : '/'
   return (
     <footer className="bg-slate-50 pt-32 pb-16 px-4 sm:px-6 md:px-8 border-t border-slate-100 shadow-soft-top overflow-hidden">
       <div className="max-w-7xl mx-auto min-w-0">
@@ -57,6 +59,16 @@ export default function Footer() {
               <li>
                 <a href="https://x.com/PromptAnatom" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">
                   {t('footer.twitter')}
+                </a>
+              </li>
+              <li>
+                <a href="https://promptanatomy.cloud/" target="_blank" rel="noopener noreferrer external nofollow" onClick={() => captureEcosystemOutboundClick({ target: 'promptanatomy_cloud', placement: 'footer_network', locale, pagePath })} className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">
+                  {t('footer.cloud')}
+                </a>
+              </li>
+              <li>
+                <a href="https://promptanatomy.pro/" target="_blank" rel="noopener noreferrer external nofollow" onClick={() => captureEcosystemOutboundClick({ target: 'promptanatomy_pro', placement: 'footer_network', locale, pagePath })} className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">
+                  {t('footer.pro')}
                 </a>
               </li>
             </ul>

@@ -26,6 +26,8 @@
     "whatIs": "What is Prompt Anatomy",
     "ecosystem": "Ecosystem",
     "methodology": "Methodology",
+    "cloud": "Cloud",
+    "pro": "Pro",
     "repo": "Repo",
     "training": "Training",
     "pricing": "Pricing",
@@ -121,8 +123,42 @@
         "url": "https://ditreneris.github.io/ceo/",
         "outcome": "Prompts and templates for leadership.",
         "bullets": ["Decisions", "Operations"]
+      },
+      {
+        "title": "PromptAnatomy Cloud",
+        "count": "Cloud",
+        "url": "https://promptanatomy.cloud/",
+        "outcome": "Educational and practical content that routes users to the main system.",
+        "bullets": ["Lessons and templates", "Traffic to .app"]
+      },
+      {
+        "title": "PromptAnatomy Pro",
+        "count": "Pro",
+        "url": "https://promptanatomy.pro/",
+        "outcome": "Professional and B2B offers for teams and leaders.",
+        "bullets": ["Services and pilots", "Traffic to .app"]
       }
     ]
+  },
+  "ecosystemRouter": {
+    "kicker": "Ecosystem routing",
+    "title": "One brand, three clear roles",
+    "description": "Choose by intent: the main conversion hub, Cloud for education, and Pro for B2B solutions.",
+    "app": {
+      "kicker": "Hub",
+      "title": "promptanatomy.app",
+      "body": "Main conversion center: plans, checkout, and training access."
+    },
+    "cloud": {
+      "kicker": "Spoke",
+      "title": "promptanatomy.cloud",
+      "body": "Practical learning content and entry points that feed the main system."
+    },
+    "pro": {
+      "kicker": "Spoke",
+      "title": "promptanatomy.pro",
+      "body": "Professional offers for teams and leaders that route back to the hub."
+    }
   },
   "pricing": {
     "badge": "Lifetime System Access",
@@ -211,6 +247,8 @@
     "ceo": "Operations center (CEO/COO)",
     "linkedIn": "LinkedIn",
     "twitter": "X (Twitter)",
+    "cloud": "PromptAnatomy Cloud",
+    "pro": "PromptAnatomy Pro",
     "comingSoon": "(Coming soon)",
     "copyrightLine1": "© {{year}} Prompt Anatomy.",
     "copyrightLine2": "AI Operating System.",
