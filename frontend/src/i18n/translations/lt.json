@@ -123,20 +123,6 @@
         "url": "https://ditreneris.github.io/ceo/",
         "outcome": "Vadovams skirti promptai ir šablonai.",
         "bullets": ["Sprendimai", "Operacijos"]
-      },
-      {
-        "title": "PromptAnatomy Cloud",
-        "count": "Cloud",
-        "url": "https://promptanatomy.cloud/",
-        "outcome": "Edukacinis ir praktinis turinys, kuris įveda į pagrindinę sistemą.",
-        "bullets": ["Pamokos ir šablonai", "Srautas į .app"]
-      },
-      {
-        "title": "PromptAnatomy Pro",
-        "count": "Pro",
-        "url": "https://promptanatomy.pro/",
-        "outcome": "B2B ir profesionalūs pasiūlymai komandoms bei vadovams.",
-        "bullets": ["Paslaugos ir pilotai", "Srautas į .app"]
       }
     ]
   },
