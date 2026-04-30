@@ -123,20 +123,6 @@
         "url": "https://ditreneris.github.io/ceo/",
         "outcome": "Prompts and templates for leadership.",
         "bullets": ["Decisions", "Operations"]
-      },
-      {
-        "title": "PromptAnatomy Cloud",
-        "count": "Cloud",
-        "url": "https://promptanatomy.cloud/",
-        "outcome": "Educational and practical content that routes users to the main system.",
-        "bullets": ["Lessons and templates", "Traffic to .app"]
-      },
-      {
-        "title": "PromptAnatomy Pro",
-        "count": "Pro",
-        "url": "https://promptanatomy.pro/",
-        "outcome": "Professional and B2B offers for teams and leaders.",
-        "bullets": ["Services and pilots", "Traffic to .app"]
       }
     ]
   },
