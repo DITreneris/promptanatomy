@@ -10,6 +10,8 @@ const ECOSYSTEM_URL_INDEX = {
   'https://www.promptanatomy.info/lt/': 4,
   'https://www.promptanatomy.info/en/': 4,
   'https://ditreneris.github.io/marketingas/': 2,
+  'https://www.promptanatomy.space/': 2,
+  'https://www.promptanatomy.space/en/': 2,
   'https://ditreneris.github.io/personalas/': 1,
   'https://ditreneris.github.io/ceo/': 3,
 }
@@ -18,6 +20,8 @@ const ECOSYSTEM_URL_ICON = {
   'https://www.promptanatomy.info/lt/': <BookOpen key="b" />,
   'https://www.promptanatomy.info/en/': <BookOpen key="b" />,
   'https://ditreneris.github.io/marketingas/': <Megaphone key="m" />,
+  'https://www.promptanatomy.space/': <Megaphone key="m" />,
+  'https://www.promptanatomy.space/en/': <Megaphone key="m" />,
   'https://ditreneris.github.io/personalas/': <Users key="u" />,
   'https://ditreneris.github.io/ceo/': <LayoutDashboard key="d" />,
 }
