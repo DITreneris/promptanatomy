@@ -35,3 +35,12 @@ export function capturePosthogEvent(event, properties) {
   if (!POSTHOG_KEY) return
   posthog.capture(event, properties)
 }
+
+export function captureEcosystemOutboundClick({ target, placement, locale, pagePath }) {
+  capturePosthogEvent('ecosystem_outbound_click', {
+    target,
+    placement,
+    locale,
+    page_path: pagePath,
+  })
+}

@@ -107,13 +107,15 @@ Pilna paletė (50–950) ir papildomos spalvos (slate, di-visata) – žr. `tail
 
 ## 🌐 Deployment
 
-### GitHub Pages (rekomenduojama)
+### GitHub Pages (demo / istoriškai)
 
 1. GitHub repo: Settings → Pages
 2. Source: pasirinkite "GitHub Actions"
 3. Push į `main` automatiškai deployina
 
-Prieiga: `https://ditreneris.github.io/anatomija/`
+Demo prieiga (jei naudojate seną GitHub Pages deploy): `https://ditreneris.github.io/anatomija/`
+
+Produkcija (šio repo kontekste): `https://www.promptanatomy.app/anatomija/`
 
 **Pastaba:** GitHub Actions deployina tik modulius 1–3 (MVP). Pilnai 6 moduliams – žr. Release planą.
 

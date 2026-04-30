@@ -80,7 +80,7 @@
 - Methodology (section id metodologija).
 - Ecosystem (section id ekosistema).
 - Pricing (section id pricing, prieigos forma, 2 planai Phase 1; „Eiti į mokymus" mygtukas kviečia `/api/generate-access-link` ir nukreipia tame pačiame lange į training app su magic link – same-tab navigation reikalinga iOS/Safari, kur `window.open` po async dažnai blokuojamas).
-- Footer (brand, tagline; System: Ekosistema, Metodologija, Mokymai (`/anatomija/`, naujas tabas), Kainodara, DUK (#faq); Network: vieša Telegram grupė (`t.me/prompt_anatomy`), LinkedIn, X (Twitter); legal, copyright).
+- Footer (brand, tagline; System: Ekosistema, Metodologija, Mokymai (`/anatomija/`, naujas tabas), Kainodara, DUK (#faq); Network: vieša Telegram grupė (`t.me/prompt_anatomy`), LinkedIn, X (Twitter), PromptAnatomy Cloud, PromptAnatomy Pro; legal, copyright).
 
 **i18n:** Visi raktai naudojami iš `lt.json` / `en.json`; nėra hardcoded teksto komponentuose (Hero, WhatIs, Methodology, Ecosystem, Pricing, Footer, Navbar, Success, Cancel). LT – terminas DI; EN – AI.
 
@@ -88,7 +88,7 @@
 
 **X (Twitter) pixel:** Komponentas `XPixel.jsx` – įkelia X conversion tracking base tag tik kai `VITE_X_PIXEL_ID` nustatytas (config `X_PIXEL_ID`); be jo – dev be tracking. `App.jsx` – `<XPixel />` šaknyje.
 
-**Kaip tikrinti:** `cd frontend && npm run build` – build turi pavykti. `cd apps/prompt-anatomy && npm run build` – training app build turi pavykti. Rankinis smoke: atidaryti `/`, `/lt`, `/en`, `/success`, `/cancel`, perjungti kalbą (turėtų navigate į `/lt` arba `/en`), scroll į pricing, patikrinti prieigos formą. Magic link flow: patikrinti prieigą su susimokėjusio vartotojo email → spausti „Eiti į mokymus" → turi nukreipti į training app su `access_tier`, `expires`, `token` parametrais → moduliai atrakinti.
+**Kaip tikrinti:** `cd frontend && npm run build` – build turi pavykti. `cd apps/prompt-anatomy && npm run build` – training app build turi pavykti. Rankinis smoke: atidaryti `/`, `/lt`, `/en`, `/success`, `/cancel`, perjungti kalbą (turėtų navigate į `/lt` arba `/en`), scroll į pricing, patikrinti prieigos formą, paspausti `.cloud`/`.pro` nuorodas iš routing bloko arba footer (turi atsidaryti naujame tabe). Magic link flow: patikrinti prieigą su susimokėjusio vartotojo email → spausti „Eiti į mokymus" → turi nukreipti į training app su `access_tier`, `expires`, `token` parametrais → moduliai atrakinti.
 
 **UX smoke (po P0-P3 fix'ų):**
 - Email be prieigos (`highest_plan === 0`) → amber blokas „Prieiga nerasta" + CTA „Gauti prieigą →" (scroll į pricing).

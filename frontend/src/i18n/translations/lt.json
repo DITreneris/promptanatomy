@@ -26,6 +26,8 @@
     "whatIs": "Kas yra Promptų Anatomija",
     "ecosystem": "Ekosistema",
     "methodology": "Metodologija",
+    "cloud": "Cloud",
+    "pro": "Pro",
     "repo": "Repo",
     "training": "Mokymai",
     "pricing": "Kainodara",
@@ -97,14 +99,14 @@
       {
         "title": "Biblioteka (DI automatizacija)",
         "count": "100+ Repo",
-        "url": "https://ditreneris.github.io/biblioteka/",
+        "url": "https://www.promptanatomy.info/lt/",
         "outcome": "Paruošti promptai ir workflow šablonai.",
         "bullets": ["100+ promptų", "DI workflow"]
       },
       {
         "title": "Turinio DI sistema (rinkodara)",
         "count": "150+ Repo",
-        "url": "https://ditreneris.github.io/marketingas/",
+        "url": "https://www.promptanatomy.space/",
         "outcome": "Rinkodaros turinio promptai ir šablonai.",
         "bullets": ["Turinio planavimas", "DI šablonai"]
       },
@@ -121,8 +123,42 @@
         "url": "https://ditreneris.github.io/ceo/",
         "outcome": "Vadovams skirti promptai ir šablonai.",
         "bullets": ["Sprendimai", "Operacijos"]
+      },
+      {
+        "title": "PromptAnatomy Cloud",
+        "count": "Cloud",
+        "url": "https://promptanatomy.cloud/",
+        "outcome": "Edukacinis ir praktinis turinys, kuris įveda į pagrindinę sistemą.",
+        "bullets": ["Pamokos ir šablonai", "Srautas į .app"]
+      },
+      {
+        "title": "PromptAnatomy Pro",
+        "count": "Pro",
+        "url": "https://promptanatomy.pro/",
+        "outcome": "B2B ir profesionalūs pasiūlymai komandoms bei vadovams.",
+        "bullets": ["Paslaugos ir pilotai", "Srautas į .app"]
       }
     ]
+  },
+  "ecosystemRouter": {
+    "kicker": "Ekosistemos maršrutizavimas",
+    "title": "Vienas brandas, trys aiškios rolės",
+    "description": "Rinkis kryptį pagal poreikį: pagrindinis centras konversijai, Cloud edukacijai ir Pro B2B sprendimams.",
+    "app": {
+      "kicker": "Hub",
+      "title": "promptanatomy.app",
+      "body": "Pagrindinis konversijų centras: planai, apmokėjimas ir prieiga į mokymus."
+    },
+    "cloud": {
+      "kicker": "Spoke",
+      "title": "promptanatomy.cloud",
+      "body": "Praktinis turinys ir edukaciniai įėjimai, nukreipiantys į pagrindinę sistemą."
+    },
+    "pro": {
+      "kicker": "Spoke",
+      "title": "promptanatomy.pro",
+      "body": "Profesionalūs pasiūlymai komandoms ir vadovams, vedantys į pagrindinį hub."
+    }
   },
   "pricing": {
     "badge": "Lifetime System Access",
@@ -211,6 +247,8 @@
     "ceo": "DI operacinis centras (CEO/COO)",
     "linkedIn": "LinkedIn",
     "twitter": "X (Twitter)",
+    "cloud": "PromptAnatomy Cloud",
+    "pro": "PromptAnatomy Pro",
     "comingSoon": "(Netrukus)",
     "copyrightLine1": "© {{year}} Promptų Anatomija.",
     "copyrightLine2": "DI operacinė sistema.",

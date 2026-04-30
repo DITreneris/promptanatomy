@@ -144,3 +144,16 @@ Aligned with desktop + mobile split; no single OS anomaly.
 | Data window  | ~14 days production |
 | Data quality | Cleaned (deduplicated / filtered per your pipeline) |
 | Last updated | 2025-03-27 |
+
+---
+
+## Ecosystem KPI extension (from 2026-04-29)
+
+Track additional outbound slices for `promptanatomy.cloud` and `promptanatomy.pro`:
+
+- Event: `ecosystem_outbound_click`
+- Properties: `target`, `placement` (`routing_block`, `ecosystem_card`, `footer_network`, `navbar_mobile`), `locale`, `page_path`
+- Weekly report cut:
+  - CTR by placement and domain target
+  - Assisted conversions to checkout/success after ecosystem click
+  - LT/EN + GEO split by target domain

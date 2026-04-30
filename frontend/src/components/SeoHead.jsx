@@ -18,6 +18,10 @@ const VISIBLE_OFFERS = [
   { id: 'starter', labelKey: 'starter', mods: '1–3', price: 39 },
   { id: 'core', labelKey: 'core', mods: '1–6', price: 99 },
 ]
+const ECOSYSTEM_DOMAINS = [
+  { name: 'PromptAnatomy Cloud', url: 'https://promptanatomy.cloud/' },
+  { name: 'PromptAnatomy Pro', url: 'https://promptanatomy.pro/' },
+]
 
 function ensurePropertyMeta(property, content) {
   let el = document.querySelector(`meta[property="${property}"]`)
@@ -151,7 +155,20 @@ function getHomeSchema({ canonicalUrl, description, routeLocale, t }) {
     }
   })
 
-  return [course, ...offers]
+  const ecosystemGraph = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    '@id': `${canonicalUrl}#ecosystem`,
+    name: routeLocale === 'lt' ? 'Promptų Anatomija ekosistema' : 'Prompt Anatomy ecosystem',
+    itemListElement: ECOSYSTEM_DOMAINS.map((item, idx) => ({
+      '@type': 'ListItem',
+      position: idx + 1,
+      name: item.name,
+      url: item.url,
+    })),
+  }
+
+  return [course, ...offers, ecosystemGraph]
 }
 
 export default function SeoHead() {

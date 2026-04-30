@@ -19,6 +19,9 @@ export default function TermsPage() {
           {t('legal.termsOfService')}
         </h1>
         <p className="text-slate-600 text-sm mb-8">{t('legal.termsIntro')}</p>
+        <p className="text-slate-600 text-sm mb-8">
+          These terms cover Prompt Anatomy ecosystem domains used for education, services, and routing to the main checkout flow.
+        </p>
         <div className="space-y-8 mb-10">
           <section>
             <h2 className="text-lg font-bold text-brand-dark uppercase tracking-wide mb-2">{t('legal.termsScopeTitle')}</h2>

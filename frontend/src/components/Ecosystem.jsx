@@ -1,18 +1,27 @@
 import { Users, BookOpen, Megaphone, LayoutDashboard } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
 import { APP_VERSION } from '../config'
+import { captureEcosystemOutboundClick } from '../analytics/posthog'
 
 const FALLBACK_ICONS = [<BookOpen key="b" />, <Megaphone key="m" />, <Users key="u" />, <LayoutDashboard key="d" />]
 /** URL → theme index 1–4 (ecosystem-1 … ecosystem-4 in index.css @theme) */
 const ECOSYSTEM_URL_INDEX = {
   'https://ditreneris.github.io/biblioteka/': 4,
+  'https://www.promptanatomy.info/lt/': 4,
+  'https://www.promptanatomy.info/en/': 4,
   'https://ditreneris.github.io/marketingas/': 2,
+  'https://www.promptanatomy.space/': 2,
+  'https://www.promptanatomy.space/en/': 2,
   'https://ditreneris.github.io/personalas/': 1,
   'https://ditreneris.github.io/ceo/': 3,
 }
 const ECOSYSTEM_URL_ICON = {
   'https://ditreneris.github.io/biblioteka/': <BookOpen key="b" />,
+  'https://www.promptanatomy.info/lt/': <BookOpen key="b" />,
+  'https://www.promptanatomy.info/en/': <BookOpen key="b" />,
   'https://ditreneris.github.io/marketingas/': <Megaphone key="m" />,
+  'https://www.promptanatomy.space/': <Megaphone key="m" />,
+  'https://www.promptanatomy.space/en/': <Megaphone key="m" />,
   'https://ditreneris.github.io/personalas/': <Users key="u" />,
   'https://ditreneris.github.io/ceo/': <LayoutDashboard key="d" />,
 }
@@ -20,7 +29,8 @@ const ECOSYSTEM_BG_CLASSES = ['bg-ecosystem-1', 'bg-ecosystem-2', 'bg-ecosystem-
 const ECOSYSTEM_HOVER_RING = ['group-hover:ring-ecosystem-1', 'group-hover:ring-ecosystem-2', 'group-hover:ring-ecosystem-3', 'group-hover:ring-ecosystem-4']
 
 export default function Ecosystem() {
-  const { t } = useLocale()
+  const { t, locale } = useLocale()
+  const pagePath = typeof window !== 'undefined' ? window.location.pathname : '/'
   const trItems = t('ecosystem.items') || []
   const rawItems = Array.isArray(trItems)
     ? trItems.map((item, i) => {
@@ -104,6 +114,7 @@ export default function Ecosystem() {
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => captureEcosystemOutboundClick({ target: item.url, placement: 'ecosystem_card', locale, pagePath })}
                     className="inline-flex items-center justify-center min-h-[44px] px-6 py-3 rounded-xl font-black text-white border border-white/20 bg-white/5 hover:bg-white/10 hover:border-white/30 transition-all duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
                   >
                     {ctaLabel}
@@ -125,6 +136,7 @@ export default function Ecosystem() {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => captureEcosystemOutboundClick({ target: item.url, placement: 'ecosystem_card', locale, pagePath })}
                 className={`${cardClass} cursor-pointer`}
                 aria-label={`${item.title}, ${APP_VERSION} Stable`}
               >
