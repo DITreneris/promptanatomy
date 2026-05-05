@@ -14,7 +14,7 @@ import { LP_ACCESS_EMAIL_STORAGE_KEY } from '../config'
 import { useLocale } from '../i18n/LocaleContext'
 
 export default function HomePage({ forceLocale }) {
-  const { t, setLocale, locale } = useLocale()
+  const { t, setLocale } = useLocale()
   const location = useLocation()
   const [loading, setLoading] = useState(false)
   useEffect(() => {
@@ -54,15 +54,6 @@ export default function HomePage({ forceLocale }) {
 
   const scrollToPricing = () => {
     document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })
-  }
-
-  const handleEcosystemRouteClick = (target) => {
-    capturePosthogEvent('ecosystem_outbound_click', {
-      target,
-      placement: 'routing_block',
-      locale,
-      page_path: location.pathname,
-    })
   }
 
   const handleCheckAccess = async () => {
@@ -163,52 +154,6 @@ export default function HomePage({ forceLocale }) {
       <Navbar onCtaClick={scrollToPricing} hasAccess={access?.highest_plan > 0} />
       <main id="main-content" tabIndex={-1}>
         <Hero onCta={scrollToPricing} />
-        <div className="h-px bg-linear-to-r from-transparent via-brand-accent/30 to-transparent" aria-hidden />
-        <section className="px-4 sm:px-6 md:px-8 py-10 md:py-14 bg-slate-50 border-y border-slate-100">
-          <div className="max-w-7xl mx-auto">
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-slate-600 mb-3">
-              {t('ecosystemRouter.kicker')}
-            </p>
-            <h2 className="text-2xl md:text-3xl font-black tracking-tight text-brand-dark mb-3">
-              {t('ecosystemRouter.title')}
-            </h2>
-            <p className="text-slate-600 max-w-3xl mb-6">
-              {t('ecosystemRouter.description')}
-            </p>
-            <div className="grid gap-4 md:grid-cols-3">
-              <a
-                href="#pricing"
-                className="rounded-2xl border border-slate-200 bg-white p-5 hover:border-brand-accent/50 transition-colors"
-              >
-                <p className="text-xs uppercase tracking-[0.16em] font-bold text-slate-600 mb-2">{t('ecosystemRouter.app.kicker')}</p>
-                <p className="font-black text-brand-dark mb-1">{t('ecosystemRouter.app.title')}</p>
-                <p className="text-sm text-slate-600">{t('ecosystemRouter.app.body')}</p>
-              </a>
-              <a
-                href="https://promptanatomy.cloud/"
-                target="_blank"
-                rel="noopener noreferrer external nofollow"
-                onClick={() => handleEcosystemRouteClick('promptanatomy_cloud')}
-                className="rounded-2xl border border-slate-200 bg-white p-5 hover:border-brand-accent/50 transition-colors"
-              >
-                <p className="text-xs uppercase tracking-[0.16em] font-bold text-slate-600 mb-2">{t('ecosystemRouter.cloud.kicker')}</p>
-                <p className="font-black text-brand-dark mb-1">{t('ecosystemRouter.cloud.title')}</p>
-                <p className="text-sm text-slate-600">{t('ecosystemRouter.cloud.body')}</p>
-              </a>
-              <a
-                href="https://promptanatomy.pro/"
-                target="_blank"
-                rel="noopener noreferrer external nofollow"
-                onClick={() => handleEcosystemRouteClick('promptanatomy_pro')}
-                className="rounded-2xl border border-slate-200 bg-white p-5 hover:border-brand-accent/50 transition-colors"
-              >
-                <p className="text-xs uppercase tracking-[0.16em] font-bold text-slate-600 mb-2">{t('ecosystemRouter.pro.kicker')}</p>
-                <p className="font-black text-brand-dark mb-1">{t('ecosystemRouter.pro.title')}</p>
-                <p className="text-sm text-slate-600">{t('ecosystemRouter.pro.body')}</p>
-              </a>
-            </div>
-          </div>
-        </section>
         <WhatIsPromptAnatomy />
         <Methodology />
         <section id="pricing" className="py-20 md:py-28 bg-pricing-section px-4 sm:px-6 md:px-8 overflow-hidden">

@@ -91,8 +91,9 @@
     ]
   },
   "ecosystem": {
-    "title": "Pritaikyk sistemą realiam darbui",
-    "paragraph": "Automatizacijai, turiniui, atrankai ir vadovų sprendimams.",
+    "title": "Hub: pasirink kryptį",
+    "paragraph": "Pagrindinis įėjimas į ekosistemą — bibliotekos ir sistemos pagal tavo tikslą.",
+    "ctaPricing": "Planai ir prieiga",
     "stableLabel": "v1.3 Stable",
     "ctaOpen": "Peržiūrėti sistemą",
     "items": [
@@ -125,26 +126,6 @@
         "bullets": ["Sprendimai", "Operacijos"]
       }
     ]
-  },
-  "ecosystemRouter": {
-    "kicker": "Ekosistemos maršrutizavimas",
-    "title": "Vienas brandas, trys aiškios rolės",
-    "description": "Rinkis kryptį pagal poreikį: pagrindinis centras konversijai, Cloud edukacijai ir Pro B2B sprendimams.",
-    "app": {
-      "kicker": "Hub",
-      "title": "promptanatomy.app",
-      "body": "Pagrindinis konversijų centras: planai, apmokėjimas ir prieiga į mokymus."
-    },
-    "cloud": {
-      "kicker": "Spoke",
-      "title": "promptanatomy.cloud",
-      "body": "Praktinis turinys ir edukaciniai įėjimai, nukreipiantys į pagrindinę sistemą."
-    },
-    "pro": {
-      "kicker": "Spoke",
-      "title": "promptanatomy.pro",
-      "body": "Profesionalūs pasiūlymai komandoms ir vadovams, vedantys į pagrindinį hub."
-    }
   },
   "pricing": {
     "badge": "Lifetime System Access",

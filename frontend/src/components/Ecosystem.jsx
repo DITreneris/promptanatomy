@@ -1,7 +1,7 @@
 import { Users, BookOpen, Megaphone, LayoutDashboard } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
 import { APP_VERSION } from '../config'
-import { captureEcosystemOutboundClick } from '../analytics/posthog'
+import { captureEcosystemOutboundClick, capturePosthogEvent } from '../analytics/posthog'
 
 const FALLBACK_ICONS = [<BookOpen key="b" />, <Megaphone key="m" />, <Users key="u" />, <LayoutDashboard key="d" />]
 /** URL → theme index 1–4 (ecosystem-1 … ecosystem-4 in index.css @theme) */
@@ -63,6 +63,15 @@ export default function Ecosystem() {
           <p className="text-slate-300 text-lg max-w-[600px] mx-auto font-medium mt-3 leading-relaxed">
             {t('ecosystem.paragraph')}
           </p>
+          <div className="mt-8">
+            <a
+              href="#pricing"
+              onClick={() => capturePosthogEvent('ecosystem_cta_pricing_click', { placement: 'ecosystem_hub', locale, page_path: pagePath })}
+              className="inline-flex items-center justify-center min-h-[48px] px-8 py-3 rounded-xl text-sm font-black text-brand-dark bg-cta-gradient shadow-cta-shadow border border-white/20 hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+            >
+              {t('ecosystem.ctaPricing')}
+            </a>
+          </div>
         </div>
 
         {/* OS backbone: connector dots + lines */}
