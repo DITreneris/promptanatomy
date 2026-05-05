@@ -91,8 +91,9 @@
     ]
   },
   "ecosystem": {
-    "title": "Adapt the system to real work",
-    "paragraph": "For automation, content, hiring and leadership decisions.",
+    "title": "Hub: choose your direction",
+    "paragraph": "The main entry point to the ecosystem — libraries and systems matched to your goal.",
+    "ctaPricing": "Plans and access",
     "stableLabel": "v1.3 Stable",
     "ctaOpen": "View system",
     "items": [
@@ -125,26 +126,6 @@
         "bullets": ["Decisions", "Operations"]
       }
     ]
-  },
-  "ecosystemRouter": {
-    "kicker": "Ecosystem routing",
-    "title": "One brand, three clear roles",
-    "description": "Choose by intent: the main conversion hub, Cloud for education, and Pro for B2B solutions.",
-    "app": {
-      "kicker": "Hub",
-      "title": "promptanatomy.app",
-      "body": "Main conversion center: plans, checkout, and training access."
-    },
-    "cloud": {
-      "kicker": "Spoke",
-      "title": "promptanatomy.cloud",
-      "body": "Practical learning content and entry points that feed the main system."
-    },
-    "pro": {
-      "kicker": "Spoke",
-      "title": "promptanatomy.pro",
-      "body": "Professional offers for teams and leaders that route back to the hub."
-    }
   },
   "pricing": {
     "badge": "Lifetime System Access",
