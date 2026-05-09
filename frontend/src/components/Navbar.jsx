@@ -109,7 +109,7 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
   }, [mobileOpen])
 
   const primaryNavItems = [
-    { name: t('nav.whatIs'), id: 'what-is' },
+    { name: t('nav.whatIs'), id: 'what-is-prompt-anatomy' },
     { name: t('nav.pricing'), id: 'pricing' },
     ...(hasAccess ? [{ name: t('nav.training'), id: null, href: '/anatomija/', external: true }] : []),
   ]
