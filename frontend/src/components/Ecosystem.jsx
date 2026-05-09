@@ -13,7 +13,7 @@ const ECOSYSTEM_URL_INDEX = {
   'https://www.promptanatomy.space/': 2,
   'https://www.promptanatomy.space/en/': 2,
   'https://ditreneris.github.io/personalas/': 1,
-  'https://ditreneris.github.io/ceo/': 3,
+  'https://www.promptanatomy.ceo/': 3,
 }
 const ECOSYSTEM_URL_ICON = {
   'https://ditreneris.github.io/biblioteka/': <BookOpen key="b" />,
@@ -23,7 +23,7 @@ const ECOSYSTEM_URL_ICON = {
   'https://www.promptanatomy.space/': <Megaphone key="m" />,
   'https://www.promptanatomy.space/en/': <Megaphone key="m" />,
   'https://ditreneris.github.io/personalas/': <Users key="u" />,
-  'https://ditreneris.github.io/ceo/': <LayoutDashboard key="d" />,
+  'https://www.promptanatomy.ceo/': <LayoutDashboard key="d" />,
 }
 const ECOSYSTEM_BG_CLASSES = ['bg-ecosystem-1', 'bg-ecosystem-2', 'bg-ecosystem-3', 'bg-ecosystem-4']
 const ECOSYSTEM_HOVER_RING = ['group-hover:ring-ecosystem-1', 'group-hover:ring-ecosystem-2', 'group-hover:ring-ecosystem-3', 'group-hover:ring-ecosystem-4']
