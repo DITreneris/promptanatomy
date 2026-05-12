@@ -20,6 +20,8 @@
   ],
   "rewrites": [
     { "source": "/anatomija/:path*", "destination": "/anatomija/index.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/terms", "destination": "/terms.html" },
     { "source": "/((?!api|anatomija).*)", "destination": "/index.html" }
   ]
 }
