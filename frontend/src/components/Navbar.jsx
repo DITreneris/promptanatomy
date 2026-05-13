@@ -133,26 +133,26 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
   return (
     <>
     <nav
-      className={`fixed top-0 w-full z-100 [-webkit-backface-visibility:hidden] backface-hidden transition-all duration-500 ${
+      className={`fixed top-0 w-full z-[101] [-webkit-backface-visibility:hidden] backface-hidden transition-all duration-500 ${
         scrolled ? 'py-3 bg-white/70 backdrop-blur-2xl border-b border-slate-200 shadow-xs' : 'py-4 md:py-6 bg-transparent'
       }`}
       aria-label={t('nav.ariaNav')}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex justify-between items-center gap-2 min-w-0">
-        <Link to={homePath} className={`flex items-center gap-3 sm:gap-4 group cursor-pointer min-w-0 ${FOCUS_RING} rounded-lg`}>
+        <Link to={homePath} className={`flex shrink-0 items-center gap-3 sm:gap-4 group cursor-pointer ${FOCUS_RING} rounded-lg`}>
           <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-brand-dark flex items-center justify-center text-brand-accent shadow-soft-lg drop-shadow-logo-glow group-hover:scale-105 group-hover:shadow-glow-accent transition-all duration-300 border border-white/10 shrink-0">
             <Zap className="w-6 h-6 sm:w-7 sm:h-7 fill-current" />
           </div>
-          <div className="flex flex-col min-w-0 overflow-visible">
-            <span className="text-lg sm:text-2xl font-black tracking-tighter leading-tight text-brand-dark flex items-center gap-2 wrap-break-word">
+          <div className="flex min-w-0 flex-col gap-1">
+            <span className="text-lg sm:text-2xl font-black tracking-tighter leading-tight text-brand-dark break-words">
               {t('nav.brandPromptu')} <span className="text-brand-accent">{t('nav.brandAnatomija')}</span>
-              <span className="hidden sm:inline-flex items-center shrink-0 px-1.5 py-0.5 rounded-sm bg-slate-100 text-xs font-black text-slate-600 leading-none">{APP_VERSION}</span>
             </span>
-            <span className="text-xs font-black uppercase tracking-[0.2em] sm:tracking-[0.4em] text-slate-600 wrap-break-word">{t('nav.brandTagline')}</span>
+            <span className="hidden sm:inline-flex w-fit items-center px-1.5 py-0.5 rounded-sm bg-slate-100 text-xs font-black text-slate-600 leading-none">{APP_VERSION}</span>
+            <span className="text-xs font-black uppercase tracking-[0.2em] sm:tracking-[0.4em] text-slate-600 break-words">{t('nav.brandTagline')}</span>
           </div>
         </Link>
 
-        <div className="hidden md:flex items-center space-x-10">
+        <div className="hidden min-w-0 shrink items-center justify-end gap-4 lg:flex lg:gap-6 xl:gap-10">
           {primaryNavItems.map((item) =>
             item.external ? (
               <a
@@ -217,7 +217,7 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
           ref={hamburgerRef}
           type="button"
           onClick={() => setMobileOpen((o) => !o)}
-          className="md:hidden p-3 rounded-xl text-brand-dark hover:bg-slate-100 active:scale-[0.98] transition-all duration-200 min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
+          className="flex items-center justify-center p-3 lg:hidden min-h-[44px] min-w-[44px] rounded-xl text-brand-dark transition-all duration-200 hover:bg-slate-100 active:scale-[0.98] focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
           aria-expanded={mobileOpen}
           aria-controls="mobile-nav"
           aria-label={mobileOpen ? t('nav.ariaCloseMenu') : t('nav.ariaOpenMenu')}
@@ -229,7 +229,7 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
 
     <div
       id="mobile-nav"
-      className={`fixed inset-0 z-99 md:hidden ${mobileOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
+      className={`fixed inset-0 z-[100] lg:hidden ${mobileOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
       aria-hidden={!mobileOpen}
     >
       {/* Overlay without backdrop-blur-sm to avoid mobile GPU freeze */}
