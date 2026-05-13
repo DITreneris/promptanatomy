@@ -30,6 +30,18 @@ export default function PrivacyPage() {
             <p className="text-slate-600 font-medium leading-relaxed">{t('legal.privacyData')}</p>
           </section>
           <section>
+            <h2 className="text-lg font-bold text-brand-dark uppercase tracking-wide mb-2">{t('legal.privacyAnalyticsTitle')}</h2>
+            <p className="text-slate-600 font-medium leading-relaxed">{t('legal.privacyAnalyticsBody')}</p>
+          </section>
+          <section>
+            <h2 className="text-lg font-bold text-brand-dark uppercase tracking-wide mb-2">{t('legal.privacyAdvertisingTitle')}</h2>
+            <p className="text-slate-600 font-medium leading-relaxed">{t('legal.privacyAdvertisingBody')}</p>
+          </section>
+          <section id="cookies">
+            <h2 className="text-lg font-bold text-brand-dark uppercase tracking-wide mb-2">{t('legal.privacyCookiesTitle')}</h2>
+            <p className="text-slate-600 font-medium leading-relaxed">{t('legal.privacyCookiesBody')}</p>
+          </section>
+          <section>
             <h2 className="text-lg font-bold text-brand-dark uppercase tracking-wide mb-2">{t('legal.privacyRightsTitle')}</h2>
             <p className="text-slate-600 font-medium leading-relaxed">{t('legal.privacyRights')}</p>
           </section>

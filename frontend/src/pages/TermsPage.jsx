@@ -37,6 +37,10 @@ export default function TermsPage() {
             <h2 className="text-lg font-bold text-brand-dark uppercase tracking-wide mb-2">{t('legal.termsSupportTitle')}</h2>
             <p className="text-slate-600 font-medium leading-relaxed">{t('legal.termsSupport')}</p>
           </section>
+          <section>
+            <h2 className="text-lg font-bold text-brand-dark uppercase tracking-wide mb-2">{t('legal.termsRefundTitle')}</h2>
+            <p className="text-slate-600 font-medium leading-relaxed">{t('legal.termsRefund')}</p>
+          </section>
         </div>
         <Link
           to="/"

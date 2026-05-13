@@ -7,6 +7,12 @@ Vienas dokumentas: kas įdiegta produkcijoje (Vercel + Stripe webhook), kaip tik
 ## 1. Dabartinė setup (įgyvendinta)
 
 - **Viešas domenas (canonical):** `https://www.promptanatomy.app` – naudoti visur produkcijoje (FRONTEND_ORIGIN, canonical, sitemap, webhook URL, dokumentacija).
+
+### 1.1 Apex (`promptanatomy.app`) ir www
+
+- Skelbimuose ir viešose nuorodose naudoti **tik** canonical `https://www.promptanatomy.app` (su `www`).
+- **Apex** (`https://promptanatomy.app`) DNS / Vercel domenų nustatymuose turėtų arba rodyti tą patį deploy, arba **301** į `https://www.promptanatomy.app`, kad nebūtų timeout, skirtingos paskirties URL ar „sulūžusios“ grandinės botams ir peržiūroms.
+
 - **Frontend:** Vercel build iš `frontend/`, output `frontend/dist`.
 - **Webhook:** Vercel serverless `api/stripe-webhook.js` – Stripe parašas, email iš session, `metadata.plan`, Supabase upsert (`user_access`), `stripe_customer_id`.
 - **Stripe Dashboard:** Webhook URL – `https://www.promptanatomy.app/api/stripe-webhook`, event `checkout.session.completed`. Signing secret → env `STRIPE_WEBHOOK_SECRET`.

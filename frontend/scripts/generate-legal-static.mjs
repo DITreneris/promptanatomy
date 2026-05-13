@@ -11,7 +11,7 @@ const distDir = join(__dirname, '..', 'dist')
 const enPath = join(__dirname, '..', 'src', 'i18n', 'translations', 'en.json')
 
 const SITE_URL = (process.env.VITE_SITE_URL || 'https://www.promptanatomy.app').replace(/\/$/, '')
-const ROUTE_LAST_MODIFIED = '2026-03-14'
+const ROUTE_LAST_MODIFIED = '2026-05-13'
 const ORGANIZATION_ID = `${SITE_URL}/#organization`
 const WEBSITE_ID = `${SITE_URL}/#website`
 const OG_IMAGE_URL = `${SITE_URL}/og-image.png`
@@ -126,6 +126,18 @@ function privacyBody(L) {
           <p>${escapeHtml(L.legal.privacyData)}</p>
         </section>
         <section>
+          <h2>${escapeHtml(L.legal.privacyAnalyticsTitle)}</h2>
+          <p>${escapeHtml(L.legal.privacyAnalyticsBody)}</p>
+        </section>
+        <section>
+          <h2>${escapeHtml(L.legal.privacyAdvertisingTitle)}</h2>
+          <p>${escapeHtml(L.legal.privacyAdvertisingBody)}</p>
+        </section>
+        <section id="cookies">
+          <h2>${escapeHtml(L.legal.privacyCookiesTitle)}</h2>
+          <p>${escapeHtml(L.legal.privacyCookiesBody)}</p>
+        </section>
+        <section>
           <h2>${escapeHtml(L.legal.privacyRightsTitle)}</h2>
           <p>${escapeHtml(L.legal.privacyRights)}</p>
         </section>
@@ -167,6 +179,10 @@ function termsBody(L) {
         <section>
           <h2>${escapeHtml(L.legal.termsSupportTitle)}</h2>
           <p>${escapeHtml(L.legal.termsSupport)}</p>
+        </section>
+        <section>
+          <h2>${escapeHtml(L.legal.termsRefundTitle)}</h2>
+          <p>${escapeHtml(L.legal.termsRefund)}</p>
         </section>
       </div>
     </article>

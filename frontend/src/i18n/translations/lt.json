@@ -44,7 +44,7 @@
     "headline2": "Pradėk kurti.",
     "subtitle": "Promptų Anatomija - praktinė sistema darbui su dirbtinio intelekto įrankiais, agentais ir automatizacija.",
     "bullet1": "Nuo atsitiktinių atsakymų → prie nuspėjamų rezultatų",
-    "bullet2": "Sutaupo laiko kasdienėms užduotims iki 50 %",
+    "bullet2": "Struktūra ir šablonai mažiau taisyti rezultatus kasdienėms užduotims (priklauso nuo rolės ir naudojimo).",
     "bullet3": "115+ patikrintų šablonų realiems verslo procesams",
     "valueLine": "Išmok naudoti DI 10x efektyviau",
     "subtext": "Išmok valdyti DI kaip operacinę sistemą. Promptų inžinerija, automatizacija ir DI agentai realiems verslo rezultatams.",
@@ -87,7 +87,7 @@
     "items": [
       { "title": "Skaidymas", "desc": "Problemos dekonstruojamos ir sudėliojamos į hierarchinę struktūrą, kurią DI interpretuoja be klaidų." },
       { "title": "Inžinerija", "desc": "Kelių lygių inžinerija, naudojant sisteminius, metodinius ir agentinius promptus." },
-      { "title": "Skalės augimas", "desc": "Sistema lengvai integruojama į verslo procesus, taupant 10-20 valandų per savaitę." }
+      { "title": "Skalės augimas", "desc": "Integruojasi į procesus; taikant metodą nuosekliai dažnai galima sutaupyti reikšmingai laiko per savaitę (priklauso nuo apimties ir naudojimo)." }
     ]
   },
   "ecosystem": {
@@ -158,7 +158,7 @@
       "Vieša Telegram grupė",
       "Lifetime prieiga"
     ],
-    "stripeVerified": "Stripe Verified",
+    "stripeVerified": "Mokėjimas saugiai per Stripe",
     "refundContact": "Grąžinimo sąlygos – susisiek",
     "aiPowered": "DI Powered",
     "checkAccess": "Patikrink prieigą",
@@ -189,11 +189,11 @@
       { "q": "Ką gaunu sumokėjęs?", "a": "Prieigą prie pasirinkto plano modulių, mokymų turinio, praktinių užduočių ir promptų bibliotekos. Starter apima 1–3 modulius, Core – 1–6. Užbaigę ir išlaikę (nuo 70%) gaunate sertifikatą. Palaikymas – viešoje Telegram grupėje. Prieiga suteikiama visam laikui." },
       { "q": "Kaip pateksiu į mokymus?", "a": "Slaptažodžio nėra. Įvesk el. paštą (su kuriuo mokėjai) → Patikrinti → Eiti į mokymus. Tą patį gali daryti bet kada iš šio puslapio, skyriuje Kainodara." },
       { "q": "Kas įeina į planą?", "a": "Moduliai pagal planą (Starter: 1–3, Core: 1–6), promptų biblioteka, 6 blokų metodika, praktinės užduotys, sertifikatas nuo 70% ir vieša Telegram grupė. Core papildomai įtraukia konteksto inžineriją." },
-      { "q": "Ar mano duomenys saugūs?", "a": "Taip. Saugomas tik įsigijimo ID; mokėjimai per Stripe. Duomenys tvarkomi pagal ES ir JAV saugumo praktikas." },
+      { "q": "Ar mano duomenys saugūs?", "a": "Saugome minimalius įsigijimui susijusius identifikatorius; mokėjimus apdoroja Stripe. Naudojame produkto analitiką ir galime įkelti reklamos matavimą, kaip aprašyta privatumo politikoje. Duomenys tvarkomi pagal ES ir JAV saugumo praktikas." },
       { "q": "Kur gauti pagalbos?", "a": "Palaikymas – viešoje Telegram grupėje (nuoroda po apačioje ir po apmokėjimo)." },
       { "q": "Ar prieiga laikina?", "a": "Ne. Vienkartinis mokėjimas – prieiga visam laikui." },
       { "q": "Kuo skiriasi Starter ir Core?", "a": "Starter: moduliai 1–3. Core: moduliai 1–6 (pilnas kursas). Jei pradėsi nuo Starter, vėliau galėsi atnaujinti į Core." },
-      { "q": "Ar galima grąžinti pinigus?", "a": "Grąžinimo sąlygos – rašyk mums (info@promptanatomy.app)." },
+      { "q": "Ar galima grąžinti pinigus?", "a": "Žr. skyrių „Grąžinimai“ paslaugų teikimo sąlygose. Rašyk info@promptanatomy.app iš apmokėjimo el. pašto ir nurodyk užsakymo duomenis, jei turi." },
       { "q": "Kokiomis kalbomis mokymai?", "a": "Mokymai pateikiami lietuvių ir anglų kalbomis." }
     ]
   },
@@ -222,7 +222,8 @@
     "creator": "kūrėjas: tomas staniulis",
     "privacyPolicy": "Privatumo politika",
     "termsOfService": "Paslaugų teikimo sąlygos",
-    "cookies": "Cookies"
+    "cookies": "Cookies",
+    "cookiesLink": "Slapukai ir stebėsena (privatumas)"
   },
   "legal": {
     "privacyPolicy": "Privatumo politika",
