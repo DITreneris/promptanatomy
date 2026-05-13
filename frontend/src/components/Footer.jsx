@@ -92,7 +92,12 @@ export default function Footer() {
           <div className="flex flex-wrap gap-8 md:gap-16 text-xs font-bold uppercase tracking-[0.35em] text-slate-600">
             <Link to="/privacy" className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">{t('footer.privacyPolicy')}</Link>
             <Link to="/terms" className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">{t('footer.termsOfService')}</Link>
-            <span title={t('footer.comingSoon')}>{t('footer.cookies')} <span className="text-slate-600 font-normal normal-case">{t('footer.comingSoon')}</span></span>
+            <Link
+              to="/privacy#cookies"
+              className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm"
+            >
+              {t('footer.cookiesLink')}
+            </Link>
           </div>
         </div>
       </div>

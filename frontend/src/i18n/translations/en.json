@@ -44,7 +44,7 @@
     "headline2": "Start building.",
     "subtitle": "Prompt Anatomy is a practical system for working with AI tools, agents and automation.",
     "bullet1": "From random answers → to predictable outcomes",
-    "bullet2": "Save up to 50% of time on everyday tasks",
+    "bullet2": "Structure and templates to spend less time fixing outputs on everyday tasks (results vary by role and use case).",
     "bullet3": "115+ vetted templates for real business processes",
     "valueLine": "Master AI prompting for real work",
     "subtext": "Learn to run AI like an operating system. Prompt engineering, automation and AI agents for real business results.",
@@ -87,7 +87,7 @@
     "items": [
       { "title": "Breakdown", "desc": "Deconstruct problems into atomic elements that AI interprets without errors." },
       { "title": "Engineering", "desc": "Layered construction using CoT (Chain of Thought) and Few-shot engineering." },
-      { "title": "Scale", "desc": "The system integrates into business processes, saving 10–20 hours per week." }
+      { "title": "Scale", "desc": "Integrates into workflows; many learners recover meaningful weekly time when they apply the method consistently—your results depend on scope and usage." }
     ]
   },
   "ecosystem": {
@@ -158,7 +158,7 @@
       "Public Telegram group",
       "Lifetime access"
     ],
-    "stripeVerified": "Stripe Verified",
+    "stripeVerified": "Secured checkout with Stripe",
     "refundContact": "Refund terms – contact us",
     "aiPowered": "AI Powered",
     "checkAccess": "Check your access",
@@ -189,11 +189,11 @@
       { "q": "What do I get when I pay?", "a": "Access to the modules in your selected plan, the training content, hands-on exercises and the prompt library. Starter includes modules 1–3, Core includes 1–6. Complete and pass (from 70%) to receive the certificate. Support is provided in our public Telegram group. Lifetime access." },
       { "q": "How do I access the training?", "a": "No password. Enter your payment email → Check → Go to training. Same steps anytime from this site, Pricing section." },
       { "q": "What's included in the plan?", "a": "Modules by plan (Starter: 1–3, Core: 1–6), the prompt library, the 6-block methodology, hands-on exercises, a certificate from 70% and the public Telegram group. Core additionally includes context engineering." },
-      { "q": "Is my data secure?", "a": "Yes. We store only the purchase ID; payments via Stripe. Data handled per EU and US security practices." },
+      { "q": "Is my data secure?", "a": "We store minimal purchase-related identifiers; payments are processed by Stripe. We use product analytics and may load advertising measurement as described in our Privacy Policy. Data handled per EU and US security practices." },
       { "q": "Where do I get support?", "a": "Support in the public Telegram group (link in the footer and after payment)." },
       { "q": "Is access temporary?", "a": "No. One-time payment – lifetime access." },
       { "q": "What's the difference between Starter and Core?", "a": "Starter: modules 1–3. Core: modules 1–6 (full course). If you start with Starter, you can upgrade to Core later." },
-      { "q": "Can I get a refund?", "a": "Refund terms – contact us (info@promptanatomy.app)." },
+      { "q": "Can I get a refund?", "a": "See the Refunds section in our Terms of Service. Email info@promptanatomy.app from your checkout email with your order details." },
       { "q": "What languages are the trainings in?", "a": "Trainings are available in Lithuanian and English." }
     ]
   },
@@ -222,23 +222,30 @@
     "creator": "creator: tomas staniulis",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
-    "cookies": "Cookies"
+    "cookies": "Cookies",
+    "cookiesLink": "Cookies & tracking"
   },
   "legal": {
     "privacyPolicy": "Privacy Policy",
     "privacyTitle": "Privacy Policy – Prompt Anatomy",
-    "privacyDescription": "Privacy policy. Data handled per EU and US best practices; only purchase ID stored.",
-    "privacyIntro": "Short guidelines. For questions, contact us.",
+    "privacyDescription": "How Prompt Anatomy handles data: Stripe payments, product analytics (PostHog, Vercel), optional X ads measurement, cookies, and your rights.",
+    "privacyIntro": "These guidelines describe what data we process and why. For questions: info@promptanatomy.app.",
     "privacyEcosystemNote": "This policy applies across Prompt Anatomy ecosystem domains used to route users to the main product.",
     "privacyPrinciplesTitle": "Data handling",
-    "privacyPrinciples": "We collect data in line with EU and US data security best practices. We collect only what is necessary for the service.",
+    "privacyPrinciples": "We follow EU and US security best practices and collect only what we need to run checkout, grant access to training, understand product usage, and maintain this website.",
     "privacyDataTitle": "What we store",
-    "privacyData": "We store only the user's purchase (transaction) ID. Access to the operating system is granted based on it. No additional personal data is collected.",
+    "privacyData": "To grant and verify access we store minimal purchase-related identifiers (for example purchase or session IDs linked to the email used at Stripe Checkout). Stripe processes card payments; we do not store full card numbers. The email you enter for access checks may be processed to look up your entitlement.",
+    "privacyAnalyticsTitle": "Analytics and performance",
+    "privacyAnalyticsBody": "We use Vercel Web Analytics for aggregate traffic metrics. We use PostHog for product analytics; PostHog may use cookies and/or local storage as described in PostHog documentation. These services help us see which parts of the site work and improve the product.",
+    "privacyAdvertisingTitle": "Advertising measurement (X / Twitter)",
+    "privacyAdvertisingBody": "In production, we may load X (Twitter) conversion measurement code from X’s domain (including static.ads-twitter.com) when configured for our site. X may process data under its own terms as a separate controller or processor, depending on the feature.",
+    "privacyCookiesTitle": "Cookies, local storage, and similar technologies",
+    "privacyCookiesBody": "Besides PostHog (see above), we may store the email you used for access checks locally in your browser so you do not have to re-enter it (this is optional convenience storage, not a password account). You can clear site data in your browser settings at any time.",
     "privacyRightsTitle": "Your rights",
-    "privacyRights": "You can request access to your data or its deletion. Contact us.",
+    "privacyRights": "Depending on your location you may have rights to access, correct, delete, object to, or restrict processing of personal data. To exercise these or ask questions, contact info@promptanatomy.app.",
     "termsOfService": "Terms of Service",
     "termsTitle": "Terms of Service – Prompt Anatomy",
-    "termsDescription": "Terms of service for Prompt Anatomy. Services provided in the EU under sole proprietor registration.",
+    "termsDescription": "Terms of service for Prompt Anatomy: EU sole proprietor, VAT, support, and refunds via info@promptanatomy.app.",
     "termsIntro": "Short terms. For questions, contact us.",
     "termsEcosystemNote": "These terms cover Prompt Anatomy ecosystem domains used for education, services, and routing to the main checkout flow.",
     "termsScopeTitle": "Services",
@@ -248,7 +255,9 @@
     "termsVatTitle": "Price and VAT",
     "termsVat": "VAT is included in the price.",
     "termsSupportTitle": "Support",
-    "termsSupport": "In case of payment issues we provide full support: access to content via GitHub, help via our public Telegram group."
+    "termsSupport": "In case of payment issues we provide full support: access to content via GitHub, help via our public Telegram group.",
+    "termsRefundTitle": "Refunds",
+    "termsRefund": "Refund requests: email info@promptanatomy.app from the address used at checkout and include your order details where possible. We aim to respond within fourteen (14) calendar days. Statutory consumer rights apply where required by law for your purchase. Where digital content has already been supplied with your prior consent and early performance rules apply, refunds may be limited—write to us and we will explain."
   },
   "success": {
     "breadcrumb": "Payment successful",

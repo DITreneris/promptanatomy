@@ -8,6 +8,7 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 
 - **Daryti:** sitemap.xml, robots.txt, canonical, og:image meta (ir įkelti og-image.png), unikalūs title/description + noindex success ir cancel puslapiams.
 - **Įgyvendinta (2026-03):** hreflang (SeoHead), dinaminis canonical ir pilnas `og:*` / `twitter:*` pagal route, locale-aware URL (`/`, `/lt`, `/en`), sitemap tik indeksuojamiems URL, `Course` + `Offer` schema, `llms.txt`. **Vėliau:** GitHub repo description ir 5–10 topics (kai repo viešas).
+- **Operacinis (2026-05):** po deploy patikrinti `GET https://www.promptanatomy.app/sitemap.xml` → **200** ir XML; keičiant `en.json` `legal.*` – `npm run build` ir sutikrinti `dist/privacy.html` / `dist/terms.html` su SPA (žr. [golden-legacy-standard.md](golden-legacy-standard.md), [deploy-and-webhook.md](deploy-and-webhook.md) §1.1).
 - **Nedaryti:** migracija į SSR, sunkus pre-render, per daug GitHub topics.
 
 ---
