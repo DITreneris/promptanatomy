@@ -16,6 +16,7 @@ Checklist:
 - New API usage: add or use functions in `frontend/src/api.js`, call them from components.
 - No secrets or API URLs hardcoded; use `config.js` / env where needed.
 - Preserve existing design (e.g. navy/gold, layout) unless the task explicitly changes it. For doc updates (e.g. i18n keys): docs/INDEX.md, docs/process/documentation.md.
+- **Marketing / LP copy** (`hero.*`, `whatIs.*`, `nav.*`, etc.): edit both `en.json` and `lt.json`. If you change canonical facts (navbar structure, stat numbers like prompt counts, bullet promises), also update `CHANGELOG.md` and align `docs/golden-legacy-standard.md` §1–3 and `docs/language-guidelines-en-lt.md` §1 where the brand/nav bar is described.
 
 If the task requires backend changes (new endpoints, Stripe, limits), delegate to **backend-agent** or **fullstack-agent**.
 

@@ -6,10 +6,10 @@ Trumpas vadovas rašant ir vertinant vartotojui matomą tekstą (LP, puslapiai, 
 
 ## 1. Prekės ženklas / pavadinimas
 
-| Kalba | Pilnas pavadinimas | Navbar / logotipas (nav.brandPromptu + brandAnatomija) |
-|-------|--------------------|----------------------------------------------------------|
-| **EN** | **Prompt Anatomy** – AI Operating System | PROMPT ANATOMY |
-| **LT** | **Promptų Anatomija** – DI Operating System | PROMPTŲ ANATOMIJA |
+| Kalba | Pilnas pavadinimas | Navbar / logotipas (`nav.brandPromptu` + `nav.brandAnatomija`) |
+|-------|--------------------|-------------------------------------------------------------------|
+| **EN** | **Prompt Anatomy** – AI Operating System | Title Case spalvų splitas: **Prompt** (tamsus) + **Anatomy** (accent); be tagline ir be versijos juostoje (žr. [golden-legacy-standard.md](golden-legacy-standard.md) §1). |
+| **LT** | **Promptų Anatomija** – DI Operating System | Tas pats principas: **Promptų** + **Anatomija** (accent); be tagline/versijos Navbar. |
 
 - EN kontekste (tarptautiniam vartotojui) visada naudoti **Prompt Anatomy**, ne „Promptų Anatomija“ – skaitomumas ir įsimintinumą.
 - LT kontekste – **Promptų Anatomija**.
