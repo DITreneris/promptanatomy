@@ -5,6 +5,6 @@
 3. **Kodas** – implementacija laikantis `.cursor/rules/` (project-global, frontend.mdc, backend.mdc).
 4. **Kokybe** – po reikšmingų pakeitimų paleiskite **quality-assurance-agent** (code review, saugumas, taisyklių laikymasis).
 5. **CI** – PR į `main`: workflow **CI** / job **Golden Legacy** turi būti žalias (tas pats regresijos rinkinys kaip [golden-legacy-standard.md](../golden-legacy-standard.md) 5 skyriuje).
-6. **Dokumentacija** – jei pakeitimas liečia API, konfigūraciją ar procesą, atnaujinkite README, TODO arba `docs/` pagal [documentation.md](documentation.md).
+6. **Dokumentacija** – jei pakeitimas liečia API, konfigūraciją, procesą ar **LP viešą copy** (Hero, WhatIs, Navbar skaičiai), atnaujinkite README, TODO arba `docs/` pagal [documentation.md](documentation.md) (įskaitant [golden-legacy-standard.md](../golden-legacy-standard.md) §1–3 ir [CHANGELOG.md](../../CHANGELOG.md), kai keičiasi kanoniniai faktai).
 
 Klausimams apie projektą ar dokumentaciją naudokite **q-and-a-agent**.

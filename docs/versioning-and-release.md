@@ -10,7 +10,7 @@
 
 | Vieta | Reikšmė | Paskirtis |
 |-------|---------|-----------|
-| **frontend/src/config.js** | `APP_VERSION = 'v1.3'` | Vienas šaltinis UI: Navbar badge, Hero script name (`SCRIPT_NAME`), Ecosystem „Stable“. Keičiant čia – atsinaujina visur. |
+| **frontend/src/config.js** | `APP_VERSION = 'v1.3'` | Vienas šaltinis: Hero terminalo etiketė (`SCRIPT_NAME`), Ecosystem „Stable“ ir kiti komponentai, kur rodoma versija. **Navbar** versijos ženkliuko nerodo (Variant B). Keičiant čia – atsinaujina visur, kur naudojama. |
 | **frontend/package.json** | `"version": "1.3.1"` | NPM package versija (build, artefaktai). Siūloma sulyginti su release. |
 | **CHANGELOG.md** | `## [1.3.1] - 2026-03-24` (naujausias patch) | Release istorija; po release nauji pakeitimai rašomi po `[Unreleased]`. |
 | **Git tag** | `v1.3.0` | Fiksuoja commit, atkuriama būsena. |

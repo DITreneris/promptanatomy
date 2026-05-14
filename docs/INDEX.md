@@ -63,7 +63,7 @@
 
 | Dokumentas | Kelias | Paskirtis |
 |------------|--------|-----------|
-| Golden Legacy Standard | [docs/golden-legacy-standard.md](golden-legacy-standard.md) | Fiksuota veikianti būsena: backend kontraktai, frontend maršrutai ir LP struktūra, kas nekeičiama. Regresijos apsauga prieš pakeitimus. Automatinis CI: [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) (`main`, PR). |
+| Golden Legacy Standard | [docs/golden-legacy-standard.md](golden-legacy-standard.md) | Fiksuota veikianti būsena: backend kontraktai, frontend maršrutai ir **LP vieša būsena** (Navbar, Hero, WhatIs statai, i18n raktai §1–3). Kas nekeičiama. Regresijos apsauga prieš pakeitimus. Automatinis CI: [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) (`main`, PR). |
 
 ---
 

@@ -12,10 +12,10 @@ When invoked:
 
 Checklist:
 - **Frontend:** Functional components and hooks; API only via api.js; Tailwind; no hardcoded secrets or API URLs.
-- **Backend:** Pydantic for bodies; HTTPException for errors; config from env; logger (no print); Stripe webhook uses raw body and signature; token limits via limits.py when relevant.
+- **Backend:** Pydantic for bodies; HTTPException for errors; config from env; logger (no print); Stripe webhook uses raw body and signature; token limits via `token_limits.py` when relevant.
 - **Security:** No secrets in code; .env for sensitive values; .env.example without real values.
 - **Regression:** Before merge, run backend `pytest` and frontend `npm run build`; critical paths in docs/golden-legacy-standard.md must not be broken (see docs/INDEX.md).
-- **Docs:** If the change affects API, config, or workflow, remind to update README, TODO, or docs/ as per docs/process/documentation.md (paths in docs/INDEX.md).
+- **Docs:** If the change affects API, config, workflow, or **public LP copy** (i18n hero/whatIs/nav numbers), remind to update README, TODO, or `docs/` per docs/process/documentation.md (paths in docs/INDEX.md)—including **CHANGELOG.md** and **docs/golden-legacy-standard.md** §1–3 when canonical UI facts change; Navbar brand row in **docs/language-guidelines-en-lt.md** §1 if relevant.
 
 Keep feedback concise; cite file and line where relevant.
 
