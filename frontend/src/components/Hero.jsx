@@ -56,7 +56,7 @@ export default function Hero({ onCta }) {
   const lineDone = (lineIdx) => phase > lineIdx + 1
 
   return (
-    <section className="relative pt-28 md:pt-48 pb-20 md:pb-32 overflow-hidden bg-hero-bg">
+    <section className="relative pt-24 md:pt-44 pb-20 md:pb-32 overflow-hidden bg-hero-bg">
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
       <div className="absolute top-0 right-0 w-1/2 h-full bg-slate-50/80 -skew-x-12 translate-x-32 -z-10 border-l border-slate-100"></div>
 

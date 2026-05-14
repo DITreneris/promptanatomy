@@ -1,7 +1,7 @@
 import { useState, useEffect, useLayoutEffect, useRef } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Zap, Menu, X } from 'lucide-react'
-import { GLOSSARY_URL, APP_VERSION } from '../config'
+import { GLOSSARY_URL } from '../config'
 import { useLocale } from '../i18n/LocaleContext'
 import { captureEcosystemOutboundClick } from '../analytics/posthog'
 
@@ -128,28 +128,25 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
 
   const closeMobile = () => setMobileOpen(false)
 
-  const navLinkClass = `relative text-xs font-bold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-accent transition-colors duration-200 min-h-[44px] min-w-[44px] inline-flex items-center after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-200 after:w-0 hover:after:w-full ${FOCUS_RING}`
+  const navLinkClass = `relative text-[13px] font-bold tracking-[0.08em] text-slate-600 hover:text-brand-accent transition-colors duration-200 min-h-[44px] min-w-[44px] inline-flex items-center after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-200 after:w-0 hover:after:w-full ${FOCUS_RING}`
 
   return (
     <>
     <nav
       className={`fixed top-0 w-full z-[101] [-webkit-backface-visibility:hidden] backface-hidden transition-all duration-500 ${
-        scrolled ? 'py-3 bg-white/70 backdrop-blur-2xl border-b border-slate-200 shadow-xs' : 'py-4 md:py-6 bg-transparent'
+        scrolled ? 'py-3 bg-white/70 backdrop-blur-2xl border-b border-slate-200 shadow-xs' : 'py-3 md:py-4 bg-transparent'
       }`}
       aria-label={t('nav.ariaNav')}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex justify-between items-center gap-2 min-w-0">
-        <Link to={homePath} className={`flex shrink-0 items-center gap-3 sm:gap-4 group cursor-pointer ${FOCUS_RING} rounded-lg`}>
-          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-brand-dark flex items-center justify-center text-brand-accent shadow-soft-lg drop-shadow-logo-glow group-hover:scale-105 group-hover:shadow-glow-accent transition-all duration-300 border border-white/10 shrink-0">
-            <Zap className="w-6 h-6 sm:w-7 sm:h-7 fill-current" />
+        <Link to={homePath} className={`flex shrink-0 items-center gap-2.5 sm:gap-3 group cursor-pointer ${FOCUS_RING} rounded-lg min-w-0`}>
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-brand-dark flex items-center justify-center text-brand-accent shadow-soft border border-white/10 shrink-0 transition-colors duration-200 group-hover:bg-brand-dark/95">
+            <Zap className="w-5 h-5 sm:w-6 sm:h-6 fill-current" />
           </div>
-          <div className="flex min-w-0 flex-col gap-1">
-            <span className="text-lg sm:text-2xl font-black tracking-tighter leading-tight text-brand-dark break-words">
-              {t('nav.brandPromptu')} <span className="text-brand-accent">{t('nav.brandAnatomija')}</span>
-            </span>
-            <span className="hidden sm:inline-flex w-fit items-center px-1.5 py-0.5 rounded-sm bg-slate-100 text-xs font-black text-slate-600 leading-none">{APP_VERSION}</span>
-            <span className="text-xs font-black uppercase tracking-[0.2em] sm:tracking-[0.4em] text-slate-600 break-words">{t('nav.brandTagline')}</span>
-          </div>
+          <span className="min-w-0 text-lg sm:text-xl font-black tracking-tight leading-none text-brand-dark break-words">
+            {t('nav.brandPromptu')}{' '}
+            <span className="text-brand-accent">{t('nav.brandAnatomija')}</span>
+          </span>
         </Link>
 
         <div className="hidden min-w-0 shrink items-center justify-end gap-4 lg:flex lg:gap-6 xl:gap-10">
@@ -183,11 +180,11 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
             )
           )}
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-1 p-1 rounded-lg bg-slate-100 border border-slate-200">
+            <div className="flex items-center gap-0.5 p-0.5 rounded-lg bg-slate-100 border border-slate-200">
               <button
                 type="button"
                 onClick={() => { setLocale('lt'); navigate('/lt') }}
-                className={`px-2.5 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} ${FOCUS_RING}`}
+                className={`px-2 py-1 rounded-md text-[11px] font-bold uppercase tracking-wide transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} ${FOCUS_RING}`}
                 aria-pressed={locale === 'lt'}
                 aria-label="Lietuvių"
               >
@@ -196,7 +193,7 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
               <button
                 type="button"
                 onClick={() => { setLocale('en'); navigate('/en') }}
-                className={`px-2.5 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} ${FOCUS_RING}`}
+                className={`px-2 py-1 rounded-md text-[11px] font-bold uppercase tracking-wide transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} ${FOCUS_RING}`}
                 aria-pressed={locale === 'en'}
                 aria-label="English"
               >
@@ -206,7 +203,7 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
             <button
               type="button"
               onClick={onCtaClick}
-              className="px-8 py-3 rounded-xl text-sm font-black text-brand-dark bg-cta-gradient shadow-cta-shadow transition-all duration-200 hover:shadow-cta-shadow hover:scale-[1.03] active:scale-[0.98] border border-white/20 min-h-[44px] focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus:outline-hidden"
+              className="px-6 py-2.5 rounded-xl text-sm font-black text-brand-dark bg-cta-gradient shadow-cta-shadow transition-all duration-200 hover:shadow-cta-shadow hover:scale-[1.02] active:scale-[0.98] border border-white/20 min-h-[44px] focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus:outline-hidden"
             >
               {t('nav.cta')}
             </button>
@@ -250,15 +247,15 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
               window.scrollTo({ top: 0, behavior: 'smooth' })
             }
           }}
-          className="py-4 text-base font-bold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-dark border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm"
+          className="py-4 text-base font-bold tracking-[0.08em] text-slate-600 hover:text-brand-dark border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm"
         >
           {t('common.home')}
         </Link>
-        <div className="mb-6 flex items-center gap-2 p-1 rounded-lg bg-slate-100 border border-slate-200 w-fit">
+        <div className="mb-6 flex items-center gap-0.5 p-0.5 rounded-lg bg-slate-100 border border-slate-200 w-fit">
           <button
             type="button"
             onClick={() => { closeMobile(); setLocale('lt'); navigate('/lt') }}
-            className={`px-4 py-2.5 rounded-md text-sm font-bold uppercase tracking-wider transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
+            className={`px-3 py-2 rounded-md text-[11px] font-bold uppercase tracking-wide transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
             aria-pressed={locale === 'lt'}
             aria-label="Lietuvių"
           >
@@ -267,7 +264,7 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
           <button
             type="button"
             onClick={() => { closeMobile(); setLocale('en'); navigate('/en') }}
-            className={`px-4 py-2.5 rounded-md text-sm font-bold uppercase tracking-wider transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
+            className={`px-3 py-2 rounded-md text-[11px] font-bold uppercase tracking-wide transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
             aria-pressed={locale === 'en'}
             aria-label="English"
           >
@@ -275,7 +272,7 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
           </button>
         </div>
         {allNavItems.map((item) => {
-          const mobileClass = "relative py-4 text-base font-bold uppercase tracking-[0.15em] text-slate-600 hover:text-brand-accent border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-200 after:w-0 hover:after:w-full focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm"
+          const mobileClass = "relative py-4 text-base font-bold tracking-[0.08em] text-slate-600 hover:text-brand-accent border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-200 after:w-0 hover:after:w-full focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm"
           return item.external ? (
             <a
               key={item.id || item.href}
