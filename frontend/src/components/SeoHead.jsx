@@ -10,8 +10,8 @@ const OG_IMAGE_URL = `${SITE_URL}/og-image.png`
 const ORGANIZATION_ID = `${SITE_URL}/#organization`
 const WEBSITE_ID = `${SITE_URL}/#website`
 const ROUTE_LAST_MODIFIED = {
-  '/privacy': '2026-03-14',
-  '/terms': '2026-03-14',
+  '/privacy': '2026-05-17',
+  '/terms': '2026-05-17',
   default: '2026-03-16',
 }
 const VISIBLE_OFFERS = [

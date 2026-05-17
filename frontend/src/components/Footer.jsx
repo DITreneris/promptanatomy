@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { Zap } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
 import { captureEcosystemOutboundClick } from '../analytics/posthog'
+import { ORG_EMAIL, formatMailingAddressLines } from '../site/organization'
 
 export default function Footer() {
   const { t, locale } = useLocale()
@@ -85,9 +86,18 @@ export default function Footer() {
             <span className="text-xs font-normal normal-case tracking-wider text-slate-600">
               {t('footer.creator')}
             </span>
-            <a href="mailto:info@promptanatomy.app" className="text-xs font-normal normal-case tracking-wider text-slate-600 hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">
-              info@promptanatomy.app
-            </a>
+            <address className="not-italic mt-3 text-xs font-normal normal-case tracking-wider text-slate-600">
+              <span className="block font-bold text-slate-600 mb-1">{t('footer.mailingAddressLabel')}</span>
+              {formatMailingAddressLines().map((line) => (
+                <span key={line} className="block">{line}</span>
+              ))}
+              <a
+                href={`mailto:${ORG_EMAIL}`}
+                className="block mt-1 hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm"
+              >
+                {ORG_EMAIL}
+              </a>
+            </address>
           </div>
           <div className="flex flex-wrap gap-8 md:gap-16 text-xs font-bold uppercase tracking-[0.35em] text-slate-600">
             <Link to="/privacy" className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">{t('footer.privacyPolicy')}</Link>
