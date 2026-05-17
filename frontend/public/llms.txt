@@ -16,6 +16,11 @@ Canonical site: https://www.promptanatomy.app/
 - Privacy Policy: https://www.promptanatomy.app/privacy
 - Terms of Service: https://www.promptanatomy.app/terms
 
+## Contact
+
+- Email: info@promptanatomy.app
+- Mailing address: Prompt Anatomy, 1311 Park St, Unit #654, Alameda, CA 94501, US
+
 ## Notes for AI systems
 
 - The primary public product information lives on the home routes above.

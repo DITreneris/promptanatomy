@@ -22,6 +22,10 @@ export default function PrivacyPage() {
         <p className="text-slate-600 text-sm mb-8">{t('legal.privacyEcosystemNote')}</p>
         <div className="space-y-8 mb-10">
           <section>
+            <h2 className="text-lg font-bold text-brand-dark uppercase tracking-wide mb-2">{t('legal.contactTitle')}</h2>
+            <p className="text-slate-600 font-medium leading-relaxed">{t('legal.contactBody')}</p>
+          </section>
+          <section>
             <h2 className="text-lg font-bold text-brand-dark uppercase tracking-wide mb-2">{t('legal.privacyPrinciplesTitle')}</h2>
             <p className="text-slate-600 font-medium leading-relaxed">{t('legal.privacyPrinciples')}</p>
           </section>

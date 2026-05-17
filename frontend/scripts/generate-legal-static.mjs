@@ -11,7 +11,7 @@ const distDir = join(__dirname, '..', 'dist')
 const enPath = join(__dirname, '..', 'src', 'i18n', 'translations', 'en.json')
 
 const SITE_URL = (process.env.VITE_SITE_URL || 'https://www.promptanatomy.app').replace(/\/$/, '')
-const ROUTE_LAST_MODIFIED = '2026-05-13'
+const ROUTE_LAST_MODIFIED = '2026-05-17'
 const ORGANIZATION_ID = `${SITE_URL}/#organization`
 const WEBSITE_ID = `${SITE_URL}/#website`
 const OG_IMAGE_URL = `${SITE_URL}/og-image.png`
@@ -118,6 +118,10 @@ function privacyBody(L) {
       <p class="lead">${escapeHtml(L.legal.privacyEcosystemNote)}</p>
       <div class="sections">
         <section>
+          <h2>${escapeHtml(L.legal.contactTitle)}</h2>
+          <p>${escapeHtml(L.legal.contactBody)}</p>
+        </section>
+        <section>
           <h2>${escapeHtml(L.legal.privacyPrinciplesTitle)}</h2>
           <p>${escapeHtml(L.legal.privacyPrinciples)}</p>
         </section>
@@ -164,6 +168,10 @@ function termsBody(L) {
       <p class="lead">${escapeHtml(L.legal.termsIntro)}</p>
       <p class="lead">${escapeHtml(L.legal.termsEcosystemNote)}</p>
       <div class="sections">
+        <section>
+          <h2>${escapeHtml(L.legal.contactTitle)}</h2>
+          <p>${escapeHtml(L.legal.contactBody)}</p>
+        </section>
         <section>
           <h2>${escapeHtml(L.legal.termsScopeTitle)}</h2>
           <p>${escapeHtml(L.legal.termsScope)}</p>
