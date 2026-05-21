@@ -7,7 +7,7 @@ import { captureEcosystemOutboundClick } from '../analytics/posthog'
 
 const FOCUS_RING = 'focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2'
 
-export default function Navbar({ onCtaClick, hasAccess = false }) {
+export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick, trainingLinkLoading = false }) {
   const { t, locale, setLocale } = useLocale()
   const location = useLocation()
   const navigate = useNavigate()
@@ -111,7 +111,7 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
   const primaryNavItems = [
     { name: t('nav.whatIs'), id: 'what-is-prompt-anatomy' },
     { name: t('nav.pricing'), id: 'pricing' },
-    ...(hasAccess ? [{ name: t('nav.training'), id: null, href: '/anatomija/', external: true }] : []),
+    ...(hasAccess && onTrainingClick ? [{ name: t('nav.training'), id: null, action: onTrainingClick }] : []),
   ]
   // „Mokymai“ tik primaryNavItems kai hasAccess – vienodai desktop ir mobile (be dublikato).
   const secondaryNavItems = [
@@ -151,7 +151,18 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
 
         <div className="hidden min-w-0 shrink items-center justify-end gap-4 lg:flex lg:gap-6 xl:gap-10">
           {primaryNavItems.map((item) =>
-            item.external ? (
+            item.action ? (
+              <button
+                key={item.name}
+                type="button"
+                onClick={item.action}
+                disabled={trainingLinkLoading}
+                aria-busy={trainingLinkLoading}
+                className={`${navLinkClass} bg-transparent disabled:opacity-70`}
+              >
+                {item.name}
+              </button>
+            ) : item.external ? (
               <a
                 key={item.id || item.href}
                 href={item.href}
@@ -273,7 +284,21 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
         </div>
         {allNavItems.map((item) => {
           const mobileClass = "relative py-4 text-base font-bold tracking-[0.08em] text-slate-600 hover:text-brand-accent border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-200 after:w-0 hover:after:w-full focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm"
-          return item.external ? (
+          return item.action ? (
+            <button
+              key={item.name}
+              type="button"
+              disabled={trainingLinkLoading}
+              aria-busy={trainingLinkLoading}
+              onClick={() => {
+                closeMobile()
+                item.action()
+              }}
+              className={`${mobileClass} w-full bg-transparent text-left disabled:opacity-70`}
+            >
+              {item.name}
+            </button>
+          ) : item.external ? (
             <a
               key={item.id || item.href}
               href={item.href}

@@ -4,11 +4,12 @@ import { useLocale } from '../i18n/LocaleContext'
 import { captureEcosystemOutboundClick } from '../analytics/posthog'
 import { ORG_EMAIL, formatMailingAddressLines } from '../site/organization'
 
-export default function Footer() {
+export default function Footer({ hasAccess = false, onTrainingClick, trainingLinkLoading = false }) {
   const { t, locale } = useLocale()
   // Dinamiški metai – tik einami (vienas skaičius, ne intervalas 2024–2026)
   const year = new Date().getFullYear()
   const pagePath = typeof window !== 'undefined' ? window.location.pathname : '/'
+  const footerLinkClass = 'hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm'
   return (
     <footer className="bg-slate-50 pt-32 pb-16 px-4 sm:px-6 md:px-8 border-t border-slate-100 shadow-soft-top overflow-hidden">
       <div className="max-w-7xl mx-auto min-w-0">
@@ -34,13 +35,25 @@ export default function Footer() {
                 <a href="#metodologija" className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">{t('footer.methodology')}</a>
               </li>
               <li>
-                <a href="/anatomija/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">{t('footer.training')}</a>
+                {hasAccess && onTrainingClick ? (
+                  <button
+                    type="button"
+                    onClick={onTrainingClick}
+                    disabled={trainingLinkLoading}
+                    aria-busy={trainingLinkLoading}
+                    className={`${footerLinkClass} bg-transparent text-left uppercase tracking-widest disabled:opacity-70`}
+                  >
+                    {t('footer.training')}
+                  </button>
+                ) : (
+                  <a href="#pricing" className={footerLinkClass}>{t('footer.training')}</a>
+                )}
               </li>
               <li>
-                <a href="#pricing" className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">{t('footer.pricing')}</a>
+                <a href="#pricing" className={footerLinkClass}>{t('footer.pricing')}</a>
               </li>
               <li>
-                <a href="#faq" className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">{t('footer.faq')}</a>
+                <a href="#faq" className={footerLinkClass}>{t('footer.faq')}</a>
               </li>
             </ul>
           </div>

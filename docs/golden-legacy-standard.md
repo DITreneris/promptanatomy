@@ -2,13 +2,13 @@
 
 **Tikslas:** Fiksuoti veikiančią būseną ir kritinius kelius, kad pakeitimai nepalaužtų to, kas jau veikia. Prieš didesnius refaktorinimus ar naujas funkcijas – patikrinti, kad šis standartas išlieka tenkinamas.
 
-**Data fiksavimo:** 2026-05-14 (Navbar Variant B; Hero subtitle + 3 bullets; WhatIs stat **450+** promptai; doc/agentų suderinimas su i18n)
+**Data fiksavimo:** 2026-05-21 (Navbar Variant B; Hero subtitle + 3 bullets; WhatIs stat **450+** promptai; LP Mokymai per magic-link srautą)
 
 ---
 
 ## 1. Kas laikoma „veikiančiu“
 
-- LP rodomas, visos sekcijos matomos (Hero, Kas yra Prompt Anatomy, Methodology, Ecosystem, Pricing, Footer). **Navbar (desktop):** kairėje – ikona + vienos eilutės wordmark (Title Case: `nav.brandPromptu` + `nav.brandAnatomija` su spalvų splitu), **be** versijos ženkliuko ir **be** tagline juostoje (pozicija – Hero `hero.subtitle`). Viršutiniame meniu – **Kas yra Promptų Anatomija** / **What is Prompt Anatomy** (#what-is-prompt-anatomy, `nav.whatIs`) ir **Kainodara** / **Pricing** (#pricing) + LT/EN + CTA; nuorodos **sentence case** (ne viso teksto `uppercase`). Kai vartotojas turi prieigą (`hasAccess` iš HomePage, t. y. `access?.highest_plan > 0`), papildomai rodomas **Mokymai** (nuoroda į `/anatomija/`, naujas tabas). Ecosystem, Methodology, Repo, Training, FAQ – tik **mobile drawer** (visi pasiekiami). **Footer** System skyriuje – nuoroda į #faq (`footer.faq`). **Hero:** badge rodo tik „Sistemos būsena: stabili“ (be commitų skaičiaus); antraštė LT „Pradėk kurti.“; **3** bullet'ai (i18n `hero.bullet1`–`hero.bullet3`, sąrašas `Hero.jsx` per `HERO_BULLET_KEYS`); subtitle – `hero.subtitle` (EN/LT atskirai). Skip link ir prieigos forma naudoja `focus-visible:ring`; Methodology – `brand-dark` / `brand-accent` tokenai; Footer kritinis tekstas – `text-slate-500`; blink-caret – `var(--color-brand-accent)` (index.css).
+- LP rodomas, visos sekcijos matomos (Hero, Kas yra Prompt Anatomy, Methodology, Ecosystem, Pricing, Footer). **Navbar (desktop):** kairėje – ikona + vienos eilutės wordmark (Title Case: `nav.brandPromptu` + `nav.brandAnatomija` su spalvų splitu), **be** versijos ženkliuko ir **be** tagline juostoje (pozicija – Hero `hero.subtitle`). Viršutiniame meniu – **Kas yra Promptų Anatomija** / **What is Prompt Anatomy** (#what-is-prompt-anatomy, `nav.whatIs`) ir **Kainodara** / **Pricing** (#pricing) + LT/EN + CTA; nuorodos **sentence case** (ne viso teksto `uppercase`). Kai vartotojas turi prieigą (`hasAccess` iš HomePage, t. y. `access?.highest_plan > 0`), papildomai rodomas **Mokymai** mygtukas, kuris naudoja `getTrainingAccessLink` magic-link srautą (ne statinį `/anatomija/` linką). Ecosystem, Methodology, Repo, FAQ ir prieigos atveju Mokymai – pasiekiami **mobile drawer**. **Footer** System skyriuje – nuoroda į #faq (`footer.faq`). **Hero:** badge rodo tik „Sistemos būsena: stabili“ (be commitų skaičiaus); antraštė LT „Pradėk kurti.“; **3** bullet'ai (i18n `hero.bullet1`–`hero.bullet3`, sąrašas `Hero.jsx` per `HERO_BULLET_KEYS`); subtitle – `hero.subtitle` (EN/LT atskirai). Skip link ir prieigos forma naudoja `focus-visible:ring`; Methodology – `brand-dark` / `brand-accent` tokenai; Footer kritinis tekstas – `text-slate-500`; blink-caret – `var(--color-brand-accent)` (index.css).
 - Kalbos perjungimas LT/EN veikia; LT naudoja DI, EN – AI (pagal [language-guidelines-en-lt.md](language-guidelines-en-lt.md)). Locale-aware URL: `/lt` ir `/en` rodo atitinkamą kalbą; perjungus kalbą Navbar nukreipia į `/lt` arba `/en` (share'inamas linkas atspindi kalbą).
 - SEO: `SeoHead.jsx` nustato canonical ir og:url pagal pathname; ant home route'ų (`/`, `/lt`, `/en`) – hreflang (lt, en, x-default). Twitter Card ir og:url įdiegti (`index.html` + dinamiškai). **og-image.png** – socialiniam preview (Twitter, LinkedIn, Facebook) laikomas `frontend/public/og-image.png`; build kopijuoja į `dist/`; `index.html` nurodo `og:image` ir `twitter:image` į `https://www.promptanatomy.app/og-image.png`. Nepašalinti failo iš `public/`.
 - Checkout srautas: prieigos tikrinimas (email) → planų pasirinkimas → Stripe Checkout → success/cancel puslapiai.
@@ -74,13 +74,13 @@
 **LP struktūra (HomePage):**
 
 - Skip link → `#main-content`.
-- Navbar: `primaryNavItems` priklauso nuo `hasAccess` (perduodamas iš HomePage): bazė – Kas yra Promptų Anatomija / What is Prompt Anatomy (#what-is-prompt-anatomy, `nav.whatIs`), Kainodara / Pricing #pricing; jei `hasAccess === true` – įtraukiamas ir Mokymai (nuoroda į `/anatomija/` su `target="_blank"` – LP lieka atidarytas). Desktop viršutinis meniu rodo šiuos punktus; `secondaryNavItems` (Ecosystem, Methodology, Repo jei config, Training, FAQ) – tik mobile drawer (`allNavItems`). Brand (viena eilutė, be versijos/tagline), kalbos LT|EN su navigate į `/lt`/`/en`, CTA. Logo ir „Home“ – locale-aware (`/lt` arba `/en`).
+- Navbar: `primaryNavItems` priklauso nuo `hasAccess` (perduodamas iš HomePage): bazė – Kas yra Promptų Anatomija / What is Prompt Anatomy (#what-is-prompt-anatomy, `nav.whatIs`), Kainodara / Pricing #pricing; jei `hasAccess === true` – įtraukiamas ir Mokymai mygtukas, kuris kviečia `handleGoToTraining` → `/api/generate-access-link` → magic link. Desktop viršutinis meniu rodo šiuos punktus; `secondaryNavItems` (Ecosystem, Methodology, Repo jei config, FAQ) – tik mobile drawer (`allNavItems`). Brand (viena eilutė, be versijos/tagline), kalbos LT|EN su navigate į `/lt`/`/en`, CTA. Logo ir „Home“ – locale-aware (`/lt` arba `/en`).
 - Hero (h1, badge „Sistemos būsena: stabili“, `hero.subtitle`, 3 bullet per `HERO_BULLET_KEYS`, CTA scroll į pricing; kodo blokas su typing animacija).
 - WhatIsPromptAnatomy (section id what-is-prompt-anatomy; h2, value, 6 blokų piliai, 3 stat kortelės: pirmoji **450+** promptai – `whatIs.stat1Number` / `stat1Label`) – po Hero, prieš Methodology.
 - Methodology (section id metodologija).
 - Ecosystem (section id ekosistema).
 - Pricing (section id pricing, prieigos forma, 2 planai Phase 1; „Eiti į mokymus" mygtukas kviečia `/api/generate-access-link` ir nukreipia tame pačiame lange į training app su magic link – same-tab navigation reikalinga iOS/Safari, kur `window.open` po async dažnai blokuojamas).
-- Footer (brand, tagline; System: Ekosistema, Metodologija, Mokymai (`/anatomija/`, naujas tabas), Kainodara, DUK (#faq); Network: vieša Telegram grupė (`t.me/prompt_anatomy`), LinkedIn, X (Twitter), PromptAnatomy Cloud, PromptAnatomy Pro; legal, copyright).
+- Footer (brand, tagline; System: Ekosistema, Metodologija, Mokymai, Kainodara, DUK (#faq); be prieigos Mokymai veda į #pricing, su prieiga kviečia `handleGoToTraining` magic-link srautą; Network: vieša Telegram grupė (`t.me/prompt_anatomy`), LinkedIn, X (Twitter), PromptAnatomy Cloud, PromptAnatomy Pro; legal, copyright).
 
 **i18n:** Visi raktai naudojami iš `lt.json` / `en.json`; nėra hardcoded teksto komponentuose (Hero, WhatIs, Methodology, Ecosystem, Pricing, Footer, Navbar, Success, Cancel). LT – terminas DI; EN – AI.
 
@@ -92,8 +92,8 @@
 
 **UX smoke (po P0-P3 fix'ų):**
 - Email be prieigos (`highest_plan === 0`) → amber blokas „Prieiga nerasta" + CTA „Gauti prieigą →" (scroll į pricing).
-- Email su prieiga (`highest_plan > 0`) → žalias blokas su progress bar + „Eiti į mokymus →" (magic link per `getTrainingAccessLink`; **navigacija tame pačiame lange** – `window.location.href`, kad veiktų iOS/Safari). Desktop Navbar su `hasAccess` rodo **Mokymai** į `/anatomija/` – **naujas tabas** (statinė nuoroda, ne magic link).
-- „Eiti į mokymus" mygtukas rodo loading state (`trainingLinkLoading`).
+- Email su prieiga (`highest_plan > 0`) → žalias blokas su progress bar + „Eiti į mokymus →" (magic link per `getTrainingAccessLink`; **navigacija tame pačiame lange** – `window.location.href`, kad veiktų iOS/Safari). Desktop Navbar ir Footer su `hasAccess` rodo **Mokymai** kaip magic-link veiksmą, ne statinę `/anatomija/` nuorodą.
+- „Eiti į mokymus" / „Mokymai" veiksmai rodo loading/disabled state (`trainingLinkLoading`).
 - `/cancel` puslapis – „Bandyti dar kartą" nuoroda scroll'ina į `#pricing` (ne SPA navigate + hash).
 - `/success` be `session_id` – informacinis pranešimas „Jei ką tik sumokėjai – palauk".
 - Magic link su netinkamu/pasibaigusiu tokenu → „Grįžti į pradžią" nuoroda (ne Retry mygtukas).

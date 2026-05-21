@@ -151,7 +151,12 @@ export default function HomePage({ forceLocale }) {
       >
         {t('common.skipToContent')}
       </a>
-      <Navbar onCtaClick={scrollToPricing} hasAccess={access?.highest_plan > 0} />
+      <Navbar
+        onCtaClick={scrollToPricing}
+        hasAccess={access?.highest_plan > 0}
+        onTrainingClick={handleGoToTraining}
+        trainingLinkLoading={trainingLinkLoading}
+      />
       <main id="main-content" tabIndex={-1}>
         <Hero onCta={scrollToPricing} />
         <WhatIsPromptAnatomy />
@@ -281,7 +286,11 @@ export default function HomePage({ forceLocale }) {
         <Ecosystem />
         <Faq />
       </main>
-      <Footer />
+      <Footer
+        hasAccess={access?.highest_plan > 0}
+        onTrainingClick={handleGoToTraining}
+        trainingLinkLoading={trainingLinkLoading}
+      />
     </div>
   )
 }
