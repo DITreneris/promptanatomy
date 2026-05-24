@@ -32,6 +32,14 @@ jobs:
         working-directory: frontend
         run: npm ci && npm run build
 
+      - name: GEO static assets smoke check
+        working-directory: frontend
+        run: |
+          test -f dist/llms-full.txt
+          grep -q 'PerplexityBot' dist/robots.txt
+          grep -q 'Tomas Staniulis' dist/llms-full.txt
+          grep -q 'medium.com/@tomas.staniulis76' dist/llms-full.txt
+
       - name: Training app install and build
         working-directory: apps/prompt-anatomy
         env:

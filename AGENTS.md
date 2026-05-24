@@ -27,6 +27,7 @@ Prieš pradedant užduotį, nustatykite, kuris agentas tinkamiausias, ir deleguo
 - **Ką dokumentuoti:** [docs/process/documentation.md](docs/process/documentation.md).
 - **Regresijos apsauga:** [docs/golden-legacy-standard.md](docs/golden-legacy-standard.md) – prieš merge: backend `pytest`, frontend `npm run build`; ką nepalaužti.
 - **LP copy (Hero, Kas yra, Navbar):** tekstai ir vieši skaičiai – `frontend/src/i18n/translations/en.json` / `lt.json`. Po reikšmingų pakeitimų – [CHANGELOG.md](CHANGELOG.md); kanoninę LP būseną (Navbar elgsena, hero bullets, WhatIs stat kortelės) atnaujinkite [docs/golden-legacy-standard.md](docs/golden-legacy-standard.md) §1–3; prekės ženklo juostą Navbar – [docs/language-guidelines-en-lt.md](docs/language-guidelines-en-lt.md) §1.
+- **LP UI polish (dizaino sistema, CTA, tipografija, spacing):** prieš ad-hoc pakeitimus – [docs/design_system_roadmap2.md](docs/design_system_roadmap2.md); implementuokite fazėmis; regresija – golden-legacy + `npm run build`.
 
 ## Taisyklės
 

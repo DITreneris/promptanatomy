@@ -5,9 +5,9 @@ import { GLOSSARY_URL } from '../config'
 import { useLocale } from '../i18n/LocaleContext'
 import { captureEcosystemOutboundClick } from '../analytics/posthog'
 
-const FOCUS_RING = 'focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2'
+const FOCUS_RING = 'focus-ring'
 
-export default function Navbar({ onCtaClick, hasAccess = false }) {
+export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick, trainingLinkLoading = false }) {
   const { t, locale, setLocale } = useLocale()
   const location = useLocation()
   const navigate = useNavigate()
@@ -111,7 +111,7 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
   const primaryNavItems = [
     { name: t('nav.whatIs'), id: 'what-is-prompt-anatomy' },
     { name: t('nav.pricing'), id: 'pricing' },
-    ...(hasAccess ? [{ name: t('nav.training'), id: null, href: '/anatomija/', external: true }] : []),
+    ...(hasAccess && onTrainingClick ? [{ name: t('nav.training'), id: null, action: onTrainingClick }] : []),
   ]
   // „Mokymai“ tik primaryNavItems kai hasAccess – vienodai desktop ir mobile (be dublikato).
   const secondaryNavItems = [
@@ -124,11 +124,56 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
       : []),
     { name: t('nav.faq'), id: 'faq' },
   ]
+  const desktopSecondaryNavItems = secondaryNavItems.filter(
+    (item) => item.id === 'ekosistema' || item.id === 'metodologija' || item.id === 'faq'
+  )
   const allNavItems = [...primaryNavItems, ...secondaryNavItems]
 
   const closeMobile = () => setMobileOpen(false)
 
-  const navLinkClass = `relative text-[13px] font-bold tracking-[0.08em] text-slate-600 hover:text-brand-accent transition-colors duration-200 min-h-[44px] min-w-[44px] inline-flex items-center after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-200 after:w-0 hover:after:w-full ${FOCUS_RING}`
+  const navLinkClass = `relative text-nav-link text-slate-600 hover:text-brand-accent transition-colors duration-200 min-h-[44px] min-w-[44px] inline-flex items-center after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-200 after:w-0 hover:after:w-full ${FOCUS_RING}`
+
+  const renderNavItem = (item, className) => {
+    if (item.action) {
+      return (
+        <button
+          key={item.name}
+          type="button"
+          onClick={item.action}
+          disabled={trainingLinkLoading}
+          aria-busy={trainingLinkLoading}
+          className={`${className} bg-transparent disabled:opacity-70`}
+        >
+          {item.name}
+        </button>
+      )
+    }
+    if (item.external) {
+      return (
+        <a
+          key={item.id || item.href}
+          href={item.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={className}
+        >
+          {item.name}
+        </a>
+      )
+    }
+    if (item.href) {
+      return (
+        <a key={item.href} href={item.href} className={className}>
+          {item.name}
+        </a>
+      )
+    }
+    return (
+      <a key={item.id} href={`#${item.id}`} className={className}>
+        {item.name}
+      </a>
+    )
+  }
 
   return (
     <>
@@ -141,7 +186,7 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex justify-between items-center gap-2 min-w-0">
         <Link to={homePath} className={`flex shrink-0 items-center gap-2.5 sm:gap-3 group cursor-pointer ${FOCUS_RING} rounded-lg min-w-0`}>
           <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-brand-dark flex items-center justify-center text-brand-accent shadow-soft border border-white/10 shrink-0 transition-colors duration-200 group-hover:bg-brand-dark/95">
-            <Zap className="w-5 h-5 sm:w-6 sm:h-6 fill-current" />
+            <Zap className="icon-md sm:icon-lg fill-current" aria-hidden />
           </div>
           <span className="min-w-0 text-lg sm:text-xl font-black tracking-tight leading-none text-brand-dark break-words">
             {t('nav.brandPromptu')}{' '}
@@ -149,42 +194,15 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
           </span>
         </Link>
 
-        <div className="hidden min-w-0 shrink items-center justify-end gap-4 lg:flex lg:gap-6 xl:gap-10">
-          {primaryNavItems.map((item) =>
-            item.external ? (
-              <a
-                key={item.id || item.href}
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={navLinkClass}
-              >
-                {item.name}
-              </a>
-            ) : item.href ? (
-              <a
-                key={item.href}
-                href={item.href}
-                className={navLinkClass}
-              >
-                {item.name}
-              </a>
-            ) : (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                className={navLinkClass}
-              >
-                {item.name}
-              </a>
-            )
-          )}
-          <div className="flex items-center gap-4">
+        <div className="hidden min-w-0 shrink items-center justify-end gap-3 lg:flex lg:gap-4 xl:gap-6">
+          {primaryNavItems.map((item) => renderNavItem(item, navLinkClass))}
+          {desktopSecondaryNavItems.map((item) => renderNavItem(item, navLinkClass))}
+          <div className="flex items-center gap-3 xl:gap-4 shrink-0">
             <div className="flex items-center gap-0.5 p-0.5 rounded-lg bg-slate-100 border border-slate-200">
               <button
                 type="button"
                 onClick={() => { setLocale('lt'); navigate('/lt') }}
-                className={`px-2 py-1 rounded-md text-[11px] font-bold uppercase tracking-wide transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} ${FOCUS_RING}`}
+                className={`px-2 py-1 rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} ${FOCUS_RING}`}
                 aria-pressed={locale === 'lt'}
                 aria-label="Lietuvių"
               >
@@ -193,7 +211,7 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
               <button
                 type="button"
                 onClick={() => { setLocale('en'); navigate('/en') }}
-                className={`px-2 py-1 rounded-md text-[11px] font-bold uppercase tracking-wide transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} ${FOCUS_RING}`}
+                className={`px-2 py-1 rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} ${FOCUS_RING}`}
                 aria-pressed={locale === 'en'}
                 aria-label="English"
               >
@@ -203,7 +221,7 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
             <button
               type="button"
               onClick={onCtaClick}
-              className="px-6 py-2.5 rounded-xl text-sm font-black text-brand-dark bg-cta-gradient shadow-cta-shadow transition-all duration-200 hover:shadow-cta-shadow hover:scale-[1.02] active:scale-[0.98] border border-white/20 min-h-[44px] focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus:outline-hidden"
+              className="btn-primary-nav"
             >
               {t('nav.cta')}
             </button>
@@ -219,7 +237,7 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
           aria-controls="mobile-nav"
           aria-label={mobileOpen ? t('nav.ariaCloseMenu') : t('nav.ariaOpenMenu')}
         >
-          {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {mobileOpen ? <X className="icon-lg" aria-hidden /> : <Menu className="icon-lg" aria-hidden />}
         </button>
       </div>
     </nav>
@@ -255,7 +273,7 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
           <button
             type="button"
             onClick={() => { closeMobile(); setLocale('lt'); navigate('/lt') }}
-            className={`px-3 py-2 rounded-md text-[11px] font-bold uppercase tracking-wide transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
+            className={`px-3 py-2 rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
             aria-pressed={locale === 'lt'}
             aria-label="Lietuvių"
           >
@@ -264,7 +282,7 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
           <button
             type="button"
             onClick={() => { closeMobile(); setLocale('en'); navigate('/en') }}
-            className={`px-3 py-2 rounded-md text-[11px] font-bold uppercase tracking-wide transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
+            className={`px-3 py-2 rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
             aria-pressed={locale === 'en'}
             aria-label="English"
           >
@@ -273,7 +291,21 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
         </div>
         {allNavItems.map((item) => {
           const mobileClass = "relative py-4 text-base font-bold tracking-[0.08em] text-slate-600 hover:text-brand-accent border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-200 after:w-0 hover:after:w-full focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm"
-          return item.external ? (
+          return item.action ? (
+            <button
+              key={item.name}
+              type="button"
+              disabled={trainingLinkLoading}
+              aria-busy={trainingLinkLoading}
+              onClick={() => {
+                closeMobile()
+                item.action()
+              }}
+              className={`${mobileClass} w-full bg-transparent text-left disabled:opacity-70`}
+            >
+              {item.name}
+            </button>
+          ) : item.external ? (
             <a
               key={item.id || item.href}
               href={item.href}
@@ -311,7 +343,7 @@ export default function Navbar({ onCtaClick, hasAccess = false }) {
         <button
           type="button"
           onClick={() => { closeMobile(); onCtaClick() }}
-          className="mt-8 py-4 rounded-xl text-base font-black text-brand-dark bg-cta-gradient shadow-cta-shadow border border-white/20 min-h-[48px] flex items-center justify-center hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
+          className="mt-8 btn-primary-md min-h-[48px] py-4 text-base flex items-center justify-center hover:scale-[1.03]"
         >
           {t('nav.cta')}
         </button>

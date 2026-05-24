@@ -2,6 +2,7 @@
  * After `vite build`, writes dist/privacy.html and dist/terms.html from en.json
  * so crawlers get real body text + correct canonical on first byte.
  */
+import { getGeoJsonLdExtra } from './geo-ld.mjs'
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -54,7 +55,7 @@ function webPageSchema({ path, title, description }) {
 
 function headBlock({ title, description, path }) {
   const url = path === '/' ? `${SITE_URL}/` : `${SITE_URL}${path}`
-  const ld = [webPageSchema({ path, title, description })]
+  const ld = [webPageSchema({ path, title, description }), ...getGeoJsonLdExtra()]
   const ogImageAlt = 'Prompt Anatomy social preview'
 
   return `<!DOCTYPE html>

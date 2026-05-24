@@ -22,7 +22,7 @@
     <meta name="twitter:image" content="https://www.promptanatomy.app/og-image.png" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://www.promptanatomy.app/" />
-    <!-- Organization.address must match frontend/src/site/organization.js -->
+    <!-- Organization.address and founder JSON-LD must match frontend/src/site/geo-manifest.js -->
     <script type="application/ld+json">
     [
       {
@@ -37,6 +37,7 @@
           "url": "https://www.promptanatomy.app/og-image.png"
         },
         "description": "Learn to run AI like an operating system. Prompt engineering, automation and AI agents for real business results.",
+        "founder": { "@id": "https://www.promptanatomy.app/#founder" },
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "1311 Park St, Unit #654",
@@ -50,6 +51,36 @@
           "email": "info@promptanatomy.app",
           "contactType": "customer service"
         }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "https://www.promptanatomy.app/#founder",
+        "name": "Tomas Staniulis",
+        "jobTitle": "Founder",
+        "sameAs": [
+          "https://www.linkedin.com/in/staniulis",
+          "https://x.com/TStaniulis_NFT",
+          "https://medium.com/@tomas.staniulis76"
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "@id": "https://www.promptanatomy.app/#publication-1",
+        "headline": "Beyond the Chatbox: Mastering the Prompt Anatomy AI Operating System",
+        "url": "https://medium.com/@tomas.staniulis76/beyond-the-chatbox-mastering-the-prompt-anatomy-ai-operating-system-ad955724804e",
+        "author": { "@id": "https://www.promptanatomy.app/#founder" },
+        "publisher": { "@type": "Organization", "name": "Medium" }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "@id": "https://www.promptanatomy.app/#publication-2",
+        "headline": "Context Architecture Will Define AI Winners in 2026",
+        "url": "https://medium.com/@tomas.staniulis76/context-architecture-will-define-ai-winners-in-2026-73b0dadab300",
+        "author": { "@id": "https://www.promptanatomy.app/#founder" },
+        "publisher": { "@type": "Organization", "name": "Medium" }
       },
       {
         "@context": "https://schema.org",

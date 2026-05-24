@@ -46,17 +46,10 @@ export default function Ecosystem() {
   const items = rawItems
 
   return (
-    <section id="ekosistema" className="pt-20 sm:pt-[100px] pb-20 md:pb-28 bg-brand-dark px-4 sm:px-6 md:px-8 relative overflow-hidden">
-      <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" aria-hidden />
+    <section id="ekosistema" className="section-dark">
+      <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('/noise.svg')]" aria-hidden />
       <div className="absolute inset-0 pointer-events-none bg-ecosystem-center-glow opacity-100" aria-hidden />
-      <div
-        className="absolute inset-0 opacity-[0.04] pointer-events-none"
-        style={{
-          backgroundImage: 'linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)',
-          backgroundSize: '32px 32px',
-        }}
-        aria-hidden
-      />
+      <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-ecosystem-grid" aria-hidden />
       <div className="max-w-7xl mx-auto relative z-10 min-w-0">
         <div className="text-center mb-16 md:mb-28">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-8 tracking-[-0.02em]">{t('ecosystem.title')}</h2>
@@ -67,7 +60,7 @@ export default function Ecosystem() {
             <a
               href="#pricing"
               onClick={() => capturePosthogEvent('ecosystem_cta_pricing_click', { placement: 'ecosystem_hub', locale, page_path: pagePath })}
-              className="inline-flex items-center justify-center min-h-[48px] px-8 py-3 rounded-xl text-sm font-black text-brand-dark bg-cta-gradient shadow-cta-shadow border border-white/20 hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+              className="inline-flex items-center justify-center btn-primary-md min-h-[48px] px-8 py-3 hover:scale-[1.03] focus-visible:ring-offset-brand-dark"
             >
               {t('ecosystem.ctaPricing')}
             </a>
@@ -93,7 +86,7 @@ export default function Ecosystem() {
             const ctaLabel = (typeof t('ecosystem.ctaOpen') === 'string' && t('ecosystem.ctaOpen').trim()) || null
             const useCtaLayout = hasBullets || ctaLabel
 
-            const cardBaseClass = "group relative rounded-3xl bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] backdrop-blur-md hover:border-[rgba(255,200,0,0.5)] hover:shadow-ecosystem-card-rim hover:-translate-y-1.5 transition-all duration-220 overflow-hidden focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+            const cardBaseClass = "group relative card-glass overflow-hidden focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
             const cardClass = `${cardBaseClass} p-6 sm:p-10 ${useCtaLayout ? '' : 'block'}`
             const titleClass = "text-xl font-black text-white mb-2 tracking-tight"
 

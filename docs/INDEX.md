@@ -28,13 +28,14 @@
 | Memo integracija (saugumas, 2025–2026) | [docs/memo-integration-security-analysis.md](memo-integration-security-analysis.md) | Magic-link su Mokymų sistema: HMAC, timing-safe, secret, redirect; geriausios praktikos. |
 | Supabase user_access | [docs/supabase-user-access.sql](supabase-user-access.sql) | SQL lentelė: email, highest_plan, stripe_customer_id (santrauka). |
 | Supabase migracijos | [docs/supabase-migrations.md](supabase-migrations.md) | Kanonas: `supabase/migrations/`; kaip pritaikyti; Vercel/FastAPI nevykdo SQL. |
-| SEO (KISS–Marry–Kill) | [docs/SEO-KISS-Marry-Kill.md](SEO-KISS-Marry-Kill.md) | Sitemap, robots, og:image, canonical, route meta, būsena. |
+| SEO (KISS–Marry–Kill) | [docs/SEO-KISS-Marry-Kill.md](SEO-KISS-Marry-Kill.md) | Sitemap, robots, og:image, llms-full, GEO manifest, būsena. |
 | Ekosistemos valdymas (.app/.cloud/.pro) | [docs/ecosystem-governance.md](ecosystem-governance.md) | Domenų rolės, SEO/GEO/AI nekonkuravimo taisyklės, KPI minimumas. |
 | Kainodaros planas | [docs/pricing-plan.md](pricing-plan.md) | Kainodara, geriausios praktikos, palyginimas. |
 | Faze 1 apimtis (2 produktai, moduliai 7+ lock) | [docs/phase-1-scope.md](phase-1-scope.md) | Kas parduodama Faze 1; tik planai 1–2; moduliai 7–15 užrakinti. |
 | Kalbos gairės (LT/EN) | [docs/language-guidelines-en-lt.md](language-guidelines-en-lt.md) | Prekės ženklas, terminai, tonas, vertimai. |
 | Public assets (frontend) | [frontend/public/README.md](../frontend/public/README.md) | Og-image ir statiniai failai (sitemap, robots). |
 | Logo / favicon gairės | [docs/design/logo-favicon.md](design/logo-favicon.md) | Šaltinis, spalvos, dydžiai, Kiss–Marry–Kill taisyklės; generavimo scriptas. |
+| Frontpage design system (aktyvus) | [docs/design_system_roadmap2.md](design_system_roadmap2.md) | LP dizaino sistema: **v1.0** (Phases 1–7 shipped), Primer benchmark §14, `@theme` + functional tokens, agentų checklist. QA: [process/design-system-qa.md](process/design-system-qa.md). |
 
 *Istorinės analizės ir uždaryti auditai: [docs/archive/README.md](archive/README.md) (taip pat §4 žemiau).*
 
