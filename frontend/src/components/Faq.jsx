@@ -37,13 +37,13 @@ export default function Faq() {
   return (
     <section
       id="faq"
-      className="py-20 md:py-28 bg-white px-4 sm:px-6 md:px-8 overflow-hidden"
+      className="section-default bg-white overflow-hidden"
       aria-labelledby="faq-heading"
     >
       <div className="max-w-4xl mx-auto min-w-0">
         <h2
           id="faq-heading"
-          className="text-4xl md:text-5xl font-black text-brand-dark tracking-[-0.02em] leading-[1.1] mb-12"
+          className="section-heading mb-12"
         >
           {title}
         </h2>

@@ -1,3 +1,37 @@
+# Prompt Anatomy – AI Operating System (Home / Hub)
+
+**Live site:** https://www.promptanatomy.app  
+**LLM index:** https://www.promptanatomy.app/llms.txt | **Full index:** https://www.promptanatomy.app/llms-full.txt  
+**Founder:** Tomas Staniulis — [LinkedIn](https://www.linkedin.com/in/staniulis) · [X](https://x.com/TStaniulis_NFT) · [Medium](https://medium.com/@tomas.staniulis76)
+
+Bilingual (LT/EN) landing hub for AI prompt engineering training, Stripe checkout, and ecosystem routing. Stack: Vite + React, FastAPI/Stripe, Vercel.
+
+| Domain | Role |
+|--------|------|
+| [promptanatomy.app](https://www.promptanatomy.app) | Hub — pricing, checkout, access |
+| [promptanatomy.app/anatomija/](https://www.promptanatomy.app/anatomija/) | Training app (6 modules) |
+| [promptanatomy.info](https://www.promptanatomy.info/en/) | Prompt library spin-off |
+| [promptanatomy.space](https://www.promptanatomy.space/en/) | Content / marketing system |
+| [promptanatomy.ceo](https://www.promptanatomy.ceo/) | Operations center |
+| [promptanatomy.cloud](https://promptanatomy.cloud/) | Educational flow → hub |
+| [promptanatomy.pro](https://promptanatomy.pro/) | B2B / teams → hub |
+
+### Publications (founder)
+
+- [Beyond the Chatbox: Mastering the Prompt Anatomy AI Operating System](https://medium.com/@tomas.staniulis76/beyond-the-chatbox-mastering-the-prompt-anatomy-ai-operating-system-ad955724804e)
+- [Context Architecture Will Define AI Winners in 2026](https://medium.com/@tomas.staniulis76/context-architecture-will-define-ai-winners-in-2026-73b0dadab300)
+
+### FAQ (quick)
+
+| Question | Answer |
+|----------|--------|
+| What is Prompt Anatomy? | An AI operating system for business: 6-block methodology, training, prompt library. |
+| Languages? | Lithuanian and English (`/lt`, `/en`). |
+| Pricing? | Starter 39 EUR, Core 99 EUR — one-time, lifetime access. |
+| Where is training? | `/anatomija/` after purchase; access via email (no password). |
+
+---
+
 # Promptų Anatomija – Home (pardavimų puslapis)
 
 Marketinginis tinklalapis ir minimalus backend mokėjimams per Stripe. Tikslas: konvertuoti lankytojus ir rinkti mokėjimus už mokymų turinį „Promptų anatomija“.

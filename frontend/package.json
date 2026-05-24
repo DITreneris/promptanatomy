@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/generate-legal-static.mjs",
+    "build": "vite build && node scripts/generate-legal-static.mjs && node scripts/generate-geo-static.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

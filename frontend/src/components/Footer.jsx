@@ -11,23 +11,23 @@ export default function Footer({ hasAccess = false, onTrainingClick, trainingLin
   const pagePath = typeof window !== 'undefined' ? window.location.pathname : '/'
   const footerLinkClass = 'hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm'
   return (
-    <footer className="bg-slate-50 pt-32 pb-16 px-4 sm:px-6 md:px-8 border-t border-slate-100 shadow-soft-top overflow-hidden">
+    <footer className="bg-slate-50 pt-24 pb-12 px-4 sm:px-6 md:px-8 border-t border-slate-100 shadow-soft-top overflow-hidden">
       <div className="max-w-7xl mx-auto min-w-0">
-        <div className="grid md:grid-cols-4 gap-16 mb-24">
+        <div className="grid md:grid-cols-4 gap-16 mb-16">
           <div className="md:col-span-2">
-            <div className="flex items-center gap-4 mb-10">
+            <div className="flex items-center gap-4 mb-8">
               <div className="w-12 h-12 rounded-2xl bg-brand-dark flex items-center justify-center text-brand-accent border border-white/10 shadow-soft">
-                <Zap className="fill-current w-6 h-6" />
+                <Zap className="fill-current icon-lg" aria-hidden />
               </div>
-              <span className="text-3xl font-black tracking-tighter uppercase text-brand-dark">{t('footer.brand')}</span>
+              <span className="text-3xl font-black tracking-tighter text-brand-dark">{t('footer.brand')}</span>
             </div>
             <p className="text-slate-600 font-medium max-w-sm text-lg leading-relaxed italic">
               {t('footer.tagline')}
             </p>
           </div>
           <div>
-            <h5 className="font-bold uppercase text-xs tracking-[0.45em] text-slate-600 mb-12">{t('footer.system')}</h5>
-            <ul className="space-y-6 text-sm font-bold text-slate-600 uppercase tracking-widest">
+            <h5 className="font-bold uppercase text-xs tracking-widest text-slate-600 mb-8">{t('footer.system')}</h5>
+            <ul className="space-y-4 text-sm font-bold text-slate-600">
               <li>
                 <a href="#ekosistema" className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">{t('footer.ecosystem')}</a>
               </li>
@@ -41,7 +41,7 @@ export default function Footer({ hasAccess = false, onTrainingClick, trainingLin
                     onClick={onTrainingClick}
                     disabled={trainingLinkLoading}
                     aria-busy={trainingLinkLoading}
-                    className={`${footerLinkClass} bg-transparent text-left uppercase tracking-widest disabled:opacity-70`}
+                    className={`${footerLinkClass} bg-transparent text-left disabled:opacity-70`}
                   >
                     {t('footer.training')}
                   </button>
@@ -58,8 +58,8 @@ export default function Footer({ hasAccess = false, onTrainingClick, trainingLin
             </ul>
           </div>
           <div>
-            <h5 className="font-black uppercase text-xs tracking-[0.45em] text-slate-600 mb-12">{t('footer.network')}</h5>
-            <ul className="space-y-6 text-sm font-bold text-slate-600 uppercase tracking-widest">
+            <h5 className="font-bold uppercase text-xs tracking-widest text-slate-600 mb-8">{t('footer.network')}</h5>
+            <ul className="space-y-4 text-sm font-bold text-slate-600">
               <li>
                 <a href="https://t.me/prompt_anatomy" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">
                   {t('footer.support')}
@@ -88,12 +88,12 @@ export default function Footer({ hasAccess = false, onTrainingClick, trainingLin
             </ul>
           </div>
         </div>
-        <div className="pt-20 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-10">
+        <div className="pt-12 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-10">
           <div className="flex flex-col gap-1">
-            <span className="block text-xs font-bold uppercase tracking-[0.5em] text-slate-600">
+            <span className="block text-xs font-bold uppercase tracking-widest text-slate-600">
               {t('footer.copyrightLine1', { year })}
             </span>
-            <span className="block text-xs font-bold uppercase tracking-[0.5em] text-slate-600">
+            <span className="block text-xs font-bold uppercase tracking-widest text-slate-600">
               {t('footer.copyrightLine2')}
             </span>
             <span className="text-xs font-normal normal-case tracking-wider text-slate-600">
@@ -112,7 +112,7 @@ export default function Footer({ hasAccess = false, onTrainingClick, trainingLin
               </a>
             </address>
           </div>
-          <div className="flex flex-wrap gap-8 md:gap-16 text-xs font-bold uppercase tracking-[0.35em] text-slate-600">
+          <div className="flex flex-wrap gap-8 md:gap-16 text-xs font-bold tracking-wide text-slate-600">
             <Link to="/privacy" className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">{t('footer.privacyPolicy')}</Link>
             <Link to="/terms" className="hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm">{t('footer.termsOfService')}</Link>
             <Link

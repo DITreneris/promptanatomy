@@ -16,14 +16,14 @@ export default function WhatIsPromptAnatomy() {
   return (
     <section
       id="what-is-prompt-anatomy"
-      className="py-20 md:py-28 bg-slate-50 px-4 sm:px-6 md:px-8 overflow-hidden"
+      className="section-default bg-slate-50 overflow-hidden"
       aria-labelledby="what-is-heading"
     >
       <div className="max-w-4xl mx-auto text-center min-w-0">
         {/* 1. TITLE */}
         <h2
           id="what-is-heading"
-          className="text-4xl md:text-5xl font-black text-brand-dark tracking-[-0.02em] leading-[1.1] mb-6"
+          className="section-heading mb-6"
         >
           {t('whatIs.title')}
         </h2>
@@ -38,6 +38,14 @@ export default function WhatIsPromptAnatomy() {
               {t('whatIs.valueLine2')}
             </p>
           </div>
+          <p className="mt-6">
+            <a
+              href="#pricing"
+              className="text-base font-bold text-brand-dark underline decoration-brand-accent/60 underline-offset-4 hover:text-brand-accent focus-ring rounded-sm"
+            >
+              {t('whatIs.ctaPricing')} →
+            </a>
+          </p>
         </div>
 
         {/* 3. PROCESS – pipeline pills (INPUT = active step) */}
@@ -45,8 +53,8 @@ export default function WhatIsPromptAnatomy() {
           {blocks.map((label, i) => {
             const isActive = i === 1
             const pillClass = isActive
-              ? 'px-4 py-2 rounded-full bg-brand-accent/15 border-2 border-brand-accent/40 text-sm font-bold text-brand-dark shadow-[0_2px_8px_rgba(207,167,58,0.2)] ring-2 ring-brand-accent/20 transition-all duration-150'
-              : 'px-4 py-2 rounded-full bg-slate-100 border border-slate-200 text-sm font-bold text-slate-700 shadow-[0_2px_6px_rgba(0,0,0,0.05),0_0_0_1px_rgba(255,196,0,0.15)] transition-all duration-150 hover:-translate-y-0.5'
+              ? 'px-4 py-2 rounded-full bg-brand-accent/15 border-2 border-brand-accent/40 text-sm font-bold text-brand-dark shadow-soft ring-2 ring-brand-accent/20 transition-all duration-150'
+              : 'px-4 py-2 rounded-full bg-slate-100 border border-slate-200 text-sm font-bold text-slate-700 shadow-soft transition-all duration-150 hover:-translate-y-0.5'
             return (
               <span key={i} className="inline-flex items-center gap-4">
                 <span className={pillClass}>
@@ -61,7 +69,7 @@ export default function WhatIsPromptAnatomy() {
         {/* 4. PROOF – 3 stat cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12">
           <figure className="text-center m-0 bg-white rounded-2xl p-6 shadow-stat-card transition-all duration-200 hover:-translate-y-1 hover:shadow-soft-lg">
-            <p className="text-5xl md:text-[56px] font-black text-brand-dark leading-none mb-2" aria-hidden="true">
+            <p className="text-stat mb-2">
               {t('whatIs.stat1Number')}
             </p>
             <figcaption className="text-slate-600 font-medium text-sm md:text-base">
@@ -69,7 +77,7 @@ export default function WhatIsPromptAnatomy() {
             </figcaption>
           </figure>
           <figure className="text-center m-0 bg-white rounded-2xl p-6 shadow-stat-card transition-all duration-200 hover:-translate-y-1 hover:shadow-soft-lg">
-            <p className="text-5xl md:text-[56px] font-black text-brand-dark leading-none mb-2" aria-hidden="true">
+            <p className="text-stat mb-2">
               {t('whatIs.stat2Number')}
             </p>
             <figcaption className="text-slate-600 font-medium text-sm md:text-base">
@@ -77,7 +85,7 @@ export default function WhatIsPromptAnatomy() {
             </figcaption>
           </figure>
           <figure className="text-center m-0 bg-white rounded-2xl p-6 shadow-stat-card transition-all duration-200 hover:-translate-y-1 hover:shadow-soft-lg">
-            <p className="text-5xl md:text-[56px] font-black text-brand-dark leading-none mb-2" aria-hidden="true">
+            <p className="text-stat mb-2">
               {t('whatIs.stat3Number')}
             </p>
             <figcaption className="text-slate-600 font-medium text-sm md:text-base">

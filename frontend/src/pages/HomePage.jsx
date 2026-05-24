@@ -161,7 +161,7 @@ export default function HomePage({ forceLocale }) {
         <Hero onCta={scrollToPricing} />
         <WhatIsPromptAnatomy />
         <Methodology />
-        <section id="pricing" className="py-20 md:py-28 bg-pricing-section px-4 sm:px-6 md:px-8 overflow-hidden">
+        <section id="pricing" className="section-default bg-pricing-section overflow-hidden">
           <div className="max-w-5xl mx-auto min-w-0">
             <Pricing
               onBuy={handleBuy}
@@ -257,7 +257,7 @@ export default function HomePage({ forceLocale }) {
                     type="button"
                     disabled={trainingLinkLoading}
                     onClick={handleGoToTraining}
-                    className="block w-full py-3 rounded-xl text-center font-black text-sm text-brand-dark bg-accent-gradient hover:shadow-glow-accent active:scale-[0.98] transition-all duration-200 disabled:opacity-70"
+                    className="block w-full py-3 rounded-xl text-center text-sm btn-primary disabled:opacity-70"
                   >
                     {trainingLinkLoading ? t('pricing.loading') : `${t('pricing.goToTraining')} →`}
                   </button>
@@ -274,7 +274,7 @@ export default function HomePage({ forceLocale }) {
                   <button
                     type="button"
                     onClick={scrollToPricing}
-                    className="block w-full py-3 rounded-xl text-center font-black text-sm text-brand-dark bg-accent-gradient hover:shadow-glow-accent active:scale-[0.98] transition-all duration-200"
+                    className="block w-full py-3 rounded-xl text-center text-sm btn-primary"
                   >
                     {t('pricing.getAccess')} →
                   </button>

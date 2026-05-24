@@ -1,6 +1,7 @@
 /**
  * Official org contact – single source for footer, JSON-LD, legal copy, llms.txt.
  * Keep frontend/index.html Organization.address in sync when changing these values.
+ * Founder / publications / ecosystem GEO: frontend/src/site/geo-manifest.js
  */
 import { SITE_URL } from '../config'
 

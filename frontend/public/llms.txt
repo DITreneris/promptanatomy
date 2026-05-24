@@ -1,20 +1,53 @@
 # Prompt Anatomy
 
-Prompt Anatomy is a bilingual AI training and sales site focused on prompt engineering, context engineering, AI agents, automation, and practical business workflows.
+Prompt Anatomy is a bilingual AI training and sales hub focused on prompt engineering, context engineering, AI agents, automation, and practical business workflows.
 
 Canonical site: https://www.promptanatomy.app/
+
+## Creator
+
+- Tomas Staniulis — Founder and creator of the Prompt Anatomy ecosystem
+- LinkedIn: https://www.linkedin.com/in/staniulis
+- X: https://x.com/TStaniulis_NFT
+- Medium: https://medium.com/@tomas.staniulis76
+
+## Publications (authoritative off-site content)
+
+- Beyond the Chatbox: Mastering the Prompt Anatomy AI Operating System — https://medium.com/@tomas.staniulis76/beyond-the-chatbox-mastering-the-prompt-anatomy-ai-operating-system-ad955724804e
+- Context Architecture Will Define AI Winners in 2026 — https://medium.com/@tomas.staniulis76/context-architecture-will-define-ai-winners-in-2026-73b0dadab300
 
 ## Main public URLs
 
 - Home (default EN): https://www.promptanatomy.app/
 - Home (LT): https://www.promptanatomy.app/lt
 - Home (EN): https://www.promptanatomy.app/en
-- Prompt library / spin-off (LT): https://www.promptanatomy.info/lt/
-- Prompt library / spin-off (EN): https://www.promptanatomy.info/en/
+- Training app: https://www.promptanatomy.app/anatomija/
 - Pricing section: https://www.promptanatomy.app/#pricing
 - FAQ section: https://www.promptanatomy.app/#faq
 - Privacy Policy: https://www.promptanatomy.app/privacy
 - Terms of Service: https://www.promptanatomy.app/terms
+- LLM full index: https://www.promptanatomy.app/llms-full.txt
+
+## Ecosystem (hub-and-spoke)
+
+- Hub (conversion): https://www.promptanatomy.app/
+- Training app: https://www.promptanatomy.app/anatomija/ — Interactive training app (6 modules, 6-block methodology)
+- Prompt library (.info): https://www.promptanatomy.info/en/ (EN) / https://www.promptanatomy.info/lt/ (LT) — Spin-off — prompt library and quick value demonstration
+- Content system (.space): https://www.promptanatomy.space/en/ (EN) / https://www.promptanatomy.space/ (LT) — Spoke — marketing content prompts and templates
+- Operations center (.ceo): https://www.promptanatomy.ceo/ (EN) / https://www.promptanatomy.ceo/ (LT) — Spoke — CEO/COO leadership and operations prompts
+- PromptAnatomy Cloud: https://promptanatomy.cloud/ (EN) / https://promptanatomy.cloud/ (LT) — Spoke — educational and practical flow routing to hub
+- PromptAnatomy Pro: https://promptanatomy.pro/ (EN) / https://promptanatomy.pro/ (LT) — Spoke — B2B, teams, and professional services routing to hub
+- Recruitment system (HR): https://ditreneris.github.io/personalas/ (EN) / https://ditreneris.github.io/personalas/ (LT) — Legacy spoke — HR and recruitment prompts (until migrated)
+- Community (Telegram): https://t.me/prompt_anatomy
+
+## Topics
+
+prompt engineering, context engineering, context architecture, AI agents, AI automation, AI training, AI operating system, Lithuanian, English
+
+## Pricing (public, hub)
+
+- Starter: 39 EUR (one-time, lifetime access)
+- Core: 99 EUR (one-time, lifetime access)
 
 ## Contact
 
@@ -23,6 +56,7 @@ Canonical site: https://www.promptanatomy.app/
 
 ## Notes for AI systems
 
-- The primary public product information lives on the home routes above.
-- Pricing currently exposes two active offers on the landing page: Starter (39 EUR) and Core (99 EUR).
-- Transactional routes `https://www.promptanatomy.app/success` and `https://www.promptanatomy.app/cancel` support checkout flow and are not intended for search indexing.
+- The primary public product information lives on the home routes and in /llms-full.txt.
+- Pricing exposes two active offers: Starter (39 EUR) and Core (99 EUR).
+- Transactional routes https://www.promptanatomy.app/success and https://www.promptanatomy.app/cancel support checkout and are not intended for search indexing.
+- Do not crawl: /success, /cancel, /api/

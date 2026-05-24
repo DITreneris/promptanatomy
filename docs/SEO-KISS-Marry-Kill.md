@@ -7,7 +7,7 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 ## Geriausios praktikos – santrauka
 
 - **Daryti:** sitemap.xml, robots.txt, canonical, og:image meta (ir įkelti og-image.png), unikalūs title/description + noindex success ir cancel puslapiams.
-- **Įgyvendinta (2026-03):** hreflang (SeoHead), dinaminis canonical ir pilnas `og:*` / `twitter:*` pagal route, locale-aware URL (`/`, `/lt`, `/en`), sitemap tik indeksuojamiems URL, `Course` + `Offer` schema, `llms.txt`. **Vėliau:** GitHub repo description ir 5–10 topics (kai repo viešas).
+- **Įgyvendinta (2026-03):** hreflang (SeoHead), dinaminis canonical ir pilnas `og:*` / `twitter:*` pagal route, locale-aware URL (`/`, `/lt`, `/en`), sitemap tik indeksuojamiems URL, `Course` + `Offer` schema, `llms.txt`. **2026-05-24 (GEO):** pilnas AI `robots.txt`, `llms-full.txt` (build), `geo-manifest.js`, founder `Person` + Medium `Article` JSON-LD, ekosistemos hub/spoke + publikacijos llms failuose. **Vėliau (GitHub UI):** repo description ir 5–10 topics (kai repo viešas — README jau turi SEO bloką).
 - **Operacinis (2026-05):** po deploy patikrinti `GET https://www.promptanatomy.app/sitemap.xml` → **200** ir XML; keičiant `en.json` `legal.*` – `npm run build` ir sutikrinti `dist/privacy.html` / `dist/terms.html` su SPA (žr. [golden-legacy-standard.md](golden-legacy-standard.md), [deploy-and-webhook.md](deploy-and-webhook.md) §1.1).
 - **Nedaryti:** migracija į SSR, sunkus pre-render, per daug GitHub topics.
 
@@ -30,10 +30,10 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 | Praktika | Kodėl MARRY | Ką daryti | Būsena |
 |----------|-------------|-----------|--------|
 | **sitemap.xml** | Lengva, standartas, padeda paieškos varikliams rasti puslapius. | Pridėti `public/sitemap.xml` tik su canonical ir indeksuojamais URL. | Įgyvendinta |
-| **robots.txt** | Valdo, ką crawleriai gali crawlinti; gali nurodyti sitemap. | Pridėti `public/robots.txt` su `Sitemap:`. | Įgyvendinta |
+| **robots.txt** | Valdo, ką crawleriai gali crawlinti; gali nurodyti sitemap. | Pridėti `public/robots.txt` su `Sitemap:`; 2026 AI bot sąrašas + `Disallow` API/transactional. | Įgyvendinta (2026-05) |
 | **og:image** | Be nuotraukos dalijimasis socialuose atrodo silpnas. | 1200×630 px paveikslėlis, `<meta property="og:image">` + absoliutus URL. Meta įdėta; failą `og-image.png` įkelti į `frontend/public/`. | Meta įgyvendinta; paveikslas – įkelti |
 | **GitHub: description + topics** | Jei repo bus viešas – geresnis atpažinamumas paieškoje. | Repo description + 5–10 topics: `react`, `vite`, `stripe`, `landing-page`, `prompt-engineering`, `i18n`. | Vėliau |
-| **README pirmas blokas** | Ir žmonėms, ir paieškos varikliams – kas tai ir kam. | Pirmas paragrafas su raktažodžiais (jau gerai); gal pridėti 1–2 sakinius apie „AI mokymai“, „pardavimų puslapis“. | Opcionalu |
+| **README pirmas blokas** | Ir žmonėms, ir paieškos varikliams – kas tai ir kam. | EN SEO blokas README viršuje (ekosistema, founder, publikacijos, FAQ). | Įgyvendinta (2026-05) |
 | **hreflang / lang** | LT/EN – sumažina dubliavimą ir pagerina tikslinimą. | `SeoHead.jsx`: `<link rel="alternate" hreflang="lt|en|x-default">` ant home route'ų; canonical ir og:url dinamiškai pagal pathname. | Įgyvendinta |
 | **Unikalūs title/description pagal route** | Success/cancel turi turėti atskirą meta. | `SeoHead.jsx` valdo Home, `/privacy`, `/terms`, `/success`, `/cancel` title/description + `robots`; atnaujina ir `twitter:*`. | Įgyvendinta |
 
@@ -84,9 +84,21 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 - **Locale-aware URL** – maršrutai `/lt` ir `/en`; Navbar logo ir „Home“ nuorodos pagal locale; perjungus kalbą – `navigate('/lt')` arba `navigate('/en')`, kad share'intas linkas atspindėtų kalbą.
 - **Success/Cancel puslapiai** – unikalūs `metaTitle` ir `metaDescription` vertimuose (en/lt); `SeoHead.jsx` nustato `title`, `description`, `robots=noindex, nofollow` ir canonical į patį URL. Puslapių funkcionalumas nekeistas.
 - **DUK (FAQ) skyrius** – `frontend/src/components/Faq.jsx`: sekcija `id="faq"`, 9 klausimai/atsakymai iš i18n `faq.title`, `faq.items` (LT/EN). Navbar nuoroda „DUK“ / „FAQ“ į `#faq`. **FAQPage JSON-LD** – dinamiškai injektuojamas į `<head>` per `useEffect` (turinis iš to paties `faq.items`), atnaujinamas pagal locale.
-- **llms.txt** – `frontend/public/llms.txt` su trumpu produkto aprašu, pagrindiniais public URL ir pastaba, kad `success` / `cancel` yra transakciniai, ne indeksuojami route'ai.
+- **llms.txt** – `frontend/public/llms.txt` (atnaujinamas build metu): ekosistema, kūrėjas Tomas Staniulis, Medium publikacijos, kainodara.
+- **llms-full.txt** – generuojamas į `dist/` build metu (`generate-geo-static.mjs`): pilnas FAQ (LT/EN), hero, pricing.
+- **geo-manifest.js** – `frontend/src/site/geo-manifest.js` — GEO URL ir founder vienas šaltinis.
 
-**Vėliau:** GitHub description/topics (kai repo viešas).
+**Vėliau (GitHub UI):** repo About description + topics. **Spoke domenai:** atskiri llms.txt (žr. ecosystem-governance).
+
+---
+
+## Įgyvendinimo būsena (2026-05-24)
+
+- **robots.txt** – pilnas 2026 AI/search bot sąrašas; `Disallow: /api/`, `/success`, `/cancel`.
+- **llms-full.txt**, `privacy.md`, `terms.md`, `index.en.md`, `index.lt.md` – build script.
+- **JSON-LD** – `Person` (#founder), 2× Medium `Article`, `Organization.founder` (`index.html`).
+- **vercel.json** – llms-full / md rewrite išimtys, `text/plain`, `Link: rel=describedby`.
+- **CI** – GEO smoke check.
 
 ---
 

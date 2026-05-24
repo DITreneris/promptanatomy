@@ -26,3 +26,19 @@ Išlaikyti vieną brandą su trimis domenais taip, kad jie vienas kitą stiprint
 - Hub konversijos signalas: `ecosystem_cta_pricing_click` (placement `ecosystem_hub`) — vidinis CTA iš Ekosistemos sekcijos į `#pricing`.
 - Assisted conversion (srautas iš `.cloud/.pro` į `.app` ir checkout/success santykis).
 - LT/EN split ir GEO split (LT vs US/EU) pagal įėjimo kanalą.
+
+## GEO failai (hub `.app`)
+
+Hub repozitorijoje (`059_home_page` / Vercel deploy):
+
+| Failas | Paskirtis |
+|--------|-----------|
+| `frontend/src/site/geo-manifest.js` | Vienas šaltinis: ekosistemos URL, founder (Tomas Staniulis), Medium publikacijos, kainodara |
+| `frontend/public/llms.txt` | Trumpas AI indeksas (atnaujinamas build metu) |
+| `dist/llms-full.txt` | Pilnas indeksas: FAQ LT/EN, hero, ekosistema |
+| `frontend/public/robots.txt` | AI + search bot leidimai |
+| `frontend/index.html` | `Person` + Medium `Article` JSON-LD |
+
+**Taisyklės:** llms failuose turi būti visi hub/spoke domenai, founder profiliai (LinkedIn, X, Medium), 2+ autorinės publikacijos (media diversity). Spoke domenai (.info, .cloud, .pro, .space, .ceo) — atskiras follow-up: tas pats šablonas savo deploy.
+
+---

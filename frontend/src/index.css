@@ -5,6 +5,16 @@
 
   --text-label: 10px;
   --text-label--line-height: 1.25;
+  --text-stat: 3.5rem;
+  --text-stat--line-height: 1;
+  --text-price: 2.75rem;
+  --text-price--line-height: 1;
+  --text-nav-link: 0.8125rem;
+  --text-nav-link--line-height: 1.25;
+
+  --size-icon-sm: 1rem;
+  --size-icon-md: 1.25rem;
+  --size-icon-lg: 1.5rem;
 
   --color-brand-dark: #0b1320;
   --color-brand-accent: #cfa73a;
@@ -14,6 +24,16 @@
   --color-ecosystem-2: #7c5cff;
   --color-ecosystem-3: #3f6fff;
   --color-ecosystem-4: #f38a3f;
+
+  --color-accent-muted-bg: rgb(255 193 7 / 0.15);
+  --color-accent-muted-border: rgb(255 193 7 / 0.35);
+  --color-accent-featured-from: rgb(255 193 7 / 0.08);
+  --color-accent-featured-to: rgb(255 193 7 / 0.02);
+  --color-accent-featured-border: rgb(255 193 7 / 0.5);
+  --color-surface-glass: rgb(255 255 255 / 0.04);
+  --color-border-glass: rgb(255 255 255 / 0.08);
+  --color-border-glass-hover: rgb(255 200 0 / 0.5);
+  --color-grid-line: rgb(255 255 255 / 0.15);
 
   --background-image-accent-gradient: linear-gradient(
     135deg,
@@ -42,6 +62,14 @@
     #f8fafc 0%,
     #eef2f7 100%
   );
+  --background-image-accent-featured: linear-gradient(
+    to bottom,
+    var(--color-accent-featured-from),
+    var(--color-accent-featured-to)
+  );
+  --background-image-ecosystem-grid:
+    linear-gradient(var(--color-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid-line) 1px, transparent 1px);
 
   --shadow-soft:
     0 2px 8px -2px rgba(11, 19, 32, 0.08),
@@ -69,6 +97,9 @@
   --shadow-pricing-card: 0 20px 40px rgba(0, 0, 0, 0.06);
   --shadow-pricing-cta: 0 8px 20px rgba(255, 193, 7, 0.35);
   --shadow-hero-value: 0 8px 24px rgba(0, 0, 0, 0.06);
+  --shadow-accent-ring: 0 0 0 4px rgba(207, 167, 58, 0.08);
+  --shadow-accent-ring-hover: 0 0 0 4px rgba(207, 167, 58, 0.12);
+  --shadow-success-icon: 0 20px 40px rgba(16, 185, 129, 0.1);
 
   --drop-shadow-logo-glow: 0 0 6px rgba(255, 196, 0, 0.4);
 
@@ -100,6 +131,118 @@
 @utility animate-blink-caret {
   border-right: 2px solid var(--color-brand-accent);
   animation: blink-caret 0.75s step-end infinite;
+}
+
+@utility focus-ring {
+  @apply focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2;
+}
+
+@utility btn-primary {
+  @apply min-h-[44px] font-black text-brand-dark bg-cta-gradient shadow-cta-shadow border border-white/20 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] focus-ring;
+}
+
+@utility btn-primary-lg {
+  @apply btn-primary rounded-2xl px-12 py-6 text-xl hover:scale-[1.03];
+}
+
+@utility btn-primary-md {
+  @apply btn-primary rounded-xl px-6 py-2.5 text-sm;
+}
+
+@utility btn-primary-nav {
+  @apply btn-primary-md rounded-xl;
+}
+
+@utility btn-secondary {
+  @apply min-h-[44px] font-bold text-brand-dark bg-white border border-slate-200 shadow-soft transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98] focus-ring;
+}
+
+@utility btn-ghost {
+  @apply min-h-[44px] font-bold text-slate-600 bg-transparent hover:bg-slate-100 transition-all duration-200 focus-ring;
+}
+
+@utility section-default {
+  @apply py-20 md:py-28 px-4 sm:px-6 md:px-8;
+}
+
+@utility section-dark {
+  @apply section-default pt-20 sm:pt-[100px] pb-20 md:pb-28 bg-brand-dark relative overflow-hidden;
+}
+
+@utility section-heading {
+  @apply text-4xl md:text-5xl font-black text-brand-dark tracking-[-0.02em] leading-[1.1];
+}
+
+@utility shadow-tier-1 {
+  @apply shadow-soft;
+}
+
+@utility shadow-tier-2 {
+  @apply shadow-soft-lg;
+}
+
+@utility shadow-tier-3 {
+  @apply shadow-pricing-card;
+}
+
+@utility badge-accent {
+  @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-[0.25em] text-amber-800 bg-accent-muted-bg border border-accent-muted-border;
+}
+
+@utility card-featured-pricing {
+  @apply bg-accent-featured border-2 border-accent-featured-border;
+}
+
+@utility card-glass {
+  @apply rounded-3xl bg-surface-glass border border-border-glass backdrop-blur-md hover:border-border-glass-hover hover:shadow-ecosystem-card-rim hover:-translate-y-1.5 transition-all duration-220;
+}
+
+@utility bg-ecosystem-grid {
+  background-image: var(--background-image-ecosystem-grid);
+  background-size: 32px 32px;
+}
+
+@utility text-stat {
+  @apply text-5xl md:text-[length:var(--text-stat)] font-extrabold text-brand-dark leading-none;
+}
+
+@utility text-price {
+  @apply text-[length:var(--text-price)] font-extrabold leading-none text-brand-dark;
+}
+
+@utility text-label-upper {
+  @apply text-label sm:text-xs font-bold uppercase tracking-[0.12em] sm:tracking-[0.18em];
+}
+
+@utility text-nav-link {
+  @apply text-[length:var(--text-nav-link)] font-bold tracking-[0.08em];
+}
+
+@utility shadow-accent-ring {
+  box-shadow: var(--shadow-accent-ring);
+}
+
+@utility shadow-accent-ring-hover {
+  box-shadow: var(--shadow-accent-ring-hover);
+}
+
+@utility shadow-success-icon {
+  box-shadow: var(--shadow-success-icon);
+}
+
+@utility icon-sm {
+  width: var(--size-icon-sm);
+  height: var(--size-icon-sm);
+}
+
+@utility icon-md {
+  width: var(--size-icon-md);
+  height: var(--size-icon-md);
+}
+
+@utility icon-lg {
+  width: var(--size-icon-lg);
+  height: var(--size-icon-lg);
 }
 
 @layer base {

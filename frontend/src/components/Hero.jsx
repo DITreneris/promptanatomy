@@ -1,8 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { ArrowRight, Activity } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
-import { SCRIPT_NAME } from '../config'
-
 const HERO_BULLET_KEYS = ['hero.bullet1', 'hero.bullet2', 'hero.bullet3']
 
 export default function Hero({ onCta }) {
@@ -57,17 +55,19 @@ export default function Hero({ onCta }) {
 
   return (
     <section className="relative pt-24 md:pt-44 pb-20 md:pb-32 overflow-hidden bg-hero-bg">
-      <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+      <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[url('/noise.svg')]"></div>
       <div className="absolute top-0 right-0 w-1/2 h-full bg-slate-50/80 -skew-x-12 translate-x-32 -z-10 border-l border-slate-100"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 grid lg:grid-cols-2 gap-12 lg:gap-24 items-center min-w-0">
         <div className="relative z-10 text-left min-w-0">
-          <div className="inline-flex items-center gap-3 bg-brand-dark text-white px-4 py-2 rounded-full mb-10 shadow-soft border border-white/10" role="status">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
-            <span className="text-xs font-black uppercase tracking-[0.25em]">{t('hero.systemStatus')}</span>
-          </div>
+          <p className="inline-flex items-center gap-2.5 bg-brand-dark text-white px-4 py-2 rounded-full mb-8 md:mb-10 shadow-soft border border-white/10 border-brand-accent/25">
+            <span className="w-1.5 h-1.5 shrink-0 rounded-full bg-brand-accent" aria-hidden="true" />
+            <span className="text-label-upper text-slate-100">
+              {t('hero.badge')}
+            </span>
+          </p>
 
-          <h1 className="max-[359px]:text-3xl text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-brand-dark mb-4 md:mb-6 leading-[0.85] tracking-tighter break-words">
+          <h1 className="max-[359px]:text-3xl text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-brand-dark mb-4 md:mb-6 leading-[0.95] tracking-tighter break-words">
             {t('hero.headline1')}<br />
             <span className="text-transparent bg-clip-text bg-accent-gradient break-words">
               {t('hero.headline2')}
@@ -77,7 +77,7 @@ export default function Hero({ onCta }) {
           <p className="text-lg md:text-xl text-slate-600 font-bold mb-4 max-w-xl break-words" aria-describedby="hero-bullets">
             {t('hero.subtitle')}
           </p>
-          <ul id="hero-bullets" className="list-none space-y-2 mb-8 md:mb-10 max-w-xl text-base md:text-lg text-slate-600 font-medium">
+          <ul id="hero-bullets" className="hidden sm:block list-none space-y-2 mb-8 md:mb-10 max-w-xl text-base md:text-lg text-slate-600 font-medium">
             {HERO_BULLET_KEYS.map((key) => (
               <li key={key} className="flex items-center gap-2">
                 <span className="text-brand-accent font-bold" aria-hidden="true">•</span>
@@ -86,13 +86,13 @@ export default function Hero({ onCta }) {
             ))}
           </ul>
 
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center">
+          <div className="flex flex-col gap-4 sm:gap-6 items-stretch sm:flex-row sm:items-center">
             <button
               type="button"
               onClick={onCta}
-              className="group w-full sm:w-auto min-h-[44px] px-12 py-6 rounded-2xl text-xl font-black text-brand-dark bg-cta-gradient shadow-cta-shadow transition-all duration-200 hover:shadow-cta-shadow hover:scale-[1.03] active:scale-[0.98] flex items-center justify-center gap-3 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
+              className="group w-full sm:w-auto btn-primary-lg flex items-center justify-center gap-3"
             >
-              {t('hero.cta')} <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+              {t('hero.cta')} <ArrowRight className="icon-lg group-hover:translate-x-1 transition-transform" aria-hidden />
             </button>
 
             <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/90 px-4 py-3 text-sm font-semibold text-slate-600 shadow-xs">
@@ -113,11 +113,8 @@ export default function Hero({ onCta }) {
                 <div className="w-3 h-3 rounded-full bg-amber-500/80"></div>
                 <div className="w-3 h-3 rounded-full bg-emerald-500/80"></div>
               </div>
-              <div className="flex items-center gap-2 min-w-0">
-                <div className="px-2 py-1 rounded-sm bg-white/5 border border-white/10 text-xs text-slate-300 font-black uppercase tracking-widest flex items-center gap-1.5 shrink-0">
-                  <Activity size={10} className="text-emerald-400" aria-hidden /> {t('hero.liveFeed')}
-                </div>
-                <div className="px-2 py-1 rounded-sm bg-white/5 border border-white/10 text-xs text-slate-300 font-bold uppercase tracking-widest min-w-0 break-words">{SCRIPT_NAME}</div>
+              <div className="px-2 py-1 rounded-sm bg-white/5 border border-white/10 text-xs text-slate-300 font-black uppercase tracking-widest flex items-center gap-1.5 shrink-0">
+                <Activity size={16} className="text-emerald-400 shrink-0" aria-hidden /> {t('hero.liveFeed')}
               </div>
             </div>
 
@@ -162,12 +159,12 @@ export default function Hero({ onCta }) {
                 </div>
               </div>
               <div
-                className="pt-8 flex items-center gap-4 text-brand-accent border-t border-white/5"
+                className="pt-8 flex items-start gap-3 border-t border-white/5"
                 style={{ opacity: phase >= 4 ? 1 : 0, transition: 'opacity 0.5s ease-out' }}
               >
-                <div className="w-2 h-2 rounded-full bg-brand-accent animate-ping"></div>
-                <span className="text-xs font-black tracking-[0.2em] uppercase text-slate-200">
-                  {t('hero.systemInit')}<span className="animate-pulse">...</span>
+                <div className="mt-1.5 w-2 h-2 shrink-0 rounded-full bg-emerald-400" aria-hidden="true" />
+                <span className="text-label-upper leading-snug tracking-[0.14em] sm:tracking-[0.18em] text-slate-200 break-words min-w-0">
+                  {t('hero.terminalOutcome')}
                 </span>
               </div>
             </div>

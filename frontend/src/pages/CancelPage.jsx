@@ -20,7 +20,7 @@ export default function CancelPage() {
           <li className="text-brand-dark" aria-current="page">{t('cancel.breadcrumb')}</li>
         </ol>
       </nav>
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('/noise.svg')]"></div>
       <div className="max-w-xl w-full bg-white rounded-3xl p-12 md:p-16 text-center shadow-xl border border-slate-100 relative z-10">
         <h2 className="text-3xl font-black text-brand-dark mb-6 tracking-tight">
           {t('cancel.heading')}
@@ -34,15 +34,15 @@ export default function CancelPage() {
             onClick={() => setTimeout(() => {
               document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })
             }, 100)}
-            className="min-h-[44px] inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-lg font-black text-brand-dark bg-accent-gradient hover:shadow-glow-accent active:scale-[0.98] transition-all duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
+            className="min-h-[44px] inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-lg btn-primary-lg"
           >
-            {t('cancel.tryAgain')} <ArrowLeft className="w-5 h-5 rotate-180" />
+            {t('cancel.tryAgain')} <ArrowLeft className="icon-md rotate-180" aria-hidden />
           </Link>
           <Link
             to="/"
-            className="min-h-[44px] inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-lg font-black text-slate-600 bg-slate-100 hover:bg-slate-200 active:scale-[0.98] transition-all duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
+            className="min-h-[44px] inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-lg btn-secondary"
           >
-            <ArrowLeft className="w-5 h-5" /> {t('common.backToHome')}
+            <ArrowLeft className="icon-md" aria-hidden /> {t('common.backToHome')}
           </Link>
         </div>
       </div>

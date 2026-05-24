@@ -16,6 +16,39 @@
           "value": "geolocation=(), microphone=(), camera=()"
         }
       ]
+    },
+    {
+      "source": "/",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.promptanatomy.app/llms.txt>; rel=\"describedby\""
+        }
+      ]
+    },
+    {
+      "source": "/robots.txt",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" }
+      ]
+    },
+    {
+      "source": "/llms.txt",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" }
+      ]
+    },
+    {
+      "source": "/llms-full.txt",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" }
+      ]
+    },
+    {
+      "source": "/(.*\\.md)",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" }
+      ]
     }
   ],
   "rewrites": [
@@ -23,7 +56,7 @@
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/terms", "destination": "/terms.html" },
     {
-      "source": "/((?!api)(?!anatomija)(?!sitemap\\.xml$)(?!robots\\.txt$)(?!llms\\.txt$).*)",
+      "source": "/((?!api)(?!anatomija)(?!sitemap\\.xml$)(?!robots\\.txt$)(?!llms\\.txt$)(?!llms-full\\.txt$)(?!privacy\\.md$)(?!terms\\.md$)(?!index\\.en\\.md$)(?!index\\.lt\\.md$).*)",
       "destination": "/index.html"
     }
   ]
