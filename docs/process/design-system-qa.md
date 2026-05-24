@@ -9,7 +9,7 @@
 |----------|--------|
 | 375px | Hero CTA column; Pricing cards; mobile drawer open/close; Footer links |
 | 768px | Navbar density; section headings readable |
-| 1280px | Desktop nav: What Is, Pricing, Ecosystem, Methodology, FAQ + locale + CTA; Ecosystem grid |
+| 1280px | Desktop nav: What Is, Ecosystem, Training (if access) + locale + CTA; Footer 4 columns + legal bar; Ecosystem grid |
 
 ## Accessibility smoke
 
