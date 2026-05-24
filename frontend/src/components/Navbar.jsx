@@ -108,26 +108,19 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
     return () => document.removeEventListener('keydown', onKeyDown)
   }, [mobileOpen])
 
-  const primaryNavItems = [
+  const mainNavItems = [
     { name: t('nav.whatIs'), id: 'what-is-prompt-anatomy' },
-    { name: t('nav.pricing'), id: 'pricing' },
+    { name: t('nav.ecosystem'), id: 'ekosistema' },
     ...(hasAccess && onTrainingClick ? [{ name: t('nav.training'), id: null, action: onTrainingClick }] : []),
   ]
-  // „Mokymai“ tik primaryNavItems kai hasAccess – vienodai desktop ir mobile (be dublikato).
-  const secondaryNavItems = [
-    { name: t('nav.ecosystem'), id: 'ekosistema' },
-    { name: t('nav.methodology'), id: 'metodologija' },
+  const drawerOnlyNavItems = [
     { name: t('nav.cloud'), id: null, href: 'https://promptanatomy.cloud/', external: true },
     { name: t('nav.pro'), id: null, href: 'https://promptanatomy.pro/', external: true },
     ...(GLOSSARY_URL
       ? [{ name: t('nav.repo'), id: null, href: GLOSSARY_URL, external: true }]
       : []),
-    { name: t('nav.faq'), id: 'faq' },
   ]
-  const desktopSecondaryNavItems = secondaryNavItems.filter(
-    (item) => item.id === 'ekosistema' || item.id === 'metodologija' || item.id === 'faq'
-  )
-  const allNavItems = [...primaryNavItems, ...secondaryNavItems]
+  const allNavItems = [...mainNavItems, ...drawerOnlyNavItems]
 
   const closeMobile = () => setMobileOpen(false)
 
@@ -195,8 +188,7 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
         </Link>
 
         <div className="hidden min-w-0 shrink items-center justify-end gap-3 lg:flex lg:gap-4 xl:gap-6">
-          {primaryNavItems.map((item) => renderNavItem(item, navLinkClass))}
-          {desktopSecondaryNavItems.map((item) => renderNavItem(item, navLinkClass))}
+          {mainNavItems.map((item) => renderNavItem(item, navLinkClass))}
           <div className="flex items-center gap-3 xl:gap-4 shrink-0">
             <div className="flex items-center gap-0.5 p-0.5 rounded-lg bg-slate-100 border border-slate-200">
               <button
