@@ -20,7 +20,9 @@ Vienas dokumentas: kas įdiegta produkcijoje (Vercel + Stripe webhook), kaip tik
 - **Success-redirect (magic-link):** Vercel serverless `api/success-redirect.js` – pagal `session_id` grąžina `redirect_url` į mokymų app su `access_tier`, `expires`, `token`. Jei Stripe Checkout sesijoje yra pirkėjo el. paštas, JSON gali turėti neprivalomą `customer_email` (Success puslapis gali įrašyti į naršyklės saugyklą LP formai). Reikia env: `ACCESS_TOKEN_SECRET`, `STRIPE_SECRET_KEY`; optional: `TRAINING_REDIRECT_BASE`, `ACCESS_TOKEN_EXPIRY_DAYS`.
 - **Training app (submodulis):** `apps/prompt-anatomy` → [DITreneris/inzinerija](https://github.com/DITreneris/inzinerija). Vercel build metu: `installCommand` inicijuoja submodulį (`git submodule update --init --recursive`), `buildCommand` buildina frontend, po to training app su `VITE_BASE_PATH=/anatomy/` ir `VITE_MVP_MODE=1`, rezultatas kopijuojamas į `frontend/dist/anatomy/`. Maršrutas `/anatomy/*` aptarnaujamas iš to katalogo; `/anatomija/*` → **301** į `/anatomy/*`. Rekomenduojama Vercel build env: `VITE_PUBLIC_SITE_URL=https://www.promptanatomy.app`; Production: `TRAINING_REDIRECT_BASE=https://www.promptanatomy.app/anatomy` (žr. submodulio `docs/deployment/SEO_SUBMODULE.md`).
 
-**Vercel env (būtina webhook + prieigai + success-redirect):** `STRIPE_WEBHOOK_SECRET`, `STRIPE_SECRET_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `ACCESS_TOKEN_SECRET` (bendras su mokymų app; success-redirect funkcijai). Optional: `TRAINING_REDIRECT_BASE`, `ACCESS_TOKEN_EXPIRY_DAYS`.
+**Vercel env (būtina webhook + prieigai + success-redirect):** `STRIPE_WEBHOOK_SECRET`, `STRIPE_SECRET_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `ACCESS_TOKEN_SECRET` (bendras su mokymų app; success-redirect funkcijai). Optional: `ACCESS_TOKEN_EXPIRY_DAYS`.
+
+**Vercel env (training kelias, rekomenduojama Production):** `TRAINING_REDIRECT_BASE=https://www.promptanatomy.app/anatomy` (be galinio `/`). Jei Dashboard vis dar rodo seną `/anatomija` – magic link ir success-redirect nukreips į seną kelią net po deploy; atnaujinkite **prieš** arba **kartu** su merge į `main`.
 
 ---
 
