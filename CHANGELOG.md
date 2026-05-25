@@ -5,6 +5,7 @@ Visi pakeitimai šiame faile dokumentuojami pagal [Keep a Changelog](https://kee
 ## [Unreleased]
 
 ### Pakeista
+- **Mokymų app kelias `/anatomija/` → `/anatomy/` (2026-05-25):** Kanoninis training URL `https://www.promptanatomy.app/anatomy/`; [vercel.json](vercel.json) – build `VITE_BASE_PATH=/anatomy/`, `dist/anatomy/`, SPA rewrite, **301** iš `/anatomija/*`. Magic-link default: [api/generate-access-link.js](api/generate-access-link.js), [api/success-redirect.js](api/success-redirect.js), [backend/core/config.py](backend/core/config.py). CI: [`.github/workflows/ci.yml`](.github/workflows/ci.yml). GEO: [frontend/public/llms.txt](frontend/public/llms.txt), [frontend/src/site/geo-manifest.js](frontend/src/site/geo-manifest.js), `Disallow: /anatomy/` [frontend/public/robots.txt](frontend/public/robots.txt). **Po deploy:** Vercel `TRAINING_REDIRECT_BASE=https://www.promptanatomy.app/anatomy`; smoke – [docs/deploy-and-webhook.md](docs/deploy-and-webhook.md), [docs/golden-legacy-standard.md](docs/golden-legacy-standard.md).
 - **Submodulis inzinerija (2026-05-25):** `apps/prompt-anatomy` `c5459fe` → `e911b713` ([DITreneris/inzinerija](https://github.com/DITreneris/inzinerija) `main`). SEO/crawler hardening (noindex, `VITE_PUBLIC_SITE_URL`, robots/llms.txt, GEO snippet export), design system v0.2 UI primitives, modulių identity laukai. Regresija: Golden Legacy (frontend build, training su `VITE_BASE_PATH=/anatomija/`, `VITE_MVP_MODE=1`, `pytest`).
 
 ### Pridėta

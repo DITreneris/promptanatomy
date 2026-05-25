@@ -47,7 +47,7 @@ export const CREATOR_PUBLICATIONS = [
 export const ECOSYSTEM_HUB = {
   url: `${SITE_URL}/`,
   role: 'Hub — pricing, checkout, access, conversion',
-  trainingUrl: `${SITE_URL}/anatomija/`,
+  trainingUrl: `${SITE_URL}/anatomy/`,
   trainingRole: 'Interactive training app (6 modules, 6-block methodology)',
 }
 
@@ -106,7 +106,7 @@ export const PUBLIC_PRICING = [
 export const NOINDEX_PATHS = ['/success', '/cancel', '/api/']
 
 export const TRAINING_SUMMARY =
-  'Prompt Anatomy training is an interactive course with 6 modules built on a 6-block prompt system: theory, knowledge checks, practical business scenarios, context engineering, advanced tests, and a capstone project. Available in Lithuanian and English at /anatomija/.'
+  'Prompt Anatomy training is an interactive course with 6 modules built on a 6-block prompt system: theory, knowledge checks, practical business scenarios, context engineering, advanced tests, and a capstone project. Available in Lithuanian and English at /anatomy/.'
 
 export const FOUNDER_ID = `${SITE_URL}/#founder`
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`
