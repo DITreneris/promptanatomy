@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "installCommand": "git submodule update --init --recursive && npm ci && cd frontend && npm ci && cd ../apps/prompt-anatomy && npm ci",
-  "buildCommand": "cd frontend && npm run build && cd ../apps/prompt-anatomy && VITE_BASE_PATH=/anatomija/ VITE_MVP_MODE=1 npm run build && mkdir -p ../../frontend/dist/anatomija && cp -r dist/* ../../frontend/dist/anatomija/",
+  "buildCommand": "cd frontend && npm run build && cd ../apps/prompt-anatomy && VITE_BASE_PATH=/anatomy/ VITE_MVP_MODE=1 VITE_PUBLIC_SITE_URL=https://www.promptanatomy.app npm run build && mkdir -p ../../frontend/dist/anatomy && cp -r dist/* ../../frontend/dist/anatomy/",
   "outputDirectory": "frontend/dist",
   "framework": null,
   "headers": [
@@ -51,12 +51,18 @@
       ]
     }
   ],
+  "redirects": [
+    { "source": "/anatomija", "destination": "/anatomy/", "permanent": true },
+    { "source": "/anatomija/", "destination": "/anatomy/", "permanent": true },
+    { "source": "/anatomija/:path*", "destination": "/anatomy/:path*", "permanent": true },
+    { "source": "/anatomy", "destination": "/anatomy/", "permanent": true }
+  ],
   "rewrites": [
-    { "source": "/anatomija/:path*", "destination": "/anatomija/index.html" },
+    { "source": "/anatomy/:path*", "destination": "/anatomy/index.html" },
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/terms", "destination": "/terms.html" },
     {
-      "source": "/((?!api)(?!anatomija)(?!sitemap\\.xml$)(?!robots\\.txt$)(?!llms\\.txt$)(?!llms-full\\.txt$)(?!privacy\\.md$)(?!terms\\.md$)(?!index\\.en\\.md$)(?!index\\.lt\\.md$).*)",
+      "source": "/((?!api)(?!anatomy)(?!sitemap\\.xml$)(?!robots\\.txt$)(?!llms\\.txt$)(?!llms-full\\.txt$)(?!privacy\\.md$)(?!terms\\.md$)(?!index\\.en\\.md$)(?!index\\.lt\\.md$).*)",
       "destination": "/index.html"
     }
   ]

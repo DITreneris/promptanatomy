@@ -44,7 +44,7 @@ jobs:
         working-directory: apps/prompt-anatomy
         env:
           HUSKY: "0"
-          VITE_BASE_PATH: /anatomija/
+          VITE_BASE_PATH: /anatomy/
           VITE_MVP_MODE: "1"
         run: npm ci && npm run build
 

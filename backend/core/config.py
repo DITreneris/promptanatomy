@@ -44,7 +44,7 @@ class Settings(BaseSettings):
         description="Shared secret for magic-link token (HMAC); same value in training app env",
     )
     training_redirect_base: str = Field(
-        default="https://www.promptanatomy.app/anatomija",
+        default="https://www.promptanatomy.app/anatomy",
         description="Base URL to redirect to after payment (no trailing slash); training app",
     )
     access_token_expiry_days: int = Field(

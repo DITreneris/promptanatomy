@@ -9,7 +9,7 @@ Bilingual (LT/EN) landing hub for AI prompt engineering training, Stripe checkou
 | Domain | Role |
 |--------|------|
 | [promptanatomy.app](https://www.promptanatomy.app) | Hub — pricing, checkout, access |
-| [promptanatomy.app/anatomija/](https://www.promptanatomy.app/anatomija/) | Training app (6 modules) |
+| [promptanatomy.app/anatomy/](https://www.promptanatomy.app/anatomy/) | Training app (6 modules) |
 | [promptanatomy.info](https://www.promptanatomy.info/en/) | Prompt library spin-off |
 | [promptanatomy.space](https://www.promptanatomy.space/en/) | Content / marketing system |
 | [promptanatomy.ceo](https://www.promptanatomy.ceo/) | Operations center |
@@ -28,7 +28,7 @@ Bilingual (LT/EN) landing hub for AI prompt engineering training, Stripe checkou
 | What is Prompt Anatomy? | An AI operating system for business: 6-block methodology, training, prompt library. |
 | Languages? | Lithuanian and English (`/lt`, `/en`). |
 | Pricing? | Starter 39 EUR, Core 99 EUR — one-time, lifetime access. |
-| Where is training? | `/anatomija/` after purchase; access via email (no password). |
+| Where is training? | `/anatomy/` after purchase; access via email (no password). |
 
 ---
 
@@ -40,7 +40,7 @@ Marketinginis tinklalapis ir minimalus backend mokėjimams per Stripe. Tikslas: 
 
 - **frontend/** – Vite + React, landing puslapis, pricing, CTA → Stripe Checkout, puslapiai `/success` ir `/cancel`.
 - **backend/** – FastAPI, entry point `backend/main.py`: `GET /health`, `GET /api/access` (prieiga pagal email), `POST /api/create-checkout-session`, `POST /api/webhooks/stripe`, `POST /api/validate-token-limit`. Konfigūracija per Pydantic Settings (`backend/core/config.py`). MVP upgrade: Supabase lentelė `user_access` (highest_plan), webhook įrašo prieigą, checkout blokuoja jei jau turi planą – schema: [supabase/migrations/](supabase/migrations/), santrauka: [docs/supabase-user-access.sql](docs/supabase-user-access.sql), procedūra: [docs/supabase-migrations.md](docs/supabase-migrations.md).
-- **apps/prompt-anatomy/** – mokymų app (SPA) kaip git submodulis iš [DITreneris/inzinerija](https://github.com/DITreneris/inzinerija); pasiekiamas per `/anatomija/` tame pačiame domene (Vercel build į `frontend/dist/anatomija/`).
+- **apps/prompt-anatomy/** – mokymų app (SPA) kaip git submodulis iš [DITreneris/inzinerija](https://github.com/DITreneris/inzinerija); pasiekiamas per `/anatomy/` tame pačiame domene (Vercel build į `frontend/dist/anatomy/`; senas `/anatomija/` → 301).
 
 ## Reikalavimai
 
@@ -118,7 +118,7 @@ Frontend: `http://localhost:5173`
 | `SUPABASE_URL` | (Optional) Supabase projekto URL – prieigos tikrinimui ir webhook upsert į `user_access`. |
 | `SUPABASE_SERVICE_ROLE_KEY` | (Optional) Supabase service role key – backend naudoja tik serverio pusėje. |
 | `ACCESS_TOKEN_SECRET` | (Optional) Bendras secret su mokymų app – magic-link redirect (`GET /api/success-redirect`). Sugeneruoti: `openssl rand -base64 32`. |
-| `TRAINING_REDIRECT_BASE` | (Optional) Base URL į mokymų app (default `https://www.promptanatomy.app/anatomija`). |
+| `TRAINING_REDIRECT_BASE` | (Optional) Base URL į mokymų app (default `https://www.promptanatomy.app/anatomy`). |
 | `ACCESS_TOKEN_EXPIRY_DAYS` | (Optional) Kiek dienų galioja magic-link (default 30). |
 
 ### Frontend (`frontend/.env`)

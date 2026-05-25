@@ -18,9 +18,11 @@ Vienas dokumentas: kas įdiegta produkcijoje (Vercel + Stripe webhook), kaip tik
 - **Stripe Dashboard:** Webhook URL – `https://www.promptanatomy.app/api/stripe-webhook`, event `checkout.session.completed`. Signing secret → env `STRIPE_WEBHOOK_SECRET`.
 - **Create-checkout-session ir GET /api/access:** Kol FastAPI backend nedeployintas atskirai, šie endpointai produkcijoje veikia per tą patį frontend deploy tik jei pridėti atitinkamos Vercel functions; dabar frontend naudoja `VITE_API_URL` (lokaliai `localhost:8000`). Produkcijoje reikia arba atskiro backend deploy, arba tų pačių endpointų kaip Vercel functions.
 - **Success-redirect (magic-link):** Vercel serverless `api/success-redirect.js` – pagal `session_id` grąžina `redirect_url` į mokymų app su `access_tier`, `expires`, `token`. Jei Stripe Checkout sesijoje yra pirkėjo el. paštas, JSON gali turėti neprivalomą `customer_email` (Success puslapis gali įrašyti į naršyklės saugyklą LP formai). Reikia env: `ACCESS_TOKEN_SECRET`, `STRIPE_SECRET_KEY`; optional: `TRAINING_REDIRECT_BASE`, `ACCESS_TOKEN_EXPIRY_DAYS`.
-- **Training app (submodulis):** `apps/prompt-anatomy` → [DITreneris/inzinerija](https://github.com/DITreneris/inzinerija). Vercel build metu: `installCommand` inicijuoja submodulį (`git submodule update --init --recursive`), `buildCommand` buildina frontend, po to training app su `VITE_BASE_PATH=/anatomija/` ir `VITE_MVP_MODE=1`, rezultatas kopijuojamas į `frontend/dist/anatomija/`. Maršrutas `/anatomija/*` aptarnaujamas iš to katalogo. Rekomenduojama Vercel build env: `VITE_PUBLIC_SITE_URL=https://www.promptanatomy.app` (OG/canonical submodulyje; žr. submodulio `docs/deployment/SEO_SUBMODULE.md`).
+- **Training app (submodulis):** `apps/prompt-anatomy` → [DITreneris/inzinerija](https://github.com/DITreneris/inzinerija). Vercel build metu: `installCommand` inicijuoja submodulį (`git submodule update --init --recursive`), `buildCommand` buildina frontend, po to training app su `VITE_BASE_PATH=/anatomy/` ir `VITE_MVP_MODE=1`, rezultatas kopijuojamas į `frontend/dist/anatomy/`. Maršrutas `/anatomy/*` aptarnaujamas iš to katalogo; `/anatomija/*` → **301** į `/anatomy/*`. Rekomenduojama Vercel build env: `VITE_PUBLIC_SITE_URL=https://www.promptanatomy.app`; Production: `TRAINING_REDIRECT_BASE=https://www.promptanatomy.app/anatomy` (žr. submodulio `docs/deployment/SEO_SUBMODULE.md`).
 
-**Vercel env (būtina webhook + prieigai + success-redirect):** `STRIPE_WEBHOOK_SECRET`, `STRIPE_SECRET_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `ACCESS_TOKEN_SECRET` (bendras su mokymų app; success-redirect funkcijai). Optional: `TRAINING_REDIRECT_BASE`, `ACCESS_TOKEN_EXPIRY_DAYS`.
+**Vercel env (būtina webhook + prieigai + success-redirect):** `STRIPE_WEBHOOK_SECRET`, `STRIPE_SECRET_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `ACCESS_TOKEN_SECRET` (bendras su mokymų app; success-redirect funkcijai). Optional: `ACCESS_TOKEN_EXPIRY_DAYS`.
+
+**Vercel env (training kelias, rekomenduojama Production):** `TRAINING_REDIRECT_BASE=https://www.promptanatomy.app/anatomy` (be galinio `/`). Jei Dashboard vis dar rodo seną `/anatomija` – magic link ir success-redirect nukreips į seną kelią net po deploy; atnaujinkite **prieš** arba **kartu** su merge į `main`.
 
 ---
 
@@ -28,7 +30,7 @@ Vienas dokumentas: kas įdiegta produkcijoje (Vercel + Stripe webhook), kaip tik
 
 Prieš deploy į produkciją patikrinkite:
 
-- **Submodulio build** – įsitikinkite, kad training app buildina lokaliai: `cd apps/prompt-anatomy && VITE_BASE_PATH=/anatomija/ VITE_MVP_MODE=1 npm run build` (Windows: nustatykite env kintamuosius atitinkamai arba naudokite cross-env).
+- **Submodulio build** – įsitikinkite, kad training app buildina lokaliai: `cd apps/prompt-anatomy && VITE_BASE_PATH=/anatomy/ VITE_MVP_MODE=1 npm run build` (Windows: nustatykite env kintamuosius atitinkamai arba naudokite cross-env).
 - **STRIPE_WEBHOOK_SECRET** – būtina; be jo webhook grąžina 503.
 - **ALLOW_WEBHOOK_WITHOUT_SECRET** – **niekada** įjungti prod (tik lokaliai dev).
 - **FRONTEND_ORIGIN** – pilnas https URL (pvz. `https://www.promptanatomy.app`) be galinio `/` (CORS ir redirectai).
@@ -103,7 +105,7 @@ Po naujų Firewall taisyklių visada patikrinkite produkcijoje (arba preview su 
 - [ ] **Stripe webhook:** Dashboard → Webhooks → Send test event `checkout.session.completed` → Vercel Function loguose 200, be netikėtų blokavimų.
 - [ ] **Checkout:** Pricing → mokėjimo srautas iki Stripe Checkout puslapio.
 - [ ] **Success / magic link:** grįžimas su `session_id` → `GET /api/success-redirect` veikia.
-- [ ] **`/anatomija/`** – puslapis kraunasi, navigacija ir asset’ai.
+- [ ] **`/anatomy/`** – puslapis kraunasi, navigacija ir asset’ai; **`/anatomija/`** → 301 į `/anatomy/`.
 
 ---
 

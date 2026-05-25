@@ -21,7 +21,7 @@ Canonical site: https://www.promptanatomy.app/
 - Home (default EN): https://www.promptanatomy.app/
 - Home (LT): https://www.promptanatomy.app/lt
 - Home (EN): https://www.promptanatomy.app/en
-- Training app: https://www.promptanatomy.app/anatomija/
+- Training app: https://www.promptanatomy.app/anatomy/
 - Pricing section: https://www.promptanatomy.app/#pricing
 - FAQ section: https://www.promptanatomy.app/#faq
 - Privacy Policy: https://www.promptanatomy.app/privacy
@@ -31,7 +31,7 @@ Canonical site: https://www.promptanatomy.app/
 ## Ecosystem (hub-and-spoke)
 
 - Hub (conversion): https://www.promptanatomy.app/
-- Training app: https://www.promptanatomy.app/anatomija/ — Interactive training app (6 modules, 6-block methodology)
+- Training app: https://www.promptanatomy.app/anatomy/ — Interactive training app (6 modules, 6-block methodology)
 - Prompt library (.info): https://www.promptanatomy.info/en/ (EN) / https://www.promptanatomy.info/lt/ (LT) — Spin-off — prompt library and quick value demonstration
 - Content system (.space): https://www.promptanatomy.space/en/ (EN) / https://www.promptanatomy.space/ (LT) — Spoke — marketing content prompts and templates
 - Operations center (.ceo): https://www.promptanatomy.ceo/ (EN) / https://www.promptanatomy.ceo/ (LT) — Spoke — CEO/COO leadership and operations prompts
