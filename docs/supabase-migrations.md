@@ -1,8 +1,15 @@
 # Supabase migracijos (user_access)
 
-**Kanonas:** versijuojamas SQL – [supabase/migrations/](../supabase/migrations/). Pirmoji migracija: `20260324120000_user_access_baseline.sql` (idempotent `CREATE TABLE IF NOT EXISTS` + stulpelių komentarai).
+**Kanonas:** versijuojamas SQL – [supabase/migrations/](../supabase/migrations/).
+
+| Migracija | Paskirtis |
+|-----------|-----------|
+| `20260324120000_user_access_baseline.sql` | Lentelė `user_access` (idempotent CREATE) |
+| `20260603120000_user_access_hardening.sql` | RLS, REVOKE anon/authenticated, CHECK `highest_plan`, `updated_at` trigger |
 
 [docs/supabase-user-access.sql](supabase-user-access.sql) – santrauka ir rankinio paleidimo atsarginis variantas (tas pats DDL); laikykite sinchronizuotą su migracija.
+
+Bulk import iš Excel (be rankinio SQL): [bulk-import-user-access.md](bulk-import-user-access.md).
 
 ## Kas nevyksta automatiškai
 

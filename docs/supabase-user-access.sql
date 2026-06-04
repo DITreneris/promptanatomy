@@ -16,6 +16,9 @@ comment on column user_access.email is 'Lowercased email; backend always sends l
 comment on column user_access.highest_plan is '3, 6, 12, or 15 (module cap); 0 = no purchase';
 comment on column user_access.stripe_customer_id is 'Stripe customer id from checkout.session.completed';
 
+-- Hardening (20260603120000_user_access_hardening.sql): RLS enabled, no policies;
+-- REVOKE anon/authenticated. Bulk import: scripts/import_user_access.py
+
 -- Rankinis upsert (produkcija): VISADA naudokite lower(email). Kitu atveju api/access.js ir
 -- stripe-webhook.js ieško vickyva@gmail.com, o DB gali turėti Vickyva@gmail.com – eilutė
 -- nerandama (PostgreSQL text lyginimas case-sensitive), UI rodo „No access found“.

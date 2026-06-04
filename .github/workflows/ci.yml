@@ -32,6 +32,9 @@ jobs:
         working-directory: frontend
         run: npm ci && npm run build
 
+      - name: Bundle size budget (LP critical path)
+        run: node scripts/check-bundle-size.mjs
+
       - name: GEO static assets smoke check
         working-directory: frontend
         run: |

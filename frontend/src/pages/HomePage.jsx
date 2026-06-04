@@ -1,17 +1,19 @@
-import { useState, useEffect } from 'react'
+import { lazy, Suspense, useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import WhatIsPromptAnatomy from '../components/WhatIsPromptAnatomy'
-import Methodology from '../components/Methodology'
-import Ecosystem from '../components/Ecosystem'
 import Pricing from '../components/Pricing'
-import Faq from '../components/Faq'
 import Footer from '../components/Footer'
 import { capturePosthogEvent } from '../analytics/posthog'
 import { createCheckoutSession, getAccess, getTrainingAccessLink } from '../api'
 import { LP_ACCESS_EMAIL_STORAGE_KEY } from '../config'
 import { useLocale } from '../i18n/LocaleContext'
+import { scheduleIdleTask } from '../utils/idle'
+
+const Methodology = lazy(() => import('../components/Methodology'))
+const Ecosystem = lazy(() => import('../components/Ecosystem'))
+const Faq = lazy(() => import('../components/Faq'))
 
 export default function HomePage({ forceLocale }) {
   const { t, setLocale } = useLocale()
@@ -30,23 +32,30 @@ export default function HomePage({ forceLocale }) {
   const [rememberedEmailInDevice, setRememberedEmailInDevice] = useState(false)
 
   // Atkuria el. paštą ir prieigą po perkrovimo (viršuje „Mokymai“, jei highest_plan > 0).
+  // Deferred off critical path — UI renders first; access state fills in after idle.
   useEffect(() => {
     let cancelled = false
-    try {
-      const saved = localStorage.getItem(LP_ACCESS_EMAIL_STORAGE_KEY)?.trim()
-      if (!saved?.includes('@')) return
-      setRememberedEmailInDevice(true)
-      setCustomerEmail(saved)
-      getAccess(saved)
-        .then((data) => {
-          if (!cancelled) setAccess(data)
-        })
-        .catch(() => {
-          if (!cancelled) setAccess(null)
-        })
-    } catch {
-      /* private mode / storage blocked */
+
+    const restoreAccess = () => {
+      try {
+        const saved = localStorage.getItem(LP_ACCESS_EMAIL_STORAGE_KEY)?.trim()
+        if (!saved?.includes('@')) return
+        setRememberedEmailInDevice(true)
+        setCustomerEmail(saved)
+        getAccess(saved)
+          .then((data) => {
+            if (!cancelled) setAccess(data)
+          })
+          .catch(() => {
+            if (!cancelled) setAccess(null)
+          })
+      } catch {
+        /* private mode / storage blocked */
+      }
     }
+
+    scheduleIdleTask(restoreAccess, { timeout: 2000 })
+
     return () => {
       cancelled = true
     }
@@ -160,7 +169,9 @@ export default function HomePage({ forceLocale }) {
       <main id="main-content" tabIndex={-1}>
         <Hero onCta={scrollToPricing} />
         <WhatIsPromptAnatomy />
-        <Methodology />
+        <Suspense fallback={null}>
+          <Methodology />
+        </Suspense>
         <section id="pricing" className="section-default bg-pricing-section overflow-hidden">
           <div className="max-w-5xl mx-auto min-w-0">
             <Pricing
@@ -283,8 +294,10 @@ export default function HomePage({ forceLocale }) {
             </div>
           </div>
         </section>
-        <Ecosystem />
-        <Faq />
+        <Suspense fallback={null}>
+          <Ecosystem />
+          <Faq />
+        </Suspense>
       </main>
       <Footer
         hasAccess={access?.highest_plan > 0}
