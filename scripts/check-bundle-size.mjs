@@ -80,6 +80,16 @@ async function main() {
     process.exit(1)
   }
 
+  if (entry && budget.entryGzipKb) {
+    const entryGz = await gzipSize(join(distAssets, entry))
+    const entryKb = entryGz / 1024
+    console.log(`  entry only: ${entryKb.toFixed(1)} KB gzip (budget: ${budget.entryGzipKb} KB)`)
+    if (entryKb > budget.entryGzipKb) {
+      console.error(`check-bundle-size: FAIL — entry chunk exceeds ${budget.entryGzipKb} KB gzip`)
+      process.exit(1)
+    }
+  }
+
   console.log('check-bundle-size: PASS')
 }
 

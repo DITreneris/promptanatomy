@@ -82,16 +82,47 @@ Vite 8.0.0 output after deferral + code splitting + `manualChunks`:
 
 ---
 
+## Phase 2 (shipped — 2026-06-04)
+
+| Task | Status |
+|------|--------|
+| Dynamic locale JSON (`lt` async, `en` via syncTranslate) | Done |
+| CI bundle budget gate | Done (Phase 1) |
+| Navbar prefetch on LT/EN hover/focus | Done |
+| Entry chunk budget (`entryGzipKb: 18`) | Done |
+
+**Post Phase 2 build:**
+
+| Chunk | Gzip | Home critical path |
+|-------|------|-------------------|
+| `index-*.js` (entry) | **13.3 KB** | Yes (includes EN via syncTranslate) |
+| `react-vendor-*.js` | 57.3 KB | Yes |
+| `router-*.js` | 8.2 KB | Yes |
+| `icons-*.js` | 4.6 KB | Yes |
+| **Critical JS total** | **81.2 KB** | Budget: 180 KB |
+| `locale-*.js` (lt.json) | 9.7 KB | Async — `/lt` only |
+| `analytics-*.js` | 57.7 KB | Idle |
+
+**Delta vs Phase 1:** entry −10.2 KB gzip; critical path −9.5 KB gzip.
+
+### Acceptance (Phase 2)
+
+- [x] `lt.json` in separate async chunk (not in entry with both locales)
+- [x] `npm run build` + `check-bundle-size.mjs` PASS
+- [ ] Post-deploy: `/lt` loads locale chunk; LT↔EN toggle; SeoHead hreflang unchanged
+
+---
+
 ## Phase 2 (planned)
 
 | Task | Priority | Notes |
 |------|----------|-------|
-| Dynamic locale JSON (`lt` / `en` split) | P1 | 50–100 ms switch OK |
-| CI bundle budget gate | P1 | Add `node scripts/check-bundle-size.mjs` to `.github/workflows/ci.yml` |
+| ~~Dynamic locale JSON~~ | ~~P1~~ | Shipped — see above |
+| ~~CI bundle budget gate~~ | ~~P1~~ | Shipped Phase 1 |
 | Defer Vercel Analytics if heavy | P2 | Measure in `stats.html` first |
 | Cache-Control audit on Vercel | P2 | Only if headers missing |
 
-**Staged target:** Keep critical JS ≤ 180 KB; after locale split, aim for **≤ 85 KB** entry chunk reduction.
+**Staged target:** Keep critical JS ≤ 180 KB; entry ≤ 18 KB gzip — **met** (13.3 KB).
 
 ---
 

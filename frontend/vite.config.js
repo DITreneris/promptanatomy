@@ -21,6 +21,7 @@ export default defineConfig(({ mode }) => ({
           if (id.includes('node_modules/react-dom') || id.includes('node_modules/react/')) return 'react-vendor'
           if (id.includes('node_modules/react-router')) return 'router'
           if (id.includes('node_modules/lucide-react')) return 'icons'
+          if (id.includes('/i18n/translations/')) return 'locale'
         },
       },
     },
