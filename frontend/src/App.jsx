@@ -1,14 +1,15 @@
-import { useEffect } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { Analytics } from '@vercel/analytics/react'
 import { capturePosthogPageview, isPosthogEnabled } from './analytics/posthog'
 import SeoHead from './components/SeoHead'
 import XPixel from './components/XPixel'
 import HomePage from './pages/HomePage'
-import SuccessPage from './pages/SuccessPage'
-import CancelPage from './pages/CancelPage'
-import PrivacyPage from './pages/PrivacyPage'
-import TermsPage from './pages/TermsPage'
+
+const SuccessPage = lazy(() => import('./pages/SuccessPage'))
+const CancelPage = lazy(() => import('./pages/CancelPage'))
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage'))
+const TermsPage = lazy(() => import('./pages/TermsPage'))
 
 /**
  * Vercel Web Analytics: pass route + path from React Router so each SPA navigation
@@ -29,16 +30,18 @@ export default function App() {
     <>
       <SeoHead />
       <XPixel />
-      <Routes>
-        <Route path="/" element={<HomePage forceLocale="en" />} />
-        <Route path="/lt" element={<HomePage forceLocale="lt" />} />
-        <Route path="/en" element={<HomePage forceLocale="en" />} />
-        <Route path="/success" element={<SuccessPage />} />
-        <Route path="/cancel" element={<CancelPage />} />
-        <Route path="/privacy" element={<PrivacyPage />} />
-        <Route path="/terms" element={<TermsPage />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="/" element={<HomePage forceLocale="en" />} />
+          <Route path="/lt" element={<HomePage forceLocale="lt" />} />
+          <Route path="/en" element={<HomePage forceLocale="en" />} />
+          <Route path="/success" element={<SuccessPage />} />
+          <Route path="/cancel" element={<CancelPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </Suspense>
       <Analytics route={pathname} path={pathname} />
     </>
   )

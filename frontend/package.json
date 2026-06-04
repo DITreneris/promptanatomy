@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && node scripts/generate-legal-static.mjs && node scripts/generate-geo-static.mjs",
+    "build:analyze": "vite build --mode analyze && node scripts/generate-legal-static.mjs && node scripts/generate-geo-static.mjs",
+    "analyze": "npm run build:analyze",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -20,6 +22,7 @@
     "@tailwindcss/postcss": "^4.2.2",
     "@vitejs/plugin-react": "^6.0.1",
     "postcss": "^8.4.47",
+    "rollup-plugin-visualizer": "^5.14.0",
     "tailwindcss": "^4.2.2",
     "vite": "^8.0.0"
   }

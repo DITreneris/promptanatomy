@@ -29,6 +29,10 @@ roadmap.md
 # Supabase CLI (lokalūs temp failai; commitiname tik supabase/migrations/)
 .supabase/
 
+# Registration spreadsheets (PII) – use scripts/import_user_access.py locally
+*.xlsx
+_xlsx_*.json
+
 # IDE / OS
 .idea/
 .vscode/

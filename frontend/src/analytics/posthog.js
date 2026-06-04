@@ -1,19 +1,33 @@
-import posthog from 'posthog-js'
 import { POSTHOG_HOST, POSTHOG_KEY } from '../config'
+import { scheduleIdleTask } from '../utils/idle'
 
-let initialized = false
+let initPromise = null
 
-/** Call once from main.jsx. No-op if VITE_POSTHOG_KEY is unset. */
-export function initPosthog() {
-  if (initialized || !POSTHOG_KEY) return
-  posthog.init(POSTHOG_KEY, {
-    api_host: POSTHOG_HOST,
-    capture_pageview: false,
-    capture_pageleave: true,
-    persistence: 'localStorage+cookie',
-    person_profiles: 'identified_only',
+function getInitPromise() {
+  if (!POSTHOG_KEY) return null
+  if (!initPromise) {
+    initPromise = import('posthog-js')
+      .then(({ default: posthog }) => {
+        posthog.init(POSTHOG_KEY, {
+          api_host: POSTHOG_HOST,
+          capture_pageview: false,
+          capture_pageleave: true,
+          persistence: 'localStorage+cookie',
+          person_profiles: 'identified_only',
+        })
+        return posthog
+      })
+      .catch(() => null)
+  }
+  return initPromise
+}
+
+/** Schedule PostHog load off the critical path. No-op if VITE_POSTHOG_KEY is unset. */
+export function schedulePosthogInit() {
+  if (!POSTHOG_KEY) return
+  scheduleIdleTask(() => {
+    void getInitPromise()
   })
-  initialized = true
 }
 
 export function isPosthogEnabled() {
@@ -23,7 +37,7 @@ export function isPosthogEnabled() {
 /** SPA route change → PostHog $pageview (Vercel Analytics stays separate). */
 export function capturePosthogPageview() {
   if (!POSTHOG_KEY) return
-  posthog.capture('$pageview')
+  void getInitPromise()?.then((ph) => ph?.capture('$pageview'))
 }
 
 /**
@@ -33,7 +47,7 @@ export function capturePosthogPageview() {
  */
 export function capturePosthogEvent(event, properties) {
   if (!POSTHOG_KEY) return
-  posthog.capture(event, properties)
+  void getInitPromise()?.then((ph) => ph?.capture(event, properties))
 }
 
 export function captureEcosystemOutboundClick({ target, placement, locale, pagePath }) {

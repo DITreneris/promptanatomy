@@ -1,0 +1,6 @@
+{
+  "criticalPathGzipKb": 180,
+  "measuredCriticalPathGzipKb": 90.7,
+  "measuredAt": "2026-06-04",
+  "notes": "Critical path = entry + react-vendor + router + icons (home route). PostHog in separate analytics chunk (idle). Update after Phase 2 locale split."
+}

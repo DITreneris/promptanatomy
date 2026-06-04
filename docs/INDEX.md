@@ -28,6 +28,8 @@
 | Memo integracija (saugumas, 2025–2026) | [docs/memo-integration-security-analysis.md](memo-integration-security-analysis.md) | Magic-link su Mokymų sistema: HMAC, timing-safe, secret, redirect; geriausios praktikos. |
 | Supabase user_access | [docs/supabase-user-access.sql](supabase-user-access.sql) | SQL lentelė: email, highest_plan, stripe_customer_id (santrauka). |
 | Supabase migracijos | [docs/supabase-migrations.md](supabase-migrations.md) | Kanonas: `supabase/migrations/`; kaip pritaikyti; Vercel/FastAPI nevykdo SQL. |
+| Bulk import (Excel → user_access) | [docs/bulk-import-user-access.md](bulk-import-user-access.md) | Akademijos dalyvių įkėlimas: `scripts/import_user_access.py`. |
+| Supabase patobulinimų planas | [docs/supabase-hardening-plan.md](supabase-hardening-plan.md) | Detalus F0–F7 planas (RLS, webhook, rate limit); dalis įgyvendinta minimaliai. |
 | SEO (KISS–Marry–Kill) | [docs/SEO-KISS-Marry-Kill.md](SEO-KISS-Marry-Kill.md) | Sitemap, robots, og:image, llms-full, GEO manifest, būsena. |
 | Ekosistemos valdymas (.app/.cloud/.pro) | [docs/ecosystem-governance.md](ecosystem-governance.md) | Domenų rolės, SEO/GEO/AI nekonkuravimo taisyklės, KPI minimumas. |
 | Kainodaros planas | [docs/pricing-plan.md](pricing-plan.md) | Kainodara, geriausios praktikos, palyginimas. |
@@ -65,6 +67,7 @@
 | Dokumentas | Kelias | Paskirtis |
 |------------|--------|-----------|
 | Golden Legacy Standard | [docs/golden-legacy-standard.md](golden-legacy-standard.md) | Fiksuota veikianti būsena: backend kontraktai, frontend maršrutai ir **LP vieša būsena** (Navbar, Hero, WhatIs statai, i18n raktai §1–3). Kas nekeičiama. Regresijos apsauga prieš pakeitimus. Automatinis CI: [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) (`main`, PR). |
+| LP load-speed (baseline + budget) | [docs/performance-baseline.md](performance-baseline.md) | Bundle gzip matavimai, 180 KB critical-path biudžetas, Phase 1–3 roadmap, Lighthouse placeholder. |
 
 ---
 
