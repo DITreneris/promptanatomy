@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Zap, Menu, X } from 'lucide-react'
 import { GLOSSARY_URL } from '../config'
 import { useLocale } from '../i18n/LocaleContext'
+import { prefetchLocale } from '../i18n/loadLocale'
 import { captureEcosystemOutboundClick } from '../analytics/posthog'
 
 const FOCUS_RING = 'focus-ring'
@@ -194,6 +195,8 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
               <button
                 type="button"
                 onClick={() => { setLocale('lt'); navigate('/lt') }}
+                onMouseEnter={() => prefetchLocale('lt')}
+                onFocus={() => prefetchLocale('lt')}
                 className={`px-2 py-1 rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} ${FOCUS_RING}`}
                 aria-pressed={locale === 'lt'}
                 aria-label="Lietuvių"
@@ -203,6 +206,8 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
               <button
                 type="button"
                 onClick={() => { setLocale('en'); navigate('/en') }}
+                onMouseEnter={() => prefetchLocale('en')}
+                onFocus={() => prefetchLocale('en')}
                 className={`px-2 py-1 rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} ${FOCUS_RING}`}
                 aria-pressed={locale === 'en'}
                 aria-label="English"
@@ -265,6 +270,8 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
           <button
             type="button"
             onClick={() => { closeMobile(); setLocale('lt'); navigate('/lt') }}
+            onMouseEnter={() => prefetchLocale('lt')}
+            onFocus={() => prefetchLocale('lt')}
             className={`px-3 py-2 rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
             aria-pressed={locale === 'lt'}
             aria-label="Lietuvių"
@@ -274,6 +281,8 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
           <button
             type="button"
             onClick={() => { closeMobile(); setLocale('en'); navigate('/en') }}
+            onMouseEnter={() => prefetchLocale('en')}
+            onFocus={() => prefetchLocale('en')}
             className={`px-3 py-2 rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
             aria-pressed={locale === 'en'}
             aria-label="English"

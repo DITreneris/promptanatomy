@@ -5,6 +5,9 @@ Visi pakeitimai šiame faile dokumentuojami pagal [Keep a Changelog](https://kee
 ## [Unreleased]
 
 ### Pridėta
+- **LP load-speed Phase 2 — dynamic locale JSON (2026-06-04):** `lt.json` async chunk (`locale-*.js`, ~9.7 KB gzip); `en.json` per [syncTranslate.js](frontend/src/i18n/syncTranslate.js) (legal/SEO sync); [loadLocale.js](frontend/src/i18n/loadLocale.js) + [LocaleContext.jsx](frontend/src/i18n/LocaleContext.jsx) (`localeReady`); Navbar prefetch on LT/EN hover. Entry **13.3 KB** gzip (−10.2 vs Phase 1); critical path **81.2 KB** gzip. [bundle-budget.json](frontend/bundle-budget.json) `entryGzipKb: 18`. [docs/performance-baseline.md](docs/performance-baseline.md).
+
+### Pridėta
 - **LP load-speed Phase 1 (2026-06-04):** PostHog dynamic import + idle init (off critical path); X Pixel deferred to idle (ads not active — config preserved); route-level `React.lazy` for success/cancel/privacy/terms; lazy `Methodology`, `Ecosystem`, `Faq` on home; deferred `getAccess` on mount. Vite `manualChunks` (react-vendor, router, analytics, icons); `rollup-plugin-visualizer` (`npm run analyze`); [frontend/bundle-budget.json](frontend/bundle-budget.json) (180 KB critical JS gzip); [scripts/check-bundle-size.mjs](scripts/check-bundle-size.mjs). Baseline: [docs/performance-baseline.md](docs/performance-baseline.md) (~94 KB critical JS gzip measured). Failai: [main.jsx](frontend/src/main.jsx), [posthog.js](frontend/src/analytics/posthog.js), [XPixel.jsx](frontend/src/components/XPixel.jsx), [idle.js](frontend/src/utils/idle.js), [App.jsx](frontend/src/App.jsx), [HomePage.jsx](frontend/src/pages/HomePage.jsx), [vite.config.js](frontend/vite.config.js).
 
 ### Pridėta

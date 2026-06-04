@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import { translateLocale, useLocale } from '../i18n/LocaleContext'
+import { translateLocale } from '../i18n/syncTranslate'
+import { useLocale } from '../i18n/LocaleContext'
 import { SITE_URL } from '../config'
 
 const HOME_ROUTES = ['/', '/en', '/lt']
@@ -173,9 +174,11 @@ function getHomeSchema({ canonicalUrl, description, routeLocale, t }) {
 
 export default function SeoHead() {
   const { pathname } = useLocation()
-  const { locale, t } = useLocale()
+  const { locale, t, localeReady } = useLocale()
 
   useEffect(() => {
+    if (!localeReady && pathname !== '/privacy' && pathname !== '/terms') return
+
     const canonicalUrl = getCanonicalUrl(pathname)
     const routeLocale = getRouteLocale(pathname, locale)
     const title = getRouteTitle(pathname, t)
@@ -219,7 +222,7 @@ export default function SeoHead() {
       removeHreflangLinks()
       document.getElementById(ROUTE_SCHEMA_SCRIPT_ID)?.remove()
     }
-  }, [pathname, locale, t])
+  }, [pathname, locale, t, localeReady])
 
   return null
 }

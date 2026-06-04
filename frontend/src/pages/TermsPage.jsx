@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
-import { translateLocale } from '../i18n/LocaleContext'
+import { translateLocale } from '../i18n/syncTranslate'
 
 export default function TermsPage() {
   const t = (key, params) => translateLocale('en', key, params)

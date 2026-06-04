@@ -1,6 +1,8 @@
 {
   "criticalPathGzipKb": 180,
-  "measuredCriticalPathGzipKb": 90.7,
+  "entryGzipKb": 18,
+  "measuredCriticalPathGzipKb": 81.2,
+  "measuredEntryGzipKb": 13.3,
   "measuredAt": "2026-06-04",
-  "notes": "Critical path = entry + react-vendor + router + icons (home route). PostHog in separate analytics chunk (idle). Update after Phase 2 locale split."
+  "notes": "Critical path = entry + react-vendor + router + icons. EN in entry via syncTranslate; LT in async locale-* chunk (~9.7 KB gzip). PostHog in analytics chunk (idle)."
 }

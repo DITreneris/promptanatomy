@@ -1,75 +1,53 @@
-import { createContext, useContext, useState, useCallback } from 'react'
-import lt from './translations/lt.json'
-import en from './translations/en.json'
-
-const translations = { lt, en }
-const STORAGE_KEY = 'locale'
-const VALID_LOCALES = ['lt', 'en']
-const DEFAULT_LOCALE = 'en'
-
-/** Map browser language to supported locale; used only when user has no stored preference. */
-function detectBrowserLocale() {
-  if (typeof window === 'undefined' || !window.navigator) return DEFAULT_LOCALE
-  const lang = window.navigator.language || window.navigator.userLanguage || ''
-  const codes = [lang, ...(window.navigator.languages || [])].map((l) => (l || '').toLowerCase().split('-')[0])
-  return codes.some((c) => c === 'lt') ? 'lt' : DEFAULT_LOCALE
-}
-
-function normalizeLocale(value) {
-  const v = (value || '').toLowerCase().trim()
-  return VALID_LOCALES.includes(v) ? v : DEFAULT_LOCALE
-}
-
-function getNested(obj, path) {
-  return path.split('.').reduce((o, k) => o?.[k], obj)
-}
-
-function translate(tr, key, params = {}) {
-  let value = getNested(tr, key)
-  if (value == null) return key
-  if (typeof value !== 'string') return value
-  Object.keys(params).forEach((k) => {
-    value = value.replace(new RegExp(`{{${k}}}`, 'g'), String(params[k]))
-  })
-  return value
-}
+import { createContext, useContext, useState, useCallback, useEffect } from 'react'
+import { getInitialLocale, loadLocale, normalizeLocale, STORAGE_KEY } from './loadLocale'
+import { translateMessages } from './translateCore'
 
 const LocaleContext = createContext(null)
 
-export function translateLocale(locale, key, params) {
-  const loc = normalizeLocale(locale)
-  const tr = translations[loc] || translations[DEFAULT_LOCALE]
-  return translate(tr, key, params)
-}
-
 export function LocaleProvider({ children }) {
-  const [locale, setLocaleState] = useState(() => {
-    if (typeof window === 'undefined') return DEFAULT_LOCALE
-    const stored = window.localStorage?.getItem(STORAGE_KEY)
-    if (stored && VALID_LOCALES.includes((stored || '').toLowerCase().trim())) {
-      return normalizeLocale(stored)
+  const [locale, setLocaleState] = useState(getInitialLocale)
+  const [messages, setMessages] = useState(null)
+  const [localeReady, setLocaleReady] = useState(false)
+
+  useEffect(() => {
+    let cancelled = false
+    loadLocale(locale)
+      .then((data) => {
+        if (!cancelled) {
+          setMessages(data)
+          setLocaleReady(true)
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setLocaleReady(true)
+      })
+    return () => {
+      cancelled = true
     }
-    return detectBrowserLocale()
-  })
+  }, [locale])
 
   const setLocale = useCallback((next) => {
     const value = normalizeLocale(next)
     setLocaleState(value)
-    if (typeof window !== 'undefined' && window.localStorage) {
-      window.localStorage.setItem(STORAGE_KEY, value)
+    try {
+      if (typeof window !== 'undefined' && window.localStorage) {
+        window.localStorage.setItem(STORAGE_KEY, value)
+      }
+    } catch {
+      /* private mode */
     }
   }, [])
 
   const t = useCallback(
     (key, params) => {
-      const loc = normalizeLocale(locale)
-      const tr = translations[loc] || translations[DEFAULT_LOCALE]
-      return translate(tr, key, params)
+      if (!messages) return key
+      return translateMessages(messages, key, params)
     },
-    [locale]
+    [messages]
   )
+
   return (
-    <LocaleContext.Provider value={{ locale, setLocale, t }}>
+    <LocaleContext.Provider value={{ locale, setLocale, t, localeReady }}>
       {children}
     </LocaleContext.Provider>
   )
