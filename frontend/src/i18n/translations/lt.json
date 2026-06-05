@@ -88,6 +88,11 @@
   "ecosystem": {
     "title": "Hub: pasirink kryptį",
     "paragraph": "Šeši workflow moduliai jungiasi į vieną hub — pagal tavo kelionės etapą.",
+    "hubCoreLabel": "6 blokų DI sistema",
+    "hubCoreSub": "Pagrindinis hub",
+    "phaseAdopt": "Įsisavink",
+    "phaseApply": "Taikyk",
+    "phaseScale": "Skaluok",
     "ctaPricing": "Planai ir prieiga",
     "ctaOpen": "Peržiūrėti sistemą",
     "mapLink": "Peržiūrėti pilną ekosistemos žemėlapį",
@@ -193,6 +198,7 @@
     "clearStoredEmail": "Nebeatsiminti el. pašto šiame įrenginyje"
   },
   "faq": {
+    "sectionLabel": "Klausimai prieš prieigą",
     "title": "Dažniausiai užduodami klausimai",
     "items": [
       { "q": "Ką gaunu sumokėjęs?", "a": "Prieigą prie pasirinkto plano modulių, mokymų turinio, praktinių užduočių ir promptų bibliotekos. Starter apima 1–3 modulius, Core – 1–6. Užbaigę ir išlaikę (nuo 70%) gaunate sertifikatą. Palaikymas – viešoje Telegram grupėje. Prieiga suteikiama visam laikui." },

@@ -9,7 +9,21 @@
 |----------|--------|
 | 375px | Hero CTA column; Pricing cards; mobile drawer open/close; Footer links |
 | 768px | Navbar density; section headings readable |
-| 1280px | Desktop nav: What Is, Ecosystem, Training (if access) + locale + CTA; Footer 4 columns + legal bar; Ecosystem grid |
+| 1280px | Desktop nav: What Is, Ecosystem, Training (if access) + locale + CTA; Footer 4 columns + legal bar; Ecosystem grid; **Hub core pill + connector lines (lg+)**; FAQ contrast |
+
+## Hub / Ecosystem (Phase 8)
+
+- [ ] Hub core pill visible with `ecosystem.hubCoreLabel`
+- [ ] Desktop (lg+): connector lines from pill to card rows; no carousel-like dots
+- [ ] All 6 cards: equal CTA baseline (`mt-auto`), `btn-ecosystem-outline`
+- [ ] Map link uses outline button + arrow (not faint underline only)
+- [ ] Default card state: no yellow border (hover/focus only)
+
+## FAQ (Phase 8)
+
+- [ ] Pre-heading `faq.sectionLabel` visible
+- [ ] Closed accordion contrast (`faq-item`); open state accent left border
+- [ ] Container max-width ~3xl
 
 ## Accessibility smoke
 

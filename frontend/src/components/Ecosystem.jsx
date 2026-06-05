@@ -1,4 +1,4 @@
-import { Users, BookOpen, Megaphone, LayoutDashboard, Zap, Cpu, Target } from 'lucide-react'
+import { ArrowRight, Users, BookOpen, Megaphone, LayoutDashboard, Zap, Cpu, Target } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
 import { captureEcosystemOutboundClick, capturePosthogEvent } from '../analytics/posthog'
 import { ECOSYSTEM_DISCOVERY_SITE } from '../site/geo-manifest'
@@ -32,15 +32,51 @@ const ECOSYSTEM_HOVER_RING = ['group-hover:ring-ecosystem-1', 'group-hover:ring-
 
 const ROW_SIZE = 3
 
-function ConnectorRow({ count }) {
+const PHASE_LEGEND = [
+  { key: 'ecosystem.phaseAdopt', colorClass: 'bg-ecosystem-1' },
+  { key: 'ecosystem.phaseApply', colorClass: 'bg-ecosystem-2' },
+  { key: 'ecosystem.phaseScale', colorClass: 'bg-ecosystem-3' },
+]
+
+function HubConnectors({ variant = 'row' }) {
+  if (variant === 'between') {
+    return (
+      <div className="hidden lg:block relative h-6 mb-2 max-w-7xl mx-auto" aria-hidden>
+        <div className="absolute left-1/2 top-0 -translate-x-1/2 w-px h-full hub-connector-line" />
+      </div>
+    )
+  }
+
   return (
-    <div className="hidden lg:flex items-center justify-center gap-4 mb-2 max-w-2xl mx-auto">
-      {Array.from({ length: count }, (_, i) => (
-        <span key={i} className="flex items-center">
-          <span className="w-2 h-2 rounded-full bg-white/25" aria-hidden />
-          {i < count - 1 && <span className="w-8 md:w-12 h-px bg-white/20 mx-1" aria-hidden />}
-        </span>
-      ))}
+    <div className="hidden lg:block relative h-10 mb-2 max-w-7xl mx-auto px-4" aria-hidden>
+      <div className="absolute left-1/2 top-0 -translate-x-1/2 w-px h-5 hub-connector-line" />
+      <div className="absolute left-[16.666%] right-[16.666%] top-5 h-px hub-connector-line" />
+      <div className="absolute left-[16.666%] top-5 w-px h-5 hub-connector-line -translate-x-1/2" />
+      <div className="absolute left-1/2 top-5 w-px h-5 hub-connector-line -translate-x-1/2" />
+      <div className="absolute left-[83.333%] top-5 w-px h-5 hub-connector-line -translate-x-1/2" />
+    </div>
+  )
+}
+
+function HubCore({ t }) {
+  return (
+    <div className="flex flex-col items-center mb-8 md:mb-10">
+      <div className="hub-core-pill">
+        <span className="w-1.5 h-1.5 shrink-0 rounded-full bg-brand-accent" aria-hidden="true" />
+        <span className="text-label-upper text-slate-100">{t('ecosystem.hubCoreLabel')}</span>
+      </div>
+      <p className="mt-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-accent/80">
+        {t('ecosystem.hubCoreSub')}
+      </p>
+      <div className="hidden lg:flex flex-wrap items-center justify-center gap-4 mt-4">
+        {PHASE_LEGEND.map(({ key, colorClass }) => (
+          <span key={key} className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400">
+            <span className={`w-2 h-2 rounded-full shrink-0 ${colorClass}`} aria-hidden />
+            {t(key)}
+          </span>
+        ))}
+      </div>
+      <HubConnectors variant="row" />
     </div>
   )
 }
@@ -66,15 +102,15 @@ export default function Ecosystem() {
   return (
     <section id="ekosistema" className="section-dark">
       <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('/noise.svg')]" aria-hidden />
-      <div className="absolute inset-0 pointer-events-none bg-ecosystem-center-glow opacity-100" aria-hidden />
-      <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-ecosystem-grid" aria-hidden />
+      <div className="absolute inset-0 pointer-events-none bg-ecosystem-center-glow opacity-70" aria-hidden />
+      <div className="absolute inset-0 opacity-[0.025] pointer-events-none bg-ecosystem-grid" aria-hidden />
       <div className="max-w-7xl mx-auto relative z-10 min-w-0">
-        <div className="text-center mb-16 md:mb-28">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-8 tracking-[-0.02em]">{t('ecosystem.title')}</h2>
-          <p className="text-slate-300 text-lg max-w-[600px] mx-auto font-medium mt-3 leading-relaxed">
+        <div className="text-center mb-10 md:mb-14">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 tracking-[-0.02em]">{t('ecosystem.title')}</h2>
+          <p className="text-slate-300 text-lg max-w-[600px] mx-auto font-medium leading-relaxed">
             {t('ecosystem.paragraph')}
           </p>
-          <div className="mt-8">
+          <div className="mt-6">
             <a
               href="#pricing"
               onClick={() => capturePosthogEvent('ecosystem_cta_pricing_click', { placement: 'ecosystem_hub', locale, page_path: pagePath })}
@@ -85,18 +121,20 @@ export default function Ecosystem() {
           </div>
         </div>
 
-        <ConnectorRow count={ROW_SIZE} />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <HubCore t={t} />
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
           {items.slice(0, ROW_SIZE).map((item, i) => renderCard(item, i, t, locale, pagePath))}
         </div>
-        <div className="hidden lg:block h-6" aria-hidden />
-        <ConnectorRow count={ROW_SIZE} />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <HubConnectors variant="between" />
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
           {items.slice(ROW_SIZE).map((item, i) => renderCard(item, i + ROW_SIZE, t, locale, pagePath))}
         </div>
 
         {mapLinkLabel && (
-          <div className="text-center mt-12 md:mt-16">
+          <div className="text-center mt-10 md:mt-12">
             <a
               href={ECOSYSTEM_MAP_URL}
               target="_blank"
@@ -109,9 +147,10 @@ export default function Ecosystem() {
                   pagePath,
                 })
               }
-              className="inline-flex items-center justify-center min-h-[44px] text-sm font-medium text-slate-300 hover:text-brand-accent underline underline-offset-4 transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark rounded-sm"
+              className="btn-ecosystem-outline"
             >
               {mapLinkLabel}
+              <ArrowRight className="icon-sm" aria-hidden />
             </a>
           </div>
         )}
@@ -128,42 +167,53 @@ function renderCard(item, i, t, locale, pagePath) {
   const useCtaLayout = hasBullets || ctaLabel
 
   const cardBaseClass =
-    'group relative card-glass overflow-hidden focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark'
-  const cardClass = `${cardBaseClass} p-6 sm:p-10 ${useCtaLayout ? '' : 'block'}`
-  const titleClass = 'text-xl font-black text-white mb-1 tracking-tight'
+    'group relative card-density-dark overflow-hidden focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark'
+  const cardClass = `${cardBaseClass} ${useCtaLayout ? '' : 'block'}`
 
-  const content = (
+  const body = (
     <>
       <div
-        className="absolute -bottom-10 -right-10 w-32 h-32 blur-[60px] opacity-20 transition-opacity group-hover:opacity-40 bg-white/5"
+        className="absolute -bottom-10 -right-10 w-32 h-32 blur-[60px] opacity-15 transition-opacity group-hover:opacity-30 bg-white/5"
         aria-hidden
       />
       <div
-        className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-ecosystem-icon-card transition-all duration-220 group-hover:scale-110 ring-2 ring-transparent group-hover:ring-2 ${ECOSYSTEM_BG_CLASSES[item.themeIndex - 1]} ${ECOSYSTEM_HOVER_RING[item.themeIndex - 1]} ${useCtaLayout ? 'mb-6' : 'mb-12 sm:mb-24'}`}
+        className={`w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-ecosystem-icon-card transition-all duration-220 group-hover:scale-105 ring-2 ring-transparent group-hover:ring-2 ${ECOSYSTEM_BG_CLASSES[item.themeIndex - 1]} ${ECOSYSTEM_HOVER_RING[item.themeIndex - 1]} mb-4`}
       >
         {item.icon}
       </div>
-      <h4 className={titleClass}>{item.title}</h4>
-      {count && <p className="text-xs font-bold text-brand-accent/90 uppercase tracking-wider mb-2">{count}</p>}
-      {outcome && <p className="text-sm text-slate-300 leading-relaxed mb-4">{outcome}</p>}
+      <h4 className="text-xl font-black text-white mb-1 tracking-tight">{item.title}</h4>
+      {count && (
+        <p className="text-xs font-black text-brand-accent uppercase tracking-wider mb-2">{count}</p>
+      )}
+      {outcome && (
+        <p className="text-sm md:text-base text-slate-200 leading-relaxed mb-3">{outcome}</p>
+      )}
       {hasBullets && (
-        <ul className="list-disc list-inside text-slate-300 text-sm space-y-2 leading-relaxed mb-4">
+        <ul className="list-disc list-inside text-slate-200 text-sm md:text-base space-y-1.5 leading-relaxed mb-4">
           {item.bullets.slice(0, 2).map((bullet, bi) => (
             <li key={bi}>{bullet}</li>
           ))}
         </ul>
       )}
-      {useCtaLayout && ctaLabel && item.url && (
-        <a
-          href={item.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={() => captureEcosystemOutboundClick({ target: item.url, placement: 'ecosystem_card', locale, pagePath })}
-          className="inline-flex items-center justify-center min-h-[44px] px-6 py-3 rounded-xl font-black text-white border border-white/20 bg-white/5 hover:bg-white/10 hover:border-white/30 transition-all duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
-        >
-          {ctaLabel}
-        </a>
-      )}
+    </>
+  )
+
+  const cta = useCtaLayout && ctaLabel && item.url && (
+    <a
+      href={item.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={() => captureEcosystemOutboundClick({ target: item.url, placement: 'ecosystem_card', locale, pagePath })}
+      className="btn-ecosystem-outline mt-auto w-full sm:w-auto"
+    >
+      {ctaLabel}
+    </a>
+  )
+
+  const content = (
+    <>
+      {body}
+      {cta}
     </>
   )
 

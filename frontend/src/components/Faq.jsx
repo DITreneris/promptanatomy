@@ -6,6 +6,7 @@ const FAQ_SCHEMA_SCRIPT_ID = 'faq-ldjson'
 
 export default function Faq() {
   const { t, locale } = useLocale()
+  const sectionLabel = t('faq.sectionLabel')
   const title = t('faq.title')
   const items = t('faq.items')
   const list = Array.isArray(items) ? items : []
@@ -40,25 +41,30 @@ export default function Faq() {
       className="section-default bg-white overflow-hidden"
       aria-labelledby="faq-heading"
     >
-      <div className="max-w-4xl mx-auto min-w-0">
+      <div className="max-w-3xl mx-auto min-w-0">
+        {sectionLabel && (
+          <p className="text-xs font-bold uppercase tracking-[0.35em] text-brand-accent text-center mb-4">
+            {sectionLabel}
+          </p>
+        )}
         <h2
           id="faq-heading"
-          className="section-heading mb-12"
+          className="section-heading mb-10 text-center"
         >
           {title}
         </h2>
-        <div className="space-y-4">
+        <div className="space-y-3">
           {list.map((item, i) => (
             <details
               key={i}
-              className="group rounded-2xl border border-slate-200 bg-slate-50/70 transition-colors duration-200 open:bg-white open:shadow-xs"
+              className="group faq-item"
             >
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 [&::-webkit-details-marker]:hidden">
                 <span className="text-lg font-bold text-brand-dark">
                   {item?.q}
                 </span>
                 <ChevronDown
-                  className="h-5 w-5 shrink-0 text-slate-400 transition-transform duration-200 group-open:rotate-180"
+                  className="h-5 w-5 shrink-0 text-slate-500 transition-all duration-200 group-open:rotate-180 group-hover:text-brand-accent"
                   aria-hidden="true"
                 />
               </summary>

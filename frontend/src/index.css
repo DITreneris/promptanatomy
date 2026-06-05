@@ -54,7 +54,7 @@
     linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
   --background-image-ecosystem-center-glow: radial-gradient(
     circle at 50% 10%,
-    rgba(255, 190, 0, 0.18),
+    rgba(255, 190, 0, 0.12),
     transparent 60%
   );
   --background-image-pricing-section: linear-gradient(
@@ -93,7 +93,7 @@
   --shadow-ecosystem-icon-card:
     0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1),
     0 0 0 6px rgba(255, 193, 7, 0.05), 0 0 30px rgba(255, 193, 7, 0.15);
-  --shadow-ecosystem-card-rim: 0 0 30px rgba(255, 200, 0, 0.15);
+  --shadow-ecosystem-card-rim: 0 0 24px rgba(255, 200, 0, 0.1);
   --shadow-pricing-card: 0 20px 40px rgba(0, 0, 0, 0.06);
   --shadow-pricing-cta: 0 8px 20px rgba(255, 193, 7, 0.35);
   --shadow-hero-value: 0 8px 24px rgba(0, 0, 0, 0.06);
@@ -194,7 +194,35 @@
 }
 
 @utility card-glass {
-  @apply rounded-3xl bg-surface-glass border border-border-glass backdrop-blur-md hover:border-border-glass-hover hover:shadow-ecosystem-card-rim hover:-translate-y-1.5 transition-all duration-220;
+  @apply rounded-3xl bg-surface-glass border border-border-glass backdrop-blur-md hover:border-border-glass-hover hover:shadow-ecosystem-card-rim hover:-translate-y-1 transition-all duration-220;
+}
+
+@utility card-density {
+  @apply rounded-2xl p-6 md:p-8 bg-white shadow-soft border border-slate-100;
+}
+
+@utility card-density-dark {
+  @apply card-glass flex flex-col h-full p-5 sm:p-7;
+}
+
+@utility btn-ecosystem-outline {
+  @apply inline-flex items-center justify-center gap-2 min-h-[44px] px-6 py-3 rounded-xl font-bold text-white border border-white/20 bg-white/5 transition-all duration-200 hover:bg-white/10 hover:border-brand-accent/50 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark;
+}
+
+@utility hub-core-pill {
+  @apply inline-flex items-center gap-2.5 bg-brand-dark text-white px-4 py-2 rounded-full shadow-soft border border-white/10 border-brand-accent/25;
+}
+
+@utility hub-connector-line {
+  @apply bg-white/15;
+}
+
+@utility badge-premium {
+  @apply inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-brand-dark bg-brand-accent/15 border border-brand-accent/35;
+}
+
+@utility faq-item {
+  @apply rounded-2xl border border-slate-200 bg-slate-100/80 transition-colors duration-200 hover:border-brand-accent/30 open:bg-white open:shadow-soft open:border-l-4 open:border-l-brand-accent;
 }
 
 @utility bg-ecosystem-grid {
