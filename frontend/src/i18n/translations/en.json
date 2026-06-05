@@ -87,38 +87,52 @@
   },
   "ecosystem": {
     "title": "Hub: choose your direction",
-    "paragraph": "The main entry point to the ecosystem — libraries and systems matched to your goal.",
+    "paragraph": "Six workflow modules plug into one core hub — matched to where you are in the journey.",
     "ctaPricing": "Plans and access",
-    "stableLabel": "v1.3 Stable",
     "ctaOpen": "View system",
+    "mapLink": "See the full ecosystem map",
     "items": [
       {
-        "title": "Library (AI automation)",
-        "count": "100+ Repo",
+        "title": "Enter (onboarding)",
+        "count": "First lesson",
+        "url": "https://promptanatomy.cloud/",
+        "outcome": "Start learning AI with structured onboarding and core basics.",
+        "bullets": ["Free first lesson", "Team onboarding"]
+      },
+      {
+        "title": "Use (AI automation)",
+        "count": "100+ templates",
         "url": "https://www.promptanatomy.info/en/",
-        "outcome": "Ready-made prompts and workflow templates.",
+        "outcome": "Ready-made prompts and workflow templates for daily work.",
         "bullets": ["100+ prompts", "AI workflow"]
       },
       {
-        "title": "Content system (marketing)",
-        "count": "150+ Repo",
+        "title": "Create (marketing)",
+        "count": "Marketing OS",
         "url": "https://www.promptanatomy.space/en/",
         "outcome": "Marketing content prompts and templates.",
         "bullets": ["Content planning", "AI templates"]
       },
       {
-        "title": "Recruitment system (HR)",
-        "count": "120+ Repo",
-        "url": "https://ditreneris.github.io/personalas/",
+        "title": "Hire (HR)",
+        "count": "HR workflows",
+        "url": "https://promptanatomy.help/",
         "outcome": "Search, recruitment and assessment prompts.",
         "bullets": ["Job ads", "Assessment"]
       },
       {
-        "title": "Operations center (CEO/COO)",
+        "title": "Manage (leadership)",
         "count": "CEO/COO",
         "url": "https://www.promptanatomy.ceo/",
-        "outcome": "Prompts and templates for leadership.",
+        "outcome": "Prompts and templates for leadership and operations.",
         "bullets": ["Decisions", "Operations"]
+      },
+      {
+        "title": "Decide (scale)",
+        "count": "Enterprise",
+        "url": "https://promptanatomy.pro/",
+        "outcome": "Scale business decisions with structured AI workflows.",
+        "bullets": ["B2B pilots", "Team standards"]
       }
     ]
   },

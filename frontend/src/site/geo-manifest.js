@@ -11,7 +11,10 @@
 
 export const SITE_URL = 'https://www.promptanatomy.app'
 
-export const LAST_UPDATED = '2026-05-24'
+export const LAST_UPDATED = '2026-06-05'
+
+/** Marketing / discovery site — full 9-domain map, quiz, Anatomizer (not a spoke). */
+export const ECOSYSTEM_DISCOVERY_SITE = 'https://promptanatomy.site'
 
 export const ORG_EMAIL = 'info@promptanatomy.app'
 
@@ -53,34 +56,44 @@ export const ECOSYSTEM_HUB = {
 
 export const ECOSYSTEM_SPOKES = [
   {
+    name: 'PromptAnatomy Cloud (.cloud)',
+    urls: { en: 'https://promptanatomy.cloud/', lt: 'https://promptanatomy.cloud/' },
+    role: 'Spoke — Enter: onboarding and first lesson, routing to hub',
+  },
+  {
     name: 'Prompt library (.info)',
     urls: { en: 'https://www.promptanatomy.info/en/', lt: 'https://www.promptanatomy.info/lt/' },
-    role: 'Spin-off — prompt library and quick value demonstration',
+    role: 'Spoke — Use: prompt library and daily automation workflows',
   },
   {
     name: 'Content system (.space)',
     urls: { en: 'https://www.promptanatomy.space/en/', lt: 'https://www.promptanatomy.space/' },
-    role: 'Spoke — marketing content prompts and templates',
+    role: 'Spoke — Create: marketing content prompts and templates',
+  },
+  {
+    name: 'HR system (.help)',
+    urls: { en: 'https://promptanatomy.help/', lt: 'https://promptanatomy.help/' },
+    role: 'Spoke — Hire: HR, recruitment, and people operations prompts',
   },
   {
     name: 'Operations center (.ceo)',
     urls: { en: 'https://www.promptanatomy.ceo/', lt: 'https://www.promptanatomy.ceo/' },
-    role: 'Spoke — CEO/COO leadership and operations prompts',
+    role: 'Spoke — Manage: CEO/COO leadership and operations prompts',
   },
   {
-    name: 'PromptAnatomy Cloud',
-    urls: { en: 'https://promptanatomy.cloud/', lt: 'https://promptanatomy.cloud/' },
-    role: 'Spoke — educational and practical flow routing to hub',
-  },
-  {
-    name: 'PromptAnatomy Pro',
+    name: 'PromptAnatomy Pro (.pro)',
     urls: { en: 'https://promptanatomy.pro/', lt: 'https://promptanatomy.pro/' },
-    role: 'Spoke — B2B, teams, and professional services routing to hub',
+    role: 'Spoke — Decide: B2B scaling and enterprise AI workflows routing to hub',
   },
   {
-    name: 'Recruitment system (HR)',
-    urls: { en: 'https://ditreneris.github.io/personalas/', lt: 'https://ditreneris.github.io/personalas/' },
-    role: 'Legacy spoke — HR and recruitment prompts (until migrated)',
+    name: 'Knowledge hub (.blog)',
+    urls: { en: 'https://promptanatomy.blog/', lt: 'https://promptanatomy.blog/' },
+    role: 'Spoke — Deepen: articles, canvases, and systems-thinking content',
+  },
+  {
+    name: 'Playground (.lol)',
+    urls: { en: 'https://promptanatomy.lol/', lt: 'https://promptanatomy.lol/' },
+    role: 'Spoke — Play: structured sandbox for low-stakes prompt experiments',
   },
 ]
 

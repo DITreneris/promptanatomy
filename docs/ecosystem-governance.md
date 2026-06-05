@@ -1,15 +1,23 @@
-# Ekosistemos valdymas (.app / .cloud / .pro)
+# Ekosistemos valdymas (hub-and-spoke)
 
 ## Tikslas
 
-Išlaikyti vieną brandą su trimis domenais taip, kad jie vienas kitą stiprintų, o ne konkuruotų SEO, GEO ir AI atsakymuose.
+Išlaikyti vieną brandą su 9-domenų ekosistema + discovery svetaine taip, kad domenai vienas kitą stiprintų, o ne konkuruotų SEO, GEO ir AI atsakymuose.
+
+**Kanonas:** [ecosystem-canon.md](ecosystem-canon.md)
 
 ## Rolės
 
-- `promptanatomy.app` — pagrindinis hub: kainodara, checkout, prieiga, konversija.
-- `promptanatomy.cloud` — edukacinis/praktinis srautas: įžanginis turinys, šablonai, nukreipimas į hub.
-- `promptanatomy.pro` — profesionalus/B2B srautas: pilotai, komandos, paslaugos, nukreipimas į hub.
-- `promptanatomy.info` — viešas „spin-off“ / promptų bibliotekos landing: greitas vertės demonstravimas (pvz. 8 pratimai), nukreipimas į hub.
+- `promptanatomy.app` — pagrindinis hub: kainodara, checkout, prieiga, konversija; LP rodo **6 spokes** (3+3 grid).
+- `promptanatomy.site` — discovery: pilnas 9-domenų žemėlapis, maturity quiz, Prompt Builder; CTA į `.app`.
+- `promptanatomy.cloud` — Enter (Adopt): onboarding, pirmoji pamoka → hub.
+- `promptanatomy.info` — Use (Adopt): promptų biblioteka, kasdieniai workflow → hub.
+- `promptanatomy.space` — Create (Apply): rinkodaros turinys → hub.
+- `promptanatomy.help` — Hire (Apply): HR, atranka → hub.
+- `promptanatomy.ceo` — Manage (Scale): vadovybė, operacijos → hub.
+- `promptanatomy.pro` — Decide (Scale): B2B, enterprise → hub.
+- `promptanatomy.blog` — Deepen (Learn): žinios, straipsniai (GEO + `.site`).
+- `promptanatomy.lol` — Play (Learn): sandbox (GEO + `.site`).
 
 ## SEO/GEO/AI taisyklės
 
@@ -21,8 +29,9 @@ Išlaikyti vieną brandą su trimis domenais taip, kad jie vienas kitą stiprint
 
 ## KPI minimumas (14 dienų ciklas)
 
-- Outbound CTR į `.cloud` ir `.pro` iš `ecosystem_card`, `footer_network`, `navbar_mobile` (atskiras LP `routing_block` blokas pašalintas — Cloud/Pro pasiekiami per Navbar/Footer).
-- Outbound CTR į `promptanatomy.info` iš `ecosystem_card` („Biblioteka / AI automation“) pagal locale (LT/EN).
+- Outbound CTR į 6 spokes iš `ecosystem_card` (cloud, info, space, help, ceo, pro) pagal locale (LT/EN).
+- Outbound CTR į `.cloud` ir `.pro` taip pat iš `footer_network`, `navbar_mobile` (papildomi placement).
+- Outbound CTR į `promptanatomy.site` iš `ecosystem_site_map` (pilnas žemėlapis).
 - Hub konversijos signalas: `ecosystem_cta_pricing_click` (placement `ecosystem_hub`) — vidinis CTA iš Ekosistemos sekcijos į `#pricing`.
 - Assisted conversion (srautas iš `.cloud/.pro` į `.app` ir checkout/success santykis).
 - LT/EN split ir GEO split (LT vs US/EU) pagal įėjimo kanalą.
