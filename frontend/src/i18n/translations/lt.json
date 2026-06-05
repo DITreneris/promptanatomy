@@ -105,42 +105,42 @@
         "title": "Įėjimas",
         "url": "https://promptanatomy.cloud/",
         "outcome": "Pradėk naudoti DI aiškiai.",
-        "tags": "Pamoka · onboarding · pagrindai",
+        "tags": "Pamoka · onboarding",
         "cta": "Pradėti"
       },
       {
         "title": "Naudojimas",
         "url": "https://www.promptanatomy.info/lt/",
         "outcome": "Promptai kasdieniam darbui.",
-        "tags": "100+ promptų · workflow · šablonai",
+        "tags": "100+ promptų · workflow",
         "cta": "Naudoti"
       },
       {
         "title": "Kūrimas",
         "url": "https://www.promptanatomy.space/",
         "outcome": "Rinkodaros turinys su DI.",
-        "tags": "Planai · kampanijos · tekstai",
+        "tags": "Planai · kampanijos",
         "cta": "Kurti"
       },
       {
         "title": "Atranka",
         "url": "https://promptanatomy.help/",
         "outcome": "HR užduotys greičiau.",
-        "tags": "Skelbimai · atranka · vertinimas",
+        "tags": "Skelbimai · atranka",
         "cta": "Atrinkti"
       },
       {
         "title": "Valdymas",
         "url": "https://www.promptanatomy.ceo/",
         "outcome": "Sprendimai ir operacijos.",
-        "tags": "Prioritetai · susitikimai · veiksmai",
+        "tags": "Prioritetai · susitikimai",
         "cta": "Valdyti"
       },
       {
         "title": "Sprendimai",
         "url": "https://promptanatomy.pro/",
         "outcome": "DI diegimas komandai.",
-        "tags": "Pilotai · standartai · procesai",
+        "tags": "Pilotai · standartai",
         "cta": "Diegti"
       }
     ]

@@ -105,42 +105,42 @@
         "title": "Enter",
         "url": "https://promptanatomy.cloud/",
         "outcome": "Start using AI with clarity.",
-        "tags": "Lesson · onboarding · basics",
+        "tags": "Lesson · onboarding",
         "cta": "Start"
       },
       {
         "title": "Use",
         "url": "https://www.promptanatomy.info/en/",
         "outcome": "Prompts for daily work.",
-        "tags": "100+ prompts · workflow · templates",
+        "tags": "100+ prompts · workflow",
         "cta": "Use"
       },
       {
         "title": "Create",
         "url": "https://www.promptanatomy.space/en/",
         "outcome": "Marketing content with AI.",
-        "tags": "Plans · campaigns · copy",
+        "tags": "Plans · campaigns",
         "cta": "Create"
       },
       {
         "title": "Hire",
         "url": "https://promptanatomy.help/",
         "outcome": "HR tasks, faster.",
-        "tags": "Job posts · hiring · assessment",
+        "tags": "Job posts · hiring",
         "cta": "Hire"
       },
       {
         "title": "Manage",
         "url": "https://www.promptanatomy.ceo/",
         "outcome": "Decisions and operations.",
-        "tags": "Priorities · meetings · actions",
+        "tags": "Priorities · meetings",
         "cta": "Manage"
       },
       {
         "title": "Decide",
         "url": "https://promptanatomy.pro/",
         "outcome": "AI rollout for teams.",
-        "tags": "Pilots · standards · processes",
+        "tags": "Pilots · standards",
         "cta": "Deploy"
       }
     ]

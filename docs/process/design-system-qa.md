@@ -16,9 +16,9 @@
 - [ ] `ecosystem.workflowHint` virš 6 kortelių grid
 - [ ] Hub core pill po grid su `ecosystem.hubCoreLabel` + phase legend; **be** connector linijų
 - [ ] Anchor `#ekosistema` (Navbar/Footer): pirmos eilės kortelės ne nukirptos po sticky header (`scroll-margin-top`)
-- [ ] All 6 cards: `card-density-dark-premium`; phase eyebrow + `line-clamp-2` outcome + tag pills; CTA `mt-auto` baseline
+- [ ] All 6 cards: `card-density-dark-premium` (`min-h-[200px]`); phase eyebrow + `line-clamp-2` outcome + tag pills; CTA `mt-auto pt-3` — be perteklinės tuštumos virš mygtuko (375px / 1280px)
 - [ ] Enter: `border-2` featured frame + `startHere` badge + full-width `btn-primary` + `shadow-ecosystem-cta`
-- [ ] Secondary: `card-phase-accent-*` top rim + `btn-ecosystem-secondary` + arrow; `opensInNewTab` po CTA
+- [ ] Secondary: `card-phase-accent-*` top rim + `btn-ecosystem-secondary` + arrow; `aria-label` su opens-in-new-tab (be matomo teksto po CTA)
 - [ ] Card rest: `shadow-ecosystem-card-rest`; hover: `-translate-y-1` + `shadow-ecosystem-card-hover`
 - [ ] Enter icon: gold glow; kitos — `shadow-ecosystem-icon-depth` only
 - [ ] Map link uses outline button + arrow; `ecosystem.trustLine` po map link
