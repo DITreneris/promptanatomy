@@ -36,10 +36,12 @@
 
 ## 3. Sinchronizacijos taisyklės
 
-1. Spoke URL keičiami **pirmiausia** `en.json` / `lt.json` (`ecosystem.items`), tada `geo-manifest.js` (`ECOSYSTEM_SPOKES`), tada `llms.txt` (arba `npm run build`).
+1. Spoke URL keičiami **pirmiausia** `en.json` / `lt.json` (`ecosystem.items`), tada `geo-manifest.js` (`ECOSYSTEM_SPOKES`), tada `npm run build` (`llms.txt`, `llms-full.txt`).
 2. HR kanoninis domenas: **`promptanatomy.help`** (ne `ditreneris.github.io/personalas`).
-3. `ECOSYSTEM_DISCOVERY_SITE` — marketing žemėlapis, ne spoke.
-4. PostHog: `ecosystem_card` (6 spokes), `ecosystem_hub` (→ `#pricing`), `ecosystem_site_map` (→ `.site`).
+3. `ECOSYSTEM_DISCOVERY` / `ECOSYSTEM_DISCOVERY_SITE` — marketing žemėlapis, ne spoke; įtrauktas į llms ir JSON-LD `ItemList` (9-as elementas).
+4. `SeoHead.jsx` — `getEcosystemItemList(routeLocale)` (8 spokes + discovery); ne hardcoded URL.
+5. PostHog: `ecosystem_card` (6 spokes), `ecosystem_hub` (→ `#pricing`), `ecosystem_site_map` (→ `.site`).
+6. GSC operacijos — [seo-geo-operations.md](seo-geo-operations.md).
 
 ---
 

@@ -9,6 +9,7 @@ import {
   COMMUNITY_URL,
   CREATOR,
   CREATOR_PUBLICATIONS,
+  ECOSYSTEM_DISCOVERY,
   ECOSYSTEM_HUB,
   ECOSYSTEM_SPOKES,
   LAST_UPDATED,
@@ -43,6 +44,7 @@ function buildEcosystemBlock() {
   const lines = [
     `Hub (conversion): ${ECOSYSTEM_HUB.url}`,
     `Training app: ${ECOSYSTEM_HUB.trainingUrl} — ${ECOSYSTEM_HUB.trainingRole}`,
+    `${ECOSYSTEM_DISCOVERY.name}: ${ECOSYSTEM_DISCOVERY.url} — ${ECOSYSTEM_DISCOVERY.role}`,
     ...ECOSYSTEM_SPOKES.flatMap((spoke) => [
       `${spoke.name}: ${spoke.urls.en} (EN) / ${spoke.urls.lt} (LT) — ${spoke.role}`,
     ]),

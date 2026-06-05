@@ -48,6 +48,6 @@ Hub repozitorijoje (`059_home_page` / Vercel deploy):
 | `frontend/public/robots.txt` | AI + search bot leidimai |
 | `frontend/index.html` | `Person` + Medium `Article` JSON-LD |
 
-**Taisyklės:** llms failuose turi būti visi hub/spoke domenai, founder profiliai (LinkedIn, X, Medium), 2+ autorinės publikacijos (media diversity). Spoke domenai (.info, .cloud, .pro, .space, .ceo) — atskiras follow-up: tas pats šablonas savo deploy.
+**Taisyklės:** llms failuose turi būti visi hub/spoke domenai + `promptanatomy.site` discovery, founder profiliai (LinkedIn, X, Medium), 2+ autorinės publikacijos (media diversity). Home JSON-LD `ItemList` sinchronizuojamas per `getEcosystemItemList()` ([geo-manifest.js](../frontend/src/site/geo-manifest.js), [SeoHead.jsx](../frontend/src/components/SeoHead.jsx)). Spoke domenai (`.info`, `.cloud`, `.pro`, `.space`, `.ceo`, `.help`, `.blog`, `.lol`) ir `.site` — atskiras follow-up: robots + llms + sitemap + GSC property (žr. [seo-geo-operations.md](seo-geo-operations.md)).
 
 ---
