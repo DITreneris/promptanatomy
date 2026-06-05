@@ -349,6 +349,26 @@ section-heading → text-4xl md:text-5xl font-black text-brand-dark tracking-[-0
 
 ---
 
+### Phase 8 — Hub polish + LP consistency — **Done** (2026-06-05)
+
+**Goal:** v1.0 → **v0.98+**. Hub vizualas atitinka „core hub“ copy; card density suvienodinta per LP.
+
+| Task | Status | Files |
+|------|--------|-------|
+| Hub core pill + desktop connectors | Done | `Ecosystem.jsx`, `index.css` (`hub-core-pill`, `hub-connector-line`) |
+| Remove carousel-like `ConnectorRow` | Done | `Ecosystem.jsx` |
+| Card density utilities | Done | `index.css` (`card-density`, `card-density-dark`) |
+| Ecosystem CTA + map link | Done | `btn-ecosystem-outline` |
+| Cross-section polish (Hero, WhatIs, Methodology, Pricing, FAQ, Navbar) | Done | respective components |
+| Yellow tier utilities (`badge-premium`, `faq-item`) | Done | `index.css`, `Pricing.jsx`, `Faq.jsx` |
+| i18n hub + FAQ labels | Done | `en.json`, `lt.json` |
+
+**CTA funnel rule (documented):** nav/hero = „Choose a plan“; ecosystem hub = `ecosystem.ctaPricing`; pricing cards = `pricing.getAccess`.
+
+**Agent:** frontend-agent. **Regressions:** `npm run build`, golden-legacy §3, [design-system-qa.md](process/design-system-qa.md) Hub/FAQ checks.
+
+---
+
 ### Roadmap dependency graph
 
 ```text

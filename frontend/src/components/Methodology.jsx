@@ -6,8 +6,8 @@ const ICONS = [<Search key="s" />, <Layers key="l" />, <Zap key="z" />]
 
 function ProcessArrow() {
   return (
-    <div className="hidden md:flex items-center justify-center shrink-0 w-8 text-slate-300" aria-hidden>
-      <svg className="w-5 h-5 opacity-35" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <div className="hidden md:flex items-center justify-center shrink-0 w-8 text-slate-400" aria-hidden>
+      <svg className="w-5 h-5 opacity-55" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M8 4l6 6-6 6" />
       </svg>
     </div>
@@ -40,14 +40,14 @@ export default function Methodology() {
           {itemsWithIcons.map((item, i) => (
             <React.Fragment key={i}>
               <div
-                className="group flex-1 min-w-0 p-8 md:p-10 rounded-2xl bg-white shadow-methodology-card border border-slate-100 transition-all duration-180 hover:-translate-y-1.5 hover:shadow-soft-lg hover:border-brand-accent/20"
+                className="group flex-1 min-w-0 flex flex-col min-h-[280px] card-density transition-all duration-180 hover:-translate-y-1.5 hover:shadow-soft-lg hover:border-brand-accent/20"
               >
-                <div className="w-14 h-14 rounded-[14px] bg-brand-dark text-brand-accent flex items-center justify-center mb-8 transition-all duration-180 group-hover:rotate-[4deg] shadow-accent-ring group-hover:shadow-accent-ring-hover">
+                <div className="w-14 h-14 rounded-[14px] bg-brand-dark text-brand-accent flex items-center justify-center mb-6 transition-all duration-180 group-hover:rotate-[4deg] shadow-accent-ring group-hover:shadow-accent-ring-hover">
                   {React.cloneElement(item.icon, { size: 24 })}
                 </div>
                 <span className="text-xs font-bold text-slate-600 tracking-widest mb-2 block">{item.step}</span>
                 <h4 className="text-2xl font-bold text-brand-dark mb-4 tracking-tight">{item.title}</h4>
-                <p className="text-slate-600 font-medium leading-relaxed text-base">{item.desc}</p>
+                <p className="text-slate-600 font-medium leading-relaxed text-base line-clamp-4">{item.desc}</p>
               </div>
               {i < itemsWithIcons.length - 1 && <ProcessArrow />}
             </React.Fragment>

@@ -99,7 +99,7 @@ export default function Hero({ onCta }) {
   const lineVisible = (lineIdx) => phase > lineIdx
 
   return (
-    <section className="relative pt-24 md:pt-44 pb-20 md:pb-32 overflow-hidden bg-hero-bg">
+    <section className="relative pt-20 md:pt-36 pb-20 md:pb-32 overflow-hidden bg-hero-bg">
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[url('/noise.svg')]"></div>
       <div className="absolute top-0 right-0 w-1/2 h-full bg-slate-50/80 -skew-x-12 translate-x-32 -z-10 border-l border-slate-100"></div>
 
@@ -140,8 +140,8 @@ export default function Hero({ onCta }) {
               {t('hero.cta')} <ArrowRight className="icon-lg group-hover:translate-x-1 transition-transform" aria-hidden />
             </button>
 
-            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white/90 px-4 py-3 text-sm font-semibold text-slate-600 shadow-xs">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" aria-hidden="true" />
+            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200/90 bg-white/90 px-4 py-3 text-sm font-semibold text-slate-600 shadow-soft min-h-[44px]">
+              <span className="w-2.5 h-2.5 rounded-full bg-brand-accent" aria-hidden="true" />
               <span>{t('hero.socialProof')}</span>
             </div>
           </div>
@@ -203,7 +203,7 @@ export default function Hero({ onCta }) {
                 style={{ opacity: phase >= 4 ? 1 : 0, transition: 'opacity 0.5s ease-out' }}
               >
                 <div className="mt-1.5 w-2 h-2 shrink-0 rounded-full bg-emerald-400" aria-hidden="true" />
-                <span className="text-label-upper leading-snug tracking-[0.14em] sm:tracking-[0.18em] text-slate-200 break-words min-w-0">
+                <span className="text-label-upper leading-snug tracking-[0.14em] sm:tracking-[0.18em] text-slate-100 break-words min-w-0">
                   {t('hero.terminalOutcome')}
                 </span>
               </div>

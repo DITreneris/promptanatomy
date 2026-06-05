@@ -191,13 +191,13 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
         <div className="hidden min-w-0 shrink items-center justify-end gap-3 lg:flex lg:gap-4 xl:gap-6">
           {mainNavItems.map((item) => renderNavItem(item, navLinkClass))}
           <div className="flex items-center gap-3 xl:gap-4 shrink-0">
-            <div className="flex items-center gap-0.5 p-0.5 rounded-lg bg-slate-100 border border-slate-200">
+            <div className="flex items-center gap-1 p-0.5 rounded-lg bg-slate-100 border border-slate-200">
               <button
                 type="button"
                 onClick={() => { setLocale('lt'); navigate('/lt') }}
                 onMouseEnter={() => prefetchLocale('lt')}
                 onFocus={() => prefetchLocale('lt')}
-                className={`px-2 py-1 rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} ${FOCUS_RING}`}
+                className={`px-2.5 py-1 rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} ${FOCUS_RING}`}
                 aria-pressed={locale === 'lt'}
                 aria-label="Lietuvių"
               >
@@ -208,7 +208,7 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
                 onClick={() => { setLocale('en'); navigate('/en') }}
                 onMouseEnter={() => prefetchLocale('en')}
                 onFocus={() => prefetchLocale('en')}
-                className={`px-2 py-1 rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} ${FOCUS_RING}`}
+                className={`px-2.5 py-1 rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} ${FOCUS_RING}`}
                 aria-pressed={locale === 'en'}
                 aria-label="English"
               >

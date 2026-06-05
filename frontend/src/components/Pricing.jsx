@@ -70,7 +70,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
               className={`relative rounded-3xl p-8 shadow-pricing-card hover:shadow-soft-lg hover:-translate-y-1.5 transition-all duration-300 flex flex-col ${isCore ? 'card-featured-pricing border-2' : 'bg-white border border-slate-100 hover:border-brand-accent/30'}`}
             >
               {isCore && (
-                <span className="absolute top-6 right-6 badge-accent px-3 py-1 tracking-widest">
+                <span className="absolute top-6 right-6 badge-premium">
                   {t('pricing.recommended')}
                 </span>
               )}
@@ -92,8 +92,9 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
                   </ul>
                 ) : null
               })()}
-              <p className="text-price mb-6">
-                {plan.price}<span className="text-xl font-bold text-slate-600"> €</span>
+              <p className="text-price mb-6 flex items-baseline">
+                {plan.price}
+                <span className="text-2xl font-bold text-slate-600 ml-1">€</span>
               </p>
               {isOwned ? (
                 <button
