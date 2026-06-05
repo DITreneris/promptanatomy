@@ -4,6 +4,7 @@
  *
  * Sync rules:
  * - When ecosystem.items URLs change in en.json / lt.json, update ECOSYSTEM_SPOKES here.
+ * - SeoHead.jsx ItemList and generate-geo-static.mjs must use getEcosystemItemList / ECOSYSTEM_DISCOVERY.
  * - When organization.js postal address changes, update ORG_MAILING_ADDRESS_ONE_LINE.
  * - When new Medium articles ship, append to CREATOR_PUBLICATIONS.
  * - Bump LAST_UPDATED on meaningful GEO/content deploys.
@@ -11,7 +12,7 @@
 
 export const SITE_URL = 'https://www.promptanatomy.app'
 
-export const LAST_UPDATED = '2026-06-05'
+export const LAST_UPDATED = '2026-06-06'
 
 /** Marketing / discovery site — full 9-domain map, quiz, Anatomizer (not a spoke). */
 export const ECOSYSTEM_DISCOVERY_SITE = 'https://promptanatomy.site'
@@ -96,6 +97,22 @@ export const ECOSYSTEM_SPOKES = [
     role: 'Spoke — Play: structured sandbox for low-stakes prompt experiments',
   },
 ]
+
+/** Discovery — not a spoke; full map lives on .site */
+export const ECOSYSTEM_DISCOVERY = {
+  name: 'Ecosystem discovery map (.site)',
+  url: ECOSYSTEM_DISCOVERY_SITE,
+  role: 'Discovery — full 9-domain journey map, maturity quiz, Prompt Builder',
+}
+
+/** JSON-LD + AI index: 8 spokes then discovery (9 ListItems). */
+export function getEcosystemItemList(locale = 'en') {
+  const pick = (spoke) => (locale === 'lt' ? spoke.urls.lt : spoke.urls.en)
+  return [
+    ...ECOSYSTEM_SPOKES.map((spoke) => ({ name: spoke.name, url: pick(spoke) })),
+    { name: ECOSYSTEM_DISCOVERY.name, url: ECOSYSTEM_DISCOVERY.url },
+  ]
+}
 
 export const COMMUNITY_URL = 'https://t.me/prompt_anatomy'
 

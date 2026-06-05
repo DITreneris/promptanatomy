@@ -32,6 +32,7 @@ Canonical site: https://www.promptanatomy.app/
 
 - Hub (conversion): https://www.promptanatomy.app/
 - Training app: https://www.promptanatomy.app/anatomy/ — Interactive training app (6 modules, 6-block methodology)
+- Ecosystem discovery map (.site): https://promptanatomy.site — Discovery — full 9-domain journey map, maturity quiz, Prompt Builder
 - PromptAnatomy Cloud (.cloud): https://promptanatomy.cloud/ (EN) / https://promptanatomy.cloud/ (LT) — Spoke — Enter: onboarding and first lesson, routing to hub
 - Prompt library (.info): https://www.promptanatomy.info/en/ (EN) / https://www.promptanatomy.info/lt/ (LT) — Spoke — Use: prompt library and daily automation workflows
 - Content system (.space): https://www.promptanatomy.space/en/ (EN) / https://www.promptanatomy.space/ (LT) — Spoke — Create: marketing content prompts and templates

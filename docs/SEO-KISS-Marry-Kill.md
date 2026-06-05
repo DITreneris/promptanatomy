@@ -102,4 +102,14 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 
 ---
 
+## Įgyvendinimo būsena (2026-06-06, post-hub SEO/GEO)
+
+- **JSON-LD ItemList** — [SeoHead.jsx](../frontend/src/components/SeoHead.jsx): 9 items (8 spokes + `promptanatomy.site` discovery) iš `getEcosystemItemList(routeLocale)`; locale-aware spoke URLs.
+- **llms.txt / llms-full.txt** — [generate-geo-static.mjs](../frontend/scripts/generate-geo-static.mjs): `ECOSYSTEM_DISCOVERY` eilutė ekosistemos bloke.
+- **index.html** — `<link rel="alternate" type="text/plain" href=".../llms.txt">` papildomai prie `vercel.json` `rel=describedby`.
+- **sitemap.xml** — **neplėsti** spokes; lieka 5 hub URL. GSC: žr. [seo-geo-operations.md](seo-geo-operations.md).
+- **CI** — GEO smoke: `promptanatomy.site`, `promptanatomy.help` grep `dist/llms-full.txt`.
+
+---
+
 *Dokumentas: `docs/SEO-KISS-Marry-Kill.md`. Atnaujinta pagal projekto būseną ir viešas SEO praktikas.*
