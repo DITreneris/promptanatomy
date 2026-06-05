@@ -47,8 +47,6 @@ const PHASE_KEY_BY_THEME = {
 
 const PHASE_ACCENT_CLASSES = ['card-phase-accent-1', 'card-phase-accent-2', 'card-phase-accent-3', 'card-phase-accent-3']
 
-const MAX_VISIBLE_TAGS = 2
-
 function parseTagList(tags) {
   if (!tags || typeof tags !== 'string') return []
   return tags.split('·').map((s) => s.trim()).filter(Boolean)
@@ -169,8 +167,6 @@ function renderCard(item, i, t, locale, pagePath) {
     (typeof item.tags === 'string' && item.tags.trim()) ||
     (Array.isArray(item.bullets) && item.bullets.length > 0 ? item.bullets.join(' · ') : null)
   const tagList = parseTagList(tagsRaw)
-  const visibleTags = tagList.slice(0, MAX_VISIBLE_TAGS)
-  const tagOverflow = Math.max(0, tagList.length - MAX_VISIBLE_TAGS)
   const outcome = typeof item.outcome === 'string' && item.outcome.trim() ? item.outcome.trim() : null
   const ctaLabel =
     (typeof item.cta === 'string' && item.cta.trim()) ||
@@ -182,6 +178,9 @@ function renderCard(item, i, t, locale, pagePath) {
   const iconShadowClass = isPrimaryCard ? 'shadow-ecosystem-icon-card' : 'shadow-ecosystem-icon-depth'
   const opensInNewTab =
     typeof t('ecosystem.opensInNewTab') === 'string' ? t('ecosystem.opensInNewTab').trim() : ''
+  const ctaAriaLabel = opensInNewTab
+    ? `${item.title} — ${ctaLabel} (${opensInNewTab})`
+    : `${item.title} — ${ctaLabel}`
 
   const phaseAccentClass = !isPrimaryCard ? (PHASE_ACCENT_CLASSES[item.themeIndex - 1] ?? PHASE_ACCENT_CLASSES[0]) : ''
   const cardBaseClass =
@@ -194,7 +193,7 @@ function renderCard(item, i, t, locale, pagePath) {
         <span className="absolute top-6 right-6 badge-premium">{t('ecosystem.startHere')}</span>
       )}
       <div
-        className={`w-12 h-12 rounded-xl flex items-center justify-center text-white ${iconShadowClass} transition-all duration-220 group-hover:scale-105 ring-2 ring-transparent group-hover:ring-2 ${ECOSYSTEM_BG_CLASSES[item.themeIndex - 1]} ${ECOSYSTEM_HOVER_RING[item.themeIndex - 1]} mb-4`}
+        className={`w-12 h-12 rounded-xl flex items-center justify-center text-white ${iconShadowClass} transition-all duration-220 group-hover:scale-105 ring-2 ring-transparent group-hover:ring-2 ${ECOSYSTEM_BG_CLASSES[item.themeIndex - 1]} ${ECOSYSTEM_HOVER_RING[item.themeIndex - 1]} mb-3`}
       >
         {item.icon}
       </div>
@@ -205,12 +204,11 @@ function renderCard(item, i, t, locale, pagePath) {
       )}
       {tagList.length > 0 && (
         <div className="flex flex-wrap gap-1.5 mb-2">
-          {visibleTags.map((tag) => (
+          {tagList.map((tag) => (
             <span key={tag} className="ecosystem-tag-pill">
               {tag}
             </span>
           ))}
-          {tagOverflow > 0 && <span className="ecosystem-tag-pill">+{tagOverflow}</span>}
         </div>
       )}
     </>
@@ -221,19 +219,18 @@ function renderCard(item, i, t, locale, pagePath) {
     : 'btn-ecosystem-secondary'
 
   const cta = useCtaLayout && ctaLabel && item.url && (
-    <div className="mt-auto pt-4">
+    <div className="mt-auto pt-3">
       <a
         href={item.url}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`${item.title} — ${ctaLabel}`}
+        aria-label={ctaAriaLabel}
         onClick={() => captureEcosystemOutboundClick({ target: item.url, placement: 'ecosystem_card', locale, pagePath })}
         className={ctaClass}
       >
         {ctaLabel}
         {!isPrimaryCard && <ArrowRight className="icon-sm" aria-hidden />}
       </a>
-      {opensInNewTab && <p className="mt-1.5 text-xs text-slate-500">{opensInNewTab}</p>}
     </div>
   )
 

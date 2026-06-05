@@ -4,6 +4,9 @@ Visi pakeitimai šiame faile dokumentuojami pagal [Keep a Changelog](https://kee
 
 ## [Unreleased]
 
+### Pakeista
+- **Ecosystem kortelių triukšmo mažinimas (2026-06-06):** Pašalintas `+N` tag overflow ir matomas „Opens in new tab“ / „Naujame lange“ po CTA; `opensInNewTab` lieka tik `aria-label`. Tag'ai sutrumpinti iki 2 kortelėje (LT/EN). Kompaktiškumas: `card-density-dark-premium` `min-h-[200px]`, `p-5 sm:p-6`; CTA `pt-3`, ikona `mb-3`. Failai: [Ecosystem.jsx](frontend/src/components/Ecosystem.jsx), [index.css](frontend/src/index.css), [en.json](frontend/src/i18n/translations/en.json), [lt.json](frontend/src/i18n/translations/lt.json); docs: [golden-legacy-standard.md](docs/golden-legacy-standard.md) §3, [design-system-qa.md](docs/process/design-system-qa.md).
+
 ## [1.4.0] - 2026-06-06
 
 **Santrauka:** LP ekosistemos hub refresh (6 spokes, scan cards, premium dark), vizualinis polish Phase 8, copy chirurgija LT/EN, FAQ turinys (9 Q&A, hub/spoke), SEO/GEO (`ItemList` 9 items, `llms-full.txt`), našumas Phase 1–2 (lazy locale, bundle budget), bugfix'ai (Ecosystem white screen, i18n FOUC). Regresija: `frontend npm run build`, `pytest` 24.
