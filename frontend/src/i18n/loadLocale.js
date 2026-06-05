@@ -60,3 +60,14 @@ export function loadLocale(locale) {
 export function prefetchLocale(locale) {
   void loadLocale(locale)
 }
+
+/** EN messages available synchronously on first paint (entry bundle). */
+export function getSyncMessagesForInitialPaint() {
+  return getInitialLocale() === 'en' ? getEnMessages() : null
+}
+
+/** Start loading route locale as soon as this module evaluates (before React paint). */
+export function bootstrapInitialLocale() {
+  if (typeof window === 'undefined') return
+  void loadLocale(getInitialLocale())
+}

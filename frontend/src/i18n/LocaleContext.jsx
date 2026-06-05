@@ -1,26 +1,40 @@
-import { createContext, useContext, useState, useCallback, useEffect } from 'react'
-import { getInitialLocale, loadLocale, normalizeLocale, STORAGE_KEY } from './loadLocale'
+import { createContext, useContext, useState, useCallback, useLayoutEffect } from 'react'
+import {
+  getInitialLocale,
+  getSyncMessagesForInitialPaint,
+  loadLocale,
+  normalizeLocale,
+  STORAGE_KEY,
+} from './loadLocale'
+import { getEnMessages } from './syncTranslate'
 import { translateMessages } from './translateCore'
 
 const LocaleContext = createContext(null)
 
 export function LocaleProvider({ children }) {
-  const [locale, setLocaleState] = useState(getInitialLocale)
-  const [messages, setMessages] = useState(null)
-  const [localeReady, setLocaleReady] = useState(false)
+  const initialLocale = getInitialLocale()
+  const [locale, setLocaleState] = useState(initialLocale)
+  const [loadedLocale, setLoadedLocale] = useState(() => (initialLocale === 'en' ? 'en' : null))
+  const [messages, setMessages] = useState(getSyncMessagesForInitialPaint)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     let cancelled = false
-    loadLocale(locale)
+    const loc = normalizeLocale(locale)
+
+    loadLocale(loc)
       .then((data) => {
         if (!cancelled) {
           setMessages(data)
-          setLocaleReady(true)
+          setLoadedLocale(loc)
         }
       })
       .catch(() => {
-        if (!cancelled) setLocaleReady(true)
+        if (!cancelled) {
+          setMessages(loc === 'en' ? getEnMessages() : null)
+          setLoadedLocale(loc)
+        }
       })
+
     return () => {
       cancelled = true
     }
@@ -40,15 +54,21 @@ export function LocaleProvider({ children }) {
 
   const t = useCallback(
     (key, params) => {
-      if (!messages) return key
+      if (!messages) return ''
       return translateMessages(messages, key, params)
     },
     [messages]
   )
 
+  const localeReady = loadedLocale === locale
+
   return (
     <LocaleContext.Provider value={{ locale, setLocale, t, localeReady }}>
-      {children}
+      {localeReady ? (
+        children
+      ) : (
+        <div className="min-h-screen bg-white" aria-busy="true" aria-live="polite" />
+      )}
     </LocaleContext.Provider>
   )
 }

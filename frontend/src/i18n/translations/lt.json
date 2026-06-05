@@ -86,8 +86,8 @@
     ]
   },
   "ecosystem": {
-    "title": "Hub: pasirink kryptį",
-    "paragraph": "Šeši workflow moduliai jungiasi į vieną hub — pagal tavo kelionės etapą.",
+    "title": "Pasirink, nuo ko pradėti",
+    "paragraph": "Nuo pirmo žingsnio iki DI diegimo komandoje.",
     "hubCoreLabel": "6 blokų DI sistema",
     "hubCoreSub": "Pagrindinis hub",
     "phaseAdopt": "Įsisavink",
@@ -98,46 +98,46 @@
     "mapLink": "Peržiūrėti pilną ekosistemos žemėlapį",
     "items": [
       {
-        "title": "Įėjimas (onboarding)",
-        "count": "Pirmoji pamoka",
+        "title": "Įėjimas",
         "url": "https://promptanatomy.cloud/",
-        "outcome": "Pradėk mokytis DI su struktūruotu onboarding ir pagrindais.",
-        "bullets": ["Nemokama pamoka", "Komandos onboarding"]
+        "outcome": "Pradėk naudoti DI aiškiai.",
+        "tags": "Pamoka · onboarding · pagrindai",
+        "cta": "Pradėti"
       },
       {
-        "title": "Naudojimas (DI automatizacija)",
-        "count": "100+ šablonų",
+        "title": "Naudojimas",
         "url": "https://www.promptanatomy.info/lt/",
-        "outcome": "Paruošti promptai ir workflow šablonai kasdieniam darbui.",
-        "bullets": ["100+ promptų", "DI workflow"]
+        "outcome": "Promptai kasdieniam darbui.",
+        "tags": "100+ promptų · workflow · šablonai",
+        "cta": "Naudoti"
       },
       {
-        "title": "Kūrimas (rinkodara)",
-        "count": "Rinkodaros OS",
+        "title": "Kūrimas",
         "url": "https://www.promptanatomy.space/",
-        "outcome": "Rinkodaros turinio promptai ir šablonai.",
-        "bullets": ["Turinio planavimas", "DI šablonai"]
+        "outcome": "Rinkodaros turinys su DI.",
+        "tags": "Planai · kampanijos · tekstai",
+        "cta": "Kurti"
       },
       {
-        "title": "Atranka (personalas)",
-        "count": "HR workflow",
+        "title": "Atranka",
         "url": "https://promptanatomy.help/",
-        "outcome": "Paieškos, atrankos ir įvertinimo promptai.",
-        "bullets": ["Skelbimai", "Įvertinimas"]
+        "outcome": "HR užduotys greičiau.",
+        "tags": "Skelbimai · atranka · vertinimas",
+        "cta": "Atrinkti"
       },
       {
-        "title": "Valdymas (vadovybė)",
-        "count": "Vadovybė",
+        "title": "Valdymas",
         "url": "https://www.promptanatomy.ceo/",
-        "outcome": "Vadovams ir operacijoms skirti promptai ir šablonai.",
-        "bullets": ["Sprendimai", "Operacijos"]
+        "outcome": "Sprendimai ir operacijos.",
+        "tags": "Prioritetai · susitikimai · veiksmai",
+        "cta": "Valdyti"
       },
       {
-        "title": "Sprendimai (skalė)",
-        "count": "Enterprise",
+        "title": "Sprendimai",
         "url": "https://promptanatomy.pro/",
-        "outcome": "Verslo sprendimų skalė su struktūruotais DI workflow.",
-        "bullets": ["B2B pilotai", "Komandos standartai"]
+        "outcome": "DI diegimas komandai.",
+        "tags": "Pilotai · standartai · procesai",
+        "cta": "Diegti"
       }
     ]
   },

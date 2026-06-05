@@ -160,11 +160,16 @@ export default function Ecosystem() {
 }
 
 function renderCard(item, i, t, locale, pagePath) {
-  const hasBullets = Array.isArray(item.bullets) && item.bullets.length > 0
+  const tagsRaw =
+    (typeof item.tags === 'string' && item.tags.trim()) ||
+    (Array.isArray(item.bullets) && item.bullets.length > 0 ? item.bullets.join(' · ') : null)
+  const tags = tagsRaw || null
   const outcome = typeof item.outcome === 'string' && item.outcome.trim() ? item.outcome.trim() : null
-  const count = typeof item.count === 'string' && item.count.trim() ? item.count.trim() : null
-  const ctaLabel = (typeof t('ecosystem.ctaOpen') === 'string' && t('ecosystem.ctaOpen').trim()) || null
-  const useCtaLayout = hasBullets || ctaLabel
+  const ctaLabel =
+    (typeof item.cta === 'string' && item.cta.trim()) ||
+    (typeof t('ecosystem.ctaOpen') === 'string' && t('ecosystem.ctaOpen').trim()) ||
+    null
+  const useCtaLayout = Boolean(tags || ctaLabel)
 
   const cardBaseClass =
     'group relative card-density-dark overflow-hidden focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark'
@@ -182,18 +187,11 @@ function renderCard(item, i, t, locale, pagePath) {
         {item.icon}
       </div>
       <h4 className="text-xl font-black text-white mb-1 tracking-tight">{item.title}</h4>
-      {count && (
-        <p className="text-xs font-black text-brand-accent uppercase tracking-wider mb-2">{count}</p>
-      )}
       {outcome && (
-        <p className="text-sm md:text-base text-slate-200 leading-relaxed mb-3">{outcome}</p>
+        <p className="text-base text-white/90 font-medium mb-2 leading-snug">{outcome}</p>
       )}
-      {hasBullets && (
-        <ul className="list-disc list-inside text-slate-200 text-sm md:text-base space-y-1.5 leading-relaxed mb-4">
-          {item.bullets.slice(0, 2).map((bullet, bi) => (
-            <li key={bi}>{bullet}</li>
-          ))}
-        </ul>
+      {tags && (
+        <p className="text-sm text-slate-400 mb-4 tracking-wide">{tags}</p>
       )}
     </>
   )
@@ -203,6 +201,7 @@ function renderCard(item, i, t, locale, pagePath) {
       href={item.url}
       target="_blank"
       rel="noopener noreferrer"
+      aria-label={`${item.title} — ${ctaLabel}`}
       onClick={() => captureEcosystemOutboundClick({ target: item.url, placement: 'ecosystem_card', locale, pagePath })}
       className="btn-ecosystem-outline mt-auto w-full sm:w-auto"
     >
