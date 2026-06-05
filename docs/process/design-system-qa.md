@@ -9,15 +9,20 @@
 |----------|--------|
 | 375px | Hero CTA column; Pricing cards; mobile drawer open/close; Footer links |
 | 768px | Navbar density; section headings readable |
-| 1280px | Desktop nav: What Is, Ecosystem, Training (if access) + locale + CTA; Footer 4 columns + legal bar; Ecosystem grid; **Hub core pill + connector lines (lg+)**; FAQ contrast |
+| 1280px | Desktop nav: What Is, Ecosystem, Training (if access) + locale + CTA; Footer 4 columns + legal bar; Ecosystem grid; **Hub core pill po kortelių**; FAQ contrast |
 
-## Hub / Ecosystem (Phase 8)
+## Hub / Ecosystem (Phase 8 + polish)
 
-- [ ] Hub core pill visible with `ecosystem.hubCoreLabel`
-- [ ] Desktop (lg+): connector lines from pill to card rows; no carousel-like dots
-- [ ] All 6 cards: scan-card copy (`title` + `outcome` + `tags`, no bullets); per-item action CTA; equal CTA baseline (`mt-auto`), `btn-ecosystem-outline`
-- [ ] Map link uses outline button + arrow (not faint underline only)
-- [ ] Default card state: no yellow border (hover/focus only)
+- [ ] `ecosystem.workflowHint` virš 6 kortelių grid
+- [ ] Hub core pill po grid su `ecosystem.hubCoreLabel` + phase legend; **be** connector linijų
+- [ ] Anchor `#ekosistema` (Navbar/Footer): pirmos eilės kortelės ne nukirptos po sticky header (`scroll-margin-top`)
+- [ ] All 6 cards: `card-density-dark-premium`; phase eyebrow + `line-clamp-2` outcome + tag pills; CTA `mt-auto` baseline
+- [ ] Enter: `border-2` featured frame + `startHere` badge + full-width `btn-primary` + `shadow-ecosystem-cta`
+- [ ] Secondary: `card-phase-accent-*` top rim + `btn-ecosystem-secondary` + arrow; `opensInNewTab` po CTA
+- [ ] Card rest: `shadow-ecosystem-card-rest`; hover: `-translate-y-1` + `shadow-ecosystem-card-hover`
+- [ ] Enter icon: gold glow; kitos — `shadow-ecosystem-icon-depth` only
+- [ ] Map link uses outline button + arrow; `ecosystem.trustLine` po map link
+- [ ] Default card state: neutralus border (`card-glass-ecosystem`); be geltono border default būsenoje
 
 ## FAQ (Phase 8)
 

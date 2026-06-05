@@ -6,7 +6,7 @@ const FAQ_SCHEMA_SCRIPT_ID = 'faq-ldjson'
 
 export default function Faq() {
   const { t, locale } = useLocale()
-  const sectionLabel = t('faq.sectionLabel')
+  const sectionLabel = typeof t('faq.sectionLabel') === 'string' ? t('faq.sectionLabel').trim() : ''
   const title = t('faq.title')
   const items = t('faq.items')
   const list = Array.isArray(items) ? items : []

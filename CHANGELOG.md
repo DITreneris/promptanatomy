@@ -4,11 +4,50 @@ Visi pakeitimai šiame faile dokumentuojami pagal [Keep a Changelog](https://kee
 
 ## [Unreleased]
 
+## [1.4.0] - 2026-06-06
+
+**Santrauka:** LP ekosistemos hub refresh (6 spokes, scan cards, premium dark), vizualinis polish Phase 8, copy chirurgija LT/EN, FAQ turinys (9 Q&A, hub/spoke), SEO/GEO (`ItemList` 9 items, `llms-full.txt`), našumas Phase 1–2 (lazy locale, bundle budget), bugfix'ai (Ecosystem white screen, i18n FOUC). Regresija: `frontend npm run build`, `pytest` 24.
+
 ### Pakeista
-- **Ecosystem UX — scan cards + header (2026-06-05):** Sekcija `#ekosistema` performatuota iš „mini aprašymų“ į produktų lentyną (testuotojo UX feedback).
+- **FAQ turinio plėtra (2026-06-05):** 9 klausimai išlaikyti; atsakymai išplėsti (~60–90 ž.) answer-capsule formatu. Hub/spoke ekosistemos kontekstas #1, #3, #5, #7; patikslinti magic-link flow, kainos (39/99 EUR), grąžinimų SLA (14 d.), kalbų/LT-EN aprėptis. Failai: [en.json](frontend/src/i18n/translations/en.json), [lt.json](frontend/src/i18n/translations/lt.json); [golden-legacy-standard.md](docs/golden-legacy-standard.md) §3. `llms-full.txt` atsinaujina build metu.
+- **LP copy chirurgija Phase 2 (2026-06-05):** Echo mažinimas ir UI dubliavimo šalinimas.
+  - **„atsitiktin/random“:** palikta tik Hero subtitle; WhatIs `valueLine2` ir Metodologija `paragraph` perfrazuota (LT: nenuspėjamų; EN: unpredictable).
+  - **Stat etiketė:** LT `stat1Label` → „Šablonai ir promptai“ (paritetas su EN, 500+ kanonas).
+  - **Metodologija Skaidymas:** LT „be klaidų“ → „patikimai“ (EN jau reliably).
+  - **FAQ:** `faq.sectionLabel` tuščias — eyebrow nerodomas.
+  - **Prieigos forma:** pašalintas `accessStepsHint` eyebrow; lieka `accessHow` + label.
+  - **Failai:** [lt.json](frontend/src/i18n/translations/lt.json), [en.json](frontend/src/i18n/translations/en.json), [HomePage.jsx](frontend/src/pages/HomePage.jsx), [Faq.jsx](frontend/src/components/Faq.jsx); [golden-legacy-standard.md](docs/golden-legacy-standard.md) §3.
+- **LP copy chirurgija (2026-06-05):** Top-10 žodžių kirpimas LT/EN — švaresnis UI be prarastos esmės.
+  - **WhatIs + Footer:** pašalinta „interaktyvių“, „praktinį“, „padedantį“; `footer.tagline` = `whatIs.valueLine1`.
+  - **Proof skaičiai:** **500+** visur bibliotekai (`whatIs.stat1Number`, hero bullet, pricing features); **600+** lieka social proof.
+  - **Metodologija:** be „siūlome“, hedge (`dažnai`, `reikšmingai`, skliaustai), „hierarchinę“; trumpesnis Scale teiginys.
+  - **Pricing:** badge `Lifetime Access` (be System); `pricing.aiPowered` tuščias — badge nerodomas.
+  - **Ekosistema:** `mapLink` be „pilną“; `hubCoreSub` tuščias — sub eilutė nerodoma.
+  - **Failai:** [lt.json](frontend/src/i18n/translations/lt.json), [en.json](frontend/src/i18n/translations/en.json), [Ecosystem.jsx](frontend/src/components/Ecosystem.jsx), [Pricing.jsx](frontend/src/components/Pricing.jsx); docs: [golden-legacy-standard.md](docs/golden-legacy-standard.md), [design_system_roadmap2.md](docs/design_system_roadmap2.md) §6.
+- **Ecosystem kortelių P2 — premium dark parity (2026-06-05):** Kortelės nebeatrodo „plokščios“ lyginant su Pricing — volume, ritmas, CTA svoris dark fone.
+  - **Shell:** `card-density-dark-premium` (`p-6 sm:p-7`, `min-h-220`, `shadow-ecosystem-card-rest`); `card-glass-ecosystem` stipresnis hover (`-translate-y-1`, `duration-300`); regression fix `card-density-dark-compact`.
+  - **Enter tier:** pilnas `card-featured-ecosystem` `border-2`; badge `top-6 right-6`; full-width `min-h-48` CTA su `shadow-ecosystem-cta`.
+  - **Secondary:** `btn-ecosystem-secondary` (outline cool, ne ghost); phase top rim (`card-phase-accent-1..3`); pašalintas blur blob.
+  - **Tipografija:** eyebrow kaip Pricing; `text-lg` title; `line-clamp-2` outcome; ryškesni tag pills; grid `gap-8`.
+  - **Failai:** [Ecosystem.jsx](frontend/src/components/Ecosystem.jsx), [index.css](frontend/src/index.css); docs: [golden-legacy-standard.md](docs/golden-legacy-standard.md) §3, [design-system-qa.md](docs/process/design-system-qa.md).
+  - **Regressija:** `npm run build` ✓.
+- **Ecosystem kortelių micro polish P0+P1 (2026-06-05):** Techninis fix + premium card anatomy (Primer-style).
+  - **P0:** `card-density-dark-compact`, `btn-ecosystem-ghost` utilities; `card-glass-ecosystem` hover `shadow-ecosystem-card-hover`.
+  - **P1:** Enter — `card-featured-ecosystem` + `badge-premium` (`startHere`); phase eyebrow; tag pills (`ecosystem-tag-pill`, max 2 + `+N`); ghost CTA su `ArrowRight`; `opensInNewTab` po CTA; ikonos glow tik Enter (`shadow-ecosystem-icon-card` vs `shadow-ecosystem-icon-depth`).
+  - **Failai:** [Ecosystem.jsx](frontend/src/components/Ecosystem.jsx), [index.css](frontend/src/index.css), [en.json](frontend/src/i18n/translations/en.json), [lt.json](frontend/src/i18n/translations/lt.json); docs: [golden-legacy-standard.md](docs/golden-legacy-standard.md) §3, [design-system-qa.md](docs/process/design-system-qa.md).
+  - **Regressija:** `npm run build` ✓.
+- **Ecosystem UI polish — premium vedimas (2026-06-05):** UX feedback įgyvendintas pagal planą — aiškesnis sprendimo kelias, be „pakibusios“ schemos.
+  - **Layout:** kompaktiškas hero; `ecosystem.workflowHint` virš grid; hub pill + phase legend **po** 6 kortelių (be connector linijų); `ecosystem.trustLine` po map link; `section-dark-ecosystem` (mažesnis `pb`).
+  - **CTA hierarchija:** sekcijos `ecosystem.ctaPricing` (primary) + Enter kortelė `btn-primary-md`; kitos 5 — `btn-ecosystem-ghost`.
+  - **Kortelės:** `card-density-dark-compact` + `card-glass-ecosystem` (neutralus hover, be geltono border); `mt-3` CTA vietoj `mt-auto`.
+  - **Anchor fix:** `scroll-margin-top: 5.5rem` LP sekcijoms (`section[id]`, `#what-is-prompt-anatomy`) — `#ekosistema` nebeįlenda po sticky header.
+  - **Nauji tokenai:** `section-dark-ecosystem`, `card-density-dark-compact`, `card-glass-ecosystem`, `btn-ecosystem-ghost`.
+  - **Failai:** [Ecosystem.jsx](frontend/src/components/Ecosystem.jsx), [index.css](frontend/src/index.css), [en.json](frontend/src/i18n/translations/en.json), [lt.json](frontend/src/i18n/translations/lt.json); docs: [golden-legacy-standard.md](docs/golden-legacy-standard.md) §3, [design-system-qa.md](docs/process/design-system-qa.md).
+  - **Regressija:** `npm run build` ✓.
+- **Ecosystem UX — scan cards + header (2026-06-05):** Sekcija `#ekosistema` performatuota iš „mini aprašymų“ į produktų lentyną (testuotojo UX feedback). *Layout ir CTA vėliau patikslinti — žr. „Ecosystem UI polish“ aukščiau.*
   - **Header:** `ecosystem.title` / `ecosystem.paragraph` — vartotojo kalba vietoj „Hub / workflow modules“. LT: „Pasirink, nuo ko pradėti“ / „Nuo pirmo žingsnio iki DI diegimo komandoje.“; EN: „Choose your starting point“ / „From the first step to AI adoption across your team.“
   - **Kortelės:** `title` + `outcome` + `tags` (dot-separated) + per-item `cta` (LT: Pradėti / Naudoti / Kurti / Atrinkti / Valdyti / Diegti; EN: Start / Use / Create / Hire / Manage / Deploy); pašalinti `count` badge ir bulletai; `aria-label` ant CTA.
-  - **Nekeista:** hub pill, connector linijos, grid 3+3, 6 spoke URL, map link, PostHog eventai.
+  - **Nekeista (tuomet):** grid 3+3, 6 spoke URL, map link, PostHog eventai.
   - **Failai:** [Ecosystem.jsx](frontend/src/components/Ecosystem.jsx), [lt.json](frontend/src/i18n/translations/lt.json), [en.json](frontend/src/i18n/translations/en.json); docs: [golden-legacy-standard.md](docs/golden-legacy-standard.md) §3/§4, [design-system-qa.md](docs/process/design-system-qa.md).
   - **Regressija:** `npm run build` ✓, `pytest` 24 ✓, QA agent PASS.
 - **LP visual polish Phase 8 (2026-06-05):** Hub vizualas atitinka „core hub“ copy; suvienodinta card density per LP. *Proof skaičiai (450+/500+/600+) nekeisti* — kanonas 2026-05-24.

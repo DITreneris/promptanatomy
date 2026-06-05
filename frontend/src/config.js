@@ -22,5 +22,5 @@ export const SITE_URL = import.meta.env.VITE_SITE_URL || 'https://www.promptanat
 export const LP_ACCESS_EMAIL_STORAGE_KEY = 'pa_lp_access_email'
 
 /** Single source for app version and Hero script name; change here to update Hero, Ecosystem, etc. */
-export const APP_VERSION = 'v1.3'
+export const APP_VERSION = 'v1.4'
 export const SCRIPT_NAME = `${APP_VERSION}_os.sh`

@@ -192,9 +192,6 @@ export default function HomePage({ forceLocale }) {
                   {t('pricing.returningBody')}
                 </p>
               </div>
-              <p className="text-xs font-bold uppercase tracking-wider text-slate-700 mb-3">
-                {t('pricing.accessStepsHint')}
-              </p>
               <label htmlFor="access-email" className="block text-base font-bold text-brand-dark mb-1.5">
                 {t('pricing.checkAccess')}
               </label>
