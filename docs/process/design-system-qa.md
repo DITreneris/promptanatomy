@@ -15,7 +15,7 @@
 
 - [ ] Hub core pill visible with `ecosystem.hubCoreLabel`
 - [ ] Desktop (lg+): connector lines from pill to card rows; no carousel-like dots
-- [ ] All 6 cards: equal CTA baseline (`mt-auto`), `btn-ecosystem-outline`
+- [ ] All 6 cards: scan-card copy (`title` + `outcome` + `tags`, no bullets); per-item action CTA; equal CTA baseline (`mt-auto`), `btn-ecosystem-outline`
 - [ ] Map link uses outline button + arrow (not faint underline only)
 - [ ] Default card state: no yellow border (hover/focus only)
 

@@ -5,6 +5,12 @@ Visi pakeitimai šiame faile dokumentuojami pagal [Keep a Changelog](https://kee
 ## [Unreleased]
 
 ### Pakeista
+- **Ecosystem UX — scan cards + header (2026-06-05):** Sekcija `#ekosistema` performatuota iš „mini aprašymų“ į produktų lentyną (testuotojo UX feedback).
+  - **Header:** `ecosystem.title` / `ecosystem.paragraph` — vartotojo kalba vietoj „Hub / workflow modules“. LT: „Pasirink, nuo ko pradėti“ / „Nuo pirmo žingsnio iki DI diegimo komandoje.“; EN: „Choose your starting point“ / „From the first step to AI adoption across your team.“
+  - **Kortelės:** `title` + `outcome` + `tags` (dot-separated) + per-item `cta` (LT: Pradėti / Naudoti / Kurti / Atrinkti / Valdyti / Diegti; EN: Start / Use / Create / Hire / Manage / Deploy); pašalinti `count` badge ir bulletai; `aria-label` ant CTA.
+  - **Nekeista:** hub pill, connector linijos, grid 3+3, 6 spoke URL, map link, PostHog eventai.
+  - **Failai:** [Ecosystem.jsx](frontend/src/components/Ecosystem.jsx), [lt.json](frontend/src/i18n/translations/lt.json), [en.json](frontend/src/i18n/translations/en.json); docs: [golden-legacy-standard.md](docs/golden-legacy-standard.md) §3/§4, [design-system-qa.md](docs/process/design-system-qa.md).
+  - **Regressija:** `npm run build` ✓, `pytest` 24 ✓, QA agent PASS.
 - **LP visual polish Phase 8 (2026-06-05):** Hub vizualas atitinka „core hub“ copy; suvienodinta card density per LP. *Proof skaičiai (450+/500+/600+) nekeisti* — kanonas 2026-05-24.
   - **Hub / Ecosystem:** [Ecosystem.jsx](frontend/src/components/Ecosystem.jsx) — `HubCore` pill (`ecosystem.hubCoreLabel`, `hubCoreSub`), phase legend (Adopt / Apply / Scale), desktop connector linijos (`lg+`); pašalintas carousel-like `ConnectorRow`; kortelės `card-density-dark`, CTA `btn-ecosystem-outline` + `mt-auto`; map link outline + rodyklė; sutrumpintas sekcijos aukštis; subtilesnis fonas (glow/grid/rim).
   - **Design tokens:** [index.css](frontend/src/index.css) — `card-density`, `card-density-dark`, `btn-ecosystem-outline`, `hub-core-pill`, `hub-connector-line`, `badge-premium`, `faq-item`; geltonos 4 lygiai (CTA / badge / active / muted border).
@@ -20,6 +26,7 @@ Visi pakeitimai šiame faile dokumentuojami pagal [Keep a Changelog](https://kee
 - **Hub ekosistemos sync (2026-06-05):** HR spoke `ditreneris.github.io/personalas/` → `promptanatomy.help`; Cloud ir Pro įtraukti į LP grid (anksčiau tik Footer / mobile drawer). Ecosystem i18n — stadijos pavadinimai (Enter / Use / Create / Hire / Manage / Decide); fazinės spalvos (Adopt / Apply / Scale). Atnaujinta: [ecosystem-governance.md](docs/ecosystem-governance.md), [golden-legacy-standard.md](docs/golden-legacy-standard.md) §3, [docs/INDEX.md](docs/INDEX.md).
 
 ### Pataisyta
+- **i18n FOUC (Navbar brand flash, 2026-06-05):** Pirmame paint neberodomi i18n raktai (`nav.brandPromptu` ir pan.). EN maršrutai (`/`, `/en`) — sinchroniniai `messages` iš entry; `/lt` — locale chunk prefetch prieš `createRoot`, `useLayoutEffect`, UI vartai kol `loadedLocale === locale` (baltas fonas vietoj neteisingo teksto). `t()` be `messages` grąžina `''`, ne raktą. Failai: [LocaleContext.jsx](frontend/src/i18n/LocaleContext.jsx), [loadLocale.js](frontend/src/i18n/loadLocale.js), [main.jsx](frontend/src/main.jsx).
 - **Hub Ecosystem — baltas ekranas produkcijoje (2026-06-05):** [Ecosystem.jsx](frontend/src/components/Ecosystem.jsx) — `FALLBACK_ICONS` naudojo Lucide ikoną `Target` (6 kortelių hub sync refaktorius), bet ji **nebuvo importuota** iš `lucide-react`. Lazy chunk load metu — `ReferenceError: Target is not defined` — React sugriūdavo be error boundary → visas LP baltas (`#root` tuščias). **Fix:** pridėtas `Target` į importą (`abf92a7`). *Pamoka:* keičiant ikonų rinkinį lazy komponentuose, prieš deploy patikrinti, kad visos JSX ikonos yra importe; `npm run build` vienas to nepagaudo.
 
 ### Pridėta

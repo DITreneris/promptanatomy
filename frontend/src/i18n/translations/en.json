@@ -86,8 +86,8 @@
     ]
   },
   "ecosystem": {
-    "title": "Hub: choose your direction",
-    "paragraph": "Six workflow modules plug into one core hub — matched to where you are in the journey.",
+    "title": "Choose your starting point",
+    "paragraph": "From the first step to AI adoption across your team.",
     "hubCoreLabel": "6-Block AI System",
     "hubCoreSub": "Core hub",
     "phaseAdopt": "Adopt",
@@ -98,46 +98,46 @@
     "mapLink": "See the full ecosystem map",
     "items": [
       {
-        "title": "Enter (onboarding)",
-        "count": "First lesson",
+        "title": "Enter",
         "url": "https://promptanatomy.cloud/",
-        "outcome": "Start learning AI with structured onboarding and core basics.",
-        "bullets": ["Free first lesson", "Team onboarding"]
+        "outcome": "Start using AI with clarity.",
+        "tags": "Lesson · onboarding · basics",
+        "cta": "Start"
       },
       {
-        "title": "Use (AI automation)",
-        "count": "100+ templates",
+        "title": "Use",
         "url": "https://www.promptanatomy.info/en/",
-        "outcome": "Ready-made prompts and workflow templates for daily work.",
-        "bullets": ["100+ prompts", "AI workflow"]
+        "outcome": "Prompts for daily work.",
+        "tags": "100+ prompts · workflow · templates",
+        "cta": "Use"
       },
       {
-        "title": "Create (marketing)",
-        "count": "Marketing OS",
+        "title": "Create",
         "url": "https://www.promptanatomy.space/en/",
-        "outcome": "Marketing content prompts and templates.",
-        "bullets": ["Content planning", "AI templates"]
+        "outcome": "Marketing content with AI.",
+        "tags": "Plans · campaigns · copy",
+        "cta": "Create"
       },
       {
-        "title": "Hire (HR)",
-        "count": "HR workflows",
+        "title": "Hire",
         "url": "https://promptanatomy.help/",
-        "outcome": "Search, recruitment and assessment prompts.",
-        "bullets": ["Job ads", "Assessment"]
+        "outcome": "HR tasks, faster.",
+        "tags": "Job posts · hiring · assessment",
+        "cta": "Hire"
       },
       {
-        "title": "Manage (leadership)",
-        "count": "CEO/COO",
+        "title": "Manage",
         "url": "https://www.promptanatomy.ceo/",
-        "outcome": "Prompts and templates for leadership and operations.",
-        "bullets": ["Decisions", "Operations"]
+        "outcome": "Decisions and operations.",
+        "tags": "Priorities · meetings · actions",
+        "cta": "Manage"
       },
       {
-        "title": "Decide (scale)",
-        "count": "Enterprise",
+        "title": "Decide",
         "url": "https://promptanatomy.pro/",
-        "outcome": "Scale business decisions with structured AI workflows.",
-        "bullets": ["B2B pilots", "Team standards"]
+        "outcome": "AI rollout for teams.",
+        "tags": "Pilots · standards · processes",
+        "cta": "Deploy"
       }
     ]
   },
