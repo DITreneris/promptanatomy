@@ -30,7 +30,7 @@
 | **Is the frontpage close to premium SaaS quality?** | **Yes — v0.95.** Phases 1–4 shipped: unified CTA, footer, heading semantics, local assets. Remaining gap vs GitHub Primer–class systems: **functional token layer**, typography weight scale, checkout-page parity. |
 | **What was fixed first (Phases 1–4)?** | Dual CTA gradient → `btn-primary`; Hero CTA ↔ `#pricing`; proof copy disambiguation; stat SR readability; Methodology semantics; `mt-20` removed; local `noise.svg`. |
 | **What's next (Phases 5–7)?** | Functional colors + type scale (P1) → materials/shadow enforcement (P2) → nav wayfinding + Success/Cancel parity (P2) → icon scale + QA gates (P3). See §6. |
-| **Remaining trust polish?** | Mixed proof numbers (450+/500+/600+) intentional but need founder comfort; no verified logo wall; desktop nav omits Ecosystem/Methodology/FAQ until Phase 6. |
+| **Remaining trust polish?** | Proof numbers unified: **500+** library (hero, WhatIs stat, pricing); **600+** practitioners (social proof). No verified logo wall; desktop nav omits Ecosystem/Methodology/FAQ until Phase 6. |
 | **What must not change?** | Brand palette (dark + gold), terminal hero, Navbar Variant B, Stripe checkout flow, mobile drawer pattern, i18n architecture. |
 | **What we will not adopt?** | `@primer/react`, dark mode, Figma pipeline, animation libraries — see §14.3. |
 
@@ -236,7 +236,7 @@ From [HomePage.jsx](../frontend/src/pages/HomePage.jsx) L161–288:
 
 | # | Decision | Resolution |
 |---|----------|------------|
-| 1 | **Canonical proof numbers** | **Mixed metrics, intentional.** 450+ = curated prompts (stat card); 500+ = workflow templates (hero bullet, pricing feature); 600+ = practitioners (social proof). Copy disambiguated in `en.json` / `lt.json`; numbers unchanged. |
+| 1 | **Canonical proof numbers** | **Unified 2026-06-05.** **500+** = prompt/template library (`hero.bullet1`, `whatIs.stat1Number`, `pricing.features`); **600+** = practitioners (`hero.socialProof`). |
 | 2 | **Primary button gradient** | **`bg-cta-gradient`** for all primary buttons via `btn-primary` utilities. **`bg-accent-gradient`** only for Hero H1 text clip + skip link. |
 
 ---
@@ -245,7 +245,7 @@ From [HomePage.jsx](../frontend/src/pages/HomePage.jsx) L161–288:
 
 | Task | Status | Notes |
 |------|--------|-------|
-| Proof numbers / copy audit | Done | Mixed metrics; labels updated |
+| Proof numbers / copy audit | Done | **500+** unified library metric; **600+** social proof |
 | Hero CTA ↔ `#pricing` | Done | `hero.cta` pricing intent; removed unused `ctaSecondary` |
 | Standardize primary gradient | Done | HomePage access CTAs, CancelPage |
 | Remove Methodology `mt-20` | Done | |

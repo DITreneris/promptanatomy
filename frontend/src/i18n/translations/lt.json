@@ -36,7 +36,7 @@
     "brandPromptu": "Promptų",
     "brandAnatomija": "Anatomija",
     "brandTagline": "DI PRAKTINĖ SISTEMA",
-    "version": "v1.3"
+    "version": "v1.4"
   },
   "hero": {
     "badge": "6 blokų DI sistema",
@@ -62,12 +62,12 @@
   },
   "whatIs": {
     "title": "Kas yra Promptų Anatomija",
-    "valueLine1": "Promptų anatomija - tai interaktyvių mokymų sistema darbui su DI.",
-    "valueLine2": "Vietoje atsitiktinių promptų gauni struktūrą: 6 blokų metodiką, šablonų biblioteką ir praktinį gidą, padedantį kurti GPT, agentus bei automatizuoti.",
+    "valueLine1": "Promptų anatomija – mokymų sistema darbui su DI.",
+    "valueLine2": "6 blokų metodika, 500+ šablonų biblioteka ir gidas kurti GPT, agentus bei automatizuoti.",
     "processAriaLabel": "Kaip veikia: 6 metodikos blokai",
     "processBlocks": ["META", "INPUT", "OUTPUT", "REASONING", "QUALITY", "ADVANCED"],
-    "stat1Number": "450+",
-    "stat1Label": "Kuruoti promptai",
+    "stat1Number": "500+",
+    "stat1Label": "Šablonai ir promptai",
     "ctaPricing": "Žiūrėti planus ir kainodarą",
     "stat2Number": "~60",
     "stat2Label": "Įrankių",
@@ -78,24 +78,28 @@
     "sectionLabel": "Veiklos modelis",
     "titleLine1": "Nuspėjamas",
     "titleLine2": "Rezultatas.",
-    "paragraph": "Užtenka atsitiktinių rezultatų. Siūlome mąstymo grandinę kiekvieno modulio metu: patirtis → patikrinimas → praktika.",
+    "paragraph": "Užtenka nenuspėjamų rezultatų. Mąstymo grandinė modulyje: patirtis → patikrinimas → praktika.",
     "items": [
-      { "title": "Skaidymas", "desc": "Problemos dekonstruojamos ir sudėliojamos į hierarchinę struktūrą, kurią DI interpretuoja be klaidų." },
+      { "title": "Skaidymas", "desc": "Problemos dekonstruojamos ir sudėliojamos į struktūrą, kurią DI interpretuoja patikimai." },
       { "title": "Inžinerija", "desc": "Kelių lygių inžinerija, naudojant sisteminius, metodinius ir agentinius promptus." },
-      { "title": "Skalės augimas", "desc": "Integruojasi į procesus; taikant metodą nuosekliai dažnai galima sutaupyti reikšmingai laiko per savaitę (priklauso nuo apimties ir naudojimo)." }
+      { "title": "Skalės augimas", "desc": "Integruojasi į procesus — taikant metodą sutaupote laiko per savaitę." }
     ]
   },
   "ecosystem": {
     "title": "Pasirink, nuo ko pradėti",
     "paragraph": "Nuo pirmo žingsnio iki DI diegimo komandoje.",
     "hubCoreLabel": "6 blokų DI sistema",
-    "hubCoreSub": "Pagrindinis hub",
+    "hubCoreSub": "",
     "phaseAdopt": "Įsisavink",
     "phaseApply": "Taikyk",
     "phaseScale": "Skaluok",
     "ctaPricing": "Planai ir prieiga",
     "ctaOpen": "Peržiūrėti sistemą",
-    "mapLink": "Peržiūrėti pilną ekosistemos žemėlapį",
+    "mapLink": "Peržiūrėti ekosistemos žemėlapį",
+    "workflowHint": "Pasirink vieną kelią ir pradėk.",
+    "trustLine": "Skirta individams, komandoms ir DI diegimo projektams.",
+    "startHere": "Pradėk čia",
+    "opensInNewTab": "Naujame lange",
     "items": [
       {
         "title": "Įėjimas",
@@ -142,7 +146,7 @@
     ]
   },
   "pricing": {
-    "badge": "Lifetime System Access",
+    "badge": "Lifetime Access",
     "title": "Rinkis planą",
     "subtext": "Gauk prieigą prie mokymų, promptų bibliotekos ir 6 blokų metodikos.",
     "cumulativeNote": "Vėliau galėsi atnaujinti į aukštesnį planą.",
@@ -174,7 +178,7 @@
     ],
     "stripeVerified": "Mokėjimas saugiai per Stripe",
     "refundContact": "Grąžinimo sąlygos – susisiek",
-    "aiPowered": "DI Powered",
+    "aiPowered": "",
     "checkAccess": "Patikrink prieigą",
     "returningTitle": "Jau pirkai?",
     "returningBody": "Įvesk el. paštą, su kuriuo mokėjai, ir tęsk mokymus be slaptažodžio.",
@@ -198,22 +202,22 @@
     "clearStoredEmail": "Nebeatsiminti el. pašto šiame įrenginyje"
   },
   "faq": {
-    "sectionLabel": "Klausimai prieš prieigą",
+    "sectionLabel": "",
     "title": "Dažniausiai užduodami klausimai",
     "items": [
-      { "q": "Ką gaunu sumokėjęs?", "a": "Prieigą prie pasirinkto plano modulių, mokymų turinio, praktinių užduočių ir promptų bibliotekos. Starter apima 1–3 modulius, Core – 1–6. Užbaigę ir išlaikę (nuo 70%) gaunate sertifikatą. Palaikymas – viešoje Telegram grupėje. Prieiga suteikiama visam laikui." },
-      { "q": "Kaip pateksiu į mokymus?", "a": "Slaptažodžio nėra. Įvesk el. paštą (su kuriuo mokėjai) → Patikrinti → Eiti į mokymus. Tą patį gali daryti bet kada iš šio puslapio, skyriuje Kainodara." },
-      { "q": "Kas įeina į planą?", "a": "Moduliai pagal planą (Starter: 1–3, Core: 1–6), promptų biblioteka, 6 blokų metodika, praktinės užduotys, sertifikatas nuo 70% ir vieša Telegram grupė. Core papildomai įtraukia konteksto inžineriją." },
-      { "q": "Ar mano duomenys saugūs?", "a": "Saugome minimalius įsigijimui susijusius identifikatorius; mokėjimus apdoroja Stripe. Naudojame produkto analitiką ir galime įkelti reklamos matavimą, kaip aprašyta privatumo politikoje. Duomenys tvarkomi pagal ES ir JAV saugumo praktikas." },
-      { "q": "Kur gauti pagalbos?", "a": "Palaikymas – viešoje Telegram grupėje (nuoroda po apačioje ir po apmokėjimo)." },
-      { "q": "Ar prieiga laikina?", "a": "Ne. Vienkartinis mokėjimas – prieiga visam laikui." },
-      { "q": "Kuo skiriasi Starter ir Core?", "a": "Starter: moduliai 1–3. Core: moduliai 1–6 (pilnas kursas). Jei pradėsi nuo Starter, vėliau galėsi atnaujinti į Core." },
-      { "q": "Ar galima grąžinti pinigus?", "a": "Žr. skyrių „Grąžinimai“ paslaugų teikimo sąlygose. Rašyk info@promptanatomy.app iš apmokėjimo el. pašto ir nurodyk užsakymo duomenis, jei turi." },
-      { "q": "Kokiomis kalbomis mokymai?", "a": "Mokymai pateikiami lietuvių ir anglų kalbomis." }
+      { "q": "Ką gaunu sumokėjęs?", "a": "Gauni prieigą visam laikui prie pasirinkto plano modulių, interaktyvių mokymų promptanatomy.app/anatomy/, praktinių užduočių, 500+ promptų bibliotekos ir sertifikato, kai išlaikysi nuo 70%. Starter apima 1–3 modulius; Core – 1–6 su konteksto inžinerija. Promptų Anatomija – hub (checkout ir mokymai); ekosistemos spokes (Cloud, biblioteka, marketingas, HR, CEO, Pro) – nemokami workflow įrankiai, kurie papildo kursą. Palaikymas – viešoje Telegram grupėje." },
+      { "q": "Kaip pateksiu į mokymus?", "a": "Slaptažodžio nereikia. Šiame puslapyje eik į skyrių Kainodara, įvesk el. paštą, su kuriuo mokėjai, spausk Patikrinti → Eiti į mokymus – atsidaro magic link. Tą patį gali kartoti bet kada; prieiga susieta su tuo el. paštu, ne atskira paskyra." },
+      { "q": "Kas įeina į planą?", "a": "Kiekviename plane – 6 blokų metodika, promptų biblioteka, praktinės užduotys, sertifikatas nuo 70% ir vieša Telegram grupė. Starter – moduliai 1–3 (promptų inžinerija, 6 verslo scenarijai). Core prideda 4–6 modulius, konteksto inžineriją, sprintus ir projektus – pilnas kursas. Ekosistemos spokes (Cloud – pradėti, biblioteka – naudoti, Kurti, Atrinkti, Valdyti, Diegti) – nemokami kasdieniniam darbui ir nepakeičia mokamų mokymų." },
+      { "q": "Ar mano duomenys saugūs?", "a": "Taip – renkame tik tai, ko reikia checkout ir prieigai suteikti. Mokėjimus apdoroja Stripe; pilnų kortelių numerių nesaugome. Laikome minimalius pirkimui susijusius identifikatorius, susietus su apmokėjimo el. paštu. Produktų analitiką (PostHog, Vercel) ir pasirenkamą reklamos matavimą taikome pagal privatumo politiką, įskaitant Promptų Anatomijos ekosistemos domenus. Duomenys tvarkomi pagal ES ir JAV saugumo praktikas." },
+      { "q": "Kur gauti pagalbos?", "a": "Pagrindinis palaikymas – vieša Telegram grupė (nuoroda po apačioje ir po apmokėjimo). Ten praktikantai dalijasi workflow, klausia ir gauna pagalbos dėl prieigos. Dėl sąskaitų, mokėjimų ar grąžinimų – info@promptanatomy.app. Nežinai, nuo ko pradėti ekosistemoje? Žemėlapis promptanatomy.site/#ecosystem – pasirink workflow pagal rolę." },
+      { "q": "Ar prieiga laikina?", "a": "Ne. Starter (39 EUR) ir Core (99 EUR) – vienkartinis mokėjimas su lifetime prieiga, be prenumeratos ir galiojimo pabaigos. Įsigijęs planą, grįžti į mokymus gali bet kada per magic link Kainodaros skyriuje." },
+      { "q": "Kuo skiriasi Starter ir Core?", "a": "Starter (39 EUR) – moduliai 1–3: promptų inžinerija, 6 blokų sistema, 6 verslo scenarijai – gera pradžia. Core (99 EUR) – viskas iš Starter plius moduliai 4–6, konteksto inžinerija, sprintai ir projektai – pilnas DI operating system kursas. Pradėk nuo Starter; vėliau gali atnaujinti į Core. Abu planai – lifetime prieiga." },
+      { "q": "Ar galima grąžinti pinigus?", "a": "Žr. skyrių „Grąžinimai“ paslaugų teikimo sąlygose. Rašyk info@promptanatomy.app iš apmokėjimo el. pašto ir nurodyk užsakymo duomenis, jei turi. Siekiame atsakyti per keturiolika (14) kalendorinių dienų. Taikomos įstatymų numatytos vartotojo teisės, kur jos galioja." },
+      { "q": "Kokiomis kalbomis mokymai?", "a": "Mokymai pateikiami lietuvių ir anglų kalbomis. LP, training app ir DUK seka pasirinktą locale (LT arba EN). Kalbą gali perjungti bet kada naršymo juostoje; pirkimas veikia abiem kalbomis." }
     ]
   },
   "footer": {
-    "tagline": "Promptų anatomija – interaktyvių mokymų sistema darbui su DI.",
+    "tagline": "Promptų anatomija – mokymų sistema darbui su DI.",
     "columnProduct": "Produktas",
     "columnTraining": "Mokymai",
     "columnNetwork": "Tinklas",

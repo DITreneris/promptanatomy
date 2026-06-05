@@ -15,6 +15,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
   const { t } = useLocale()
   const features = t('pricing.features') || []
   const trustSignals = t('pricing.trustSignals') || []
+  const aiPoweredLabel = typeof t('pricing.aiPowered') === 'string' ? t('pricing.aiPowered').trim() : ''
   const highest_plan = access?.highest_plan ?? 0
   const can_upgrade_to = access?.can_upgrade_to ?? []
 
@@ -180,9 +181,11 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
         <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em]">
           <ShieldCheck size={16} className="shrink-0" aria-hidden /> {t('pricing.refundContact')}
         </div>
-        <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em]">
-          <Cpu size={16} className="shrink-0" aria-hidden /> {t('pricing.aiPowered')}
-        </div>
+        {aiPoweredLabel && (
+          <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em]">
+            <Cpu size={16} className="shrink-0" aria-hidden /> {aiPoweredLabel}
+          </div>
+        )}
       </div>
     </>
   )

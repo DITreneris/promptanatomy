@@ -36,7 +36,7 @@
     "brandPromptu": "Prompt",
     "brandAnatomija": "Anatomy",
     "brandTagline": "AI Practical System",
-    "version": "v1.3"
+    "version": "v1.4"
   },
   "hero": {
     "badge": "6-Block AI System",
@@ -62,12 +62,12 @@
   },
   "whatIs": {
     "title": "What is Prompt Anatomy",
-    "valueLine1": "Prompt Anatomy – an interactive training system for working with AI.",
-    "valueLine2": "Instead of random prompts, you get structure: a 6-block methodology, a template library and a practical guide to building GPTs, agents and automation.",
+    "valueLine1": "Prompt Anatomy – a training system for working with AI.",
+    "valueLine2": "6-block methodology, 500+ template library, and a guide to build GPTs, agents, and automations.",
     "processAriaLabel": "How it works: 6 methodology blocks",
     "processBlocks": ["META", "INPUT", "OUTPUT", "REASONING", "QUALITY", "ADVANCED"],
-    "stat1Number": "450+",
-    "stat1Label": "Curated prompts",
+    "stat1Number": "500+",
+    "stat1Label": "Templates and prompts",
     "ctaPricing": "See plans and pricing",
     "stat2Number": "~60",
     "stat2Label": "Tools",
@@ -78,24 +78,28 @@
     "sectionLabel": "Operating Model",
     "titleLine1": "Predictable",
     "titleLine2": "Outcome.",
-    "paragraph": "Enough of random results. We deploy engineering thinking – in every module: learning → check → practice.",
+    "paragraph": "Enough unpredictable results. Thinking chain per module: experience → check → practice.",
     "items": [
-      { "title": "Breakdown", "desc": "Deconstruct problems into atomic elements that AI interprets without errors." },
+      { "title": "Breakdown", "desc": "Deconstruct problems into structure that AI interprets reliably." },
       { "title": "Engineering", "desc": "Layered construction using CoT (Chain of Thought) and Few-shot engineering." },
-      { "title": "Scale", "desc": "Integrates into workflows; many learners recover meaningful weekly time when they apply the method consistently—your results depend on scope and usage." }
+      { "title": "Scale", "desc": "Integrates into workflows — apply the method and recover weekly time." }
     ]
   },
   "ecosystem": {
     "title": "Choose your starting point",
     "paragraph": "From the first step to AI adoption across your team.",
     "hubCoreLabel": "6-Block AI System",
-    "hubCoreSub": "Core hub",
+    "hubCoreSub": "",
     "phaseAdopt": "Adopt",
     "phaseApply": "Apply",
     "phaseScale": "Scale",
     "ctaPricing": "Plans and access",
     "ctaOpen": "View system",
-    "mapLink": "See the full ecosystem map",
+    "mapLink": "See the ecosystem map",
+    "workflowHint": "Choose one workflow to begin.",
+    "trustLine": "Built for individuals, teams and AI rollout projects.",
+    "startHere": "Start here",
+    "opensInNewTab": "Opens in new tab",
     "items": [
       {
         "title": "Enter",
@@ -142,7 +146,7 @@
     ]
   },
   "pricing": {
-    "badge": "Lifetime System Access",
+    "badge": "Lifetime Access",
     "title": "Choose a plan",
     "subtext": "Get access to the training, prompt library and 6-block methodology.",
     "cumulativeNote": "You can upgrade to a higher plan later.",
@@ -174,7 +178,7 @@
     ],
     "stripeVerified": "Secured checkout with Stripe",
     "refundContact": "Refund terms – contact us",
-    "aiPowered": "AI Powered",
+    "aiPowered": "",
     "checkAccess": "Check your access",
     "returningTitle": "Already purchased?",
     "returningBody": "Enter the email you used at checkout and continue your training without a password.",
@@ -198,22 +202,22 @@
     "clearStoredEmail": "Forget saved email on this device"
   },
   "faq": {
-    "sectionLabel": "Questions before access",
+    "sectionLabel": "",
     "title": "Frequently asked questions",
     "items": [
-      { "q": "What do I get when I pay?", "a": "Access to the modules in your selected plan, the training content, hands-on exercises and the prompt library. Starter includes modules 1–3, Core includes 1–6. Complete and pass (from 70%) to receive the certificate. Support is provided in our public Telegram group. Lifetime access." },
-      { "q": "How do I access the training?", "a": "No password. Enter your payment email → Check → Go to training. Same steps anytime from this site, Pricing section." },
-      { "q": "What's included in the plan?", "a": "Modules by plan (Starter: 1–3, Core: 1–6), the prompt library, the 6-block methodology, hands-on exercises, a certificate from 70% and the public Telegram group. Core additionally includes context engineering." },
-      { "q": "Is my data secure?", "a": "We store minimal purchase-related identifiers; payments are processed by Stripe. We use product analytics and may load advertising measurement as described in our Privacy Policy. Data handled per EU and US security practices." },
-      { "q": "Where do I get support?", "a": "Support in the public Telegram group (link in the footer and after payment)." },
-      { "q": "Is access temporary?", "a": "No. One-time payment – lifetime access." },
-      { "q": "What's the difference between Starter and Core?", "a": "Starter: modules 1–3. Core: modules 1–6 (full course). If you start with Starter, you can upgrade to Core later." },
-      { "q": "Can I get a refund?", "a": "See the Refunds section in our Terms of Service. Email info@promptanatomy.app from your checkout email with your order details." },
-      { "q": "What languages are the trainings in?", "a": "Trainings are available in Lithuanian and English." }
+      { "q": "What do I get when I pay?", "a": "You get lifetime access to the modules in your plan, the interactive training app at promptanatomy.app/anatomy/, hands-on exercises, the 500+ prompt library, and a certificate when you pass from 70%. Starter covers modules 1–3; Core covers 1–6 including context engineering. Prompt Anatomy is the hub for checkout and training; ecosystem spokes (Cloud, library, marketing, HR, CEO, Pro) are free workflow tools that complement the course. Support is in our public Telegram group." },
+      { "q": "How do I access the training?", "a": "No password needed. From this site, go to the Pricing section, enter the email you used at checkout, tap Check, then Go to training — the app opens with a magic link. You can repeat the same steps anytime; your access is tied to that email, not a separate account." },
+      { "q": "What's included in the plan?", "a": "Each plan includes the 6-block methodology, the prompt library, hands-on exercises, a certificate from 70%, and our public Telegram group. Starter gives modules 1–3 (prompt engineering and six business scenarios). Core adds modules 4–6, including context engineering, sprints, and projects — the full course. Ecosystem spokes (Enter on Cloud, Use on the library, Create, Hire, Manage, Deploy) are free tools for daily work and do not replace paid training." },
+      { "q": "Is my data secure?", "a": "Yes — we collect only what we need to run checkout and grant access. Payments are processed by Stripe; we never store full card numbers. We keep minimal purchase-related identifiers linked to your checkout email. Product analytics (PostHog, Vercel) and optional ad measurement may apply as described in our Privacy Policy, including across Prompt Anatomy ecosystem domains. Data is handled per EU and US security practices." },
+      { "q": "Where do I get support?", "a": "Primary support is our public Telegram group — link in the footer and shown after payment. It is where practitioners ask questions, share workflows, and get help with access. For billing, invoices, or refunds, email info@promptanatomy.app. Not sure where to start in the ecosystem? See the discovery map at promptanatomy.site/#ecosystem to choose a workflow by role." },
+      { "q": "Is access temporary?", "a": "No. Both Starter (39 EUR) and Core (99 EUR) are one-time payments with lifetime access — no subscription or expiry date. Once purchased, you keep access to your plan modules and can return to training anytime via the Pricing section magic-link flow." },
+      { "q": "What's the difference between Starter and Core?", "a": "Starter (39 EUR) covers modules 1–3: prompt engineering, the 6-block system, and six business scenarios — a solid entry point. Core (99 EUR) includes everything in Starter plus modules 4–6, context engineering, sprints, and projects — the full AI operating system course. Choose Starter to start lean; upgrade to Core later if you want the complete path. Both plans grant lifetime access." },
+      { "q": "Can I get a refund?", "a": "See the Refunds section in our Terms of Service for conditions. Email info@promptanatomy.app from the address used at checkout and include your order details where possible. We aim to respond within fourteen (14) calendar days. Statutory consumer rights apply where required by law." },
+      { "q": "What languages are the trainings in?", "a": "Trainings are available in Lithuanian and English. The landing page, training app, and FAQ follow your selected locale (LT or EN). Switch language anytime from the navbar; your purchase works across both." }
     ]
   },
   "footer": {
-    "tagline": "Prompt Anatomy – an interactive training system for working with AI.",
+    "tagline": "Prompt Anatomy – a training system for working with AI.",
     "columnProduct": "Product",
     "columnTraining": "Training",
     "columnNetwork": "Network",

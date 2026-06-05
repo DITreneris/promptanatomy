@@ -11,9 +11,9 @@
 | Vieta | Reikšmė | Paskirtis |
 |-------|---------|-----------|
 | **frontend/src/config.js** | `APP_VERSION = 'v1.3'` | Vienas šaltinis: Hero terminalo etiketė (`SCRIPT_NAME`), Ecosystem „Stable“ ir kiti komponentai, kur rodoma versija. **Navbar** versijos ženkliuko nerodo (Variant B). Keičiant čia – atsinaujina visur, kur naudojama. |
-| **frontend/package.json** | `"version": "1.3.1"` | NPM package versija (build, artefaktai). Siūloma sulyginti su release. |
-| **CHANGELOG.md** | `## [1.3.1] - 2026-03-24` (naujausias patch) | Release istorija; po release nauji pakeitimai rašomi po `[Unreleased]`. |
-| **Git tag** | `v1.3.0` | Fiksuoja commit, atkuriama būsena. |
+| **frontend/package.json** | `"version": "1.4.0"` | NPM package versija (build, artefaktai). Siūloma sulyginti su release. |
+| **CHANGELOG.md** | `## [1.4.0] - 2026-06-06` (naujausias release) | Release istorija; po release nauji pakeitimai rašomi po `[Unreleased]`. |
+| **Git tag** | `v1.4.0` (planuojamas) | Fiksuoja commit, atkuriama būsena. Ankstesnis: `v1.3.1`. |
 
 **Pastaba:** Rodomoji versija UI gali būti trumpesnė (`v1.3`) arba pilna (`1.3.0`). Abu variantai priimtini; `v1.3` – kompaktiškesnis badge.
 
@@ -25,7 +25,7 @@
 - **MINOR** (1.x.0): naujos funkcijos atgal suderinamos.
 - **PATCH** (1.3.x): klaidų taisymai, saugumą nekeičiantys pakeitimai.
 
-Naujausias release **1.3.1** (2026-03-24) – patch (Supabase migracijos repo, doc). Bazė **1.3.0** – stabilus produktas su planais 1–2, Stripe, Supabase, magic link, mokymų app, SEO, DUK, B2B bloku.
+Naujausias release **1.4.0** (2026-06-06) – **MINOR**: LP ekosistema, dizaino polish, copy/FAQ, SEO/GEO, perf, bugfix'ai (žr. CHANGELOG). Ankstesnis **1.3.1** (2026-03-24) – patch. Bazė **1.3.0** – stabilus produktas su Stripe, magic link, mokymų app.
 
 ---
 
@@ -47,3 +47,20 @@ Naujausias release **1.3.1** (2026-03-24) – patch (Supabase migracijos repo, d
 - **MAJOR:** Breaking pakeitimai (API, prieigos modelis) → 2.0.0.
 
 Po kiekvieno release – atnaujinti `config.js` ir `frontend/package.json` pagal naują versiją.
+
+---
+
+## 5. Planuojamas release v1.4.0 (2026-06-06)
+
+**Versija:** `1.4.0` (MINOR, ne patch) — ekosistemos sekcija, GEO, perf ir copy apimtis viršija 1.3.x patch ribą.
+
+**Kada tag'inti:**
+
+| Etapas | Kada | Veiksmas |
+|--------|------|----------|
+| **Dabar** | CHANGELOG uždarytas | `[1.4.0] - 2026-06-06`; `[Unreleased]` tuščias |
+| **Prieš tag** | Po paskutinio deploy į prod | Golden Legacy: `pytest`, `npm run build`, rankinis smoke (`/`, `/lt`, `#ekosistema`, `#faq`, magic link) |
+| **Tag diena** | Deploy patvirtintas prod | `config.js` → `v1.4`; `package.json` → `1.4.0`; commit `chore: release v1.4.0`; `git tag -a v1.4.0 -m "Release 1.4.0"`; push tag |
+| **Po tag** | Optional | GitHub Release iš CHANGELOG santraukos; `geo-manifest.js` `LAST_UPDATED` jau 2026-06-06 |
+
+**Kodėl ne 1.3.2:** vienas patch numeris netinka ~2 mėn. LP darbui (ecosystem UI, Phase 8, SEO ItemList, locale lazy-load). SemVer MINOR = atgal suderinamos funkcijos / reikšmingas produkto sluoksnis be breaking changes.
