@@ -1,4 +1,4 @@
-import { Users, BookOpen, Megaphone, LayoutDashboard, Zap, Cpu } from 'lucide-react'
+import { Users, BookOpen, Megaphone, LayoutDashboard, Zap, Cpu, Target } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
 import { captureEcosystemOutboundClick, capturePosthogEvent } from '../analytics/posthog'
 import { ECOSYSTEM_DISCOVERY_SITE } from '../site/geo-manifest'
