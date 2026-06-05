@@ -32,12 +32,14 @@ Canonical site: https://www.promptanatomy.app/
 
 - Hub (conversion): https://www.promptanatomy.app/
 - Training app: https://www.promptanatomy.app/anatomy/ — Interactive training app (6 modules, 6-block methodology)
-- Prompt library (.info): https://www.promptanatomy.info/en/ (EN) / https://www.promptanatomy.info/lt/ (LT) — Spin-off — prompt library and quick value demonstration
-- Content system (.space): https://www.promptanatomy.space/en/ (EN) / https://www.promptanatomy.space/ (LT) — Spoke — marketing content prompts and templates
-- Operations center (.ceo): https://www.promptanatomy.ceo/ (EN) / https://www.promptanatomy.ceo/ (LT) — Spoke — CEO/COO leadership and operations prompts
-- PromptAnatomy Cloud: https://promptanatomy.cloud/ (EN) / https://promptanatomy.cloud/ (LT) — Spoke — educational and practical flow routing to hub
-- PromptAnatomy Pro: https://promptanatomy.pro/ (EN) / https://promptanatomy.pro/ (LT) — Spoke — B2B, teams, and professional services routing to hub
-- Recruitment system (HR): https://ditreneris.github.io/personalas/ (EN) / https://ditreneris.github.io/personalas/ (LT) — Legacy spoke — HR and recruitment prompts (until migrated)
+- PromptAnatomy Cloud (.cloud): https://promptanatomy.cloud/ (EN) / https://promptanatomy.cloud/ (LT) — Spoke — Enter: onboarding and first lesson, routing to hub
+- Prompt library (.info): https://www.promptanatomy.info/en/ (EN) / https://www.promptanatomy.info/lt/ (LT) — Spoke — Use: prompt library and daily automation workflows
+- Content system (.space): https://www.promptanatomy.space/en/ (EN) / https://www.promptanatomy.space/ (LT) — Spoke — Create: marketing content prompts and templates
+- HR system (.help): https://promptanatomy.help/ (EN) / https://promptanatomy.help/ (LT) — Spoke — Hire: HR, recruitment, and people operations prompts
+- Operations center (.ceo): https://www.promptanatomy.ceo/ (EN) / https://www.promptanatomy.ceo/ (LT) — Spoke — Manage: CEO/COO leadership and operations prompts
+- PromptAnatomy Pro (.pro): https://promptanatomy.pro/ (EN) / https://promptanatomy.pro/ (LT) — Spoke — Decide: B2B scaling and enterprise AI workflows routing to hub
+- Knowledge hub (.blog): https://promptanatomy.blog/ (EN) / https://promptanatomy.blog/ (LT) — Spoke — Deepen: articles, canvases, and systems-thinking content
+- Playground (.lol): https://promptanatomy.lol/ (EN) / https://promptanatomy.lol/ (LT) — Spoke — Play: structured sandbox for low-stakes prompt experiments
 - Community (Telegram): https://t.me/prompt_anatomy
 
 ## Topics

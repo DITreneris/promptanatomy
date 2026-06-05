@@ -10,11 +10,15 @@ Bilingual (LT/EN) landing hub for AI prompt engineering training, Stripe checkou
 |--------|------|
 | [promptanatomy.app](https://www.promptanatomy.app) | Hub — pricing, checkout, access |
 | [promptanatomy.app/anatomy/](https://www.promptanatomy.app/anatomy/) | Training app (6 modules) |
-| [promptanatomy.info](https://www.promptanatomy.info/en/) | Prompt library spin-off |
-| [promptanatomy.space](https://www.promptanatomy.space/en/) | Content / marketing system |
-| [promptanatomy.ceo](https://www.promptanatomy.ceo/) | Operations center |
-| [promptanatomy.cloud](https://promptanatomy.cloud/) | Educational flow → hub |
-| [promptanatomy.pro](https://promptanatomy.pro/) | B2B / teams → hub |
+| [promptanatomy.site](https://promptanatomy.site) | Ecosystem map, quiz, Prompt Builder (discovery) |
+| [promptanatomy.cloud](https://promptanatomy.cloud/) | Enter — onboarding → hub |
+| [promptanatomy.info](https://www.promptanatomy.info/en/) | Use — prompt library |
+| [promptanatomy.space](https://www.promptanatomy.space/en/) | Create — content / marketing |
+| [promptanatomy.help](https://promptanatomy.help/) | Hire — HR / recruitment |
+| [promptanatomy.ceo](https://www.promptanatomy.ceo/) | Manage — operations center |
+| [promptanatomy.pro](https://promptanatomy.pro/) | Decide — B2B / enterprise scale |
+| [promptanatomy.blog](https://promptanatomy.blog/) | Deepen — knowledge hub |
+| [promptanatomy.lol](https://promptanatomy.lol/) | Play — structured sandbox |
 
 ### Publications (founder)
 

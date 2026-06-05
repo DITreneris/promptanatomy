@@ -35,6 +35,7 @@ Istorinė arba pasenusi dokumentacija, ne naudojama kasdieniam operaciniam darbu
 | Failas | Paskirtis |
 |--------|-----------|
 | [production-analytics-14d-benchmark.md](snapshots/production-analytics-14d-benchmark.md) | ~14 d. produkcijos metrikų snapshot. |
+| [gsc-2026-06-04.md](snapshots/gsc-2026-06-04.md) | GSC 28d pages + CTR analysis; `/anatomija/` redirect; operator checklist. |
 
 ## Kiti archyvo failai (šaknis)
 

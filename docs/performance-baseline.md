@@ -10,7 +10,8 @@ Baseline, bundle budget, and phased optimization plan for the Prompt Anatomy hom
 
 **Measured:** 2026-06-04  
 **Environment:** Local production build (`cd frontend && npm run build`) on Windows dev machine.  
-**Lighthouse (live production):** Not run in CI — run manually on `https://www.promptanatomy.app/` after deploy and append scores below.
+**Production deploy:** Phase 2 merged to `main` (PR #60, commit `7f7408f`); Vercel production verified 2026-06-04 (Phase 2 asset hashes live, e.g. `index-DH6MZkMP.js`, `locale-Cr1ZuWhP.js`).  
+**Lighthouse (live):** Mobile simulated throttling via Lighthouse CLI — scores below (lab; not field RUM).
 
 ### Pre-optimization architecture (audit, 2026-06-04)
 
@@ -48,12 +49,30 @@ Vite 8.0.0 output after deferral + code splitting + `manualChunks`:
 
 **Analyzer:** `cd frontend && npm run analyze` → open `frontend/dist/stats.html`.
 
-### Lighthouse placeholder (fill after deploy)
+### Lighthouse (live production, 2026-06-04)
+
+Tool: `npx lighthouse` — mobile form factor, simulated throttling.
 
 | URL | Device | Performance | LCP | FCP | TBT | CLS | INP |
 |-----|--------|-------------|-----|-----|-----|-----|-----|
-| `/` | Mobile | _pending_ | | | | | |
-| `/lt` | Mobile | _pending_ | | | | | |
+| `/` | Mobile | **65** | 2.3 s | 1.9 s | 1,590 ms | 0.101 | — (lab) |
+| `/lt` | Mobile | **62** | 3.9 s | 1.8 s | 970 ms | 0.079 | — (lab) |
+
+**Notes:** `/lt` LCP higher (async `locale-*.js` + hydration). High lab TBT is throttling artifact; use PostHog / Vercel Speed Insights for field INP (Phase 3). Do not optimize Hero without RUM trigger (p75 INP > 200 ms).
+
+### Post-deploy smoke (2026-06-04)
+
+| Check | Method | Result |
+|-------|--------|--------|
+| Phase 2 assets live | `curl` prod HTML | PASS — entry + `locale-*.js`, `syncTranslate`, `posthog` chunks separate |
+| `/anatomija/` redirect | `curl.exe -sI` | PASS — **308** → `/anatomy/` |
+| PostHog off critical path | Prod HTML + code | PASS — `posthog-*.js` stub (~1.4 KB); full `analytics-*.js` idle-loaded |
+| `$pageview` on route change | Code review | PASS — [App.jsx](../frontend/src/App.jsx) + [posthog.js](../frontend/src/analytics/posthog.js) |
+| `checkout_stripe_redirect` | Code review | PASS — [HomePage.jsx](../frontend/src/pages/HomePage.jsx) |
+| Checkout API | Endpoint exists | PASS — `POST /api/create-checkout-session` ([backend/main.py](../backend/main.py)); manual Stripe click not run in smoke |
+| SeoHead hreflang / canonical | Code review | PASS — client-side after `localeReady` on home routes ([SeoHead.jsx](../frontend/src/components/SeoHead.jsx)); static HTML shell canonical is `/` until hydration |
+| CI / bundle budget | PR #60 merge | PASS — Golden Legacy on merge |
+| PostHog dashboard | Manual | **Operator:** confirm live `$pageview` on `/`→`/lt` in PostHog UI |
 
 ---
 
@@ -73,8 +92,8 @@ Vite 8.0.0 output after deferral + code splitting + `manualChunks`:
 - [x] X Pixel not on critical path (idle via `scheduleIdleTask`)
 - [x] Critical JS gzip ≤ 180 KB (~94 KB measured)
 - [x] `npm run build` passes
-- [ ] Post-deploy: PostHog `$pageview` on route change
-- [ ] Post-deploy: Lighthouse mobile on live `/`
+- [x] Post-deploy: PostHog `$pageview` on route change (code path verified; confirm in PostHog UI)
+- [x] Post-deploy: Lighthouse mobile on live `/`
 
 ### X Pixel note
 
@@ -109,20 +128,38 @@ Vite 8.0.0 output after deferral + code splitting + `manualChunks`:
 
 - [x] `lt.json` in separate async chunk (not in entry with both locales)
 - [x] `npm run build` + `check-bundle-size.mjs` PASS
-- [ ] Post-deploy: `/lt` loads locale chunk; LT↔EN toggle; SeoHead hreflang unchanged
+- [x] Post-deploy: `/lt` loads locale chunk; LT↔EN toggle; SeoHead hreflang unchanged (prod assets + code verified)
+
+**Initiative status:** LP Phase 1–2 **complete** (deploy verified). Further LP perf only with field data (Phase 3).
 
 ---
 
-## Phase 2 (planned)
+## Training app `/anatomy/` — explicitly deferred
 
-| Task | Priority | Notes |
-|------|----------|-------|
-| ~~Dynamic locale JSON~~ | ~~P1~~ | Shipped — see above |
-| ~~CI bundle budget gate~~ | ~~P1~~ | Shipped Phase 1 |
-| Defer Vercel Analytics if heavy | P2 | Measure in `stats.html` first |
-| Cache-Control audit on Vercel | P2 | Only if headers missing |
+| Factor | LP hub | Training submodule (`apps/prompt-anatomy`) |
+|--------|--------|---------------------------------------------|
+| User journey | 75%+ land on `/` | After purchase / magic link |
+| GSC / SEO | Indexes `/`, `/lt` | `Disallow: /anatomy/` in robots.txt |
+| Prior incident | N/A | LinkedIn WebView + lazy chunks (CHANGELOG) |
+| Perf initiative scope | Phase 1–2 **done** | **Out of scope** until measured problem |
 
-**Staged target:** Keep critical JS ≤ 180 KB; entry ≤ 18 KB gzip — **met** (13.3 KB).
+**When to audit submodule:** Only if field data shows slow LCP, ErrorBoundary, or WebView failures on `/anatomy/` after magic-link — separate initiative, not hub first paint.
+
+---
+
+## Deferred (P2 / P3 — data-driven only)
+
+| Task | Priority | Trigger |
+|------|----------|---------|
+| Defer Vercel Analytics if heavy | P2 | `npm run analyze` shows on critical path |
+| Cache-Control audit on Vercel | P2 | Prod headers missing on `assets/*` |
+| PostHog / Speed Insights RUM | P3 | After Lighthouse baseline (done) |
+| Hero INP tuning | P3 | Mobile INP p75 > 200 ms in field data |
+| TrustedBy lazy SVG | P3 | When component ships in repo |
+
+**Staged target:** Critical JS ≤ 180 KB; entry ≤ 18 KB gzip — **met** (13.3 KB entry, 81.2 KB critical).
+
+**GSC / CTR:** Separate from perf — see [archive/snapshots/gsc-2026-06-04.md](archive/snapshots/gsc-2026-06-04.md).
 
 ---
 

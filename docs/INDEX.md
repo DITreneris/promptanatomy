@@ -31,7 +31,8 @@
 | Bulk import (Excel → user_access) | [docs/bulk-import-user-access.md](bulk-import-user-access.md) | Akademijos dalyvių įkėlimas: `scripts/import_user_access.py`. |
 | Supabase patobulinimų planas | [docs/supabase-hardening-plan.md](supabase-hardening-plan.md) | Detalus F0–F7 planas (RLS, webhook, rate limit); dalis įgyvendinta minimaliai. |
 | SEO (KISS–Marry–Kill) | [docs/SEO-KISS-Marry-Kill.md](SEO-KISS-Marry-Kill.md) | Sitemap, robots, og:image, llms-full, GEO manifest, būsena. |
-| Ekosistemos valdymas (.app/.cloud/.pro) | [docs/ecosystem-governance.md](ecosystem-governance.md) | Domenų rolės, SEO/GEO/AI nekonkuravimo taisyklės, KPI minimumas. |
+| Ekosistemos valdymas (hub-and-spoke) | [docs/ecosystem-governance.md](ecosystem-governance.md) | Domenų rolės, SEO/GEO/AI nekonkuravimo taisyklės, KPI minimumas. |
+| Ekosistemos kanonas (9 domenų) | [docs/ecosystem-canon.md](ecosystem-canon.md) | Pipeline, LP 6 kortelės, sync taisyklės su geo-manifest ir i18n. |
 | Kainodaros planas | [docs/pricing-plan.md](pricing-plan.md) | Kainodara, geriausios praktikos, palyginimas. |
 | Faze 1 apimtis (2 produktai, moduliai 7+ lock) | [docs/phase-1-scope.md](phase-1-scope.md) | Kas parduodama Faze 1; tik planai 1–2; moduliai 7–15 užrakinti. |
 | Kalbos gairės (LT/EN) | [docs/language-guidelines-en-lt.md](language-guidelines-en-lt.md) | Prekės ženklas, terminai, tonas, vertimai. |
@@ -51,6 +52,7 @@
 | Vercel DEP0169 diagnostika (`url.parse` logai) | [docs/diagnostics-dep0169-vercel.md](diagnostics-dep0169-vercel.md) | Kas tai, repo tikrinimai, `NODE_OPTIONS=--trace-deprecation` produkcijoje, tolimesni žingsniai. |
 | Test report | [docs/test_report.md](test_report.md) | SSL/TLS, LP prieigos tikrinimas (`user_access` / „No access found“), atsiliepimų fiksavimas (produkcija). |
 | Production analytics (14d benchmark, archyvas) | [docs/archive/snapshots/production-analytics-14d-benchmark.md](archive/snapshots/production-analytics-14d-benchmark.md) | Post-deploy ~14 d. serverio metrikos (snapshot). |
+| GSC snapshot (2026-06-04) | [docs/archive/snapshots/gsc-2026-06-04.md](archive/snapshots/gsc-2026-06-04.md) | 28d pages CTR/impressions; `/anatomija/` redirect check; Queries export checklist. |
 
 ---
 
@@ -77,6 +79,7 @@
 |------------|--------|-----------|
 | Dokumentacijos įvadas | [docs/README.md](README.md) | Trumpas įvadas į docs; visi dokumentai – šis INDEX. |
 | Development workflow | [docs/process/development.md](process/development.md) | Užduotis → agentas → kodas → QA → doc. |
+| Definition of Done (DoD) | [docs/process/dod_system.md](process/dod_system.md) | Vieninga „baigta“ sistema: užduotis → PR merge-ready → deploy; agentai, CI, checklist. |
 | Ką dokumentuoti ir kada | [docs/process/documentation.md](process/documentation.md) | Kur atnaujinti README, TODO, docs; i18n raktai. |
 | ADR katalogas | [docs/decisions/](decisions/) | Architektūriniai sprendimai. Šablonas žemiau. |
 | ADR šablonas | [docs/templates/adr-template.md](templates/adr-template.md) | Architecture Decision Record. |
@@ -112,6 +115,7 @@ Agentai ir `.cursor/rules/` remiasi **šiuo indeksu** (docs/INDEX.md) – dokume
 ## Greita nuoroda agentams
 
 - **Pradėti:** AGENTS.md → agentas → docs/process/development.md
+- **Baigta (DoD):** docs/process/dod_system.md – Lygis A (implementacija) → B (PR + CI + QA) → C (deploy smoke)
 - **Klausimai:** q-and-a-agent; šaltiniai: README.md, README_SOT.md, docs/
 - **Po pakeitimų:** quality-assurance-agent; doc pagal docs/process/documentation.md
 - **Regresija:** docs/golden-legacy-standard.md – ką nepalaužti; pytest + abu frontend build prieš merge; CI (`.github/workflows/ci.yml`) ant `main` / PR.

@@ -87,38 +87,52 @@
   },
   "ecosystem": {
     "title": "Hub: pasirink kryptį",
-    "paragraph": "Pagrindinis įėjimas į ekosistemą — bibliotekos ir sistemos pagal tavo tikslą.",
+    "paragraph": "Šeši workflow moduliai jungiasi į vieną hub — pagal tavo kelionės etapą.",
     "ctaPricing": "Planai ir prieiga",
-    "stableLabel": "v1.3 Stable",
     "ctaOpen": "Peržiūrėti sistemą",
+    "mapLink": "Peržiūrėti pilną ekosistemos žemėlapį",
     "items": [
       {
-        "title": "Biblioteka (DI automatizacija)",
-        "count": "100+ Repo",
+        "title": "Įėjimas (onboarding)",
+        "count": "Pirmoji pamoka",
+        "url": "https://promptanatomy.cloud/",
+        "outcome": "Pradėk mokytis DI su struktūruotu onboarding ir pagrindais.",
+        "bullets": ["Nemokama pamoka", "Komandos onboarding"]
+      },
+      {
+        "title": "Naudojimas (DI automatizacija)",
+        "count": "100+ šablonų",
         "url": "https://www.promptanatomy.info/lt/",
-        "outcome": "Paruošti promptai ir workflow šablonai.",
+        "outcome": "Paruošti promptai ir workflow šablonai kasdieniam darbui.",
         "bullets": ["100+ promptų", "DI workflow"]
       },
       {
-        "title": "Turinio DI sistema (rinkodara)",
-        "count": "150+ Repo",
+        "title": "Kūrimas (rinkodara)",
+        "count": "Rinkodaros OS",
         "url": "https://www.promptanatomy.space/",
         "outcome": "Rinkodaros turinio promptai ir šablonai.",
         "bullets": ["Turinio planavimas", "DI šablonai"]
       },
       {
-        "title": "Atrankos sistema (personalas)",
-        "count": "120+ Repo",
-        "url": "https://ditreneris.github.io/personalas/",
+        "title": "Atranka (personalas)",
+        "count": "HR workflow",
+        "url": "https://promptanatomy.help/",
         "outcome": "Paieškos, atrankos ir įvertinimo promptai.",
         "bullets": ["Skelbimai", "Įvertinimas"]
       },
       {
-        "title": "DI operacinis centras (vadovybė)",
+        "title": "Valdymas (vadovybė)",
         "count": "Vadovybė",
         "url": "https://www.promptanatomy.ceo/",
-        "outcome": "Vadovams skirti promptai ir šablonai.",
+        "outcome": "Vadovams ir operacijoms skirti promptai ir šablonai.",
         "bullets": ["Sprendimai", "Operacijos"]
+      },
+      {
+        "title": "Sprendimai (skalė)",
+        "count": "Enterprise",
+        "url": "https://promptanatomy.pro/",
+        "outcome": "Verslo sprendimų skalė su struktūruotais DI workflow.",
+        "bullets": ["B2B pilotai", "Komandos standartai"]
       }
     ]
   },
