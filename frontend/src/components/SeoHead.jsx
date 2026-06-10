@@ -8,7 +8,7 @@ import { getEcosystemItemList } from '../site/geo-manifest'
 const HOME_ROUTES = ['/', '/en', '/lt']
 const NOINDEX_ROUTES = ['/success', '/cancel']
 const ROUTE_SCHEMA_SCRIPT_ID = 'route-seo-ldjson'
-const OG_IMAGE_URL = `${SITE_URL}/og-image.png`
+const OG_IMAGE_URL = `${SITE_URL}/og-image-v2.jpg`
 const ORGANIZATION_ID = `${SITE_URL}/#organization`
 const WEBSITE_ID = `${SITE_URL}/#website`
 const ROUTE_LAST_MODIFIED = {
@@ -82,7 +82,8 @@ function ensureJsonLd(id, payload) {
 }
 
 function getCanonicalUrl(pathname) {
-  return pathname === '/' ? `${SITE_URL}/` : `${SITE_URL}${pathname}`
+  if (pathname === '/' || pathname === '/en') return `${SITE_URL}/`
+  return `${SITE_URL}${pathname}`
 }
 
 function getRouteLocale(pathname, locale) {
@@ -201,7 +202,7 @@ export default function SeoHead() {
     if (HOME_ROUTES.includes(pathname)) {
       ensurePropertyMeta('og:locale:alternate', routeLocale === 'en' ? 'lt_LT' : 'en_US')
       ensureHreflang('lt', `${SITE_URL}/lt`)
-      ensureHreflang('en', `${SITE_URL}/en`)
+      ensureHreflang('en', `${SITE_URL}/`)
       ensureHreflang('x-default', `${SITE_URL}/`)
     } else {
       removePropertyMeta('og:locale:alternate')

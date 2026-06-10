@@ -15,7 +15,7 @@ const SITE_URL = (process.env.VITE_SITE_URL || 'https://www.promptanatomy.app').
 const ROUTE_LAST_MODIFIED = '2026-05-17'
 const ORGANIZATION_ID = `${SITE_URL}/#organization`
 const WEBSITE_ID = `${SITE_URL}/#website`
-const OG_IMAGE_URL = `${SITE_URL}/og-image.png`
+const OG_IMAGE_URL = `${SITE_URL}/og-image-v2.jpg`
 
 function escapeHtml(s) {
   return String(s)

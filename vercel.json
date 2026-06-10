@@ -61,6 +61,8 @@
     { "source": "/anatomy/:path*", "destination": "/anatomy/index.html" },
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/terms", "destination": "/terms.html" },
+    { "source": "/lt", "destination": "/lt.html" },
+    { "source": "/en", "destination": "/en.html" },
     {
       "source": "/((?!api)(?!anatomy)(?!sitemap\\.xml$)(?!robots\\.txt$)(?!llms\\.txt$)(?!llms-full\\.txt$)(?!privacy\\.md$)(?!terms\\.md$)(?!index\\.en\\.md$)(?!index\\.lt\\.md$).*)",
       "destination": "/index.html"

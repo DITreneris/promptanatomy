@@ -74,7 +74,7 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 
 **Atlikta (KISS + MARRY + GEO):**
 
-- **sitemap.xml** – `frontend/public/sitemap.xml` tik su indeksuojamais canonical URL: `/`, `/lt`, `/en`, `/privacy`, `/terms`. `success` ir `cancel` palikti routable, bet išimti iš sitemap.
+- **sitemap.xml** – `frontend/public/sitemap.xml` tik su indeksuojamais canonical URL: `/`, `/lt`, `/privacy`, `/terms`. `/en` – routable share URL, canonical → `/`, ne sitemap. `success` ir `cancel` palikti routable, bet išimti iš sitemap.
 - **robots.txt** – `frontend/public/robots.txt` su `Sitemap:` nuoroda; **AI crawlerių leidimai (GEO):** GPTBot, Claude-Web, Google-Extended su `Allow: /`.
 - **JSON-LD** – `frontend/index.html`: statiniai `Organization` ir `WebSite`. `frontend/src/components/SeoHead.jsx`: route-aware `WebPage`, o ant home route'ų – papildomai `Course` ir du aktyvūs `Offer` objektai (39 EUR, 99 EUR).
 - **Canonical ir og:image** – `frontend/index.html`: fallback `<link rel="canonical">`, `<meta property="og:image">`, `<meta name="robots" content="index, follow">`. **Dinamiškai:** `SeoHead.jsx` nustato canonical, `robots`, `og:url`, `og:title`, `og:description`, `twitter:title`, `twitter:description`, `twitter:image` pagal route.
