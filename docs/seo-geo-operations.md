@@ -6,7 +6,7 @@
 
 ## A. `.app` sitemap — kas įtraukta ir kas ne
 
-**Įtraukta** ([frontend/public/sitemap.xml](../frontend/public/sitemap.xml)): `/`, `/lt`, `/en`, `/privacy`, `/terms` (5 URL).
+**Įtraukta** ([frontend/public/sitemap.xml](../frontend/public/sitemap.xml)): `/`, `/lt`, `/privacy`, `/terms` (4 URL). `/en` – share URL su canonical → `/`, ne sitemap.
 
 **Neįtraukti sąmoningai:**
 
@@ -22,7 +22,7 @@
 | Veiksmas | Kada |
 |----------|------|
 | Submit `https://www.promptanatomy.app/sitemap.xml` | Tik jei dar nebuvo submit'intas (vienkartinis) |
-| URL Inspection → **Request indexing** `/`, `/lt`, `/en` | Po reikšmingo LP / ecosystem copy deploy |
+| URL Inspection → **Request indexing** `/`, `/lt` | Po reikšmingo LP / ecosystem copy deploy |
 | URL Inspection `https://www.promptanatomy.app/anatomija/` | Tikėtis redirect → `/anatomy/`; jei impressions lieka — kantrybė arba Removals |
 | **Queries** export (28d vs prior 28d) | CTR kritimas = intent/copy fix, ne daugiau URL sitemap'e |
 | `llms.txt` 0 clicks, daug impressions | **No action** — GEO failas, ne landing |

@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/generate-legal-static.mjs && node scripts/generate-geo-static.mjs",
-    "build:analyze": "vite build --mode analyze && node scripts/generate-legal-static.mjs && node scripts/generate-geo-static.mjs",
+    "build": "vite build && node scripts/generate-legal-static.mjs && node scripts/generate-locale-static.mjs && node scripts/generate-geo-static.mjs",
+    "build:analyze": "vite build --mode analyze && node scripts/generate-legal-static.mjs && node scripts/generate-locale-static.mjs && node scripts/generate-geo-static.mjs",
     "analyze": "npm run build:analyze",
     "preview": "vite preview"
   },
