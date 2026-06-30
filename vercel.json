@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "installCommand": "git submodule update --init --recursive && npm ci && cd frontend && npm ci && cd ../apps/prompt-anatomy && npm ci",
-  "buildCommand": "cd frontend && npm run build && cd ../apps/prompt-anatomy && VITE_BASE_PATH=/anatomy/ VITE_MVP_MODE=1 VITE_PUBLIC_SITE_URL=https://www.promptanatomy.app npm run build && mkdir -p ../../frontend/dist/anatomy && cp -r dist/* ../../frontend/dist/anatomy/",
+  "buildCommand": "cd frontend && npm run build && cd ../apps/prompt-anatomy && VITE_BASE_PATH=/anatomy/ VITE_MAX_BUILD_MODULE=9 VITE_PUBLIC_SITE_URL=https://www.promptanatomy.app npm run build:production && mkdir -p ../../frontend/dist/anatomy && cp -r dist/* ../../frontend/dist/anatomy/",
   "outputDirectory": "frontend/dist",
   "framework": null,
   "headers": [
