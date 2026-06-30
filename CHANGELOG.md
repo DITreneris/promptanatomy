@@ -4,11 +4,29 @@ Visi pakeitimai šiame faile dokumentuojami pagal [Keep a Changelog](https://kee
 
 ## [Unreleased]
 
+### Pridėta
+- **Agents / skills / lessons (2026-06-30):** Pilnas `.cursor/skills/` framework (orchestrator + 5 agentai, SKILL.md + lessons.md); rule `api.mdc`; [`docs/process/skill-evolution.md`](docs/process/skill-evolution.md). [`AGENTS.md`](AGENTS.md) atnaujintas tier 9 / Vercel / submodule. **`.cursor/` gitignore** – agents/rules/skills lokaliai (ne repo), kaip `apps/prompt-anatomy`.
+
 ### Pakeista
-- **Tier 9 magic link + LP access UI (2026-06-30):** [`api/generate-access-link.js`](api/generate-access-link.js) – `highest_plan=9` → `access_tier=9`; [`HomePage.jsx`](frontend/src/pages/HomePage.jsx) + [`accessDisplay.js`](frontend/src/utils/accessDisplay.js) – 9/9 progress (ne 9/6), bar capped 100 %.
-- **Vercel build fix (2026-06-30):** [`vercel.json`](vercel.json) – `install:vercel` / `build:vercel` per [`scripts/vercel-install.sh`](scripts/vercel-install.sh) ir [`scripts/vercel-build.sh`](scripts/vercel-build.sh) (256 simb. schema limit); `HUSKY=0` submodulyje; troubleshooting §2.1 [`deploy-and-webhook.md`](docs/deploy-and-webhook.md).
-- **Submodulis inzinerija v1.4.0 (2026-06-30):** `apps/prompt-anatomy` `f132f64` → `ed408f2` (tag `v1.4.0`) – tier 9 magic link, M1–9 production build (`build:production`, `VITE_MAX_BUILD_MODULE=9`). Parent: [`api/verify-access.js`](api/verify-access.js) `VALID_TIERS [3, 6, 9]`; [`vercel.json`](vercel.json) ir [`.github/workflows/ci.yml`](.github/workflows/ci.yml) – production profilis (be `VITE_MVP_MODE`). Handoff: [`apps/prompt-anatomy/docs/deployment/MARKETING_HANDOFF_CHECKLIST.md`](apps/prompt-anatomy/docs/deployment/MARKETING_HANDOFF_CHECKLIST.md). Stripe €149/€49 – Phase 2.
-- **Submodulio dokumentacija (2026-06-11):** Užfiksuotas kanoninis submodule pin `apps/prompt-anatomy` → `f132f64` ([DITreneris/inzinerija](https://github.com/DITreneris/inzinerija) `main`); parent pointer jau `main` (commit `2e71e728` / merge PR #59). Pataisyti aktyvūs CHANGELOG įrašai: regresija ir CI naudoja `VITE_BASE_PATH=/anatomy/` (ne `/anatomija/`).
+- **Docs sync:** [`golden-legacy-standard.md`](docs/golden-legacy-standard.md) §3 – 9/9 UX smoke; [`phase-1-scope.md`](docs/phase-1-scope.md) §0 disclaimer (LP pricing vs training tier 9); [`dod_system.md`](docs/process/dod_system.md) – Vercel `api/`, skills, `build:production`.
+
+## [1.4.1] - 2026-06-30
+
+**Santrauka:** Tier 9 production deploy – submodulis `inzinerija` v1.4.0 (`ed408f2`), M1–9 build, magic link `access_tier=9`, LP prieigos UI 9/9. Merge PR #69 → `main`; prod smoke OK (`www.promptanatomy.app`). Regresija: `pytest`, `npm run build`, `build:production` (submodule).
+
+### Pakeista
+- **Submodulis inzinerija v1.4.0:** `apps/prompt-anatomy` `f132f64` → `ed408f2` (tag `v1.4.0`) – tier 9 magic link, M1–9 production build (`build:production`, `VITE_MAX_BUILD_MODULE=9`). Parent: [`api/verify-access.js`](api/verify-access.js) `VALID_TIERS [3, 6, 9]`; [`.github/workflows/ci.yml`](.github/workflows/ci.yml) – production profilis (be `VITE_MVP_MODE`). Handoff: [`apps/prompt-anatomy/docs/deployment/MARKETING_HANDOFF_CHECKLIST.md`](apps/prompt-anatomy/docs/deployment/MARKETING_HANDOFF_CHECKLIST.md). Stripe €149/€49 – Phase 2.
+- **Vercel build:** [`vercel.json`](vercel.json) – `install:vercel` / `build:vercel` per [`scripts/vercel-install.sh`](scripts/vercel-install.sh) ir [`scripts/vercel-build.sh`](scripts/vercel-build.sh) (256 simb. schema limit); `HUSKY=0` submodulyje; troubleshooting §2.1 [`deploy-and-webhook.md`](docs/deploy-and-webhook.md).
+- **Tier 9 magic link + LP access UI:** [`api/generate-access-link.js`](api/generate-access-link.js) – `highest_plan=9` → `access_tier=9`; [`HomePage.jsx`](frontend/src/pages/HomePage.jsx) + [`accessDisplay.js`](frontend/src/utils/accessDisplay.js) – 9/9 progress (ne 9/6), bar capped 100 %.
+
+### Pataisyta
+- **LP „Check access“ (plan 9):** Rodė **9/6** ir per ilgą progress bar (150 %), nes skaitiklis ir plotis buvo hardcoded `/6`. Dabar `moduleDisplayCap()` / `accessProgressPercent()` – cap 3/6/9, max 100 % width, `overflow-hidden`.
+- **Magic link tier 6 vietoj 9:** `generate-access-link` naudojo `PHASE1_PLAN_VALUES [3, 6]` – planui 9 generavo `access_tier=6`; M7+ nebuvo pasiekiami. Dabar `ACCESS_TIER_VALUES [3, 6, 9]`.
+- **Vercel deploy:** `buildCommand` viršijo 256 simb. limitą – build perkeltas į npm scriptus.
+
+### Deploy
+- **Prod:** PR [#69](https://github.com/DITreneris/promptanatomy/pull/69) merge (`3949b2c`); Vercel Production Ready. Smoke: `GET /api/access` → `highest_plan: 9`; `generate-access-link` → `access_tier=9`; LP bundle 9/9; `/anatomy/` M1–9.
+
 - **OG/Twitter kortelės fix (2026-06-10):** X (Twitter) nerodė share paveikslėlio — PNG su alpha kanalu (2400×1260) X procesorius atmesdavo, o cache-bust (`?v=2`) nepadėjo. Sugeneruotas [og-image-v2.jpg](frontend/public/og-image-v2.jpg) (1200×630, JPEG be alpha, 62 KB); naujas failo vardas apeina X ir Vercel edge cache. `og:image`/`twitter:image` atnaujinta [index.html](frontend/index.html) (+ `og:image:width/height/type`), [SeoHead.jsx](frontend/src/components/SeoHead.jsx), [generate-legal-static.mjs](frontend/scripts/generate-legal-static.mjs). JSON-LD `Organization.logo` lieka `og-image.png` (Google, ne Twitter). *Po deploy:* testuoti tweet su švariu URL.
 - **SEO: locale canonical pirmame HTML (2026-06-09):** Build metu [generate-locale-static.mjs](frontend/scripts/generate-locale-static.mjs) rašo `dist/lt.html` / `dist/en.html` su teisingu `canonical`, `hreflang` ir `og:url`; [vercel.json](vercel.json) rewrite `/lt` → `lt.html`, `/en` → `en.html`. EN kanonas konsoliduotas į `/` (`/en` – share URL, ne sitemap). [SeoHead.jsx](frontend/src/components/SeoHead.jsx) – `hreflang en` → `/`. Sitemap: pašalintas `/en` (4 hub URL). *Po deploy:* GSC Request indexing `/`, `/lt`.
 - **Ecosystem kortelių triukšmo mažinimas (2026-06-06):** Pašalintas `+N` tag overflow ir matomas „Opens in new tab“ / „Naujame lange“ po CTA; `opensInNewTab` lieka tik `aria-label`. Tag'ai sutrumpinti iki 2 kortelėje (LT/EN). Kompaktiškumas: `card-density-dark-premium` `min-h-[200px]`, `p-5 sm:p-6`; CTA `pt-3`, ikona `mb-3`. Failai: [Ecosystem.jsx](frontend/src/components/Ecosystem.jsx), [index.css](frontend/src/index.css), [en.json](frontend/src/i18n/translations/en.json), [lt.json](frontend/src/i18n/translations/lt.json); docs: [golden-legacy-standard.md](docs/golden-legacy-standard.md) §3, [design-system-qa.md](docs/process/design-system-qa.md).

@@ -24,17 +24,19 @@
 **Visiems pakeitimams (būtina):**
 
 - [ ] Scope atitinka užduotį; nėra nereikalingo kodo („ateičiai“ modulių).
-- [ ] Laikomasi `.cursor/rules/` ([project-global](../../.cursor/rules/project-global.mdc), [frontend](../../.cursor/rules/frontend.mdc), [backend](../../.cursor/rules/backend.mdc)).
+- [ ] Laikomasi `.cursor/rules/` ([project-global](../../.cursor/rules/project-global.mdc), [frontend](../../.cursor/rules/frontend.mdc), [backend](../../.cursor/rules/backend.mdc), [api](../../.cursor/rules/api.mdc)).
 - [ ] Jokių secretų kode; nauji env – tik `.env.example` (be realių reikšmių).
 - [ ] Pakeitimai **minimalūs** – tik tai, ko reikalauja užduotis.
+- [ ] **Skills:** prieš „padaryta“ – peržiūrėti atitinkamą `.cursor/skills/<agent>/SKILL.md`; nauja sesijos pamoka → `lessons.md` ([skill-evolution.md](skill-evolution.md)).
 
 **Pagal sluoksnį (jei liečia):**
 
 | Sluoksnis | Kriterijai |
 |-----------|------------|
-| **Frontend** | Funkciniai komponentai + hooks; API tik per `frontend/src/api.js`; Tailwind; nauji maršrutai – `App.jsx`. |
-| **Backend** | Pydantic request/response; `HTTPException`; config iš env; `logger` (ne `print`); webhook – raw body + signature. |
-| **Fullstack** | Backend kontraktas sutampa su `api.js`; E2E srautas rankiniu būdu patikrintas (pvz. mygtukas → API → UI). |
+| **Frontend** | Funkciniai komponentai + hooks; API tik per `frontend/src/api.js`; Tailwind; prieigos UI – `accessDisplay.js` (ne hardcoded `/6`). |
+| **Backend (FastAPI)** | Pydantic request/response; `HTTPException`; config iš env; `logger` (ne `print`); webhook – raw body + signature; `token_limits.py`. |
+| **Vercel `api/`** | Handler `res.status().json()`; CORS whitelist; tier `[3, 6, 9]`; JSON `detail` errors. |
+| **Fullstack** | Kontraktas `api.js` ↔ `api/*.js`; E2E srautas patikrintas (Check access → magic link → `/anatomy/`). |
 
 **Lokalus greitas patikrinimas (rekomenduojama prieš QA):**
 
@@ -42,7 +44,7 @@
 # Jei keitėte atitinkamą dalį:
 cd backend && pytest
 cd frontend && npm run build
-cd apps/prompt-anatomy && npm run build   # jei liečia training / submodule
+cd apps/prompt-anatomy && VITE_BASE_PATH=/anatomy/ VITE_MAX_BUILD_MODULE=9 npm run build:production   # jei liečia training / submodule
 ```
 
 ---

@@ -4,6 +4,12 @@
 
 ---
 
+## 0. Scope disclaimer (2026-06-30)
+
+Šis doc aprašo **LP pricing Phase 1** (2 planai Stripe checkout'e). **Training app** produkcijoje – tier **9** (M1–9), žr. [golden-legacy-standard.md](golden-legacy-standard.md) ir [CHANGELOG.md](../CHANGELOG.md) release **1.4.1**.
+
+---
+
 ## 1. Du produktai (Faze 1)
 
 Pirmajame etape siūlome **tik du planus**:

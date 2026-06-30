@@ -33,6 +33,9 @@ roadmap.md
 *.xlsx
 _xlsx_*.json
 
+# Cursor (agentai, rules, skills, lessons) – lokaliai, kaip submodulyje inzinerija
+.cursor/
+
 # IDE / OS
 .idea/
 .vscode/
