@@ -8,7 +8,13 @@
 const crypto = require('crypto');
 const { createClient } = require('@supabase/supabase-js');
 
-const PHASE1_PLAN_VALUES = [3, 6];
+const ACCESS_TIER_VALUES = [3, 6, 9];
+
+function highestPlanToAccessTier(highestPlan) {
+  if (ACCESS_TIER_VALUES.includes(highestPlan)) return highestPlan;
+  const capped = ACCESS_TIER_VALUES.filter((v) => v <= highestPlan).pop();
+  return capped ?? highestPlan;
+}
 
 const ALLOWED_ORIGINS = [
   process.env.FRONTEND_ORIGIN?.replace(/\/$/, ''),
@@ -86,9 +92,7 @@ module.exports = async function handler(req, res) {
     return res.status(404).json({ detail: 'No access found for this email' });
   }
 
-  const accessTier = PHASE1_PLAN_VALUES.includes(highestPlan)
-    ? highestPlan
-    : PHASE1_PLAN_VALUES.filter((v) => v <= highestPlan).pop() || highestPlan;
+  const accessTier = highestPlanToAccessTier(highestPlan);
 
   const expiryDays = parseInt(process.env.ACCESS_TOKEN_EXPIRY_DAYS || '30', 10) || 30;
   const expires = Math.floor(Date.now() / 1000) + expiryDays * 86400;

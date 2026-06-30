@@ -10,6 +10,7 @@ import { createCheckoutSession, getAccess, getTrainingAccessLink } from '../api'
 import { LP_ACCESS_EMAIL_STORAGE_KEY } from '../config'
 import { useLocale } from '../i18n/LocaleContext'
 import { scheduleIdleTask } from '../utils/idle'
+import { accessProgressPercent, moduleDisplayCap } from '../utils/accessDisplay'
 
 const Methodology = lazy(() => import('../components/Methodology'))
 const Ecosystem = lazy(() => import('../components/Ecosystem'))
@@ -30,6 +31,11 @@ export default function HomePage({ forceLocale }) {
   const [accessError, setAccessError] = useState(null)
   const [trainingLinkLoading, setTrainingLinkLoading] = useState(false)
   const [rememberedEmailInDevice, setRememberedEmailInDevice] = useState(false)
+
+  const accessModuleCap =
+    access?.highest_plan > 0 ? moduleDisplayCap(access.highest_plan) : 0
+  const accessProgressPct =
+    access?.highest_plan > 0 ? accessProgressPercent(access.highest_plan) : 0
 
   // Atkuria el. paštą ir prieigą po perkrovimo (viršuje „Mokymai“, jei highest_plan > 0).
   // Deferred off critical path — UI renders first; access state fills in after idle.
@@ -249,16 +255,16 @@ export default function HomePage({ forceLocale }) {
                 <div className="mt-4 p-4 bg-emerald-50 rounded-xl border border-emerald-100">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm font-bold text-emerald-800">
-                      {t('pricing.yourAccess').replace('%s', access.highest_plan)}
+                      {t('pricing.yourAccess').replace('%s', String(accessModuleCap))}
                     </span>
                     <span className="text-xs font-bold text-emerald-600">
-                      {access.highest_plan}/6
+                      {access.highest_plan}/{accessModuleCap}
                     </span>
                   </div>
-                  <div className="w-full h-2 bg-emerald-100 rounded-full mb-3">
+                  <div className="w-full h-2 bg-emerald-100 rounded-full mb-3 overflow-hidden">
                     <div
                       className="h-2 bg-emerald-500 rounded-full transition-all duration-500"
-                      style={{ width: `${(access.highest_plan / 6) * 100}%` }}
+                      style={{ width: `${accessProgressPct}%` }}
                     />
                   </div>
                   <button
