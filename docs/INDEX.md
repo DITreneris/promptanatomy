@@ -35,7 +35,7 @@
 | Ekosistemos valdymas (hub-and-spoke) | [docs/ecosystem-governance.md](ecosystem-governance.md) | Domenų rolės, SEO/GEO/AI nekonkuravimo taisyklės, KPI minimumas. |
 | Ekosistemos kanonas (9 domenų) | [docs/ecosystem-canon.md](ecosystem-canon.md) | Pipeline, LP 6 kortelės, sync taisyklės su geo-manifest ir i18n. |
 | Kainodaros planas | [docs/pricing-plan.md](pricing-plan.md) | Kainodara, geriausios praktikos, palyginimas. |
-| Faze 1 apimtis (2 produktai, moduliai 7+ lock) | [docs/phase-1-scope.md](phase-1-scope.md) | Kas parduodama Faze 1; tik planai 1–2; moduliai 7–15 užrakinti. |
+| Faze 1 apimtis (2 produktai, LP pricing) | [docs/phase-1-scope.md](phase-1-scope.md) | Kas parduodama Faze 1 checkout'e; **ne** training tier limit (prod M1–9 – žr. CHANGELOG 1.4.1). |
 | Kalbos gairės (LT/EN) | [docs/language-guidelines-en-lt.md](language-guidelines-en-lt.md) | Prekės ženklas, terminai, tonas, vertimai. |
 | Public assets (frontend) | [frontend/public/README.md](../frontend/public/README.md) | Og-image ir statiniai failai (sitemap, robots). |
 | Logo / favicon gairės | [docs/design/logo-favicon.md](design/logo-favicon.md) | Šaltinis, spalvos, dydžiai, Kiss–Marry–Kill taisyklės; generavimo scriptas. |
@@ -81,6 +81,7 @@
 | Dokumentacijos įvadas | [docs/README.md](README.md) | Trumpas įvadas į docs; visi dokumentai – šis INDEX. |
 | Development workflow | [docs/process/development.md](process/development.md) | Užduotis → agentas → kodas → QA → doc. |
 | Definition of Done (DoD) | [docs/process/dod_system.md](process/dod_system.md) | Vieninga „baigta“ sistema: užduotis → PR merge-ready → deploy; agentai, CI, checklist. |
+| Skill evolution | [docs/process/skill-evolution.md](process/skill-evolution.md) | Pamokų kaupimas; lessons.md formatas; agentų higiena. |
 | Ką dokumentuoti ir kada | [docs/process/documentation.md](process/documentation.md) | Kur atnaujinti README, TODO, docs; i18n raktai. |
 | ADR katalogas | [docs/decisions/](decisions/) | Architektūriniai sprendimai. Šablonas žemiau. |
 | ADR šablonas | [docs/templates/adr-template.md](templates/adr-template.md) | Architecture Decision Record. |
@@ -90,17 +91,21 @@
 
 ## 7. Cursor (agentai ir taisyklės)
 
-Agentai ir `.cursor/rules/` remiasi **šiuo indeksu** (docs/INDEX.md) – dokumentų keliai ir paskirtys. Atnaujinant docs, palaikykite INDEX atitiktį.
+**`.cursor/` (agents, rules, skills, lessons) – lokaliai, ne commitinama** (root `.gitignore`, kaip submodulyje `inzinerija`). Repo kanonas: **AGENTS.md** + docs žemiau. Keliai – Cursor workspace setup.
+
+Agentai ir `.cursor/rules/` remiasi **docs/INDEX.md** – dokumentų keliai ir paskirtys.
 
 | Dokumentas | Kelias | Paskirtis |
 |------------|--------|-----------|
-| Agentų orkestratorius | [AGENTS.md](../AGENTS.md) | Kuris agentas kada; lean ir tokenai; nuorodos į agentus; INDEX ir golden-legacy. |
-| Frontend agentas | [.cursor/agents/frontend-agent.md](../.cursor/agents/frontend-agent.md) | React, Vite, Tailwind, api.js. |
-| Backend agentas | [.cursor/agents/backend-agent.md](../.cursor/agents/backend-agent.md) | FastAPI, Stripe, limits. |
-| Fullstack agentas | [.cursor/agents/fullstack-agent.md](../.cursor/agents/fullstack-agent.md) | Koordinacija frontend + backend. |
-| Q&A agentas | [.cursor/agents/q-and-a-agent.md](../.cursor/agents/q-and-a-agent.md) | Klausimai apie projektą, dokumentaciją. |
-| QA agentas | [.cursor/agents/quality-assurance-agent.md](../.cursor/agents/quality-assurance-agent.md) | Code review, saugumas, doc. |
-| Taisyklės (rules) | [.cursor/rules/](../.cursor/rules/) | project-global.mdc, frontend.mdc, backend.mdc. |
+| Agentų orkestratorius | [AGENTS.md](../AGENTS.md) | Kuris agentas kada; skills; lean ir tokenai; INDEX ir golden-legacy. |
+| Skills indeksas | [.cursor/skills/README.md](../.cursor/skills/README.md) | Workflow + lessons; orchestrator routing. |
+| Skill evolution | [docs/process/skill-evolution.md](process/skill-evolution.md) | Kur rašyti pamokas; lessons.md formatas; higiena. |
+| Frontend agentas | [.cursor/agents/frontend-agent.md](../.cursor/agents/frontend-agent.md) | React, Vite, Tailwind, api.js, accessDisplay. |
+| Backend agentas | [.cursor/agents/backend-agent.md](../.cursor/agents/backend-agent.md) | FastAPI, Vercel `api/`, Stripe, tier 9. |
+| Fullstack agentas | [.cursor/agents/fullstack-agent.md](../.cursor/agents/fullstack-agent.md) | LP + api + submodule deploy E2E. |
+| Q&A agentas | [.cursor/agents/q-and-a-agent.md](../.cursor/agents/q-and-a-agent.md) | Klausimai; INDEX-first; access/deploy SOT. |
+| QA agentas | [.cursor/agents/quality-assurance-agent.md](../.cursor/agents/quality-assurance-agent.md) | Code review, DoD B, regresija, build:production. |
+| Taisyklės (rules) | [.cursor/rules/](../.cursor/rules/) | project-global.mdc, frontend.mdc, backend.mdc, api.mdc. |
 
 ---
 

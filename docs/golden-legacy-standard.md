@@ -93,6 +93,7 @@
 **UX smoke (po P0-P3 fix'ų):**
 - Email be prieigos (`highest_plan === 0`) → amber blokas „Prieiga nerasta" + CTA „Gauti prieigą →" (scroll į pricing).
 - Email su prieiga (`highest_plan > 0`) → žalias blokas su progress bar + „Eiti į mokymus →" (magic link per `getTrainingAccessLink`; **navigacija tame pačiame lange** – `window.location.href`, kad veiktų iOS/Safari). Desktop Navbar ir Footer su `hasAccess` rodo **Mokymai** kaip magic-link veiksmą, ne statinę `/anatomy/` nuorodą.
+- **Tier 9 (plan 9):** rodoma **9/9** (ne 9/6); progress bar **≤100%**; konteineris `overflow-hidden`. Implementacija: [`accessDisplay.js`](../frontend/src/utils/accessDisplay.js) (`moduleDisplayCap`, `accessProgressPercent`). Magic link: `access_tier=9` kai `highest_plan=9`.
 - „Eiti į mokymus" / „Mokymai" veiksmai rodo loading/disabled state (`trainingLinkLoading`).
 - `/cancel` puslapis – „Bandyti dar kartą" nuoroda scroll'ina į `#pricing` (ne SPA navigate + hash).
 - `/success` be `session_id` – informacinis pranešimas „Jei ką tik sumokėjai – palauk".
