@@ -1,8 +1,10 @@
 {
   "name": "promptanatomy",
   "private": true,
-  "description": "Root package for Vercel serverless API (api/*). Frontend build via vercel.json.",
+  "description": "Root package for Vercel serverless API (api/*). Frontend build via scripts/vercel-build.sh.",
   "scripts": {
+    "install:vercel": "bash scripts/vercel-install.sh",
+    "build:vercel": "bash scripts/vercel-build.sh",
     "diagnose:dep0169": "npx -y node@24 --trace-deprecation -e \"require('./api/access.js'); console.log('access handler loaded');\"",
     "audit:frontend": "cd frontend && npm audit",
     "audit:backend": "cd backend && pip-audit",

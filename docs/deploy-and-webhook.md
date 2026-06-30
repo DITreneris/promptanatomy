@@ -43,7 +43,7 @@ Prieš deploy į produkciją patikrinkite:
 2. **`VITE_MVP_MODE=1` Production env:** pašalinkite – kitaip training build gali eiti į M1–6 profilį arba konfliktuoti su `VITE_MAX_BUILD_MODULE=9`.
 3. **Submoduliai:** *Settings → Git* – įjunkite **Include Git Submodules**. Build log turi rodyti `apps/prompt-anatomy` commit `ed408f2` (v1.4.0).
 4. **Husky:** submodulio `npm ci` Vercel'e naudoja `HUSKY=0` (žr. `vercel.json` `installCommand`).
-5. **Logai:** Deployments → failed build → Build Logs – ieškokite `validate:schema`, `husky`, `submodule`, `ENOMEM` / timeout.
+5. **Logai:** Deployments → failed build → Build Logs – ieškokite `validate:schema`, `husky`, `submodule`, `ENOMEM` / timeout. Build/install logika – [`scripts/vercel-build.sh`](../scripts/vercel-build.sh), [`scripts/vercel-install.sh`](../scripts/vercel-install.sh) (Vercel `buildCommand` ≤256 simb.).
 
 ---
 
