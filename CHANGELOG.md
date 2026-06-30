@@ -10,6 +10,13 @@ Visi pakeitimai šiame faile dokumentuojami pagal [Keep a Changelog](https://kee
 ### Pakeista
 - **Docs sync:** [`golden-legacy-standard.md`](docs/golden-legacy-standard.md) §3 – 9/9 UX smoke; [`phase-1-scope.md`](docs/phase-1-scope.md) §0 disclaimer (LP pricing vs training tier 9); [`dod_system.md`](docs/process/dod_system.md) – Vercel `api/`, skills, `build:production`.
 
+## [1.4.2] - 2026-06-30
+
+**Santrauka:** Submodulis `inzinerija` atnaujintas į commit `a95b2fa` (package `1.4.1`) – M1–9 audit vartai, LT/EN pataisymai, diagramų i18n, PDF atmintinės ir ekosistemos UTM touchpoint'ai. Parent API / LP kontraktas nekeistas: tier 9 magic link ir 9/9 prieigos UI lieka iš 1.4.1.
+
+### Pakeista
+- **Submodulis inzinerija package 1.4.1:** `apps/prompt-anatomy` `ed408f2` → `a95b2fa` (po upstream `v1.4.1` tag'o; pin'as fiksuojamas commit'u). Pakeitimai mokymų app pusėje: M7–9 EN UI ir duomenų sync, M1–9 audit gate (`audit:m49`), M1 / M5 / M6 / M7–9 PDF atmintinių bendras maketas, `HandoutDownloadButton`, `BrandMark` DS v0.3.1, `buildEcosystemUrl()` UTM nuorodos. Regresija: `pytest`, `frontend npm run build`, `apps/prompt-anatomy npm run build:production`; papildomai tikrinti submodulio `npm test` ir `npm run audit:m49`.
+
 ## [1.4.1] - 2026-06-30
 
 **Santrauka:** Tier 9 production deploy – submodulis `inzinerija` v1.4.0 (`ed408f2`), M1–9 build, magic link `access_tier=9`, LP prieigos UI 9/9. Merge PR #69 → `main`; prod smoke OK (`www.promptanatomy.app`). Regresija: `pytest`, `npm run build`, `build:production` (submodule).
