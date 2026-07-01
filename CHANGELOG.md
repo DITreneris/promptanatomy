@@ -4,18 +4,30 @@ Visi pakeitimai šiame faile dokumentuojami pagal [Keep a Changelog](https://kee
 
 ## [Unreleased]
 
-### Pridėta
-- **Agents / skills / lessons (2026-06-30):** Pilnas `.cursor/skills/` framework (orchestrator + 5 agentai, SKILL.md + lessons.md); rule `api.mdc`; [`docs/process/skill-evolution.md`](docs/process/skill-evolution.md). [`AGENTS.md`](AGENTS.md) atnaujintas tier 9 / Vercel / submodule. **`.cursor/` gitignore** – agents/rules/skills lokaliai (ne repo), kaip `apps/prompt-anatomy`.
+## [1.4.3] - 2026-07-01
+
+**Santrauka:** Submodulis `inzinerija` atnaujintas į commit `123e42f` (package `1.4.2`) – M1–9 DiagramKit, dizaino tokenai, M7–9 EN editorial sweep ir startup stabilumas. Parent API / LP kontraktas nekeistas: tier 9 magic link ir 9/9 prieigos UI lieka iš ankstesnio parent release.
 
 ### Pakeista
-- **Docs sync:** [`golden-legacy-standard.md`](docs/golden-legacy-standard.md) §3 – 9/9 UX smoke; [`phase-1-scope.md`](docs/phase-1-scope.md) §0 disclaimer (LP pricing vs training tier 9); [`dod_system.md`](docs/process/dod_system.md) – Vercel `api/`, skills, `build:production`.
+- **Submodulis inzinerija package 1.4.2:** `apps/prompt-anatomy` `a95b2fa` → `123e42f` (upstream `v1.4.2` tag'o nėra; pin'as fiksuojamas commit'u). Pakeitimai mokymų app pusėje: M1–9 interaktyvios diagramos per DiagramKit / registry, `design-tokens.ts` a11y / sticky / focus sluoksnis, M7–9 EN redakcija, `themeInit` / startup no-flicker testai. Regresija: `pytest` 24, `frontend npm run build`, `apps/prompt-anatomy npm run build:production`; submodulyje `npm run test:run` 367, `npm run audit:m49` OK.
+
+### Deploy
+- **Po merge:** Vercel build log turi rodyti `apps/prompt-anatomy` commit `123e42f`; smoke: `/`, `/lt`, `/anatomy/`, gate be tokeno, tier 6 / tier 9 magic link, DiagramKit browser spot-check M1 / M4 / M6 / M7–9.
 
 ## [1.4.2] - 2026-06-30
 
-**Santrauka:** Submodulis `inzinerija` atnaujintas į commit `a95b2fa` (package `1.4.1`) – M1–9 audit vartai, LT/EN pataisymai, diagramų i18n, PDF atmintinės ir ekosistemos UTM touchpoint'ai. Parent API / LP kontraktas nekeistas: tier 9 magic link ir 9/9 prieigos UI lieka iš 1.4.1.
+**Santrauka:** Submodulis `inzinerija` atnaujintas į commit `a95b2fa` (package `1.4.1`) – M1–9 audit vartai, LT/EN pataisymai, diagramų i18n, PDF atmintinės ir ekosistemos UTM touchpoint'ai. Parent API / LP kontraktas nekeistas: tier 9 magic link ir 9/9 prieigos UI lieka iš 1.4.1. Merge PR #70 (docs/skills) ir PR #71 (submodule pin); prod deploy OK.
+
+### Pridėta
+- **Agents / skills / lessons (2026-06-30):** Pilnas `.cursor/skills/` framework (orchestrator + 5 agentai, SKILL.md + lessons.md); rule `api.mdc`; [`docs/process/skill-evolution.md`](docs/process/skill-evolution.md). [`AGENTS.md`](AGENTS.md) atnaujintas tier 9 / Vercel / submodule. **`.cursor/` gitignore** – agents/rules/skills lokaliai (ne repo), kaip `apps/prompt-anatomy`.
+- **Local API dev helper:** [`scripts/local-api-server.mjs`](scripts/local-api-server.mjs) – Vercel-style `GET` handleriai lokaliai (`/api/access`, `/api/generate-access-link`, `/api/verify-access`); naudoja `backend/.env`.
 
 ### Pakeista
-- **Submodulis inzinerija package 1.4.1:** `apps/prompt-anatomy` `ed408f2` → `a95b2fa` (po upstream `v1.4.1` tag'o; pin'as fiksuojamas commit'u). Pakeitimai mokymų app pusėje: M7–9 EN UI ir duomenų sync, M1–9 audit gate (`audit:m49`), M1 / M5 / M6 / M7–9 PDF atmintinių bendras maketas, `HandoutDownloadButton`, `BrandMark` DS v0.3.1, `buildEcosystemUrl()` UTM nuorodos. Regresija: `pytest`, `frontend npm run build`, `apps/prompt-anatomy npm run build:production`; papildomai tikrinti submodulio `npm test` ir `npm run audit:m49`.
+- **Submodulis inzinerija package 1.4.1:** `apps/prompt-anatomy` `ed408f2` → `a95b2fa` (po upstream `v1.4.1` tag'o; pin'as fiksuojamas commit'u). Pakeitimai mokymų app pusėje: M7–9 EN UI ir duomenų sync, M1–9 audit gate (`audit:m49`), M1 / M5 / M6 / M7–9 PDF atmintinių bendras maketas, `HandoutDownloadButton`, `BrandMark` DS v0.3.1, `buildEcosystemUrl()` UTM nuorodos. Regresija: `pytest` 24, `frontend npm run build`, `apps/prompt-anatomy npm run build:production`; submodulyje `npm run test:run` 323, `npm run audit:m49` OK.
+- **Docs sync:** [`golden-legacy-standard.md`](docs/golden-legacy-standard.md) §3 – 9/9 UX smoke; submodule pin `a95b2fa`; [`phase-1-scope.md`](docs/phase-1-scope.md) §0 disclaimer (LP pricing vs training tier 9); [`dod_system.md`](docs/process/dod_system.md) – Vercel `api/`, skills, `build:production`; [`deploy-and-webhook.md`](docs/deploy-and-webhook.md) – submodule commit/package nuorodos.
+
+### Deploy
+- **Prod:** PR [#70](https://github.com/DITreneris/promptanatomy/pull/70) (docs/skills) ir PR [#71](https://github.com/DITreneris/promptanatomy/pull/71) (submodule `a95b2fa`) merge → `main` (`3948f40`); Vercel Production Ready; Golden Legacy žalias. Smoke: `/`, `/lt`, `/anatomy/` → 200; `GET /api/access` (be prieigos) → `highest_plan: 0`. *Rankinis follow-up:* tier 9 magic link + M1–9 / PDF handout / UTM spinoff nuorodos su tikru tier 9 el. paštu.
 
 ## [1.4.1] - 2026-06-30
 

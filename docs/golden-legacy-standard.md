@@ -112,7 +112,7 @@
 - **API:** `api.js` – `getAccess`, `createCheckoutSession`, `getSuccessRedirectUrl` (grąžina `{ redirect_url, customer_email? }`), `getTrainingAccessLink`; backend atsakymų formatai (JSON su `url`, `highest_plan`, `can_upgrade_to`, `redirect_url` ir t. t.).
 - **Env:** Backend – Pydantic Settings, `STRIPE_*`, `SUPABASE_*`, `FRONTEND_ORIGIN`. Frontend – `VITE_API_URL` (optional), `VITE_X_PIXEL_ID` (optional, X conversion tracking; jei tuščias – XPixel neįkelia skripto). Nepašalinti naudojamų kintamųjų.
 - **Backend failo pavadinimas:** `token_limits.py` (ne `limits.py`). `limits` vardas shadina PyPI paketą – neleistina.
-- **Training app submodule:** `apps/prompt-anatomy` → `DITreneris/inzinerija` (dabartinis pin: `a95b2fa`, package `1.4.1`). Magic link tier validacija: parent [`api/verify-access.js`](../api/verify-access.js) `VALID_TIERS [3, 6, 9]`; submodulyje – `constants/pricing.ts`.
+- **Training app submodule:** `apps/prompt-anatomy` → `DITreneris/inzinerija` (dabartinis pin: `123e42f`, package `1.4.2`). Magic link tier validacija: parent [`api/verify-access.js`](../api/verify-access.js) `VALID_TIERS [3, 6, 9]`; submodulyje – `constants/pricing.ts`.
 - **LT kalba:** visur vartotojui matomas tekstas – „Tu" forma (ne „Jūs"). Terminas „DI" (ne „AI").
 - **api.js error handling:** `detail` iš backend visada konvertuojamas į string (`typeof raw === 'string' ? raw : JSON.stringify(raw)`).
 - **Hero animacija:** `Hero.jsx` naudoja `phase` state (0→4) su `useEffect` + `setInterval` typing logika. CSS keyframes `fadeInUp` ir `blink-caret` yra `index.css`. Animacija gerbia `prefers-reduced-motion` (JS `matchMedia` check + CSS override). **Nekeisti timing sekos be vizualinio testavimo.** 0 išorinių priklausomybių.
