@@ -10,10 +10,10 @@
 
 | Vieta | Reikšmė | Paskirtis |
 |-------|---------|-----------|
-| **frontend/src/config.js** | `APP_VERSION = 'v1.3'` | Vienas šaltinis: Hero terminalo etiketė (`SCRIPT_NAME`), Ecosystem „Stable“ ir kiti komponentai, kur rodoma versija. **Navbar** versijos ženkliuko nerodo (Variant B). Keičiant čia – atsinaujina visur, kur naudojama. |
-| **frontend/package.json** | `"version": "1.4.0"` | NPM package versija (build, artefaktai). Siūloma sulyginti su release. |
-| **CHANGELOG.md** | `## [1.4.0] - 2026-06-06` (naujausias release) | Release istorija; po release nauji pakeitimai rašomi po `[Unreleased]`. |
-| **Git tag** | `v1.4.0` (planuojamas) | Fiksuoja commit, atkuriama būsena. Ankstesnis: `v1.3.1`. |
+| **frontend/src/config.js** | `APP_VERSION = 'v1.4'` | Vienas šaltinis: Hero terminalo etiketė (`SCRIPT_NAME`), Ecosystem „Stable“ ir kiti komponentai, kur rodoma versija. **Navbar** versijos ženkliuko nerodo (Variant B). Keičiant čia – atsinaujina visur, kur naudojama. |
+| **frontend/package.json** | `"version": "1.4.4"` | NPM package versija (build, artefaktai). Siūloma sulyginti su release. |
+| **CHANGELOG.md** | `## [1.4.4] - 2026-07-09` (naujausias release) | Release istorija; po release nauji pakeitimai rašomi po `[Unreleased]`. |
+| **Git tag** | `v1.4.4` (planuojamas) | Fiksuoja commit, atkuriama būsena. Ankstesnis: `v1.4.3`. |
 
 **Pastaba:** Rodomoji versija UI gali būti trumpesnė (`v1.3`) arba pilna (`1.3.0`). Abu variantai priimtini; `v1.3` – kompaktiškesnis badge.
 
@@ -25,7 +25,7 @@
 - **MINOR** (1.x.0): naujos funkcijos atgal suderinamos.
 - **PATCH** (1.3.x): klaidų taisymai, saugumą nekeičiantys pakeitimai.
 
-Naujausias release **1.4.0** (2026-06-06) – **MINOR**: LP ekosistema, dizaino polish, copy/FAQ, SEO/GEO, perf, bugfix'ai (žr. CHANGELOG). Ankstesnis **1.3.1** (2026-03-24) – patch. Bazė **1.3.0** – stabilus produktas su Stripe, magic link, mokymų app.
+Naujausias release **1.4.4** (2026-07-09) – **MINOR**: submodulis inzinerija v1.4.4 (M4 handout, completionArtifacts, DS W7–W10). Ankstesnis **1.4.3** (2026-07-01) – submodule 1.4.2. Bazė **1.3.0** – stabilus produktas su Stripe, magic link, mokymų app.
 
 ---
 
