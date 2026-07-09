@@ -13,7 +13,7 @@ Visi pakeitimai šiame faile dokumentuojami pagal [Keep a Changelog](https://kee
 - **Docs sync:** [`golden-legacy-standard.md`](docs/golden-legacy-standard.md) §4 – pin `86b5600`; [`deploy-and-webhook.md`](docs/deploy-and-webhook.md) – submodule 1.4.4; [`versioning-and-release.md`](docs/versioning-and-release.md) – parent `1.4.4`.
 
 ### Deploy
-- **Po merge:** Vercel build log turi rodyti `apps/prompt-anatomy` commit `86b5600`; smoke: `/`, `/lt`, `/anatomy/` → 200; gate be tokeno; tier 6 / tier 9 magic link; M4 handout ir „Mano medžiaga“ spot-check su tikru prieigos el. paštu.
+- **Prod:** PR [#73](https://github.com/DITreneris/promptanatomy/pull/73) merge → `main` (`15bc530`); Vercel Production Ready; Golden Legacy žalias. Smoke: `/`, `/lt`, `/en`, `/anatomy/` → 200; `GET /api/access` (be prieigos) → `highest_plan: 0`. *Rankinis follow-up:* tier 6 / tier 9 magic link; M4 handout ir „Mano medžiaga“ spot-check su tikru prieigos el. paštu.
 
 ## [1.4.3] - 2026-07-01
 

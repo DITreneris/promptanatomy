@@ -45,6 +45,21 @@ Prieš deploy į produkciją patikrinkite:
 4. **Husky:** submodulio `npm ci` Vercel'e naudoja `HUSKY=0` (žr. `vercel.json` `installCommand`).
 5. **Logai:** Deployments → failed build → Build Logs – ieškokite `validate:schema`, `husky`, `submodule`, `ENOMEM` / timeout. Build/install logika – [`scripts/vercel-build.sh`](../scripts/vercel-build.sh), [`scripts/vercel-install.sh`](../scripts/vercel-install.sh) (Vercel `buildCommand` ≤256 simb.).
 
+### 2.2 Production env audit (po release 1.4.4)
+
+Rankinė patikra Vercel Dashboard (*Settings → Environment Variables → Production*):
+
+| Kintamasis | Reikalavimas |
+|------------|--------------|
+| `VITE_MVP_MODE` | **neturi būti** |
+| `VITE_MAX_ACCESSIBLE_MODULE` | **neturi būti** |
+| `TRAINING_REDIRECT_BASE` | `https://www.promptanatomy.app/anatomy` (be galinio `/`) |
+| `ACCESS_TOKEN_SECRET` | ≥32 simboliai |
+| Build Command / Install Command override | **tuščias** (naudoti repo `vercel.json`) |
+| Include Git Submodules | **įjungta** |
+
+Runbook: [`apps/prompt-anatomy/docs/deployment/MARKETING_SUBMODULE_PIN_1.4.4.md`](../apps/prompt-anatomy/docs/deployment/MARKETING_SUBMODULE_PIN_1.4.4.md) §3.
+
 ---
 
 ## 3. Troubleshooting: kodėl user_access tuščia
