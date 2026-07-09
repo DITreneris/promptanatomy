@@ -17,7 +17,7 @@ Visi pakeitimai šiame faile dokumentuojami pagal [Keep a Changelog](https://kee
 - **Docs sync:** [`golden-legacy-standard.md`](docs/golden-legacy-standard.md) §4 – pin `47448fc`; [`deploy-and-webhook.md`](docs/deploy-and-webhook.md) – submodule 1.4.5; [`versioning-and-release.md`](docs/versioning-and-release.md) – parent `1.4.5`.
 
 ### Deploy
-- *Užpildyti po merge:* PR #, merge SHA, Vercel Production Ready, smoke rezultatai.
+- **Prod:** PR [#76](https://github.com/DITreneris/promptanatomy/pull/76) merge → `main` (`d268d87`); Vercel Production Ready; Golden Legacy žalias. Smoke: `/`, `/lt`, `/en`, `/anatomy/` → 200; `GET /api/access?email=…` (be prieigos) → `highest_plan: 0`; `generate-access-link` be prieigos → 404. Vercel env audit pakartotas pagal [`deploy-and-webhook.md`](docs/deploy-and-webhook.md) §2.2. *Rankinis follow-up:* tier 6 / tier 9 magic link; M4 sk. 44/43/56 diagramos; M7 sk. 71.35; M5 sk. 47 `.txt` download; M4 handout ir „Mano medžiaga“.
 
 ## [1.4.4] - 2026-07-09
 
