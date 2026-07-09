@@ -4,6 +4,10 @@ Visi pakeitimai šiame faile dokumentuojami pagal [Keep a Changelog](https://kee
 
 ## [Unreleased]
 
+### Follow-up (po 1.4.4)
+- **MON-4 PostHog:** `VITE_POSTHOG_KEY` + snippet marketing layout; runbook [`apps/prompt-anatomy/docs/deployment/MON-4_POSTHOG_DEPLOY.md`](apps/prompt-anatomy/docs/deployment/MON-4_POSTHOG_DEPLOY.md). Eventai submodulyje jau instrumentuoti.
+- **Rankinis smoke:** tier 6 / tier 9 magic link; M4 handout ir „Mano medžiaga“ su tikru prieigos el. paštu.
+
 ## [1.4.4] - 2026-07-09
 
 **Santrauka:** Submodulis `inzinerija` atnaujintas į commit `86b5600` (package `1.4.4`) – M4 PDF atmintinė, „Mano medžiaga“, completionArtifacts registry, DS W7–W10 ir cross-repo deploy docs. Parent API / LP kontraktas nekeistas: tier 9 magic link ir 9/9 prieigos UI lieka iš ankstesnio parent release.
