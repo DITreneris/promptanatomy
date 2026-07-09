@@ -4,6 +4,17 @@ Visi pakeitimai šiame faile dokumentuojami pagal [Keep a Changelog](https://kee
 
 ## [Unreleased]
 
+## [1.4.4] - 2026-07-09
+
+**Santrauka:** Submodulis `inzinerija` atnaujintas į commit `86b5600` (package `1.4.4`) – M4 PDF atmintinė, „Mano medžiaga“, completionArtifacts registry, DS W7–W10 ir cross-repo deploy docs. Parent API / LP kontraktas nekeistas: tier 9 magic link ir 9/9 prieigos UI lieka iš ankstesnio parent release.
+
+### Pakeista
+- **Submodulis inzinerija package 1.4.4:** `apps/prompt-anatomy` `123e42f` → `86b5600` (po upstream tag `v1.4.4` @ `5e6449d`; pin'as fiksuojamas commit'u su deploy docs). Mokymų app: M4 PDF handout, `ModulesPage` „Mano medžiaga“, `completionArtifacts.json` registry, stabilūs sertifikato serial numeriai, DS Next Waves W7–W10 (`Banner`, `SlideWorkspace`, design-token gate 417). Regresija: `pytest` 24, `frontend npm run build`, `apps/prompt-anatomy npm run build:production`; submodulyje `npm run test:run` 465, `npm run audit:release-preflight` OK.
+- **Docs sync:** [`golden-legacy-standard.md`](docs/golden-legacy-standard.md) §4 – pin `86b5600`; [`deploy-and-webhook.md`](docs/deploy-and-webhook.md) – submodule 1.4.4; [`versioning-and-release.md`](docs/versioning-and-release.md) – parent `1.4.4`.
+
+### Deploy
+- **Po merge:** Vercel build log turi rodyti `apps/prompt-anatomy` commit `86b5600`; smoke: `/`, `/lt`, `/anatomy/` → 200; gate be tokeno; tier 6 / tier 9 magic link; M4 handout ir „Mano medžiaga“ spot-check su tikru prieigos el. paštu.
+
 ## [1.4.3] - 2026-07-01
 
 **Santrauka:** Submodulis `inzinerija` atnaujintas į commit `123e42f` (package `1.4.2`) – M1–9 DiagramKit, dizaino tokenai, M7–9 EN editorial sweep ir startup stabilumas. Parent API / LP kontraktas nekeistas: tier 9 magic link ir 9/9 prieigos UI lieka iš ankstesnio parent release.
@@ -12,7 +23,7 @@ Visi pakeitimai šiame faile dokumentuojami pagal [Keep a Changelog](https://kee
 - **Submodulis inzinerija package 1.4.2:** `apps/prompt-anatomy` `a95b2fa` → `123e42f` (upstream `v1.4.2` tag'o nėra; pin'as fiksuojamas commit'u). Pakeitimai mokymų app pusėje: M1–9 interaktyvios diagramos per DiagramKit / registry, `design-tokens.ts` a11y / sticky / focus sluoksnis, M7–9 EN redakcija, `themeInit` / startup no-flicker testai. Regresija: `pytest` 24, `frontend npm run build`, `apps/prompt-anatomy npm run build:production`; submodulyje `npm run test:run` 367, `npm run audit:m49` OK.
 
 ### Deploy
-- **Po merge:** Vercel build log turi rodyti `apps/prompt-anatomy` commit `123e42f`; smoke: `/`, `/lt`, `/anatomy/`, gate be tokeno, tier 6 / tier 9 magic link, DiagramKit browser spot-check M1 / M4 / M6 / M7–9.
+- **Prod:** PR [#72](https://github.com/DITreneris/promptanatomy/pull/72) merge → `main` (`4a3b8f6`); Vercel Production Ready; Golden Legacy žalias. Smoke: `/`, `/lt`, `/anatomy/` → 200; `GET /api/access` (be prieigos) → `highest_plan: 0`; `generate-access-link` be prieigos → 404. *Rankinis follow-up:* tier 6 / tier 9 magic link ir DiagramKit browser spot-check M1 / M4 / M6 / M7–9 su tikru prieigos el. paštu.
 
 ## [1.4.2] - 2026-06-30
 
