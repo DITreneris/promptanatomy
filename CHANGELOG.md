@@ -4,9 +4,20 @@ Visi pakeitimai šiame faile dokumentuojami pagal [Keep a Changelog](https://kee
 
 ## [Unreleased]
 
-### Follow-up (po 1.4.4)
+### Follow-up (po 1.4.5)
 - **MON-4 PostHog:** `VITE_POSTHOG_KEY` + snippet marketing layout; runbook [`apps/prompt-anatomy/docs/deployment/MON-4_POSTHOG_DEPLOY.md`](apps/prompt-anatomy/docs/deployment/MON-4_POSTHOG_DEPLOY.md). Eventai submodulyje jau instrumentuoti.
-- **Rankinis smoke:** tier 6 / tier 9 magic link; M4 handout ir „Mano medžiaga“ su tikru prieigos el. paštu.
+- **Rankinis smoke:** tier 6 / tier 9 magic link; M4 sk. 44/43/56 interaktyvios diagramos; M7 sk. 71.35 RAG cheat sheet; M5 sk. 47 `.txt` download; M4 handout ir „Mano medžiaga“ su tikru prieigos el. paštu.
+
+## [1.4.5] - 2026-07-09
+
+**Santrauka:** Submodulis `inzinerija` atnaujintas į commit `47448fc` (post-1.4.4 backlog). Parent API / LP kontraktas nekeistas: tier 9 magic link ir 9/9 prieigos UI lieka iš ankstesnio parent release.
+
+### Pakeista
+- **Submodulis inzinerija pin `47448fc`:** `apps/prompt-anatomy` `86b5600` → `47448fc` (upstream `package.json` gali būti `1.4.4`; parent pin fiksuojamas commit'u). Mokymų app: M4 diagramų registry fix (sk. 44, 43, 56 – interaktyvios diagramos, ne statinis SVG fallback); M7 RAG research-tools cheat sheet sk. 71.35; M4 sk. 61 redirect stub; M5 sk. 47 `.txt` download; mobile UX (`RadarChart`, `CharacterCard`); M1 sk. 8–11 microcopy; reflection blocks (`TestResultsReflectionBlock`); `ContentSlides` i18n/a11y; EN overlay sync M4–M15 gates. Regresija: `pytest` 24, `frontend npm run build`, `apps/prompt-anatomy npm run build:production`; submodulyje `npm run test:run` 476, `npm run audit:release-preflight` OK.
+- **Docs sync:** [`golden-legacy-standard.md`](docs/golden-legacy-standard.md) §4 – pin `47448fc`; [`deploy-and-webhook.md`](docs/deploy-and-webhook.md) – submodule 1.4.5; [`versioning-and-release.md`](docs/versioning-and-release.md) – parent `1.4.5`.
+
+### Deploy
+- *Užpildyti po merge:* PR #, merge SHA, Vercel Production Ready, smoke rezultatai.
 
 ## [1.4.4] - 2026-07-09
 
