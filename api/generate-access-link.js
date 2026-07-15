@@ -6,7 +6,7 @@
  * Optional: TRAINING_REDIRECT_BASE, ACCESS_TOKEN_EXPIRY_DAYS
  */
 const crypto = require('crypto');
-const { createClient } = require('@supabase/supabase-js');
+const { getSupabaseClient, getUserHighestPlan } = require('./lib/supabase-access');
 
 const ACCESS_TIER_VALUES = [3, 6, 9];
 
@@ -62,9 +62,8 @@ module.exports = async function handler(req, res) {
     return res.status(503).json({ detail: 'Access link generation not configured' });
   }
 
-  const supabaseUrl = process.env.SUPABASE_URL;
-  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!supabaseUrl || !supabaseKey) {
+  const supabase = getSupabaseClient();
+  if (!supabase) {
     return res.status(503).json({ detail: 'Access link generation not configured' });
   }
 
@@ -73,16 +72,9 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ detail: 'Valid email required' });
   }
 
-  const supabase = createClient(supabaseUrl, supabaseKey);
-
   let highestPlan = 0;
   try {
-    const { data: row } = await supabase
-      .from('user_access')
-      .select('highest_plan')
-      .eq('email', email)
-      .maybeSingle();
-    if (row?.highest_plan != null) highestPlan = row.highest_plan;
+    highestPlan = await getUserHighestPlan(supabase, email);
   } catch (e) {
     console.error('generate-access-link: Supabase query failed', e.message);
     return res.status(502).json({ detail: 'Database error' });

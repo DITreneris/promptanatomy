@@ -6,6 +6,7 @@
 |-----------|-----------|
 | `20260324120000_user_access_baseline.sql` | Lentelė `user_access` (idempotent CREATE) |
 | `20260603120000_user_access_hardening.sql` | RLS, REVOKE anon/authenticated, CHECK `highest_plan`, `updated_at` trigger |
+| `20260710120000_user_access_add_plan_9_check.sql` | CHECK įtraukia `9` (operator grant tier; prod tier-9 eilutės) |
 
 [docs/supabase-user-access.sql](supabase-user-access.sql) – santrauka ir rankinio paleidimo atsarginis variantas (tas pats DDL); laikykite sinchronizuotą su migracija.
 

@@ -38,6 +38,18 @@ Pavyzdys:
 - Pasenusias (nebegaliojančias) **šalinti**
 - Indeksas: [.cursor/skills/README.md](../.cursor/skills/README.md)
 
+### Pakeltos pamokos (2026-07-10, user_access)
+
+| Taisyklė | Kur įrašyta |
+|----------|-------------|
+| Tier 9 sekimas (sąrašas, snapshot) | [user-access-tier-registry.md](../user-access-tier-registry.md) |
+| Ne bulk `6→9` be explicit email sąrašo | `backend-agent/SKILL.md`, `orchestrator/SKILL.md` |
+| 99 € → `highest_plan=9`, webhook dar `6` | `backend-agent/lessons.md`, registry §1 |
+| Po rankinių tier pakeitimų: registry + CHANGELOG | [documentation.md](documentation.md) |
+| Tier 9 = operator whitelist, ne visi 99 € | [user-access-tier-registry.md](../user-access-tier-registry.md), `backend-agent/SKILL.md` |
+| CHECK turi įtraukti 9 prieš F1 hardening | `supabase-agent/SKILL.md`, migracija `20260710120000` |
+| Vercel Supabase SOT | `api/lib/supabase-access.js` |
+
 ---
 
 ## Skirtumas nuo submodulio

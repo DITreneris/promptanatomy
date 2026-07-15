@@ -13,11 +13,12 @@ create table if not exists user_access (
 );
 
 comment on column user_access.email is 'Lowercased email; backend always sends lower(email)';
-comment on column user_access.highest_plan is '3, 6, 12, or 15 (module cap); 0 = no purchase';
+comment on column user_access.highest_plan is 'Module cap: 3, 6, 9 (prod M1-9), 12, 15; 0 = no purchase. Operator registry: docs/user-access-tier-registry.md';
 comment on column user_access.stripe_customer_id is 'Stripe customer id from checkout.session.completed';
 
 -- Hardening (20260603120000_user_access_hardening.sql): RLS enabled, no policies;
--- REVOKE anon/authenticated. Bulk import: scripts/import_user_access.py
+-- REVOKE anon/authenticated. CHECK (20260710120000): highest_plan in (0,3,6,9,12,15).
+-- Bulk import: scripts/import_user_access.py
 
 -- Rankinis upsert (produkcija): VISADA naudokite lower(email). Kitu atveju api/access.js ir
 -- stripe-webhook.js ieško vickyva@gmail.com, o DB gali turėti Vickyva@gmail.com – eilutė

@@ -3,11 +3,11 @@
  * Returns { highest_plan, allowed_modules, can_upgrade_to } from Supabase user_access.
  * Requires env: SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY
  */
-const { createClient } = require('@supabase/supabase-js');
-
-const PLAN_VALUES = [3, 6, 12, 15];
-/** Phase 1: only offer upgrade to 3 or 6 (docs/phase-1-scope.md). */
-const PHASE1_PLAN_VALUES = [3, 6];
+const {
+  getSupabaseClient,
+  getUserHighestPlan,
+  buildAccessResponse,
+} = require('./lib/supabase-access');
 
 const ALLOWED_ORIGINS = [
   process.env.FRONTEND_ORIGIN?.replace(/\/$/, ''),
@@ -41,34 +41,18 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ detail: 'Valid email required' });
   }
 
-  const supabaseUrl = process.env.SUPABASE_URL;
-  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!supabaseUrl || !supabaseKey) {
+  const supabase = getSupabaseClient();
+  if (!supabase) {
     return res.status(503).json({ detail: 'Access check not configured' });
   }
 
-  const supabase = createClient(supabaseUrl, supabaseKey);
-  const normalizedEmail = email.toLowerCase();
-
   let highest_plan = 0;
   try {
-    const { data: row } = await supabase
-      .from('user_access')
-      .select('highest_plan')
-      .eq('email', normalizedEmail)
-      .maybeSingle();
-    if (row?.highest_plan != null) highest_plan = row.highest_plan;
+    highest_plan = await getUserHighestPlan(supabase, email);
   } catch (e) {
     console.error('get user_access failed:', e.message);
     return res.status(502).json({ detail: 'Database error' });
   }
 
-  const allowed_modules = highest_plan > 0 ? Array.from({ length: highest_plan }, (_, i) => i + 1) : [];
-  const can_upgrade_to = PHASE1_PLAN_VALUES.filter((p) => p > highest_plan);
-
-  return res.status(200).json({
-    highest_plan: highest_plan,
-    allowed_modules: allowed_modules,
-    can_upgrade_to: can_upgrade_to,
-  });
+  return res.status(200).json(buildAccessResponse(highest_plan));
 };

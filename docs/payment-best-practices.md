@@ -52,7 +52,7 @@ Vienas atskaitos dokumentas: kaip žymėti planus, env, Stripe/Supabase/Vercel k
 ### 3.1 Lentelė user_access
 
 - **email** – text, NOT NULL, UNIQUE. Visada saugoti **lowercase** (backend/Vercel normalizuoja).
-- **highest_plan** – integer, reikšmės **0, 3, 6, 12, 15**. 0 = dar nepirko.
+- **highest_plan** – integer, reikšmės **0, 3, 6, 9** (operator grant), **12, 15**. 0 = dar nepirko. Stripe plan 2 (99 €) webhook rašo **6**; tier **9** – tik operatoriaus upsert (žr. [user-access-tier-registry.md](user-access-tier-registry.md)).
 - **stripe_customer_id** – text, nullable; saugoti iš `session.customer` webhook’e.
 - **created_at / updated_at** – timestamptz; DB default arba upsert lauke nesiųsti, jei schema leidžia.
 
@@ -67,6 +67,11 @@ Schema: [docs/supabase-user-access.sql](supabase-user-access.sql).
 
 - `SUPABASE_URL` – projekto URL (https://xxx.supabase.co).
 - `SUPABASE_SERVICE_ROLE_KEY` – service role key (server-side tik; ne anon key).
+
+### 3.4 Vercel shared lib
+
+- **`api/lib/supabase-access.js`** – Vercel handlerių SOT: `PLAN_VALUES`, email normalizacija, get/upsert. Python stack: `backend/db.py` + `backend/core/config.py` – **PLAN_VALUES turi atitikti** JS lib.
+- Daugelio Supabase projektų registras: [supabase-project-registry.md](supabase-project-registry.md).
 
 ---
 
