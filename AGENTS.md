@@ -6,6 +6,7 @@ Prieš pradedant užduotį, nustatykite, kuris agentas tinkamiausias, ir deleguo
 |-----------------|---------|--------------|
 | **Frontend** – UI, React, Tailwind, komponentai, `api.js`, `accessDisplay.js` | `frontend-agent` | Keičiate tik `frontend/` dalį. |
 | **Backend** – FastAPI `backend/`, Vercel `api/`, Stripe, webhook, tier | `backend-agent` | Keičiate `backend/` arba `api/*.js`. |
+| **Supabase** – migracijos, RLS, CHECK, project registry | `supabase-agent` | SQL schema, multi-account; ne rankinis tier 9. |
 | **Pilnas kelias / integracija** | `fullstack-agent` | Frontend + `api/` + submodule; deploy, access tier, Vercel build. |
 | **Klausimai** – apie projektą, dokumentaciją, deploy, prieigą | `q-and-a-agent` | „Kaip veikia“, „kur yra X“, tier 9 / prod smoke. |
 | **Kokybe** – code review, saugumas, regresija | `quality-assurance-agent` | Po pakeitimų arba prieš PR/merge. |

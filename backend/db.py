@@ -1,6 +1,7 @@
 """
 Supabase access for user_access table. Used for upgrade MVP: highest_plan, upsert on webhook.
 All email lookups/inserts use lowercased email for consistency.
+Vercel SOT for plan constants: api/lib/supabase-access.js (keep PLAN_VALUES in sync).
 """
 import logging
 from typing import Any

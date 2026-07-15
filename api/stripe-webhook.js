@@ -5,20 +5,14 @@
  * Requires env: STRIPE_WEBHOOK_SECRET, STRIPE_SECRET_KEY, SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY
  */
 const Stripe = require('stripe');
-const { createClient } = require('@supabase/supabase-js');
-
-const PLAN_VALUES = [3, 6, 12, 15];
-/** plan_id "1"|"2"|"3"|"4" → plan_value 3|6|12|15 */
-const PLAN_ID_TO_VALUE = { '1': 3, '2': 6, '3': 12, '4': 15 };
-
-/** Accepts plan_value string "3"|"6"|"12"|"15" (from Session metadata) or plan_id "1"|"2"|"3"|"4". */
-function toPlanValue(planStr) {
-  const s = String(planStr).trim();
-  const num = parseInt(s, 10);
-  if (Number.isInteger(num) && PLAN_VALUES.includes(num)) return num;
-  if (PLAN_ID_TO_VALUE[s] != null) return PLAN_ID_TO_VALUE[s];
-  return null;
-}
+const {
+  getSupabaseClient,
+  isSupabaseConfigured,
+  getUserHighestPlan,
+  upsertUserAccess,
+  toPlanValue,
+  normalizeEmail,
+} = require('./lib/supabase-access');
 
 function getRawBody(req) {
   return new Promise((resolve, reject) => {
@@ -83,43 +77,39 @@ module.exports = async function handler(req, res) {
     return res.status(200).json({ received: true });
   }
 
-  const supabaseUrl = process.env.SUPABASE_URL;
-  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!supabaseUrl || !supabaseKey) {
+  if (!isSupabaseConfigured()) {
     console.error('Supabase not configured; SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY missing in Vercel env');
     return res.status(200).json({ received: true });
   }
 
-  const supabase = createClient(supabaseUrl, supabaseKey);
-  const normalizedEmail = email.trim().toLowerCase();
+  const supabase = getSupabaseClient();
+  const normalizedEmail = normalizeEmail(email);
 
   let current = 0;
   try {
-    const { data: row } = await supabase
-      .from('user_access')
-      .select('highest_plan')
-      .eq('email', normalizedEmail)
-      .maybeSingle();
-    if (row?.highest_plan != null) current = row.highest_plan;
+    current = await getUserHighestPlan(supabase, normalizedEmail);
   } catch (e) {
     console.error('get user_access failed:', e.message, e.code);
+    return res.status(500).json({ detail: 'Database error' });
   }
 
   const newHighest = Math.max(current, purchasedPlan);
-  const row = {
-    email: normalizedEmail,
-    highest_plan: newHighest,
-  };
-  if (session.customer) row.stripe_customer_id = session.customer;
+  const stripeCustomerId = session.customer || undefined;
 
   try {
-    const { error } = await supabase.from('user_access').upsert(row, { onConflict: 'email' });
+    const { error } = await upsertUserAccess(supabase, {
+      email: normalizedEmail,
+      highestPlan: newHighest,
+      stripeCustomerId,
+    });
     if (error) {
       console.error('user_access upsert error:', error.message, error.code, error.details);
+      return res.status(500).json({ detail: 'Database error' });
     }
   } catch (e) {
     console.error('user_access upsert exception:', e.message);
+    return res.status(500).json({ detail: 'Database error' });
   }
 
-  res.status(200).json({ received: true });
-}
+  return res.status(200).json({ received: true });
+};

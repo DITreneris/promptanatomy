@@ -6,10 +6,12 @@
  * Optional: SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY for access check (409 if already purchased).
  */
 const Stripe = require('stripe');
-const { createClient } = require('@supabase/supabase-js');
+const {
+  getSupabaseClient,
+  getUserHighestPlan,
+  planIdToValue,
+} = require('./lib/supabase-access');
 
-const PLAN_VALUES = [3, 6, 12, 15];
-const PLAN_ID_TO_VALUE = { '1': 3, '2': 6, '3': 12, '4': 15 };
 /** Phase 1: only plans 1 and 2 (docs/phase-1-scope.md). */
 const PHASE1_PLAN_IDS = ['1', '2'];
 
@@ -31,10 +33,6 @@ function setCorsHeaders(req, res) {
 function getPriceId(planId) {
   const key = `STRIPE_PRICE_ID_PLAN_${planId}`;
   return process.env[key] || null;
-}
-
-function planIdToValue(planId) {
-  return PLAN_ID_TO_VALUE[String(planId)] ?? null;
 }
 
 module.exports = async function handler(req, res) {
@@ -76,19 +74,12 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ detail: `Invalid plan_id ${planId}` });
   }
 
-  const supabaseUrl = process.env.SUPABASE_URL;
-  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
   const customerEmail = (body.customer_email || '').trim();
+  const supabase = getSupabaseClient();
 
-  if (supabaseUrl && supabaseKey && customerEmail && customerEmail.includes('@')) {
+  if (supabase && customerEmail && customerEmail.includes('@')) {
     try {
-      const supabase = createClient(supabaseUrl, supabaseKey);
-      const { data: row } = await supabase
-        .from('user_access')
-        .select('highest_plan')
-        .eq('email', customerEmail.toLowerCase())
-        .maybeSingle();
-      const current = row?.highest_plan ?? 0;
+      const current = await getUserHighestPlan(supabase, customerEmail);
       if (current >= planValue) {
         return res.status(409).json({ detail: 'Already purchased this plan or higher' });
       }

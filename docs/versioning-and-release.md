@@ -11,9 +11,9 @@
 | Vieta | Reikšmė | Paskirtis |
 |-------|---------|-----------|
 | **frontend/src/config.js** | `APP_VERSION = 'v1.4'` | Vienas šaltinis: Hero terminalo etiketė (`SCRIPT_NAME`), Ecosystem „Stable“ ir kiti komponentai, kur rodoma versija. **Navbar** versijos ženkliuko nerodo (Variant B). Keičiant čia – atsinaujina visur, kur naudojama. |
-| **frontend/package.json** | `"version": "1.4.5"` | NPM package versija (build, artefaktai). Siūloma sulyginti su release. |
-| **CHANGELOG.md** | `## [1.4.5] - 2026-07-09` (naujausias release) | Release istorija; po release nauji pakeitimai rašomi po `[Unreleased]`. |
-| **Git tag** | `v1.4.5` (planuojamas) | Fiksuoja commit, atkuriama būsena. Ankstesnis: `v1.4.4`. |
+| **frontend/package.json** | `"version": "1.4.6"` | NPM package versija (build, artefaktai). Siūloma sulyginti su release. |
+| **CHANGELOG.md** | `## [1.4.6] - 2026-07-15` (naujausias release) | Release istorija; po release nauji pakeitimai rašomi po `[Unreleased]`. |
+| **Git tag** | `v1.4.6` (planuojamas) | Fiksuoja commit, atkuriama būsena. Ankstesnis: `v1.4.5`. |
 
 **Pastaba:** Rodomoji versija UI gali būti trumpesnė (`v1.3`) arba pilna (`1.3.0`). Abu variantai priimtini; `v1.3` – kompaktiškesnis badge.
 
@@ -25,7 +25,7 @@
 - **MINOR** (1.x.0): naujos funkcijos atgal suderinamos.
 - **PATCH** (1.3.x): klaidų taisymai, saugumą nekeičiantys pakeitimai.
 
-Naujausias release **1.4.5** (2026-07-09) – **MINOR**: submodulis inzinerija pin `47448fc` (M4 diagram registry fix, RAG→M7, mobile UX, reflections). Ankstesnis **1.4.4** (2026-07-09) – submodule `86b5600`. Bazė **1.3.0** – stabilus produktas su Stripe, magic link, mokymų app.
+Naujausias release **1.4.6** (2026-07-15) – **MINOR**: submodulis pin `4eebf10` (M7–M9 P2, M4 portal 2.1) + Supabase CHECK `plan=9`, webhook retry. Ankstesnis **1.4.5** (2026-07-09) – pin `47448fc`. Bazė **1.3.0** – stabilus produktas su Stripe, magic link, mokymų app.
 
 ---
 

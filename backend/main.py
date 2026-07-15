@@ -260,10 +260,11 @@ def _get_email_from_session(session: dict) -> str | None:
     return None
 
 
-def handle_checkout_completed(session: dict) -> None:
+def handle_checkout_completed(session: dict) -> bool | None:
     """
     Process checkout.session.completed: upsert user_access in Supabase.
     Email from customer_details or client_reference_id; plan from metadata.plan.
+    Returns True on upsert success, False on upsert failure, None if skipped (no email/plan or Supabase off).
     """
     logger.info(
         "Checkout completed: session_id=%s customer_email=%s",
@@ -273,31 +274,32 @@ def handle_checkout_completed(session: dict) -> None:
     email = _get_email_from_session(session)
     if not email:
         logger.warning("Checkout completed but no email in session %s", session.get("id"))
-        return
+        return None
     metadata = session.get("metadata") or {}
     plan_str = metadata.get("plan")
     if not plan_str:
         logger.warning("Checkout completed but no metadata.plan in session %s", session.get("id"))
-        return
+        return None
     try:
         purchased_plan = int(plan_str)
     except (TypeError, ValueError):
         logger.warning("Invalid metadata.plan=%s in session %s", plan_str, session.get("id"))
-        return
+        return None
     if purchased_plan not in settings.PLAN_VALUES:
         logger.warning("Unknown plan value %s in session %s", purchased_plan, session.get("id"))
-        return
+        return None
     if not settings.is_supabase_configured():
         logger.info("Supabase not configured; skipping user_access upsert")
-        return
+        return None
     access = get_user_access(email)
     current = (access["highest_plan"] if access else 0) or 0
     new_highest = max(current, purchased_plan)
     stripe_customer_id = session.get("customer")
     if upsert_user_access(email, new_highest, stripe_customer_id):
         logger.info("user_access upserted: email=%s highest_plan=%s", email, new_highest)
-    else:
-        logger.warning("user_access upsert failed for email=%s", email)
+        return True
+    logger.error("user_access upsert failed for email=%s", email)
+    return False
 
 
 @app.post("/api/webhooks/stripe")
@@ -321,7 +323,9 @@ async def stripe_webhook(request: Request):
             if event.get("type") == "checkout.session.completed":
                 obj = event.get("data", {}).get("object")
                 if obj:
-                    handle_checkout_completed(obj)
+                    result = handle_checkout_completed(obj)
+                    if result is False:
+                        raise HTTPException(status_code=500, detail="Database error")
                 else:
                     logger.warning("Webhook dev: checkout.session.completed missing data.object")
             return {"received": True}
@@ -337,6 +341,8 @@ async def stripe_webhook(request: Request):
         raise HTTPException(status_code=400, detail="Invalid signature")
 
     if event["type"] == "checkout.session.completed":
-        handle_checkout_completed(event["data"]["object"])
+        result = handle_checkout_completed(event["data"]["object"])
+        if result is False:
+            raise HTTPException(status_code=500, detail="Database error")
 
     return {"received": True}

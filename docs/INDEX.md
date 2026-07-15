@@ -29,7 +29,10 @@
 | Mokėjimų praktikos | [docs/payment-best-practices.md](payment-best-practices.md) | Plan_id/plan_value, Stripe/Supabase/Vercel konvencijos, env, pitfalls. |
 | Memo integracija (saugumas, 2025–2026) | [docs/memo-integration-security-analysis.md](memo-integration-security-analysis.md) | Magic-link su Mokymų sistema: HMAC, timing-safe, secret, redirect; geriausios praktikos. |
 | Supabase user_access | [docs/supabase-user-access.sql](supabase-user-access.sql) | SQL lentelė: email, highest_plan, stripe_customer_id (santrauka). |
+| user_access tier registry | [docs/user-access-tier-registry.md](user-access-tier-registry.md) | **Sekti čia:** highest_plan reikšmės (3/6/9), tier 9 sąrašas, SQL, snapshot po rankinių pakeitimų. |
 | Supabase migracijos | [docs/supabase-migrations.md](supabase-migrations.md) | Kanonas: `supabase/migrations/`; kaip pritaikyti; Vercel/FastAPI nevykdo SQL. |
+| Supabase project registry | [docs/supabase-project-registry.md](supabase-project-registry.md) | Multi-account žemėlapis: env, migracijos, operator checklist. |
+| Supabase agent runbook | [docs/process/supabase-agent-runbook.md](process/supabase-agent-runbook.md) | Migracijos, RLS, webhook reliability; committed mirror of supabase-agent skill. |
 | Bulk import (Excel → user_access) | [docs/bulk-import-user-access.md](bulk-import-user-access.md) | Akademijos dalyvių įkėlimas: `scripts/import_user_access.py`. |
 | Supabase patobulinimų planas | [docs/supabase-hardening-plan.md](supabase-hardening-plan.md) | Detalus F0–F7 planas (RLS, webhook, rate limit); dalis įgyvendinta minimaliai. |
 | SEO (KISS–Marry–Kill) | [docs/SEO-KISS-Marry-Kill.md](SEO-KISS-Marry-Kill.md) | Sitemap, robots, og:image, llms-full, GEO manifest, būsena. |

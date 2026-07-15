@@ -4,9 +4,25 @@ Visi pakeitimai šiame faile dokumentuojami pagal [Keep a Changelog](https://kee
 
 ## [Unreleased]
 
-### Follow-up (po 1.4.5)
+### Follow-up (po 1.4.6)
 - **MON-4 PostHog:** `VITE_POSTHOG_KEY` + snippet marketing layout; runbook [`apps/prompt-anatomy/docs/deployment/MON-4_POSTHOG_DEPLOY.md`](apps/prompt-anatomy/docs/deployment/MON-4_POSTHOG_DEPLOY.md). Eventai submodulyje jau instrumentuoti.
-- **Rankinis smoke:** tier 6 / tier 9 magic link; M4 sk. 44/43/56 interaktyvios diagramos; M7 sk. 71.35 RAG cheat sheet; M5 sk. 47 `.txt` download; M4 handout ir „Mano medžiaga“ su tikru prieigos el. paštu.
+- **Rankinis smoke:** tier 6 / tier 9 magic link; M4 sk. 53.5 portal dark mode; M4 sk. 61 įrankiai; M7 sk. 76/89/93/94; M7 sk. 71.35; M5 sk. 47 `.txt` download; M4 handout ir „Mano medžiaga“ su tikru prieigos el. paštu.
+
+## [1.4.6] - 2026-07-15
+
+**Santrauka:** Combined release – submodulis `inzinerija` `47448fc` → `4eebf10` (upstream v1.4.5: M7–M9 P2, M4 portal 2.1); parent Supabase CHECK `highest_plan=9`, shared `api/lib/supabase-access.js`, webhook DB klaida → 500. Tier 9 magic link ir 9/9 LP UI nekeisti.
+
+### Prideta
+- **Supabase hardening:** migracija [supabase/migrations/20260710120000_user_access_add_plan_9_check.sql](supabase/migrations/20260710120000_user_access_add_plan_9_check.sql) – CHECK įtraukia `highest_plan=9` (operator grant). Shared Vercel lib [api/lib/supabase-access.js](api/lib/supabase-access.js); handleriai refaktorinti be JSON kontrakto pakeitimo. [docs/supabase-project-registry.md](docs/supabase-project-registry.md), [docs/user-access-tier-registry.md](docs/user-access-tier-registry.md), [docs/process/supabase-agent-runbook.md](docs/process/supabase-agent-runbook.md).
+
+### Pakeista
+- **Submodulis inzinerija pin `4eebf10`:** `apps/prompt-anatomy` `47448fc` → `4eebf10` (upstream tag `v1.4.5` @ `5eb487d`; pin HEAD su CI fix). Mokymų app: M7–M9 P2 polish (collapsible, `toolChoiceBar`, M9 workflow, Patikra de-boilerplate); M4 Portal 2.1 sk. 53.5 (dark mode SVG); M4 sk. 61 įrankių atmintinė grąžinta; design tokens + flaky quiz test fix; `generate:core-data` sync. Regresija: submodulyje `npm run test:run` 482, `npm run audit:release-preflight` OK.
+- **Webhook patikimumas:** [api/stripe-webhook.js](api/stripe-webhook.js) + [backend/main.py](backend/main.py) – Supabase read/upsert klaida → 500 (Stripe retry); plan 2 → `6` nekeista.
+- **Tier 9 semantika doc:** [docs/user-access-tier-registry.md](docs/user-access-tier-registry.md) – 99 € default = tier **6**; tier **9** tik operatoriaus grant.
+- **Docs sync:** [`golden-legacy-standard.md`](docs/golden-legacy-standard.md) §4 – pin `4eebf10`; [`deploy-and-webhook.md`](docs/deploy-and-webhook.md) – submodule 1.4.6; [`versioning-and-release.md`](docs/versioning-and-release.md) – parent `1.4.6`.
+
+### Deploy
+- *Užpildyti po merge:* PR #, merge SHA, Vercel Production Ready, smoke rezultatai. *Prieš deploy:* Supabase migracija `20260710120000` pritaikyta prod ([supabase-project-registry.md](docs/supabase-project-registry.md) §4).
 
 ## [1.4.5] - 2026-07-09
 
