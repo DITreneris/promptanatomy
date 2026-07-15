@@ -22,7 +22,7 @@ Visi pakeitimai šiame faile dokumentuojami pagal [Keep a Changelog](https://kee
 - **Docs sync:** [`golden-legacy-standard.md`](docs/golden-legacy-standard.md) §4 – pin `4eebf10`; [`deploy-and-webhook.md`](docs/deploy-and-webhook.md) – submodule 1.4.6; [`versioning-and-release.md`](docs/versioning-and-release.md) – parent `1.4.6`.
 
 ### Deploy
-- *Užpildyti po merge:* PR #, merge SHA, Vercel Production Ready, smoke rezultatai. *Prieš deploy:* Supabase migracija `20260710120000` pritaikyta prod ([supabase-project-registry.md](docs/supabase-project-registry.md) §4).
+- **Prod:** PR [#78](https://github.com/DITreneris/promptanatomy/pull/78) merge → `main` (`f51cd07`); Vercel Production Ready; Golden Legacy žalias. Smoke: `/`, `/lt`, `/en`, `/anatomy/` → 200; `GET /api/access?email=…` (be prieigos) → `highest_plan: 0`; `generate-access-link` be prieigos → 404. Vercel env audit pakartotas pagal [`deploy-and-webhook.md`](docs/deploy-and-webhook.md) §2.2. *Prieš deploy:* Supabase migracija `20260710120000` – operatorius. *Rankinis follow-up:* tier 6 / tier 9 magic link; M4 sk. 53.5 portal; M4 sk. 61; M7 sk. 76/89/93/94.
 
 ## [1.4.5] - 2026-07-09
 
