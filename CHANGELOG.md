@@ -4,6 +4,16 @@ Visi pakeitimai šiame faile dokumentuojami pagal [Keep a Changelog](https://kee
 
 ## [Unreleased]
 
+### Pakeista
+- **Submodulis inzinerija pin `1eaa2be`:** `apps/prompt-anatomy` `4eebf10` → `1eaa2be` (upstream tag `v1.4.6` @ `4598402` + Unreleased post-1.4.6). Mokymų app: M7 Lygis C journey, M79-31 6 keliai, ModulesPage/LMS polish, M4–M9 diagramos, M8 remediation CTA; M10–15 authoring (ne prod `VITE_MAX_BUILD_MODULE=9` bundle). Access tier / verify-access kontraktas nekeistas. Regresija: submodule `test:run` 103/686, `build:production` OK; `frontend` build OK; `pytest` 24. Docs: [`golden-legacy-standard.md`](docs/golden-legacy-standard.md) §4, [`deploy-and-webhook.md`](docs/deploy-and-webhook.md), [`versioning-and-release.md`](docs/versioning-and-release.md).
+
+### Operacijos (Supabase user_access, 2026-07-21)
+- **cgates 3→6:** visi **58** `@cgates.lt` su `highest_plan=3` pakelti į **6** (moduliai 1–6). Visi 63 cgates dabar plan 6. Snapshot: 3→**2**, 6→**86**, 9→5. Docs: [user-access-tier-registry.md](docs/user-access-tier-registry.md), [supabase-project-registry.md](docs/supabase-project-registry.md).
+- **+`milda.kadziule@cgates.lt`:** naujas grant `highest_plan=6` (moduliai 1–6). Snapshot: 6→**87**.
+
+### Operacijos (Supabase user_access, 2026-07-20)
+- **+14 cgates rankinis grant `highest_plan=3`** (moduliai 1–3): `tadas.mikalauskas`, `laura.laseviciute`, `ausra.cesnuleviciene`, `darius.martinonis`, `ignas.kaziela`, `gediminas.karcmarinas`, `laurynas.bacys`, `remigijus.zilinskas`, `vaida.mekaite`, `darja.karalukiene`, `vilma.kazociune`, `laura.andriuskeviciene`, `evelina.navickaite`, `atene.jasaite` (@cgates.lt). (Vėliau 2026-07-21 visi cgates 3→6.)
+
 ### Follow-up (po 1.4.6)
 - **MON-4 PostHog:** `VITE_POSTHOG_KEY` + snippet marketing layout; runbook [`apps/prompt-anatomy/docs/deployment/MON-4_POSTHOG_DEPLOY.md`](apps/prompt-anatomy/docs/deployment/MON-4_POSTHOG_DEPLOY.md). Eventai submodulyje jau instrumentuoti.
 - **Rankinis smoke:** tier 6 / tier 9 magic link; M4 sk. 53.5 portal dark mode; M4 sk. 61 įrankiai; M7 sk. 76/89/93/94; M7 sk. 71.35; M5 sk. 47 `.txt` download; M4 handout ir „Mano medžiaga“ su tikru prieigos el. paštu.

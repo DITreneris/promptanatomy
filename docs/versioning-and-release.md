@@ -25,7 +25,7 @@
 - **MINOR** (1.x.0): naujos funkcijos atgal suderinamos.
 - **PATCH** (1.3.x): klaidų taisymai, saugumą nekeičiantys pakeitimai.
 
-Naujausias release **1.4.6** (2026-07-15) – **MINOR**: submodulis pin `4eebf10` (M7–M9 P2, M4 portal 2.1) + Supabase CHECK `plan=9`, webhook retry. Ankstesnis **1.4.5** (2026-07-09) – pin `47448fc`. Bazė **1.3.0** – stabilus produktas su Stripe, magic link, mokymų app.
+Naujausias release **1.4.6** (2026-07-15) – **MINOR**: parent Supabase CHECK `plan=9`, webhook retry; pradinis pin buvo `4eebf10` (upstream 1.4.5+CI). **Follow-up pin** `1eaa2be` – tikras upstream `v1.4.6` (`4598402`) + Unreleased LMS polish. Ankstesnis **1.4.5** (2026-07-09) – pin `47448fc`. Bazė **1.3.0** – stabilus produktas su Stripe, magic link, mokymų app.
 
 ---
 
