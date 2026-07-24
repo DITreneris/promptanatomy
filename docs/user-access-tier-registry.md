@@ -47,13 +47,15 @@
 
 **Neįtraukti į tier 9** (liko `6`): akademijos / cgates bulk, `vytautas.zlatkus@gmail.com` (Stripe, bet ne 99 € sąraše operatoriaus).
 
-### Snapshot (2026-07-10)
+### Snapshot (2026-07-21)
 
 | `highest_plan` | Vartotojų sk. |
 |----------------|---------------|
-| 3 | 46 |
-| 6 | 28 |
+| 3 | 2 |
+| 6 | 87 |
 | 9 | 5 |
+
+*2026-07-21:* visi **58** `@cgates.lt` su `highest_plan=3` pakelti į **6**; +`milda.kadziule@cgates.lt` → 6 (naujas). cgates plan 6: 64. Ankstesni: 2026-07-20 → 60/28/5; 2026-07-10 → 46/28/5.*
 
 ---
 
