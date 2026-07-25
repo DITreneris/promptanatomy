@@ -5,6 +5,7 @@ Visi pakeitimai šiame faile dokumentuojami pagal [Keep a Changelog](https://kee
 ## [Unreleased]
 
 ### Pakeista
+- **Submodulis inzinerija pin `7ff2a4f`:** `apps/prompt-anatomy` `1eaa2be` → `7ff2a4f` (upstream tag `v1.4.7`). Mokymų app: TE registry, Path Test Shell, practice closer, M4 prompt-mode lab, M5 Apply+Gate, diagramų / preflight polish; M10–15 authoring (ne prod `VITE_MAX_BUILD_MODULE=9` bundle). Access tier / verify-access kontraktas nekeistas. Regresija: submodule `test:run` 111/720, `build:production` OK; `frontend` build OK; `pytest` 24. Docs: [`golden-legacy-standard.md`](docs/golden-legacy-standard.md) §4, [`deploy-and-webhook.md`](docs/deploy-and-webhook.md), [`versioning-and-release.md`](docs/versioning-and-release.md).
 - **Submodulis inzinerija pin `1eaa2be`:** `apps/prompt-anatomy` `4eebf10` → `1eaa2be` (upstream tag `v1.4.6` @ `4598402` + Unreleased post-1.4.6). Mokymų app: M7 Lygis C journey, M79-31 6 keliai, ModulesPage/LMS polish, M4–M9 diagramos, M8 remediation CTA; M10–15 authoring (ne prod `VITE_MAX_BUILD_MODULE=9` bundle). Access tier / verify-access kontraktas nekeistas. Regresija: submodule `test:run` 103/686, `build:production` OK; `frontend` build OK; `pytest` 24. Docs: [`golden-legacy-standard.md`](docs/golden-legacy-standard.md) §4, [`deploy-and-webhook.md`](docs/deploy-and-webhook.md), [`versioning-and-release.md`](docs/versioning-and-release.md).
 
 ### Operacijos (Supabase user_access, 2026-07-21)
