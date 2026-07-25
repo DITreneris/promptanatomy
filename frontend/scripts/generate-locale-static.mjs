@@ -69,7 +69,7 @@ const ltHtml = patchHomeShell(shell, {
 const enHtml = patchHomeShell(shell, {
   lang: 'en',
   canonicalUrl: `${SITE_URL}/`,
-  ogUrl: `${SITE_URL}/en`,
+  ogUrl: `${SITE_URL}/`,
   ogLocale: 'en_US',
 })
 

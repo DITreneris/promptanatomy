@@ -135,9 +135,10 @@ Po sėkmingo merge į `main` ir Vercel auto-deploy:
 
 | Agentas | Lygis A atsakomybė | Kada kviesti kitą |
 |---------|-------------------|-------------------|
-| [frontend-agent](../../.cursor/agents/frontend-agent.md) | UI, i18n, `api.js` kvietimai iš komponentų | Backend endpoint reikalingas → backend / fullstack |
-| [backend-agent](../../.cursor/agents/backend-agent.md) | API, Stripe, webhook, `token_limits.py` | UI reikalingas → frontend / fullstack |
-| [fullstack-agent](../../.cursor/agents/fullstack-agent.md) | Kontraktas + E2E | Scope tik viename sluoksnyje → specialistas |
+| [frontend-agent](../../.cursor/agents/frontend-agent.md) | UI, i18n, `api.js` kvietimai iš komponentų, hub SEO/GEO | Backend endpoint reikalingas → backend / fullstack |
+| [backend-agent](../../.cursor/agents/backend-agent.md) | API, Stripe, webhook, `token_limits.py`, tier ops | UI reikalingas → frontend / fullstack; schema/RLS → supabase |
+| [supabase-agent](../../.cursor/agents/supabase-agent.md) | Migracijos, RLS, CHECK, project registry | Rankinis tier whitelist → backend-agent |
+| [fullstack-agent](../../.cursor/agents/fullstack-agent.md) | Kontraktas + E2E + GEO deploy smoke | Scope tik viename sluoksnyje → specialistas |
 | [quality-assurance-agent](../../.cursor/agents/quality-assurance-agent.md) | — | **Lygis B** – review prieš merge |
 | [q-and-a-agent](../../.cursor/agents/q-and-a-agent.md) | — | Klausimai apie procesą / doc (ne implementacija) |
 

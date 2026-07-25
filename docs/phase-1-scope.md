@@ -24,11 +24,12 @@ Pirmajame etape siūlome **tik du planus**:
 
 ---
 
-## 2. Užrakinti moduliai (7–15)
+## 2. LP vs training (moduliai 7+)
 
-- **Moduliai 7–15** laikomi neužbaigtais / būsimais – LP ir UI rodo **maks. 6 modulius**.
-- Vietose, kur buvo „12 modulių“ arba „15 modulių“, naudoti **6 moduliai** arba tekstą „Moduliai 7+ – netrukus“.
-- Frontend: planų kortelėse rodomi tik 2 planai; extended/full – nepasirinktini (užrakinti arba paslėpti).
+- **LP pricing / checkout:** rodo **maks. 6** modulius (2 planai); planai 3/4 (12/15) – užrakinti / Phase 2.
+- **Training produkcijoje:** M1–**9** (`VITE_MAX_BUILD_MODULE=9`); prieiga prie M7–9 per tier **9** (operator grant), ne per Stripe Phase 1 checkout.
+- **M10–15:** authoring / ne prod bundle; LP tekste vengti „12/15 modulių“ kaip parduodamos apimties.
+- Frontend: planų kortelėse tik 2 planai; `pricing.modulesLocked` – 7+ ne Phase 1 checkout.
 
 ---
 
@@ -46,7 +47,9 @@ Pirmajame etape siūlome **tik du planus**:
 
 ## 4. Vėlesnės fazes
 
-Kai bus įvesti papildomi moduliai (7–15), bus atnaujinta: planai 3 ir 4, `PLAN_VALUES`, frontend planų sąrašas ir tekste „6“ pakeista atitinkamai.
+**Iki 2027-01-01 (roadmap C2):** viešai lieka Starter/Core (max 6); M7–9 – operator upgrade / cohort / B2B (`highest_plan=9`), ne naujas Stripe „Pro“ checkout. Žr. [roadmap.md](../roadmap.md) Horizon C.
+
+Kai (po decision gate) Stripe parduos daugiau nei Core (6): planai 3/4 (12/15), `PLAN_VALUES`, frontend planų sąrašas — arba optional C1 (Stripe → tier 9) po ADR. Training M7–9 jau egzistuoja per tier 9; M10–15 – atskiras content/release darbas.
 
 ---
 

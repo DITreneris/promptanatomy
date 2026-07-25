@@ -6,6 +6,19 @@
 
 **Susiję dokumentai:** [supabase-migrations.md](supabase-migrations.md), [payment-best-practices.md](payment-best-practices.md), [security-audit-deep.md](security-audit-deep.md) §4.6, [access-architecture-canon.md](access-architecture-canon.md), [golden-legacy-standard.md](golden-legacy-standard.md).
 
+### Status 2026-07-25
+
+| Fazė | Būsena | Įrodymas |
+|------|--------|----------|
+| **F2** Webhook/checkout → 500 on Supabase fail | **Done** | CHANGELOG 1.4.6 |
+| **F4** Shared `api/lib/supabase-access.js` | **Done** | CHANGELOG 1.4.6 |
+| **F1 CHECK+9** | **Done (dalinis)** | migracija `20260710120000_user_access_add_plan_9_check.sql` |
+| **F1** RLS + REVOKE + `updated_at` trigger | **Open** / patvirtinti prod | migracija `20260603120000_user_access_hardening.sql` |
+| **F3** Vercel rate limit | **Done (in-memory)** | `api/lib/rate-limit.js` + access / generate-access-link / create-checkout-session; [security.md](security.md) |
+| **F0**, **F5–F7** | **Open** | žr. fazių skyrius; atviras backlog [TODO.md](../TODO.md) |
+
+Atviras darbas po 1.4.6: F0 (jei nepatvirtinta), F1 RLS likutis, F5–F7. **Naujas F1 darbas = RLS/REVOKE/trigger, ne CHECK rewrite** (CHECK jau su `9`). F3 shipped in-memory; Upstash = optional upgrade.
+
 ---
 
 ## 1. Dabartinė būsena (baseline)
@@ -16,7 +29,7 @@
 |--------|----------------|
 | Architektūra | Backend-only: frontend **nenaudoja** Supabase; tik Vercel `api/*` ir FastAPI `backend/db.py` |
 | Raktai | `SUPABASE_SERVICE_ROLE_KEY` tik serverio env; ne `VITE_*` |
-| Duomenų modelis | Viena lentelė `user_access`: email (unique), highest_plan (0/3/6/12/15), stripe_customer_id |
+| Duomenų modelis | Viena lentelė `user_access`: email (unique), highest_plan (**0, 3, 6, 9, 12, 15**), stripe_customer_id |
 | Verslo logika | Upsert `max(current, purchased)`; email `lower(trim())` visuose keliuose |
 | Migracijos | `supabase/migrations/20260324120000_user_access_baseline.sql` (idempotent CREATE) |
 | Testai | `backend/tests/test_api.py` – access 503, checkout 409 (mock Supabase) |
@@ -27,12 +40,12 @@
 |----|--------|--------|---------------------|
 | G1 | `user_access` be RLS; galimi default `GRANT` anon/authenticated | Duomenų nutekėjimas per publishable/anon raktą | Ne (jei tik RLS + REVOKE) |
 | G2 | Data API įjungtas, nors klientas jo nenaudoja | Papildomas attack surface | Ne (Dashboard nustatymas) |
-| G3 | Vercel API be rate limit (`access`, `generate-access-link`) | Email enumeracija, PII abuse | Ne |
-| G4 | Webhook grąžina 200 kai Supabase upsert failina | Prarasta prieiga be Stripe retry | Ne (geresnis elgesys) |
-| G5 | Checkout tęsiasi kai Supabase check failina (Vercel) | Double purchase / neteisingas 409 | Ne |
+| G3 | Vercel API be rate limit (`access`, `generate-access-link`) | Email enumeracija, PII abuse | **Mitigated** (F3 in-memory; Upstash optional) |
+| G4 | ~~Webhook grąžina 200 kai Supabase upsert failina~~ | **Mitiguota F2 (1.4.6)** – klaida → 500 / Stripe retry | — |
+| G5 | Checkout tęsiasi kai Supabase check failina (Vercel) | Double purchase / neteisingas 409 | Ne (dalinai F2) |
 | G6 | `updated_at` neatsinaujina upsert metu | Operacinis triukšmas | Ne |
-| G7 | Nėra CHECK ant `highest_plan` | Neteisingos reikšmės DB | Ne (jei duomenys validūs) |
-| G8 | Supabase logika dubliuota 5 failuose | Drift tarp Vercel ↔ FastAPI | Ne |
+| G7 | ~~Nėra CHECK ant `highest_plan`~~ | **Mitiguota** – CHECK `(0,3,6,9,12,15)` per `20260710…` | — |
+| G8 | ~~Supabase logika dubliuota 5 failuose~~ | **Mitiguota F4** – `api/lib/supabase-access.js` | — |
 | G9 | Email query string (`GET ?email=`) | Logai, history, enumeracija | Taip (jei keičiam į POST) |
 | G10 | Nėra Supabase CLI / CI migracijų | Rankinės klaidos prod | Ne |
 
@@ -64,7 +77,7 @@ flowchart TD
   P6 --> P7[F7: Idempotency ir monitoring]
 ```
 
-**Rekomenduojama deploy seka:** F0 → F1 (staging → prod) → F2 → F3 → likusios pagal poreikį.
+**Rekomenduojama seka (2026-07-25):** F0 (jei reikia) → F1 RLS likutis (staging → prod) → F5–F7. **F2, F3 (in-memory), F4 jau shipped.**
 
 ---
 
@@ -86,14 +99,16 @@ flowchart TD
 ### 3.2 Priėmimo kriterijai
 
 - [ ] Schema atitinka migraciją
-- [ ] Nėra invalid `highest_plan` (ne 0,3,6,12,15)
-- [ ] Smoke testai praeina prieš F1
+- [ ] Nėra invalid `highest_plan` (ne **0, 3, 6, 9, 12, 15**)
+- [ ] Smoke testai praeina prieš F1 RLS likutį
 
 ---
 
 ## 4. F1 – DB hardening migracija (1 d., MUST)
 
 **Tikslas:** Defense-in-depth pagal Supabase 2026 gaires; **service_role veikia kaip dabar** (RLS bypass).
+
+**Pastaba (2026-07-25):** Prod CHECK jau apima **`9`** per `20260710120000_user_access_add_plan_9_check.sql`. Žemiau esantis pavyzdys (originalus F1 draft su `(0,3,6,12,15)`) — **neperrašyti CHECK atgal be 9**. Likęs F1 darbas: RLS + REVOKE + `updated_at` trigger (`20260603120000_user_access_hardening.sql`), tada jei reikia – CHECK palikti kaip po `20260710…`.
 
 ### 4.1 Naujas migracijos failas
 
@@ -103,6 +118,7 @@ flowchart TD
 
 ```sql
 -- F1: RLS + revoke public API roles + constraints + updated_at trigger
+-- NOTE: After 20260710120000, CHECK must be (0, 3, 6, 9, 12, 15) — do not drop 9.
 
 -- 1) RLS (no policies = deny anon/authenticated via Data API)
 alter table if exists public.user_access enable row level security;
@@ -110,12 +126,12 @@ alter table if exists public.user_access enable row level security;
 -- 2) Explicit revoke (existing projects may have default grants)
 revoke all on table public.user_access from anon, authenticated;
 
--- 3) Valid highest_plan values only
+-- 3) Valid highest_plan values only (include 9 = operator grant)
 alter table public.user_access
   drop constraint if exists user_access_highest_plan_check;
 alter table public.user_access
   add constraint user_access_highest_plan_check
-  check (highest_plan in (0, 3, 6, 12, 15));
+  check (highest_plan in (0, 3, 6, 9, 12, 15));
 
 -- 4) updated_at on UPDATE
 create or replace function public.set_updated_at()
@@ -179,9 +195,9 @@ drop trigger if exists user_access_updated_at on public.user_access;
 
 ---
 
-## 5. F2 – Webhook ir checkout patikimumas (0.5–1 d., SHOULD)
+## 5. F2 – Webhook ir checkout patikimumas (0.5–1 d., SHOULD) — **SHIPPED 1.4.6**
 
-**Tikslas:** Stripe retry kai DB failina; nuoseklus elgesys Vercel ↔ FastAPI.
+**Tikslas:** Stripe retry kai DB failina; nuoseklus elgesys Vercel ↔ FastAPI. **Įgyvendinta** CHANGELOG 1.4.6 (`api/stripe-webhook.js`, `backend/main.py`).
 
 ### 5.1 `api/stripe-webhook.js`
 
@@ -236,53 +252,37 @@ Patikrinti `backend/main.py` `handle_checkout_completed` – ar loguoja pakankam
 
 ---
 
-## 6. F3 – Vercel rate limiting (0.5 d., SHOULD)
+## 6. F3 – Vercel rate limiting — **SHIPPED (in-memory, 2026-07-25)**
 
 **Tikslas:** Suvienodinti su FastAPI SlowAPI; sumažinti email enumeraciją.
 
+**Įgyvendinta:** variantas **C** – [api/lib/rate-limit.js](../api/lib/rate-limit.js) sliding window per instance; hook’ai `access.js` (30/min), `generate-access-link.js` (20/min), `create-checkout-session.js` (30/min). Over → `429` + `Retry-After`; fail-open. Docs: [security.md](security.md).
+
+**Optional upgrade:** `@upstash/ratelimit` arba Vercel Firewall, kai reikia shared counter per visas instancijas.
+
 ### 6.1 Apimtis
 
-| Endpoint | Limitas (siūlymas) | Pagrindimas |
-|----------|-------------------|-------------|
-| `GET /api/access` | 30/min IP | Atitinka abuse riziką; FastAPI 60/min – galima 30 Vercel |
+| Endpoint | Limitas | Pagrindimas |
+|----------|---------|-------------|
+| `GET /api/access` | 30/min IP | Atitinka abuse riziką; FastAPI 60/min – Vercel 30 |
 | `GET /api/generate-access-link` | 20/min IP | Jautresnis (generuoja magic link) |
 | `POST /api/create-checkout-session` | 30/min IP | FastAPI jau 30/min |
 
-### 6.2 Implementacijos variantai
-
-| Variantas | Privalumai | Trūkumai |
-|-----------|------------|----------|
-| **A. Vercel Firewall / WAF rate limit** | Be kodo; Dashboard | Reikia Pro/plano, konfigūracija atskirai |
-| **B. `@upstash/ratelimit` + Redis** | Standartinė serverless praktika | Nauja priklausomybė, Upstash env |
-| **C. In-memory Map per instance** | Paprasta, be deps | Silpna serverless (kelios instancijos) |
-| **D. Vercel KV sliding window** | Native Vercel | KV setup |
-
-**Rekomendacija:** pradėti **A** jei turite Firewall; kitaip **B** (Upstash) kaip industry standard serverless rate limit.
-
-### 6.3 Shared helper
-
-**Naujas failas (F3 arba F4):** `api/lib/rate-limit.js`
-
-```javascript
-// Pseudocode – implementacija pagal pasirinktą variantą
-async function rateLimit(req, res, { key, limit, windowSec }) { ... }
-```
-
 ### 6.4 Priėmimo kriterijai
 
-- [ ] >limit užklausos → `429` su `Retry-After`
-- [ ] Normalus LP naudojimas neblokuojamas
-- [ ] Dokumentuota [security.md](security.md)
+- [x] >limit užklausos → `429` su `Retry-After`
+- [x] Normalus LP naudojimas neblokuojamas
+- [x] Dokumentuota [security.md](security.md)
 
 ### 6.6 Agentas
 
-**backend-agent** arba **fullstack-agent** (jei reikia env Upstash)
+**backend-agent** (Upstash upgrade → **fullstack-agent** jei env)
 
 ---
 
-## 7. F4 – Shared Supabase helper (1 d., SHOULD)
+## 7. F4 – Shared Supabase helper (1 d., SHOULD) — **SHIPPED 1.4.6**
 
-**Tikslas:** Viena tiesa PLAN_VALUES, email normalizacija, get/upsert – mažiau drift.
+**Tikslas:** Viena tiesa PLAN_VALUES, email normalizacija, get/upsert – mažiau drift. **Įgyvendinta:** `api/lib/supabase-access.js` (CHANGELOG 1.4.6). Žemiau – istorinis spec.
 
 ### 7.1 Naujas modulis
 
@@ -291,7 +291,7 @@ async function rateLimit(req, res, { key, limit, windowSec }) { ... }
 **Eksportuojamos funkcijos:**
 
 ```javascript
-const PLAN_VALUES = [3, 6, 12, 15];
+const PLAN_VALUES = [3, 6, 9, 12, 15]; // 9 = operator grant; Stripe Phase 1 = 3, 6
 const PHASE1_PLAN_VALUES = [3, 6];
 const PLAN_ID_TO_VALUE = { '1': 3, '2': 6, '3': 12, '4': 15 };
 
@@ -452,17 +452,17 @@ cd frontend && npm run build
 
 ## 13. Moscow santrauka (implementacijai)
 
-| Prioritetas | Fazė | Effort | Vertė |
-|-------------|------|--------|-------|
-| **MUST** | F1 DB hardening | 1 d. | Apsauga nuo anon key nutekėjimo |
-| **SHOULD** | F2 Webhook/checkout reliability | 0.5–1 d. | Mažiau prarastų pirkimų |
-| **SHOULD** | F3 Rate limit Vercel | 0.5 d. | Abuse / enumeracija |
-| **SHOULD** | F4 Shared lib | 1 d. | Maintainability |
-| **COULD** | F5 CLI/CI | 1 d. | Operacinis saugumas |
-| **COULD** | F6 POST access | 1–2 d. | PII / OWASP |
-| **COULD** | F7 Idempotency + alerts | 1–2 d. | Stripe duplicates, ops |
+| Prioritetas | Fazė | Effort | Vertė | Būsena 2026-07-25 |
+|-------------|------|--------|-------|-------------------|
+| **MUST** | F1 DB hardening (RLS likutis) | 1 d. | Apsauga nuo anon key nutekėjimo | Open (CHECK+9 done) |
+| **SHOULD** | F2 Webhook/checkout reliability | 0.5–1 d. | Mažiau prarastų pirkimų | **Shipped 1.4.6** |
+| **SHOULD** | F3 Rate limit Vercel | 0.5 d. | Abuse / enumeracija | **Shipped** (in-memory; Upstash optional) |
+| **SHOULD** | F4 Shared lib | 1 d. | Maintainability | **Shipped 1.4.6** |
+| **COULD** | F5 CLI/CI | 1 d. | Operacinis saugumas | Open |
+| **COULD** | F6 POST access | 1–2 d. | PII / OWASP | Open |
+| **COULD** | F7 Idempotency + alerts | 1–2 d. | Stripe duplicates, ops | Open |
 
-**Minimalus saugus paketas (1–2 d.):** F0 + F1 + F2.
+**Minimalus saugus paketas (istorinis):** F0 + F1 + F2 — F2 done; likę F0 + F1 RLS.
 
 ---
 
@@ -480,8 +480,8 @@ cd frontend && npm run build
 
 ## 15. Sekantis žingsnis
 
-1. Patvirtinti fazės prioritetą (rekomenduojama: **F1 → F2 → F3**).
-2. Agent režime: sukurti `20260603120000_user_access_hardening.sql` ir pritaikyti staging.
-3. Po F1 smoke – F2 pakeitimai `api/stripe-webhook.js` ir `create-checkout-session.js`.
+1. Patvirtinti F0 / F1 RLS prod būseną (migracija `20260603…`); CHECK+9, F2/F3/F4 jau live.
+2. F5–F7 pagal poreikį; F3 Upstash upgrade tik jei multi-instance abuse.
+3. Atviras backlog: [TODO.md](../TODO.md) § Supabase hardening.
 
 *Dokumentas: docs/supabase-hardening-plan.md. Nuoroda: [docs/INDEX.md](INDEX.md).*

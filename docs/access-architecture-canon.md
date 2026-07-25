@@ -18,7 +18,7 @@
 
 | Kas | Rolė |
 |-----|------|
-| **Supabase lentelė `user_access`** | **Kanoninė** ilgalaikė prieiga: `email` (visada `lower(trim(...))`), `highest_plan` (0, 3, 6, 12, 15), `stripe_customer_id`. |
+| **Supabase lentelė `user_access`** | **Kanoninė** ilgalaikė prieiga: `email` (visada `lower(trim(...))`), `highest_plan` (**0, 3, 6, 9, 12, 15**; **9** = operator grant), `stripe_customer_id`. |
 | **Stripe webhook** | **Vienintelis** kanalas, kuris **įrašo / atnaujina** `user_access` po sėkmingo apmokėjimo (`checkout.session.completed`). Žr. `api/stripe-webhook.js`, backend `handle_checkout_completed`. |
 | **Success puslapis** | **Ne** šaltinis tiesos – prieigą DB nekuria; tik UX. |
 
@@ -37,7 +37,7 @@
 
 - **`GET /api/success-redirect?session_id=`** tier’ą ima iš **Stripe Checkout `session.metadata.plan`** (ir tikrina `payment_status`), **neperklausdamas** `user_access` (`api/success-redirect.js`).
 - **Kodėl tai OK operaciškai:** po sėkmingo apmokėjimo webhook’as turėtų jau būti atnaujinęs DB; metadata ir DB sutampa normaliame sraute.
-- **Kanonas vis tiek:** ilgalaikė būsena ir LP logika = **`user_access`**. Jei webhook vėluoja ar nepavyksta, teorinis neatitikimas galimas – tai žinoma riba (žr. [TODO.md](../TODO.md) skyrių „Vėliau – prieigos architektūra“).
+- **Kanonas vis tiek:** ilgalaikė būsena ir LP logika = **`user_access`**. Jei webhook vėluoja ar nepavyksta, teorinis neatitikimas galimas – tai žinoma riba (žr. [TODO.md](../TODO.md) § Later – access architecture).
 
 ---
 

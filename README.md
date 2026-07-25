@@ -20,6 +20,8 @@ Bilingual (LT/EN) landing hub for AI prompt engineering training, Stripe checkou
 | [promptanatomy.blog](https://promptanatomy.blog/) | Deepen — knowledge hub |
 | [promptanatomy.lol](https://promptanatomy.lol/) | Play — structured sandbox |
 
+**Version:** parent **1.4.6** (`frontend/package.json`); training submodule pin — [CHANGELOG.md](CHANGELOG.md) `[Unreleased]` / [docs/golden-legacy-standard.md](docs/golden-legacy-standard.md) §4.
+
 ### Publications (founder)
 
 - [Beyond the Chatbox: Mastering the Prompt Anatomy AI Operating System](https://medium.com/@tomas.staniulis76/beyond-the-chatbox-mastering-the-prompt-anatomy-ai-operating-system-ad955724804e)
@@ -43,7 +45,8 @@ Marketinginis tinklalapis ir minimalus backend mokėjimams per Stripe. Tikslas: 
 ## Struktūra
 
 - **frontend/** – Vite + React, landing puslapis, pricing, CTA → Stripe Checkout, puslapiai `/success` ir `/cancel`.
-- **backend/** – FastAPI, entry point `backend/main.py`: `GET /health`, `GET /api/access` (prieiga pagal email), `POST /api/create-checkout-session`, `POST /api/webhooks/stripe`, `POST /api/validate-token-limit`. Konfigūracija per Pydantic Settings (`backend/core/config.py`). MVP upgrade: Supabase lentelė `user_access` (highest_plan), webhook įrašo prieigą, checkout blokuoja jei jau turi planą – schema: [supabase/migrations/](supabase/migrations/), santrauka: [docs/supabase-user-access.sql](docs/supabase-user-access.sql), procedūra: [docs/supabase-migrations.md](docs/supabase-migrations.md).
+- **api/** (Vercel) – **produkcijos API** tame pačiame domene: `create-checkout-session.js`, `access.js`, `stripe-webhook.js`, `generate-access-link.js`, `verify-access.js`, `success-redirect.js`, shared `lib/supabase-access.js`. Deploy: [docs/deploy-and-webhook.md](docs/deploy-and-webhook.md).
+- **backend/** – FastAPI lokaliai ir CI (`pytest`): `GET /health`, `GET /api/access`, `POST /api/create-checkout-session`, `POST /api/webhooks/stripe`, `POST /api/validate-token-limit`. Pydantic Settings (`backend/core/config.py`). Supabase `user_access` schema: [supabase/migrations/](supabase/migrations/), santrauka: [docs/supabase-user-access.sql](docs/supabase-user-access.sql).
 - **apps/prompt-anatomy/** – mokymų app (SPA) kaip git submodulis iš [DITreneris/inzinerija](https://github.com/DITreneris/inzinerija); pasiekiamas per `/anatomy/` tame pačiame domene (Vercel build į `frontend/dist/anatomy/`; senas `/anatomija/` → 301).
 
 ## Reikalavimai
@@ -99,13 +102,13 @@ Frontend: `http://localhost:5173`
 
 ### 3. Stripe
 
-- **Dashboard:** Sukurkite Product ir 4 vienkartinius Price (39, 99, 149, 199 EUR). Nukopijuokite Price ID į `backend/.env` kaip `STRIPE_PRICE_ID_PLAN_1`, `_2`, `_3`, `_4`.
-- **Webhook (lokaliai):** Naudokite Stripe CLI:
+- **Dashboard (Phase 1 – produkcija):** du vienkartiniai Price – **39 EUR** (Starter, plan 1 → `highest_plan` 3) ir **99 EUR** (Core, plan 2 → 6). Env: `STRIPE_PRICE_ID_PLAN_1`, `STRIPE_PRICE_ID_PLAN_2`. Apimtis: [docs/phase-1-scope.md](docs/phase-1-scope.md). Planai 3/4 (149/199 EUR, `PLAN_3`/`PLAN_4`) – Phase 2 / ne LP checkout (žr. CHANGELOG 1.4.1).
+- **Webhook (lokaliai):** Stripe CLI → FastAPI:
   ```bash
   stripe listen --forward-to localhost:8000/api/webhooks/stripe
   ```
   Pasiimkite webhook signing secret (`whsec_...`) ir įrašykite į `STRIPE_WEBHOOK_SECRET`.
-- **Produkcijoje (Vercel):** Stripe Dashboard → Webhooks → Add endpoint, URL `https://www.promptanatomy.app/api/stripe-webhook`, event `checkout.session.completed`. Vercel serverless funkcija: `api/stripe-webhook.js`. Būtina `STRIPE_WEBHOOK_SECRET` (Vercel env). **Atskiras FastAPI backend:** URL būtų `https://<backend-domain>/api/webhooks/stripe`. Lokaliai galima naudoti `ALLOW_WEBHOOK_WITHOUT_SECRET=1` (tik dev).
+- **Produkcijoje (Vercel):** Stripe Dashboard → Webhooks → Add endpoint, URL `https://www.promptanatomy.app/api/stripe-webhook`, event `checkout.session.completed`. Checkout: `api/create-checkout-session.js`. Būtina `STRIPE_WEBHOOK_SECRET` (Vercel env). Lokaliai galima `ALLOW_WEBHOOK_WITHOUT_SECRET=1` (tik dev).
 
 ## Aplinkos kintamieji
 
@@ -115,7 +118,7 @@ Frontend: `http://localhost:5173`
 |------------|-----------|
 | `STRIPE_SECRET_KEY` | Stripe secret key (test arba live) |
 | `STRIPE_WEBHOOK_SECRET` | Webhook signing secret (`whsec_...`) |
-| `STRIPE_PRICE_ID_PLAN_1` … `_4` | Stripe Price ID kiekvienam planui (39 / 99 / 149 / 199 EUR); žr. `backend/.env.example` |
+| `STRIPE_PRICE_ID_PLAN_1`, `_2` | Phase 1 Price ID (39 / 99 EUR). `_3` / `_4` (149 / 199) – Phase 2 optional; žr. `backend/.env.example` |
 | `FRONTEND_ORIGIN` | Frontend URL be `/` (pvz. `http://localhost:5173` arba `https://www.promptanatomy.app`) |
 | `MAX_TOKENS_PER_REQUEST` | (Optional) Maks. tokenai per užklausą `/api/validate-token-limit`; default 4096. |
 | `ALLOW_WEBHOOK_WITHOUT_SECRET` | (Optional) Jei `1` – webhook priimamas be secret (tik development). Produkcijoje nenaudoti. |

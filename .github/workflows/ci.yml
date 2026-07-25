@@ -39,11 +39,19 @@ jobs:
         working-directory: frontend
         run: |
           test -f dist/llms-full.txt
+          test -f dist/llms.txt
           grep -q 'PerplexityBot' dist/robots.txt
+          grep -q 'OAI-SearchBot' dist/robots.txt
           grep -q 'Tomas Staniulis' dist/llms-full.txt
           grep -q 'medium.com/@tomas.staniulis76' dist/llms-full.txt
           grep -q 'promptanatomy.site' dist/llms-full.txt
           grep -q 'promptanatomy.help' dist/llms-full.txt
+          head -n 1 dist/llms.txt | grep -qx '# Prompt Anatomy'
+          grep -q '^>' dist/llms.txt
+          grep -q '\[Home EN\](https://www.promptanatomy.app/)' dist/llms.txt
+          grep -q '\[Full LLM index\](https://www.promptanatomy.app/llms-full.txt)' dist/llms.txt
+          grep -q 'promptanatomy.site' dist/llms.txt
+          grep -q '## Optional' dist/llms.txt
 
       - name: Training app install and build
         working-directory: apps/prompt-anatomy

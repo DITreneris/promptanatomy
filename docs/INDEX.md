@@ -9,9 +9,9 @@
 | Dokumentas | Kelias | Paskirtis |
 |------------|--------|-----------|
 | Pagrindinis README | [README.md](../README.md) | Struktūra, reikalavimai, paleidimas (backend/frontend), env, Stripe, testai. |
-| Produkto aprašas (SOT) | [README_SOT.md](../README_SOT.md) | Turinys, moduliai, technologijos, deployment. |
-| Roadmap | [roadmap.md](../roadmap.md) | Fazės, prioritetai, deploy ir webhook žingsniai; nuoroda į phase-1-scope. |
-| Darbų sąrašas | [TODO.md](../TODO.md) | Artimi darbai, žinomi trūkumai. |
+| Training content / vizija | [README_SOT.md](../README_SOT.md) | Mokymų turinio / produkto vizija (gali atsilikti nuo hub M1–9). Hub paleidimas = [README.md](../README.md) + [golden-legacy-standard.md](golden-legacy-standard.md). |
+| Roadmap | [roadmap.md](../roadmap.md) | Foundation Faze 1–3 + horizontas iki **2027-01-01** (A–D); komercija **C2** (Core + operator M7–9); phase-1-scope. |
+| Darbų sąrašas | [TODO.md](../TODO.md) | Atviri darbai su tag’ais `[A.x]`…`[D.x]` (= [roadmap.md](../roadmap.md) Horizon); checkbox SOT. |
 | Changelog | [CHANGELOG.md](../CHANGELOG.md) | Pridėta / pakeista / taisymai. Šablonas: [templates/changelog-entry.md](templates/changelog-entry.md). |
 | Versijų ir release valdymas | [docs/versioning-and-release.md](versioning-and-release.md) | Kur laikoma versija (config.js, package.json), SemVer, release žingsniai, git tag. |
 
@@ -24,7 +24,7 @@
 | Saugumas | [docs/security.md](security.md) | Secrets, CORS, validacija, rate limit, headers, produkcija. |
 | Saugumo auditas (gilus) | [docs/security-audit-deep.md](security-audit-deep.md) | Architektūra, jautrūs taškai, rizikos, industrijos praktikos, MOSCOW prioritetai. |
 | Prieigos architektūra (kanonas) | [docs/access-architecture-canon.md](access-architecture-canon.md) | Viena tiesa: `user_access` po webhook; LP / magic link / antriniai keliai. |
-| Training submodule pin 1.4.4 | [apps/prompt-anatomy/docs/deployment/MARKETING_SUBMODULE_PIN_1.4.4.md](../apps/prompt-anatomy/docs/deployment/MARKETING_SUBMODULE_PIN_1.4.4.md) | Inzinerija v1.4.4 SHA, preview→prod smoke. |
+| Training submodule pin (handoff runbook) | [apps/prompt-anatomy/docs/deployment/MARKETING_SUBMODULE_PIN_1.4.4.md](../apps/prompt-anatomy/docs/deployment/MARKETING_SUBMODULE_PIN_1.4.4.md) | Istorinis handoff / smoke checklist. **Dabartinis pin:** [CHANGELOG.md](../CHANGELOG.md) `[Unreleased]` / [golden-legacy-standard.md](golden-legacy-standard.md) §4 (`7ff2a4f`). |
 | PostHog MON-4 (training eventai) | [apps/prompt-anatomy/docs/deployment/MON-4_POSTHOG_DEPLOY.md](../apps/prompt-anatomy/docs/deployment/MON-4_POSTHOG_DEPLOY.md) | Snippet + dashboard checklist. |
 | Mokėjimų praktikos | [docs/payment-best-practices.md](payment-best-practices.md) | Plan_id/plan_value, Stripe/Supabase/Vercel konvencijos, env, pitfalls. |
 | Memo integracija (saugumas, 2025–2026) | [docs/memo-integration-security-analysis.md](memo-integration-security-analysis.md) | Magic-link su Mokymų sistema: HMAC, timing-safe, secret, redirect; geriausios praktikos. |
@@ -35,8 +35,9 @@
 | Supabase agent runbook | [docs/process/supabase-agent-runbook.md](process/supabase-agent-runbook.md) | Migracijos, RLS, webhook reliability; committed mirror of supabase-agent skill. |
 | Bulk import (Excel → user_access) | [docs/bulk-import-user-access.md](bulk-import-user-access.md) | Akademijos dalyvių įkėlimas: `scripts/import_user_access.py`. |
 | Supabase patobulinimų planas | [docs/supabase-hardening-plan.md](supabase-hardening-plan.md) | Detalus F0–F7 planas (RLS, webhook, rate limit); dalis įgyvendinta minimaliai. |
-| SEO (KISS–Marry–Kill) | [docs/SEO-KISS-Marry-Kill.md](SEO-KISS-Marry-Kill.md) | Sitemap, robots, og:image, llms-full, GEO manifest, būsena. |
-| SEO / GEO operacijos (GSC) | [docs/seo-geo-operations.md](seo-geo-operations.md) | Post-deploy smoke, GSC checklist, sitemap politika, Rich Results. |
+| SEO (KISS–Marry–Kill) | [docs/SEO-KISS-Marry-Kill.md](SEO-KISS-Marry-Kill.md) | Sitemap, robots, og:image-v2, llms Answer.AI, Org sameAs, GEO manifest, būsena. |
+| SEO / GEO operacijos (GSC) | [docs/seo-geo-operations.md](seo-geo-operations.md) | Post-deploy smoke, GSC/Bing/IndexNow, freshness, Rich Results, spoke GEO minimum. |
+| GEO citation scorecard | [docs/templates/geo-citation-scorecard.md](templates/geo-citation-scorecard.md) | Monthly AI citation prompts (EN/LT); archive under `archive/snapshots/geo-citations-YYYY-MM.md`. |
 | Ekosistemos valdymas (hub-and-spoke) | [docs/ecosystem-governance.md](ecosystem-governance.md) | Domenų rolės, SEO/GEO/AI nekonkuravimo taisyklės, KPI minimumas. |
 | Ekosistemos kanonas (9 domenų) | [docs/ecosystem-canon.md](ecosystem-canon.md) | Pipeline, LP 6 kortelės, sync taisyklės su geo-manifest ir i18n. |
 | Kainodaros planas | [docs/pricing-plan.md](pricing-plan.md) | Kainodara, geriausios praktikos, palyginimas. |
@@ -103,14 +104,15 @@ Agentai ir `.cursor/rules/` remiasi **docs/INDEX.md** – dokumentų keliai ir p
 | Dokumentas | Kelias | Paskirtis |
 |------------|--------|-----------|
 | Agentų orkestratorius | [AGENTS.md](../AGENTS.md) | Kuris agentas kada; skills; lean ir tokenai; INDEX ir golden-legacy. |
-| Skills indeksas | [.cursor/skills/README.md](../.cursor/skills/README.md) | Workflow + lessons; orchestrator routing. |
+| Skills indeksas | [.cursor/skills/README.md](../.cursor/skills/README.md) | Workflow SOT + lessons; orchestrator routing (lokaliai; ne commitinama). |
 | Skill evolution | [docs/process/skill-evolution.md](process/skill-evolution.md) | Kur rašyti pamokas; lessons.md formatas; higiena. |
-| Frontend agentas | [.cursor/agents/frontend-agent.md](../.cursor/agents/frontend-agent.md) | React, Vite, Tailwind, api.js, accessDisplay. |
+| Frontend agentas | [.cursor/agents/frontend-agent.md](../.cursor/agents/frontend-agent.md) | React, Vite, Tailwind, api.js, accessDisplay, hub SEO/GEO. Stub → skill SOT. |
 | Backend agentas | [.cursor/agents/backend-agent.md](../.cursor/agents/backend-agent.md) | FastAPI, Vercel `api/`, Stripe, tier 9. |
-| Fullstack agentas | [.cursor/agents/fullstack-agent.md](../.cursor/agents/fullstack-agent.md) | LP + api + submodule deploy E2E. |
-| Q&A agentas | [.cursor/agents/q-and-a-agent.md](../.cursor/agents/q-and-a-agent.md) | Klausimai; INDEX-first; access/deploy SOT. |
-| QA agentas | [.cursor/agents/quality-assurance-agent.md](../.cursor/agents/quality-assurance-agent.md) | Code review, DoD B, regresija, build:production. |
-| Taisyklės (rules) | [.cursor/rules/](../.cursor/rules/) | project-global.mdc, frontend.mdc, backend.mdc, api.mdc. |
+| Supabase agentas | [.cursor/agents/supabase-agent.md](../.cursor/agents/supabase-agent.md) | Migracijos, RLS, CHECK; mirror [process/supabase-agent-runbook.md](process/supabase-agent-runbook.md). |
+| Fullstack agentas | [.cursor/agents/fullstack-agent.md](../.cursor/agents/fullstack-agent.md) | LP + api + submodule deploy E2E; GEO CI smoke. |
+| Q&A agentas | [.cursor/agents/q-and-a-agent.md](../.cursor/agents/q-and-a-agent.md) | Klausimai; INDEX-first; access/deploy/SEO SOT. |
+| QA agentas | [.cursor/agents/quality-assurance-agent.md](../.cursor/agents/quality-assurance-agent.md) | Code review, DoD B, regresija, GEO smoke, build:production. |
+| Taisyklės (rules) | [.cursor/rules/](../.cursor/rules/) | project-global.mdc, frontend.mdc, backend.mdc, api.mdc (lokaliai). |
 
 ---
 
@@ -127,7 +129,7 @@ Agentai ir `.cursor/rules/` remiasi **docs/INDEX.md** – dokumentų keliai ir p
 
 - **Pradėti:** AGENTS.md → agentas → docs/process/development.md
 - **Baigta (DoD):** docs/process/dod_system.md – Lygis A (implementacija) → B (PR + CI + QA) → C (deploy smoke)
-- **Klausimai:** q-and-a-agent; šaltiniai: README.md, README_SOT.md, docs/
+- **Klausimai:** q-and-a-agent; šaltiniai: README.md, docs/ (README_SOT = content vizija, ne deploy SOT)
 - **Po pakeitimų:** quality-assurance-agent; doc pagal docs/process/documentation.md
 - **Regresija:** docs/golden-legacy-standard.md – ką nepalaužti; pytest + abu frontend build prieš merge; CI (`.github/workflows/ci.yml`) ant `main` / PR.
 - **Indeksas visada:** docs/INDEX.md (šis failas)

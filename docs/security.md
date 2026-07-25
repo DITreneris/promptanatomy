@@ -10,7 +10,8 @@ Trumpas saugumo apžvalgos dokumentas: kas jau įdiegta, rekomendacijos ir deplo
 - **Stripe webhook:** Naudojamas raw body ir `Stripe-Signature` verifikacija; be `STRIPE_WEBHOOK_SECRET` – 503. Dev režime (`ALLOW_WEBHOOK_WITHOUT_SECRET=1`) payload vis tiek apdorojamas (JSON parse, `checkout.session.completed` → upsert į `user_access`), bet parašas **netikrinamas** – naudoti tik lokaliai, niekada produkcijoje.
 - **CORS:** Backend – fiksuotos `allow_origins` (frontend origin + localhost). Vercel `api/` – whitelist (`FRONTEND_ORIGIN` + localhost); neleistinam origin negrąžinamas `*`.
 - **Įvesties validacija:** `customer_email` – Pydantic `EmailStr`, max 254 simboliai; `text` (validate-token-limit) – max 50 000 simbolių; tokenų limitas per užklausą.
-- **Rate limiting:** `POST /api/create-checkout-session` ir `POST /api/validate-token-limit` apriboti (30/min ir 60/min pagal IP).
+- **Rate limiting (FastAPI):** `POST /api/create-checkout-session` ir `POST /api/validate-token-limit` apriboti (30/min ir 60/min pagal IP); `GET /api/access` – 60/min.
+- **Rate limiting (Vercel `api/`):** in-memory sliding window per instance ([api/lib/rate-limit.js](../api/lib/rate-limit.js)) – IP iš `X-Forwarded-For` (pirmas hop) / `X-Real-IP`. Over limit → **429** + `Retry-After`. Fail-open jei helper krenta. Limitai: `GET /api/access` **30/min**, `GET /api/generate-access-link` **20/min**, `POST /api/create-checkout-session` **30/min**. Multi-instance / shared counter → upgrade į `@upstash/ratelimit` (žr. [supabase-hardening-plan.md](supabase-hardening-plan.md) F3).
 - **Security headers:** `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`.
 
 ## Produkcija ir HTTPS

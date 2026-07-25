@@ -8,6 +8,7 @@ const {
   getUserHighestPlan,
   buildAccessResponse,
 } = require('./lib/supabase-access');
+const { rateLimit } = require('./lib/rate-limit');
 
 const ALLOWED_ORIGINS = [
   process.env.FRONTEND_ORIGIN?.replace(/\/$/, ''),
@@ -34,6 +35,10 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'GET') {
     res.setHeader('Allow', 'GET, OPTIONS');
     return res.status(405).json({ detail: 'Method not allowed' });
+  }
+
+  if (!rateLimit(req, res, { key: 'access', limit: 30, windowSec: 60 })) {
+    return;
   }
 
   const email = (req.query.email || '').trim();

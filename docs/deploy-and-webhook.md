@@ -58,7 +58,7 @@ Rankinė patikra Vercel Dashboard (*Settings → Environment Variables → Produ
 | Build Command / Install Command override | **tuščias** (naudoti repo `vercel.json`) |
 | Include Git Submodules | **įjungta** |
 
-Runbook: [`apps/prompt-anatomy/docs/deployment/MARKETING_SUBMODULE_PIN_1.4.4.md`](../apps/prompt-anatomy/docs/deployment/MARKETING_SUBMODULE_PIN_1.4.4.md) §3.
+Istorinis handoff runbook: [`apps/prompt-anatomy/docs/deployment/MARKETING_SUBMODULE_PIN_1.4.4.md`](../apps/prompt-anatomy/docs/deployment/MARKETING_SUBMODULE_PIN_1.4.4.md) §3. **Dabartinis submodule pin:** [CHANGELOG.md](../CHANGELOG.md) `[Unreleased]` / [golden-legacy-standard.md](golden-legacy-standard.md) §4.
 
 ---
 
@@ -74,7 +74,7 @@ Jei mokėjimas per Stripe pavyko, webhook rodo 0% klaidų, bet **user_access** l
 
 ### 3.2 Stripe Checkout Session – metadata.plan
 
-Webhook įrašo į DB tik jei `session.metadata.plan` yra **plan_id** ("1"–"4") arba **plan_value** (3, 6, 12, 15). Be `metadata.plan` webhook grąžina 200, bet įrašo neįrašo.
+Webhook įrašo į DB tik jei `session.metadata.plan` yra **plan_id** ("1"–"4") arba **plan_value** (3, 6, 12, 15). Phase 1 checkout siunčia **3** / **6**. Tier **9** – ne Stripe webhook, o operatoriaus upsert į `user_access` (žr. [user-access-tier-registry.md](user-access-tier-registry.md)). Be `metadata.plan` webhook grąžina 200, bet įrašo neįrašo.
 
 ### 3.3 Vercel function logai
 
