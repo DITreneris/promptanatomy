@@ -48,6 +48,19 @@ Hub repozitorijoje (`059_home_page` / Vercel deploy):
 | `frontend/public/robots.txt` | AI + search bot leidimai |
 | `frontend/index.html` | `Person` + Medium `Article` JSON-LD |
 
-**Taisyklės:** llms failuose turi būti visi hub/spoke domenai + `promptanatomy.site` discovery, founder profiliai (LinkedIn, X, Medium), 2+ autorinės publikacijos (media diversity). Home JSON-LD `ItemList` sinchronizuojamas per `getEcosystemItemList()` ([geo-manifest.js](../frontend/src/site/geo-manifest.js), [SeoHead.jsx](../frontend/src/components/SeoHead.jsx)). Spoke domenai (`.info`, `.cloud`, `.pro`, `.space`, `.ceo`, `.help`, `.blog`, `.lol`) ir `.site` — atskiras follow-up: robots + llms + sitemap + GSC property (žr. [seo-geo-operations.md](seo-geo-operations.md)).
+**Taisyklės:** llms failuose turi būti visi hub/spoke domenai + `promptanatomy.site` discovery, founder profiliai (LinkedIn, X, Medium), 2+ autorinės publikacijos (media diversity). Home JSON-LD `ItemList` sinchronizuojamas per `getEcosystemItemList()` ([geo-manifest.js](../frontend/src/site/geo-manifest.js), [SeoHead.jsx](../frontend/src/components/SeoHead.jsx)). Organization `sameAs` — [organization.js](../frontend/src/site/organization.js) + `index.html`.
+
+### Spoke GEO minimum (ecosystem debt)
+
+Spoke / discovery domains are **not** implemented in this hub repo. Each should eventually ship:
+
+| Minimum | `.site` | `.blog` | Other spokes |
+|---------|---------|---------|--------------|
+| Self-canonical + own intent (no 1:1 LP clone) | Required | Required | Required |
+| `robots.txt` (AI bots allowed) | Required | Required | Required |
+| `llms.txt` (links checkout → `.app`) | Required | Required | Required |
+| `sitemap.xml` + GSC property | Required | Required | When live |
+
+**Priority:** `.site` → `.blog` → remaining spokes. Full checklist: [seo-geo-operations.md](seo-geo-operations.md) §J. Hub `sitemap.xml` must not list spoke URLs.
 
 ---

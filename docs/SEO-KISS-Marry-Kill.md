@@ -107,8 +107,19 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 - **JSON-LD ItemList** — [SeoHead.jsx](../frontend/src/components/SeoHead.jsx): 9 items (8 spokes + `promptanatomy.site` discovery) iš `getEcosystemItemList(routeLocale)`; locale-aware spoke URLs.
 - **llms.txt / llms-full.txt** — [generate-geo-static.mjs](../frontend/scripts/generate-geo-static.mjs): `ECOSYSTEM_DISCOVERY` eilutė ekosistemos bloke.
 - **index.html** — `<link rel="alternate" type="text/plain" href=".../llms.txt">` papildomai prie `vercel.json` `rel=describedby`.
-- **sitemap.xml** — **neplėsti** spokes; lieka 5 hub URL. GSC: žr. [seo-geo-operations.md](seo-geo-operations.md).
+- **sitemap.xml** — **neplėsti** spokes; lieka 4 hub URL (`/`, `/lt`, `/privacy`, `/terms`). GSC: žr. [seo-geo-operations.md](seo-geo-operations.md).
 - **CI** — GEO smoke: `promptanatomy.site`, `promptanatomy.help` grep `dist/llms-full.txt`.
+
+---
+
+## Įgyvendinimo būsena (2026-07-25, SEO/GEO hardening)
+
+- **Organization.sameAs** — [organization.js](../frontend/src/site/organization.js) `ORG_SAME_AS` + [index.html](../frontend/index.html); operator follow-up: LinkedIn Company, Wikidata Q-ID ([seo-geo-operations.md](seo-geo-operations.md) §G).
+- **llms.txt Answer.AI** — H1, `>` blockquote, curated `[name](url): note` lists, `## Optional`; CI greps blockquote + Home EN + Full LLM index.
+- **Signal hygiene** — `/en` `og:url` → `/`; home `dateModified` ← `LAST_UPDATED` (2026-07-25); social meta `og-image-v2.jpg`, JSON-LD logo `og-image.png`.
+- **FAQ extractability** — answer-first openings on FAQ items #1, #3, #6, #7 (EN/LT).
+- **Ops loop** — Bing/IndexNow, freshness checklist, [geo-citation-scorecard.md](templates/geo-citation-scorecard.md), spoke GEO minimum §J.
+- **KILL unchanged** — no SSR/Next.js; no spokes in hub sitemap.
 
 ---
 

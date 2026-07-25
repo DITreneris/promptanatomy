@@ -11,15 +11,16 @@ Vienas atskaitos dokumentas: kaip žymėti planus, env, Stripe/Supabase/Vercel k
 | Koncepcija | Reikšmės | Kur naudojama |
 |------------|----------|----------------|
 | **plan_id** | `"1"` \| `"2"` \| `"3"` \| `"4"` | Frontend (mygtukai, API body), Stripe Price mapping |
-| **plan_value** | `3` \| `6` \| `12` \| `15` | Supabase `highest_plan`, logika „moduliai 1–N“, webhook |
-| **Moduliai** | 1–3, 1–6, 1–12, 1–15 | UI tekstas („1–3 moduliai“ ir t. t.) |
+| **plan_value** | `3` \| `6` \| `12` \| `15` (+ **`9`** grant) | Supabase `highest_plan`, logika „moduliai 1–N“, webhook |
+| **Moduliai** | 1–3, 1–6; training M1–9 (tier 9); legacy 1–12 / 1–15 | UI / checkout vs operator grant |
 
-**Mapping (visur vienodas):**
+**Mapping (Stripe plan_id → plan_value):**
 
-- plan_id `"1"` → plan_value `3` (moduliai 1–3)
-- plan_id `"2"` → `6` (1–6)
-- plan_id `"3"` → `12` (1–12)
-- plan_id `"4"` → `15` (1–15)
+- plan_id `"1"` → plan_value `3` (moduliai 1–3) — Phase 1
+- plan_id `"2"` → `6` (1–6) — Phase 1
+- plan_id `"3"` → `12` (1–12) — Phase 2 / ne LP
+- plan_id `"4"` → `15` (1–15) — Phase 2 / ne LP
+- **Tier `9`:** nėra plan_id; tik operatoriaus grant (M1–9). Žr. [user-access-tier-registry.md](user-access-tier-registry.md).
 
 **Taisyklė:** Supabase ir visi palyginimai naudoja **plan_value** (skaičius). Frontend ir checkout request naudoja **plan_id** (string "1"–"4"). Kuriant naujus endpointus ar modulius – viduje konvertuoti į plan_value, į DB ir atsakymuose grąžinti plan_value.
 
@@ -29,7 +30,7 @@ Vienas atskaitos dokumentas: kaip žymėti planus, env, Stripe/Supabase/Vercel k
 
 ### 2.1 Checkout Session (kuriant sesiją)
 
-- **metadata.plan** – **būtina**. Siųsti **plan_value** kaip string: `"3"`, `"6"`, `"12"`, `"15"`. (Webhook priima ir plan_id "1"–"4" dėl suderinamumo, bet rekomenduojama siųsti plan_value.)
+- **metadata.plan** – **būtina**. Phase 1: **plan_value** `"3"` / `"6"`. Legacy/Phase 2: `"12"`, `"15"`. (Webhook priima ir plan_id "1"–"4" dėl suderinamumo, bet rekomenduojama siųsti plan_value.) Tier **9** ne per Checkout metadata.
 - **client_reference_id** – naudoti **email** (jei žinomas), kad webhook turėtų identifikatorių net jei `customer_details.email` neužpildytas.
 - **customer_creation**: `"always"` – Stripe sukurs customer; tada `session.customer` bus prieinamas webhook’e.
 
@@ -125,7 +126,7 @@ Frontend kvietimai: `API_URL` + path. Produkcijoje be VITE_API_URL = same-origin
 - **Nesiųsti metadata.plan** į Checkout Session – webhook neįrašys į Supabase.
 - **Siųsti plan_id į metadata, bet webhook tik plan_value** – buvo „Invalid metadata.plan: 1“; dabar webhook priima abu (mapina plan_id→plan_value).
 - **Pasitikėti tik success_url** – source of truth yra webhook; success page tik informuoja.
-- **Saugoti plan_id Supabase** – saugoti **plan_value** (3, 6, 12, 15).
+- **Saugoti plan_id Supabase** – saugoti **plan_value** (3, 6, 9, 12, 15).
 - **Env tarpas** – pvz. `KEY= value` įtraukia tarpą į reikšmę; Stripe/Supabase gali atmesiti.
 - **Vercel env tik Build** – serverless funkcijoms reikia env **Runtime**; standartiškai Vercel suteikia abiem.
 

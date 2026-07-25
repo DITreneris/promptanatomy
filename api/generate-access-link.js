@@ -7,6 +7,7 @@
  */
 const crypto = require('crypto');
 const { getSupabaseClient, getUserHighestPlan } = require('./lib/supabase-access');
+const { rateLimit } = require('./lib/rate-limit');
 
 const ACCESS_TIER_VALUES = [3, 6, 9];
 
@@ -55,6 +56,10 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'GET') {
     res.setHeader('Allow', 'GET, OPTIONS');
     return res.status(405).json({ detail: 'Method not allowed' });
+  }
+
+  if (!rateLimit(req, res, { key: 'generate-access-link', limit: 20, windowSec: 60 })) {
+    return;
   }
 
   const secret = process.env.ACCESS_TOKEN_SECRET;

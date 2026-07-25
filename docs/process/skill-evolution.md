@@ -50,6 +50,30 @@ Pavyzdys:
 | CHECK turi įtraukti 9 prieš F1 hardening | `supabase-agent/SKILL.md`, migracija `20260710120000` |
 | Vercel Supabase SOT | `api/lib/supabase-access.js` |
 
+### Pakeltos pamokos (2026-07-25, SEO/GEO hardening)
+
+| Taisyklė | Kur įrašyta |
+|----------|-------------|
+| Org `sameAs` sync `organization.js` + `index.html` | `frontend-agent/SKILL.md` |
+| Social OG = `og-image-v2.jpg`; logo JSON-LD = `og-image.png` | `frontend-agent/SKILL.md`, golden-legacy |
+| `llms.txt` SOT = `generate-geo-static.mjs` (Answer.AI shape) | `frontend-agent/SKILL.md`, CI |
+| `/en` `og:url` = canonical `/` | `frontend-agent/SKILL.md` |
+| GEO deploy: bump `LAST_UPDATED` + commit regenerated public assets | `fullstack-agent/SKILL.md`, `seo-geo-operations.md` §H |
+| No SSR; no spokes in hub sitemap | `orchestrator/SKILL.md`, SEO-KISS Kill |
+| llms GSC 0 clicks = expected | `q-and-a-agent/SKILL.md` / lessons |
+| GEO PR review greps + sameAs sync | `quality-assurance-agent/SKILL.md` |
+| GEO `TRAINING_SUMMARY` / pricing “6 modules” ≠ access tier 9 | `frontend-agent/SKILL.md`, `q-and-a-agent/SKILL.md`, phase-1-scope |
+| Agent stubs + rules restored (tooling); SKILL.md = workflow SOT | `.cursor/agents/*.md`, `.cursor/rules/*.mdc`, AGENTS.md |
+
+### Pakeltos pamokos (2026-07-25, F3 rate limit + A.1 Cookies)
+
+| Taisyklė | Kur įrašyta |
+|----------|-------------|
+| Vercel abuse endpoints → shared `api/lib/rate-limit.js` (ne copy-paste Map) | `api.mdc`, `backend-agent/SKILL.md` |
+| F3 = in-memory shipped; Upstash tik multi-instance abuse | `security.md`, `supabase-hardening-plan.md` F3, `orchestrator/SKILL.md` |
+| Po F3 status change: sync Status + Moscow §13 + §15 + TODO `[A.4c]` | `quality-assurance-agent/lessons.md` |
+| Footer Cookies UI = `/privacy#cookies` (ne „Netrukus“); legal review atskiras | `TODO.md` A.1 |
+
 ---
 
 ## Skirtumas nuo submodulio

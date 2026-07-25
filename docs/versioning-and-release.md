@@ -32,6 +32,7 @@ Naujausias parent release **1.4.6** (2026-07-15) – **MINOR**: Supabase CHECK `
 ## 3. Release žingsniai
 
 1. **Prieš release:** Regresija pagal [golden-legacy-standard.md](golden-legacy-standard.md): `backend`: `pytest`, `frontend`: `npm run build`, `apps/prompt-anatomy`: `npm run build`.
+1a. **GEO freshness (jei LP/GEO turinys keitėsi):** bump `LAST_UPDATED` in [frontend/src/site/geo-manifest.js](../frontend/src/site/geo-manifest.js) → `cd frontend && npm run build` → commit regenerated `frontend/public/llms.txt` + `frontend/public/sitemap.xml` if dirty. Post-deploy: [seo-geo-operations.md](seo-geo-operations.md) §E–§H (curl, Rich Results, IndexNow when key exists).
 2. **CHANGELOG:** Pervadinti `[Unreleased]` į `[X.Y.Z] - YYYY-MM-DD`; po juo palikti naują `## [Unreleased]` skyrių.
 3. **Versijos atnaujinimas:** `config.js` → `APP_VERSION = 'vX.Y'` (arba `vX.Y.Z`); `frontend/package.json` → `"version": "X.Y.Z"`.
 4. **Commit:** pvz. `chore: release v1.3.0`.
@@ -50,17 +51,6 @@ Po kiekvieno release – atnaujinti `config.js` ir `frontend/package.json` pagal
 
 ---
 
-## 5. Planuojamas release v1.4.0 (2026-06-06)
+## 5. Istorija: v1.4.0 (atlikta 2026-06-06)
 
-**Versija:** `1.4.0` (MINOR, ne patch) — ekosistemos sekcija, GEO, perf ir copy apimtis viršija 1.3.x patch ribą.
-
-**Kada tag'inti:**
-
-| Etapas | Kada | Veiksmas |
-|--------|------|----------|
-| **Dabar** | CHANGELOG uždarytas | `[1.4.0] - 2026-06-06`; `[Unreleased]` tuščias |
-| **Prieš tag** | Po paskutinio deploy į prod | Golden Legacy: `pytest`, `npm run build`, rankinis smoke (`/`, `/lt`, `#ekosistema`, `#faq`, magic link) |
-| **Tag diena** | Deploy patvirtintas prod | `config.js` → `v1.4`; `package.json` → `1.4.0`; commit `chore: release v1.4.0`; `git tag -a v1.4.0 -m "Release 1.4.0"`; push tag |
-| **Po tag** | Optional | GitHub Release iš CHANGELOG santraukos; `geo-manifest.js` `LAST_UPDATED` jau 2026-06-06 |
-
-**Kodėl ne 1.3.2:** vienas patch numeris netinka ~2 mėn. LP darbui (ecosystem UI, Phase 8, SEO ItemList, locale lazy-load). SemVer MINOR = atgal suderinamos funkcijos / reikšmingas produkto sluoksnis be breaking changes.
+Release **1.4.0** (MINOR) – ekosistemos sekcija, GEO, perf, copy; `config.js` → `v1.4`, `package.json` → `1.4.0`. Tolesnė istorija ir dabartinė parent versija (**1.4.6**) – [CHANGELOG.md](../CHANGELOG.md). Nauji release žingsniai – §3 aukščiau.

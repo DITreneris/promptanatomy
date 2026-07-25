@@ -26,7 +26,7 @@
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://www.promptanatomy.app/" />
     <link rel="alternate" type="text/plain" href="https://www.promptanatomy.app/llms.txt" title="LLM site index" />
-    <!-- Organization.address and founder JSON-LD must match frontend/src/site/geo-manifest.js -->
+    <!-- Organization.address + sameAs must match frontend/src/site/organization.js; founder → geo-manifest.js -->
     <script type="application/ld+json">
     [
       {
@@ -42,6 +42,14 @@
         },
         "description": "Learn to run AI like an operating system. Prompt engineering, automation and AI agents for real business results.",
         "founder": { "@id": "https://www.promptanatomy.app/#founder" },
+        "sameAs": [
+          "https://t.me/prompt_anatomy",
+          "https://medium.com/@tomas.staniulis76",
+          "https://promptanatomy.site",
+          "https://www.linkedin.com/in/staniulis",
+          "https://x.com/TStaniulis_NFT",
+          "https://github.com/DITreneris/promptanatomy"
+        ],
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "1311 Park St, Unit #654",

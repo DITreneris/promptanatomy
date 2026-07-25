@@ -1,7 +1,11 @@
 /**
  * Official org contact – single source for footer, JSON-LD, legal copy, llms.txt.
- * Keep frontend/index.html Organization.address in sync when changing these values.
+ * Keep frontend/index.html Organization (address + sameAs) in sync when changing these values.
  * Founder / publications / ecosystem GEO: frontend/src/site/geo-manifest.js
+ *
+ * OG assets (intentional split):
+ * - Social meta (og:image / twitter:image) → og-image-v2.jpg (SeoHead, index.html)
+ * - JSON-LD Organization.logo → og-image.png (this file / index.html)
  */
 import { SITE_URL } from '../config'
 
@@ -20,9 +24,21 @@ export const ORG_COUNTRY = 'US'
 const ORG_DESCRIPTION =
   'Learn to run AI like an operating system. Prompt engineering, automation and AI agents for real business results.'
 
+/** Entity graph profiles for Organization.sameAs (must match index.html). */
+export const ORG_SAME_AS = [
+  'https://t.me/prompt_anatomy',
+  'https://medium.com/@tomas.staniulis76',
+  'https://promptanatomy.site',
+  'https://www.linkedin.com/in/staniulis',
+  'https://x.com/TStaniulis_NFT',
+  'https://github.com/DITreneris/promptanatomy',
+]
+
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`
 export const WEBSITE_ID = `${SITE_URL}/#website`
+/** JSON-LD Organization.logo only — social cards use og-image-v2.jpg. */
 export const OG_IMAGE_URL = `${SITE_URL}/og-image.png`
+export const OG_SOCIAL_IMAGE_URL = `${SITE_URL}/og-image-v2.jpg`
 
 /** Lines for visible mailing address (footer, legal). */
 export function formatMailingAddressLines() {
@@ -58,6 +74,7 @@ export function getOrganizationJsonLd() {
       url: OG_IMAGE_URL,
     },
     description: ORG_DESCRIPTION,
+    sameAs: ORG_SAME_AS,
     address: getOrganizationPostalAddressSchema(),
     contactPoint: {
       '@type': 'ContactPoint',

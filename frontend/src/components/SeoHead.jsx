@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom'
 import { translateLocale } from '../i18n/syncTranslate'
 import { useLocale } from '../i18n/LocaleContext'
 import { SITE_URL } from '../config'
-import { getEcosystemItemList } from '../site/geo-manifest'
+import { getEcosystemItemList, LAST_UPDATED } from '../site/geo-manifest'
 
 const HOME_ROUTES = ['/', '/en', '/lt']
 const NOINDEX_ROUTES = ['/success', '/cancel']
@@ -14,7 +14,6 @@ const WEBSITE_ID = `${SITE_URL}/#website`
 const ROUTE_LAST_MODIFIED = {
   '/privacy': '2026-05-17',
   '/terms': '2026-05-17',
-  default: '2026-03-16',
 }
 const VISIBLE_OFFERS = [
   { id: 'starter', labelKey: 'starter', mods: '1–3', price: 39 },
@@ -120,7 +119,7 @@ function getWebPageSchema({ canonicalUrl, pathname, title, description, routeLoc
     isPartOf: { '@id': WEBSITE_ID },
     about: { '@id': ORGANIZATION_ID },
     inLanguage: routeLocale,
-    dateModified: ROUTE_LAST_MODIFIED[pathname] || ROUTE_LAST_MODIFIED.default,
+    dateModified: ROUTE_LAST_MODIFIED[pathname] || LAST_UPDATED,
   }
 }
 

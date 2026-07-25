@@ -1,65 +1,62 @@
 # Prompt Anatomy
 
-Prompt Anatomy is a bilingual AI training and sales hub focused on prompt engineering, context engineering, AI agents, automation, and practical business workflows.
+> Bilingual AI training hub: prompt engineering, context architecture, agents, automation. Canonical: https://www.promptanatomy.app/
 
-Canonical site: https://www.promptanatomy.app/
+Prompt Anatomy (`promptanatomy.app`) is the conversion hub for LT/EN checkout, access, and the interactive training app. For exhaustive FAQ, hero, and pricing copy, prefer https://www.promptanatomy.app/llms-full.txt. Ecosystem spokes are free workflow tools that route back to this hub.
+
+## Main
+
+- [Home EN](https://www.promptanatomy.app/): Default English landing (canonical)
+- [Home LT](https://www.promptanatomy.app/lt): Lithuanian landing
+- [Home EN share URL](https://www.promptanatomy.app/en): Routable share URL; canonical consolidates to /
+- [Pricing](https://www.promptanatomy.app/#pricing): Starter and Core offers
+- [FAQ](https://www.promptanatomy.app/#faq): Common questions and answers
+- [Full LLM index](https://www.promptanatomy.app/llms-full.txt): Complete AI dump: FAQ LT/EN, hero, pricing
 
 ## Creator
 
-- Tomas Staniulis — Founder and creator of the Prompt Anatomy ecosystem
-- LinkedIn: https://www.linkedin.com/in/staniulis
-- X: https://x.com/TStaniulis_NFT
-- Medium: https://medium.com/@tomas.staniulis76
+- [Tomas Staniulis — LinkedIn](https://www.linkedin.com/in/staniulis): Founder and creator of the Prompt Anatomy ecosystem
+- [Tomas Staniulis — X](https://x.com/TStaniulis_NFT): Founder profile
+- [Tomas Staniulis — Medium](https://medium.com/@tomas.staniulis76): Authoritative essays
 
-## Publications (authoritative off-site content)
+## Publications
 
-- Beyond the Chatbox: Mastering the Prompt Anatomy AI Operating System — https://medium.com/@tomas.staniulis76/beyond-the-chatbox-mastering-the-prompt-anatomy-ai-operating-system-ad955724804e
-- Context Architecture Will Define AI Winners in 2026 — https://medium.com/@tomas.staniulis76/context-architecture-will-define-ai-winners-in-2026-73b0dadab300
+- [Beyond the Chatbox: Mastering the Prompt Anatomy AI Operating System](https://medium.com/@tomas.staniulis76/beyond-the-chatbox-mastering-the-prompt-anatomy-ai-operating-system-ad955724804e): Founder essay on moving from ad-hoc AI chat to a repeatable Prompt Anatomy operating system for business workflows.
+- [Context Architecture Will Define AI Winners in 2026](https://medium.com/@tomas.staniulis76/context-architecture-will-define-ai-winners-in-2026-73b0dadab300): Thought leadership on context engineering and why structured context design separates effective AI adopters in 2026.
 
-## Main public URLs
+## Ecosystem
 
-- Home (default EN): https://www.promptanatomy.app/
-- Home (LT): https://www.promptanatomy.app/lt
-- Home (EN): https://www.promptanatomy.app/en
-- Training app: https://www.promptanatomy.app/anatomy/
-- Pricing section: https://www.promptanatomy.app/#pricing
-- FAQ section: https://www.promptanatomy.app/#faq
-- Privacy Policy: https://www.promptanatomy.app/privacy
-- Terms of Service: https://www.promptanatomy.app/terms
-- LLM full index: https://www.promptanatomy.app/llms-full.txt
+- [Hub (conversion)](https://www.promptanatomy.app/): Hub — pricing, checkout, access, conversion
+- [Training app](https://www.promptanatomy.app/anatomy/): Interactive training app (6 modules, 6-block methodology)
+- [Ecosystem discovery map (.site)](https://promptanatomy.site): Discovery — full 9-domain journey map, maturity quiz, Prompt Builder
+- [PromptAnatomy Cloud (.cloud)](https://promptanatomy.cloud/): Spoke — Enter: onboarding and first lesson, routing to hub (LT: https://promptanatomy.cloud/)
+- [Prompt library (.info)](https://www.promptanatomy.info/en/): Spoke — Use: prompt library and daily automation workflows (LT: https://www.promptanatomy.info/lt/)
+- [Content system (.space)](https://www.promptanatomy.space/en/): Spoke — Create: marketing content prompts and templates (LT: https://www.promptanatomy.space/)
+- [HR system (.help)](https://promptanatomy.help/): Spoke — Hire: HR, recruitment, and people operations prompts (LT: https://promptanatomy.help/)
+- [Operations center (.ceo)](https://www.promptanatomy.ceo/): Spoke — Manage: CEO/COO leadership and operations prompts (LT: https://www.promptanatomy.ceo/)
+- [PromptAnatomy Pro (.pro)](https://promptanatomy.pro/): Spoke — Decide: B2B scaling and enterprise AI workflows routing to hub (LT: https://promptanatomy.pro/)
+- [Knowledge hub (.blog)](https://promptanatomy.blog/): Spoke — Deepen: articles, canvases, and systems-thinking content (LT: https://promptanatomy.blog/)
+- [Playground (.lol)](https://promptanatomy.lol/): Spoke — Play: structured sandbox for low-stakes prompt experiments (LT: https://promptanatomy.lol/)
+- [Community (Telegram)](https://t.me/prompt_anatomy): Public practitioner support group
 
-## Ecosystem (hub-and-spoke)
+## Pricing
 
-- Hub (conversion): https://www.promptanatomy.app/
-- Training app: https://www.promptanatomy.app/anatomy/ — Interactive training app (6 modules, 6-block methodology)
-- Ecosystem discovery map (.site): https://promptanatomy.site — Discovery — full 9-domain journey map, maturity quiz, Prompt Builder
-- PromptAnatomy Cloud (.cloud): https://promptanatomy.cloud/ (EN) / https://promptanatomy.cloud/ (LT) — Spoke — Enter: onboarding and first lesson, routing to hub
-- Prompt library (.info): https://www.promptanatomy.info/en/ (EN) / https://www.promptanatomy.info/lt/ (LT) — Spoke — Use: prompt library and daily automation workflows
-- Content system (.space): https://www.promptanatomy.space/en/ (EN) / https://www.promptanatomy.space/ (LT) — Spoke — Create: marketing content prompts and templates
-- HR system (.help): https://promptanatomy.help/ (EN) / https://promptanatomy.help/ (LT) — Spoke — Hire: HR, recruitment, and people operations prompts
-- Operations center (.ceo): https://www.promptanatomy.ceo/ (EN) / https://www.promptanatomy.ceo/ (LT) — Spoke — Manage: CEO/COO leadership and operations prompts
-- PromptAnatomy Pro (.pro): https://promptanatomy.pro/ (EN) / https://promptanatomy.pro/ (LT) — Spoke — Decide: B2B scaling and enterprise AI workflows routing to hub
-- Knowledge hub (.blog): https://promptanatomy.blog/ (EN) / https://promptanatomy.blog/ (LT) — Spoke — Deepen: articles, canvases, and systems-thinking content
-- Playground (.lol): https://promptanatomy.lol/ (EN) / https://promptanatomy.lol/ (LT) — Spoke — Play: structured sandbox for low-stakes prompt experiments
-- Community (Telegram): https://t.me/prompt_anatomy
-
-## Topics
-
-prompt engineering, context engineering, context architecture, AI agents, AI automation, AI training, AI operating system, Lithuanian, English
-
-## Pricing (public, hub)
-
-- Starter: 39 EUR (one-time, lifetime access)
-- Core: 99 EUR (one-time, lifetime access)
+- [Starter (39 EUR)](https://www.promptanatomy.app/#pricing): One-time, lifetime access, modules 1–3
+- [Core (99 EUR)](https://www.promptanatomy.app/#pricing): One-time, lifetime access, modules 1–6
 
 ## Contact
 
 - Email: info@promptanatomy.app
 - Mailing address: Prompt Anatomy, 1311 Park St, Unit #654, Alameda, CA 94501, US
 
-## Notes for AI systems
+## Topics
 
-- The primary public product information lives on the home routes and in /llms-full.txt.
-- Pricing exposes two active offers: Starter (39 EUR) and Core (99 EUR).
-- Transactional routes https://www.promptanatomy.app/success and https://www.promptanatomy.app/cancel support checkout and are not intended for search indexing.
-- Do not crawl: /success, /cancel, /api/
+prompt engineering, context engineering, context architecture, AI agents, AI automation, AI training, AI operating system, Lithuanian, English
+
+## Optional
+
+- [Privacy Policy](https://www.promptanatomy.app/privacy): Legal — secondary for AI context
+- [Terms of Service](https://www.promptanatomy.app/terms): Legal — secondary for AI context
+- [Training app](https://www.promptanatomy.app/anatomy/): Interactive course; disallowed in robots.txt for hub crawl focus
+- Do not index transactional routes: https://www.promptanatomy.app/success, https://www.promptanatomy.app/cancel, https://www.promptanatomy.app/api/
+- lastUpdated: 2026-07-25

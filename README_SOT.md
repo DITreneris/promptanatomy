@@ -1,5 +1,7 @@
 # Promptų anatomija – Interaktyvus DI Mokymas
 
+> **Disclaimer (2026-07-25):** Šis failas – mokymų **turinio / produkto vizija**, ne hub deploy SOT. Live hub: [promptanatomy.app](https://www.promptanatomy.app). Training app: submodule `apps/prompt-anatomy` → `/anatomy/` (**M1–9** produkcijoje). Paleidimas, env, Stripe, API – [README.md](README.md); LP/regresija – [docs/golden-legacy-standard.md](docs/golden-legacy-standard.md). Kai kurios sekcijos žemiau (pvz. „6 moduliai“, senas clone URL) gali atsilikti.
+
 **6 promptų struktūros blokai, vienas nuoseklus mokymas – sistema nuo A iki Z.**
 
 Interaktyvus mokymas apie DI (dirbtinio intelekto) promptų struktūrą: **6 moduliai** (6 blokų sistema, žinių testas, praktika, konteksto inžinerija, pažangus testas, projektas). Orientuotas į verslo problemų sprendimą ir **praktinius rezultatus** – kursas moko kurti promptus ir scenarijus, ne tik suprasti teoriją.

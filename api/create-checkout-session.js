@@ -11,6 +11,7 @@ const {
   getUserHighestPlan,
   planIdToValue,
 } = require('./lib/supabase-access');
+const { rateLimit } = require('./lib/rate-limit');
 
 /** Phase 1: only plans 1 and 2 (docs/phase-1-scope.md). */
 const PHASE1_PLAN_IDS = ['1', '2'];
@@ -45,6 +46,10 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST, OPTIONS');
     return res.status(405).json({ detail: 'Method not allowed' });
+  }
+
+  if (!rateLimit(req, res, { key: 'create-checkout-session', limit: 30, windowSec: 60 })) {
+    return;
   }
 
   const secretKey = process.env.STRIPE_SECRET_KEY;
