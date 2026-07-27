@@ -25,7 +25,7 @@
 - **MINOR** (1.x.0): naujos funkcijos atgal suderinamos.
 - **PATCH** (1.3.x): klaidų taisymai, saugumą nekeičiantys pakeitimai.
 
-Naujausias parent release **1.4.6** (2026-07-15) – **MINOR**: Supabase CHECK `plan=9`, webhook retry. Training upstream follow-up pin **`7ff2a4f`** (tag `v1.4.7`). Ankstesni pin: `1eaa2be` (v1.4.6 + Unreleased), `4eebf10` (1.4.5+CI). Ankstesnis parent **1.4.5** (2026-07-09) – pin `47448fc`. Bazė **1.3.0** – stabilus produktas su Stripe, magic link, mokymų app.
+Naujausias parent release **1.4.6** (2026-07-15) – **MINOR**: Supabase CHECK `plan=9`, webhook retry. Training upstream follow-up pin **`a714e92`** (tag `v1.4.9`). Ankstesni pin: `7ff2a4f` (v1.4.7), `1eaa2be` (v1.4.6 + Unreleased), `4eebf10` (1.4.5+CI). Ankstesnis parent **1.4.5** (2026-07-09) – pin `47448fc`. Bazė **1.3.0** – stabilus produktas su Stripe, magic link, mokymų app.
 
 ---
 
