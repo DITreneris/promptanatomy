@@ -68,6 +68,7 @@
 | Dokumentas | Kelias | Paskirtis |
 |------------|--------|-----------|
 | Archyvo katalogas ir failų sąrašas | [docs/archive/README.md](archive/README.md) | Uždaryti LP/UI/SEO auditai, prieš-produkcinės analizės, metrikų snapshot'ai. |
+| Pre-launch paid-traffic gate (2026-08) | [docs/archive/analysis/pre-launch-audit-2026-08.md](archive/analysis/pre-launch-audit-2026-08.md) | Soft-launch GO vs paid CONDITIONAL NO-GO; operator checklists Horizon A. |
 
 ---
 

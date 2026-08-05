@@ -129,6 +129,69 @@ class TestGetAccess:
         assert data["can_upgrade_to"] == [3, 6]
 
 
+class TestHandleCheckoutCompleted:
+    def test_supabase_off_returns_sentinel(self, monkeypatch):
+        """Valid email+plan but Supabase unset → supabase_off (webhook → 503)."""
+        from main import handle_checkout_completed
+
+        monkeypatch.setattr(
+            "main.settings",
+            SimpleNamespace(
+                is_supabase_configured=lambda: False,
+                PLAN_VALUES=(3, 6, 12, 15),
+            ),
+        )
+        session = {
+            "id": "cs_test",
+            "customer_details": {"email": "buyer@example.com"},
+            "metadata": {"plan": "6"},
+        }
+        assert handle_checkout_completed(session) == "supabase_off"
+
+    def test_missing_email_returns_none(self, monkeypatch):
+        from main import handle_checkout_completed
+
+        monkeypatch.setattr(
+            "main.settings",
+            SimpleNamespace(
+                is_supabase_configured=lambda: False,
+                PLAN_VALUES=(3, 6, 12, 15),
+            ),
+        )
+        assert handle_checkout_completed({"id": "cs_test", "metadata": {"plan": "6"}}) is None
+
+
+class TestStripeWebhook:
+    def test_checkout_supabase_off_returns_503(self, monkeypatch):
+        """Signed path: checkout.session.completed + Supabase off → 503."""
+        monkeypatch.setattr(
+            "main.settings",
+            SimpleNamespace(
+                stripe_webhook_secret=SimpleNamespace(get_secret_value=lambda: "whsec_test"),
+                allow_webhook_without_secret=False,
+            ),
+        )
+        fake_event = {
+            "type": "checkout.session.completed",
+            "data": {
+                "object": {
+                    "id": "cs_test",
+                    "customer_details": {"email": "buyer@example.com"},
+                    "metadata": {"plan": "6"},
+                }
+            },
+        }
+        with patch("main.stripe.Webhook.construct_event", return_value=fake_event):
+            with patch("main.handle_checkout_completed", return_value="supabase_off"):
+                r = client.post(
+                    "/api/webhooks/stripe",
+                    content=b"{}",
+                    headers={"Stripe-Signature": "t=1,v1=fake"},
+                )
+        assert r.status_code == 503
+        assert "not configured" in r.json().get("detail", "").lower()
+
+
 class TestHealth:
     def test_health_returns_200_and_ok(self):
         r = client.get("/health")

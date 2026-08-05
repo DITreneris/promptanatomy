@@ -12,7 +12,7 @@
 
 export const SITE_URL = 'https://www.promptanatomy.app'
 
-export const LAST_UPDATED = '2026-07-25'
+export const LAST_UPDATED = '2026-08-05'
 
 /** Marketing / discovery site — full 9-domain map, quiz, Anatomizer (not a spoke). */
 export const ECOSYSTEM_DISCOVERY_SITE = 'https://promptanatomy.site'
@@ -52,7 +52,8 @@ export const ECOSYSTEM_HUB = {
   url: `${SITE_URL}/`,
   role: 'Hub — pricing, checkout, access, conversion',
   trainingUrl: `${SITE_URL}/anatomy/`,
-  trainingRole: 'Interactive training app (6 modules, 6-block methodology)',
+  trainingRole:
+    'Interactive training app (modules 1–9, 6-block methodology; Stripe Core checkout sells 1–6; 7–9 via operator/cohort upgrade)',
 }
 
 export const ECOSYSTEM_SPOKES = [
@@ -136,7 +137,7 @@ export const PUBLIC_PRICING = [
 export const NOINDEX_PATHS = ['/success', '/cancel', '/api/']
 
 export const TRAINING_SUMMARY =
-  'Prompt Anatomy training is an interactive course with 6 modules built on a 6-block prompt system: theory, knowledge checks, practical business scenarios, context engineering, advanced tests, and a capstone project. Available in Lithuanian and English at /anatomy/.'
+  'Prompt Anatomy training is an interactive course at /anatomy/ covering modules 1–9 on a 6-block prompt system: theory, knowledge checks, practical business scenarios, context engineering, advanced tests, and a capstone project (Lithuanian and English). Public Stripe checkout sells Starter (1–3) and Core (1–6); modules 7–9 are granted via operator or cohort upgrade, not a separate public SKU.'
 
 export const FOUNDER_ID = `${SITE_URL}/#founder`
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`

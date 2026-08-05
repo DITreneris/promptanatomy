@@ -82,10 +82,10 @@ LP **Check** el. paštui naudoja **`GET /api/access`** (lentelė **`user_access`
 
 **Vercel → Deployments → pasirink deployment → Functions → stripe-webhook → Logs.** Ieškok:
 
-- `Supabase not configured` – trūksta SUPABASE_URL arba SUPABASE_SERVICE_ROLE_KEY  
-- `no email` – session be `customer_details.email` ir be `client_reference_id`  
-- `no metadata.plan` – session be metadata.plan  
-- `user_access upsert error:` – Supabase klaida (schema, RLS, raktas)
+- `Supabase not configured` / **503** `Database not configured` – trūksta `SUPABASE_URL` arba `SUPABASE_SERVICE_ROLE_KEY` (Stripe turėtų retry; ne silent 200)  
+- `no email` – session be `customer_details.email` ir be `client_reference_id` (webhook **200**, be upsert)  
+- `no metadata.plan` – session be metadata.plan (webhook **200**, be upsert)  
+- `user_access upsert error:` – Supabase klaida (schema, RLS, raktas) → **500**
 
 ### 3.4 Supabase lentelė
 

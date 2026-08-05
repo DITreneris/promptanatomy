@@ -15,6 +15,7 @@ Istorinė arba pasenusi dokumentacija, ne naudojama kasdieniam operaciniam darbu
 | Failas | Paskirtis |
 |--------|-----------|
 | [production-readiness-analysis.md](analysis/production-readiness-analysis.md) | Gili analizė prieš production; checklist (istorinis kontekstas). |
+| [pre-launch-audit-2026-08.md](analysis/pre-launch-audit-2026-08.md) | Paid-traffic gate (2026-08): soft-launch GO vs CONDITIONAL NO-GO; operator checklists A.1–A.5. |
 | [anatomija-paid-content-open-analysis.md](analysis/anatomija-paid-content-open-analysis.md) | Kodėl `/anatomija/` buvo atviras; gate architektūra. |
 | [inzinerija-prieigos-vartos-memo.md](analysis/inzinerija-prieigos-vartos-memo.md) | Memo mokymų komandai: gate, `verify-access`, checklist. |
 

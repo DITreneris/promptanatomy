@@ -79,7 +79,7 @@ module.exports = async function handler(req, res) {
 
   if (!isSupabaseConfigured()) {
     console.error('Supabase not configured; SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY missing in Vercel env');
-    return res.status(200).json({ received: true });
+    return res.status(503).json({ detail: 'Database not configured' });
   }
 
   const supabase = getSupabaseClient();
