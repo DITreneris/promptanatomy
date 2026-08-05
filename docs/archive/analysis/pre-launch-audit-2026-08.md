@@ -10,7 +10,7 @@
 
 | Lens | Verdict |
 |------|---------|
-| Soft-launch / organic / cohort | **GO** — live checkout, `user_access`, tier-9 grants, pin `fdc38de` (v1.5.0) |
+| Soft-launch / organic / cohort | **GO** — live checkout, `user_access`, tier-9 grants, pin `67b7163` (v1.5.0 + Unreleased) |
 | Commercial paid traffic / ads | **CONDITIONAL NO-GO** until Phase 2–3 operator items below are checked off |
 
 Access/tier code contracts are not the blocker. Trust, env, observability, legal, and smoke are.
@@ -33,7 +33,7 @@ Access/tier code contracts are not the blocker. Trust, env, observability, legal
 | GEO “6 modules” vs M1–9 | **Fixed in gate PR** | `geo-manifest.js` training blurb → M1–9 + Core checkout 1–6 |
 | Cookies UI | OK | Footer → `/privacy#cookies` |
 | Legal review | Open `[A.1]` | Pages exist; not lawyer-reviewed |
-| Submodule pin | OK | `apps/prompt-anatomy` @ `fdc38de` / v1.5.0 |
+| Submodule pin | OK | `apps/prompt-anatomy` @ `67b7163` / v1.5.0 + Unreleased |
 | Cohort snapshot | Ops | Registry §3 (2026-07-30): tier 6 ≈ 88, tier 9 ≈ 9 |
 
 **Follow-up warning (not this gate):** customer emails in committed [user-access-tier-registry.md](../../user-access-tier-registry.md) — PII hygiene if repo is widely shared. Do not strip in this gate (ops SOT).
@@ -69,7 +69,7 @@ Source: [deploy-and-webhook.md](../../deploy-and-webhook.md) §2.2.
 - [ ] `ACCESS_TOKEN_SECRET` ≥32 chars and **identical** to training app secret
 - [ ] `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `FRONTEND_ORIGIN` set (Production)
 - [ ] Dashboard Build Command / Install Command override **empty** (repo `vercel.json`)
-- [ ] Include Git Submodules **on**; latest Production build log shows submodule `fdc38de`
+- [ ] Include Git Submodules **on**; latest Production build log shows submodule `67b7163`
 - [ ] `ALLOW_WEBHOOK_WITHOUT_SECRET` **not** set in Production
 
 ### 4.2 Stripe webhook alerts — `[A.3c]`
