@@ -264,7 +264,8 @@ def handle_checkout_completed(session: dict) -> bool | None:
     """
     Process checkout.session.completed: upsert user_access in Supabase.
     Email from customer_details or client_reference_id; plan from metadata.plan.
-    Returns True on upsert success, False on upsert failure, None if skipped (no email/plan or Supabase off).
+    Returns True on upsert success, False on upsert failure, None if skipped
+    (no email/plan), "supabase_off" if Supabase env missing (caller → 503).
     """
     logger.info(
         "Checkout completed: session_id=%s customer_email=%s",
@@ -289,8 +290,8 @@ def handle_checkout_completed(session: dict) -> bool | None:
         logger.warning("Unknown plan value %s in session %s", purchased_plan, session.get("id"))
         return None
     if not settings.is_supabase_configured():
-        logger.info("Supabase not configured; skipping user_access upsert")
-        return None
+        logger.error("Supabase not configured; cannot upsert user_access")
+        return "supabase_off"
     access = get_user_access(email)
     current = (access["highest_plan"] if access else 0) or 0
     new_highest = max(current, purchased_plan)
@@ -326,6 +327,8 @@ async def stripe_webhook(request: Request):
                     result = handle_checkout_completed(obj)
                     if result is False:
                         raise HTTPException(status_code=500, detail="Database error")
+                    if result == "supabase_off":
+                        raise HTTPException(status_code=503, detail="Database not configured")
                 else:
                     logger.warning("Webhook dev: checkout.session.completed missing data.object")
             return {"received": True}
@@ -344,5 +347,7 @@ async def stripe_webhook(request: Request):
         result = handle_checkout_completed(event["data"]["object"])
         if result is False:
             raise HTTPException(status_code=500, detail="Database error")
+        if result == "supabase_off":
+            raise HTTPException(status_code=503, detail="Database not configured")
 
     return {"received": True}

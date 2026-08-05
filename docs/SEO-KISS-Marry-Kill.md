@@ -121,6 +121,11 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 - **Ops loop** — Bing/IndexNow, freshness checklist, [geo-citation-scorecard.md](templates/geo-citation-scorecard.md), spoke GEO minimum §J.
 - **KILL unchanged** — no SSR/Next.js; no spokes in hub sitemap.
 
+### Atnaujinimas 2026-08-05 (paid-traffic gate)
+
+- **Training GEO copy** — [geo-manifest.js](../frontend/src/site/geo-manifest.js): `/anatomy/` = modules **1–9**; Stripe Core checkout = **1–6**; M7–9 = operator/cohort upgrade. `LAST_UPDATED` → `2026-08-05`.
+- **KILL unchanged** — hub sitemap still 4 URLs; no SSR.
+
 ---
 
 *Dokumentas: `docs/SEO-KISS-Marry-Kill.md`. Atnaujinta pagal projekto būseną ir viešas SEO praktikas.*

@@ -1,8 +1,18 @@
 # Environment and secrets – never commit
 .env
+.env.*
+!.env.example
+!**/.env.example
 backend/.env
 frontend/.env
 *.env.local
+*.pem
+*.p12
+*.key
+id_rsa
+id_rsa.pub
+*credentials.json
+*service-account*.json
 
 # Python
 .venv
@@ -22,15 +32,19 @@ frontend/dist/
 npm-debug.log*
 yarn-error.log*
 
-# Project docs (local / internal)
+# Project docs (local / internal / PII-heavy ops)
 TODO.md
 roadmap.md
+CHANGELOG.md
 
 # Supabase CLI (lokalūs temp failai; commitiname tik supabase/migrations/)
 .supabase/
 
-# Registration spreadsheets (PII) – use scripts/import_user_access.py locally
+# Registration / bulk-import data (PII) – use scripts/import_user_access.py locally
 *.xlsx
+*.xls
+*.csv
+*.tsv
 _xlsx_*.json
 
 # Cursor (agentai, rules, skills, lessons) – lokaliai, kaip submodulyje inzinerija
