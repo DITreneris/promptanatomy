@@ -18,7 +18,7 @@
 
 | Kas | Rolė |
 |-----|------|
-| **Supabase lentelė `user_access`** | **Kanoninė** ilgalaikė prieiga: `email` (visada `lower(trim(...))`), `highest_plan` (**0, 3, 6, 9, 12, 15**; **9** = operator grant), `stripe_customer_id`. |
+| **Supabase lentelė `user_access`** | **Kanoninė** ilgalaikė prieiga: `email` (visada `lower(trim(...))`), `highest_plan` (**0, 3, 6, 9, 12, 15**; **9** / **12** = operator grant; Stripe Phase 1 rašo 3/6), `stripe_customer_id`. |
 | **Stripe webhook** | **Vienintelis** kanalas, kuris **įrašo / atnaujina** `user_access` po sėkmingo apmokėjimo (`checkout.session.completed`). Žr. `api/stripe-webhook.js`, backend `handle_checkout_completed`. |
 | **Success puslapis** | **Ne** šaltinis tiesos – prieigą DB nekuria; tik UX. |
 

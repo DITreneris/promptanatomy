@@ -24,7 +24,7 @@
 | Saugumas | [docs/security.md](security.md) | Secrets, CORS, validacija, rate limit, headers, produkcija. |
 | Saugumo auditas (gilus) | [docs/security-audit-deep.md](security-audit-deep.md) | Architektūra, jautrūs taškai, rizikos, industrijos praktikos, MOSCOW prioritetai. |
 | Prieigos architektūra (kanonas) | [docs/access-architecture-canon.md](access-architecture-canon.md) | Viena tiesa: `user_access` po webhook; LP / magic link / antriniai keliai. |
-| Training submodule pin (handoff runbook) | [apps/prompt-anatomy/docs/deployment/MARKETING_SUBMODULE_PIN_1.4.4.md](../apps/prompt-anatomy/docs/deployment/MARKETING_SUBMODULE_PIN_1.4.4.md) | Istorinis handoff / smoke checklist. **Dabartinis pin:** [golden-legacy-standard.md](golden-legacy-standard.md) §4 (`67b7163` / v1.5.0 + Unreleased; prod M1–9, be corporate12/15 cutover). |
+| Training submodule pin (handoff runbook) | [apps/prompt-anatomy/docs/deployment/MARKETING_SUBMODULE_PIN_CORPORATE12.md](../apps/prompt-anatomy/docs/deployment/MARKETING_SUBMODULE_PIN_CORPORATE12.md) | Corporate12 cutover runbook. **Dabartinis pin:** [golden-legacy-standard.md](golden-legacy-standard.md) §4 (`b921087` / v1.5.0 + handoff; prod M1–12 `build:corporate12`). Istorinis M1–9: [MARKETING_SUBMODULE_PIN_1.4.4.md](../apps/prompt-anatomy/docs/deployment/MARKETING_SUBMODULE_PIN_1.4.4.md). |
 | PostHog MON-4 (training eventai) | [apps/prompt-anatomy/docs/deployment/MON-4_POSTHOG_DEPLOY.md](../apps/prompt-anatomy/docs/deployment/MON-4_POSTHOG_DEPLOY.md) | Snippet + dashboard checklist. |
 | Mokėjimų praktikos | [docs/payment-best-practices.md](payment-best-practices.md) | Plan_id/plan_value, Stripe/Supabase/Vercel konvencijos, env, pitfalls. |
 | Memo integracija (saugumas, 2025–2026) | [docs/memo-integration-security-analysis.md](memo-integration-security-analysis.md) | Magic-link su Mokymų sistema: HMAC, timing-safe, secret, redirect; geriausios praktikos. |
@@ -41,7 +41,7 @@
 | Ekosistemos valdymas (hub-and-spoke) | [docs/ecosystem-governance.md](ecosystem-governance.md) | Domenų rolės, SEO/GEO/AI nekonkuravimo taisyklės, KPI minimumas. |
 | Ekosistemos kanonas (9 domenų) | [docs/ecosystem-canon.md](ecosystem-canon.md) | Pipeline, LP 6 kortelės, sync taisyklės su geo-manifest ir i18n. |
 | Kainodaros planas | [docs/pricing-plan.md](pricing-plan.md) | Kainodara, geriausios praktikos, palyginimas. |
-| Faze 1 apimtis (2 produktai, LP pricing) | [docs/phase-1-scope.md](phase-1-scope.md) | Kas parduodama Faze 1 checkout'e; **ne** training tier limit (prod M1–9 – žr. CHANGELOG 1.4.1). |
+| Faze 1 apimtis (2 produktai, LP pricing) | [docs/phase-1-scope.md](phase-1-scope.md) | Kas parduodama Faze 1 checkout'e; **ne** training tier limit (prod M1–12 corporate12 – žr. golden-legacy §4). |
 | Kalbos gairės (LT/EN) | [docs/language-guidelines-en-lt.md](language-guidelines-en-lt.md) | Prekės ženklas, terminai, tonas, vertimai. |
 | Public assets (frontend) | [frontend/public/README.md](../frontend/public/README.md) | Og-image ir statiniai failai (sitemap, robots). |
 | Logo / favicon gairės | [docs/design/logo-favicon.md](design/logo-favicon.md) | Šaltinis, spalvos, dydžiai, Kiss–Marry–Kill taisyklės; generavimo scriptas. |
@@ -112,7 +112,7 @@ Agentai ir `.cursor/rules/` remiasi **docs/INDEX.md** – dokumentų keliai ir p
 | Supabase agentas | [.cursor/agents/supabase-agent.md](../.cursor/agents/supabase-agent.md) | Migracijos, RLS, CHECK; mirror [process/supabase-agent-runbook.md](process/supabase-agent-runbook.md). |
 | Fullstack agentas | [.cursor/agents/fullstack-agent.md](../.cursor/agents/fullstack-agent.md) | LP + api + submodule deploy E2E; GEO CI smoke. |
 | Q&A agentas | [.cursor/agents/q-and-a-agent.md](../.cursor/agents/q-and-a-agent.md) | Klausimai; INDEX-first; access/deploy/SEO SOT. |
-| QA agentas | [.cursor/agents/quality-assurance-agent.md](../.cursor/agents/quality-assurance-agent.md) | Code review, DoD B, regresija, GEO smoke, build:production. |
+| QA agentas | [.cursor/agents/quality-assurance-agent.md](../.cursor/agents/quality-assurance-agent.md) | Code review, DoD B, regresija, GEO smoke, build:corporate12. |
 | Taisyklės (rules) | [.cursor/rules/](../.cursor/rules/) | project-global.mdc, frontend.mdc, backend.mdc, api.mdc (lokaliai). |
 
 ---

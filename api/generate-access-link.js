@@ -9,7 +9,7 @@ const crypto = require('crypto');
 const { getSupabaseClient, getUserHighestPlan } = require('./lib/supabase-access');
 const { rateLimit } = require('./lib/rate-limit');
 
-const ACCESS_TIER_VALUES = [3, 6, 9];
+const ACCESS_TIER_VALUES = [3, 6, 9, 12];
 
 function highestPlanToAccessTier(highestPlan) {
   if (ACCESS_TIER_VALUES.includes(highestPlan)) return highestPlan;

@@ -6,7 +6,7 @@
 
 ## 0. Scope disclaimer (2026-06-30)
 
-Šis doc aprašo **LP pricing Phase 1** (2 planai Stripe checkout'e). **Training app** produkcijoje – tier **9** (M1–9), žr. [golden-legacy-standard.md](golden-legacy-standard.md) ir [CHANGELOG.md](../CHANGELOG.md) release **1.4.6**.
+Šis doc aprašo **LP pricing Phase 1** (2 planai Stripe checkout'e). **Training app** produkcijoje – corporate12 bundle **M1–12** (`build:corporate12`); prieiga M7–9 per tier **9**, M10–12 per tier **12** (abu = operator grant, ne Stripe Phase 1). Žr. [golden-legacy-standard.md](golden-legacy-standard.md) §4.
 
 ---
 
@@ -27,8 +27,8 @@ Pirmajame etape siūlome **tik du planus**:
 ## 2. LP vs training (moduliai 7+)
 
 - **LP pricing / checkout:** rodo **maks. 6** modulius (2 planai); planai 3/4 (12/15) – užrakinti / Phase 2.
-- **Training produkcijoje:** M1–**9** (`VITE_MAX_BUILD_MODULE=9`); prieiga prie M7–9 per tier **9** (operator grant), ne per Stripe Phase 1 checkout.
-- **M10–15:** authoring / ne prod bundle; LP tekste vengti „12/15 modulių“ kaip parduodamos apimties.
+- **Training produkcijoje:** M1–**12** (`VITE_MAX_BUILD_MODULE=12`, `build:corporate12`); M7–9 per tier **9**, M10–12 per tier **12** (operator grant), ne per Stripe Phase 1 checkout.
+- **M13–15:** corporate15 / ne šiame cutover; LP tekste vengti „12/15 modulių“ kaip *parduodamos* apimties (Stripe vis dar max 6).
 - Frontend: planų kortelėse tik 2 planai; `pricing.modulesLocked` – 7+ ne Phase 1 checkout.
 
 ---
@@ -49,7 +49,7 @@ Pirmajame etape siūlome **tik du planus**:
 
 **Iki 2027-01-01 (roadmap C2):** viešai lieka Starter/Core (max 6); M7–9 – operator upgrade / cohort / B2B (`highest_plan=9`), ne naujas Stripe „Pro“ checkout. Žr. [roadmap.md](../roadmap.md) Horizon C.
 
-Kai (po decision gate) Stripe parduos daugiau nei Core (6): planai 3/4 (12/15), `PLAN_VALUES`, frontend planų sąrašas — arba optional C1 (Stripe → tier 9) po ADR. Training M7–9 jau egzistuoja per tier 9; M10–15 – atskiras content/release darbas.
+Kai (po decision gate) Stripe parduos daugiau nei Core (6): planai 3/4 (12/15), `PLAN_VALUES`, frontend planų sąrašas — arba optional C1 (Stripe → tier 9) po ADR. Training M7–12 jau egzistuoja per operator tiers 9/12; M13–15 – corporate15 cutover + content/release.
 
 ---
 

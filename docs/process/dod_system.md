@@ -35,7 +35,7 @@
 |-----------|------------|
 | **Frontend** | Funkciniai komponentai + hooks; API tik per `frontend/src/api.js`; Tailwind; prieigos UI – `accessDisplay.js` (ne hardcoded `/6`). |
 | **Backend (FastAPI)** | Pydantic request/response; `HTTPException`; config iš env; `logger` (ne `print`); webhook – raw body + signature; `token_limits.py`. |
-| **Vercel `api/`** | Handler `res.status().json()`; CORS whitelist; tier `[3, 6, 9]`; JSON `detail` errors. |
+| **Vercel `api/`** | Handler `res.status().json()`; CORS whitelist; tier `[3, 6, 9, 12]`; JSON `detail` errors. |
 | **Fullstack** | Kontraktas `api.js` ↔ `api/*.js`; E2E srautas patikrintas (Check access → magic link → `/anatomy/`). |
 
 **Lokalus greitas patikrinimas (rekomenduojama prieš QA):**
@@ -44,7 +44,7 @@
 # Jei keitėte atitinkamą dalį:
 cd backend && pytest
 cd frontend && npm run build
-cd apps/prompt-anatomy && VITE_BASE_PATH=/anatomy/ VITE_MAX_BUILD_MODULE=9 npm run build:production   # jei liečia training / submodule
+cd apps/prompt-anatomy && VITE_BASE_PATH=/anatomy/ VITE_MAX_BUILD_MODULE=12 npm run build:corporate12   # jei liečia training / submodule
 ```
 
 ---

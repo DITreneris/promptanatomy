@@ -1,12 +1,12 @@
 /**
- * Vercel serverless: GET /api/verify-access?access_tier=3|6|9&expires=UNIX_TS&token=BASE64URL_HMAC
+ * Vercel serverless: GET /api/verify-access?access_tier=3|6|9|12&expires=UNIX_TS&token=BASE64URL_HMAC
  * Magic link access verification – HMAC-signed token.
- * Phase 2 tier 9: access_tier 3, 6, or 9 accepted. Returns 200 { access_tier } or 400/401.
+ * Accepted tiers: 3, 6, 9, 12 (corporate12 / Supabase Phase 1). Returns 200 { access_tier } or 400/401.
  * Env: ACCESS_TOKEN_SECRET (shared secret, min 16 chars)
  */
 const crypto = require('crypto');
 
-const VALID_TIERS = [3, 6, 9];
+const VALID_TIERS = [3, 6, 9, 12];
 
 const ALLOWED_ORIGINS = [
   process.env.FRONTEND_ORIGIN?.replace(/\/$/, ''),
