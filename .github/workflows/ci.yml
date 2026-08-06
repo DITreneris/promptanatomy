@@ -58,8 +58,8 @@ jobs:
         env:
           HUSKY: "0"
           VITE_BASE_PATH: /anatomy/
-          VITE_MAX_BUILD_MODULE: "9"
-        run: npm ci && npm run build:production
+          VITE_MAX_BUILD_MODULE: "12"
+        run: npm ci && npm run build:corporate12
 
       - uses: actions/setup-python@v5
         with:

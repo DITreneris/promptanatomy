@@ -1,5 +1,6 @@
-/** Module cap for LP progress label (3 / 6 / 9). */
+/** Module cap for LP progress label (3 / 6 / 9 / 12). */
 export function moduleDisplayCap(highestPlan) {
+  if (highestPlan >= 12) return 12
   if (highestPlan >= 9) return 9
   if (highestPlan >= 6) return 6
   if (highestPlan >= 3) return 3

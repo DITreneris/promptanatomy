@@ -94,6 +94,7 @@
 - Email be prieigos (`highest_plan === 0`) → amber blokas „Prieiga nerasta" + CTA „Gauti prieigą →" (scroll į pricing).
 - Email su prieiga (`highest_plan > 0`) → žalias blokas su progress bar + „Eiti į mokymus →" (magic link per `getTrainingAccessLink`; **navigacija tame pačiame lange** – `window.location.href`, kad veiktų iOS/Safari). Desktop Navbar ir Footer su `hasAccess` rodo **Mokymai** kaip magic-link veiksmą, ne statinę `/anatomy/` nuorodą.
 - **Tier 9 (plan 9):** rodoma **9/9** (ne 9/6); progress bar **≤100%**; konteineris `overflow-hidden`. Implementacija: [`accessDisplay.js`](../frontend/src/utils/accessDisplay.js) (`moduleDisplayCap`, `accessProgressPercent`). Magic link: `access_tier=9` kai `highest_plan=9`.
+- **Tier 12 (plan 12 / corporate12):** rodoma **12/12**; magic link `access_tier=12` kai `highest_plan=12` (operator grant). Prod training bundle M1–12 (`build:corporate12`).
 - „Eiti į mokymus" / „Mokymai" veiksmai rodo loading/disabled state (`trainingLinkLoading`).
 - `/cancel` puslapis – „Bandyti dar kartą" nuoroda scroll'ina į `#pricing` (ne SPA navigate + hash).
 - `/success` be `session_id` – informacinis pranešimas „Jei ką tik sumokėjai – palauk".
@@ -112,7 +113,7 @@
 - **API:** `api.js` – `getAccess`, `createCheckoutSession`, `getSuccessRedirectUrl` (grąžina `{ redirect_url, customer_email? }`), `getTrainingAccessLink`; backend atsakymų formatai (JSON su `url`, `highest_plan`, `can_upgrade_to`, `redirect_url` ir t. t.).
 - **Env:** Backend – Pydantic Settings, `STRIPE_*`, `SUPABASE_*`, `FRONTEND_ORIGIN`. Frontend – `VITE_API_URL` (optional), `VITE_X_PIXEL_ID` (optional, X conversion tracking; jei tuščias – XPixel neįkelia skripto). Nepašalinti naudojamų kintamųjų.
 - **Backend failo pavadinimas:** `token_limits.py` (ne `limits.py`). `limits` vardas shadina PyPI paketą – neleistina.
-- **Training app submodule:** `apps/prompt-anatomy` → `DITreneris/inzinerija` (dabartinis pin: `67b7163`; upstream package `1.5.0`; tag `v1.5.0` + Unreleased HEAD `67b7163` — M13–18 learner plain / m1618 handout / M79 ROI; prod bundle lieka M1–9). Production profilis šiame parent repo lieka M1–9: [`scripts/vercel-build.sh`](../scripts/vercel-build.sh) / CI naudoja `VITE_MAX_BUILD_MODULE=9` ir `npm run build:production`. Magic link tier validacija: parent [`api/verify-access.js`](../api/verify-access.js) `VALID_TIERS [3, 6, 9]`; submodulyje – `constants/pricing.ts`. Corporate12/15 ir tier 12/15 šiame pin PR neaktyvuojami.
+- **Training app submodule:** `apps/prompt-anatomy` → `DITreneris/inzinerija` (dabartinis pin: `b921087`; upstream package `1.5.0` + corporate12 Supabase handoff). Production profilis: [`scripts/vercel-build.sh`](../scripts/vercel-build.sh) / CI naudoja `VITE_MAX_BUILD_MODULE=12` ir `npm run build:corporate12` (M1–12 bundle). Magic link tier validacija: parent [`api/verify-access.js`](../api/verify-access.js) / [`generate-access-link.js`](../api/generate-access-link.js) `VALID_TIERS` / `ACCESS_TIER_VALUES` `[3, 6, 9, 12]`; submodulyje – `constants/pricing.ts`. Corporate15 / tier 15 neaktyvuojami.
 - **LT kalba:** visur vartotojui matomas tekstas – „Tu" forma (ne „Jūs"). Terminas „DI" (ne „AI").
 - **api.js error handling:** `detail` iš backend visada konvertuojamas į string (`typeof raw === 'string' ? raw : JSON.stringify(raw)`).
 - **Hero animacija:** `Hero.jsx` naudoja `phase` state (0→4) su `useEffect` + `setInterval` typing logika. CSS keyframes `fadeInUp` ir `blink-caret` yra `index.css`. Animacija gerbia `prefers-reduced-motion` (JS `matchMedia` check + CSS override). **Nekeisti timing sekos be vizualinio testavimo.** 0 išorinių priklausomybių.
@@ -129,7 +130,7 @@
 2. **Parent repo:** `git add -A && commit && push origin main` (į `DITreneris/promptanatomy`). Commit'e turi būti atnaujintas submodule reference.
 3. **Vercel:** auto-deploy iš GitHub main branch. `vercel.json` – `installCommand` su `git submodule update --init --recursive`, build'ina abu frontendus.
 4. **Regresijos prieš push:** `frontend: npm run build`, `apps/prompt-anatomy: npm run build`, `backend: pytest`.
-5. **GitHub Actions:** pull request ir push į `main` paleidžia [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) (job **Golden Legacy**): `frontend` — `npm ci` + `npm run build`; `apps/prompt-anatomy` — `npm ci` + `npm run build:production` su `VITE_BASE_PATH=/anatomy/`, `VITE_MAX_BUILD_MODULE=9`, `HUSKY=0` (submodulio husky nevykdomas CI); `backend` — `pip install -r requirements.txt` + `pytest`. Submoduliai: `actions/checkout` su `submodules: recursive`.
+5. **GitHub Actions:** pull request ir push į `main` paleidžia [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) (job **Golden Legacy**): `frontend` — `npm ci` + `npm run build`; `apps/prompt-anatomy` — `npm ci` + `npm run build:corporate12` su `VITE_BASE_PATH=/anatomy/`, `VITE_MAX_BUILD_MODULE=12`, `HUSKY=0` (submodulio husky nevykdomas CI); `backend` — `pip install -r requirements.txt` + `pytest`. Submoduliai: `actions/checkout` su `submodules: recursive`.
 6. **Branch ruleset (rankinis GitHub):** žr. §5.1.
 
 ### 5.1 Ruleset `main` — žingsnis po žingsnio
