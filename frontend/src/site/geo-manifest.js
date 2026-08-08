@@ -12,7 +12,7 @@
 
 export const SITE_URL = 'https://www.promptanatomy.app'
 
-export const LAST_UPDATED = '2026-08-07'
+export const LAST_UPDATED = '2026-08-08'
 
 /** Marketing / discovery site — full 9-domain map, quiz, Anatomizer (not a spoke). */
 export const ECOSYSTEM_DISCOVERY_SITE = 'https://promptanatomy.site'
