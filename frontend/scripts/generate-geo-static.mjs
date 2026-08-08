@@ -149,7 +149,7 @@ function buildLlmsShort() {
 
 > Bilingual AI training hub: prompt engineering, context architecture, agents, automation. Canonical: ${SITE_URL}/
 
-Prompt Anatomy (\`promptanatomy.app\`) is the conversion hub for LT/EN checkout, access, and the interactive training app. For exhaustive FAQ, hero, and pricing copy, prefer ${SITE_URL}/llms-full.txt. Ecosystem spokes are free workflow tools that route back to this hub.
+Prompt Anatomy (\`promptanatomy.app\`) is the conversion hub for LT/EN checkout, access, and the interactive training app. The Six-Block Method is the Prompt Anatomy canon; five-part tools on ecosystem spokes are Quick mode and map onto the six blocks. For exhaustive FAQ, hero, and pricing copy, prefer ${SITE_URL}/llms-full.txt. Ecosystem spokes are free workflow tools that route back to this hub.
 
 ${section(
   'Main',

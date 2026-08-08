@@ -12,7 +12,7 @@
 
 export const SITE_URL = 'https://www.promptanatomy.app'
 
-export const LAST_UPDATED = '2026-08-05'
+export const LAST_UPDATED = '2026-08-07'
 
 /** Marketing / discovery site — full 9-domain map, quiz, Anatomizer (not a spoke). */
 export const ECOSYSTEM_DISCOVERY_SITE = 'https://promptanatomy.site'
@@ -137,7 +137,7 @@ export const PUBLIC_PRICING = [
 export const NOINDEX_PATHS = ['/success', '/cancel', '/api/']
 
 export const TRAINING_SUMMARY =
-  'Prompt Anatomy training is an interactive course at /anatomy/ covering modules 1–9 on a 6-block prompt system: theory, knowledge checks, practical business scenarios, context engineering, advanced tests, and a capstone project (Lithuanian and English). Public Stripe checkout sells Starter (1–3) and Core (1–6); modules 7–9 are granted via operator or cohort upgrade, not a separate public SKU.'
+  'Prompt Anatomy training is an interactive course at /anatomy/ covering modules 1–9 on the Six-Block Method (Meta, Input, Output, Reasoning, Quality, Advanced): theory, knowledge checks, practical business scenarios, context engineering, advanced tests, and a capstone project (Lithuanian and English). The Six-Block Method is the Prompt Anatomy canon; five-part tools on ecosystem spokes are Quick mode and map onto the six blocks. Public Stripe checkout sells Starter (1–3) and Core (1–6); modules 7–9 are granted via operator or cohort upgrade, not a separate public SKU.'
 
 export const FOUNDER_ID = `${SITE_URL}/#founder`
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`

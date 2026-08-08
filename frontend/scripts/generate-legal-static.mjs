@@ -189,7 +189,7 @@ function termsBody(L) {
           <h2>${escapeHtml(L.legal.termsSupportTitle)}</h2>
           <p>${escapeHtml(L.legal.termsSupport)}</p>
         </section>
-        <section>
+        <section id="refunds">
           <h2>${escapeHtml(L.legal.termsRefundTitle)}</h2>
           <p>${escapeHtml(L.legal.termsRefund)}</p>
         </section>

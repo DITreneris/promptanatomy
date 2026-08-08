@@ -331,7 +331,8 @@
     overflow-x: clip;
   }
   section[id],
-  #what-is-prompt-anatomy {
+  #what-is-prompt-anatomy,
+  #access {
     scroll-margin-top: 5.5rem;
   }
 }

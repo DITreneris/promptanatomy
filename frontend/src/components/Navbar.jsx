@@ -115,6 +115,7 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
     ...(hasAccess && onTrainingClick ? [{ name: t('nav.training'), id: null, action: onTrainingClick }] : []),
   ]
   const drawerOnlyNavItems = [
+    { name: t('nav.alreadyHaveAccess'), id: 'access' },
     { name: t('nav.cloud'), id: null, href: 'https://promptanatomy.cloud/', external: true },
     { name: t('nav.pro'), id: null, href: 'https://promptanatomy.pro/', external: true },
     ...(GLOSSARY_URL

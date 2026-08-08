@@ -189,7 +189,7 @@ export default function HomePage({ forceLocale }) {
               onGoToTraining={handleGoToTraining}
               trainingLinkLoading={trainingLinkLoading}
             />
-            <div className="mt-8 md:mt-10 rounded-2xl border-2 border-slate-200 bg-white p-5 md:p-6 shadow-soft">
+            <div id="access" className="mt-8 md:mt-10 rounded-2xl border-2 border-slate-200 bg-white p-5 md:p-6 shadow-soft">
               <div className="mb-4">
                 <p className="text-sm font-black uppercase tracking-[0.2em] text-slate-700 mb-2">
                   {t('pricing.returningTitle')}

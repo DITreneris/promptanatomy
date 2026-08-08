@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { ArrowRight, CheckCircle, Lock, ShieldCheck, Cpu, Globe } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
 
@@ -178,9 +179,12 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
         <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em]">
           <Lock size={16} className="shrink-0" aria-hidden /> {t('pricing.stripeVerified')}
         </div>
-        <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em]">
+        <Link
+          to="/terms#refunds"
+          className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em] hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm"
+        >
           <ShieldCheck size={16} className="shrink-0" aria-hidden /> {t('pricing.refundContact')}
-        </div>
+        </Link>
         {aiPoweredLabel && (
           <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em]">
             <Cpu size={16} className="shrink-0" aria-hidden /> {aiPoweredLabel}
