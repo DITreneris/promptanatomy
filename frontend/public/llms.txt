@@ -2,7 +2,7 @@
 
 > Bilingual AI training hub: prompt engineering, context architecture, agents, automation. Canonical: https://www.promptanatomy.app/
 
-Prompt Anatomy (`promptanatomy.app`) is the conversion hub for LT/EN checkout, access, and the interactive training app. For exhaustive FAQ, hero, and pricing copy, prefer https://www.promptanatomy.app/llms-full.txt. Ecosystem spokes are free workflow tools that route back to this hub.
+Prompt Anatomy (`promptanatomy.app`) is the conversion hub for LT/EN checkout, access, and the interactive training app. The Six-Block Method is the Prompt Anatomy canon; five-part tools on ecosystem spokes are Quick mode and map onto the six blocks. For exhaustive FAQ, hero, and pricing copy, prefer https://www.promptanatomy.app/llms-full.txt. Ecosystem spokes are free workflow tools that route back to this hub.
 
 ## Main
 
@@ -59,4 +59,4 @@ prompt engineering, context engineering, context architecture, AI agents, AI aut
 - [Terms of Service](https://www.promptanatomy.app/terms): Legal — secondary for AI context
 - [Training app](https://www.promptanatomy.app/anatomy/): Interactive course; disallowed in robots.txt for hub crawl focus
 - Do not index transactional routes: https://www.promptanatomy.app/success, https://www.promptanatomy.app/cancel, https://www.promptanatomy.app/api/
-- lastUpdated: 2026-08-05
+- lastUpdated: 2026-08-07

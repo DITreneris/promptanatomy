@@ -131,6 +131,11 @@ export default function Footer({ hasAccess = false, onTrainingClick, trainingLin
                 )}
               </li>
               <li>
+                <a href="#access" className={footerLinkClass}>
+                  {t('footer.alreadyHaveAccess')}
+                </a>
+              </li>
+              <li>
                 <a href="#faq" className={footerLinkClass}>
                   {t('footer.faq')}
                 </a>

@@ -75,9 +75,9 @@ Techniškai: atskiros Stripe kainos (Price) EUR ir USD; frontend pagal regioną 
 
 ### 4.4 Grąžinimo taisykles (refund policy)
 
-- **Būsena:** Grąžinimo taisyklių dar **nėra** – reikia pasitarti ir nuspręsti.
-- **Rekomendacija:** Mokymams dažnai taikoma 14 dienų „nebuvo patogu“ arba „neatsisiuntė / nepasiekė turinio“ grąžinimo sąlyga; arba trumpesnis terminas (7 d.). Svarbu aiškiai parašyti sąlygas ir nuorodą į jas pateikti LP (footer ar atskiras puslapis).
-- **LP:** Kol sąlygos neparašytos – nuo „Money-Back Policy“ geriau nuimti arba pakeisti į „Grąžinimo sąlygos – susisiekite“ ir nuorodą į el. paštą.
+- **Būsena (2026-08-07):** Terms + FAQ aprašo grąžinimo prašymus per `info@promptanatomy.app` (siekiama atsakyti per 14 kalendorinių dienų; įstatyminės vartotojo teisės). Pilna teisinė peržiūra – Horizon `[A.1]`.
+- **LP:** Pricing trust eilutė `pricing.refundContact` – faktinis one-liner (14 d. / info@) su nuoroda į `/terms#refunds`. Be „Money-Back“ garantijos formuluočių.
+- **SOT tekstas:** `legal.termsRefund` / FAQ „Can I get a refund?“ (EN+LT i18n).
 
 ---
 
@@ -142,8 +142,8 @@ Santrauka: ką reikia padaryti, kad LP ir backend atitiktų kainodaros planą (4
 
 | Kas reikalinga | Būsena | Pastabos |
 |----------------|--------|----------|
-| Parašytos grąžinimo sąlygos | **Trūksta** | Pasitarti, nuspręsti (pvz. 14 d.), dokumentuoti |
-| LP: nuoroda arba tekstas | **Atlikta** | Pricing.jsx – „Grąžinimo sąlygos – susisiekite“ |
+| Parašytos grąžinimo sąlygos | **Dalinis** | Terms + FAQ (14 d. / info@); pilna teisinė peržiūra – `[A.1]` |
+| LP: nuoroda arba tekstas | **Atlikta** | Pricing trust → `/terms#refunds` (`pricing.refundContact`) |
 | Atskiras puslapis /legal/refund (optional) | **Trūksta** | Jei norima pilnas tekstas |
 
 ### 8.4 Kitas (jau žinomi iš TODO)
