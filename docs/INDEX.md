@@ -40,6 +40,7 @@
 | GEO citation scorecard | [docs/templates/geo-citation-scorecard.md](templates/geo-citation-scorecard.md) | Monthly AI citation prompts (EN/LT); archive under `archive/snapshots/geo-citations-YYYY-MM.md`. |
 | Ekosistemos valdymas (hub-and-spoke) | [docs/ecosystem-governance.md](ecosystem-governance.md) | Domenų rolės, SEO/GEO/AI nekonkuravimo taisyklės, KPI minimumas. |
 | Ekosistemos kanonas (9 domenų) | [docs/ecosystem-canon.md](ecosystem-canon.md) | Pipeline, LP 6 kortelės, sync taisyklės su geo-manifest ir i18n. |
+| Sibling memo — entity footer (QW1b) | [docs/sibling_memo.md](sibling_memo.md) | Handoff spoke/discovery repo: vieninga footer eilutė → `.app`; kontraktas vs lokali implementacija. |
 | Kainodaros planas | [docs/pricing-plan.md](pricing-plan.md) | Kainodara, geriausios praktikos, palyginimas. |
 | Faze 1 apimtis (2 produktai, LP pricing) | [docs/phase-1-scope.md](phase-1-scope.md) | Kas parduodama Faze 1 checkout'e; **ne** training tier limit (prod M1–12 corporate12 – žr. golden-legacy §4). |
 | Kalbos gairės (LT/EN) | [docs/language-guidelines-en-lt.md](language-guidelines-en-lt.md) | Prekės ženklas, terminai, tonas, vertimai. |

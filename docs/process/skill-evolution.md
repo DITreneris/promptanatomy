@@ -74,6 +74,16 @@ Pavyzdys:
 | Po F3 status change: sync Status + Moscow §13 + §15 + TODO `[A.4c]` | `quality-assurance-agent/lessons.md` |
 | Footer Cookies UI = `/privacy#cookies` (ne „Netrukus“); legal review atskiras | `TODO.md` A.1 |
 
+### Pakeltos pamokos (2026-08-08, LP audit QW / frontpage lean)
+
+| Taisyklė | Kur įrašyta |
+|----------|-------------|
+| Six-Block vs five-part/Quick mode → GEO only (`llms` / `TRAINING_SUMMARY`), ne WhatIs/FAQ | `frontend-agent/SKILL.md`, `frontend-agent/lessons.md`, golden-legacy §1–3 |
+| `modulesLocked` ne „later phase“ M7–12 — on-demand / temos; Stripe vis dar max 6 | `frontend-agent/SKILL.md`, `q-and-a-agent/lessons.md`, phase-1-scope |
+| Demo reply SLA ≠ refund 14 d. (`forTeamsBody` 24h) | `frontend-agent/lessons.md` |
+| `hero.socialProof` 600+ — keep jei savininkas apgina | `frontend-agent/lessons.md`, `q-and-a-agent/lessons.md` |
+| accessDisplay caps 3/6/9/12 (corporate12) | `frontend-agent/SKILL.md`, `accessDisplay.js` |
+
 ---
 
 ## Skirtumas nuo submodulio
