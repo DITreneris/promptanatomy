@@ -20,7 +20,7 @@ Bilingual (LT/EN) landing hub for AI prompt engineering training, Stripe checkou
 | [promptanatomy.blog](https://promptanatomy.blog/) | Deepen — knowledge hub |
 | [promptanatomy.lol](https://promptanatomy.lol/) | Play — structured sandbox |
 
-**Version:** parent **1.4.6** (`frontend/package.json`); training submodule pin — [CHANGELOG.md](CHANGELOG.md) `[Unreleased]` / [docs/golden-legacy-standard.md](docs/golden-legacy-standard.md) §4.
+**Version:** parent **1.5.0** (`frontend/package.json`); training submodule pin — [docs/golden-legacy-standard.md](docs/golden-legacy-standard.md) §4 (`91656fa` / v1.6.1).
 
 ### Publications (founder)
 
