@@ -10,10 +10,10 @@
 
 | Vieta | Reikšmė | Paskirtis |
 |-------|---------|-----------|
-| **frontend/src/config.js** | `APP_VERSION = 'v1.4'` | Vienas šaltinis: Hero terminalo etiketė (`SCRIPT_NAME`), Ecosystem „Stable“ ir kiti komponentai, kur rodoma versija. **Navbar** versijos ženkliuko nerodo (Variant B). Keičiant čia – atsinaujina visur, kur naudojama. |
-| **frontend/package.json** | `"version": "1.4.6"` | NPM package versija (build, artefaktai). Siūloma sulyginti su release. |
-| **CHANGELOG.md** | `## [1.4.6] - 2026-07-15` (naujausias release) | Release istorija; po release nauji pakeitimai rašomi po `[Unreleased]`. |
-| **Git tag** | `v1.4.6` (planuojamas) | Fiksuoja commit, atkuriama būsena. Ankstesnis: `v1.4.5`. |
+| **frontend/src/config.js** | `APP_VERSION = 'v1.5'` | Vienas šaltinis: Hero terminalo etiketė (`SCRIPT_NAME`), Ecosystem „Stable“ ir kiti komponentai, kur rodoma versija. **Navbar** versijos ženkliuko nerodo (Variant B). Keičiant čia – atsinaujina visur, kur naudojama. |
+| **frontend/package.json** | `"version": "1.5.0"` | NPM package versija (build, artefaktai). Siūloma sulyginti su release. |
+| **CHANGELOG.md** | `## [1.5.0] - 2026-08-12` (naujausias release; lokaliai, gitignore) | Release istorija; po release nauji pakeitimai rašomi po `[Unreleased]`. |
+| **Git tag** | `v1.5.0` | Fiksuoja commit, atkuriama būsena. Ankstesnis: `v1.4.6`. |
 
 **Pastaba:** Rodomoji versija UI gali būti trumpesnė (`v1.3`) arba pilna (`1.3.0`). Abu variantai priimtini; `v1.3` – kompaktiškesnis badge.
 
@@ -25,7 +25,7 @@
 - **MINOR** (1.x.0): naujos funkcijos atgal suderinamos.
 - **PATCH** (1.3.x): klaidų taisymai, saugumą nekeičiantys pakeitimai.
 
-Naujausias parent release **1.4.6** (2026-07-15) – **MINOR**: Supabase CHECK `plan=9`, webhook retry. Training upstream follow-up pin **`91656fa`** (package `1.6.1` + Horizon B corporate12 cutover handoff; prod M1–12 `build:corporate12`, magic-link tier 12, Node 24 toolchain). Ankstesni pin: `b921087` (v1.5.0 + corporate12 handoff), `67b7163` (v1.5.0 + Unreleased, M1–9 Track A), `fdc38de` (v1.5.0 tag), `a714e92` (v1.4.9), `7ff2a4f` (v1.4.7), `1eaa2be` (v1.4.6 + Unreleased), `4eebf10` (1.4.5+CI). Ankstesnis parent **1.4.5** (2026-07-09) – pin `47448fc`. Bazė **1.3.0** – stabilus produktas su Stripe, magic link, mokymų app.
+Naujausias parent release **1.5.0** (2026-08-12) – **MINOR**: Horizon B corporate12 cutover (prod M1–12 `build:corporate12`, magic-link tier 12, Node 24, LP/GEO QW3a). Training pin **`91656fa`** (package `1.6.1`). Ankstesnis parent **1.4.6** (2026-07-15) – Supabase CHECK `plan=9`, webhook retry. Ankstesni pin: `b921087` (v1.5.0 + corporate12 handoff), `67b7163` (v1.5.0 + Unreleased, M1–9 Track A), `fdc38de` (v1.5.0 tag), `a714e92` (v1.4.9), `7ff2a4f` (v1.4.7), `1eaa2be` (v1.4.6 + Unreleased), `4eebf10` (1.4.5+CI). Ankstesnis parent **1.4.5** (2026-07-09) – pin `47448fc`. Bazė **1.3.0** – stabilus produktas su Stripe, magic link, mokymų app.
 
 ---
 
@@ -53,4 +53,4 @@ Po kiekvieno release – atnaujinti `config.js` ir `frontend/package.json` pagal
 
 ## 5. Istorija: v1.4.0 (atlikta 2026-06-06)
 
-Release **1.4.0** (MINOR) – ekosistemos sekcija, GEO, perf, copy; `config.js` → `v1.4`, `package.json` → `1.4.0`. Tolesnė istorija ir dabartinė parent versija (**1.4.6**) – [CHANGELOG.md](../CHANGELOG.md). Nauji release žingsniai – §3 aukščiau.
+Release **1.4.0** (MINOR) – ekosistemos sekcija, GEO, perf, copy; `config.js` → `v1.4`, `package.json` → `1.4.0`. Dabartinė parent versija **1.5.0** (2026-08-12); pilna istorija – lokaliame [CHANGELOG.md](../CHANGELOG.md) (gitignore). Nauji release žingsniai – §3 aukščiau.
