@@ -2,6 +2,9 @@
   "name": "promptanatomy",
   "private": true,
   "description": "Root package for Vercel serverless API (api/*). Frontend build via scripts/vercel-build.sh.",
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "install:vercel": "bash scripts/vercel-install.sh",
     "build:vercel": "bash scripts/vercel-build.sh",

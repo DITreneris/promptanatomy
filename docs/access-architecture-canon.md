@@ -2,7 +2,7 @@
 
 **Vieta dokumente:** vienas sutartas „tiesos“ modelis be atskiro vartotojo login. Kiti sluoksniai – tiltas į mokymų SPA, ne konkuruojanti ilgalaikė autoritetas.
 
-**Susiję:** [payment-best-practices.md](payment-best-practices.md) (plan_value, webhook), [golden-legacy-standard.md](golden-legacy-standard.md) (kontraktai), [memo-integration-security-analysis.md](memo-integration-security-analysis.md) (HMAC).
+**Susiję:** [payment-best-practices.md](payment-best-practices.md) (plan_value, webhook), [golden-legacy-standard.md](golden-legacy-standard.md) (kontraktai), [memo.md](../memo.md) (HMAC spec), [archive/analysis/memo-integration-security-analysis.md](archive/analysis/memo-integration-security-analysis.md) (istorinė analizė).
 
 ---
 

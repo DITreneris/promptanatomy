@@ -9,7 +9,7 @@ Bilingual (LT/EN) landing hub for AI prompt engineering training, Stripe checkou
 | Domain | Role |
 |--------|------|
 | [promptanatomy.app](https://www.promptanatomy.app) | Hub — pricing, checkout, access |
-| [promptanatomy.app/anatomy/](https://www.promptanatomy.app/anatomy/) | Training app (M1–9 production; Stripe tier 6, Supabase tier 9) |
+| [promptanatomy.app/anatomy/](https://www.promptanatomy.app/anatomy/) | Training app (M1–12 corporate12; Stripe checkout max 6, operator/Supabase grants tier 9/12) |
 | [promptanatomy.site](https://promptanatomy.site) | Ecosystem map, quiz, Prompt Builder (discovery) |
 | [promptanatomy.cloud](https://promptanatomy.cloud/) | Enter — onboarding → hub |
 | [promptanatomy.info](https://www.promptanatomy.info/en/) | Use — prompt library |

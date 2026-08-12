@@ -1,6 +1,6 @@
 # Promptų anatomija – Interaktyvus DI Mokymas
 
-> **Disclaimer (2026-07-25):** Šis failas – mokymų **turinio / produkto vizija**, ne hub deploy SOT. Live hub: [promptanatomy.app](https://www.promptanatomy.app). Training app: submodule `apps/prompt-anatomy` → `/anatomy/` (**M1–9** produkcijoje). Paleidimas, env, Stripe, API – [README.md](README.md); LP/regresija – [docs/golden-legacy-standard.md](docs/golden-legacy-standard.md). Kai kurios sekcijos žemiau (pvz. „6 moduliai“, senas clone URL) gali atsilikti.
+> **Disclaimer (2026-08-12):** Šis failas – mokymų **turinio / produkto vizija**, ne hub deploy SOT. Live hub: [promptanatomy.app](https://www.promptanatomy.app). Training app: submodule `apps/prompt-anatomy` → `/anatomy/` (**M1–12** produkcijoje per `build:corporate12`; public checkout vis dar Starter/Core max 6). Paleidimas, env, Stripe, API – [README.md](README.md); LP/regresija – [docs/golden-legacy-standard.md](docs/golden-legacy-standard.md). Kai kurios sekcijos žemiau (pvz. „6 moduliai“, senas clone URL) gali atsilikti.
 
 **6 promptų struktūros blokai, vienas nuoseklus mokymas – sistema nuo A iki Z.**
 

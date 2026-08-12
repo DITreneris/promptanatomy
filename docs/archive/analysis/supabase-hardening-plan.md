@@ -4,7 +4,7 @@
 **Kontekstas:** Analizė pagal repo būseną ir 2026 m. Supabase/GitHub gaires ([RLS docs](https://github.com/supabase/supabase/blob/master/apps/docs/content/guides/database/postgres/row-level-security.mdx), [Securing your API](https://supabase.com/docs/guides/api/securing-your-api), [Data API hardening](https://github.com/supabase/supabase/blob/master/apps/docs/content/guides/api/hardening-data-api.mdx)).  
 **Principas:** Nelaužyti esamų kontraktų (`GET /api/access`, webhook upsert, checkout 409). Pirmiausia DB gynyba gylio, po to operacinis patikimumas, paskui refaktorius.
 
-**Susiję dokumentai:** [supabase-migrations.md](supabase-migrations.md), [payment-best-practices.md](payment-best-practices.md), [security-audit-deep.md](security-audit-deep.md) §4.6, [access-architecture-canon.md](access-architecture-canon.md), [golden-legacy-standard.md](golden-legacy-standard.md).
+**Susiję dokumentai:** [supabase-migrations.md](../../supabase-migrations.md), [payment-best-practices.md](../../payment-best-practices.md), [security-audit-deep.md](security-audit-deep.md) §4.6, [access-architecture-canon.md](../../access-architecture-canon.md), [golden-legacy-standard.md](../../golden-legacy-standard.md).
 
 ### Status 2026-07-25
 
@@ -484,4 +484,4 @@ cd frontend && npm run build
 2. F5–F7 pagal poreikį; F3 Upstash upgrade tik jei multi-instance abuse.
 3. Atviras backlog: [TODO.md](../TODO.md) § Supabase hardening.
 
-*Dokumentas: docs/supabase-hardening-plan.md. Nuoroda: [docs/INDEX.md](INDEX.md).*
+*Dokumentas: docs/archive/analysis/supabase-hardening-plan.md. Nuoroda: [docs/INDEX.md](../../INDEX.md).*

@@ -51,15 +51,15 @@
 | `darius.martinonis@cgates.lt` | Rankinis | Operator grant |
 | `laura.andriuskeviciene@cgates.lt` | Rankinis | Operator grant |
 
-### Snapshot (2026-08-06)
+### Snapshot (2026-08-10)
 
 | `highest_plan` | Vartotojų sk. |
 |----------------|---------------|
 | 3 | 2 |
-| 6 | 101 |
+| 6 | 102 |
 | 9 | 9 |
 
-*2026-08-06:* +13 `@rizika.lt` rankinis grant `highest_plan=6` (UADBB Rizikos cesija). Ankstesni: 2026-07-30 → 2/88/9; 2026-07-21 → 2/87/5.*
+*2026-08-10:* +`liudmila.surkova@rizika.lt` → 6. Ankstesni: 2026-08-06 → 2/101/9 (+13 rizika); 2026-07-30 → 2/88/9.*
 
 ---
 

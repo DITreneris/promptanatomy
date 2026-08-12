@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react'
 import { ArrowRight } from 'lucide-react'
+import { captureEcosystemOutboundClick } from '../analytics/posthog'
 import { useLocale } from '../i18n/LocaleContext'
 
 const HERO_BULLET_KEYS = ['hero.bullet1', 'hero.bullet2', 'hero.bullet3']
@@ -26,6 +27,7 @@ function usePrefersReducedMotion() {
 export default function Hero({ onCta }) {
   const { t, locale } = useLocale()
   const prefersReducedMotion = usePrefersReducedMotion()
+  const pagePath = typeof window !== 'undefined' ? window.location.pathname : '/'
 
   const fullTexts = useMemo(
     () => [
@@ -132,12 +134,29 @@ export default function Hero({ onCta }) {
           </ul>
 
           <div className="flex flex-col gap-4 sm:gap-6 items-stretch sm:flex-row sm:items-center">
-            <button
-              type="button"
-              onClick={onCta}
+            <a
+              href="https://promptanatomy.cloud/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() =>
+                captureEcosystemOutboundClick({
+                  target: 'promptanatomy_cloud',
+                  placement: 'hero_primary',
+                  locale,
+                  pagePath,
+                })
+              }
               className="group w-full sm:w-auto btn-primary-lg flex items-center justify-center gap-3"
             >
               {t('hero.cta')} <ArrowRight className="icon-lg group-hover:translate-x-1 transition-transform" aria-hidden />
+            </a>
+
+            <button
+              type="button"
+              onClick={onCta}
+              className="group w-full sm:w-auto btn-secondary flex items-center justify-center gap-3 px-8 py-4 text-lg"
+            >
+              {t('hero.secondaryCta')} <ArrowRight className="icon-lg group-hover:translate-x-1 transition-transform" aria-hidden />
             </button>
 
             <div className="inline-flex items-center gap-3 rounded-full border border-slate-200/90 bg-white/90 px-4 py-3 text-sm font-semibold text-slate-600 shadow-soft min-h-[44px]">

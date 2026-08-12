@@ -101,4 +101,4 @@ Tai apsaugo nuo timing atakų ant secret.
 
 **Klausimai:** kreiptis į pagrindinės platformos atsakingą asmenį.
 
-**Nuorodos:** Detalesnė spec (mūsų generavimo pusė) – [memo.md](memo.md); saugumo ir patikimumo gairės – [docs/memo-integration-security-analysis.md](docs/memo-integration-security-analysis.md).
+**Nuorodos:** Detalesnė spec (mūsų generavimo pusė) – [memo.md](../../../memo.md); saugumo ir patikimumo gairės – [memo-integration-security-analysis.md](memo-integration-security-analysis.md).

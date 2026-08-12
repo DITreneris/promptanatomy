@@ -18,7 +18,7 @@ Vienas dokumentas: kas įdiegta produkcijoje (Vercel + Stripe webhook), kaip tik
 - **Stripe Dashboard:** Webhook URL – `https://www.promptanatomy.app/api/stripe-webhook`, event `checkout.session.completed`. Signing secret → env `STRIPE_WEBHOOK_SECRET`.
 - **Create-checkout-session ir GET /api/access:** Kol FastAPI backend nedeployintas atskirai, šie endpointai produkcijoje veikia per tą patį frontend deploy tik jei pridėti atitinkamos Vercel functions; dabar frontend naudoja `VITE_API_URL` (lokaliai `localhost:8000`). Produkcijoje reikia arba atskiro backend deploy, arba tų pačių endpointų kaip Vercel functions.
 - **Success-redirect (magic-link):** Vercel serverless `api/success-redirect.js` – pagal `session_id` grąžina `redirect_url` į mokymų app su `access_tier`, `expires`, `token`. Jei Stripe Checkout sesijoje yra pirkėjo el. paštas, JSON gali turėti neprivalomą `customer_email` (Success puslapis gali įrašyti į naršyklės saugyklą LP formai). Reikia env: `ACCESS_TOKEN_SECRET`, `STRIPE_SECRET_KEY`; optional: `TRAINING_REDIRECT_BASE`, `ACCESS_TOKEN_EXPIRY_DAYS`.
-- **Training app (submodulis):** `apps/prompt-anatomy` → [DITreneris/inzinerija](https://github.com/DITreneris/inzinerija) (commit `b921087`, upstream package `1.5.0` + corporate12 handoff). Vercel build metu: `installCommand` inicijuoja submodulį (`git submodule update --init --recursive`, `HUSKY=0` submodulyje), `buildCommand` buildina frontend, po to training app su `VITE_BASE_PATH=/anatomy/`, `VITE_MAX_BUILD_MODULE=12`, `npm run build:corporate12` (be `VITE_MVP_MODE`), rezultatas kopijuojamas į `frontend/dist/anatomy/`. Maršrutas `/anatomy/*` aptarnaujamas iš to katalogo; `/anatomija/*` → **301** į `/anatomy/*`. Parent magic-link tiers `[3, 6, 9, 12]`; Supabase Phase 1 grant `highest_plan=12` → `access_tier=12`. Corporate15 / tier 15 neaktyvuojami. Rekomenduojama Vercel build env: `VITE_PUBLIC_SITE_URL=https://www.promptanatomy.app`; Production: `TRAINING_REDIRECT_BASE=https://www.promptanatomy.app/anatomy` (žr. submodulio `docs/deployment/MARKETING_HANDOFF_CHECKLIST.md` §7b + `06_marketingo_memo_corporate12_supabase.md`).
+- **Training app (submodulis):** `apps/prompt-anatomy` → [DITreneris/inzinerija](https://github.com/DITreneris/inzinerija) (commit `91656fa`, upstream package `1.6.1` + Horizon B corporate12 cutover handoff). Vercel build metu: `installCommand` inicijuoja submodulį (`git submodule update --init --recursive`, `HUSKY=0` submodulyje), `buildCommand` buildina frontend, po to training app su `VITE_BASE_PATH=/anatomy/`, `VITE_MAX_BUILD_MODULE=12`, `npm run build:corporate12` (be `VITE_MVP_MODE`), rezultatas kopijuojamas į `frontend/dist/anatomy/`. Maršrutas `/anatomy/*` aptarnaujamas iš to katalogo; `/anatomija/*` → **301** į `/anatomy/*`. Parent magic-link tiers `[3, 6, 9, 12]`; Supabase Phase 1 grant `highest_plan=12` → `access_tier=12`. Corporate15 / tier 15 neaktyvuojami. Rekomenduojama Vercel build env: `VITE_PUBLIC_SITE_URL=https://www.promptanatomy.app`; Production: `TRAINING_REDIRECT_BASE=https://www.promptanatomy.app/anatomy` (žr. submodulio `docs/deployment/MARKETING_HANDOFF_CHECKLIST.md` §7b + `06_marketingo_memo_corporate12_supabase.md`).
 
 **Vercel env (būtina webhook + prieigai + success-redirect):** `STRIPE_WEBHOOK_SECRET`, `STRIPE_SECRET_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `ACCESS_TOKEN_SECRET` (bendras su mokymų app; success-redirect funkcijai). Optional: `ACCESS_TOKEN_EXPIRY_DAYS`.
 
@@ -41,7 +41,7 @@ Prieš deploy į produkciją patikrinkite:
 
 1. **Dashboard override:** *Settings → Build & Deployment* – jei **Build Command** / **Install Command** užpildyti ranka, jie **perrašo** [`vercel.json`](../vercel.json). Palikite tuščius (naudokite repo config) arba nukopijuokite komandas iš `vercel.json`.
 2. **`VITE_MVP_MODE=1` Production env:** pašalinkite – kitaip training build gali eiti į M1–6 profilį arba konfliktuoti su `VITE_MAX_BUILD_MODULE=12`.
-3. **Submoduliai:** *Settings → Git* – įjunkite **Include Git Submodules**. Build log turi rodyti `apps/prompt-anatomy` commit `b921087` ir `VITE_MAX_BUILD_MODULE=12` / `build:corporate12`.
+3. **Submoduliai:** *Settings → Git* – įjunkite **Include Git Submodules**. Build log turi rodyti `apps/prompt-anatomy` commit `91656fa` ir `VITE_MAX_BUILD_MODULE=12` / `build:corporate12`.
 4. **Husky:** submodulio `npm ci` Vercel'e naudoja `HUSKY=0` (žr. `vercel.json` `installCommand`).
 5. **Logai:** Deployments → failed build → Build Logs – ieškokite `validate:schema`, `husky`, `submodule`, `ENOMEM` / timeout. Build/install logika – [`scripts/vercel-build.sh`](../scripts/vercel-build.sh), [`scripts/vercel-install.sh`](../scripts/vercel-install.sh) (Vercel `buildCommand` ≤256 simb.).
 
@@ -78,7 +78,7 @@ Webhook įrašo į DB tik jei `session.metadata.plan` yra **plan_id** ("1"–"4"
 
 ### 3.3 Vercel function logai
 
-LP **Check** el. paštui naudoja **`GET /api/access`** (lentelė **`user_access`**). Jei vartotojas mato **„No access found“**, bet „yra Supabase“ – žr. operacinį checklist [docs/test_report.md](test_report.md) (2026-03-23 įrašas).
+LP **Check** el. paštui naudoja **`GET /api/access`** (lentelė **`user_access`**). Jei vartotojas mato **„No access found“**, bet „yra Supabase“ – patikrink: (1) el. paštas lowercase Supabase, (2) `highest_plan` > 0, (3) Vercel env `SUPABASE_*`, (4) webhook logs §3.3. Istorinis incident log: [archive/snapshots/test_report-ops-log.md](archive/snapshots/test_report-ops-log.md).
 
 **Vercel → Deployments → pasirink deployment → Functions → stripe-webhook → Logs.** Ieškok:
 
@@ -97,7 +97,7 @@ Lentelė **user_access** turi turėti: `email` (text, NOT NULL, UNIQUE), `highes
 
 ### 3.6 Logai: Node DEP0169 (`url.parse`)
 
-Jei loguose matote **`[DEP0169] DeprecationWarning`** dėl **`url.parse()`**, bet HTTP statusas **200** – tai dažniausiai **Node įspėjimas**, ne API klaida; Vercel jį gali rodyti kaip „Error“. Šiame repo **`api/*` handleriai `url.parse` nenaudoja**; tikslų šaltinį (stack trace) galima gauti su laikinu env **`NODE_OPTIONS=--trace-deprecation`** (žr. pilną diagnostiką: [docs/diagnostics-dep0169-vercel.md](diagnostics-dep0169-vercel.md)).
+Jei loguose matote **`[DEP0169] DeprecationWarning`** dėl **`url.parse()`**, bet HTTP statusas **200** – tai dažniausiai **Node įspėjimas**, ne API klaida; Vercel jį gali rodyti kaip „Error“. Šiame repo **`api/*` handleriai `url.parse` nenaudoja**. Stack trace: laikinas env **`NODE_OPTIONS=--trace-deprecation`**. Uždaryta diagnostika: [archive/analysis/diagnostics-dep0169-vercel.md](archive/analysis/diagnostics-dep0169-vercel.md).
 
 ---
 

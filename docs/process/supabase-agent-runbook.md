@@ -11,7 +11,7 @@
 | Užduotis | Agentas |
 |----------|---------|
 | SQL migracija, RLS, CHECK | **supabase-agent** |
-| Rankinis tier 9, bulk import | **backend-agent** |
+| Rankinis tier 9/12, bulk import | **backend-agent** |
 | LP magic link UI | **frontend-agent** |
 | Deploy + smoke | **fullstack-agent** |
 
@@ -29,10 +29,10 @@
 
 ---
 
-## CHECK ir tier 9
+## CHECK ir tier 9/12
 
-- Prod naudoja `highest_plan=9` **operator grant** (5 vartotojai) – ne webhook default.
-- Migracija `20260710120000_user_access_add_plan_9_check.sql` – CHECK turi įtraukti `9`.
+- Prod naudoja `highest_plan=9` **operator grant** ir `highest_plan=12` **operator/corporate grant** – ne webhook default iš Phase 1 checkout.
+- CHECK turi įtraukti `9` ir `12` (istorinis 9 papildymas: `20260710120000_user_access_add_plan_9_check.sql`; corporate12 kelias turi išlikti suderintas su parent `VALID_TIERS` / `ACCESS_TIER_VALUES` `[3, 6, 9, 12]`).
 - **Nekeisti** webhook plan 2 → 6 semantikos (99 € default = moduliai 1–6).
 
 ---
@@ -41,7 +41,7 @@
 
 - `enable row level security` + `revoke all ... from anon, authenticated` – jei frontend nenaudoja Data API.
 - `service_role` bypassina RLS – serverio API elgsena nesikeičia.
-- Detalus planas: [supabase-hardening-plan.md](../supabase-hardening-plan.md) F1.
+- Detalus planas (archyvas): [archive/analysis/supabase-hardening-plan.md](../archive/analysis/supabase-hardening-plan.md) F1.
 
 ---
 

@@ -123,7 +123,7 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 
 ### Atnaujinimas 2026-08-05 (paid-traffic gate)
 
-- **Training GEO copy** — [geo-manifest.js](../frontend/src/site/geo-manifest.js): `/anatomy/` = modules **1–9**; Stripe Core checkout = **1–6**; M7–9 = operator/cohort upgrade. `LAST_UPDATED` → `2026-08-05`.
+- **Training GEO copy** — [geo-manifest.js](../frontend/src/site/geo-manifest.js): `/anatomy/` = modules **1–12** (`build:corporate12`); Stripe Core checkout = **1–6**; M7–9 = operator/cohort upgrade, M10–12 = operator/corporate grant. `LAST_UPDATED` → `2026-08-05`.
 - **KILL unchanged** — hub sitemap still 4 URLs; no SSR.
 
 ---
