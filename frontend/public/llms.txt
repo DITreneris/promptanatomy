@@ -27,7 +27,7 @@ Prompt Anatomy (`promptanatomy.app`) is the conversion hub for LT/EN checkout, a
 ## Ecosystem
 
 - [Hub (conversion)](https://www.promptanatomy.app/): Hub — pricing, checkout, access, conversion
-- [Training app](https://www.promptanatomy.app/anatomy/): Interactive training app (modules 1–9, 6-block methodology; Stripe Core checkout sells 1–6; 7–9 via operator/cohort upgrade)
+- [Training app](https://www.promptanatomy.app/anatomy/): Interactive training app (modules 1–12, 6-block methodology; Stripe Core checkout sells 1–6; 7–12 via operator/corporate tier 9/12 grants)
 - [Ecosystem discovery map (.site)](https://promptanatomy.site): Discovery — full 9-domain journey map, maturity quiz, Prompt Builder
 - [PromptAnatomy Cloud (.cloud)](https://promptanatomy.cloud/): Spoke — Enter: onboarding and first lesson, routing to hub (LT: https://promptanatomy.cloud/)
 - [Prompt library (.info)](https://www.promptanatomy.info/en/): Spoke — Use: prompt library and daily automation workflows (LT: https://www.promptanatomy.info/lt/)
@@ -59,4 +59,4 @@ prompt engineering, context engineering, context architecture, AI agents, AI aut
 - [Terms of Service](https://www.promptanatomy.app/terms): Legal — secondary for AI context
 - [Training app](https://www.promptanatomy.app/anatomy/): Interactive course; disallowed in robots.txt for hub crawl focus
 - Do not index transactional routes: https://www.promptanatomy.app/success, https://www.promptanatomy.app/cancel, https://www.promptanatomy.app/api/
-- lastUpdated: 2026-08-08
+- lastUpdated: 2026-08-12

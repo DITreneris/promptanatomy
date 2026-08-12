@@ -41,16 +41,16 @@ Pirmajame etape siūlome **tik du planus**:
 | **Frontend** i18n | „15 modulių“ → „6 modulių“; pridėti `pricing.modulesLocked` (7+ locked). |
 | **Frontend** `HomePage` / prieiga | „Jau turite“ pilnai – tikrinti `highest_plan >= 6` (ne 15). |
 | **Backend** `config` | `PLAN_VALUES` gali būti `(3, 6)` Faze 1; arba palikti (3,6,12,15), bet checkout – tik 1, 2. |
-| **Docs** | roadmap.md, pricing-plan.md – nuoroda į šį dokumentą; INDEX – įtraukti phase-1-scope. |
+| **Docs** | roadmap.md – nuoroda į šį dokumentą; INDEX – phase-1-scope. |
 
 ---
 
 ## 4. Vėlesnės fazes
 
-**Iki 2027-01-01 (roadmap C2):** viešai lieka Starter/Core (max 6); M7–9 – operator upgrade / cohort / B2B (`highest_plan=9`), ne naujas Stripe „Pro“ checkout. Žr. [roadmap.md](../roadmap.md) Horizon C.
+**Iki 2027-01-01 (roadmap C2):** viešai lieka Starter/Core (max 6); M7–12 – operator upgrade / cohort / B2B / corporate (`highest_plan=9` arba `12`), ne naujas Stripe „Pro“ checkout. Žr. [roadmap.md](../roadmap.md) Horizon C.
 
-Kai (po decision gate) Stripe parduos daugiau nei Core (6): planai 3/4 (12/15), `PLAN_VALUES`, frontend planų sąrašas — arba optional C1 (Stripe → tier 9) po ADR. Training M7–12 jau egzistuoja per operator tiers 9/12; M13–15 – corporate15 cutover + content/release.
+Kai (po decision gate) Stripe parduos daugiau nei Core (6): planai 3/4 (12/15), `PLAN_VALUES`, frontend planų sąrašas — arba optional C1 (Stripe → tier 9/12) po ADR. Training M7–12 jau egzistuoja per operator tiers 9/12; M13–15 – corporate15 cutover + content/release.
 
 ---
 
-*Failas: `docs/phase-1-scope.md`. Susiję: [pricing-plan.md](pricing-plan.md), [roadmap.md](../roadmap.md).*
+*Failas: `docs/phase-1-scope.md`. Susiję: [roadmap.md](../roadmap.md), [payment-best-practices.md](payment-best-practices.md). Istorinė kainodara: [archive/analysis/pricing-plan.md](archive/analysis/pricing-plan.md).*

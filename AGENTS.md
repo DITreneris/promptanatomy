@@ -6,9 +6,9 @@ Prieš pradedant užduotį, nustatykite, kuris agentas tinkamiausias, ir deleguo
 |-----------------|---------|--------------|
 | **Frontend** – UI, React, Tailwind, komponentai, `api.js`, `accessDisplay.js`, hub SEO/GEO (`SeoHead`, `llms`, Org `sameAs`) | `frontend-agent` | Keičiate tik `frontend/` dalį (įskaitant LP SEO). |
 | **Backend** – FastAPI `backend/`, Vercel `api/` (įsk. rate-limit), Stripe, webhook, tier | `backend-agent` | Keičiate `backend/` arba `api/*.js`. |
-| **Supabase** – migracijos, RLS, CHECK, project registry | `supabase-agent` | SQL schema, multi-account; ne rankinis tier 9. |
+| **Supabase** – migracijos, RLS, CHECK, project registry | `supabase-agent` | SQL schema, multi-account; ne rankinis tier 9/12. |
 | **Pilnas kelias / integracija** | `fullstack-agent` | Frontend + `api/` + submodule; deploy, access tier, Vercel build; GEO CI/post-deploy smoke. |
-| **Klausimai** – apie projektą, dokumentaciją, deploy, prieigą, SEO/GEO | `q-and-a-agent` | „Kaip veikia“, „kur yra X“, tier 9 / prod smoke / GSC / llms. |
+| **Klausimai** – apie projektą, dokumentaciją, deploy, prieigą, SEO/GEO | `q-and-a-agent` | „Kaip veikia“, „kur yra X“, tier 9/12 / corporate12 smoke / GSC / llms. |
 | **Kokybe** – code review, saugumas, regresija, GEO smoke | `quality-assurance-agent` | Po pakeitimų arba prieš PR/merge. |
 | **Mišrios / deploy užduotys** | **orchestrator** skill | Routing + doc-loading: `.cursor/skills/orchestrator/SKILL.md` |
 

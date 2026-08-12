@@ -63,4 +63,6 @@ Spoke / discovery domains are **not** implemented in this hub repo. Each should 
 
 **Priority:** `.site` → `.blog` → remaining spokes. Full checklist: [seo-geo-operations.md](seo-geo-operations.md) §J. Hub `sitemap.xml` must not list spoke URLs.
 
+**Entity footer (QW1b):** sibling handoff — [sibling_memo.md](sibling_memo.md) (footer line → `.app`; shared copy contract, local UI).
+
 ---

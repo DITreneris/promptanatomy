@@ -12,7 +12,7 @@ Vienas atskaitos dokumentas: kaip žymėti planus, env, Stripe/Supabase/Vercel k
 |------------|----------|----------------|
 | **plan_id** | `"1"` \| `"2"` \| `"3"` \| `"4"` | Frontend (mygtukai, API body), Stripe Price mapping |
 | **plan_value** | `3` \| `6` \| `12` \| `15` (+ **`9`** grant) | Supabase `highest_plan`, logika „moduliai 1–N“, webhook |
-| **Moduliai** | 1–3, 1–6; training M1–9 (tier 9); legacy 1–12 / 1–15 | UI / checkout vs operator grant |
+| **Moduliai** | 1–3, 1–6; training M1–12 (`build:corporate12`): tier 9 = M7–9, tier 12 = M10–12; legacy 1–15 | UI / checkout vs operator grant |
 
 **Mapping (Stripe plan_id → plan_value):**
 
@@ -20,7 +20,7 @@ Vienas atskaitos dokumentas: kaip žymėti planus, env, Stripe/Supabase/Vercel k
 - plan_id `"2"` → `6` (1–6) — Phase 1
 - plan_id `"3"` → `12` (1–12) — Phase 2 / ne LP
 - plan_id `"4"` → `15` (1–15) — Phase 2 / ne LP
-- **Tier `9`:** nėra plan_id; tik operatoriaus grant (M1–9). Žr. [user-access-tier-registry.md](user-access-tier-registry.md).
+- **Tier `9`:** nėra plan_id; tik operatoriaus grant (M1–9). **Tier `12`:** nėra Phase 1 checkout planas; tik operator/corporate grant (M1–12). Žr. [user-access-tier-registry.md](user-access-tier-registry.md).
 
 **Taisyklė:** Supabase ir visi palyginimai naudoja **plan_value** (skaičius). Frontend ir checkout request naudoja **plan_id** (string "1"–"4"). Kuriant naujus endpointus ar modulius – viduje konvertuoti į plan_value, į DB ir atsakymuose grąžinti plan_value.
 
@@ -30,7 +30,7 @@ Vienas atskaitos dokumentas: kaip žymėti planus, env, Stripe/Supabase/Vercel k
 
 ### 2.1 Checkout Session (kuriant sesiją)
 
-- **metadata.plan** – **būtina**. Phase 1: **plan_value** `"3"` / `"6"`. Legacy/Phase 2: `"12"`, `"15"`. (Webhook priima ir plan_id "1"–"4" dėl suderinamumo, bet rekomenduojama siųsti plan_value.) Tier **9** ne per Checkout metadata.
+- **metadata.plan** – **būtina**. Phase 1: **plan_value** `"3"` / `"6"`. Legacy/Phase 2: `"12"`, `"15"`. (Webhook priima ir plan_id "1"–"4" dėl suderinamumo, bet rekomenduojama siųsti plan_value.) Tier **9/12 operator grants** ne per Checkout metadata.
 - **client_reference_id** – naudoti **email** (jei žinomas), kad webhook turėtų identifikatorių net jei `customer_details.email` neužpildytas.
 - **customer_creation**: `"always"` – Stripe sukurs customer; tada `session.customer` bus prieinamas webhook’e.
 
@@ -53,7 +53,7 @@ Vienas atskaitos dokumentas: kaip žymėti planus, env, Stripe/Supabase/Vercel k
 ### 3.1 Lentelė user_access
 
 - **email** – text, NOT NULL, UNIQUE. Visada saugoti **lowercase** (backend/Vercel normalizuoja).
-- **highest_plan** – integer, reikšmės **0, 3, 6, 9** (operator grant), **12, 15**. 0 = dar nepirko. Stripe plan 2 (99 €) webhook rašo **6**; tier **9** – tik operatoriaus upsert (žr. [user-access-tier-registry.md](user-access-tier-registry.md)).
+- **highest_plan** – integer, reikšmės **0, 3, 6, 9, 12, 15**. 0 = dar nepirko. Stripe plan 2 (99 €) webhook rašo **6**; tier **9/12** – tik operatoriaus upsert (žr. [user-access-tier-registry.md](user-access-tier-registry.md)).
 - **stripe_customer_id** – text, nullable; saugoti iš `session.customer` webhook’e.
 - **created_at / updated_at** – timestamptz; DB default arba upsert lauke nesiųsti, jei schema leidžia.
 

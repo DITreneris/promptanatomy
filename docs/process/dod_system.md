@@ -127,7 +127,7 @@ Po sėkmingo merge į `main` ir Vercel auto-deploy:
    - [ ] Statiniai: `/sitemap.xml`, `/robots.txt`, `/llms-full.txt` → 200.
 3. **Env** Vercel / backend: nauji kintamieji įdiegti ([deploy-and-webhook.md](../deploy-and-webhook.md)).
 4. **Changelog / versija:** reikšmingam release – [CHANGELOG.md](../../CHANGELOG.md); versijavimas – [versioning-and-release.md](../versioning-and-release.md).
-5. **Po deploy metrikos** (periodiškai, ne kiekvienam hotfix): [test_report.md](../test_report.md), performance/Lighthouse – [performance-baseline.md](../performance-baseline.md).
+5. **Po deploy metrikos** (periodiškai, ne kiekvienam hotfix): [performance-baseline.md](../performance-baseline.md); istorinis ops log – [archive/snapshots/test_report-ops-log.md](../archive/snapshots/test_report-ops-log.md).
 
 ---
 

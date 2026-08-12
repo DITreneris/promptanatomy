@@ -8,7 +8,7 @@
 
 | Failas | Aprašymas |
 |--------|-----------|
-| **react.txt** | Vieno failo React landing page: Navbar, Hero, Methodology, Ecosystem, Pricing, Footer + „purchased“ ekranas. Naudoja Lucide ikonas, Tailwind-style klasės, theme (navy #0B1320, auksas #CFA73A). |
+| **react.txt** | [react.txt](../react.txt) – vieno failo React landing page (archyvas). |
 | **README_SOT.md** | Produkto SOT readme: 6 modulių DI mokymas, 6 blokų sistema, technologijos (React, Vite, Tailwind ir kt.), struktūra, deployment. |
 
 **Projekto aplinka:** Kataloge `059_home_page` nėra `package.json`, `src/`, `node_modules/` – tik šie du failai. Tai turinio/dizaino medžiaga, o ne paleidžiamas projektas.

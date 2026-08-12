@@ -55,7 +55,7 @@
 select highest_plan, count(*) from user_access group by highest_plan order by 1;
 ```
 
-Tikėtina prod (2026-08-06): `3`→2, `6`→101, `9`→9.
+Tikėtina prod (2026-08-10): `3`→2, `6`→102, `9`→9.
 
 Dashboard: Table Editor → `user_access` → RLS **enabled**; Security Advisor – kritinių finding'ų nėra.
 
@@ -64,5 +64,5 @@ Dashboard: Table Editor → `user_access` → RLS **enabled**; Security Advisor 
 ## 5. Susiję dokumentai
 
 - [access-architecture-canon.md](access-architecture-canon.md)
-- [supabase-hardening-plan.md](supabase-hardening-plan.md)
+- [archive/analysis/supabase-hardening-plan.md](archive/analysis/supabase-hardening-plan.md) (F1 atviri punktai)
 - [payment-best-practices.md](payment-best-practices.md) §3.4

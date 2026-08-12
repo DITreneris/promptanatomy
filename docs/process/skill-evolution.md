@@ -11,7 +11,7 @@
 | Universali taisyklė (visada galioja) | `.cursor/agents/*.md` arba atitinkamas `SKILL.md` |
 | Vienkartinė / projekto specifinė | `.cursor/skills/<agent>/lessons.md` |
 | Release sprendimas / „kodėl X“ | `CHANGELOG.md` |
-| Regresija / testų ataskaita | `docs/test_report.md` |
+| Regresija / testų ataskaita | `docs/archive/snapshots/test_report-ops-log.md` (istorinis) |
 
 ---
 
@@ -62,7 +62,7 @@ Pavyzdys:
 | No SSR; no spokes in hub sitemap | `orchestrator/SKILL.md`, SEO-KISS Kill |
 | llms GSC 0 clicks = expected | `q-and-a-agent/SKILL.md` / lessons |
 | GEO PR review greps + sameAs sync | `quality-assurance-agent/SKILL.md` |
-| GEO `TRAINING_SUMMARY` / pricing “6 modules” ≠ access tier 9 | `frontend-agent/SKILL.md`, `q-and-a-agent/SKILL.md`, phase-1-scope |
+| GEO `TRAINING_SUMMARY` / pricing “6 modules” ≠ access tier 9/12 | `frontend-agent/SKILL.md`, `q-and-a-agent/SKILL.md`, phase-1-scope |
 | Agent stubs + rules restored (tooling); SKILL.md = workflow SOT | `.cursor/agents/*.md`, `.cursor/rules/*.mdc`, AGENTS.md |
 
 ### Pakeltos pamokos (2026-07-25, F3 rate limit + A.1 Cookies)
@@ -70,9 +70,37 @@ Pavyzdys:
 | Taisyklė | Kur įrašyta |
 |----------|-------------|
 | Vercel abuse endpoints → shared `api/lib/rate-limit.js` (ne copy-paste Map) | `api.mdc`, `backend-agent/SKILL.md` |
-| F3 = in-memory shipped; Upstash tik multi-instance abuse | `security.md`, `supabase-hardening-plan.md` F3, `orchestrator/SKILL.md` |
+| F3 = in-memory shipped; Upstash tik multi-instance abuse | `security.md`, `archive/analysis/supabase-hardening-plan.md` F3, `orchestrator/SKILL.md` |
 | Po F3 status change: sync Status + Moscow §13 + §15 + TODO `[A.4c]` | `quality-assurance-agent/lessons.md` |
 | Footer Cookies UI = `/privacy#cookies` (ne „Netrukus“); legal review atskiras | `TODO.md` A.1 |
+
+### Pakeltos pamokos (2026-08-08, LP audit QW / frontpage lean)
+
+| Taisyklė | Kur įrašyta |
+|----------|-------------|
+| Six-Block vs five-part/Quick mode → GEO only (`llms` / `TRAINING_SUMMARY`), ne WhatIs/FAQ | `frontend-agent/SKILL.md`, `frontend-agent/lessons.md`, golden-legacy §1–3 |
+| `modulesLocked` ne „later phase“ M7–12 — on-demand / temos; Stripe vis dar max 6 | `frontend-agent/SKILL.md`, `q-and-a-agent/lessons.md`, phase-1-scope |
+| Demo reply SLA ≠ refund 14 d. (`forTeamsBody` 24h) | `frontend-agent/lessons.md` |
+| `hero.socialProof` 600+ — keep jei savininkas apgina | `frontend-agent/lessons.md`, `q-and-a-agent/lessons.md` |
+| accessDisplay caps 3/6/9/12 (corporate12) | `frontend-agent/SKILL.md`, `accessDisplay.js` |
+
+### Pakeltos pamokos (2026-08-12, QW4 / A.6 measurement)
+
+| Taisyklė | Kur įrašyta |
+|----------|-------------|
+| GEO citation scorecard: jei engine UI neprieinama, žymėti `Manual pending`, ne fabrikuoti citations | `q-and-a-agent/SKILL.md`, `q-and-a-agent/lessons.md`, `quality-assurance-agent/SKILL.md` |
+| PageSpeed: PSI 429 galima pakeisti Lighthouse CLI baseline, bet šaltinį/failure būtina įrašyti | `q-and-a-agent/SKILL.md`, `q-and-a-agent/lessons.md`, `quality-assurance-agent/SKILL.md` |
+| A.6 KPI: partial snapshot leidžiamas, bet full ROI reikia analytics + Stripe tame pačiame window | `q-and-a-agent/SKILL.md`, `quality-assurance-agent/SKILL.md`, `orchestrator/SKILL.md` |
+| Measurement sessions be produkto kodo → q-and-a/docs hygiene; frontend-agent tik jei PageSpeed verčia kodą keisti | `orchestrator/SKILL.md`, `q-and-a-agent.md` |
+
+### Pakeltos pamokos (2026-08-12, corporate12 official docs sync)
+
+| Taisyklė | Kur įrašyta |
+|----------|-------------|
+| Public Stripe checkout max 6 ≠ prod/corporate training max 12 | `project-global.mdc`, `q-and-a-agent/SKILL.md`, `phase-1-scope.md` |
+| Tier 9/12 grants yra operator/corporate kelias; webhook plan 2 lieka 6 | `backend-agent/SKILL.md`, `supabase-agent/SKILL.md`, `supabase-agent-runbook.md`, `payment-best-practices.md` |
+| Corporate12 smoke turi tikrinti tier 9 ir tier 12; M10–12 matomi tik su tier 12 | `fullstack-agent/SKILL.md`, `golden-legacy-standard.md` |
+| Istorinius M1–9 audit snapshot'us žymėti superseded note, ne perrašyti kaip dabartinį kanoną | `pre-launch-audit-2026-08.md` |
 
 ---
 

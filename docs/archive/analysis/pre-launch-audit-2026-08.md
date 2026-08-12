@@ -2,7 +2,9 @@
 
 **Date:** 2026-08-05  
 **Scope:** Hub `www.promptanatomy.app` (LP + Vercel `api/*` + training submodule pin).  
-**Related:** [production-readiness-analysis.md](production-readiness-analysis.md) (2026-03), [security-audit-deep.md](../../security-audit-deep.md), [TODO.md](../../../TODO.md) Horizon A, [deploy-and-webhook.md](../../deploy-and-webhook.md).
+**Related:** [production-readiness-analysis.md](production-readiness-analysis.md) (2026-03), [security-audit-deep.md](security-audit-deep.md), [TODO.md](../../../TODO.md) Horizon A, [deploy-and-webhook.md](../../deploy-and-webhook.md).
+
+> **Superseded note (2026-08-12):** This archived gate captures the pre-corporate12 state (`M1–9`, tier 9, older submodule pin). Current canon is corporate12: public Stripe checkout remains Starter/Core max 6, while production training is M1–12 via `build:corporate12` with operator/corporate grants tier 9/12. See [golden-legacy-standard.md](../../golden-legacy-standard.md) §4 and [phase-1-scope.md](../../phase-1-scope.md).
 
 ---
 
@@ -80,7 +82,7 @@ Source: [deploy-and-webhook.md](../../deploy-and-webhook.md) §2.2.
 
 ### 4.3 Supabase F0 + F1 — `[A.4a]` / `[A.4b]`
 
-Source: [supabase-hardening-plan.md](../../supabase-hardening-plan.md), [supabase-migrations.md](../../supabase-migrations.md).
+Source: [supabase-hardening-plan.md](supabase-hardening-plan.md), [supabase-migrations.md](../../supabase-migrations.md).
 
 - [ ] **F0:** Prod schema smoke — email normalize path OK; CHECK allows `highest_plan` in `(0,3,6,9,12,15)`
 - [ ] **F1:** Confirm whether [20260603120000_user_access_hardening.sql](../../../supabase/migrations/20260603120000_user_access_hardening.sql) (RLS + REVOKE + `updated_at`) is applied on prod
