@@ -98,4 +98,4 @@ Jei spoke **jau** turi aiškų „Prompt Anatomy“ brand + hub CTA + `llms.txt`
 
 > Implement §3 copy as a footer line per §2–4. Match the contract; keep your layout. When done: PR/deploy URL + short note (EN/LT, UTM yes/no).
 
-Hub `[QW1b]` uždaromas, kai **P1** (`.site` / `.cloud` / `.pro`) live.
+**Status 2026-08-12:** P1 + P2 live — hub `[QW1b]` **uždarytas**. P3 (`.space` / `.blog` / `.lol`) optional later (+ spoke GEO minimum).

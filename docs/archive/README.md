@@ -35,6 +35,9 @@ Istorinė arba pasenusi dokumentacija, ne naudojama kasdieniam operaciniam darbu
 
 | Failas | Paskirtis |
 |--------|-----------|
+| [ecosystem-kpi-2026-08.md](snapshots/ecosystem-kpi-2026-08.md) | QW1b / A.6 partial KPI baseline: P1+P2 entity footer status, data gaps for PostHog/Vercel/Stripe. |
+| [geo-citations-2026-08.md](snapshots/geo-citations-2026-08.md) | QW4a first GEO citation scorecard: fixed prompt set + web-index precheck; manual AI engine cells pending. |
+| [pagespeed-2026-08.md](snapshots/pagespeed-2026-08.md) | QW4b PageSpeed/Lighthouse baseline: mobile + desktop performance snapshot. |
 | [production-analytics-14d-benchmark.md](snapshots/production-analytics-14d-benchmark.md) | ~14 d. produkcijos metrikų snapshot. |
 | [gsc-2026-06-04.md](snapshots/gsc-2026-06-04.md) | GSC 28d pages + CTR analysis; `/anatomija/` redirect; operator checklist. |
 
