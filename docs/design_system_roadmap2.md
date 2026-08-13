@@ -507,7 +507,7 @@ Phase 5 (functional tokens + type scale)
 ### Brand direction
 
 - Dark navy `#0b1320` + gold accent `#cfa73a`
-- “AI/DI Operating System” positioning
+- “AI Training System” / “DI mokymų sistema” positioning (share/meta); Hero badge remains 6-Block
 - Prompt Anatomy / Promptų Anatomija naming (EN/LT)
 
 ### Core layout

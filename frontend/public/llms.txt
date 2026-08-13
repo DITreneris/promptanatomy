@@ -21,7 +21,7 @@ Prompt Anatomy (`promptanatomy.app`) is the conversion hub for LT/EN checkout, a
 
 ## Publications
 
-- [Beyond the Chatbox: Mastering the Prompt Anatomy AI Operating System](https://medium.com/@tomas.staniulis76/beyond-the-chatbox-mastering-the-prompt-anatomy-ai-operating-system-ad955724804e): Founder essay on moving from ad-hoc AI chat to a repeatable Prompt Anatomy operating system for business workflows.
+- [Beyond the Chatbox: Mastering the Prompt Anatomy AI Operating System](https://medium.com/@tomas.staniulis76/beyond-the-chatbox-mastering-the-prompt-anatomy-ai-operating-system-ad955724804e): Founder essay on moving from ad-hoc AI chat to a repeatable Prompt Anatomy training system for business workflows.
 - [Context Architecture Will Define AI Winners in 2026](https://medium.com/@tomas.staniulis76/context-architecture-will-define-ai-winners-in-2026-73b0dadab300): Thought leadership on context engineering and why structured context design separates effective AI adopters in 2026.
 
 ## Ecosystem

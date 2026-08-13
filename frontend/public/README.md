@@ -2,7 +2,7 @@
 
 Static files in this folder are copied to the build output root.
 
-- **og-image-v2.jpg** – Social sharing image for Open Graph / Twitter (`og:image`, `twitter:image` in `index.html` + `SeoHead`). 1200×630 JPEG, no alpha.
+- **og-image-v3.jpg** – Social sharing image for Open Graph / Twitter (`og:image`, `twitter:image` in `index.html` + `SeoHead`). 1200×630 JPEG, no alpha. Tagline: AI TRAINING SYSTEM.
 - **og-image.png** – JSON-LD `Organization.logo` only (not social meta). Keep both files in `public/`.
 - **robots.txt** – Crawler policy (classical search + 2026 AI bots). Copied to `dist/` by Vite.
 - **sitemap.xml** – Indexable hub URLs only. `lastmod` refreshed by `scripts/generate-geo-static.mjs` on build.

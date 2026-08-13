@@ -55,7 +55,7 @@ Pavyzdys:
 | Taisyklė | Kur įrašyta |
 |----------|-------------|
 | Org `sameAs` sync `organization.js` + `index.html` | `frontend-agent/SKILL.md` |
-| Social OG = `og-image-v2.jpg`; logo JSON-LD = `og-image.png` | `frontend-agent/SKILL.md`, golden-legacy |
+| Social OG = `og-image-v3.jpg`; logo JSON-LD = `og-image.png` | `frontend-agent/SKILL.md`, golden-legacy |
 | `llms.txt` SOT = `generate-geo-static.mjs` (Answer.AI shape) | `frontend-agent/SKILL.md`, CI |
 | `/en` `og:url` = canonical `/` | `frontend-agent/SKILL.md` |
 | GEO deploy: bump `LAST_UPDATED` + commit regenerated public assets | `fullstack-agent/SKILL.md`, `seo-geo-operations.md` §H |

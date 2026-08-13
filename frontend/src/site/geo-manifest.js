@@ -38,7 +38,7 @@ export const CREATOR_PUBLICATIONS = [
     title: 'Beyond the Chatbox: Mastering the Prompt Anatomy AI Operating System',
     url: 'https://medium.com/@tomas.staniulis76/beyond-the-chatbox-mastering-the-prompt-anatomy-ai-operating-system-ad955724804e',
     summary:
-      'Founder essay on moving from ad-hoc AI chat to a repeatable Prompt Anatomy operating system for business workflows.',
+      'Founder essay on moving from ad-hoc AI chat to a repeatable Prompt Anatomy training system for business workflows.',
   },
   {
     title: 'Context Architecture Will Define AI Winners in 2026',

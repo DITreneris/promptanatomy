@@ -2,7 +2,7 @@
 
 Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir pritaikymas **Promptų Anatomija** projektui (Vite + React landing, LT/EN, Stripe).
 
-**Social vs logo (kanonas):** `og:image` / `twitter:image` = `og-image-v2.jpg`; JSON-LD `Organization.logo` = `og-image.png`. Senų KISS/MARRY eilučių su `og-image.png` social meta neperrašyti — naudoti naujausią „Įgyvendinimo būsena (2026-07-25+)“ skyrių.
+**Social vs logo (kanonas):** `og:image` / `twitter:image` = `og-image-v3.jpg`; JSON-LD `Organization.logo` = `og-image.png`. Senų KISS/MARRY eilučių su `og-image.png` social meta neperrašyti — naudoti naujausią „Įgyvendinimo būsena (2026-07-25+)“ skyrių.
 
 ---
 
@@ -118,7 +118,7 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 
 - **Organization.sameAs** — [organization.js](../frontend/src/site/organization.js) `ORG_SAME_AS` + [index.html](../frontend/index.html); operator follow-up: LinkedIn Company, Wikidata Q-ID ([seo-geo-operations.md](seo-geo-operations.md) §G).
 - **llms.txt Answer.AI** — H1, `>` blockquote, curated `[name](url): note` lists, `## Optional`; CI greps blockquote + Home EN + Full LLM index.
-- **Signal hygiene** — `/en` `og:url` → `/`; home `dateModified` ← `LAST_UPDATED` (2026-07-25); social meta `og-image-v2.jpg`, JSON-LD logo `og-image.png`.
+- **Signal hygiene** — `/en` `og:url` → `/`; home `dateModified` ← `LAST_UPDATED` (2026-07-25); social meta `og-image-v3.jpg`, JSON-LD logo `og-image.png`. Home share title = **AI Training System**.
 - **FAQ extractability** — answer-first openings on FAQ items #1, #3, #6, #7 (EN/LT).
 - **Ops loop** — Bing/IndexNow, freshness checklist, [geo-citation-scorecard.md](templates/geo-citation-scorecard.md), spoke GEO minimum §J.
 - **KILL unchanged** — no SSR/Next.js; no spokes in hub sitemap.
