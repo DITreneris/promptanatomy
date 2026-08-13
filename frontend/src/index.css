@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 
 @theme {
+  /* base — brand primitives */
   --font-sans: ui-sans-serif, system-ui, sans-serif;
 
   --text-label: 10px;
@@ -15,6 +16,7 @@
   --size-icon-sm: 1rem;
   --size-icon-md: 1.25rem;
   --size-icon-lg: 1.5rem;
+  --size-icon-display: 3rem;
 
   --color-brand-dark: #0b1320;
   --color-brand-accent: #cfa73a;
@@ -24,6 +26,22 @@
   --color-ecosystem-2: #7c5cff;
   --color-ecosystem-3: #3f6fff;
   --color-ecosystem-4: #f38a3f;
+
+  /* functional — UI patterns (feedback = Tailwind emerald/amber appearance) */
+  --color-feedback-success-fg: #065f46;
+  --color-feedback-success-muted: #047857;
+  --color-feedback-success-text: #059669;
+  --color-feedback-success-icon: #10b981;
+  --color-feedback-success-border: #a7f3d0;
+  --color-feedback-success-border-hover: #6ee7b7;
+  --color-feedback-success-fill: #ecfdf5;
+  --color-feedback-success-fill-hover: #d1fae5;
+  --color-feedback-success-track: #d1fae5;
+  --color-feedback-warning-fg: #92400e;
+  --color-feedback-warning-muted: #b45309;
+  --color-feedback-warning-icon: #d97706;
+  --color-feedback-warning-border: #fde68a;
+  --color-feedback-warning-fill: #fffbeb;
 
   --color-accent-muted-bg: rgb(255 193 7 / 0.15);
   --color-accent-muted-border: rgb(255 193 7 / 0.35);
@@ -35,6 +53,7 @@
   --color-border-glass-hover: rgb(255 200 0 / 0.5);
   --color-grid-line: rgb(255 255 255 / 0.15);
 
+  /* component — section-specific surfaces */
   --background-image-accent-gradient: linear-gradient(
     135deg,
     #cfa73a 0%,
@@ -71,6 +90,7 @@
     linear-gradient(var(--color-grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--color-grid-line) 1px, transparent 1px);
 
+  /* component — elevation (public API = shadow-tier-1/2/3; rest are named aliases) */
   --shadow-soft:
     0 2px 8px -2px rgba(11, 19, 32, 0.08),
     0 4px 16px -4px rgba(11, 19, 32, 0.06);
@@ -316,6 +336,31 @@
 @utility icon-lg {
   width: var(--size-icon-lg);
   height: var(--size-icon-lg);
+}
+
+@utility icon-display {
+  width: var(--size-icon-display);
+  height: var(--size-icon-display);
+}
+
+@utility card-feedback-success {
+  @apply mt-4 p-4 rounded-xl bg-feedback-success-fill border border-feedback-success-track;
+}
+
+@utility card-feedback-warning {
+  @apply mt-4 p-4 rounded-xl bg-feedback-warning-fill border border-feedback-warning-border;
+}
+
+@utility btn-feedback-owned {
+  @apply mt-auto block w-full min-h-[48px] py-4 text-center font-bold rounded-2xl border-2 border-feedback-success-border bg-feedback-success-fill text-feedback-success-muted hover:bg-feedback-success-fill-hover hover:border-feedback-success-border-hover transition-all duration-200 disabled:opacity-70;
+}
+
+@utility page-heading {
+  @apply text-3xl md:text-4xl font-black text-brand-dark tracking-tight;
+}
+
+@utility page-subheading {
+  @apply text-lg font-bold text-brand-dark uppercase tracking-wide;
 }
 
 @layer base {

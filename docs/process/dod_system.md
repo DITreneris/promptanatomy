@@ -58,9 +58,10 @@ CI job **Golden Legacy** ([`.github/workflows/ci.yml`](../../.github/workflows/c
 | Step | Ką tikrina |
 |------|------------|
 | `frontend` build | LP kompiliuojasi |
+| Design-system token grep | LP JSX be `rgba(` / `text-[NNpx]` / `shadow-[` |
 | Bundle size budget | [performance-baseline.md](../performance-baseline.md) – critical-path gzip |
 | GEO smoke | `llms-full.txt`, `robots.txt` (PerplexityBot), manifest turinys |
-| Training app build | `apps/prompt-anatomy` su `VITE_BASE_PATH=/anatomy/` |
+| Training app build | `apps/prompt-anatomy` `build:corporate12` su `VITE_BASE_PATH=/anatomy/`, `VITE_MAX_BUILD_MODULE=12` |
 | `backend` pytest | API kontraktai ir regresija |
 
 *GitHub branch ruleset:* rekomenduojama **Require status checks** → `Golden Legacy` ([golden-legacy-standard.md §5.1](../golden-legacy-standard.md)).
@@ -80,7 +81,7 @@ Paleiskite **quality-assurance-agent** prieš merge, jei keitėte:
 | Setup, env, endpointai | [README.md](../../README.md), [backend/.env.example](../../backend/.env.example) |
 | Artimi darbai / trūkumai | [TODO.md](../../TODO.md) |
 | Architektūrinis sprendimas | ADR [docs/decisions/](../decisions/) |
-| **LP viešas copy** (Hero, WhatIs, Navbar skaičiai) | `en.json` + `lt.json`, [CHANGELOG.md](../../CHANGELOG.md), [golden-legacy-standard.md §1–3](../golden-legacy-standard.md), [language-guidelines-en-lt.md §1](../language-guidelines-en-lt.md) jei brand row |
+| **LP viešas copy** (Hero, WhatIs, Navbar, Ecosystem chrome) | `en.json` + `lt.json`, [CHANGELOG.md](../../CHANGELOG.md), [golden-legacy-standard.md §1–3](../golden-legacy-standard.md), [language-guidelines-en-lt.md §1](../language-guidelines-en-lt.md) jei brand row; Ecosystem layout — [design-system-qa.md](design-system-qa.md) Hub checklist |
 | LP UI / dizaino sistema | [design_system_roadmap2.md](../design_system_roadmap2.md) checklist; [design-system-qa.md](design-system-qa.md) jei vizualinis scope |
 | API kontraktai / maršrutai | [golden-legacy-standard.md §2–3](../golden-legacy-standard.md) + pytest |
 | Deploy / webhook elgsena | [deploy-and-webhook.md](../deploy-and-webhook.md) |

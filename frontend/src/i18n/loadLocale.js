@@ -17,6 +17,11 @@ export function normalizeLocale(value) {
   return VALID_LOCALES.includes(v) ? v : DEFAULT_LOCALE
 }
 
+/** Home path that keeps the current locale (`/` force-sets EN). */
+export function localeHomePath(locale) {
+  return normalizeLocale(locale) === 'lt' ? '/lt' : '/en'
+}
+
 /** Map browser language to supported locale; used only when user has no stored preference. */
 export function detectBrowserLocale() {
   if (typeof window === 'undefined' || !window.navigator) return DEFAULT_LOCALE

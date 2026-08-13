@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import { translateLocale } from '../i18n/syncTranslate'
 import { useLocale } from '../i18n/LocaleContext'
 import { SITE_URL } from '../config'
 import { getEcosystemItemList, LAST_UPDATED } from '../site/geo-manifest'
@@ -12,8 +11,8 @@ const OG_IMAGE_URL = `${SITE_URL}/og-image-v2.jpg`
 const ORGANIZATION_ID = `${SITE_URL}/#organization`
 const WEBSITE_ID = `${SITE_URL}/#website`
 const ROUTE_LAST_MODIFIED = {
-  '/privacy': '2026-05-17',
-  '/terms': '2026-05-17',
+  '/privacy': '2026-08-13',
+  '/terms': '2026-08-13',
 }
 const VISIBLE_OFFERS = [
   { id: 'starter', labelKey: 'starter', mods: '1–3', price: 39 },
@@ -87,22 +86,21 @@ function getCanonicalUrl(pathname) {
 
 function getRouteLocale(pathname, locale) {
   if (pathname === '/lt') return 'lt'
-  if (pathname === '/privacy' || pathname === '/terms') return 'en'
   if (pathname === '/' || pathname === '/en') return 'en'
   return locale === 'lt' ? 'lt' : 'en'
 }
 
 function getRouteTitle(pathname, t) {
-  if (pathname === '/privacy') return translateLocale('en', 'legal.privacyTitle')
-  if (pathname === '/terms') return translateLocale('en', 'legal.termsTitle')
+  if (pathname === '/privacy') return t('legal.privacyTitle')
+  if (pathname === '/terms') return t('legal.termsTitle')
   if (pathname === '/success') return t('success.metaTitle')
   if (pathname === '/cancel') return t('cancel.metaTitle')
   return t('meta.title')
 }
 
 function getRouteDescription(pathname, t) {
-  if (pathname === '/privacy') return translateLocale('en', 'legal.privacyDescription')
-  if (pathname === '/terms') return translateLocale('en', 'legal.termsDescription')
+  if (pathname === '/privacy') return t('legal.privacyDescription')
+  if (pathname === '/terms') return t('legal.termsDescription')
   if (pathname === '/success') return t('success.metaDescription')
   if (pathname === '/cancel') return t('cancel.metaDescription')
   return t('meta.description')
@@ -173,7 +171,7 @@ export default function SeoHead() {
   const { locale, t, localeReady } = useLocale()
 
   useEffect(() => {
-    if (!localeReady && pathname !== '/privacy' && pathname !== '/terms') return
+    if (!localeReady) return
 
     const canonicalUrl = getCanonicalUrl(pathname)
     const routeLocale = getRouteLocale(pathname, locale)

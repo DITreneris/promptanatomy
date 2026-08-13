@@ -19,8 +19,8 @@ Pirmajame etape siūlome **tik du planus**:
 | **1** (Starter) | 1–3 | 39 € | Pirmi trys moduliai |
 | **2** (Core) | 1–6 | 99 € | Visi šeši moduliai (pilnas dabartinis kursas) |
 
-- Planai **3** (1–12) ir **4** (1–15) **nėra siūlomi** Faze 1 – jie rodomi kaip užrakinti / vėliau.
-- Backend gali priimti tik `plan_id` "1" ir "2" (opcionaliai 400 kitiems).
+- Planai **3** (1–12) ir **4** (1–15) **nėra siūlomi** Faze 1 – LP **nerodo** užrakintų kortelių; 7–12 = `pricing.modulesLocked` tekstas.
+- Checkout: Vercel `api/create-checkout-session` priima tik `plan_id` `"1"` ir `"2"` (kiti → **400**); FastAPI Pydantic `Literal` → pytest **422**.
 
 ---
 

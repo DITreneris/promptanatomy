@@ -4,8 +4,11 @@ import { useLocale } from '../i18n/LocaleContext'
 import { captureEcosystemOutboundClick } from '../analytics/posthog'
 import { ORG_EMAIL, formatMailingAddressOneLine } from '../site/organization'
 
-const footerLinkClass =
-  'text-sm font-medium text-slate-600 hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm'
+const footerNavLinkClass =
+  'text-sm font-medium leading-5 text-slate-600 hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm'
+
+const footerLegalLinkClass =
+  'text-xs font-medium text-slate-600 hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm'
 
 function FooterColumn({ title, children }) {
   return (
@@ -24,15 +27,15 @@ function FooterLegalBar({ t, year }) {
   ]
 
   return (
-    <div className="pt-6 md:pt-8 border-t border-brand-accent/20 space-y-2">
-      <div className="flex flex-col gap-3 md:flex-row md:flex-wrap md:items-center text-xs text-slate-600">
-        <span className="font-medium text-slate-600 shrink-0">{t('footer.copyrightLine1', { year })}</span>
+    <div className="pt-5 md:pt-6 border-t border-brand-accent/20 space-y-2">
+      <div className="flex flex-col gap-3 md:flex-row md:flex-wrap md:items-center text-xs font-medium text-slate-600">
+        <span className="shrink-0">{t('footer.copyrightLine1', { year })}</span>
         <span className="hidden md:inline text-slate-400" aria-hidden>
           ·
         </span>
         <a
           href={`mailto:${ORG_EMAIL}`}
-          className={`${footerLinkClass} shrink-0`}
+          className={`${footerLegalLinkClass} shrink-0`}
         >
           {ORG_EMAIL}
         </a>
@@ -47,15 +50,15 @@ function FooterLegalBar({ t, year }) {
                   ·
                 </span>
               )}
-              <Link to={item.to} className={footerLinkClass}>
+              <Link to={item.to} className={footerLegalLinkClass}>
                 {item.label}
               </Link>
             </span>
           ))}
         </nav>
       </div>
-      <p className="text-[11px] text-slate-500">{t('footer.creator')}</p>
-      <p className="text-[11px] text-slate-500">
+      <p className="text-xs text-slate-500">{t('footer.creator')}</p>
+      <p className="text-xs text-slate-500">
         {t('footer.mailingAddressInline')} {formatMailingAddressOneLine()}
       </p>
     </div>
@@ -70,8 +73,8 @@ export default function Footer({ hasAccess = false, onTrainingClick, trainingLin
   return (
     <footer className="bg-slate-50 pt-14 md:pt-16 pb-8 md:pb-10 px-4 sm:px-6 md:px-8 border-t border-slate-100 shadow-soft-top overflow-hidden">
       <div className="max-w-7xl mx-auto min-w-0">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-x-8 lg:gap-x-12 gap-y-10 items-start mb-8 md:mb-10">
-          <div className="sm:col-span-2 lg:col-span-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-x-8 lg:gap-x-12 gap-y-10 items-start mb-6">
+          <div className="sm:col-span-2 lg:col-span-3">
             <div className="flex items-center gap-2.5 sm:gap-3 mb-4">
               <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-brand-dark flex items-center justify-center text-brand-accent border border-white/10 shadow-soft shrink-0">
                 <Zap className="fill-current icon-md sm:icon-lg" aria-hidden />
@@ -81,37 +84,37 @@ export default function Footer({ hasAccess = false, onTrainingClick, trainingLin
                 <span className="text-brand-accent">{t('nav.brandAnatomija')}</span>
               </span>
             </div>
-            <p className="text-sm md:text-base text-slate-600 font-medium leading-relaxed max-w-[340px]">
+            <p className="text-sm font-medium leading-relaxed text-slate-600 max-w-[340px]">
               {t('footer.tagline')}
             </p>
           </div>
 
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-3">
             <FooterColumn title={t('footer.columnProduct')}>
               <li>
-                <a href="#what-is-prompt-anatomy" className={footerLinkClass}>
-                  {t('nav.whatIs')}
+                <a href="#what-is-prompt-anatomy" className={footerNavLinkClass}>
+                  {t('footer.whatIs')}
                 </a>
               </li>
               <li>
-                <a href="#metodologija" className={footerLinkClass}>
+                <a href="#metodologija" className={footerNavLinkClass}>
                   {t('footer.methodology')}
                 </a>
               </li>
               <li>
-                <a href="#ekosistema" className={footerLinkClass}>
+                <a href="#ekosistema" className={footerNavLinkClass}>
                   {t('footer.ecosystem')}
                 </a>
               </li>
               <li>
-                <a href="#pricing" className={footerLinkClass}>
+                <a href="#pricing" className={footerNavLinkClass}>
                   {t('footer.pricing')}
                 </a>
               </li>
             </FooterColumn>
           </div>
 
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-3">
             <FooterColumn title={t('footer.columnTraining')}>
               <li>
                 {hasAccess && onTrainingClick ? (
@@ -120,42 +123,42 @@ export default function Footer({ hasAccess = false, onTrainingClick, trainingLin
                     onClick={onTrainingClick}
                     disabled={trainingLinkLoading}
                     aria-busy={trainingLinkLoading}
-                    className={`${footerLinkClass} bg-transparent text-left disabled:opacity-70`}
+                    className={`${footerNavLinkClass} bg-transparent text-left disabled:opacity-70`}
                   >
                     {t('footer.training')}
                   </button>
                 ) : (
-                  <a href="#pricing" className={footerLinkClass}>
+                  <a href="#pricing" className={footerNavLinkClass}>
                     {t('footer.training')}
                   </a>
                 )}
               </li>
               <li>
-                <a href="#access" className={footerLinkClass}>
+                <a href="#access" className={footerNavLinkClass}>
                   {t('footer.alreadyHaveAccess')}
                 </a>
               </li>
               <li>
-                <a href="#faq" className={footerLinkClass}>
+                <a href="#faq" className={footerNavLinkClass}>
                   {t('footer.faq')}
                 </a>
               </li>
               <li>
-                <a href="#pricing" className={footerLinkClass}>
+                <a href="#pricing" className={footerNavLinkClass}>
                   {t('nav.cta')}
                 </a>
               </li>
             </FooterColumn>
           </div>
 
-          <div className="sm:col-span-2 lg:col-span-4">
+          <div className="lg:col-span-3">
             <FooterColumn title={t('footer.columnNetwork')}>
               <li>
                 <a
                   href="https://t.me/prompt_anatomy"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={footerLinkClass}
+                  className={footerNavLinkClass}
                 >
                   {t('footer.support')}
                 </a>
@@ -165,7 +168,7 @@ export default function Footer({ hasAccess = false, onTrainingClick, trainingLin
                   href="https://www.linkedin.com/in/staniulis/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={footerLinkClass}
+                  className={footerNavLinkClass}
                 >
                   {t('footer.linkedIn')}
                 </a>
@@ -175,7 +178,7 @@ export default function Footer({ hasAccess = false, onTrainingClick, trainingLin
                   href="https://x.com/PromptAnatom"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={footerLinkClass}
+                  className={footerNavLinkClass}
                 >
                   {t('footer.twitter')}
                 </a>
@@ -193,7 +196,7 @@ export default function Footer({ hasAccess = false, onTrainingClick, trainingLin
                       pagePath,
                     })
                   }
-                  className={footerLinkClass}
+                  className={footerNavLinkClass}
                 >
                   {t('footer.cloud')}
                 </a>
@@ -211,7 +214,7 @@ export default function Footer({ hasAccess = false, onTrainingClick, trainingLin
                       pagePath,
                     })
                   }
-                  className={footerLinkClass}
+                  className={footerNavLinkClass}
                 >
                   {t('footer.pro')}
                 </a>

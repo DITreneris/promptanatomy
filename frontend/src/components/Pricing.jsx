@@ -37,7 +37,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
     <>
       <div className="text-center mb-8 md:mb-16">
         <div className="badge-accent mb-4 md:mb-6">
-          <Globe size={16} className="text-amber-600 shrink-0" aria-hidden /> {t('pricing.badge')}
+          <Globe className="icon-sm text-feedback-warning-icon shrink-0" aria-hidden /> {t('pricing.badge')}
         </div>
         <h2 className="section-heading mb-3 md:mb-4">
           {t('pricing.title')}
@@ -52,7 +52,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
           <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-6 text-slate-600 font-medium">
             {trustSignals.map((item, i) => (
               <span key={i} className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-4 py-2 text-sm">
-                <CheckCircle size={16} className="text-emerald-500 shrink-0" aria-hidden />
+                <CheckCircle className="icon-sm text-feedback-success-icon shrink-0" aria-hidden />
                 {item}
               </span>
             ))}
@@ -87,7 +87,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
                   <ul className="space-y-2 mb-4 text-sm text-slate-700 font-medium">
                     {list.map((item, i) => (
                       <li key={i} className="flex items-center gap-2">
-                        <CheckCircle size={16} className="text-emerald-500 shrink-0" aria-hidden />
+                        <CheckCircle className="icon-sm text-feedback-success-icon shrink-0" aria-hidden />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -105,7 +105,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
                   aria-busy={trainingLinkLoading}
                   aria-live={trainingLinkLoading ? 'polite' : undefined}
                   onClick={() => onGoToTraining?.()}
-                  className="mt-auto block w-full py-4 text-center font-bold rounded-2xl border-2 border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 hover:border-emerald-300 transition-all duration-200 disabled:opacity-70"
+                  className="btn-feedback-owned"
                 >
                   {trainingLinkLoading ? t('pricing.loading') : `${t('pricing.goToTraining')} →`}
                 </button>
@@ -118,7 +118,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
                   aria-live={loading ? 'polite' : undefined}
                   className="mt-auto w-full min-h-[48px] py-4 rounded-2xl text-base btn-primary shadow-pricing-cta hover:scale-[1.05] hover:shadow-pricing-cta flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  {loading ? t('pricing.loading') : <>{state.label} <ArrowRight size={20} aria-hidden /></>}
+                  {loading ? t('pricing.loading') : <>{state.label} <ArrowRight className="icon-md" aria-hidden /></>}
                 </button>
               ) : null}
             </div>
@@ -134,7 +134,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
 
       {showModulesLockedNote && (
         <p className="text-center text-slate-600 text-sm font-medium mb-6 flex items-center justify-center gap-2">
-          <Lock size={16} className="shrink-0" aria-hidden />
+          <Lock className="icon-sm shrink-0" aria-hidden />
           {t('pricing.modulesLocked')}
         </p>
       )}
@@ -151,7 +151,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
           className="inline-flex items-center justify-center gap-2 min-h-[48px] px-6 py-3 rounded-xl text-base font-bold text-brand-dark bg-white border-2 border-slate-200 hover:border-brand-accent/40 hover:bg-slate-50 transition-all duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
           aria-label={t('pricing.forTeamsCta')}
         >
-          {t('pricing.forTeamsCta')} <ArrowRight size={20} aria-hidden />
+          {t('pricing.forTeamsCta')} <ArrowRight className="icon-md" aria-hidden />
         </a>
       </div>
 
@@ -160,8 +160,8 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
         <div className="grid md:grid-cols-2 gap-4">
           {(Array.isArray(features) ? features : []).map((item, i) => (
             <div key={i} className="flex items-center gap-3 text-slate-700 font-medium">
-              <div className="w-6 h-6 rounded-full bg-emerald-50 flex items-center justify-center shrink-0 border border-emerald-100">
-                <CheckCircle size={16} className="text-emerald-600 shrink-0" aria-hidden />
+              <div className="w-6 h-6 rounded-full bg-feedback-success-fill flex items-center justify-center shrink-0 border border-feedback-success-track">
+                <CheckCircle className="icon-sm text-feedback-success-text shrink-0" aria-hidden />
               </div>
               <span className="text-sm">{item}</span>
             </div>
@@ -177,17 +177,17 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
 
       <div className="flex flex-wrap justify-center gap-14 text-slate-600">
         <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em]">
-          <Lock size={16} className="shrink-0" aria-hidden /> {t('pricing.stripeVerified')}
+          <Lock className="icon-sm shrink-0" aria-hidden /> {t('pricing.stripeVerified')}
         </div>
         <Link
           to="/terms#refunds"
           className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em] hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm"
         >
-          <ShieldCheck size={16} className="shrink-0" aria-hidden /> {t('pricing.refundContact')}
+          <ShieldCheck className="icon-sm shrink-0" aria-hidden /> {t('pricing.refundContact')}
         </Link>
         {aiPoweredLabel && (
           <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em]">
-            <Cpu size={16} className="shrink-0" aria-hidden /> {aiPoweredLabel}
+            <Cpu className="icon-sm shrink-0" aria-hidden /> {aiPoweredLabel}
           </div>
         )}
       </div>

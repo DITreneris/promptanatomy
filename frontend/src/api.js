@@ -2,7 +2,7 @@ import { API_URL } from './config'
 
 /**
  * Create Stripe Checkout Session for the given plan. Returns checkout URL or throws.
- * @param {string} planId - Plan "1"|"2"|"3"|"4" (1–3 / 1–6 / 1–12 / 1–15 mod)
+ * @param {string} planId - Phase 1 plan "1"|"2" (1–3 / 1–6 modules)
  * @param {string|null} customerEmail - Optional customer email
  */
 export async function createCheckoutSession(planId, customerEmail = null) {

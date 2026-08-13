@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import { capturePosthogEvent } from '../analytics/posthog'
 import { useLocale } from '../i18n/LocaleContext'
+import { localeHomePath } from '../i18n/loadLocale'
 
 export default function CancelPage() {
-  const { t } = useLocale()
+  const { t, locale } = useLocale()
+  const homePath = localeHomePath(locale)
 
   useEffect(() => {
     capturePosthogEvent('checkout_cancel_viewed')
@@ -15,7 +17,7 @@ export default function CancelPage() {
     <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-6 antialiased overflow-hidden relative">
       <nav aria-label="Breadcrumb" className="relative z-10 mb-8 text-xs font-black uppercase tracking-[0.2em] text-slate-600">
         <ol className="flex items-center gap-2">
-          <li><Link to="/" className="hover:text-brand-accent transition-colors duration-200">{t('common.home')}</Link></li>
+            <li><Link to={homePath} className="hover:text-brand-accent transition-colors duration-200">{t('common.home')}</Link></li>
           <li aria-hidden>/</li>
           <li className="text-brand-dark" aria-current="page">{t('cancel.breadcrumb')}</li>
         </ol>
@@ -30,7 +32,7 @@ export default function CancelPage() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
-            to="/"
+            to={homePath}
             onClick={() => setTimeout(() => {
               document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })
             }, 100)}
@@ -39,7 +41,7 @@ export default function CancelPage() {
             {t('cancel.tryAgain')} <ArrowLeft className="icon-md rotate-180" aria-hidden />
           </Link>
           <Link
-            to="/"
+            to={homePath}
             className="min-h-[44px] inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-lg btn-secondary"
           >
             <ArrowLeft className="icon-md" aria-hidden /> {t('common.backToHome')}

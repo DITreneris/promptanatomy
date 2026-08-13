@@ -32,7 +32,7 @@ Išlaikyti vieną brandą su 9-domenų ekosistema + discovery svetaine taip, kad
 - Outbound CTR į 6 spokes iš `ecosystem_card` (cloud, info, space, help, ceo, pro) pagal locale (LT/EN).
 - Outbound CTR į `.cloud` ir `.pro` taip pat iš `footer_network`, `navbar_mobile` (papildomi placement).
 - Outbound CTR į `promptanatomy.site` iš `ecosystem_site_map` (pilnas žemėlapis).
-- Hub konversijos signalas: `ecosystem_cta_pricing_click` (placement `ecosystem_hub`) — vidinis CTA iš Ekosistemos sekcijos į `#pricing`.
+- Hub konversijos signalas: kainodara iš nav/hero/`#pricing` (ne ekosistemos sekcijos). `ecosystem_cta_pricing_click` **nebefire’ina** — LP hub CTA į `#pricing` pašalintas.
 - Assisted conversion (srautas iš `.cloud/.pro` į `.app` ir checkout/success santykis).
 - LT/EN split ir GEO split (LT vs US/EU) pagal įėjimo kanalą.
 
