@@ -79,7 +79,7 @@
     "sectionLabel": "Veiklos modelis",
     "titleLine1": "Nuspėjamas",
     "titleLine2": "Rezultatas.",
-    "paragraph": "Užtenka nenuspėjamų rezultatų. Mąstymo grandinė modulyje: patirtis → patikrinimas → praktika.",
+    "paragraph": "Užtenka nenuspėjamų rezultatų.\nMąstymo grandinė modulyje:\npatirtis → patikrinimas → praktika.",
     "items": [
       { "title": "Skaidymas", "desc": "Problemos dekonstruojamos ir sudėliojamos į struktūrą, kurią DI interpretuoja patikimai." },
       { "title": "Inžinerija", "desc": "Kelių lygių inžinerija, naudojant sisteminius, metodinius ir agentinius promptus." },

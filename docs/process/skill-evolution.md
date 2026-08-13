@@ -113,6 +113,14 @@ Pavyzdys:
 | `modulesLocked` 7–12 (ne 15) | `frontend-agent/SKILL.md` |
 | Rankinis follow-up: vizualas + legal smoke + teisininkas EN+LT | `TODO.md` QW6 / A.1 |
 
+### Pakeltos pamokos (2026-08-13, pirmi corporate12 grant 9→12)
+
+| Taisyklė | Kur įrašyta |
+|----------|-------------|
+| `db.py` upsert perrašo `highest_plan`; Python = get + assert; SQL = `greatest()` | `backend-agent/SKILL.md` + lessons, `backend.mdc`, registry §4 |
+| Po 9→12: LP 12/12 iš DB; M10 tik su **nauju** magic link (`access_tier=12`) | `fullstack-agent/SKILL.md`, `q-and-a-agent/SKILL.md`, orchestrator „Po rankinių“ |
+| Registry §3 seka **ir** tier 9, **ir** tier 12 | `user-access-tier-registry.md`, `backend-agent/SKILL.md` DoD |
+
 ### Pakeltos pamokos (2026-08-13, LP design system v1.1)
 
 | Taisyklė | Kur įrašyta |
