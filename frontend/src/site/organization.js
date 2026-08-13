@@ -4,7 +4,7 @@
  * Founder / publications / ecosystem GEO: frontend/src/site/geo-manifest.js
  *
  * OG assets (intentional split):
- * - Social meta (og:image / twitter:image) → og-image-v2.jpg (SeoHead, index.html)
+ * - Social meta (og:image / twitter:image) → og-image-v3.jpg (SeoHead, index.html)
  * - JSON-LD Organization.logo → og-image.png (this file / index.html)
  */
 import { SITE_URL } from '../config'
@@ -22,7 +22,7 @@ export const ORG_POSTAL_CODE = '94501'
 export const ORG_COUNTRY = 'US'
 
 const ORG_DESCRIPTION =
-  'Learn to run AI like an operating system. Prompt engineering, automation and AI agents for real business results.'
+  'Turn random AI chats into repeatable business workflows. Six-block method, 500+ templates, interactive training.'
 
 /** Entity graph profiles for Organization.sameAs (must match index.html). */
 export const ORG_SAME_AS = [
@@ -36,9 +36,9 @@ export const ORG_SAME_AS = [
 
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`
 export const WEBSITE_ID = `${SITE_URL}/#website`
-/** JSON-LD Organization.logo only — social cards use og-image-v2.jpg. */
+/** JSON-LD Organization.logo only — social cards use og-image-v3.jpg. */
 export const OG_IMAGE_URL = `${SITE_URL}/og-image.png`
-export const OG_SOCIAL_IMAGE_URL = `${SITE_URL}/og-image-v2.jpg`
+export const OG_SOCIAL_IMAGE_URL = `${SITE_URL}/og-image-v3.jpg`
 
 /** Lines for visible mailing address (footer, legal). */
 export function formatMailingAddressLines() {

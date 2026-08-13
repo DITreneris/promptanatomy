@@ -60,11 +60,11 @@ export default function Faq() {
               className="group faq-item"
             >
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 [&::-webkit-details-marker]:hidden">
-                <span className="text-lg font-bold text-brand-dark">
+                <span className="min-w-0 flex-1 break-words text-lg font-bold text-brand-dark">
                   {item?.q}
                 </span>
                 <ChevronDown
-                  className="h-5 w-5 shrink-0 text-slate-500 transition-all duration-200 group-open:rotate-180 group-hover:text-brand-accent"
+                  className="icon-md shrink-0 text-slate-500 transition-all duration-200 group-open:rotate-180 group-hover:text-brand-accent"
                   aria-hidden="true"
                 />
               </summary>

@@ -54,9 +54,9 @@ export default function TermsPage() {
         </div>
         <Link
           to={homePath}
-          className="inline-flex items-center gap-2 text-brand-accent font-bold hover:underline focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm"
+          className="inline-flex items-center gap-2 text-brand-dark font-bold underline decoration-brand-accent/60 underline-offset-4 hover:text-brand-accent focus-ring rounded-sm"
         >
-          <ArrowLeft className="w-5 h-5" /> {t('common.backToHome')}
+          <ArrowLeft className="icon-md" aria-hidden /> {t('common.backToHome')}
         </Link>
       </div>
     </div>

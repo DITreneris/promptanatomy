@@ -2,7 +2,7 @@
 
 Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir pritaikymas **Promptų Anatomija** projektui (Vite + React landing, LT/EN, Stripe).
 
-**Social vs logo (kanonas):** `og:image` / `twitter:image` = `og-image-v2.jpg`; JSON-LD `Organization.logo` = `og-image.png`. Senų KISS/MARRY eilučių su `og-image.png` social meta neperrašyti — naudoti naujausią „Įgyvendinimo būsena (2026-07-25+)“ skyrių.
+**Social vs logo (kanonas):** `og:image` / `twitter:image` = `og-image-v3.jpg`; JSON-LD `Organization.logo` = `og-image.png`. Senų KISS/MARRY eilučių su `og-image.png` social meta neperrašyti — naudoti naujausią „Įgyvendinimo būsena (2026-07-25+)“ skyrių.
 
 ---
 
@@ -11,7 +11,7 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 - **Daryti:** sitemap.xml, robots.txt, canonical, og:image meta (ir įkelti og-image.png), unikalūs title/description + noindex success ir cancel puslapiams.
 - **Įgyvendinta (2026-03):** hreflang (SeoHead), dinaminis canonical ir pilnas `og:*` / `twitter:*` pagal route, locale-aware URL (`/`, `/lt`, `/en`), sitemap tik indeksuojamiems URL, `Course` + `Offer` schema, `llms.txt`. **2026-05-24 (GEO):** pilnas AI `robots.txt`, `llms-full.txt` (build), `geo-manifest.js`, founder `Person` + Medium `Article` JSON-LD, ekosistemos hub/spoke + publikacijos llms failuose. **Vėliau (GitHub UI):** repo description ir 5–10 topics (kai repo viešas — README jau turi SEO bloką).
 - **Operacinis (2026-05):** po deploy patikrinti `GET https://www.promptanatomy.app/sitemap.xml` → **200** ir XML; keičiant `en.json` `legal.*` – `npm run build` ir sutikrinti `dist/privacy.html` / `dist/terms.html` su SPA (žr. [golden-legacy-standard.md](golden-legacy-standard.md), [deploy-and-webhook.md](deploy-and-webhook.md) §1.1).
-- **Nedaryti:** migracija į SSR, sunkus pre-render, per daug GitHub topics.
+- **Nedaryti:** migracija į SSR, sunkus pre-render, per daug GitHub topics, viešas hub Žodynėlis ([ADR-0002](decisions/0002-hub-glossary-wont.md)).
 
 ---
 
@@ -24,6 +24,7 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 | **20 GitHub topics** | Per daug – atrodo triukšmingai. Pakanka 5–10 tiksliai pasirinktų. |
 | **Dinaminis sitemap su 100+ URL** | Projektas turi kelis statinius puslapius (/ , /success , /cancel). Paprastas statinis `sitemap.xml` užtenka. |
 | **Atskiros subdomenų/kelio strategijos vien kalbai** | Dabar LT/EN per lang switcher – paprasčiau palikti vieną domeną + `hreflang` / `lang` atributai. |
+| **Viešas hub Žodynėlis** (`/glossary`, per-term URL, `glossary.json` kopija, `/anatomy/` ungating) | Hub = konversija, ne wiki. Thin 1–2 sakinių puslapiai; sitemap lieka 4 URL; be SSR; Žodynėlis = training produktas. [ADR-0002](decisions/0002-hub-glossary-wont.md). |
 
 ---
 
@@ -60,7 +61,7 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 2. **Vėliau:**  
    hreflang tvarkingumas, README + GitHub description/topics (kai repo bus viešas).
 3. **Neimti:**  
-   SSR migracija, sunkus pre-render, per daug GitHub topics.
+   SSR migracija, sunkus pre-render, per daug GitHub topics, viešas hub Žodynėlis ([ADR-0002](decisions/0002-hub-glossary-wont.md)).
 
 ---
 
@@ -118,7 +119,7 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 
 - **Organization.sameAs** — [organization.js](../frontend/src/site/organization.js) `ORG_SAME_AS` + [index.html](../frontend/index.html); operator follow-up: LinkedIn Company, Wikidata Q-ID ([seo-geo-operations.md](seo-geo-operations.md) §G).
 - **llms.txt Answer.AI** — H1, `>` blockquote, curated `[name](url): note` lists, `## Optional`; CI greps blockquote + Home EN + Full LLM index.
-- **Signal hygiene** — `/en` `og:url` → `/`; home `dateModified` ← `LAST_UPDATED` (2026-07-25); social meta `og-image-v2.jpg`, JSON-LD logo `og-image.png`.
+- **Signal hygiene** — `/en` `og:url` → `/`; home `dateModified` ← `LAST_UPDATED` (2026-07-25); social meta `og-image-v3.jpg`, JSON-LD logo `og-image.png`. Home share title = **AI Training System**.
 - **FAQ extractability** — answer-first openings on FAQ items #1, #3, #6, #7 (EN/LT).
 - **Ops loop** — Bing/IndexNow, freshness checklist, [geo-citation-scorecard.md](templates/geo-citation-scorecard.md), spoke GEO minimum §J.
 - **KILL unchanged** — no SSR/Next.js; no spokes in hub sitemap.
@@ -127,6 +128,11 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 
 - **Training GEO copy** — [geo-manifest.js](../frontend/src/site/geo-manifest.js): `/anatomy/` = modules **1–12** (`build:corporate12`); Stripe Core checkout = **1–6**; M7–9 = operator/cohort upgrade, M10–12 = operator/corporate grant. `LAST_UPDATED` → `2026-08-05`.
 - **KILL unchanged** — hub sitemap still 4 URLs; no SSR.
+
+### Atnaujinimas 2026-08-13 (hub glossary WON’T)
+
+- **Viešas Žodynėlis ant `.app`** — nedaromas. SOT: [ADR-0002](decisions/0002-hub-glossary-wont.md). Roadmap **D.3** (`VITE_GLOSSARY_URL` / Navbar „Repo“) lieka optional studentų UX, ne SEO katalogas.
+- **KILL unchanged** — no SSR/Next.js; hub sitemap still 4 URLs; no public `/glossary`.
 
 ---
 

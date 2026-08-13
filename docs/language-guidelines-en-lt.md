@@ -10,12 +10,13 @@ Trumpas vadovas rašant ir vertinant vartotojui matomą tekstą (LP, puslapiai, 
 
 | Kalba | Pilnas pavadinimas | Navbar / logotipas (`nav.brandPromptu` + `nav.brandAnatomija`) |
 |-------|--------------------|-------------------------------------------------------------------|
-| **EN** | **Prompt Anatomy** – AI Operating System | Title Case spalvų splitas: **Prompt** (tamsus) + **Anatomy** (accent); be tagline ir be versijos juostoje (žr. [golden-legacy-standard.md](golden-legacy-standard.md) §1). |
-| **LT** | **Promptų Anatomija** – DI Operating System | Tas pats principas: **Promptų** + **Anatomija** (accent); be tagline/versijos Navbar. |
+| **EN** | **Prompt Anatomy** – AI Training System | Title Case spalvų splitas: **Prompt** (tamsus) + **Anatomy** (accent); be tagline ir be versijos juostoje (žr. [golden-legacy-standard.md](golden-legacy-standard.md) §1). |
+| **LT** | **Promptų Anatomija** – DI mokymų sistema | Tas pats principas: **Promptų** + **Anatomija** (accent); be tagline/versijos Navbar. |
 
 - EN kontekste visada **Prompt Anatomy**, ne „Promptų Anatomija“.
 - LT kontekste visada **Promptų Anatomija** (didžioji **A**), ir citatose.
-- **AI / DI:** LT — **DI**; EN — **AI**. Pvz. LT: „DI Operating System“, „DI agentai“; EN: „AI Operating System“, „AI agents“.
+- **AI / DI:** LT — **DI**; EN — **AI**. Pvz. LT: „DI mokymų sistema“, „DI agentai“; EN: „AI Training System“, „AI agents“.
+- Hub kategorija (share `og:title`, `meta.title`) = **training system**, ne „operating system“. OS lieka tik founder esė metaforoje (Medium antraštės neliesti).
 
 ---
 

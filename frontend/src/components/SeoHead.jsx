@@ -7,7 +7,7 @@ import { getEcosystemItemList, LAST_UPDATED } from '../site/geo-manifest'
 const HOME_ROUTES = ['/', '/en', '/lt']
 const NOINDEX_ROUTES = ['/success', '/cancel']
 const ROUTE_SCHEMA_SCRIPT_ID = 'route-seo-ldjson'
-const OG_IMAGE_URL = `${SITE_URL}/og-image-v2.jpg`
+const OG_IMAGE_URL = `${SITE_URL}/og-image-v3.jpg`
 const ORGANIZATION_ID = `${SITE_URL}/#organization`
 const WEBSITE_ID = `${SITE_URL}/#website`
 const ROUTE_LAST_MODIFIED = {

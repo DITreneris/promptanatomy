@@ -57,9 +57,9 @@ export default function SuccessPage() {
           <div className="w-24 h-24 bg-feedback-success-fill text-feedback-success-text rounded-full flex items-center justify-center mx-auto mb-10 shadow-success-icon border-4 border-white">
             <ShieldCheck className="icon-display" strokeWidth={1.5} aria-hidden />
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-brand-dark mb-8 tracking-tighter uppercase leading-none">
+          <h1 className="text-4xl md:text-5xl font-black text-brand-dark mb-8 tracking-tighter uppercase leading-none">
             {t('success.heading')}
-          </h2>
+          </h1>
           <p className="text-slate-600 mb-4 text-xl font-medium leading-relaxed italic max-w-sm mx-auto">
             {t('success.body')}
           </p>

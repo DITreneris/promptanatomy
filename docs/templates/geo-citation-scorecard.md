@@ -31,7 +31,7 @@
 | # | Prompt | ChatGPT | Perplexity | Gemini | Google AI | URL cited | Notes |
 |---|--------|---------|------------|--------|-----------|-----------|-------|
 | 1 | What is Prompt Anatomy? | | | | | | |
-| 2 | Prompt Anatomy AI operating system | | | | | | |
+| 2 | Prompt Anatomy AI training system | | | | | | |
 | 3 | Prompt Anatomy course pricing Starter Core | | | | | | |
 | 4 | prompt engineering course Lithuania | | | | | | |
 | 5 | context architecture AI winners 2026 | | | | | | |

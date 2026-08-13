@@ -1,4 +1,4 @@
-# Prompt Anatomy – AI Operating System (Home / Hub)
+# Prompt Anatomy – AI Training System (Home / Hub)
 
 **Live site:** https://www.promptanatomy.app  
 **LLM index:** https://www.promptanatomy.app/llms.txt | **Full index:** https://www.promptanatomy.app/llms-full.txt  
@@ -31,7 +31,7 @@ Bilingual (LT/EN) landing hub for AI prompt engineering training, Stripe checkou
 
 | Question | Answer |
 |----------|--------|
-| What is Prompt Anatomy? | An AI operating system for business: 6-block methodology, training, prompt library. |
+| What is Prompt Anatomy? | An AI training system for business: 6-block methodology, interactive training, prompt library. |
 | Languages? | Lithuanian and English (`/lt`, `/en`). |
 | Pricing? | Starter 39 EUR, Core 99 EUR — one-time, lifetime access. |
 | Where is training? | `/anatomy/` after purchase; access via email (no password). |

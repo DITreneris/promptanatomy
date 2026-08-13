@@ -218,7 +218,7 @@ export default function HomePage({ forceLocale }) {
                   onClick={handleCheckAccess}
                   disabled={accessLoading}
                   aria-busy={accessLoading}
-                  className="min-h-[48px] shrink-0 px-6 py-3 rounded-xl font-bold bg-brand-dark text-white hover:brightness-110 active:scale-[0.98] transition-all duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 disabled:opacity-70 sm:self-stretch"
+                  className="btn-dark shrink-0 px-6 py-3 rounded-xl sm:self-stretch"
                 >
                   {accessLoading ? t('pricing.loading') : t('pricing.checkButton')}
                 </button>
@@ -268,7 +268,7 @@ export default function HomePage({ forceLocale }) {
                     type="button"
                     disabled={trainingLinkLoading}
                     onClick={handleGoToTraining}
-                    className="block w-full py-3 rounded-xl text-center text-sm btn-primary disabled:opacity-70"
+                    className="block w-full min-h-[48px] py-3 rounded-xl text-center text-sm btn-primary disabled:opacity-70"
                   >
                     {trainingLinkLoading ? t('pricing.loading') : `${t('pricing.goToTraining')} →`}
                   </button>
@@ -285,7 +285,7 @@ export default function HomePage({ forceLocale }) {
                   <button
                     type="button"
                     onClick={scrollToPricing}
-                    className="block w-full py-3 rounded-xl text-center text-sm btn-primary"
+                    className="block w-full min-h-[48px] py-3 rounded-xl text-center text-sm btn-primary"
                   >
                     {t('pricing.getAccess')} →
                   </button>

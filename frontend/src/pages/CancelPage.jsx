@@ -24,9 +24,9 @@ export default function CancelPage() {
       </nav>
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('/noise.svg')]"></div>
       <div className="max-w-xl w-full bg-white rounded-3xl p-12 md:p-16 text-center shadow-xl border border-slate-100 relative z-10">
-        <h2 className="text-3xl font-black text-brand-dark mb-6 tracking-tight">
+        <h1 className="text-3xl font-black text-brand-dark mb-6 tracking-tight">
           {t('cancel.heading')}
-        </h2>
+        </h1>
         <p className="text-slate-600 mb-10 text-lg font-medium leading-relaxed">
           {t('cancel.body')}
         </p>

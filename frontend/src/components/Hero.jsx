@@ -139,9 +139,9 @@ export default function Hero() {
               {t('hero.cta')} <ArrowRight className="icon-lg group-hover:translate-x-1 transition-transform" aria-hidden />
             </a>
 
-            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200/90 bg-white/90 px-4 py-3 text-sm font-semibold text-slate-600 shadow-soft min-h-[44px]">
-              <span className="w-2.5 h-2.5 rounded-full bg-brand-accent" aria-hidden="true" />
-              <span>{t('hero.socialProof')}</span>
+            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200/90 bg-white/90 px-4 py-3 text-sm font-semibold text-slate-600 shadow-soft min-h-[44px] max-w-full min-w-0 w-full sm:w-auto">
+              <span className="w-2.5 h-2.5 rounded-full bg-brand-accent shrink-0" aria-hidden="true" />
+              <span className="min-w-0 break-words">{t('hero.socialProof')}</span>
             </div>
           </div>
         </div>
