@@ -79,7 +79,7 @@
     "sectionLabel": "Operating Model",
     "titleLine1": "Predictable",
     "titleLine2": "Outcome.",
-    "paragraph": "Enough unpredictable results. Thinking chain per module: learn → check → practice.",
+    "paragraph": "Enough unpredictable results.\nThinking chain per module:\nlearn → check → practice.",
     "items": [
       { "title": "Breakdown", "desc": "Deconstruct problems into structure that AI interprets reliably." },
       { "title": "Engineering", "desc": "Layered construction using CoT (Chain of Thought) and Few-shot engineering." },

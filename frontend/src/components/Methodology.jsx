@@ -32,7 +32,7 @@ export default function Methodology() {
             </h2>
           </div>
           <div className="bg-brand-accent/10 rounded-lg pl-4 pr-5 py-4 border-l-4 border-brand-accent max-w-sm">
-            <p className="text-slate-700 font-medium text-lg leading-relaxed">
+            <p className="text-slate-700 font-medium text-lg leading-relaxed whitespace-pre-line">
               {t('methodology.paragraph')}
             </p>
           </div>
