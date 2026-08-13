@@ -1,6 +1,6 @@
 # user_access – highest_plan sekimo lentelė
 
-**Paskirtis:** viena vieta operatoriui – ką reiškia `highest_plan`, kur tikrinti Supabase, kas turi tier 9. Atnaujinkite po rankinių pakeitimų ar Stripe korekcijų.
+**Paskirtis:** viena vieta operatoriui – ką reiškia `highest_plan`, kur tikrinti Supabase, kas turi tier 9 / 12. Atnaujinkite po rankinių pakeitimų ar Stripe korekcijų.
 
 **Šaltinis tiesai:** Supabase lentelė `user_access` (ne Excel, ne Stripe Dashboard vienas).
 
@@ -37,29 +37,37 @@
 
 ---
 
-## 3. Tier 9 kanoninis sąrašas (2026-07-30)
+## 3. Operatoriaus grant sąrašas
+
+### Tier 9 (2026-07-30)
 
 | Email | Šaltinis | Pastaba |
 |-------|----------|---------|
 | `jaunius.jakaitis@gmail.com` | Stripe 99 € | `stripe_customer_id` užpildytas |
 | `andrius.kvaksys@gmail.com` | Stripe 99 € | `stripe_customer_id` užpildytas |
 | `lauris.zilinskas@gmail.com` | Stripe 99 € | `stripe_customer_id` užpildytas |
-| `norbertas@vip.lt` | Rankinis | Be Stripe ID |
-| `tomas.staniulis76@gmail.com` | Rankinis | Be Stripe ID |
 | `kestutis@vip.lt` | Rankinis | 2026-07-30, naujas grant |
 | `liudvikas.staniulis@gmail.com` | Rankinis | 2026-07-30, 6→9 |
 | `darius.martinonis@cgates.lt` | Rankinis | Operator grant |
 | `laura.andriuskeviciene@cgates.lt` | Rankinis | Operator grant |
 
-### Snapshot (2026-08-10)
+### Tier 12 (2026-08-13)
+
+| Email | Šaltinis | Pastaba |
+|-------|----------|---------|
+| `norbertas@vip.lt` | Rankinis | Be Stripe ID; 9→12 |
+| `tomas.staniulis76@gmail.com` | Rankinis | Be Stripe ID; 9→12 |
+
+### Snapshot (2026-08-13)
 
 | `highest_plan` | Vartotojų sk. |
 |----------------|---------------|
 | 3 | 2 |
 | 6 | 102 |
-| 9 | 9 |
+| 9 | 7 |
+| 12 | 2 |
 
-*2026-08-10:* +`liudmila.surkova@rizika.lt` → 6. Ankstesni: 2026-08-06 → 2/101/9 (+13 rizika); 2026-07-30 → 2/88/9.*
+*2026-08-13:* `tomas.staniulis76@gmail.com`, `norbertas@vip.lt` 9→**12**. Ankstesni: 2026-08-10 → 2/102/9 (+`liudmila.surkova@rizika.lt` → 6); 2026-08-06 → 2/101/9; 2026-07-30 → 2/88/9.*
 
 ---
 
@@ -85,7 +93,7 @@ on conflict (email) do update set
   updated_at = now();
 ```
 
-Po grant: `generate-access-link` → `access_tier=12`; LP rodo 12/12; `/anatomy/` atrakina M1–12 (reikia prod `build:corporate12`).
+Po grant: `generate-access-link` → `access_tier=12`; LP rodo 12/12; `/anatomy/` atrakina M1–12 (reikia prod `build:corporate12`). **Python** `upsert_user_access` perrašo `highest_plan` (nėra `greatest()`): pirmiau `get_user_access`, rašyti tik jei `current` = laukta (pvz. 9). SQL Editor – `greatest()` kaip čia. Smoke: **naujas** LP „Eiti į mokymus“ — senas `localStorage.verified_access_tier=9` ir nepasibaigęs HMAC `access_tier=9` lieka 9.
 
 ### Atstatyti per klaidą pakeltus (9 → 6 arba 12 → 9)
 
