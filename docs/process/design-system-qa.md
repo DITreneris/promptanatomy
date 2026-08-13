@@ -7,7 +7,7 @@
 
 | Viewport | Check |
 |----------|--------|
-| 375px | Hero CTA column; Pricing cards; mobile drawer open/close; Footer links |
+| 375px | Hero CTA column; social-proof pill `max-w-full` + `break-words` (EN 600+ string wraps, no horizontal overflow); Pricing cards; FAQ summary `min-w-0 flex-1 break-words`; mobile drawer open/close; drawer locale LT\|EN `min-h-[44px]`; access feedback CTAs `min-h-[48px]`; Footer links |
 | 768px | Navbar density; section headings readable |
 | 1280px | Desktop nav: What Is, Ecosystem, Training (if access) + locale + CTA; Footer 4 equal columns (`lg:col-span-3`) + legal bar all `text-xs`; Ecosystem grid; FAQ contrast |
 
@@ -52,6 +52,7 @@ Run the same rows on **`/lt` and `/en`** (375 / 1280): wordmark, `nav.whatIs`, h
 2. Close menu — scroll position restored  
 3. Open at scrollY=0, close — page scrolls normally  
 4. Overlay dark, white panel on right — visible at any scroll position  
+5. Drawer locale LT|EN — `min-h-[44px] min-w-[44px]` (not `py-2` only) 
 
 ## Lighthouse (post-deploy)
 
@@ -59,7 +60,7 @@ Record on production (`https://www.promptanatomy.app/`):
 
 | Date | URL | Accessibility | Notes |
 |------|-----|---------------|-------|
-| 2026-08-13 | / | **92** | Lighthouse CLI, a11y category only (PSI 429). Lab fails: `aria-hidden-focus`, `color-contrast`, `heading-order`. Record only — not a v1.1 fix. Perf baseline: [pagespeed-2026-08.md](../archive/snapshots/pagespeed-2026-08.md). |
+| 2026-08-13 | / | **92** | Lighthouse CLI, a11y category only (PSI 429). Lab fails: `aria-hidden-focus`, `color-contrast`, `heading-order`. Record only at v1.1. **In-code 2026-08-13 follow-up (DS-1–5):** heading tags, gold-on-light text, drawer `inert`. **Do not invent a new score in this PR** — re-record post-deploy (DoD C). Perf baseline: [pagespeed-2026-08.md](../archive/snapshots/pagespeed-2026-08.md). |
 
 CLI:
 

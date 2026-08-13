@@ -14,6 +14,7 @@
 - Hash sekcijos (`#pricing`, `#ekosistema`, `#faq`)
 - `/anatomy/` — `Disallow` [robots.txt](../frontend/public/robots.txt)
 - `/success`, `/cancel` — noindex, ne sitemap
+- Viešas `/glossary` ar per-term žodyno URL — **WON’T** ([ADR-0002](decisions/0002-hub-glossary-wont.md)); Žodynėlis lieka `/anatomy/`
 
 ---
 

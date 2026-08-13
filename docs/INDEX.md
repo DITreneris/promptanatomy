@@ -52,7 +52,7 @@
 
 | Dokumentas | Kelias | Paskirtis |
 |------------|--------|-----------|
-| SEO (KISS–Marry–Kill) | [SEO-KISS-Marry-Kill.md](SEO-KISS-Marry-Kill.md) | Sitemap, llms, Org sameAs, GEO manifest. |
+| SEO (KISS–Marry–Kill) | [SEO-KISS-Marry-Kill.md](SEO-KISS-Marry-Kill.md) | Sitemap, llms, Org sameAs, GEO manifest. KILL: viešas hub Žodynėlis — [ADR-0002](decisions/0002-hub-glossary-wont.md). |
 | SEO / GEO operacijos | [seo-geo-operations.md](seo-geo-operations.md) | GSC, IndexNow, post-deploy smoke. |
 | GEO citation scorecard | [templates/geo-citation-scorecard.md](templates/geo-citation-scorecard.md) | Monthly AI citation prompts; snapshots → archive. |
 | Ekosistemos kanonas | [ecosystem-canon.md](ecosystem-canon.md) | 9 domenų pipeline, LP kortelės. |

@@ -136,7 +136,7 @@ function renderCard(item, i, t, locale, pagePath) {
       >
         {item.icon}
       </div>
-      <h4 className="text-lg font-bold text-white mb-1 tracking-tight">{item.title}</h4>
+      <h3 className="text-lg font-bold text-white mb-1 tracking-tight">{item.title}</h3>
       {outcome && (
         <p className="text-sm text-white/80 font-medium mb-2 leading-relaxed line-clamp-2">{outcome}</p>
       )}

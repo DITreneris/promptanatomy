@@ -137,7 +137,7 @@ export const PUBLIC_PRICING = [
 export const NOINDEX_PATHS = ['/success', '/cancel', '/api/']
 
 export const TRAINING_SUMMARY =
-  'Prompt Anatomy training is an interactive course at /anatomy/ covering modules 1–12 on the Six-Block Method (Meta, Input, Output, Reasoning, Quality, Advanced): theory, knowledge checks, practical business scenarios, context engineering, advanced tests, agent workflows, and a capstone project (Lithuanian and English). The Six-Block Method is the Prompt Anatomy canon; five-part tools on ecosystem spokes are Quick mode and map onto the six blocks. Public Stripe checkout sells Starter (1–3) and Core (1–6); modules 7–9 are granted via operator tier 9, and modules 10–12 via operator/corporate tier 12, not separate public Stripe SKUs.'
+  'Prompt Anatomy training is an interactive course at /anatomy/ covering modules 1–12 on the Six-Block Method (Meta, Input, Output, Reasoning, Quality, Advanced): theory, knowledge checks, practical business scenarios, context engineering, advanced tests, agent workflows, and a capstone project (Lithuanian and English). The training system inventory includes 300+ interactive slides and 40+ interactive tools. The Six-Block Method is the Prompt Anatomy canon; five-part tools on ecosystem spokes are Quick mode and map onto the six blocks. Public Stripe checkout sells Starter (1–3) and Core (1–6); modules 7–9 are granted via operator tier 9, and modules 10–12 via operator/corporate tier 12, not separate public Stripe SKUs.'
 
 export const FOUNDER_ID = `${SITE_URL}/#founder`
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`

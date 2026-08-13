@@ -148,7 +148,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
         </p>
         <a
           href={`mailto:info@promptanatomy.app?subject=${encodeURIComponent(t('pricing.forTeamsMailSubject'))}`}
-          className="inline-flex items-center justify-center gap-2 min-h-[48px] px-6 py-3 rounded-xl text-base font-bold text-brand-dark bg-white border-2 border-slate-200 hover:border-brand-accent/40 hover:bg-slate-50 transition-all duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
+          className="btn-secondary inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-base"
           aria-label={t('pricing.forTeamsCta')}
         >
           {t('pricing.forTeamsCta')} <ArrowRight className="icon-md" aria-hidden />

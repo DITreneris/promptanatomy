@@ -70,10 +70,10 @@
     "stat1Number": "500+",
     "stat1Label": "Šablonai ir promptai",
     "ctaPricing": "Žiūrėti planus ir kainodarą",
-    "stat2Number": "~60",
-    "stat2Label": "Įrankiai",
-    "stat3Number": "100",
-    "stat3Label": "Terminai"
+    "stat2Number": "40+",
+    "stat2Label": "Interaktyvūs įrankiai",
+    "stat3Number": "300+",
+    "stat3Label": "Interaktyvios skaidrės"
   },
   "methodology": {
     "sectionLabel": "Veiklos modelis",
@@ -104,7 +104,7 @@
         "title": "Naudojimas",
         "url": "https://www.promptanatomy.info/lt/",
         "outcome": "Promptai kasdieniam darbui.",
-        "tags": "100+ promptų · workflow",
+        "tags": "Promptų biblioteka · workflow",
         "cta": "Naudoti"
       },
       {
@@ -182,7 +182,7 @@
     "goToTraining": "Eiti į mokymus",
     "noAccessFound": "Prieiga nerasta",
     "noAccessBody": "Šiam el. paštui prieiga dar nesuteikta. Pasirink planą žemiau ir gauk prieigą.",
-    "modulesLocked": "Moduliai 7–12 pagal poreikį: Duomenų analizė, Agentai, Turinio inžinerija.",
+    "modulesLocked": "Moduliai 7–12 pagal poreikį: Duomenų analizė, Agentai.",
     "trustSignals": ["Lifetime atnaujinimai", "Vienkartinis mokėjimas", "Momentinė prieiga"],
     "forTeamsTitle": "Komandoms ir organizacijoms",
     "forTeamsBody": "Mokymai komandai — 399 €. 15 min. pokalbis: info@promptanatomy.app. Atsakome per 1 darbo dieną.",
@@ -195,9 +195,9 @@
     "sectionLabel": "",
     "title": "Dažniausiai užduodami klausimai",
     "items": [
-      { "q": "Ką gaunu po apmokėjimo?", "a": "Gauni lifetime prieigą prie savo plano modulių promptanatomy.app — Starter (1–3 moduliai, 39 EUR) arba Core (1–6 moduliai, 99 EUR). Įeina mokymai /anatomy/, praktinės užduotys, 500+ promptų biblioteka ir sertifikatas nuo 70%. Promptų Anatomija – mokėjimų ir mokymų centras; ekosistemos svetainės (Cloud, biblioteka, marketingas, HR, CEO, Pro) – nemokami darbo įrankiai, kurie papildo kursą. Palaikymas – viešoje Telegram grupėje." },
+      { "q": "Ką gaunu po apmokėjimo?", "a": "Gauni lifetime prieigą prie savo plano modulių promptanatomy.app — Starter (1–3 moduliai, 39 EUR) arba Core (1–6 moduliai, 99 EUR). Įeina mokymai /anatomy/, praktinės užduotys ir sertifikatas nuo 70%. 500+ promptų biblioteka – nemokamose ekosistemos svetainėse, kurios papildo kursą. Promptų Anatomija – mokėjimų ir mokymų centras; svetainės (Cloud, biblioteka, marketingas, HR, CEO, Pro) – nemokami darbo įrankiai. Palaikymas – viešoje Telegram grupėje." },
       { "q": "Kaip pateksiu į mokymus?", "a": "Slaptažodžio nereikia. Šiame puslapyje atidaryk Kainodarą (arba „Tęsti mokymus“ / „Jau turiu prieigą“), įvesk el. paštą, su kuriuo mokėjai, spausk Tikrinti → Eiti į mokymus. Nuoroda atsidaro naršyklėje — laiško nesiunčiame. Tą patį gali kartoti bet kada; prieiga susieta su tuo el. paštu, ne atskira paskyra." },
-      { "q": "Kas įeina į planą?", "a": "Abu planai apima 6 blokų metodiką, promptų biblioteką, užduotis, sertifikatą nuo 70% ir Telegram; Starter – moduliai 1–3, Core – visas 1–6 kursas. Starter – promptų inžinerija ir 6 verslo scenarijai. Core prideda 4–6 modulius, konteksto inžineriją, sprintus ir projektus. Ekosistemos svetainės (Cloud – pradėti, biblioteka – naudoti, Kurti, Atrinkti, Valdyti, Diegti) – nemokami kasdieniam darbui ir nepakeičia mokamų mokymų." },
+      { "q": "Kas įeina į planą?", "a": "Abu planai apima 6 blokų metodiką, užduotis, sertifikatą nuo 70% ir Telegram; Starter – moduliai 1–3, Core – visas 1–6 kursas. Starter – promptų inžinerija ir 6 verslo scenarijai. Core prideda 4–6 modulius, konteksto inžineriją, sprintus ir projektus. 500+ ekosistemos biblioteka ir svetainės (Cloud – pradėti, Naudoti, Kurti, Atrinkti, Valdyti, Diegti) – nemokami kasdieniam darbui ir nepakeičia mokamų mokymų." },
       { "q": "Ar mano duomenys saugūs?", "a": "Taip – renkame tik tai, ko reikia apmokėjimui ir prieigai suteikti. Mokėjimus apdoroja Stripe; pilnų kortelių numerių nesaugome. Laikome minimalius pirkimui susijusius identifikatorius, susietus su apmokėjimo el. paštu. Produktų analitiką (PostHog, Vercel) ir pasirenkamą reklamos matavimą taikome pagal privatumo politiką, įskaitant Promptų Anatomijos ekosistemos domenus. Duomenys tvarkomi pagal ES ir JAV saugumo praktikas." },
       { "q": "Kur gauti pagalbos?", "a": "Pagrindinis palaikymas – vieša Telegram grupė (nuoroda po apačioje ir po apmokėjimo). Ten praktikantai dalijasi procesais, klausia ir gauna pagalbos dėl prieigos. Dėl sąskaitų, mokėjimų ar grąžinimų – info@promptanatomy.app. Nežinai, nuo ko pradėti ekosistemoje? Žemėlapis promptanatomy.site/#ecosystem – pasirink procesą pagal rolę." },
       { "q": "Ar prieiga laikina?", "a": "Ne — Starter (39 EUR) ir Core (99 EUR) yra vienkartinis mokėjimas su lifetime prieiga, be prenumeratos. Po pirkimo grįžti į mokymus gali bet kada Kainodaros skyriuje." },

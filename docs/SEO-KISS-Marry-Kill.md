@@ -11,7 +11,7 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 - **Daryti:** sitemap.xml, robots.txt, canonical, og:image meta (ir įkelti og-image.png), unikalūs title/description + noindex success ir cancel puslapiams.
 - **Įgyvendinta (2026-03):** hreflang (SeoHead), dinaminis canonical ir pilnas `og:*` / `twitter:*` pagal route, locale-aware URL (`/`, `/lt`, `/en`), sitemap tik indeksuojamiems URL, `Course` + `Offer` schema, `llms.txt`. **2026-05-24 (GEO):** pilnas AI `robots.txt`, `llms-full.txt` (build), `geo-manifest.js`, founder `Person` + Medium `Article` JSON-LD, ekosistemos hub/spoke + publikacijos llms failuose. **Vėliau (GitHub UI):** repo description ir 5–10 topics (kai repo viešas — README jau turi SEO bloką).
 - **Operacinis (2026-05):** po deploy patikrinti `GET https://www.promptanatomy.app/sitemap.xml` → **200** ir XML; keičiant `en.json` `legal.*` – `npm run build` ir sutikrinti `dist/privacy.html` / `dist/terms.html` su SPA (žr. [golden-legacy-standard.md](golden-legacy-standard.md), [deploy-and-webhook.md](deploy-and-webhook.md) §1.1).
-- **Nedaryti:** migracija į SSR, sunkus pre-render, per daug GitHub topics.
+- **Nedaryti:** migracija į SSR, sunkus pre-render, per daug GitHub topics, viešas hub Žodynėlis ([ADR-0002](decisions/0002-hub-glossary-wont.md)).
 
 ---
 
@@ -24,6 +24,7 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 | **20 GitHub topics** | Per daug – atrodo triukšmingai. Pakanka 5–10 tiksliai pasirinktų. |
 | **Dinaminis sitemap su 100+ URL** | Projektas turi kelis statinius puslapius (/ , /success , /cancel). Paprastas statinis `sitemap.xml` užtenka. |
 | **Atskiros subdomenų/kelio strategijos vien kalbai** | Dabar LT/EN per lang switcher – paprasčiau palikti vieną domeną + `hreflang` / `lang` atributai. |
+| **Viešas hub Žodynėlis** (`/glossary`, per-term URL, `glossary.json` kopija, `/anatomy/` ungating) | Hub = konversija, ne wiki. Thin 1–2 sakinių puslapiai; sitemap lieka 4 URL; be SSR; Žodynėlis = training produktas. [ADR-0002](decisions/0002-hub-glossary-wont.md). |
 
 ---
 
@@ -60,7 +61,7 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 2. **Vėliau:**  
    hreflang tvarkingumas, README + GitHub description/topics (kai repo bus viešas).
 3. **Neimti:**  
-   SSR migracija, sunkus pre-render, per daug GitHub topics.
+   SSR migracija, sunkus pre-render, per daug GitHub topics, viešas hub Žodynėlis ([ADR-0002](decisions/0002-hub-glossary-wont.md)).
 
 ---
 
@@ -127,6 +128,11 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 
 - **Training GEO copy** — [geo-manifest.js](../frontend/src/site/geo-manifest.js): `/anatomy/` = modules **1–12** (`build:corporate12`); Stripe Core checkout = **1–6**; M7–9 = operator/cohort upgrade, M10–12 = operator/corporate grant. `LAST_UPDATED` → `2026-08-05`.
 - **KILL unchanged** — hub sitemap still 4 URLs; no SSR.
+
+### Atnaujinimas 2026-08-13 (hub glossary WON’T)
+
+- **Viešas Žodynėlis ant `.app`** — nedaromas. SOT: [ADR-0002](decisions/0002-hub-glossary-wont.md). Roadmap **D.3** (`VITE_GLOSSARY_URL` / Navbar „Repo“) lieka optional studentų UX, ne SEO katalogas.
+- **KILL unchanged** — no SSR/Next.js; hub sitemap still 4 URLs; no public `/glossary`.
 
 ---
 

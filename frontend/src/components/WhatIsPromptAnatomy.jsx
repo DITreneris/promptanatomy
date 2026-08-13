@@ -1,11 +1,8 @@
+import { ArrowRight } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
 
 function ArrowConnector() {
-  return (
-    <svg className="w-5 h-5 text-slate-400 shrink-0" aria-hidden viewBox="0 0 20 20" fill="none">
-      <path d="M8 4l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
+  return <ArrowRight className="icon-md text-slate-400 shrink-0" aria-hidden />
 }
 
 export default function WhatIsPromptAnatomy() {

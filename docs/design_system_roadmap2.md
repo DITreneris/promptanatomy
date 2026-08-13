@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | **Date** | 2026-05-24 |
-| **Last updated** | 2026-08-13 (v1.1 hygiene: feedback tokens, `page-heading`, icon-display, CI grep, Lighthouse a11y 92; typeface = OS sans, [ADR-0001](decisions/0001-lp-system-typeface.md); footer 4× `col-span-3`) |
+| **Last updated** | 2026-08-13 (v1.1 follow-up DS-1–5: heading-order, gold-on-light text, drawer `inert`, `btn-dark`, icon leftovers; v1.1 hygiene unchanged — no v1.2) |
 | **Implemented** | 2026-05-24 (Phases 1–8); **v1.1** 2026-08-13 |
 | **Status** | **v1.0 shipped** (Phases 5–8). **v1.1 hygiene shipped** — see §6 v1.1. QA: [design-system-qa.md](process/design-system-qa.md) |
 | **External benchmark** | [GitHub Primer](https://primer.style/) — token layering, semantics, flow (§14) |
@@ -31,7 +31,7 @@
 | **Is the frontpage close to premium SaaS quality?** | **Yes — v1.0 shipped; v1.1 hygiene.** Token + utility system in `index.css`. Remaining work is Won’t (no UI kit, no webfont, no dark mode). |
 | **What was fixed first (Phases 1–4)?** | Dual CTA gradient → `btn-primary`; Hero CTA ↔ `#pricing`; proof copy disambiguation; stat SR readability; Methodology semantics; `mt-20` removed; local `noise.svg`. |
 | **What's next?** | Nothing in-scope except optional Could (screenshots). Do not reopen Phases 5–7 as Open. |
-| **Remaining trust polish?** | Proof numbers unified: **500+** library; **600+** practitioners. No verified logo wall. Desktop nav (golden-legacy 2026-08-13): What Is + Ecosystem (+ Training if `hasAccess`). **Not** Pricing / Methodology / FAQ. |
+| **Remaining trust polish?** | Proof numbers: **500+** library; **40+** interactive tools; **300+** interactive slides; **600+** practitioners. No verified logo wall. Desktop nav (golden-legacy 2026-08-13): What Is + Ecosystem (+ Training if `hasAccess`). **Not** Pricing / Methodology / FAQ. |
 | **What must not change?** | Brand palette (dark + gold), terminal hero, Navbar Variant B, Stripe checkout flow, mobile drawer pattern, i18n architecture. |
 | **What we will not adopt?** | `@primer/react`, shadcn on LP, dark mode, Figma pipeline, animation libraries — see §14.3. |
 
@@ -229,7 +229,7 @@ From [HomePage.jsx](../frontend/src/pages/HomePage.jsx) L161–288:
 
 | # | Decision | Resolution |
 |---|----------|------------|
-| 1 | **Canonical proof numbers** | **Unified 2026-06-05.** **500+** = prompt/template library (`hero.bullet1`, `whatIs.stat1Number`, `pricing.features`); **600+** = practitioners (`hero.socialProof`). |
+| 1 | **Canonical proof numbers** | **Updated 2026-08-13.** **500+** = ecosystem prompt/template library (`hero.bullet1`, `whatIs.stat1Number`, `pricing.features`); **40+** = interactive tools (`whatIs.stat2`); **300+** = interactive slides (`whatIs.stat3`); **600+** = practitioners (`hero.socialProof`). |
 | 2 | **Primary button gradient** | **`bg-cta-gradient`** for all primary buttons via `btn-primary` utilities. **`bg-accent-gradient`** only for Hero H1 text clip + skip link. |
 
 ---
@@ -238,7 +238,7 @@ From [HomePage.jsx](../frontend/src/pages/HomePage.jsx) L161–288:
 
 | Task | Status | Notes |
 |------|--------|-------|
-| Proof numbers / copy audit | Done | **500+** unified library metric; **600+** social proof |
+| Proof numbers / copy audit | Done | **500+** library; **40+** interactive tools; **300+** slides; **600+** social proof |
 | Hero CTA ↔ `#pricing` | Done | `hero.cta` pricing intent; removed unused `ctaSecondary`. **2026-08-13:** QW3a (Hero → `.cloud`) was a regression against Primer “one primary CTA intent to pricing”; restored — one Hero CTA → `#pricing`, same tab, no secondary. |
 | Standardize primary gradient | Done | HomePage access CTAs, CancelPage |
 | Remove Methodology `mt-20` | Done | |
@@ -375,8 +375,9 @@ section-heading → text-4xl md:text-5xl font-black text-brand-dark tracking-[-0
 | `card-feedback-success/warning` + owned CTA; Hero terminal exempt | Done |
 | `page-heading` / `page-subheading` on Privacy/Terms | Done |
 | Shadow public API = `shadow-tier-1/2/3`; do not collapse Ecosystem shadows | Done (docs) |
+| v1.1 follow-up DS-1–5: heading-order `h3`/`h1`; gold-on-light (`text-amber-800` / navy+gold underline); drawer `inert`; `btn-dark`; Lucide `icon-*` leftovers | Done (2026-08-13) |
 
-**Won’t:** shadcn / `@primer/react` / Geist font / dark mode / Figma pipeline / OKLCH / screenshot CI / Methodology+FAQ in desktop nav / collapsing Ecosystem shadows.
+**Won’t:** shadcn / `@primer/react` / Geist font / dark mode / Figma pipeline / OKLCH / screenshot CI / Methodology+FAQ in desktop nav / collapsing Ecosystem shadows / `--color-brand-accent-fg` (wordmark gold on white stays).
 
 ---
 
@@ -398,7 +399,7 @@ Phase 5 (functional tokens + type scale)
 | 1 | **Section spacing** | Done — `section-default` available; apply everywhere in Phase 5 | 5 |
 | 2 | **Hero layout** | Done | — |
 | 3 | **CTA hierarchy** | Done on LP; Success/Cancel parity in Phase 6 | 6 |
-| 4 | **Button variants** | Done — `btn-primary` / secondary / ghost | — |
+| 4 | **Button variants** | Done — `btn-primary` / secondary / ghost / **`btn-dark`** (`#access` Check) | — |
 | 5 | **Card anatomy** | Unchanged — hover lift + tier shadows | — |
 | 6 | **Icon placement** | Done — LP 16/20/24 (`icon-sm/md/lg`); Success display 48 (`icon-display`) | 7 / v1.1 |
 | 7 | **Typography hierarchy** | Done — weight + size tokens; legal `page-heading` / `page-subheading` | 5 / v1.1 |
@@ -444,6 +445,7 @@ Phase 5 (functional tokens + type scale)
 | Shadow public API | `shadow-tier-1` / `shadow-tier-2` / `shadow-tier-3` | Elevation for new LP surfaces (`shadow-soft`, `shadow-soft-lg`, `shadow-pricing-card` aliases) |
 | Shadow component | `shadow-ecosystem-*`, `shadow-cta-shadow`, `shadow-accent-ring` | Hub/CTA/methodology — reuse these names; no new `shadow-[…]` in JSX |
 | Focus | `focus-ring` utility | All interactives |
+| Dark fill button | `btn-dark` | `#access` Check only — navy fill, not a second primary CTA |
 | Feedback | `card-feedback-success` / `card-feedback-warning` / `btn-feedback-owned` | `#access` cards, owned CTA, Success alert. **Hero terminal chrome stays Tailwind amber/emerald.** |
 | Icons | `icon-sm` / `icon-md` / `icon-lg` / `icon-display` | LP Lucide 16/20/24; Success checkout hero 48px only |
 | Legal type | `page-heading` / `page-subheading` | Privacy/Terms only — not `section-heading` (too large) |

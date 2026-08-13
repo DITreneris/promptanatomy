@@ -244,6 +244,7 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
       id="mobile-nav"
       className={`fixed inset-0 z-[100] lg:hidden ${mobileOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
       aria-hidden={!mobileOpen}
+      inert={!mobileOpen}
     >
       {/* Overlay without backdrop-blur-sm to avoid mobile GPU freeze */}
       <div
@@ -273,7 +274,7 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
             onClick={() => { closeMobile(); setLocale('lt'); navigate('/lt') }}
             onMouseEnter={() => prefetchLocale('lt')}
             onFocus={() => prefetchLocale('lt')}
-            className={`px-3 py-2 rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
+            className={`px-3 py-2 min-h-[44px] min-w-[44px] rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
             aria-pressed={locale === 'lt'}
             aria-label="Lietuvių"
           >
@@ -284,7 +285,7 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
             onClick={() => { closeMobile(); setLocale('en'); navigate('/en') }}
             onMouseEnter={() => prefetchLocale('en')}
             onFocus={() => prefetchLocale('en')}
-            className={`px-3 py-2 rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
+            className={`px-3 py-2 min-h-[44px] min-w-[44px] rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
             aria-pressed={locale === 'en'}
             aria-label="English"
           >
