@@ -25,8 +25,8 @@
 | Golden Legacy Standard | [golden-legacy-standard.md](golden-legacy-standard.md) | Fiksuota LP būsena, backend kontraktai, CI regresija. |
 | Faze 1 apimtis | [phase-1-scope.md](phase-1-scope.md) | Checkout produktai (max mod 6); ne training tier limit. |
 | Prieigos architektūra | [access-architecture-canon.md](access-architecture-canon.md) | `user_access` po webhook; LP / magic link. |
-| Kalbos gairės (LT/EN) | [language-guidelines-en-lt.md](language-guidelines-en-lt.md) | Prekės ženklas, terminai, tonas. |
-| LP design system | [design_system_roadmap2.md](design_system_roadmap2.md) | Dizaino sistema v1.0; QA: [process/design-system-qa.md](process/design-system-qa.md). |
+| Kalbos gairės (LT/EN) | [language-guidelines-en-lt.md](language-guidelines-en-lt.md) | Prekės ženklas, tu/bendratis, legal SPA vs static EN. |
+| LP design system | [design_system_roadmap2.md](design_system_roadmap2.md) | Dizaino sistema **v1.0** + **v1.1 hygiene** (2026-08-13). QA: [process/design-system-qa.md](process/design-system-qa.md). Typeface: [ADR-0001](decisions/0001-lp-system-typeface.md) (OS sans, be webfonto). |
 | Load-speed biudžetas | [performance-baseline.md](performance-baseline.md) | Bundle gzip, critical-path biudžetas. |
 | user_access tier registry | [user-access-tier-registry.md](user-access-tier-registry.md) | highest_plan 3/6/9/12; operator snapshot. |
 

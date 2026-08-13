@@ -1,8 +1,8 @@
 /**
  * Vercel serverless: POST /api/create-checkout-session
- * Body: { plan_id: "1"|"2"|"3"|"4", customer_email?: string }
+ * Body: { plan_id: "1"|"2", customer_email?: string }
  * Returns { url } for Stripe Checkout redirect.
- * Requires env: STRIPE_SECRET_KEY, STRIPE_PRICE_ID_PLAN_1..4, FRONTEND_ORIGIN
+ * Requires env: STRIPE_SECRET_KEY, STRIPE_PRICE_ID_PLAN_1, STRIPE_PRICE_ID_PLAN_2, FRONTEND_ORIGIN
  * Optional: SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY for access check (409 if already purchased).
  */
 const Stripe = require('stripe');

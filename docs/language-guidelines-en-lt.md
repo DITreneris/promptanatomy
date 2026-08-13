@@ -2,6 +2,8 @@
 
 Trumpas vadovas rašant ir vertinant vartotojui matomą tekstą (LP, puslapiai, klaidos). Naudoti vertimų redagavimui ir naujoms frazėms.
 
+**Taisyklė:** tas pats i18n raktas, ne tas pats sakinys. Frontpage — replace, never lengthen. Copy telpa į slotą (navbar, badge, ecosystem CTA ~12 simb., `line-clamp-2`), ne į kitos kalbos sakinio ilgį.
+
 ---
 
 ## 1. Prekės ženklas / pavadinimas
@@ -11,33 +13,48 @@ Trumpas vadovas rašant ir vertinant vartotojui matomą tekstą (LP, puslapiai, 
 | **EN** | **Prompt Anatomy** – AI Operating System | Title Case spalvų splitas: **Prompt** (tamsus) + **Anatomy** (accent); be tagline ir be versijos juostoje (žr. [golden-legacy-standard.md](golden-legacy-standard.md) §1). |
 | **LT** | **Promptų Anatomija** – DI Operating System | Tas pats principas: **Promptų** + **Anatomija** (accent); be tagline/versijos Navbar. |
 
-- EN kontekste (tarptautiniam vartotojui) visada naudoti **Prompt Anatomy**, ne „Promptų Anatomija“ – skaitomumas ir įsimintinumą.
-- LT kontekste – **Promptų Anatomija**.
-- **AI / DI:** LT kalboje vartoti **DI** (dirbtinis intelektas); EN kalboje – **AI**. Pvz. LT: „DI Operating System“, „DI Powered“, „DI agentai“; EN: „AI Operating System“, „AI Powered“, „AI agents“.
+- EN kontekste visada **Prompt Anatomy**, ne „Promptų Anatomija“.
+- LT kontekste visada **Promptų Anatomija** (didžioji **A**), ir citatose.
+- **AI / DI:** LT — **DI**; EN — **AI**. Pvz. LT: „DI Operating System“, „DI agentai“; EN: „AI Operating System“, „AI agents“.
 
 ---
 
-## 2. Terminai (abiejose kalbose)
+## 2. Terminai
 
-Šiuos laikyti nesiverčiamais arba vienodai abejuose failuose:
+Nesiverčiama (arba palikti kaip atributą):
 
-- **Lifetime access** / **Lifetime prieiga** (LT) – palikti „Lifetime“ kaip atributą.
-- **Repo**, **Stripe Verified**. **AI Powered** (EN) / **DI Powered** (LT) – brand; AI/DI pagal kalbą (žr. skyrių 1).
-- **Operating Model**, **System**, **Network** (nav/footer) – EN originalas; LT atitikmenys „Metodas“, „Ekosistema“, „Kainodara“ ir t. t. pagal `lt.json`.
+- **Lifetime access** / **Lifetime prieiga** — „Lifetime“ lieka.
+- **Repo**, **Stripe**, **Telegram**, **Cloud**, **Pro**.
+- **AI Powered** (EN) / **DI Powered** (LT).
 
----
+Versti DUK ir LP (ne palikti kalbų mišinio): hub, spoke, workflow, checkout, locale, LP, training app.
 
-## 3. Tonas ir stilius
-
-- **Kreipinys:** „you“ (EN) / „jūs“ (LT) – vienodas, tiesus.
-- **Edu / produktas:** aiškūs CTA („Get access“ / „Gauti prieigą“), trumpi sakiniai, be perteklinio žargono.
-- **Klaidos ir pranešimai:** trumpi, veiksmažodžiu („Bandykite vėliau.“ / „Try again later.“).
+Nav/footer etiketės pagal `lt.json` / `en.json` (Metodas, Ekosistema, Kainodara ir t. t.).
 
 ---
 
-## 4. Techninis įgyvendinimas
+## 3. Tonas ir UI gramatika
+
+- **Kreipinys:** „you“ (EN) / **tu** (LT) — vienodas, tiesus. Ne „jūs“. Sutampa su [golden-legacy-standard.md](golden-legacy-standard.md) §4.
+- **LT mygtukai ir CTA nuorodos:** bendratis — „Rinktis planą“, „Gauti prieigą“, „Eiti į mokymus“.
+- **LT antraštės ir badge:** tu liepiamoji — „Rinkis planą“, „Pasirink, nuo ko pradėti“, „Pradėk čia“.
+- **Edu / produktas:** trumpi sakiniai, aiškūs CTA, be perteklinio žargono.
+- **Klaidos:** trumpi, veiksmažodžiu („Bandyk vėliau.“ / „Try again later.“).
+
+---
+
+## 4. Legal (SPA vs crawler)
+
+- Canonical ir og:url lieka `/privacy` / `/terms`. Sitemap — 4 URL; nėra `/lt/privacy`.
+- Crawler / direct URL / refresh → EN `privacy.html` / `terms.html` ([generate-legal-static.mjs](../frontend/scripts/generate-legal-static.mjs); Vercel rewrite). GEO dump — `privacy.md` / `terms.md` ([generate-geo-static.mjs](../frontend/scripts/generate-geo-static.mjs)). Tik iš `en.json`. Static Home nuoroda = `/` (EN).
+- In-app navigacija iš LP (Footer `Link`, be refresh) → SPA `useLocale()` + `LocaleToggle`; Home/Back = `localeHomePath` (`/lt` | `/en`).
+- Nauji `legal.*` raktai — abiejuose JSON; LT = tie patys faktai, tu, laconic.
+
+---
+
+## 5. Techninis įgyvendinimas
 
 - Vertimai: [frontend/src/i18n/translations/lt.json](../frontend/src/i18n/translations/lt.json), [en.json](../frontend/src/i18n/translations/en.json).
-- Naujas tekstas: tas pats raktas abiejuose failuose, vertimas pagal šias gaires.
-- Raktų struktūra: `meta.*`, `nav.*`, `hero.*`, `methodology.*`, `ecosystem.*`, `pricing.*`, `footer.*`, `success.*`, `cancel.*`, `common.*`, `errors.*` (žr. [documentation.md](process/documentation.md)).
-- Gramatika ir stilius: remtis [audit-language-en-lt.md](archive/audits/audit-language-en-lt.md).
+- Naujas tekstas: tas pats raktas abiejuose failuose; forma pagal šias gaires, ne veidrodis.
+- Raktų struktūra: `meta.*`, `nav.*`, `hero.*`, `whatIs.*`, `methodology.*`, `ecosystem.*`, `pricing.*`, `faq.*`, `footer.*`, `legal.*`, `success.*`, `cancel.*`, `common.*`, `errors.*` (žr. [documentation.md](process/documentation.md)).
+- Istorinis kombinuotas auditas: [audit-language-en-lt.md](archive/audits/audit-language-en-lt.md) — ne kasdienis SOT.

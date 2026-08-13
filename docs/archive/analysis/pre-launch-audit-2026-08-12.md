@@ -1,5 +1,7 @@
 # Pre-launch audit — corporate12 paid-traffic gate (2026-08-12)
 
+**Superseded evidence (2026-08-13):** istorinis gate. Pin `91656fa` / v1.6.1 ir Hero CTA `.cloud` pakeisti Unreleased: pin **`c35a1f5` / v1.6.2**, Hero primary **`#pricing`**. Verdiktų ir operatoriaus checkboxų neperrašyti.
+
 **Date:** 2026-08-12  
 **Scope:** Hub `www.promptanatomy.app` (LP + Vercel `api/*` + training submodule corporate12 pin).  
 **Current canon:** public Stripe checkout remains Starter/Core max 6; production training is M1–12 via `build:corporate12` with operator/corporate grants tier 9/12.  

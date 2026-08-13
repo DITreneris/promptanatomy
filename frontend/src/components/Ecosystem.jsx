@@ -1,6 +1,6 @@
 import { ArrowRight, Users, BookOpen, Megaphone, LayoutDashboard, Zap, Cpu, Target } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
-import { captureEcosystemOutboundClick, capturePosthogEvent } from '../analytics/posthog'
+import { captureEcosystemOutboundClick } from '../analytics/posthog'
 import { ECOSYSTEM_DISCOVERY_SITE } from '../site/geo-manifest'
 
 const ECOSYSTEM_MAP_URL = `${ECOSYSTEM_DISCOVERY_SITE}/#ecosystem`
@@ -33,48 +33,11 @@ const ECOSYSTEM_HOVER_RING = ['group-hover:ring-ecosystem-1', 'group-hover:ring-
 const ROW_SIZE = 3
 const PRIMARY_CARD_INDEX = 0
 
-const PHASE_LEGEND = [
-  { key: 'ecosystem.phaseAdopt', colorClass: 'bg-ecosystem-1' },
-  { key: 'ecosystem.phaseApply', colorClass: 'bg-ecosystem-2' },
-  { key: 'ecosystem.phaseScale', colorClass: 'bg-ecosystem-3' },
-]
-
-const PHASE_KEY_BY_THEME = {
-  1: 'ecosystem.phaseAdopt',
-  2: 'ecosystem.phaseApply',
-  3: 'ecosystem.phaseScale',
-}
-
 const PHASE_ACCENT_CLASSES = ['card-phase-accent-1', 'card-phase-accent-2', 'card-phase-accent-3', 'card-phase-accent-3']
 
 function parseTagList(tags) {
   if (!tags || typeof tags !== 'string') return []
   return tags.split('·').map((s) => s.trim()).filter(Boolean)
-}
-
-function HubCore({ t }) {
-  const hubCoreSub = typeof t('ecosystem.hubCoreSub') === 'string' ? t('ecosystem.hubCoreSub').trim() : ''
-  return (
-    <div className="flex flex-col items-center mt-8 md:mt-10">
-      <div className="hub-core-pill">
-        <span className="w-1.5 h-1.5 shrink-0 rounded-full bg-brand-accent" aria-hidden="true" />
-        <span className="text-label-upper text-slate-100">{t('ecosystem.hubCoreLabel')}</span>
-      </div>
-      {hubCoreSub && (
-        <p className="mt-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-accent/80">
-          {hubCoreSub}
-        </p>
-      )}
-      <div className="flex flex-wrap items-center justify-center gap-4 mt-4">
-        {PHASE_LEGEND.map(({ key, colorClass }) => (
-          <span key={key} className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400">
-            <span className={`w-2 h-2 rounded-full shrink-0 ${colorClass}`} aria-hidden />
-            {t(key)}
-          </span>
-        ))}
-      </div>
-    </div>
-  )
 }
 
 export default function Ecosystem() {
@@ -94,8 +57,6 @@ export default function Ecosystem() {
     : []
   const items = rawItems
   const mapLinkLabel = typeof t('ecosystem.mapLink') === 'string' ? t('ecosystem.mapLink').trim() : ''
-  const workflowHint = typeof t('ecosystem.workflowHint') === 'string' ? t('ecosystem.workflowHint').trim() : ''
-  const trustLine = typeof t('ecosystem.trustLine') === 'string' ? t('ecosystem.trustLine').trim() : ''
 
   return (
     <section id="ekosistema" className="section-dark-ecosystem">
@@ -105,23 +66,7 @@ export default function Ecosystem() {
       <div className="max-w-7xl mx-auto relative z-10 min-w-0">
         <div className="text-center mb-8 md:mb-10">
           <h2 className="text-4xl md:text-5xl lg:text-5xl font-extrabold text-white mb-4 tracking-[-0.02em]">{t('ecosystem.title')}</h2>
-          <p className="text-slate-300 text-lg max-w-[600px] mx-auto font-medium leading-relaxed">
-            {t('ecosystem.paragraph')}
-          </p>
-          <div className="mt-6">
-            <a
-              href="#pricing"
-              onClick={() => capturePosthogEvent('ecosystem_cta_pricing_click', { placement: 'ecosystem_hub', locale, page_path: pagePath })}
-              className="inline-flex items-center justify-center btn-primary-md min-h-[48px] px-8 py-3 hover:scale-[1.03] focus-visible:ring-offset-brand-dark"
-            >
-              {t('ecosystem.ctaPricing')}
-            </a>
-          </div>
         </div>
-
-        {workflowHint && (
-          <p className="text-sm text-slate-400 text-center mb-6 md:mb-8">{workflowHint}</p>
-        )}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 lg:gap-8">
           {items.slice(0, ROW_SIZE).map((item, i) => renderCard(item, i, t, locale, pagePath))}
@@ -131,10 +76,8 @@ export default function Ecosystem() {
           {items.slice(ROW_SIZE).map((item, i) => renderCard(item, i + ROW_SIZE, t, locale, pagePath))}
         </div>
 
-        <HubCore t={t} />
-
         {mapLinkLabel && (
-          <div className="text-center mt-6 md:mt-8">
+          <div className="text-center mt-8 md:mt-10">
             <a
               href={ECOSYSTEM_MAP_URL}
               target="_blank"
@@ -152,9 +95,6 @@ export default function Ecosystem() {
               {mapLinkLabel}
               <ArrowRight className="icon-sm" aria-hidden />
             </a>
-            {trustLine && (
-              <p className="mt-4 text-sm text-slate-500 max-w-md mx-auto leading-relaxed">{trustLine}</p>
-            )}
           </div>
         )}
       </div>
@@ -174,7 +114,6 @@ function renderCard(item, i, t, locale, pagePath) {
     null
   const useCtaLayout = Boolean(tagList.length > 0 || ctaLabel)
   const isPrimaryCard = i === PRIMARY_CARD_INDEX
-  const phaseKey = PHASE_KEY_BY_THEME[item.themeIndex] ?? PHASE_KEY_BY_THEME[1]
   const iconShadowClass = isPrimaryCard ? 'shadow-ecosystem-icon-card' : 'shadow-ecosystem-icon-depth'
   const opensInNewTab =
     typeof t('ecosystem.opensInNewTab') === 'string' ? t('ecosystem.opensInNewTab').trim() : ''
@@ -197,7 +136,6 @@ function renderCard(item, i, t, locale, pagePath) {
       >
         {item.icon}
       </div>
-      <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">{t(phaseKey)}</p>
       <h4 className="text-lg font-bold text-white mb-1 tracking-tight">{item.title}</h4>
       {outcome && (
         <p className="text-sm text-white/80 font-medium mb-2 leading-relaxed line-clamp-2">{outcome}</p>

@@ -3,11 +3,13 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { ShieldCheck } from 'lucide-react'
 import { capturePosthogEvent } from '../analytics/posthog'
 import { useLocale } from '../i18n/LocaleContext'
+import { localeHomePath } from '../i18n/loadLocale'
 import { getSuccessRedirectUrl } from '../api'
 import { LP_ACCESS_EMAIL_STORAGE_KEY } from '../config'
 
 export default function SuccessPage() {
-  const { t } = useLocale()
+  const { t, locale } = useLocale()
+  const homePath = localeHomePath(locale)
   const [searchParams] = useSearchParams()
   const sessionId = searchParams.get('session_id')?.trim() || null
   const [redirectUrl, setRedirectUrl] = useState(null)
@@ -44,7 +46,7 @@ export default function SuccessPage() {
     <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-6 antialiased overflow-hidden relative">
       <nav aria-label="Breadcrumb" className="relative z-10 mb-8 text-xs font-bold uppercase tracking-[0.2em] text-slate-600">
         <ol className="flex items-center gap-2">
-          <li><Link to="/" className="hover:text-brand-accent transition-colors duration-200">{t('common.home')}</Link></li>
+              <li><Link to={homePath} className="hover:text-brand-accent transition-colors duration-200">{t('common.home')}</Link></li>
           <li aria-hidden>/</li>
           <li className="text-brand-dark" aria-current="page">{t('success.breadcrumb')}</li>
         </ol>
@@ -52,8 +54,8 @@ export default function SuccessPage() {
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('/noise.svg')]"></div>
       <div className="max-w-2xl w-full bg-brand-dark rounded-3xl p-2 shadow-soft-lg border border-white/5 relative z-10">
         <div className="bg-white rounded-3xl p-16 md:p-28 text-center shadow-inner">
-          <div className="w-24 h-24 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-10 shadow-success-icon border-4 border-white">
-            <ShieldCheck size={48} strokeWidth={1.5} aria-hidden />
+          <div className="w-24 h-24 bg-feedback-success-fill text-feedback-success-text rounded-full flex items-center justify-center mx-auto mb-10 shadow-success-icon border-4 border-white">
+            <ShieldCheck className="icon-display" strokeWidth={1.5} aria-hidden />
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-brand-dark mb-8 tracking-tighter uppercase leading-none">
             {t('success.heading')}
@@ -78,7 +80,7 @@ export default function SuccessPage() {
             </p>
           )}
           {error && (
-            <p className="text-amber-700 text-sm mb-6 max-w-sm mx-auto" role="alert">
+            <p className="text-feedback-warning-muted text-sm mb-6 max-w-sm mx-auto" role="alert">
               {error}
             </p>
           )}
@@ -92,7 +94,7 @@ export default function SuccessPage() {
               </a>
             )}
             <Link
-              to="/"
+              to={homePath}
               className="inline-flex items-center justify-center mt-2 btn-ghost rounded-xl"
             >
               {t('common.backToHome')}

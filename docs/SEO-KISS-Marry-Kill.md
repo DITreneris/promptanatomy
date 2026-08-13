@@ -2,6 +2,8 @@
 
 Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir pritaikymas **Promptų Anatomija** projektui (Vite + React landing, LT/EN, Stripe).
 
+**Social vs logo (kanonas):** `og:image` / `twitter:image` = `og-image-v2.jpg`; JSON-LD `Organization.logo` = `og-image.png`. Senų KISS/MARRY eilučių su `og-image.png` social meta neperrašyti — naudoti naujausią „Įgyvendinimo būsena (2026-07-25+)“ skyrių.
+
 ---
 
 ## Geriausios praktikos – santrauka

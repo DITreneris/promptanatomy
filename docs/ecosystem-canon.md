@@ -11,7 +11,7 @@
 | Domenas | Stadija | Fazė | Rolė |
 |---------|---------|------|------|
 | `promptanatomy.app` | Hub | — | Kainodara, checkout, prieiga, konversija |
-| `promptanatomy.app/anatomy/` | Produktas | — | Mokymų SPA (6 moduliai) |
+| `promptanatomy.app/anatomy/` | Produktas | — | Mokymų SPA (M1–12, `build:corporate12`) |
 | `promptanatomy.site` | Discovery | — | Pilnas žemėlapis, maturity quiz, Prompt Builder |
 | `promptanatomy.cloud` | 1. Enter | Adopt | Onboarding, pirmoji pamoka |
 | `promptanatomy.info` | 2. Use | Adopt | Promptų biblioteka, kasdieniai workflow |
@@ -29,7 +29,7 @@
 ## 2. Kas rodoma `.app` LP
 
 - **6 kortelės** Ecosystem sekcijoje (`#ekosistema`): cloud, info, space, help, ceo, pro — layout **3+3** (`lg:grid-cols-3`).
-- **Antrinė nuoroda** į `promptanatomy.site/#ecosystem` — pilnas 9-domenų žemėlapis + quiz.
+- **Antrinė nuoroda** (`ecosystem.mapLink`, LT „Peržiūrėti ekosistemą“) į `promptanatomy.site/#ecosystem` — discovery (9 domenai + quiz).
 - **blog / lol** — tik GEO (`geo-manifest`, `llms.txt`), ne LP kortelėse.
 
 ---
@@ -40,7 +40,7 @@
 2. HR kanoninis domenas: **`promptanatomy.help`** (ne `ditreneris.github.io/personalas`).
 3. `ECOSYSTEM_DISCOVERY` / `ECOSYSTEM_DISCOVERY_SITE` — marketing žemėlapis, ne spoke; įtrauktas į llms ir JSON-LD `ItemList` (9-as elementas).
 4. `SeoHead.jsx` — `getEcosystemItemList(routeLocale)` (8 spokes + discovery); ne hardcoded URL.
-5. PostHog: `ecosystem_card` (6 spokes), `ecosystem_hub` (→ `#pricing`), `ecosystem_site_map` (→ `.site`).
+5. PostHog: `ecosystem_card` (6 spokes), `ecosystem_site_map` (→ `.site`). Kainodaros CTA ekosistemos sekcijoje nėra (`ecosystem_cta_pricing_click` nebefire’ina).
 6. GSC operacijos — [seo-geo-operations.md](seo-geo-operations.md).
 
 ---

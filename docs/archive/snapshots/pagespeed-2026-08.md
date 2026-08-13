@@ -42,3 +42,7 @@ npx --yes lighthouse https://www.promptanatomy.app/ --only-categories=performanc
 
 - Keep QW4b closed as a baseline snapshot.
 - If field p75 INP > 200 ms or mobile LCP regresses above ~4 s, open a focused performance task.
+
+## Accessibility (added 2026-08-13)
+
+Lighthouse CLI, accessibility category only, same URL (`https://www.promptanatomy.app/`). Score **92**. Lab fails: `aria-hidden-focus`, `color-contrast`, `heading-order`. Recorded in [design-system-qa.md](../../process/design-system-qa.md) — not a performance or a11y-fix session.

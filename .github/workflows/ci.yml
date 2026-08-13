@@ -32,6 +32,24 @@ jobs:
         working-directory: frontend
         run: npm ci && npm run build
 
+      - name: Design-system token grep (LP JSX)
+        working-directory: frontend
+        run: |
+          fail=0
+          if grep -rE 'rgba\(' src/components src/pages --include='*.jsx'; then
+            echo '::error::Forbidden rgba( in LP JSX — use @theme tokens' >&2
+            fail=1
+          fi
+          if grep -rE 'text-\[[0-9]+px\]' src/components src/pages --include='*.jsx'; then
+            echo '::error::Forbidden text-[NNpx] in LP JSX — use type tokens' >&2
+            fail=1
+          fi
+          if grep -rE 'shadow-\[' src/components src/pages --include='*.jsx'; then
+            echo '::error::Forbidden shadow-[ in LP JSX — use shadow-tier / named shadows' >&2
+            fail=1
+          fi
+          exit $fail
+
       - name: Bundle size budget (LP critical path)
         run: node scripts/check-bundle-size.mjs
 

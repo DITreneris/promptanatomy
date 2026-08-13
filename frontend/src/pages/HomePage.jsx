@@ -173,7 +173,7 @@ export default function HomePage({ forceLocale }) {
         trainingLinkLoading={trainingLinkLoading}
       />
       <main id="main-content" tabIndex={-1}>
-        <Hero onCta={scrollToPricing} />
+        <Hero />
         <WhatIsPromptAnatomy />
         <Suspense fallback={null}>
           <Methodology />
@@ -194,16 +194,13 @@ export default function HomePage({ forceLocale }) {
                 <p className="text-sm font-black uppercase tracking-[0.2em] text-slate-700 mb-2">
                   {t('pricing.returningTitle')}
                 </p>
-                <p className="text-sm text-slate-600 leading-relaxed">
+                <p id="access-email-how" className="text-sm text-slate-600 leading-relaxed">
                   {t('pricing.returningBody')}
                 </p>
               </div>
               <label htmlFor="access-email" className="block text-base font-bold text-brand-dark mb-1.5">
                 {t('pricing.checkAccess')}
               </label>
-              <p id="access-email-how" className="text-sm text-slate-600 mb-4">
-                {t('pricing.accessHow')}
-              </p>
               <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:items-stretch">
                 <input
                   id="access-email"
@@ -252,18 +249,18 @@ export default function HomePage({ forceLocale }) {
                 </p>
               )}
               {access && access.highest_plan > 0 && (
-                <div className="mt-4 p-4 bg-emerald-50 rounded-xl border border-emerald-100">
+                <div className="card-feedback-success">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-bold text-emerald-800">
+                    <span className="text-sm font-bold text-feedback-success-fg">
                       {t('pricing.yourAccess').replace('%s', String(accessModuleCap))}
                     </span>
-                    <span className="text-xs font-bold text-emerald-600">
+                    <span className="text-xs font-bold text-feedback-success-text">
                       {access.highest_plan}/{accessModuleCap}
                     </span>
                   </div>
-                  <div className="w-full h-2 bg-emerald-100 rounded-full mb-3 overflow-hidden">
+                  <div className="w-full h-2 bg-feedback-success-track rounded-full mb-3 overflow-hidden">
                     <div
-                      className="h-2 bg-emerald-500 rounded-full transition-all duration-500"
+                      className="h-2 bg-feedback-success-icon rounded-full transition-all duration-500"
                       style={{ width: `${accessProgressPct}%` }}
                     />
                   </div>
@@ -278,11 +275,11 @@ export default function HomePage({ forceLocale }) {
                 </div>
               )}
               {access && access.highest_plan === 0 && (
-                <div className="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200">
-                  <p className="text-sm font-bold text-amber-800 mb-1">
+                <div className="card-feedback-warning">
+                  <p className="text-sm font-bold text-feedback-warning-fg mb-1">
                     {t('pricing.noAccessFound')}
                   </p>
-                  <p className="text-sm text-amber-700 mb-3">
+                  <p className="text-sm text-feedback-warning-muted mb-3">
                     {t('pricing.noAccessBody')}
                   </p>
                   <button

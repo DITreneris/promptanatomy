@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Zap, Menu, X } from 'lucide-react'
 import { GLOSSARY_URL } from '../config'
 import { useLocale } from '../i18n/LocaleContext'
-import { prefetchLocale } from '../i18n/loadLocale'
+import { prefetchLocale, localeHomePath } from '../i18n/loadLocale'
 import { captureEcosystemOutboundClick } from '../analytics/posthog'
 
 const FOCUS_RING = 'focus-ring'
@@ -12,7 +12,7 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
   const { t, locale, setLocale } = useLocale()
   const location = useLocation()
   const navigate = useNavigate()
-  const homePath = locale === 'en' ? '/en' : '/lt'
+  const homePath = localeHomePath(locale)
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const mobileOpenRef = useRef(false)

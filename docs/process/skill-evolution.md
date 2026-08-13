@@ -102,6 +102,28 @@ Pavyzdys:
 | Corporate12 smoke turi tikrinti tier 9 ir tier 12; M10–12 matomi tik su tier 12 | `fullstack-agent/SKILL.md`, `golden-legacy-standard.md` |
 | Istorinius M1–9 audit snapshot'us žymėti superseded note, ne perrašyti kaip dabartinį kanoną | `pre-launch-audit-2026-08.md` |
 
+### Pakeltos pamokos (2026-08-13, LT/EN copy + legal SPA)
+
+| Taisyklė | Kur įrašyta |
+|----------|-------------|
+| Same key ≠ same sentence; frontpage never lengthen; LT tu; CTA bendratis; headings tu | `frontend-agent/SKILL.md`, `frontend.mdc`, `language-guidelines-en-lt.md` |
+| Privacy/Terms SPA `useLocale()`; static legal EN; no `/lt/privacy`; sitemap 4 | `frontend-agent/SKILL.md`, `fullstack-agent/SKILL.md`, `quality-assurance-agent/SKILL.md` |
+| Off-home Home/Back = `localeHomePath` (`/lt`\|`/en`), ne `/` | `frontend-agent/SKILL.md`, `frontend.mdc` |
+| Archived 2026-03 language audit / „jūs“ ≠ live SOT | `q-and-a-agent/SKILL.md`, `language-guidelines-en-lt.md` |
+| `modulesLocked` 7–12 (ne 15) | `frontend-agent/SKILL.md` |
+| Rankinis follow-up: vizualas + legal smoke + teisininkas EN+LT | `TODO.md` QW6 / A.1 |
+
+### Pakeltos pamokos (2026-08-13, LP design system v1.1)
+
+| Taisyklė | Kur įrašyta |
+|----------|-------------|
+| DS current = v1.0 + v1.1 hygiene; stale §2 “v0.95” ≠ live | `frontend-agent/SKILL.md`, `q-and-a-agent/SKILL.md`, AGENTS.md |
+| Navbar/FAQ chrome SOT = golden-legacy (What Is + Ecosystem; no FAQ eyebrow), not Phase 6 | `frontend-agent/SKILL.md`, `frontend.mdc`, `quality-assurance-agent/SKILL.md` |
+| No `rgba(` / `text-[NNpx]` / `shadow-[` in LP JSX; Lucide `icon-*`; CI token grep | `frontend-agent/SKILL.md`, `frontend.mdc`, `ci.yml`, `dod_system.md` |
+| CI greps: `if grep; then fail` — not `set -e` + `! grep` | `quality-assurance-agent/SKILL.md` + lessons, `ci.yml` |
+| Lighthouse a11y **92** recorded 2026-08-13; do not mark pending | `quality-assurance-agent/SKILL.md`, `design-system-qa.md`, `q-and-a-agent/SKILL.md` |
+| No shadcn / `@primer/react` / webfont on LP (ADR-0001 OS sans) | `frontend-agent/SKILL.md`, orchestrator Kill, roadmap §9/§14.3 |
+
 ---
 
 ## Skirtumas nuo submodulio
