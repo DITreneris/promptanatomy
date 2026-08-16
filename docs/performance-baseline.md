@@ -72,7 +72,7 @@ Tool: `npx lighthouse` — mobile form factor, simulated throttling.
 | Checkout API | Endpoint exists | PASS — `POST /api/create-checkout-session` ([backend/main.py](../backend/main.py)); manual Stripe click not run in smoke |
 | SeoHead hreflang / canonical | Code review | PASS — client-side after `localeReady` on home routes ([SeoHead.jsx](../frontend/src/components/SeoHead.jsx)); static HTML shell canonical is `/` until hydration |
 | CI / bundle budget | PR #60 merge | PASS — Golden Legacy on merge |
-| PostHog dashboard | Manual | **Operator:** confirm live `$pageview` on `/`→`/lt` in PostHog UI |
+| PostHog dashboard | Manual | **PASS 2026-08-16** — EU `155249` live `$pageview`; `/` and `/lt` in Web paths ([ops-observability-2026-08-16.md](archive/snapshots/ops-observability-2026-08-16.md)) |
 
 ---
 

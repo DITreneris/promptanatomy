@@ -5,7 +5,7 @@
 **Date:** 2026-08-12  
 **Operator:** Cursor / Tomas  
 **Hub deploy SHA:** `8d4bbdc`  
-**Status:** Partial — archived baseline with explicit data gaps
+**Status:** Partial — archived baseline with explicit data gaps. **Follow-up 2026-08-16:** [ecosystem-kpi-2026-08-16.md](ecosystem-kpi-2026-08-16.md) (PostHog web + Stripe 4; spoke CTR still Gap).
 
 ---
 

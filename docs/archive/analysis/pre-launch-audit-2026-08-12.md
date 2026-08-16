@@ -2,6 +2,8 @@
 
 **Superseded evidence (2026-08-13):** istorinis gate. Pin `91656fa` / v1.6.1 ir Hero CTA `.cloud` pakeisti Unreleased: pin **`c35a1f5` / v1.6.2**, Hero primary **`#pricing`**. Verdiktų ir operatoriaus checkboxų neperrašyti.
 
+**Operator close (2026-08-16):** `[A.3d]` Vercel env + `[A.3a]` hub PostHog — [ops-observability-2026-08-16.md](../snapshots/ops-observability-2026-08-16.md). Pin dabar **`7e4c3bf` / v1.6.3**. Paid vis dar CONDITIONAL (A.1, A.3b/c, A.4, A.5).
+
 **Date:** 2026-08-12  
 **Scope:** Hub `www.promptanatomy.app` (LP + Vercel `api/*` + training submodule corporate12 pin).  
 **Current canon:** public Stripe checkout remains Starter/Core max 6; production training is M1–12 via `build:corporate12` with operator/corporate grants tier 9/12.  
@@ -115,7 +117,7 @@ Use real access emails; do not commit new PII beyond registry.
 
 All must be true:
 
-1. [ ] Vercel env audit clean (`[A.3d]`)
+1. [x] Vercel env audit clean (`[A.3d]`) — 2026-08-16
 2. [ ] Stripe failure alert + successful test upsert (`[A.3c]`)
 3. [ ] Supabase F1 status known — applied or deferred with written risk note (`[A.4a]` / `[A.4b]`)
 4. [ ] Legal reviewed or written waiver (`[A.1]`)
@@ -131,6 +133,7 @@ Until then: soft-launch **GO**; paid traffic **CONDITIONAL NO-GO**.
 | Date | Who | Notes |
 |------|-----|-------|
 | 2026-08-12 | agent | In-repo corporate12 GEO drift fixed; QW3a Hero CTA shipped; local QA green. Operator §4–5 still open. |
+| 2026-08-16 | operator + Cursor | `[A.3d]` + `[A.3a]` hub closed — [ops-observability-2026-08-16.md](../snapshots/ops-observability-2026-08-16.md). Stripe paying **4**. `[A.5]` / A.3b/c / A.1 / A.4 still open. |
 
 ---
 

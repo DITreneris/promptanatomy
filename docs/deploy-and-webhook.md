@@ -58,6 +58,8 @@ Rankinė patikra Vercel Dashboard (*Settings → Environment Variables → Produ
 | Build Command / Install Command override | **tuščias** (naudoti repo `vercel.json`) |
 | Include Git Submodules | **įjungta** |
 
+**Paskutinis operatoriaus auditas:** 2026-08-16 — `[A.3d]` uždarytas. Evidence: [ops-observability-2026-08-16.md](archive/snapshots/ops-observability-2026-08-16.md). (`VITE_MVP_MODE` / `VITE_MAX_ACCESSIBLE_MODULE` / `ALLOW_WEBHOOK_WITHOUT_SECRET` nėra; Stripe / Supabase / `FRONTEND_ORIGIN` / `TRAINING_REDIRECT_BASE` / `ACCESS_TOKEN_SECRET` vietoje.)
+
 Istorinis handoff runbook: [`apps/prompt-anatomy/docs/deployment/MARKETING_SUBMODULE_PIN_1.4.4.md`](../apps/prompt-anatomy/docs/deployment/MARKETING_SUBMODULE_PIN_1.4.4.md) §3. **Dabartinis submodule pin:** [CHANGELOG.md](../CHANGELOG.md) `[Unreleased]` / [golden-legacy-standard.md](golden-legacy-standard.md) §4.
 
 ---
