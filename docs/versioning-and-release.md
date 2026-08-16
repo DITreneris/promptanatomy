@@ -25,7 +25,7 @@
 - **MINOR** (1.x.0): naujos funkcijos atgal suderinamos.
 - **PATCH** (1.3.x): klaidų taisymai, saugumą nekeičiantys pakeitimai.
 
-Naujausias parent release **1.5.0** (2026-08-12) – **MINOR**: Horizon B corporate12 cutover (prod M1–12 `build:corporate12`, magic-link tier 12, Node 24, LP/GEO QW3a). Training pin **`c35a1f5`** (package `1.6.2` / tag `v1.6.2`). Ankstesnis pin **`91656fa`** (v1.6.1). Ankstesnis parent **1.4.6** (2026-07-15) – Supabase CHECK `plan=9`, webhook retry. Ankstesni pin: `b921087` (v1.5.0 + corporate12 handoff), `67b7163` (v1.5.0 + Unreleased, M1–9 Track A), `fdc38de` (v1.5.0 tag), `a714e92` (v1.4.9), `7ff2a4f` (v1.4.7), `1eaa2be` (v1.4.6 + Unreleased), `4eebf10` (1.4.5+CI). Ankstesnis parent **1.4.5** (2026-07-09) – pin `47448fc`. Bazė **1.3.0** – stabilus produktas su Stripe, magic link, mokymų app.
+Naujausias parent release **1.5.0** (2026-08-12) – **MINOR**: Horizon B corporate12 cutover (prod M1–12 `build:corporate12`, magic-link tier 12, Node 24, LP/GEO QW3a). Training pin **`7e4c3bf`** (package `1.6.3` / tag `v1.6.3`). Ankstesnis pin **`c35a1f5`** (v1.6.2). Ankstesnis pin **`91656fa`** (v1.6.1). Ankstesnis parent **1.4.6** (2026-07-15) – Supabase CHECK `plan=9`, webhook retry. Ankstesni pin: `b921087` (v1.5.0 + corporate12 handoff), `67b7163` (v1.5.0 + Unreleased, M1–9 Track A), `fdc38de` (v1.5.0 tag), `a714e92` (v1.4.9), `7ff2a4f` (v1.4.7), `1eaa2be` (v1.4.6 + Unreleased), `4eebf10` (1.4.5+CI). Ankstesnis parent **1.4.5** (2026-07-09) – pin `47448fc`. Bazė **1.3.0** – stabilus produktas su Stripe, magic link, mokymų app.
 
 ---
 
