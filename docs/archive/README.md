@@ -48,7 +48,9 @@ Istorinė arba pasenusi dokumentacija – **ne** kasdieniam operaciniam darbui. 
 
 | Failas | Paskirtis |
 |--------|-----------|
-| [ecosystem-kpi-2026-08.md](snapshots/ecosystem-kpi-2026-08.md) | QW1b / A.6 partial KPI baseline. |
+| [ops-observability-2026-08-16.md](snapshots/ops-observability-2026-08-16.md) | Operator close `[A.3a]` hub PostHog + `[A.3d]` Vercel env. |
+| [ecosystem-kpi-2026-08-16.md](snapshots/ecosystem-kpi-2026-08-16.md) | A.6 follow-up: PostHog web 180d + Stripe **4**; spoke CTR still Gap. |
+| [ecosystem-kpi-2026-08.md](snapshots/ecosystem-kpi-2026-08.md) | QW1b / A.6 first baseline (2026-08-12, no dashboard access). |
 | [geo-citations-2026-08.md](snapshots/geo-citations-2026-08.md) | QW4a GEO citation scorecard. |
 | [pagespeed-2026-08.md](snapshots/pagespeed-2026-08.md) | Lighthouse mobile+desktop baseline. |
 | [production-analytics-14d-benchmark.md](snapshots/production-analytics-14d-benchmark.md) | ~14 d. produkcijos metrikos. |
