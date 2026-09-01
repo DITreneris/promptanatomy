@@ -12,7 +12,7 @@ const distDir = join(__dirname, '..', 'dist')
 const enPath = join(__dirname, '..', 'src', 'i18n', 'translations', 'en.json')
 
 const SITE_URL = (process.env.VITE_SITE_URL || 'https://www.promptanatomy.app').replace(/\/$/, '')
-const ROUTE_LAST_MODIFIED = '2026-08-13'
+const ROUTE_LAST_MODIFIED = '2026-09-01'
 const ORGANIZATION_ID = `${SITE_URL}/#organization`
 const WEBSITE_ID = `${SITE_URL}/#website`
 const OG_IMAGE_URL = `${SITE_URL}/og-image-v3.jpg`

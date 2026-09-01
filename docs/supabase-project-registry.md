@@ -55,9 +55,11 @@
 select highest_plan, count(*) from user_access group by highest_plan order by 1;
 ```
 
-Tikėtina prod (2026-08-10): `3`→2, `6`→102, `9`→9.
+Tikėtina prod (2026-08-25): `3`→2, `6`→86, `9`→5, `12`→21.
 
 Dashboard: Table Editor → `user_access` → RLS **enabled**; Security Advisor – kritinių finding'ų nėra.
+
+**`[A.4a]` / `[A.4b]` close (2026-09-01):** F0 snapshot + F1 RLS prod patvirtinti (šis §4). Ne deferral.
 
 ---
 

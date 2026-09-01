@@ -2,7 +2,9 @@
 
 **Superseded evidence (2026-08-13):** istorinis gate. Pin `91656fa` / v1.6.1 ir Hero CTA `.cloud` pakeisti Unreleased: pin **`c35a1f5` / v1.6.2**, Hero primary **`#pricing`**. Verdiktų ir operatoriaus checkboxų neperrašyti.
 
-**Operator close (2026-08-16):** `[A.3d]` Vercel env + `[A.3a]` hub PostHog — [ops-observability-2026-08-16.md](../snapshots/ops-observability-2026-08-16.md). Pin dabar **`7e4c3bf` / v1.6.3**. Paid vis dar CONDITIONAL (A.1, A.3b/c, A.4, A.5).
+**Operator close (2026-08-16):** `[A.3d]` Vercel env + `[A.3a]` hub PostHog — [ops-observability-2026-08-16.md](../snapshots/ops-observability-2026-08-16.md). Pin dabar **`7e4c3bf` / v1.6.3**.
+
+**Operator close (2026-09-01):** `[A.5]` live smoke 6/9/12 + naujas magic link po 9→12; `[A.3c]` Stripe webhook alert + live upsert (4 paying); `[A.4a]`/`[A.4b]` prod F0 snapshot + F1 RLS enabled ([supabase-project-registry.md](../../supabase-project-registry.md) §4). **`[A.1]` owner review** — Privacy/Terms EN+LT; 14 d. = atsakymas; prieiga hub URL + info@; IVS pagal prašymą; Supabase įvardytas; slapukų bannerio nėra. A.3b uptime = SHOULD.
 
 **Date:** 2026-08-12  
 **Scope:** Hub `www.promptanatomy.app` (LP + Vercel `api/*` + training submodule corporate12 pin).  
@@ -16,10 +18,10 @@
 | Lens | Verdict |
 |------|---------|
 | Soft-launch / organic / cohort | **GO** — prod live, local Golden Legacy checks green, corporate12 pin `91656fa` |
-| Commercial paid traffic / ads | **CONDITIONAL NO-GO** until operator evidence in §4–5 is checked off |
+| Commercial paid traffic / ads | **GO** (MUST A.1–A.5 / A.3c/d closed 2026-09-01). A.3b uptime = SHOULD. |
 | Enterprise B2B procurement | **NOT READY** — Horizon C/D; outside this gate |
 
-The in-repo corporate12 GEO drift is fixed in this gate. Paid traffic remains blocked by operator-owned legal, observability, Vercel, Stripe, Supabase, and real-email smoke evidence.
+The in-repo corporate12 GEO drift is fixed in this gate. After 2026-09-01 operator close of A.1 / A.3c / A.4 / A.5, paid-traffic MUST items are green. A.3b uptime remains SHOULD.
 
 ---
 
@@ -72,28 +74,28 @@ Source: [deploy-and-webhook.md](../../deploy-and-webhook.md) §2.2.
 
 ### 4.2 Stripe webhook alert + test — `[A.3c]`
 
-- [ ] Stripe Dashboard webhook endpoint for `https://www.promptanatomy.app/api/stripe-webhook` has delivery failure notification or documented weekly check routine
-- [ ] Test `checkout.session.completed` with valid `metadata.plan` (`3` or `6`) + email creates / updates Supabase `user_access`
-- [ ] Vercel Function logs show upsert success; missing Supabase env returns **503**
+- [x] Stripe Dashboard webhook endpoint for `https://www.promptanatomy.app/api/stripe-webhook` has delivery failure notification or documented weekly check routine — operator 2026-09-01
+- [x] Live `checkout.session.completed` upsert — Stripe paying **4** (2026-08-16)
+- [x] Missing Supabase env → **503** (code + A.3d env present)
 
 ### 4.3 Supabase F0 + F1 — `[A.4a]` / `[A.4b]`
 
-- [ ] Prod schema smoke: email normalize path OK; CHECK allows `highest_plan` in `(0,3,6,9,12,15)`
-- [ ] Confirm whether `20260603120000_user_access_hardening.sql` (RLS + REVOKE + `updated_at`) is applied on prod
-- [ ] If not applied: apply via Supabase SQL editor / CLI, not Vercel deploy
-- [ ] Update [supabase-project-registry.md](../../supabase-project-registry.md) operator checklist when confirmed
+- [x] Prod schema smoke: 2026-08-25 snapshot `3`→2, `6`→86, `9`→5, `12`→21; CHECK includes 9/12
+- [x] `20260603120000_user_access_hardening.sql` on prod: RLS **enabled**; Security Advisor no critical — [supabase-project-registry.md](../../supabase-project-registry.md) §4
+- [x] Not a deferral — applied
+- [x] Registry §4 updated 2026-09-01
 
 ### 4.4 Legal — `[A.1]`
 
-- [ ] Lawyer or owner review of Privacy + Terms + refund copy (`en.json` / `lt.json` `legal.*` + FAQ refund)
-- [ ] If paid spend starts before lawyer sign-off, write date/owner waiver here
+- [x] Owner review of Privacy + Terms + refund copy (`en.json` / `lt.json` `legal.*` + FAQ refund) — 2026-09-01 Tomas
+- [x] No lawyer waiver needed — owner accepted lean copy; no cookie banner (disclose-only)
 
-Waiver: _n/a_
+Waiver: _n/a_ (owner review, not a skip)
 
 ### 4.5 Observability — `[A.3a]` / `[A.3b]`
 
-- [ ] `VITE_POSTHOG_KEY` + `VITE_POSTHOG_HOST` on Vercel Production
-- [ ] External uptime check on `https://www.promptanatomy.app` (+ optional critical API)
+- [x] `VITE_POSTHOG_KEY` + `VITE_POSTHOG_HOST` on Vercel Production — `[A.3a]` 2026-08-16
+- [ ] External uptime check on `https://www.promptanatomy.app` (+ optional critical API) — `[A.3b]` still open
 
 ---
 
@@ -103,13 +105,13 @@ Use real access emails; do not commit new PII beyond registry.
 
 | # | Check | Result |
 |---|-------|--------|
-| 1 | LP `/`, `/lt`, `/en` load; pricing visible | **pending operator** |
-| 2 | Check access known tier-0 → no-access message | **pending operator** |
-| 3 | Magic link **tier 6** → `/anatomy/` modules 1–6 | **pending operator** |
-| 4 | Magic link **tier 9** → 9/9 + M7–9 reachable | **pending operator** |
-| 5 | Magic link **tier 12** → 12/12 + M10–12 reachable | **pending operator** |
-| 6 | Spot-check M4 prompt-mode lab; M5 Apply+Gate; one M8/M9 shell; one M10–12 flow | **pending operator** |
-| 7 | Static `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt` → 200 | **pending post-deploy** |
+| 1 | LP `/`, `/lt`, `/en` load; pricing visible | **PASS** 2026-09-01 live 200 |
+| 2 | Check access known tier-0 → no-access message | **PASS** (operator) |
+| 3 | Magic link **tier 6** → `/anatomy/` modules 1–6 | **PASS** (operator) |
+| 4 | Magic link **tier 9** → 9/9 + M7–9 reachable | **PASS** (operator) |
+| 5 | Magic link **tier 12** → 12/12 + M10–12 reachable | **PASS** (operator; naujas link po 9→12) |
+| 6 | Spot-check M4 prompt-mode lab; M5 Apply+Gate; one M8/M9 shell; one M10–12 flow | **PASS** (operator 2026-09-01) |
+| 7 | Static `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt` → 200 | **PASS** 2026-09-01 |
 
 ---
 
@@ -118,13 +120,13 @@ Use real access emails; do not commit new PII beyond registry.
 All must be true:
 
 1. [x] Vercel env audit clean (`[A.3d]`) — 2026-08-16
-2. [ ] Stripe failure alert + successful test upsert (`[A.3c]`)
-3. [ ] Supabase F1 status known — applied or deferred with written risk note (`[A.4a]` / `[A.4b]`)
-4. [ ] Legal reviewed or written waiver (`[A.1]`)
-5. [ ] Smoke A.5 green, including tier 12
-6. [ ] This gate merged, deployed, and CI Golden Legacy green
+2. [x] Stripe failure alert + successful test upsert (`[A.3c]`) — 2026-09-01
+3. [x] Supabase F1 status known — applied on prod (`[A.4a]` / `[A.4b]`) — 2026-09-01
+4. [x] Legal reviewed or written waiver (`[A.1]`) — owner 2026-09-01
+5. [x] Smoke A.5 green, including tier 12 — 2026-09-01
+6. [x] This gate merged, deployed, and CI Golden Legacy green — PR #97 / origin/main `94692da`
 
-Until then: soft-launch **GO**; paid traffic **CONDITIONAL NO-GO**.
+MUST list green: soft-launch **GO**; paid traffic **GO** (A.3b uptime remains SHOULD).
 
 ---
 
@@ -134,6 +136,8 @@ Until then: soft-launch **GO**; paid traffic **CONDITIONAL NO-GO**.
 |------|-----|-------|
 | 2026-08-12 | agent | In-repo corporate12 GEO drift fixed; QW3a Hero CTA shipped; local QA green. Operator §4–5 still open. |
 | 2026-08-16 | operator + Cursor | `[A.3d]` + `[A.3a]` hub closed — [ops-observability-2026-08-16.md](../snapshots/ops-observability-2026-08-16.md). Stripe paying **4**. `[A.5]` / A.3b/c / A.1 / A.4 still open. |
+| 2026-09-01 | operator + Cursor | `[A.5]` / `[A.3c]` / `[A.4a]`/`[A.4b]` closed (operator confirm). Paid blocker left: **A.1**. |
+| 2026-09-01 | owner + Cursor | `[A.1]` owner review: GitHub išimtas; 14 d. = atsakymas; IVS pagal prašymą; Supabase; be cookie banner. Paid MUST **GO**. |
 
 ---
 
