@@ -11,8 +11,8 @@ const OG_IMAGE_URL = `${SITE_URL}/og-image-v3.jpg`
 const ORGANIZATION_ID = `${SITE_URL}/#organization`
 const WEBSITE_ID = `${SITE_URL}/#website`
 const ROUTE_LAST_MODIFIED = {
-  '/privacy': '2026-08-13',
-  '/terms': '2026-08-13',
+  '/privacy': '2026-09-01',
+  '/terms': '2026-09-01',
 }
 const VISIBLE_OFFERS = [
   { id: 'starter', labelKey: 'starter', mods: '1–3', price: 39 },

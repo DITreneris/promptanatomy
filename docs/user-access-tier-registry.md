@@ -39,35 +39,59 @@
 
 ## 3. Operatoriaus grant sąrašas
 
-### Tier 9 (2026-07-30)
+### Tier 9 (2026-08-24)
 
 | Email | Šaltinis | Pastaba |
 |-------|----------|---------|
-| `jaunius.jakaitis@gmail.com` | Stripe 99 € | `stripe_customer_id` užpildytas |
-| `andrius.kvaksys@gmail.com` | Stripe 99 € | `stripe_customer_id` užpildytas |
-| `lauris.zilinskas@gmail.com` | Stripe 99 € | `stripe_customer_id` užpildytas |
 | `kestutis@vip.lt` | Rankinis | 2026-07-30, naujas grant |
 | `liudvikas.staniulis@gmail.com` | Rankinis | 2026-07-30, 6→9 |
 | `darius.martinonis@cgates.lt` | Rankinis | Operator grant |
 | `laura.andriuskeviciene@cgates.lt` | Rankinis | Operator grant |
+| `rasa.vysniauskiene@cgates.lt` | Rankinis | 2026-08-24; 6→9 (M1–9) |
 
-### Tier 12 (2026-08-13)
+### Tier 12 (2026-08-24)
+
+**VIP / Stripe gmail**
 
 | Email | Šaltinis | Pastaba |
 |-------|----------|---------|
-| `norbertas@vip.lt` | Rankinis | Be Stripe ID; 9→12 |
-| `tomas.staniulis76@gmail.com` | Rankinis | Be Stripe ID; 9→12 |
+| `norbertas@vip.lt` | Rankinis | 9→12 |
+| `tomas.staniulis76@gmail.com` | Rankinis | 9→12 |
+| `lauris.zilinskas@gmail.com` | Stripe 99 € | 9→12 |
+| `vytautas.zlatkus@gmail.com` | Stripe | 6→12 |
+| `jaunius.jakaitis@gmail.com` | Stripe 99 € | 9→12 |
+| `andrius.kvaksys@gmail.com` | Stripe 99 € | 9→12 |
+| `dmitri@vip.com` | Rankinis | 2026-08-25; naujas →12 |
 
-### Snapshot (2026-08-13)
+**@rizika.lt (UADBB Rizikos cesija) — visi 14, rankinis grant**
+
+| Email | Pastaba |
+|-------|---------|
+| `adomas.petrauskas@rizika.lt` | 2026-08-24; 6→12 |
+| `agne.kudzmanaite@rizika.lt` | 2026-08-24; 6→12 |
+| `andrius.juska@rizika.lt` | 2026-08-24; 6→12 |
+| `ausra.kucinskaite@rizika.lt` | 2026-08-24; 6→12 |
+| `edgaras.grazulis@rizika.lt` | jau 12; 2026-08-18 |
+| `edgaras.sakalas@rizika.lt` | 2026-08-24; 6→12 |
+| `evelina.naujalyte@rizika.lt` | 2026-08-24; 6→12 |
+| `laurynas.zilinskas@rizika.lt` | 2026-08-24; 6→12 |
+| `liudmila.surkova@rizika.lt` | 2026-08-24; 6→12 |
+| `mante.simonaviciene@rizika.lt` | 2026-08-24; 6→12 |
+| `marius.markevicius@rizika.lt` | 2026-08-24; 6→12 |
+| `paulius.andriulis@rizika.lt` | 2026-08-24; 6→12 |
+| `tomas.buivydas@rizika.lt` | 2026-08-24; 6→12 |
+| `viktorija.valiuviene@rizika.lt` | 2026-08-24; 6→12 |
+
+### Snapshot (2026-08-25)
 
 | `highest_plan` | Vartotojų sk. |
 |----------------|---------------|
 | 3 | 2 |
-| 6 | 102 |
-| 9 | 7 |
-| 12 | 2 |
+| 6 | 86 |
+| 9 | 5 |
+| 12 | 21 |
 
-*2026-08-13:* `tomas.staniulis76@gmail.com`, `norbertas@vip.lt` 9→**12**. Ankstesni: 2026-08-10 → 2/102/9 (+`liudmila.surkova@rizika.lt` → 6); 2026-08-06 → 2/101/9; 2026-07-30 → 2/88/9.*
+*2026-08-25:* +`dmitri@vip.com` → **12** (naujas). Ankstesni: 2026-08-24 → 2/86/5/20 (rizika×14 →12; `rasa.vysniauskiene` 6→9).*
 
 ---
 
