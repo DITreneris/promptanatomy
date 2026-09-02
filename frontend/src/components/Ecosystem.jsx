@@ -2,6 +2,7 @@ import { ArrowRight, Users, BookOpen, Megaphone, LayoutDashboard, Zap, Cpu, Targ
 import { useLocale } from '../i18n/LocaleContext'
 import { captureEcosystemOutboundClick } from '../analytics/posthog'
 import { ECOSYSTEM_DISCOVERY_SITE } from '../site/geo-manifest'
+import { APP_UTM_MEDIUM, FIRST_PARTY_REL, withAppUtm } from '../utils/appUtm'
 
 const ECOSYSTEM_MAP_URL = `${ECOSYSTEM_DISCOVERY_SITE}/#ecosystem`
 
@@ -79,9 +80,9 @@ export default function Ecosystem() {
         {mapLinkLabel && (
           <div className="text-center mt-8 md:mt-10">
             <a
-              href={ECOSYSTEM_MAP_URL}
+              href={withAppUtm(ECOSYSTEM_MAP_URL, APP_UTM_MEDIUM.ecosystemSiteMap)}
               target="_blank"
-              rel="noopener noreferrer"
+              rel={FIRST_PARTY_REL}
               onClick={() =>
                 captureEcosystemOutboundClick({
                   target: ECOSYSTEM_DISCOVERY_SITE,
@@ -159,9 +160,9 @@ function renderCard(item, i, t, locale, pagePath) {
   const cta = useCtaLayout && ctaLabel && item.url && (
     <div className="mt-auto pt-3">
       <a
-        href={item.url}
+        href={withAppUtm(item.url, APP_UTM_MEDIUM.ecosystemCard)}
         target="_blank"
-        rel="noopener noreferrer"
+        rel={FIRST_PARTY_REL}
         aria-label={ctaAriaLabel}
         onClick={() => captureEcosystemOutboundClick({ target: item.url, placement: 'ecosystem_card', locale, pagePath })}
         className={ctaClass}
@@ -189,9 +190,9 @@ function renderCard(item, i, t, locale, pagePath) {
   return item.url ? (
     <a
       key={i}
-      href={item.url}
+      href={withAppUtm(item.url, APP_UTM_MEDIUM.ecosystemCard)}
       target="_blank"
-      rel="noopener noreferrer"
+      rel={FIRST_PARTY_REL}
       onClick={() => captureEcosystemOutboundClick({ target: item.url, placement: 'ecosystem_card', locale, pagePath })}
       className={`${cardClass} cursor-pointer`}
       aria-label={item.title}

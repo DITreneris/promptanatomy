@@ -26,6 +26,7 @@ Išlaikyti vieną brandą su 9-domenų ekosistema + discovery svetaine taip, kad
 3. Kiekvienas domenas turi self-canonical; dubliuojami puslapiai perrašomi arba žymimi noindex.
 4. Kryžminis linkinimas turi būti kryptingas: iš `.cloud/.pro` aiškus CTA atgal į `.app`.
 5. Matavimas remiasi `ecosystem_outbound_click` įvykiais ir periodiniu KPI snapshot.
+6. Hub → spoke nuorodos (kortelės, Footer Cloud/Pro, mobile drawer): `utm_source=app` + placement `utm_medium` (`ecosystem_card` / `ecosystem_site_map` / `footer_network` / `navbar_mobile`). `noopener` palikti; `noreferrer` nuimti (kitaip Vercel spoke’e rodo Direct). Atvirkštinė kryptis — [sibling_memo.md](sibling_memo.md) (`utm_source=<spoke>`).
 
 ## KPI minimumas (14 dienų ciklas)
 
