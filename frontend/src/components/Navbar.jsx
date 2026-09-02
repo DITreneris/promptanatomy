@@ -5,6 +5,7 @@ import { GLOSSARY_URL } from '../config'
 import { useLocale } from '../i18n/LocaleContext'
 import { prefetchLocale, localeHomePath } from '../i18n/loadLocale'
 import { captureEcosystemOutboundClick } from '../analytics/posthog'
+import { APP_UTM_MEDIUM, outboundRel, siblingHref } from '../utils/appUtm'
 
 const FOCUS_RING = 'focus-ring'
 
@@ -147,9 +148,9 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
       return (
         <a
           key={item.id || item.href}
-          href={item.href}
+          href={siblingHref(item.href, APP_UTM_MEDIUM.navbarMobile)}
           target="_blank"
-          rel="noopener noreferrer"
+          rel={outboundRel(item.href)}
           className={className}
         >
           {item.name}
@@ -311,9 +312,9 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
           ) : item.external ? (
             <a
               key={item.id || item.href}
-              href={item.href}
+              href={siblingHref(item.href, APP_UTM_MEDIUM.navbarMobile)}
               target="_blank"
-              rel="noopener noreferrer"
+              rel={outboundRel(item.href)}
               onClick={() => {
                 if (item.href?.includes('promptanatomy.cloud')) captureEcosystemOutboundClick({ target: 'promptanatomy_cloud', placement: 'navbar_mobile', locale, pagePath: location.pathname })
                 if (item.href?.includes('promptanatomy.pro')) captureEcosystemOutboundClick({ target: 'promptanatomy_pro', placement: 'navbar_mobile', locale, pagePath: location.pathname })

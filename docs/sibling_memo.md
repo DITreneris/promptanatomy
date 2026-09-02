@@ -27,7 +27,8 @@ Hub GEO (`llms.txt`, Org `sameAs`, ItemList) jau hub repo. Sibling’ams — mat
 | Placement principas | **Taip** | Footer (arba juosta virš footer) |
 | DoD | **Taip** | §5 |
 | CSS / komponentas | **Ne** | Kiekvienas repo savaip |
-| UTM `utm_source` | **Skiriasi** | Domeno trumpinys |
+| UTM `utm_source` (spoke → hub) | **Skiriasi** | Domeno trumpinys (`cloud`, `pro`, …) |
+| UTM `utm_source` (hub → spoke) | **`app`** | Hub checkout; medium = placement |
 
 **Išvada:** kontraktas bendras; implementacija lokali. Pixel-perfect dizainas **nebūtinas**.
 
@@ -44,6 +45,10 @@ Hub GEO (`llms.txt`, Org `sameAs`, ItemList) jau hub repo. Sibling’ams — mat
 - Nuoroda (ant `promptanatomy.app` arba visos eilutės) → `https://www.promptanatomy.app/`
 - Optional UTM:  
   `https://www.promptanatomy.app/?utm_source=<cloud|pro|site|help|ceo|info|space|blog|lol>&utm_medium=entity_footer&utm_campaign=ecosystem`
+
+**Hub → spoke (atvirkštinė kryptis, `059_home_page`):**  
+`?utm_source=app&utm_medium=<ecosystem_card|ecosystem_site_map|footer_network|navbar_mobile>`.  
+`rel="noopener"` be `noreferrer` (Referer turi pasiekti spoke Vercel). Forbidden source: `lead`, `promptanatomy_app`, `promptanatomy_cloud`. Identity URL (`geo-manifest`, i18n `ecosystem.items.url`) lieka be UTM.
 
 Founder („by Tomas Staniulis“) **nedėti** šioje eilutėje — lieka JSON-LD / About / `.pro`.
 

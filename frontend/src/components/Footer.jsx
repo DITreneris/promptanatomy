@@ -3,6 +3,7 @@ import { Zap } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
 import { captureEcosystemOutboundClick } from '../analytics/posthog'
 import { ORG_EMAIL, formatMailingAddressOneLine } from '../site/organization'
+import { APP_UTM_MEDIUM, FIRST_PARTY_REL, THIRD_PARTY_REL, withAppUtm } from '../utils/appUtm'
 
 const footerNavLinkClass =
   'text-sm font-medium leading-5 text-slate-600 hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm'
@@ -157,7 +158,7 @@ export default function Footer({ hasAccess = false, onTrainingClick, trainingLin
                 <a
                   href="https://t.me/prompt_anatomy"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel={THIRD_PARTY_REL}
                   className={footerNavLinkClass}
                 >
                   {t('footer.support')}
@@ -167,7 +168,7 @@ export default function Footer({ hasAccess = false, onTrainingClick, trainingLin
                 <a
                   href="https://www.linkedin.com/in/staniulis/"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel={THIRD_PARTY_REL}
                   className={footerNavLinkClass}
                 >
                   {t('footer.linkedIn')}
@@ -177,7 +178,7 @@ export default function Footer({ hasAccess = false, onTrainingClick, trainingLin
                 <a
                   href="https://x.com/PromptAnatom"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel={THIRD_PARTY_REL}
                   className={footerNavLinkClass}
                 >
                   {t('footer.twitter')}
@@ -185,9 +186,9 @@ export default function Footer({ hasAccess = false, onTrainingClick, trainingLin
               </li>
               <li>
                 <a
-                  href="https://promptanatomy.cloud/"
+                  href={withAppUtm('https://promptanatomy.cloud/', APP_UTM_MEDIUM.footerNetwork)}
                   target="_blank"
-                  rel="noopener noreferrer external nofollow"
+                  rel={`${FIRST_PARTY_REL} external nofollow`}
                   onClick={() =>
                     captureEcosystemOutboundClick({
                       target: 'promptanatomy_cloud',
@@ -203,9 +204,9 @@ export default function Footer({ hasAccess = false, onTrainingClick, trainingLin
               </li>
               <li>
                 <a
-                  href="https://promptanatomy.pro/"
+                  href={withAppUtm('https://promptanatomy.pro/', APP_UTM_MEDIUM.footerNetwork)}
                   target="_blank"
-                  rel="noopener noreferrer external nofollow"
+                  rel={`${FIRST_PARTY_REL} external nofollow`}
                   onClick={() =>
                     captureEcosystemOutboundClick({
                       target: 'promptanatomy_pro',
