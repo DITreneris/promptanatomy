@@ -20,9 +20,11 @@
 
 ---
 
-## 2. Backend – kritiniai kontraktai
+## 2. Server-side – kritiniai kontraktai
 
-**Būtina nekeisti (arba keisti tik su atitinkamais testų/doc atnaujinimais):**
+**Būtina nekeisti (arba keisti tik su atitinkamais testų/doc atnaujinimais).**
+
+### 2.1 FastAPI (`backend/`) — CI `pytest`
 
 | Endpoint / elgsena | Tikėtinas atsakymas / elgsena | Testas |
 |--------------------|-------------------------------|--------|
@@ -40,14 +42,21 @@
 | Jau įsigytas planas (Supabase) | 409, "already" | `TestCreateCheckoutSession.test_already_purchased_returns_409` |
 | `POST /api/webhooks/stripe` be secret (jei reikalaujama) | 503 | (webhook testai pagal backend) |
 | `POST /api/validate-token-limit` | 200 + `ok`, `tokens`; 429 virš limito; 422 per ilgas text | `TestValidateTokenLimit.*` |
+
+**Kaip tikrinti:** `cd backend && pytest` – visi testai turi praeiti.
+
+### 2.2 Vercel `api/` — produkcija (rankinis / preview)
+
+FastAPI šių handler’ių **neturi**. SOT: [`api/verify-access.js`](../api/verify-access.js), [`api/generate-access-link.js`](../api/generate-access-link.js). Parent magic-link tiers `[3, 6, 9, 12]`.
+
+| Endpoint / elgsena | Tikėtinas atsakymas / elgsena | Testas |
+|--------------------|-------------------------------|--------|
 | `GET /api/verify-access` be parametrų | 400, `{"error": "Missing access_tier, expires, or token"}` | (rankinis) |
 | `GET /api/verify-access?access_tier=3&expires=...&token=...` (validus) | 200, `{"access_tier": 3}` | (rankinis) |
 | `GET /api/verify-access` su pasibaigusiu token | 401, `{"error": "Link expired"}` | (rankinis) |
 | `GET /api/generate-access-link` be `email` | 400, `{"detail": "Valid email required"}` | (rankinis) |
 | `GET /api/generate-access-link?email=...` (neturi prieigos) | 404, `{"detail": "No access found for this email"}` | (rankinis) |
 | `GET /api/generate-access-link?email=...` (turi prieigą Supabase) | 200, `{"redirect_url": "https://...?access_tier=...&expires=...&token=..."}` | (rankinis) |
-
-**Kaip tikrinti:** `cd backend && pytest` – visi testai turi praeiti.
 
 **Žinomos aplinkos pastabos:**
 - `test_api.py` gali failinti lokaliai dėl `wrapt` paketo nesuderinamumo su Python 3.11+ (`formatargspec` pašalintas iš `inspect`). Fix: `pip install --upgrade wrapt` arba naudoti venv su tinkamomis versijomis. CI/Vercel aplinkoje problema nepasireiškia.
@@ -96,6 +105,7 @@
 - Email su prieiga (`highest_plan > 0`) → žalias blokas su progress bar + „Eiti į mokymus →" (magic link per `getTrainingAccessLink`; **navigacija tame pačiame lange** – `window.location.href`, kad veiktų iOS/Safari). Desktop Navbar ir Footer su `hasAccess` rodo **Mokymai** kaip magic-link veiksmą, ne statinę `/anatomy/` nuorodą.
 - **Tier 9 (plan 9):** rodoma **9/9** (ne 9/6); progress bar **≤100%**; konteineris `overflow-hidden`. Implementacija: [`accessDisplay.js`](../frontend/src/utils/accessDisplay.js) (`moduleDisplayCap`, `accessProgressPercent`). Magic link: `access_tier=9` kai `highest_plan=9`.
 - **Tier 12 (plan 12 / corporate12):** rodoma **12/12**; magic link `access_tier=12` kai `highest_plan=12` (operator grant). Prod training bundle M1–12 (`build:corporate12`).
+- Pricing empty-state (`plansToShow.length === 0`, varta `highest_plan >= 6`): `pricing.yourAccess` rodo `moduleDisplayCap` (6/9/12), ne hardcoded 6.
 - „Eiti į mokymus" / „Mokymai" veiksmai rodo loading/disabled state (`trainingLinkLoading`).
 - `/cancel` puslapis – „Bandyti dar kartą“ eina į `localeHomePath` (`/lt` arba `/en`), tada scroll'ina į `#pricing` (ne SPA navigate + hash; ne `/`, kuris force-setina EN).
 - `/success` be `session_id` – informacinis pranešimas „Jei ką tik sumokėjai – palauk".
@@ -132,7 +142,7 @@
 2. **Parent repo:** `git add -A && commit && push origin main` (į `DITreneris/promptanatomy`). Commit'e turi būti atnaujintas submodule reference.
 3. **Vercel:** auto-deploy iš GitHub main branch. `vercel.json` – `installCommand` su `git submodule update --init --recursive`, build'ina abu frontendus.
 4. **Regresijos prieš push:** `frontend: npm run build`, `apps/prompt-anatomy: npm run build:corporate12` (`VITE_MAX_BUILD_MODULE=12`), `backend: pytest`.
-5. **GitHub Actions:** pull request ir push į `main` paleidžia [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) (job **Golden Legacy**): `frontend` — `npm ci` + `npm run build`; `apps/prompt-anatomy` — `npm ci` + `npm run build:corporate12` su `VITE_BASE_PATH=/anatomy/`, `VITE_MAX_BUILD_MODULE=12`, `HUSKY=0` (submodulio husky nevykdomas CI); `backend` — `pip install -r requirements.txt` + `pytest`. Submoduliai: `actions/checkout` su `submodules: recursive`.
+5. **GitHub Actions:** pull request ir push į `main` paleidžia [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) (job **Golden Legacy**): `frontend` — `npm ci` + `npm run build`; `apps/prompt-anatomy` — `npm ci` + `npm run build:corporate12` su `VITE_BASE_PATH=/anatomy/`, `VITE_MAX_BUILD_MODULE=12`, `HUSKY=0` (submodulio husky nevykdomas CI); `backend` — `pip install -r requirements.txt` + `pytest`. Tame pačiame job: design-system token grep (LP JSX be `rgba(` / `text-[NNpx]` / `shadow-[`); bundle size budget (`scripts/check-bundle-size.mjs`); GEO smoke (`dist/llms.txt`, `llms-full.txt`, `robots.txt` — PerplexityBot + OAI-SearchBot). Submoduliai: `actions/checkout` su `submodules: recursive`.
 6. **Branch ruleset (rankinis GitHub):** žr. §5.1.
 
 ### 5.1 Ruleset `main` — žingsnis po žingsnio

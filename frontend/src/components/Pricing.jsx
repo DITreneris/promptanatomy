@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, CheckCircle, Lock, ShieldCheck, Cpu, Globe } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
+import { moduleDisplayCap } from '../utils/accessDisplay'
 
 /** Phase 1: only 2 products (1–3 and 1–6 modules); modules 7+ locked. */
 const PHASE1_MAX_MODULES = 6
@@ -128,7 +129,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
 
       {plansToShow.length === 0 && access && highest_plan >= PHASE1_MAX_MODULES && (
         <p className="text-center text-slate-600 font-medium mb-16">
-          {t('pricing.alreadyHave')} – {t('pricing.yourAccess').replace('%s', String(PHASE1_MAX_MODULES))}
+          {t('pricing.alreadyHave')} – {t('pricing.yourAccess').replace('%s', String(moduleDisplayCap(highest_plan)))}
         </p>
       )}
 

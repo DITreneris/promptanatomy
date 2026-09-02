@@ -1,6 +1,6 @@
 # Faze 1 apimtis – produktai ir moduliai
 
-**Data:** 2026-03-08. Šis dokumentas apibrėžia, kas parduodama ir rodoma pirmajame etape.
+**Data:** 2026-03-08. **Atnaujinta 2026-09-02.** Šis dokumentas apibrėžia, kas parduodama ir rodoma pirmajame etape.
 
 ---
 
@@ -17,7 +17,7 @@ Pirmajame etape siūlome **tik du planus**:
 | Planas | Moduliai | Kaina (pvz.) | Pastaba |
 |--------|----------|--------------|--------|
 | **1** (Starter) | 1–3 | 39 € | Pirmi trys moduliai |
-| **2** (Core) | 1–6 | 99 € | Visi šeši moduliai (pilnas dabartinis kursas) |
+| **2** (Core) | 1–6 | 99 € | Phase-1 checkout lubos (1–6); training M1–12 per operator 9/12 — žr. §0 / §2 |
 
 - Planai **3** (1–12) ir **4** (1–15) **nėra siūlomi** Faze 1 – LP **nerodo** užrakintų kortelių; 7–12 = `pricing.modulesLocked` tekstas.
 - Checkout: Vercel `api/create-checkout-session` priima tik `plan_id` `"1"` ir `"2"` (kiti → **400**); FastAPI Pydantic `Literal` → pytest **422**.
@@ -37,9 +37,9 @@ Pirmajame etape siūlome **tik du planus**:
 
 | Vieta | Pakeitimas |
 |-------|------------|
-| **Frontend** `Pricing.jsx` | Rodomi tik planai 1 ir 2; konstantos `PHASE1_MAX_MODULES = 6`, `PHASE1_PLANS`. |
-| **Frontend** i18n | „15 modulių“ → „6 modulių“; pridėti `pricing.modulesLocked` (7+ locked). |
-| **Frontend** `HomePage` / prieiga | „Jau turite“ pilnai – tikrinti `highest_plan >= 6` (ne 15). |
+| **Frontend** `Pricing.jsx` | Rodomi tik planai 1 ir 2; konstantos `PHASE1_MAX_MODULES = 6`, `PLANS` / `PLANS_ALL` (ne `PHASE1_PLANS`). |
+| **Frontend** i18n | Istorinis: „15 modulių“ → „6 modulių“; `pricing.modulesLocked` (7+ locked). Gyvos i18n čia neperrašyti. |
+| **Frontend** `Pricing.jsx` empty-state | Varta `highest_plan >= 6` (kai `plansToShow.length === 0`); rodomas `%s` = `moduleDisplayCap` (6/9/12). |
 | **Backend** `config` | `PLAN_VALUES` gali būti `(3, 6)` Faze 1; arba palikti (3,6,12,15), bet checkout – tik 1, 2. |
 | **Docs** | roadmap.md – nuoroda į šį dokumentą; INDEX – phase-1-scope. |
 

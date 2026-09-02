@@ -46,8 +46,8 @@ Marketinginis tinklalapis ir minimalus backend mokėjimams per Stripe. Tikslas: 
 
 - **frontend/** – Vite + React, landing puslapis, pricing, CTA → Stripe Checkout, puslapiai `/success` ir `/cancel`.
 - **api/** (Vercel) – **produkcijos API** tame pačiame domene: `create-checkout-session.js`, `access.js`, `stripe-webhook.js`, `generate-access-link.js`, `verify-access.js`, `success-redirect.js`, shared `lib/supabase-access.js`. Deploy: [docs/deploy-and-webhook.md](docs/deploy-and-webhook.md).
-- **backend/** – FastAPI lokaliai ir CI (`pytest`): `GET /health`, `GET /api/access`, `POST /api/create-checkout-session`, `POST /api/webhooks/stripe`, `POST /api/validate-token-limit`. Pydantic Settings (`backend/core/config.py`). Supabase `user_access` schema: [supabase/migrations/](supabase/migrations/), santrauka: [docs/supabase-user-access.sql](docs/supabase-user-access.sql).
-- **apps/prompt-anatomy/** – mokymų app (SPA) kaip git submodulis iš [DITreneris/inzinerija](https://github.com/DITreneris/inzinerija); pasiekiamas per `/anatomy/` tame pačiame domene (Vercel build į `frontend/dist/anatomy/`; senas `/anatomija/` → 301).
+- **backend/** – FastAPI lokaliai ir CI (`pytest`): `GET /health`, `GET /api/access`, `GET /api/success-redirect`, `POST /api/create-checkout-session`, `POST /api/webhooks/stripe`, `POST /api/validate-token-limit`. Pydantic Settings (`backend/core/config.py`). Supabase `user_access` schema: [supabase/migrations/](supabase/migrations/), santrauka: [docs/supabase-user-access.sql](docs/supabase-user-access.sql).
+- **apps/prompt-anatomy/** – mokymų app (SPA) kaip git submodulis iš [DITreneris/inzinerija](https://github.com/DITreneris/inzinerija); pasiekiamas per `/anatomy/` tame pačiame domene (Vercel build į `frontend/dist/anatomy/`; senas `/anatomija/` → 308).
 
 ## Reikalavimai
 
