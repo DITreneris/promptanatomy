@@ -1,5 +1,7 @@
 # GEO citation scorecard — 2026-08
 
+> **Superseded for AI engine cells:** use [geo-citations-2026-09.md](geo-citations-2026-09.md) for the 2026-09 monthly run (**EN+LT engines complete** 2026-09-04; `[B.1]` closed). This Aug file remains the first web-index precheck archive.
+
 **Goal:** Measure whether AI / search answer systems cite `promptanatomy.app`, spokes, or founder-owned content for brand and category prompts.
 
 **Run note:** Cursor does not have direct access to ChatGPT Search, Perplexity, Gemini, or Google AI Mode UI sessions. This snapshot records a web-index precheck from Cursor WebSearch and leaves the engine-specific cells as **Manual pending** rather than fabricating citations. Run the fixed prompts manually in each engine and replace `Manual pending` with `Y`, `N`, or `Partial`.

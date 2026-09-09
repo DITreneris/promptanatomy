@@ -3,7 +3,7 @@
 **Date:** 2026-08-16  
 **Operator:** Tomas (Dashboard) + Cursor (doc sync)  
 **Scope:** Hub `www.promptanatomy.app` Production env + PostHog EU project `155249`  
-**Does not close:** `[A.5]` live smoke after v1.6.3 pin; `[A.3b]` uptime; `[A.3c]` Stripe webhook alert; `[A.4a]`/`[A.4b]` Supabase; `[A.1]` legal; training `/anatomy/` PostHog init / MON-4 widgets
+**Does not close:** `[A.5]` live smoke after v1.6.3 pin; `[A.3c]` Stripe webhook alert; `[A.4a]`/`[A.4b]` Supabase; `[A.1]` legal; training `/anatomy/` PostHog init / MON-4 widgets. **`[A.3b]` closed 2026-09-04:** [ops-uptime-2026-09-04.md](ops-uptime-2026-09-04.md).
 
 ---
 
@@ -57,4 +57,4 @@ Training `/anatomy/` does **not** init `window.posthog`; module funnel (`slide_v
 
 1. `[A.5]` live smoke after pin `7e4c3bf` / v1.6.3 (Home recall, magic-link 0/6/9/12, M11 + cert).  
 2. `[A.3c]` Stripe webhook failure alert; `[A.1]` legal; `[A.4a]`/`[A.4b]` if prod hardening unknown.  
-3. `[A.6]` spoke CTR still open — see [ecosystem-kpi-2026-08-16.md](ecosystem-kpi-2026-08-16.md).
+3. `[A.6]` closed 2026-09-04 — see [ecosystem-kpi-2026-09.md](ecosystem-kpi-2026-09.md). `[A.3b]` closed 2026-09-04 — see [ops-uptime-2026-09-04.md](ops-uptime-2026-09-04.md).

@@ -4,7 +4,9 @@
 
 **Operator close (2026-08-16):** `[A.3d]` Vercel env + `[A.3a]` hub PostHog — [ops-observability-2026-08-16.md](../snapshots/ops-observability-2026-08-16.md). Pin dabar **`7e4c3bf` / v1.6.3**.
 
-**Operator close (2026-09-01):** `[A.5]` live smoke 6/9/12 + naujas magic link po 9→12; `[A.3c]` Stripe webhook alert + live upsert (4 paying); `[A.4a]`/`[A.4b]` prod F0 snapshot + F1 RLS enabled ([supabase-project-registry.md](../../supabase-project-registry.md) §4). **`[A.1]` owner review** — Privacy/Terms EN+LT; 14 d. = atsakymas; prieiga hub URL + info@; IVS pagal prašymą; Supabase įvardytas; slapukų bannerio nėra. A.3b uptime = SHOULD.
+**Operator close (2026-09-01):** `[A.5]` live smoke 6/9/12 + naujas magic link po 9→12; `[A.3c]` Stripe webhook alert + live upsert (4 paying); `[A.4a]`/`[A.4b]` prod F0 snapshot + F1 RLS enabled ([supabase-project-registry.md](../../supabase-project-registry.md) §4). **`[A.1]` owner review** — Privacy/Terms EN+LT; 14 d. = atsakymas; prieiga hub URL + info@; IVS pagal prašymą; Supabase įvardytas; slapukų bannerio nėra.
+
+**Operator close (2026-09-04):** `[A.3b]` UptimeRobot 5 min + email/SMS — [ops-uptime-2026-09-04.md](../snapshots/ops-uptime-2026-09-04.md). `[A.6]` KPI — [ecosystem-kpi-2026-09.md](../snapshots/ecosystem-kpi-2026-09.md).
 
 **Date:** 2026-08-12  
 **Scope:** Hub `www.promptanatomy.app` (LP + Vercel `api/*` + training submodule corporate12 pin).  
@@ -95,7 +97,7 @@ Waiver: _n/a_ (owner review, not a skip)
 ### 4.5 Observability — `[A.3a]` / `[A.3b]`
 
 - [x] `VITE_POSTHOG_KEY` + `VITE_POSTHOG_HOST` on Vercel Production — `[A.3a]` 2026-08-16
-- [ ] External uptime check on `https://www.promptanatomy.app` (+ optional critical API) — `[A.3b]` still open
+- [x] External uptime check on `https://www.promptanatomy.app` — `[A.3b]` closed 2026-09-04 ([ops-uptime-2026-09-04.md](../snapshots/ops-uptime-2026-09-04.md): UptimeRobot 5 min + email/SMS)
 
 ---
 

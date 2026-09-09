@@ -121,6 +121,21 @@ Pavyzdys:
 | Po 9→12: LP 12/12 iš DB; M10 tik su **nauju** magic link (`access_tier=12`) | `fullstack-agent/SKILL.md`, `q-and-a-agent/SKILL.md`, orchestrator „Po rankinių“ |
 | Registry §3 seka **ir** tier 9, **ir** tier 12 | `user-access-tier-registry.md`, `backend-agent/SKILL.md` DoD |
 
+### Pakeltos pamokos (2026-09-08, existing-user reactivation)
+
+| Taisyklė | Kur įrašyta |
+|----------|-------------|
+| Esami `user_access` ≠ B2B 399 hunt; hub nesiunčia; sister `laiskas` 1:1 | `orchestrator/SKILL.md`, `q-and-a-agent/SKILL.md` |
+| Reaktivacija **Labas,**; hunt vis dar **Sveiki,**; CTA `#access`; ne `prisijunk` | `q-and-a-agent/SKILL.md` + lessons, sales-os `lessons/2026-09-08-reactivation-email.md` |
+| Nėra per-user modulio progreso (`/anatomy/` be PostHog); neminti registry §3 į palace | `q-and-a-agent/SKILL.md`, `orchestrator/SKILL.md` Kill |
+
+### Pakeltos pamokos (2026-09-07, LT GEO social)
+
+| Taisyklė | Kur įrašyta |
+|----------|-------------|
+| LT #16–23: hub `.app` never Y; FB already cited but leaked 399; off-site pack ≠ sitemap | `q-and-a-agent/SKILL.md`, `seo-geo-operations.md` §I |
+| Tomas FB/LI copy = founder tu voice in `lt-geo-social-pack.md`; ne 25-žodžių GEO sloganai | `q-and-a-agent/SKILL.md` + lessons, `orchestrator/SKILL.md` Kill, INDEX §4 |
+
 ### Pakeltos pamokos (2026-08-13, LP design system v1.1)
 
 | Taisyklė | Kur įrašyta |

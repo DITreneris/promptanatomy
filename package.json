@@ -11,12 +11,14 @@
     "diagnose:dep0169": "npx -y node@24 --trace-deprecation -e \"require('./api/access.js'); console.log('access handler loaded');\"",
     "audit:frontend": "cd frontend && npm audit",
     "audit:backend": "cd backend && pip-audit",
-    "generate-favicons": "node scripts/generate-favicons.mjs"
+    "generate-favicons": "node scripts/generate-favicons.mjs",
+    "test:api": "node --test api/lib/sentry.test.js"
   },
   "devDependencies": {
     "sharp": "^0.33.5"
   },
   "dependencies": {
+    "@sentry/node": "^10.73.0",
     "@supabase/supabase-js": "^2.45.0",
     "stripe": "^17.0.0"
   }

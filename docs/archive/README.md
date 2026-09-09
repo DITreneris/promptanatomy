@@ -48,13 +48,19 @@ Istorinė arba pasenusi dokumentacija – **ne** kasdieniam operaciniam darbui. 
 
 | Failas | Paskirtis |
 |--------|-----------|
+| [gsc-2026-09-04.md](snapshots/gsc-2026-09-04.md) | B.2 search ops: redirect + GEO smoke; GSC Performance paste pending; PostHog organic complementary. |
+| [geo-citations-2026-09.md](snapshots/geo-citations-2026-09.md) | B.1 GEO scorecard 2026-09 **closed** (EN #1–15 + LT #16–23 filled 2026-09-04). |
+| [ops-uptime-2026-09-04.md](snapshots/ops-uptime-2026-09-04.md) | Operator close `[A.3b]` UptimeRobot 5 min + email/SMS. |
+| [ops-sentry-b4-2026-09-04.md](snapshots/ops-sentry-b4-2026-09-04.md) | B.4 Sentry api/* **closed** (Production DSN + operator smoke 2026-09-04). |
+| [tier-grants-2026-09.md](snapshots/tier-grants-2026-09.md) | C.2 grant-wave ritmas shipped (process dry-run; next live wave TBD). |
 | [ops-observability-2026-08-16.md](snapshots/ops-observability-2026-08-16.md) | Operator close `[A.3a]` hub PostHog + `[A.3d]` Vercel env. |
+| [ecosystem-kpi-2026-09.md](snapshots/ecosystem-kpi-2026-09.md) | A.6 **closed** 2026-09-04: 18 `ecosystem_card` clicks / 14d (space/cloud/info); footer/nav/map 0; Stripe **4**. |
 | [ecosystem-kpi-2026-08-16.md](snapshots/ecosystem-kpi-2026-08-16.md) | A.6 follow-up: PostHog web 180d + Stripe **4**; spoke CTR still Gap. |
 | [ecosystem-kpi-2026-08.md](snapshots/ecosystem-kpi-2026-08.md) | QW1b / A.6 first baseline (2026-08-12, no dashboard access). |
-| [geo-citations-2026-08.md](snapshots/geo-citations-2026-08.md) | QW4a GEO citation scorecard. |
+| [geo-citations-2026-08.md](snapshots/geo-citations-2026-08.md) | QW4a GEO citation scorecard (Aug precheck; engines → see 2026-09). |
 | [pagespeed-2026-08.md](snapshots/pagespeed-2026-08.md) | Lighthouse mobile+desktop baseline. |
 | [production-analytics-14d-benchmark.md](snapshots/production-analytics-14d-benchmark.md) | ~14 d. produkcijos metrikos. |
-| [gsc-2026-06-04.md](snapshots/gsc-2026-06-04.md) | GSC 28d CTR/pages. |
+| [gsc-2026-06-04.md](snapshots/gsc-2026-06-04.md) | GSC 28d CTR/pages (prior). |
 | [test_report-ops-log.md](snapshots/test_report-ops-log.md) | SSL + „No access found“ incident log (2026-03). |
 
 ## Šaknis (archive/)

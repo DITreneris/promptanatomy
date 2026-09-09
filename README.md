@@ -127,6 +127,7 @@ Frontend: `http://localhost:5173`
 | `ACCESS_TOKEN_SECRET` | (Optional) Bendras secret su mokymų app – magic-link redirect (`GET /api/success-redirect`). Sugeneruoti: `openssl rand -base64 32`. |
 | `TRAINING_REDIRECT_BASE` | (Optional) Base URL į mokymų app (default `https://www.promptanatomy.app/anatomy`). |
 | `ACCESS_TOKEN_EXPIRY_DAYS` | (Optional) Kiek dienų galioja magic-link (default 30). |
+| `SENTRY_DSN` | (Optional) Sentry DSN Vercel `api/*` klaidoms (`[B.4]`). Tuščias = no-op. Tik Vercel Dashboard — ne commitinti. |
 
 ### Frontend (`frontend/.env`)
 

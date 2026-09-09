@@ -9,6 +9,7 @@ const {
   buildAccessResponse,
 } = require('./lib/supabase-access');
 const { rateLimit } = require('./lib/rate-limit');
+const { captureApiException } = require('./lib/sentry');
 
 const ALLOWED_ORIGINS = [
   process.env.FRONTEND_ORIGIN?.replace(/\/$/, ''),
@@ -56,6 +57,7 @@ module.exports = async function handler(req, res) {
     highest_plan = await getUserHighestPlan(supabase, email);
   } catch (e) {
     console.error('get user_access failed:', e.message);
+    await captureApiException(e, { route: 'access', status: 502 });
     return res.status(502).json({ detail: 'Database error' });
   }
 

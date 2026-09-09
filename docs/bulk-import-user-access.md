@@ -40,6 +40,8 @@ python ../scripts/import_user_access.py "../registracija i Promtu Akademijos mok
 
 Planai: numatyta `--plan 3` (1–3 mod., planas 1); `--plan 6` (1–6 mod., planas 2) – [payment-best-practices.md](payment-best-practices.md).
 
+**Tier 9 / 12:** ne akademijos Excel default. Operator grant (whitelist + SQL `greatest`) — [upgrade-playbook.md](upgrade-playbook.md). Do not pass `--plan 9` / `--plan 12` as a blind cohort import.
+
 ## Elgsena
 
 - Email normalizuojamas: `lower(trim())`
