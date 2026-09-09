@@ -8,6 +8,7 @@
 const crypto = require('crypto');
 const { getSupabaseClient, getUserHighestPlan } = require('./lib/supabase-access');
 const { rateLimit } = require('./lib/rate-limit');
+const { captureApiException } = require('./lib/sentry');
 
 const ACCESS_TIER_VALUES = [3, 6, 9, 12];
 
@@ -82,6 +83,7 @@ module.exports = async function handler(req, res) {
     highestPlan = await getUserHighestPlan(supabase, email);
   } catch (e) {
     console.error('generate-access-link: Supabase query failed', e.message);
+    await captureApiException(e, { route: 'generate-access-link', status: 502 });
     return res.status(502).json({ detail: 'Database error' });
   }
 

@@ -35,7 +35,8 @@ Prieš deploy į produkciją patikrinkite:
 - **ALLOW_WEBHOOK_WITHOUT_SECRET** – **niekada** įjungti prod (tik lokaliai dev).
 - **FRONTEND_ORIGIN** – pilnas https URL (pvz. `https://www.promptanatomy.app`) be galinio `/` (CORS ir redirectai).
 - **HTTPS** – Vercel jau įjungia HTTPS ir HSTS; jei backend atskirai – HSTS nustatyti reverse proxy (Nginx/Cloudflare).
-- **Webhook klaidų stebėjimas** – rekomenduojama stebėti Vercel Function logs (arba Sentry ir pan.) dėl 4xx/5xx webhook atsakymų.
+- **Webhook klaidų stebėjimas** – Vercel Function logs; su `SENTRY_DSN` – Sentry events iš `api/stripe-webhook`, `create-checkout-session`, `access`, `generate-access-link`, `success-redirect` (be secret’ų eventuose; žr. [security.md](security.md)).
+- **SENTRY_DSN** (optional) – Vercel Production env; tuščias = no-op. Placeholder: [backend/.env.example](../backend/.env.example).
 
 ### 2.1 Vercel build failed (CI žalias, Preview/Prod raudonas)
 

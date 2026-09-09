@@ -47,7 +47,7 @@ Pirmajame etape siūlome **tik du planus**:
 
 ## 4. Vėlesnės fazes
 
-**Iki 2027-01-01 (roadmap C2):** viešai lieka Starter/Core (max 6); M7–12 – operator upgrade / cohort / B2B / corporate (`highest_plan=9` arba `12`), ne naujas Stripe „Pro“ checkout. Žr. [roadmap.md](../roadmap.md) Horizon C.
+**Iki 2027-01-01 (roadmap C2):** viešai lieka Starter/Core (max 6); M7–12 – operator upgrade / cohort / B2B / corporate (`highest_plan=9` arba `12`), ne naujas Stripe „Pro“ checkout. Procesas: [upgrade-playbook.md](upgrade-playbook.md). Žr. [roadmap.md](../roadmap.md) Horizon C.
 
 Kai (po decision gate) Stripe parduos daugiau nei Core (6): planai 3/4 (12/15), `PLAN_VALUES`, frontend planų sąrašas — arba optional C1 (Stripe → tier 9/12) po ADR. Training M7–12 jau egzistuoja per operator tiers 9/12; M13–15 – corporate15 cutover + content/release.
 

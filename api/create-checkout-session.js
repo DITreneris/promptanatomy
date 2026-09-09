@@ -12,6 +12,7 @@ const {
   planIdToValue,
 } = require('./lib/supabase-access');
 const { rateLimit } = require('./lib/rate-limit');
+const { captureApiException } = require('./lib/sentry');
 
 /** Phase 1: only plans 1 and 2 (docs/phase-1-scope.md). */
 const PHASE1_PLAN_IDS = ['1', '2'];
@@ -89,6 +90,7 @@ module.exports = async function handler(req, res) {
         return res.status(409).json({ detail: 'Already purchased this plan or higher' });
       }
     } catch (e) {
+      // Fail-open: still create Checkout. Do not capture as 502 (buyer still pays).
       console.error('create-checkout-session: access check failed', e.message);
     }
   }
@@ -113,6 +115,7 @@ module.exports = async function handler(req, res) {
     return res.status(200).json({ url: session.url });
   } catch (e) {
     console.error('create-checkout-session: Stripe error', e.message);
+    await captureApiException(e, { route: 'create-checkout-session', status: 502 });
     return res.status(502).json({ detail: 'Payment provider error' });
   }
 };

@@ -28,6 +28,9 @@ jobs:
             frontend/package-lock.json
             apps/prompt-anatomy/package-lock.json
 
+      - name: API sentry scrub tests
+        run: node --test api/lib/sentry.test.js
+
       - name: Frontend install and build
         working-directory: frontend
         run: npm ci && npm run build

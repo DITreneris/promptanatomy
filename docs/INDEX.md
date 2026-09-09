@@ -44,6 +44,7 @@
 | Supabase project registry | [supabase-project-registry.md](supabase-project-registry.md) | Multi-account žemėlapis, operator checklist. |
 | Supabase agent runbook | [process/supabase-agent-runbook.md](process/supabase-agent-runbook.md) | Migracijos, RLS, webhook reliability. |
 | Bulk import | [bulk-import-user-access.md](bulk-import-user-access.md) | Excel → `user_access` (`scripts/import_user_access.py`). |
+| Upgrade playbook (C2) | [upgrade-playbook.md](upgrade-playbook.md) | Operator / cohort / B2B grant → tier 9/12; smoke; C1 WON’T. Horizon C. |
 | Training submodule pin | [apps/prompt-anatomy/docs/deployment/MARKETING_SUBMODULE_PIN_CORPORATE12.md](../apps/prompt-anatomy/docs/deployment/MARKETING_SUBMODULE_PIN_CORPORATE12.md) | Corporate12 cutover; pin: golden-legacy §4. |
 
 ---
@@ -55,6 +56,7 @@
 | SEO (KISS–Marry–Kill) | [SEO-KISS-Marry-Kill.md](SEO-KISS-Marry-Kill.md) | Sitemap, llms, Org sameAs, GEO manifest. KILL: viešas hub Žodynėlis — [ADR-0002](decisions/0002-hub-glossary-wont.md). |
 | SEO / GEO operacijos | [seo-geo-operations.md](seo-geo-operations.md) | GSC, IndexNow, post-deploy smoke. |
 | GEO citation scorecard | [templates/geo-citation-scorecard.md](templates/geo-citation-scorecard.md) | Monthly AI citation prompts; snapshots → archive. |
+| LT social pack (FB / LinkedIn) | [templates/lt-geo-social-pack.md](templates/lt-geo-social-pack.md) | 10 trumpų LT žinučių su nuorodomis į `.app` `/lt`. |
 | Ekosistemos kanonas | [ecosystem-canon.md](ecosystem-canon.md) | 9 domenų pipeline, LP kortelės. |
 | Ekosistemos valdymas | [ecosystem-governance.md](ecosystem-governance.md) | Hub-and-spoke taisyklės, KPI. |
 | Sibling memo (footer) | [sibling_memo.md](sibling_memo.md) | QW1b handoff spoke repo. |
@@ -73,7 +75,7 @@
 | Skill evolution | [process/skill-evolution.md](process/skill-evolution.md) | lessons.md formatas, agentų higiena. |
 | Ką dokumentuoti | [process/documentation.md](process/documentation.md) | README, TODO, CHANGELOG, i18n. |
 | ADR katalogas | [decisions/](decisions/) | Architektūriniai sprendimai. |
-| Šablonai | [templates/](templates/) | ADR, changelog, GEO scorecard. |
+| Šablonai | [templates/](templates/) | ADR, changelog, GEO scorecard, LT social pack, tier-grant-wave. |
 | Agentų orkestratorius | [AGENTS.md](../AGENTS.md) | Routing, skills, lean taisyklės. |
 
 ---

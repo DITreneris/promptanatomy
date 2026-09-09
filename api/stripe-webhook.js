@@ -13,6 +13,7 @@ const {
   toPlanValue,
   normalizeEmail,
 } = require('./lib/supabase-access');
+const { captureApiException } = require('./lib/sentry');
 
 function getRawBody(req) {
   return new Promise((resolve, reject) => {
@@ -79,6 +80,10 @@ module.exports = async function handler(req, res) {
 
   if (!isSupabaseConfigured()) {
     console.error('Supabase not configured; SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY missing in Vercel env');
+    await captureApiException(new Error('Supabase not configured for stripe-webhook'), {
+      route: 'stripe-webhook',
+      status: 503,
+    });
     return res.status(503).json({ detail: 'Database not configured' });
   }
 
@@ -90,6 +95,7 @@ module.exports = async function handler(req, res) {
     current = await getUserHighestPlan(supabase, normalizedEmail);
   } catch (e) {
     console.error('get user_access failed:', e.message, e.code);
+    await captureApiException(e, { route: 'stripe-webhook', status: 500 });
     return res.status(500).json({ detail: 'Database error' });
   }
 
@@ -104,10 +110,15 @@ module.exports = async function handler(req, res) {
     });
     if (error) {
       console.error('user_access upsert error:', error.message, error.code, error.details);
+      await captureApiException(new Error(error.message || 'user_access upsert error'), {
+        route: 'stripe-webhook',
+        status: 500,
+      });
       return res.status(500).json({ detail: 'Database error' });
     }
   } catch (e) {
     console.error('user_access upsert exception:', e.message);
+    await captureApiException(e, { route: 'stripe-webhook', status: 500 });
     return res.status(500).json({ detail: 'Database error' });
   }
 

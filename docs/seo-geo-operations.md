@@ -32,8 +32,8 @@
 
 **GSC hygiene (pakartoti po GEO hardening):**
 
-- [ ] Queries export 28d vs prior — jei CTR vis dar žemas, atnaujinti `meta.description` / FAQ (ne sitemap)
-- [ ] Confirm `/anatomija/` → `/anatomy/` redirect; Removals tik jei impressions lieka
+- [ ] Queries export 28d vs prior — jei CTR vis dar žemas, atnaujinti `meta.description` / FAQ (ne sitemap). *Last agent run: [gsc-2026-09-04.md](archive/snapshots/gsc-2026-09-04.md) — GSC paste still needed.*
+- [ ] Confirm `/anatomija/` → `/anatomy/` redirect; Removals tik jei impressions lieka. *Agent 2026-09-04: live `308` → `/anatomy/`.*
 - [ ] No action on `llms.txt` impressions
 
 ---
@@ -126,7 +126,8 @@ Also noted in [versioning-and-release.md](versioning-and-release.md).
 
 - PostHog: `ecosystem_card`, `ecosystem_site_map`, `ecosystem_hub` (žr. [ecosystem-governance.md](ecosystem-governance.md))
 - GSC Queries snapshot → [archive/snapshots/](archive/snapshots/)
-- **Monthly:** fill [templates/geo-citation-scorecard.md](templates/geo-citation-scorecard.md); archive as `docs/archive/snapshots/geo-citations-YYYY-MM.md`
+- **Monthly:** fill [templates/geo-citation-scorecard.md](templates/geo-citation-scorecard.md); archive as `docs/archive/snapshots/geo-citations-YYYY-MM.md`. *Last fill: [geo-citations-2026-09.md](archive/snapshots/geo-citations-2026-09.md) — `[B.1]` closed 2026-09-04 (EN+LT). Next ~2026-10.*
+- **LT off-site (FB / LinkedIn):** [templates/lt-geo-social-pack.md](templates/lt-geo-social-pack.md) — founder voice, bare `/lt` links, pin #2 (39/99). Does not replace monthly scorecard. Do not expand hub sitemap.
 
 ---
 

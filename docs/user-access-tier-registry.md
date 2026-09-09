@@ -2,6 +2,8 @@
 
 **Paskirtis:** viena vieta operatoriui – ką reiškia `highest_plan`, kur tikrinti Supabase, kas turi tier 9 / 12. Atnaujinkite po rankinių pakeitimų ar Stripe korekcijų.
 
+**Procesas (Horizon C):** kas/kada grantinti, SLA, smoke, bangos checklist — [upgrade-playbook.md](upgrade-playbook.md).
+
 **Šaltinis tiesai:** Supabase lentelė `user_access` (ne Excel, ne Stripe Dashboard vienas).
 
 ---
@@ -133,6 +135,8 @@ Tik tiems, kurie neturėtų būti tier 9/12 – ne `greatest` masiniu UPDATE be 
 
 ## 5. Susiję dokumentai
 
+- [upgrade-playbook.md](upgrade-playbook.md) – C2 operator / cohort / B2B grant procesas (Horizon C)
+- [templates/tier-grant-wave.md](templates/tier-grant-wave.md) – bangos checklist
 - [access-architecture-canon.md](access-architecture-canon.md) – architektūra
 - [payment-best-practices.md](payment-best-practices.md) – Stripe / webhook konvencijos
 - [supabase-user-access.sql](supabase-user-access.sql) – DDL santrauka

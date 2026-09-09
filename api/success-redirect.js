@@ -6,6 +6,7 @@
  */
 const Stripe = require('stripe');
 const crypto = require('crypto');
+const { captureApiException } = require('./lib/sentry');
 
 /** Phase 1: only 3 and 6 (docs/phase-1-scope.md). */
 const PHASE1_PLAN_VALUES = [3, 6];
@@ -51,58 +52,64 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ detail: 'Method not allowed' });
   }
 
-  const secret = process.env.ACCESS_TOKEN_SECRET;
-  if (!secret) {
-    return res.status(503).json({ detail: 'Redirect not configured' });
-  }
-
-  const sessionId = (req.query.session_id || '').trim();
-  if (!sessionId) {
-    return res.status(400).json({ detail: 'session_id required' });
-  }
-
-  const stripeKey = process.env.STRIPE_SECRET_KEY;
-  if (!stripeKey) {
-    return res.status(503).json({ detail: 'Redirect not configured' });
-  }
-
-  let session;
   try {
-    const stripe = new Stripe(stripeKey);
-    session = await stripe.checkout.sessions.retrieve(sessionId);
+    const secret = process.env.ACCESS_TOKEN_SECRET;
+    if (!secret) {
+      return res.status(503).json({ detail: 'Redirect not configured' });
+    }
+
+    const sessionId = (req.query.session_id || '').trim();
+    if (!sessionId) {
+      return res.status(400).json({ detail: 'session_id required' });
+    }
+
+    const stripeKey = process.env.STRIPE_SECRET_KEY;
+    if (!stripeKey) {
+      return res.status(503).json({ detail: 'Redirect not configured' });
+    }
+
+    let session;
+    try {
+      const stripe = new Stripe(stripeKey);
+      session = await stripe.checkout.sessions.retrieve(sessionId);
+    } catch (e) {
+      console.warn('success-redirect: Stripe retrieve failed', e.message);
+      return res.status(400).json({ detail: 'Invalid or unpaid session' });
+    }
+
+    if (session.payment_status !== 'paid') {
+      return res.status(400).json({ detail: 'Invalid or unpaid session' });
+    }
+
+    const planStr = session.metadata?.plan;
+    if (planStr == null || planStr === '') {
+      return res.status(400).json({ detail: 'Invalid or unpaid session' });
+    }
+
+    const accessTier = parseInt(planStr, 10);
+    if (!Number.isInteger(accessTier) || !PHASE1_PLAN_VALUES.includes(accessTier)) {
+      return res.status(400).json({ detail: 'Invalid or unpaid session' });
+    }
+
+    const expiryDays = parseInt(process.env.ACCESS_TOKEN_EXPIRY_DAYS || '30', 10) || 30;
+    const expires = Math.floor(Date.now() / 1000) + expiryDays * 86400;
+    const token = buildMagicLinkToken(accessTier, expires, secret);
+    const base = (process.env.TRAINING_REDIRECT_BASE || 'https://www.promptanatomy.app/anatomy').replace(/\/$/, '');
+    const redirectUrl = `${base}/?access_tier=${accessTier}&expires=${expires}&token=${token}`;
+
+    const customerEmail = (
+      session.customer_email ||
+      session.customer_details?.email ||
+      ''
+    )
+      .trim() || undefined;
+
+    const payload = { redirect_url: redirectUrl };
+    if (customerEmail) payload.customer_email = customerEmail;
+    return res.status(200).json(payload);
   } catch (e) {
-    console.warn('success-redirect: Stripe retrieve failed', e.message);
-    return res.status(400).json({ detail: 'Invalid or unpaid session' });
+    console.error('success-redirect: unexpected error', e.message);
+    await captureApiException(e, { route: 'success-redirect', status: 500 });
+    return res.status(500).json({ detail: 'Redirect error' });
   }
-
-  if (session.payment_status !== 'paid') {
-    return res.status(400).json({ detail: 'Invalid or unpaid session' });
-  }
-
-  const planStr = session.metadata?.plan;
-  if (planStr == null || planStr === '') {
-    return res.status(400).json({ detail: 'Invalid or unpaid session' });
-  }
-
-  const accessTier = parseInt(planStr, 10);
-  if (!Number.isInteger(accessTier) || !PHASE1_PLAN_VALUES.includes(accessTier)) {
-    return res.status(400).json({ detail: 'Invalid or unpaid session' });
-  }
-
-  const expiryDays = parseInt(process.env.ACCESS_TOKEN_EXPIRY_DAYS || '30', 10) || 30;
-  const expires = Math.floor(Date.now() / 1000) + expiryDays * 86400;
-  const token = buildMagicLinkToken(accessTier, expires, secret);
-  const base = (process.env.TRAINING_REDIRECT_BASE || 'https://www.promptanatomy.app/anatomy').replace(/\/$/, '');
-  const redirectUrl = `${base}/?access_tier=${accessTier}&expires=${expires}&token=${token}`;
-
-  const customerEmail = (
-    session.customer_email ||
-    session.customer_details?.email ||
-    ''
-  )
-    .trim() || undefined;
-
-  const payload = { redirect_url: redirectUrl };
-  if (customerEmail) payload.customer_email = customerEmail;
-  return res.status(200).json(payload);
 };

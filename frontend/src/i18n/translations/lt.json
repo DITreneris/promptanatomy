@@ -182,7 +182,7 @@
     "goToTraining": "Eiti į mokymus",
     "noAccessFound": "Prieiga nerasta",
     "noAccessBody": "Šiam el. paštui prieiga dar nesuteikta. Pasirink planą žemiau ir gauk prieigą.",
-    "modulesLocked": "Moduliai 7–12 pagal poreikį: Duomenų analizė, Agentai.",
+    "modulesLocked": "Moduliai 7–12 (Duomenų analizė, Agentai): ne per Stripe — komanda / atnaujinimas per info@promptanatomy.app.",
     "trustSignals": ["Lifetime atnaujinimai", "Vienkartinis mokėjimas", "Momentinė prieiga"],
     "forTeamsTitle": "Komandoms ir organizacijoms",
     "forTeamsBody": "Mokymai komandai — 399 €. 15 min. pokalbis: info@promptanatomy.app. Atsakome per 1 darbo dieną.",
@@ -201,7 +201,7 @@
       { "q": "Ar mano duomenys saugūs?", "a": "Taip – renkame tik tai, ko reikia apmokėjimui ir prieigai suteikti. Mokėjimus apdoroja Stripe; pilnų kortelių numerių nesaugome. Laikome minimalius pirkimui susijusius identifikatorius, susietus su apmokėjimo el. paštu. Produktų analitiką (PostHog, Vercel) ir pasirenkamą reklamos matavimą taikome pagal privatumo politiką, įskaitant Promptų Anatomijos ekosistemos domenus. Duomenys tvarkomi pagal ES ir JAV saugumo praktikas." },
       { "q": "Kur gauti pagalbos?", "a": "Pagrindinis palaikymas – vieša Telegram grupė (nuoroda po apačioje ir po apmokėjimo). Ten praktikantai dalijasi procesais, klausia ir gauna pagalbos dėl prieigos. Dėl sąskaitų, mokėjimų ar grąžinimų – info@promptanatomy.app. Nežinai, nuo ko pradėti ekosistemoje? Žemėlapis promptanatomy.site/#ecosystem – pasirink procesą pagal rolę." },
       { "q": "Ar prieiga laikina?", "a": "Ne — Starter (39 EUR) ir Core (99 EUR) yra vienkartinis mokėjimas su lifetime prieiga, be prenumeratos. Po pirkimo grįžti į mokymus gali bet kada Kainodaros skyriuje." },
-      { "q": "Kuo skiriasi Starter ir Core?", "a": "Starter (39 EUR) – moduliai 1–3; Core (99 EUR) – visas 1–6 mokymų kursas. Starter – promptų inžinerija, 6 blokų sistema, 6 verslo scenarijai. Core – viskas iš Starter plius moduliai 4–6, konteksto inžinerija, sprintai ir projektai. Pradėk nuo Starter; vėliau gali atnaujinti į Core. Abu planai – lifetime prieiga." },
+      { "q": "Kuo skiriasi Starter ir Core?", "a": "Starter (39 EUR) – moduliai 1–3; Core (99 EUR) – visas 1–6 mokymų kursas. Starter – promptų inžinerija, 6 blokų sistema, 6 verslo scenarijai. Core – viskas iš Starter plius moduliai 4–6, konteksto inžinerija, sprintai ir projektai. Pradėk nuo Starter; vėliau gali atnaujinti į Core. Abu planai – lifetime prieiga. Moduliai 7–12 nėra viešas Stripe planas — po Core rašyk info@promptanatomy.app dėl komandos ar atnaujinimo (atsakome per 1 darbo dieną)." },
       { "q": "Ar galima grąžinti pinigus?", "a": "Žr. skyrių „Grąžinimai“ paslaugų teikimo sąlygose. Rašyk info@promptanatomy.app iš apmokėjimo el. pašto ir nurodyk užsakymo duomenis, jei turi. Siekiame atsakyti per keturiolika (14) kalendorinių dienų. Taikomos įstatymų numatytos vartotojo teisės, kur jos galioja." },
       { "q": "Kokiomis kalbomis mokymai?", "a": "Mokymai pateikiami lietuvių ir anglų kalbomis. Svetainė, mokymų programa ir DUK seka pasirinktą kalbą (LT arba EN). Kalbą gali perjungti bet kada naršymo juostoje; pirkimas veikia abiem kalbomis." }
     ]

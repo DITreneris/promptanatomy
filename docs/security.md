@@ -32,5 +32,5 @@ Backend naudoja SlowAPI su `get_remote_address` (kliento IP iš `request.client.
 
 ## Papildomi žingsniai (pageidaujama)
 
+- **Logging / alerting:** Webhook ir DB klaidos `api/*` gali eiti į **Sentry** kai nustatytas `SENTRY_DSN` (Vercel Production). Helper: [`api/lib/sentry.js`](../api/lib/sentry.js) — fail-open be DSN; `beforeSend` scrubina email / token / Stripe / Supabase secret’us **ir breadcrumbs**; HTTP/OTel auto-instrumentacija išjungta; checkout access-check fail-open yra tik log (ne 502 capture). Ne capture’ina tikėtinų 4xx (bad email, invalid webhook signature, unpaid session). Horizon `[B.4]`.
 - **CSP (Content-Security-Policy):** Jei įvedate – reikia derinimo su Stripe (scriptai, iframe).
-- **Logging / alerting:** Webhook nesėkmės jau loguojamos; galima pridėti metrikas ar alertus dideliam nesėkmių skaičiui.

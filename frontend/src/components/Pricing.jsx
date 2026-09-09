@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, CheckCircle, Lock, ShieldCheck, Cpu, Globe } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
 import { moduleDisplayCap } from '../utils/accessDisplay'
+import { capturePosthogEvent } from '../analytics/posthog'
 
 /** Phase 1: only 2 products (1–3 and 1–6 modules); modules 7+ locked. */
 const PHASE1_MAX_MODULES = 6
@@ -151,6 +152,9 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
           href={`mailto:info@promptanatomy.app?subject=${encodeURIComponent(t('pricing.forTeamsMailSubject'))}`}
           className="btn-secondary inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-base"
           aria-label={t('pricing.forTeamsCta')}
+          onClick={() =>
+            capturePosthogEvent('pricing_for_teams_click', { placement: 'pricing' })
+          }
         >
           {t('pricing.forTeamsCta')} <ArrowRight className="icon-md" aria-hidden />
         </a>

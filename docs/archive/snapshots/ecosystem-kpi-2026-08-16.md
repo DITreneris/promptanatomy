@@ -84,7 +84,7 @@ SOT: [ecosystem-governance.md](../../ecosystem-governance.md)
 - `[A.3a]` hub is live; empty spoke CTR is a **query gap**, not a missing key.
 - Conversion at this scale: ~1.1K hub visitors / 180d → **4** Stripe pays. Do not use `/success` (2) as purchase count.
 - Paid ads stay **CONDITIONAL NO-GO** (legal, Stripe alert, Supabase F1, A.5 smoke). Soft-launch / organic **GO**.
-- Next A.6 close needs one Activity/Insight export of `ecosystem_outbound_click` by `placement` (14d or 180d). Until then keep `[A.6]` open.
+- **2026-09-04 close:** [ecosystem-kpi-2026-09.md](ecosystem-kpi-2026-09.md) — EU `155249` MCP `placement` × `target`; `[A.6]` closed.
 
 ## Recommendation
 
