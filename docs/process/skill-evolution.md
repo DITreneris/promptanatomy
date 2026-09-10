@@ -127,7 +127,7 @@ Pavyzdys:
 |----------|-------------|
 | Esami `user_access` ≠ B2B 399 hunt; hub nesiunčia; sister `laiskas` 1:1 | `orchestrator/SKILL.md`, `q-and-a-agent/SKILL.md` |
 | Reaktivacija **Labas,**; hunt vis dar **Sveiki,**; CTA `#access`; ne `prisijunk` | `q-and-a-agent/SKILL.md` + lessons, sales-os `lessons/2026-09-08-reactivation-email.md` |
-| Nėra per-user modulio progreso (`/anatomy/` be PostHog); neminti registry §3 į palace | `q-and-a-agent/SKILL.md`, `orchestrator/SKILL.md` Kill |
+| Nėra per-user **slide** progreso registry (neminti registry §3 į palace); training funnel = PostHog pin `99d2639` + dashboard MON-4 — ne hub A.6 KPI | `q-and-a-agent/SKILL.md`, `orchestrator/SKILL.md` |
 
 ### Pakeltos pamokos (2026-09-07, LT GEO social)
 

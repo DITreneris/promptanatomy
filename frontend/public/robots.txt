@@ -58,6 +58,22 @@ Allow: /
 User-agent: Bytespider
 Allow: /
 
+# Share previews (not search index) — facebookexternalhit is not FacebookBot
+User-agent: facebookexternalhit
+Allow: /anatomy/
+
+User-agent: Facebot
+Allow: /anatomy/
+
+User-agent: Twitterbot
+Allow: /anatomy/
+
+User-agent: LinkedInBot
+Allow: /anatomy/
+
+User-agent: WhatsApp
+Allow: /anatomy/
+
 # Default
 User-agent: *
 Allow: /

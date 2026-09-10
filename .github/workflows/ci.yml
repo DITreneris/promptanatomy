@@ -63,6 +63,13 @@ jobs:
           test -f dist/llms.txt
           grep -q 'PerplexityBot' dist/robots.txt
           grep -q 'OAI-SearchBot' dist/robots.txt
+          grep -q 'facebookexternalhit' dist/robots.txt
+          grep -q 'Facebot' dist/robots.txt
+          grep -q 'Twitterbot' dist/robots.txt
+          grep -q 'LinkedInBot' dist/robots.txt
+          grep -q 'WhatsApp' dist/robots.txt
+          grep -q 'Allow: /anatomy/' dist/robots.txt
+          grep -q 'Disallow: /anatomy/' dist/robots.txt
           grep -q 'Tomas Staniulis' dist/llms-full.txt
           grep -q 'medium.com/@tomas.staniulis76' dist/llms-full.txt
           grep -q 'promptanatomy.site' dist/llms-full.txt

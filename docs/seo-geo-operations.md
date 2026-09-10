@@ -12,7 +12,7 @@
 
 - Spoke domenai (`promptanatomy.info`, `.help`, `.cloud` ir kt.) — kiekvienas turi savo canonical ir savo sitemap
 - Hash sekcijos (`#pricing`, `#ekosistema`, `#faq`)
-- `/anatomy/` — `Disallow` [robots.txt](../frontend/public/robots.txt)
+- `/anatomy/` — `User-agent: *` `Disallow` [robots.txt](../frontend/public/robots.txt); share preview crawlers (`facebookexternalhit`, `Facebot`, `Twitterbot`, `LinkedInBot`, `WhatsApp`) have their own `Allow: /anatomy/` groups so Facebook Debugger is not 403. HTML stays `noindex`. Not in sitemap.
 - `/success`, `/cancel` — noindex, ne sitemap
 - Viešas `/glossary` ar per-term žodyno URL — **WON’T** ([ADR-0002](decisions/0002-hub-glossary-wont.md)); Žodynėlis lieka `/anatomy/`
 
@@ -70,6 +70,7 @@ No automated IndexNow serverless endpoint in this repo (manual ops first).
 ```bash
 curl -sI https://www.promptanatomy.app/sitemap.xml    # 200
 curl -sI https://www.promptanatomy.app/robots.txt     # 200; body contains Sitemap:
+curl -s  https://www.promptanatomy.app/robots.txt | grep -E 'facebookexternalhit|Disallow: /anatomy/'
 curl -sI https://www.promptanatomy.app/llms.txt        # 200
 curl -s  https://www.promptanatomy.app/llms.txt | grep -E 'promptanatomy\.(site|help)'
 curl -s  https://www.promptanatomy.app/llms.txt | grep -E '^>|\[Home EN\]|## Optional'

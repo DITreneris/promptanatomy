@@ -134,6 +134,11 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 - **Viešas Žodynėlis ant `.app`** — nedaromas. SOT: [ADR-0002](decisions/0002-hub-glossary-wont.md). Roadmap **D.3** (`VITE_GLOSSARY_URL` / Navbar „Repo“) lieka optional studentų UX, ne SEO katalogas.
 - **KILL unchanged** — no SSR/Next.js; hub sitemap still 4 URLs; no public `/glossary`.
 
+### Atnaujinimas 2026-09-10 (MON-SEO share crawlers)
+
+- **Origin `robots.txt`** — 5 share grupės (`facebookexternalhit`, `Facebot`, `Twitterbot`, `LinkedInBot`, `WhatsApp`) `Allow: /anatomy/` prieš `*`. `*` vis dar `Disallow: /anatomy/`. Sitemap be `/anatomy/`. Training HTML `noindex` neliestas. `FacebookBot` (AI retrieval) ≠ `facebookexternalhit` (share scrape).
+- **KILL unchanged** — no SSR; no `/anatomy/` in hub sitemap; no `Allow: /anatomy/` for `*`.
+
 ---
 
 *Dokumentas: `docs/SEO-KISS-Marry-Kill.md`. Atnaujinta pagal projekto būseną ir viešas SEO praktikas.*
