@@ -16,10 +16,20 @@ jobs:
     name: Golden Legacy
     runs-on: ubuntu-latest
     steps:
+      # Hub with default GITHUB_TOKEN; private inzinerija needs a PAT
+      # (Contents: Read on DITreneris/inzinerija). Secret: INZINERIJA_READ_TOKEN.
       - uses: actions/checkout@v4
-        with:
-          submodules: recursive
-          token: ${{ secrets.INZINERIJA_READ_TOKEN }}
+
+      - name: Checkout private training submodule
+        env:
+          TOKEN: ${{ secrets.INZINERIJA_READ_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "::error::Secret INZINERIJA_READ_TOKEN is empty or missing. Add a fine-grained PAT (Contents: Read on inzinerija) under Settings → Secrets → Actions."
+            exit 1
+          fi
+          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "https://github.com/"
+          git submodule update --init --recursive
 
       - uses: actions/setup-node@v4
         with:
