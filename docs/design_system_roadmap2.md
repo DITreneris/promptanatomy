@@ -31,7 +31,7 @@
 | **Is the frontpage close to premium SaaS quality?** | **Yes — v1.0 shipped; v1.1 hygiene.** Token + utility system in `index.css`. Remaining work is Won’t (no UI kit, no webfont, no dark mode). |
 | **What was fixed first (Phases 1–4)?** | Dual CTA gradient → `btn-primary`; Hero CTA ↔ `#pricing`; proof copy disambiguation; stat SR readability; Methodology semantics; `mt-20` removed; local `noise.svg`. |
 | **What's next?** | Nothing in-scope except optional Could (screenshots). Do not reopen Phases 5–7 as Open. |
-| **Remaining trust polish?** | Proof numbers: **500+** library; **40+** interactive tools; **300+** interactive slides; **600+** practitioners. No verified logo wall. Desktop nav (golden-legacy 2026-08-13): What Is + Ecosystem (+ Training if `hasAccess`). **Not** Pricing / Methodology / FAQ. |
+| **Remaining trust polish?** | Proof numbers: **500+** library; **40+** interactive tools; **300+** interactive slides. **600+** practitioners **removed** (2026-09-14). Social proof = Trusted-by client logo band (`TrustedBy.jsx`, 6 logos). Desktop nav (golden-legacy 2026-08-13): What Is + Ecosystem (+ Training if `hasAccess`). **Not** Pricing / Methodology / FAQ. |
 | **What must not change?** | Brand palette (dark + gold), terminal hero, Navbar Variant B, Stripe checkout flow, mobile drawer pattern, i18n architecture. |
 | **What we will not adopt?** | `@primer/react`, shadcn on LP, dark mode, Figma pipeline, animation libraries — see §14.3. |
 
@@ -137,7 +137,7 @@ From [HomePage.jsx](../frontend/src/pages/HomePage.jsx) L161–288:
 | Shadows | Named tokens + `shadow-tier-*` | Tier not enforced in all components | 6 | Partial |
 | Borders | `border-slate-*` dominant | Mix `border` vs `border-2`; glass rgba | 5 | — |
 | Mobile layout | Drawer, full-width Hero CTA, touch targets | — | — | Hero pass ✓ |
-| Trust signals | Stripe, FAQ schema, disambiguated metrics | No verified logo wall | — | Copy ✓ |
+| Trust signals | Stripe, FAQ schema, disambiguated metrics, Trusted-by logo band (2026-09-14) | — | — | Copy ✓ |
 | Footer | Title Case, 4× `col-span-3`, legal `text-xs` | — | — | ✓ (2026-08-13) |
 | Accessibility | Skip link, focus-visible, FAQ, stat SR | Lighthouse post-deploy unchecked | 7 | Semantics ✓ |
 | SEO / semantic | One H1, section IDs, hreflang | — | — | Methodology ✓ |
@@ -212,7 +212,7 @@ From [HomePage.jsx](../frontend/src/pages/HomePage.jsx) L161–288:
 | First-screen clarity (2s) | Strong headline + terminal; bullets hidden `< sm` | — | Done in Phase 3 | — |
 | Visual hierarchy | Good section contrast | Uniform `font-black` on stats/labels | Weight + size tokens | 5 |
 | CTA confidence | `btn-primary` unified on LP | Success/Cancel off-system | Button parity | 6 |
-| Trust-building | Disambiguated metrics + Stripe + FAQ | No verified logo wall | Founder decision only | — |
+| Trust-building | Disambiguated metrics + Stripe + FAQ + Trusted-by logos | — | Shipped 2026-09-14 (`TrustedBy.jsx`) | — |
 | Whitespace | Even section gaps | `section-default` not everywhere | Apply utility | 5 |
 | Typography scale | Responsive H1 | Ad-hoc px in JSX | `--text-stat`, `--text-price`, labels | 5 |
 | Materials (surfaces) | Named shadows exist | rgba glass/amber inline | Functional tokens | 5 |
@@ -229,7 +229,7 @@ From [HomePage.jsx](../frontend/src/pages/HomePage.jsx) L161–288:
 
 | # | Decision | Resolution |
 |---|----------|------------|
-| 1 | **Canonical proof numbers** | **Updated 2026-08-13.** **500+** = ecosystem prompt/template library (`hero.bullet1`, `whatIs.stat1Number`, `pricing.features`); **40+** = interactive tools (`whatIs.stat2`); **300+** = interactive slides (`whatIs.stat3`); **600+** = practitioners (`hero.socialProof`). |
+| 1 | **Canonical proof numbers** | **Updated 2026-09-14.** **500+** = ecosystem prompt/template library (`hero.bullet1`, `whatIs.stat1Number`, `pricing.features`); **40+** = interactive tools (`whatIs.stat2`); **300+** = interactive slides (`whatIs.stat3`). **600+** practitioners (`hero.socialProof`) **removed** — no published counting method; social proof is now the Trusted-by client logo band (`TrustedBy.jsx`). |
 | 2 | **Primary button gradient** | **`bg-cta-gradient`** for all primary buttons via `btn-primary` utilities. **`bg-accent-gradient`** only for Hero H1 text clip + skip link. |
 
 ---
@@ -238,7 +238,7 @@ From [HomePage.jsx](../frontend/src/pages/HomePage.jsx) L161–288:
 
 | Task | Status | Notes |
 |------|--------|-------|
-| Proof numbers / copy audit | Done | **500+** library; **40+** interactive tools; **300+** slides; **600+** social proof |
+| Proof numbers / copy audit | Done | **500+** library; **40+** interactive tools; **300+** slides. **2026-09-14:** **600+** social proof removed; proof = Trusted-by logo band |
 | Hero CTA ↔ `#pricing` | Done | `hero.cta` pricing intent; removed unused `ctaSecondary`. **2026-08-13:** QW3a (Hero → `.cloud`) was a regression against Primer “one primary CTA intent to pricing”; restored — one Hero CTA → `#pricing`, same tab, no secondary. |
 | Standardize primary gradient | Done | HomePage access CTAs, CancelPage |
 | Remove Methodology `mt-20` | Done | |

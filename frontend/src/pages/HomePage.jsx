@@ -2,6 +2,7 @@ import { lazy, Suspense, useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
+import TrustedBy from '../components/TrustedBy'
 import WhatIsPromptAnatomy from '../components/WhatIsPromptAnatomy'
 import Pricing from '../components/Pricing'
 import Footer from '../components/Footer'
@@ -174,6 +175,7 @@ export default function HomePage({ forceLocale }) {
       />
       <main id="main-content" tabIndex={-1}>
         <Hero />
+        <TrustedBy />
         <WhatIsPromptAnatomy />
         <Suspense fallback={null}>
           <Methodology />

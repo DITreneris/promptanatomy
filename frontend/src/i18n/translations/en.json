@@ -48,7 +48,6 @@
     "bullet2": "Build structured prompts, GPTs and automations faster",
     "bullet3": "Create workflows your team can reuse",
     "cta": "Choose a plan",
-    "socialProof": "600+ practitioners building with Prompt Anatomy",
     "terminalOutcome": "FROM PROMPT → TO REPEATABLE SYSTEM",
     "codeLine1": "01. Meta",
     "codeRole": "ROLE:",
@@ -60,6 +59,9 @@
     "codeSchema": "SCHEMA:",
     "codeSchemaValue": "Clear structure – bullets or list",
     "avatarAlt": "Community member avatar"
+  },
+  "trustedBy": {
+    "title": "Teams we've trained"
   },
   "whatIs": {
     "title": "What is Prompt Anatomy?",
