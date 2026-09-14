@@ -45,6 +45,7 @@ Prieš deploy į produkciją patikrinkite:
 3. **Submoduliai:** *Settings → Git* – įjunkite **Include Git Submodules**. Build log turi rodyti `apps/prompt-anatomy` commit **`99d2639`** ir `VITE_MAX_BUILD_MODULE=12` / `build:corporate12`.
 4. **Husky:** submodulio `npm ci` Vercel'e naudoja `HUSKY=0` (žr. `vercel.json` `installCommand`).
 5. **Logai:** Deployments → failed build → Build Logs – ieškokite `validate:schema`, `husky`, `submodule`, `ENOMEM` / timeout. Build/install logika – [`scripts/vercel-build.sh`](../scripts/vercel-build.sh), [`scripts/vercel-install.sh`](../scripts/vercel-install.sh) (Vercel `buildCommand` ≤256 simb.).
+6. **`destination path ... already exists and is not an empty directory`:** Vercel clone nepaima submodulio, tada restore cache palieka `apps/prompt-anatomy` be `.git`. [`vercel-install.sh`](../scripts/vercel-install.sh) tą kelią ištrina ir tik tada `git submodule update --init`. Jei vis tiek krenta — Redeploy **be** existing Build Cache.
 
 ### 2.2 Production env audit (po release 1.4.6)
 
