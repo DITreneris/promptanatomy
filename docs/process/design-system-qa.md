@@ -7,9 +7,9 @@
 
 | Viewport | Check |
 |----------|--------|
-| 375px | Hero CTA column; social-proof pill `max-w-full` + `break-words` (EN 600+ string wraps, no horizontal overflow); Pricing cards; FAQ summary `min-w-0 flex-1 break-words`; mobile drawer open/close; drawer locale LT\|EN `min-h-[44px]`; access feedback CTAs `min-h-[48px]`; Footer links |
-| 768px | Navbar density; section headings readable |
-| 1280px | Desktop nav: What Is, Ecosystem, Training (if access) + locale + CTA; Footer 4 equal columns (`lg:col-span-3`) + legal bar all `text-xs`; Ecosystem grid; FAQ contrast |
+| 375px | Hero CTA column; TrustedBy `#trusted-by` 3+3 wrap, no horizontal overflow; Pricing cards; FAQ summary `min-w-0 flex-1 break-words`; mobile drawer open/close; drawer locale LT\|EN `min-h-[44px]`; access feedback CTAs `min-h-[48px]`; Footer links |
+| 768px | Navbar density; section headings readable; TrustedBy six logos in **one** row |
+| 1280px | Desktop nav: What Is, Ecosystem, Training (if access) + locale + CTA; Footer 4 equal columns (`lg:col-span-3`) + legal bar all `text-xs`; Ecosystem grid; FAQ contrast; TrustedBy one row |
 
 Run the same rows on **`/lt` and `/en`** (375 / 1280): wordmark, `nav.whatIs`, hero subtitle — LT eilutės ilgesnės; nelūžta už viewport.
 
