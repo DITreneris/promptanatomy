@@ -24,6 +24,8 @@ jobs:
         env:
           TOKEN: ${{ secrets.INZINERIJA_READ_TOKEN }}
         run: |
+          # Secrets pasted with a trailing newline break git config keys.
+          TOKEN="$(printf '%s' "$TOKEN" | tr -d '\r\n')"
           if [ -z "$TOKEN" ]; then
             echo "::error::Secret INZINERIJA_READ_TOKEN is empty or missing. Add a fine-grained PAT (Contents: Read on inzinerija) under Settings → Secrets → Actions."
             exit 1
