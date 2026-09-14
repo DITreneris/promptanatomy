@@ -48,7 +48,6 @@
     "bullet2": "Kurk struktūruotus promptus, GPT ir agentus greičiau",
     "bullet3": "Diek procesus, kuriuos komandos gali pakartoti",
     "cta": "Rinktis planą",
-    "socialProof": "600+ praktikų kuria su Promptų Anatomija",
     "terminalOutcome": "NUO PROMPTO → Į KARTOJAMĄ SISTEMĄ",
     "codeLine1": "01. Meta",
     "codeRole": "VAIDMUO:",
@@ -60,6 +59,9 @@
     "codeSchema": "SCHEMA:",
     "codeSchemaValue": "Aiški struktūra, punktai ar sąrašas",
     "avatarAlt": "Bendruomenės nario avataras"
+  },
+  "trustedBy": {
+    "title": "Komandos, kurias mokėme"
   },
   "whatIs": {
     "title": "Kas yra Promptų Anatomija",

@@ -155,7 +155,6 @@ Tool: `npx lighthouse` — mobile form factor, simulated throttling.
 | Cache-Control audit on Vercel | P2 | Prod headers missing on `assets/*` |
 | PostHog / Speed Insights RUM | P3 | After Lighthouse baseline (done) |
 | Hero INP tuning | P3 | Mobile INP p75 > 200 ms in field data |
-| TrustedBy lazy SVG | P3 | When component ships in repo |
 
 **Staged target:** Critical JS ≤ 180 KB; entry ≤ 18 KB gzip — **met** (13.3 KB entry, 81.2 KB critical).
 
@@ -167,7 +166,7 @@ Tool: `npx lighthouse` — mobile form factor, simulated throttling.
 
 - Hero INP pass if p75 > 200 ms
 - PostHog / Vercel Speed Insights web vitals dashboard
-- TrustedBy (when merged): lazy SVG, fixed dimensions, `loading="lazy"`
+- TrustedBy **shipped** (2026-09-14): raster `public/logo/*.webp`, `loading="lazy"`, intrinsic `width`/`height` (not SVG)
 
 ---
 
