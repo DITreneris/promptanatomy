@@ -6,7 +6,6 @@ const FAQ_SCHEMA_SCRIPT_ID = 'faq-ldjson'
 
 export default function Faq() {
   const { t, locale } = useLocale()
-  const sectionLabel = typeof t('faq.sectionLabel') === 'string' ? t('faq.sectionLabel').trim() : ''
   const title = t('faq.title')
   const items = t('faq.items')
   const list = Array.isArray(items) ? items : []
@@ -42,11 +41,6 @@ export default function Faq() {
       aria-labelledby="faq-heading"
     >
       <div className="max-w-3xl mx-auto min-w-0">
-        {sectionLabel && (
-          <p className="text-xs font-bold uppercase tracking-[0.35em] text-brand-accent text-center mb-4">
-            {sectionLabel}
-          </p>
-        )}
         <h2
           id="faq-heading"
           className="section-heading mb-10 text-center"

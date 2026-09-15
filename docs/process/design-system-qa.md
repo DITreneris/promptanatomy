@@ -35,7 +35,7 @@ Run the same rows on **`/lt` and `/en`** (375 / 1280): wordmark, `nav.whatIs`, h
 
 ## FAQ (Phase 8)
 
-- [ ] FAQ **eyebrow absent** — `faq.sectionLabel` is empty; only `h2` ([golden-legacy-standard.md](../golden-legacy-standard.md) §3)
+- [ ] FAQ **eyebrow absent in code** — no `faq.sectionLabel` key; only `h2` ([golden-legacy-standard.md](../golden-legacy-standard.md) §3)
 - [ ] Closed accordion contrast (`faq-item`); open state accent left border
 - [ ] Container max-width ~3xl
 

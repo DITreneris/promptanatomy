@@ -34,7 +34,7 @@ const ECOSYSTEM_HOVER_RING = ['group-hover:ring-ecosystem-1', 'group-hover:ring-
 const ROW_SIZE = 3
 const PRIMARY_CARD_INDEX = 0
 
-const PHASE_ACCENT_CLASSES = ['card-phase-accent-1', 'card-phase-accent-2', 'card-phase-accent-3', 'card-phase-accent-3']
+const PHASE_ACCENT_CLASSES = ['card-phase-accent-1', 'card-phase-accent-2', 'card-phase-accent-3']
 
 function parseTagList(tags) {
   if (!tags || typeof tags !== 'string') return []
@@ -104,15 +104,10 @@ export default function Ecosystem() {
 }
 
 function renderCard(item, i, t, locale, pagePath) {
-  const tagsRaw =
-    (typeof item.tags === 'string' && item.tags.trim()) ||
-    (Array.isArray(item.bullets) && item.bullets.length > 0 ? item.bullets.join(' · ') : null)
+  const tagsRaw = typeof item.tags === 'string' && item.tags.trim() ? item.tags.trim() : null
   const tagList = parseTagList(tagsRaw)
   const outcome = typeof item.outcome === 'string' && item.outcome.trim() ? item.outcome.trim() : null
-  const ctaLabel =
-    (typeof item.cta === 'string' && item.cta.trim()) ||
-    (typeof t('ecosystem.ctaOpen') === 'string' && t('ecosystem.ctaOpen').trim()) ||
-    null
+  const ctaLabel = typeof item.cta === 'string' && item.cta.trim() ? item.cta.trim() : null
   const useCtaLayout = Boolean(tagList.length > 0 || ctaLabel)
   const isPrimaryCard = i === PRIMARY_CARD_INDEX
   const iconShadowClass = isPrimaryCard ? 'shadow-ecosystem-icon-card' : 'shadow-ecosystem-icon-depth'
@@ -133,7 +128,7 @@ function renderCard(item, i, t, locale, pagePath) {
         <span className="absolute top-6 right-6 badge-premium">{t('ecosystem.startHere')}</span>
       )}
       <div
-        className={`w-12 h-12 rounded-xl flex items-center justify-center text-white ${iconShadowClass} transition-all duration-220 group-hover:scale-105 ring-2 ring-transparent group-hover:ring-2 ${ECOSYSTEM_BG_CLASSES[item.themeIndex - 1]} ${ECOSYSTEM_HOVER_RING[item.themeIndex - 1]} mb-3`}
+        className={`w-12 h-12 rounded-xl flex items-center justify-center text-white ${iconShadowClass} transition-all duration-200 group-hover:scale-105 ring-2 ring-transparent group-hover:ring-2 ${ECOSYSTEM_BG_CLASSES[item.themeIndex - 1]} ${ECOSYSTEM_HOVER_RING[item.themeIndex - 1]} mb-3`}
       >
         {item.icon}
       </div>

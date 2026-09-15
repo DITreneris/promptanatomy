@@ -25,19 +25,14 @@
     "ariaOpenMenu": "Open menu",
     "whatIs": "What is Prompt Anatomy",
     "ecosystem": "Ecosystem",
-    "methodology": "Methodology",
     "cloud": "Cloud",
     "pro": "Pro",
     "repo": "Repo",
     "training": "Training",
-    "pricing": "Pricing",
-    "faq": "FAQ",
     "cta": "Choose a plan",
     "alreadyHaveAccess": "I already have access",
     "brandPromptu": "Prompt",
-    "brandAnatomija": "Anatomy",
-    "brandTagline": "AI Training System",
-    "version": "v1.5"
+    "brandAnatomija": "Anatomy"
   },
   "hero": {
     "badge": "6-Block AI System",
@@ -57,8 +52,7 @@
     "codeContextValue": "Create a marketing strategy and plan",
     "codeLine3": "03. Output",
     "codeSchema": "SCHEMA:",
-    "codeSchemaValue": "Clear structure – bullets or list",
-    "avatarAlt": "Community member avatar"
+    "codeSchemaValue": "Clear structure – bullets or list"
   },
   "trustedBy": {
     "title": "Teams we've trained"
@@ -90,7 +84,6 @@
   },
   "ecosystem": {
     "title": "Choose your starting point",
-    "ctaOpen": "View system",
     "mapLink": "See the ecosystem",
     "startHere": "Start here",
     "opensInNewTab": "Opens in new tab",
@@ -172,7 +165,6 @@
     ],
     "stripeVerified": "Secured checkout with Stripe",
     "refundContact": "Refunds: we reply within 14 days at info@promptanatomy.app — see Terms",
-    "aiPowered": "",
     "checkAccess": "Email",
     "returningTitle": "Already purchased?",
     "returningBody": "Enter the email you used at checkout. The training link opens here — we don't email it.",
@@ -194,7 +186,6 @@
     "clearStoredEmail": "Forget saved email on this device"
   },
   "faq": {
-    "sectionLabel": "",
     "title": "Frequently asked questions",
     "items": [
       { "q": "What do I get when I pay?", "a": "You get lifetime access to your plan’s training modules on promptanatomy.app — Starter (modules 1–3, 39 EUR) or Core (modules 1–6, 99 EUR). That includes the interactive app at /anatomy/, hands-on exercises, and a certificate from 70%. The 500+ prompt library lives on free ecosystem spokes that complement the course. Prompt Anatomy is the hub for checkout and training; spokes (Cloud, library, marketing, HR, CEO, Pro) are free workflow tools. Support is in our public Telegram group." },
