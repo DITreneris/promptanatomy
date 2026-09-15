@@ -104,7 +104,33 @@ jobs:
           grep -q '\[Home EN\](https://www.promptanatomy.app/)' dist/llms.txt
           grep -q '\[Full LLM index\](https://www.promptanatomy.app/llms-full.txt)' dist/llms.txt
           grep -q 'promptanatomy.site' dist/llms.txt
+          grep -q '## LT' dist/llms.txt
+          grep -q 'DI mokymai' dist/llms.txt
           grep -q '## Optional' dist/llms.txt
+          test -f dist/sitemap.xml
+          [ "$(grep -c '<loc>' dist/sitemap.xml)" = "4" ]
+          grep -q '<loc>https://www.promptanatomy.app/</loc>' dist/sitemap.xml
+          grep -q '<loc>https://www.promptanatomy.app/lt</loc>' dist/sitemap.xml
+          if grep -qE '<loc>[^<]*promptanatomy\.(site|cloud|info|space|help|ceo|pro|blog|lol)' dist/sitemap.xml; then
+            echo '::error::Hub sitemap must not list spoke or discovery domains' >&2
+            exit 1
+          fi
+          if grep -q '/anatomy/' dist/sitemap.xml; then
+            echo '::error::Hub sitemap must not list /anatomy/' >&2
+            exit 1
+          fi
+          if grep -qE '<loc>[^<]*/(success|cancel)</loc>' dist/sitemap.xml; then
+            echo '::error::Hub sitemap must not list /success or /cancel' >&2
+            exit 1
+          fi
+          test -f dist/lt.html
+          grep -q '<html lang="lt">' dist/lt.html
+          grep -q 'content="lt_LT"' dist/lt.html
+          if grep -q 'Turn random AI chats' dist/lt.html; then
+            echo '::error::EN first-byte copy leaked into dist/lt.html' >&2
+            exit 1
+          fi
+          grep -q '<title>Prompt Anatomy – AI Training System</title>' dist/index.html
 
       - name: Training app install and build
         working-directory: apps/prompt-anatomy

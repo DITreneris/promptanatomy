@@ -139,6 +139,15 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 - **Origin `robots.txt`** — 5 share grupės (`facebookexternalhit`, `Facebot`, `Twitterbot`, `LinkedInBot`, `WhatsApp`) `Allow: /anatomy/` prieš `*`. `*` vis dar `Disallow: /anatomy/`. Sitemap be `/anatomy/`. Training HTML `noindex` neliestas. `FacebookBot` (AI retrieval) ≠ `facebookexternalhit` (share scrape).
 - **KILL unchanged** — no SSR; no `/anatomy/` in hub sitemap; no `Allow: /anatomy/` for `*`.
 
+### Įgyvendinimo būsena (2026-09-15, LT first byte)
+
+- **`/lt` first-byte copy** — [generate-locale-static.mjs](../frontend/scripts/generate-locale-static.mjs) patches `title`, `description`, `og:*`, `twitter:*`, `og:image:alt` from `lt.json` / `en.json`. Crawlers that skip JS now see LT meta on `/lt` instead of the EN shell.
+- **`llms.txt` `## LT`** — [geo-manifest.js](../frontend/src/site/geo-manifest.js) `TOPICS_LT` + `LLMS_LT_SUMMARY`; [generate-geo-static.mjs](../frontend/scripts/generate-geo-static.mjs) emits the block before `## Optional`.
+- **`rel=describedby`** — [vercel.json](../vercel.json) Link header on `/` **and** `/lt`.
+- **CI** — GEO smoke asserts 4-URL sitemap (no spokes / `/anatomy/` / success-cancel) and `dist/lt.html` is LT (`lang="lt"`, no EN description).
+- **`LAST_UPDATED`** → `2026-09-15`.
+- **KILL unchanged** — no SSR/Next.js; hub sitemap still 4 URLs; no public `/glossary`; no spokes in hub sitemap.
+
 ---
 
 *Dokumentas: `docs/SEO-KISS-Marry-Kill.md`. Atnaujinta pagal projekto būseną ir viešas SEO praktikas.*

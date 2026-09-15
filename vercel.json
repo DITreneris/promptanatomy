@@ -27,6 +27,15 @@
       ]
     },
     {
+      "source": "/lt",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.promptanatomy.app/llms.txt>; rel=\"describedby\""
+        }
+      ]
+    },
+    {
       "source": "/robots.txt",
       "headers": [
         { "key": "Content-Type", "value": "text/plain; charset=utf-8" }
