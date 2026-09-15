@@ -20,7 +20,3 @@ export const SITE_URL = import.meta.env.VITE_SITE_URL || 'https://www.promptanat
 
 /** After successful LP „Patikrink prieigą“, email saved for restore on next visit (navbar Mokymai, forma). */
 export const LP_ACCESS_EMAIL_STORAGE_KEY = 'pa_lp_access_email'
-
-/** Single source for app version and Hero script name; change here to update Hero, Ecosystem, etc. */
-export const APP_VERSION = 'v1.5'
-export const SCRIPT_NAME = `${APP_VERSION}_os.sh`

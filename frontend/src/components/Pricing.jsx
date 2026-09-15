@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, CheckCircle, Lock, ShieldCheck, Cpu, Globe } from 'lucide-react'
+import { ArrowRight, CheckCircle, Lock, ShieldCheck, Globe } from 'lucide-react'
 import { useLocale } from '../i18n/LocaleContext'
 import { moduleDisplayCap } from '../utils/accessDisplay'
 import { capturePosthogEvent } from '../analytics/posthog'
@@ -18,7 +18,6 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
   const { t } = useLocale()
   const features = t('pricing.features') || []
   const trustSignals = t('pricing.trustSignals') || []
-  const aiPoweredLabel = typeof t('pricing.aiPowered') === 'string' ? t('pricing.aiPowered').trim() : ''
   const highest_plan = access?.highest_plan ?? 0
   const can_upgrade_to = access?.can_upgrade_to ?? []
 
@@ -190,11 +189,6 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
         >
           <ShieldCheck className="icon-sm shrink-0" aria-hidden /> {t('pricing.refundContact')}
         </Link>
-        {aiPoweredLabel && (
-          <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em]">
-            <Cpu className="icon-sm shrink-0" aria-hidden /> {aiPoweredLabel}
-          </div>
-        )}
       </div>
     </>
   )

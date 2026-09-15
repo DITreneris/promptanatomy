@@ -42,9 +42,9 @@ export default function Methodology() {
           {itemsWithIcons.map((item, i) => (
             <React.Fragment key={i}>
               <div
-                className="group flex-1 min-w-0 flex flex-col min-h-[280px] card-density transition-all duration-180 hover:-translate-y-1.5 hover:shadow-soft-lg hover:border-brand-accent/20"
+                className="group flex-1 min-w-0 flex flex-col min-h-[280px] card-density transition-all duration-200 hover:-translate-y-1.5 hover:shadow-soft-lg hover:border-brand-accent/20"
               >
-                <div className="w-14 h-14 rounded-[14px] bg-brand-dark text-brand-accent flex items-center justify-center mb-6 transition-all duration-180 group-hover:rotate-[4deg] shadow-accent-ring group-hover:shadow-accent-ring-hover">
+                <div className="w-14 h-14 rounded-[14px] bg-brand-dark text-brand-accent flex items-center justify-center mb-6 transition-all duration-200 group-hover:rotate-[4deg] shadow-accent-ring group-hover:shadow-accent-ring-hover">
                   {item.icon}
                 </div>
                 <span className="text-xs font-bold text-slate-600 tracking-widest mb-2 block">{item.step}</span>

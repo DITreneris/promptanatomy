@@ -3,9 +3,9 @@
 | Field | Value |
 |-------|-------|
 | **Date** | 2026-05-24 |
-| **Last updated** | 2026-08-13 (v1.1 follow-up DS-1–5: heading-order, gold-on-light text, drawer `inert`, `btn-dark`, icon leftovers; v1.1 hygiene unchanged — no v1.2) |
-| **Implemented** | 2026-05-24 (Phases 1–8); **v1.1** 2026-08-13 |
-| **Status** | **v1.0 shipped** (Phases 5–8). **v1.1 hygiene shipped** — see §6 v1.1. QA: [design-system-qa.md](process/design-system-qa.md) |
+| **Last updated** | 2026-09-15 (v1.1 leftover prune: unused utilities/tokens, FAQ eyebrow code, duration-200; **no v1.2**) |
+| **Implemented** | 2026-05-24 (Phases 1–8); **v1.1** 2026-08-13; leftover prune 2026-09-15 |
+| **Status** | **v1.0 shipped** (Phases 5–8). **v1.1 hygiene shipped** — leftover prune 2026-09-15. QA: [design-system-qa.md](process/design-system-qa.md) |
 | **External benchmark** | [GitHub Primer](https://primer.style/) — token layering, semantics, flow (§14) |
 | **Scope** | LP in [frontend/src/pages/HomePage.jsx](../frontend/src/pages/HomePage.jsx) and [frontend/src/components/](../frontend/src/components/) |
 | **Token source** | [frontend/src/index.css](../frontend/src/index.css) (`@theme`, Tailwind CSS v4 — **not** `tailwind.config.js`) |
@@ -72,6 +72,7 @@ Closed: raw rgba in JSX, ad-hoc type px, inline shadows, Success/Cancel off-syst
 HomePage
 ├── Navbar
 ├── Hero
+├── TrustedBy
 ├── WhatIsPromptAnatomy
 ├── Methodology
 ├── Pricing (+ returning-customer form inline in HomePage)
@@ -82,11 +83,11 @@ HomePage
 
 ### Current section order (code truth)
 
-From [HomePage.jsx](../frontend/src/pages/HomePage.jsx) L161–288:
+From [HomePage.jsx](../frontend/src/pages/HomePage.jsx):
 
-**Hero → WhatIs → Methodology → Pricing → Ecosystem → FAQ → Footer**
+**Hero → TrustedBy → WhatIs → Methodology → Pricing → Ecosystem → FAQ → Footer**
 
-**Section order (canonical):** Hero → What Is → Methodology → **Pricing** → Ecosystem → FAQ → Footer. [golden-legacy-standard.md](golden-legacy-standard.md) §3 synced 2026-05-24.
+**Section order (canonical):** Hero → TrustedBy → What Is → Methodology → **Pricing** → Ecosystem → FAQ → Footer. [golden-legacy-standard.md](golden-legacy-standard.md) §3.
 
 ### Components that work (systematize)
 
@@ -348,9 +349,9 @@ section-heading → text-4xl md:text-5xl font-black text-brand-dark tracking-[-0
 
 | Task | Status | Files |
 |------|--------|-------|
-| Hub core pill + desktop connectors | Done | `Ecosystem.jsx`, `index.css` (`hub-core-pill`, `hub-connector-line`) |
+| Hub core pill + desktop connectors | **Removed 2026-08-13** (CSS utilities deleted 2026-09-15 leftover prune) | `Ecosystem.jsx` chrome gone; do not restore `hub-core-pill` / `hub-connector-line` |
 | Remove carousel-like `ConnectorRow` | Done | `Ecosystem.jsx` |
-| Card density utilities | Done | `index.css` (`card-density`, `card-density-dark`) |
+| Card density utilities | Done | `index.css` (`card-density`, `card-density-dark-premium`) |
 | Ecosystem CTA + map link | Done | `btn-ecosystem-outline` |
 | Cross-section polish (Hero, WhatIs, Methodology, Pricing, FAQ, Navbar) | Done | respective components |
 | Yellow tier utilities (`badge-premium`, `faq-item`) | Done | `index.css`, `Pricing.jsx`, `Faq.jsx` |
@@ -374,8 +375,10 @@ section-heading → text-4xl md:text-5xl font-black text-brand-dark tracking-[-0
 | Lucide `icon-sm/md/lg`; Success `icon-display` (48px) | Done |
 | `card-feedback-success/warning` + owned CTA; Hero terminal exempt | Done |
 | `page-heading` / `page-subheading` on Privacy/Terms | Done |
-| Shadow public API = `shadow-tier-1/2/3`; do not collapse Ecosystem shadows | Done (docs) |
+| Shadow public API = named shadows (`shadow-soft` / `shadow-soft-lg` / `shadow-pricing-card` / `shadow-ecosystem-*`); do not collapse Ecosystem shadows | Done (v1.1 leftover prune: `shadow-tier-*` utilities deleted) |
 | v1.1 follow-up DS-1–5: heading-order `h3`/`h1`; gold-on-light (`text-amber-800` / navy+gold underline); drawer `inert`; `btn-dark`; Lucide `icon-*` leftovers | Done (2026-08-13) |
+
+**v1.1 leftover prune (2026-09-15) — not v1.2.** Deleted unused `@utility` (`hub-core-pill`, `hub-connector-line`, `card-density-dark*`, `btn-ecosystem-ghost`, `animate-fade-in-up`, `shadow-tier-*`); unused shadow tokens; FAQ eyebrow code + empty `faq.sectionLabel`; invalid `duration-180`/`duration-220` → `duration-200`. Named Ecosystem/Pricing shadows stay. Crumb follow-up: deleted unused `--color-border-glass` / `--color-border-glass-hover` / `--shadow-ecosystem-card-rim` / `--color-brand-accent-hover`; unused `nav.brandTagline`; `PHASE_ACCENT_CLASSES` is 1–3 (`--color-ecosystem-4` kept).
 
 **Won’t:** shadcn / `@primer/react` / Geist font / dark mode / Figma pipeline / OKLCH / screenshot CI / Methodology+FAQ in desktop nav / collapsing Ecosystem shadows / `--color-brand-accent-fg` (wordmark gold on white stays).
 
@@ -405,7 +408,7 @@ Phase 5 (functional tokens + type scale)
 | 7 | **Typography hierarchy** | Done — weight + size tokens; legal `page-heading` / `page-subheading` | 5 / v1.1 |
 | 8 | **Mobile layout** | Done — 44px targets | — |
 | 9 | **Proof blocks** | Done — mixed metrics, disambiguated copy | — |
-| 10 | **Shadows / borders** | Done — public API `shadow-tier-1/2/3`; component shadows named in `@theme` only | 5–6 / v1.1 |
+| 10 | **Shadows / borders** | Done — named shadows in `@theme` (`shadow-soft`, `shadow-soft-lg`, `shadow-pricing-card`, `shadow-ecosystem-*`); no `shadow-tier-*` | 5–6 / v1.1 |
 | 11 | **Gradients** | Done — CTA on buttons; accent on H1 clip + skip link only | — |
 | 12 | **Images / diagrams** | Done — local `noise.svg` only | — |
 | 13 | **Footer density** | Done (2026-08-13) | 4× `lg:col-span-3`; legal `text-xs`; tagline be brand echo |
@@ -413,7 +416,7 @@ Phase 5 (functional tokens + type scale)
 | 15 | **Semantic headings** (Primer) | Done — visual size via utility, not tag swap | — |
 | 16 | **Emphasis via weight/size** (Primer) | Done — not color alone for hierarchy | 5 |
 | 17 | **Focus + 44px targets** (Primer a11y) | Done — `focus-ring` on interactives | — |
-| 18 | **Materials / elevation tiers** | Done — `shadow-tier-1/2/3` public API; Ecosystem names are component layer | 6 / v1.1 |
+| 18 | **Materials / elevation tiers** | Done — named shadows as public API; Ecosystem names are component layer | 6 / v1.1 |
 | 19 | **Encourage flow** (Primer) | Done — one primary CTA intent to pricing (QW3a `.cloud` outbound reverted 2026-08-13) | — |
 | 20 | **Desktop wayfinding** | Done — What Is + Ecosystem (+ Training if access). Methodology/FAQ **not** in desktop nav (golden-legacy 2026-08-13) | 6 |
 
@@ -442,7 +445,7 @@ Phase 5 (functional tokens + type scale)
 | Shadow tier 1 | `shadow-soft`, `shadow-xs` | Cards, nav |
 | Shadow tier 2 | `shadow-soft-lg`, `shadow-hero-value` | Elevated cards |
 | Shadow tier 3 | `shadow-pricing-card`, `shadow-cta-shadow`, `shadow-pricing-cta` | Featured pricing, CTAs |
-| Shadow public API | `shadow-tier-1` / `shadow-tier-2` / `shadow-tier-3` | Elevation for new LP surfaces (`shadow-soft`, `shadow-soft-lg`, `shadow-pricing-card` aliases) |
+| Shadow public API | `shadow-soft` / `shadow-soft-lg` / `shadow-pricing-card` | Elevation for new LP surfaces. Do not add `shadow-tier-*`. |
 | Shadow component | `shadow-ecosystem-*`, `shadow-cta-shadow`, `shadow-accent-ring` | Hub/CTA/methodology — reuse these names; no new `shadow-[…]` in JSX |
 | Focus | `focus-ring` utility | All interactives |
 | Dark fill button | `btn-dark` | `#access` Check only — navy fill, not a second primary CTA |
@@ -457,7 +460,7 @@ Phase 5 (functional tokens + type scale)
 | `--color-accent-muted-bg` | Pricing badge, featured card tint |
 | `--color-accent-muted-border` | Amber pill/card borders |
 | `--color-surface-glass` | Ecosystem hub cards |
-| `--color-border-glass` | Ecosystem card borders |
+| `--color-border-glass` | Historical — deleted 2026-09-15; cards use `card-glass-ecosystem` (`border-white/12`) |
 | `--shadow-accent-ring` | Methodology icon hover ring |
 | `--text-stat` | WhatIs stat numbers (~3.5rem) |
 | `--text-price` | Pricing price display (~2.75rem) |
@@ -688,7 +691,7 @@ Analysis of [GitHub Primer](https://primer.style/) and comparable premium SaaS s
 | **Semantic markup ≠ visual design** | Heading level = meaning; size via utility class | ✓ Methodology fixed |
 | **Typography via tokens** | `rem` scale, weight contrast, labels from `@theme` | ✓ Phase 5 + `page-heading` |
 | **Accessibility first** | 4.5:1 contrast, focus-visible, 44px targets, reduced motion | ✓ Strong; Lighthouse a11y 92 |
-| **Materials / elevation** | Surface + stroke + shadow presets (Geist “Materials”) | ✓ Public API `shadow-tier-*` |
+| **Materials / elevation** | Surface + stroke + shadow presets (Geist “Materials”) | ✓ Named shadows (`shadow-soft`, `shadow-pricing-card`, `shadow-ecosystem-*`) |
 | **Single icon language** | Lucide only; documented 16/20/24 + display 48 | ✓ v1.1 |
 | **Shipped = fast + accessible** | Lighthouse + manual QA as release gate | ✓ a11y recorded; perf in pagespeed snapshot |
 

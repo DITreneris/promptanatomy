@@ -73,7 +73,7 @@ jobs:
             fail=1
           fi
           if grep -rE 'shadow-\[' src/components src/pages --include='*.jsx'; then
-            echo '::error::Forbidden shadow-[ in LP JSX — use shadow-tier / named shadows' >&2
+            echo '::error::Forbidden shadow-[ in LP JSX — use named shadows in @theme' >&2
             fail=1
           fi
           exit $fail

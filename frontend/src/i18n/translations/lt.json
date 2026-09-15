@@ -25,19 +25,14 @@
     "ariaOpenMenu": "Atidaryti meniu",
     "whatIs": "Kas yra Promptų Anatomija",
     "ecosystem": "Ekosistema",
-    "methodology": "Metodologija",
     "cloud": "Cloud",
     "pro": "Pro",
     "repo": "Repo",
     "training": "Mokymai",
-    "pricing": "Kainodara",
-    "faq": "DUK",
     "cta": "Rinktis planą",
     "alreadyHaveAccess": "Jau turiu prieigą",
     "brandPromptu": "Promptų",
-    "brandAnatomija": "Anatomija",
-    "brandTagline": "DI mokymų sistema",
-    "version": "v1.5"
+    "brandAnatomija": "Anatomija"
   },
   "hero": {
     "badge": "6 blokų DI sistema",
@@ -57,8 +52,7 @@
     "codeContextValue": "Sukurk rinkodaros strategiją ir planą",
     "codeLine3": "03. Output",
     "codeSchema": "SCHEMA:",
-    "codeSchemaValue": "Aiški struktūra, punktai ar sąrašas",
-    "avatarAlt": "Bendruomenės nario avataras"
+    "codeSchemaValue": "Aiški struktūra, punktai ar sąrašas"
   },
   "trustedBy": {
     "title": "Komandos, kurias mokėme"
@@ -90,7 +84,6 @@
   },
   "ecosystem": {
     "title": "Pasirink, nuo ko pradėti",
-    "ctaOpen": "Peržiūrėti sistemą",
     "mapLink": "Peržiūrėti ekosistemą",
     "startHere": "Pradėk čia",
     "opensInNewTab": "Naujame skirtuke",
@@ -172,7 +165,6 @@
     ],
     "stripeVerified": "Mokėjimas saugiai per Stripe",
     "refundContact": "Grąžinimai: atsakome per 14 d. — info@promptanatomy.app, žr. Sąlygas",
-    "aiPowered": "",
     "checkAccess": "El. paštas",
     "returningTitle": "Jau pirkai?",
     "returningBody": "Įvesk el. paštą, su kuriuo mokėjai. Nuoroda į mokymus atsidaro čia — laiško nesiunčiame.",
@@ -194,7 +186,6 @@
     "clearStoredEmail": "Nebeatsiminti el. pašto šiame įrenginyje"
   },
   "faq": {
-    "sectionLabel": "",
     "title": "Dažniausiai užduodami klausimai",
     "items": [
       { "q": "Ką gaunu po apmokėjimo?", "a": "Gauni lifetime prieigą prie savo plano modulių promptanatomy.app — Starter (1–3 moduliai, 39 EUR) arba Core (1–6 moduliai, 99 EUR). Įeina mokymai /anatomy/, praktinės užduotys ir sertifikatas nuo 70%. 500+ promptų biblioteka – nemokamose ekosistemos svetainėse, kurios papildo kursą. Promptų Anatomija – mokėjimų ir mokymų centras; svetainės (Cloud, biblioteka, marketingas, HR, CEO, Pro) – nemokami darbo įrankiai. Palaikymas – viešoje Telegram grupėje." },

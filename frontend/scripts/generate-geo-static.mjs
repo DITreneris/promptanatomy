@@ -106,8 +106,6 @@ function buildHeroBlock(hero, locale) {
     `Headline: ${hero.headline1} ${hero.headline2}`,
     `Subtitle: ${hero.subtitle}`,
     ...bullets.map((b) => `- ${b}`),
-    hero.socialProof ? `Social proof: ${hero.socialProof}` : null,
-    hero.subtext ? `Summary: ${hero.subtext}` : null,
   ]
     .filter(Boolean)
     .join('\n')
