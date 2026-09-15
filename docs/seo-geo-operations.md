@@ -49,19 +49,22 @@
 
 ## D. Bing Webmaster Tools + IndexNow
 
-1. Verify Bing Webmaster property for `www.promptanatomy.app`.
-2. Submit `https://www.promptanatomy.app/sitemap.xml` (tas pats kaip GSC).
-3. Register an [IndexNow](https://www.indexnow.org/) API key; when you have a key, host `{key}.txt` under [frontend/public/](../frontend/public/) so it is served at `https://www.promptanatomy.app/{key}.txt`.
+1. Bing Webmaster property — **already verified; nothing to do.** Operator UI check 2026-09-15 shows the property `promptanatomy.app` live (site selector keyed on `siteUrl=https://promptanatomy.app/`, i.e. apex, while all canonicals are `www` — Bing accepts this and crawls fine, so do not "fix" it). Verification was **not** done by file or meta tag: `BingSiteAuth.xml` and `msvalidate.01` are absent from the repo, and a request for `/BingSiteAuth.xml` returns the SPA shell rather than a 404 (see §E) — so the property must have been verified by DNS or GSC import, which leave no repo artifact. **Corrects [gsc-2026-09-04.md](archive/snapshots/gsc-2026-09-04.md), which listed „Bing Webmaster: property verified + sitemap — pending“: that was already stale when written.**
+2. Submit `https://www.promptanatomy.app/sitemap.xml` (tas pats kaip GSC) — **done; submitted 2026-03-15.** Operator UI 2026-09-15: known sitemaps 1, errors 0, warnings 0, **4 URLs discovered** (matches the 4-URL hub canon exactly), status `Success`, last crawl **2026-09-13**. Bing is crawling the hub on its own; no resubmit needed unless the sitemap gains or loses a URL.
+3. IndexNow key — **key file added 2026-09-15, not yet deployed.** Key `19a7ca026f5a48ca8e65de6f0cab8b97`, served from [frontend/public/19a7ca026f5a48ca8e65de6f0cab8b97.txt](../frontend/public/19a7ca026f5a48ca8e65de6f0cab8b97.txt) (exactly 32 bytes, no trailing newline). Self-issued (IndexNow allows 8–128 chars of `[a-zA-Z0-9-]`); the hosted key file **is** the ownership proof, so this does not depend on step 1. Not a secret — it is public by design, so it belongs in the repo, not in env. *Open check for the operator: Bing Webmaster → IndexNow tab may already hold a key generated in the UI. A host may have several valid keys, so a pre-existing one is not a conflict — but if you prefer it, use that key and delete this file instead.*
 4. After a meaningful hub deploy, POST IndexNow for the four sitemap URLs:
 
 ```bash
-# Replace YOUR_KEY. Example body for IndexNow API.
 curl -X POST "https://api.indexnow.org/indexnow" \
   -H "Content-Type: application/json; charset=utf-8" \
-  -d "{\"host\":\"www.promptanatomy.app\",\"key\":\"YOUR_KEY\",\"keyLocation\":\"https://www.promptanatomy.app/YOUR_KEY.txt\",\"urlList\":[\"https://www.promptanatomy.app/\",\"https://www.promptanatomy.app/lt\",\"https://www.promptanatomy.app/privacy\",\"https://www.promptanatomy.app/terms\"]}"
+  -d "{\"host\":\"www.promptanatomy.app\",\"key\":\"19a7ca026f5a48ca8e65de6f0cab8b97\",\"keyLocation\":\"https://www.promptanatomy.app/19a7ca026f5a48ca8e65de6f0cab8b97.txt\",\"urlList\":[\"https://www.promptanatomy.app/\",\"https://www.promptanatomy.app/lt\",\"https://www.promptanatomy.app/privacy\",\"https://www.promptanatomy.app/terms\"]}"
 ```
 
+Expect `200 OK` (accepted) or `202 Accepted` (key validation pending). `403` = key file not reachable; `422` = URL not under the declared host.
+
 No automated IndexNow serverless endpoint in this repo (manual ops first).
+
+**`vercel.json` needs no change for the key file.** Vercel checks the filesystem before applying `rewrites`, so a real file in `frontend/public/` wins over the SPA catch-all even though it is not in that rule's negative-lookahead list — proven by `google7305663b2567346e.html`, which is also absent from the list and serves correctly. Do not add the key to the rewrite exclusions.
 
 ---
 
