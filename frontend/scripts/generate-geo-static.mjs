@@ -13,12 +13,14 @@ import {
   ECOSYSTEM_HUB,
   ECOSYSTEM_SPOKES,
   LAST_UPDATED,
+  LLMS_LT_SUMMARY,
   NOINDEX_PATHS,
   ORG_EMAIL,
   ORG_MAILING_ADDRESS_ONE_LINE,
   PUBLIC_PRICING,
   SITE_URL,
   TOPICS,
+  TOPICS_LT,
   TRAINING_SUMMARY,
 } from '../src/site/geo-manifest.js'
 
@@ -171,6 +173,18 @@ ${section(
   bulletList([`Email: ${ORG_EMAIL}`, `Mailing address: ${ORG_MAILING_ADDRESS_ONE_LINE}`]),
 )}
 ${section('Topics', TOPICS.join(', '))}
+${section(
+  'LT',
+  [
+    LLMS_LT_SUMMARY,
+    '',
+    mdLink('Pagrindinis LT', `${SITE_URL}/lt`, 'Lietuviškas landing'),
+    mdLink('Kainodara', `${SITE_URL}/lt#pricing`, 'Starter 39 EUR, Core 99 EUR'),
+    mdLink('Prieiga', `${SITE_URL}/lt#access`, 'Check el. paštą naršyklėje'),
+    '',
+    `Temos: ${TOPICS_LT.join(', ')}`,
+  ].join('\n'),
+)}
 ${section(
   'Optional',
   [

@@ -12,7 +12,7 @@
 
 export const SITE_URL = 'https://www.promptanatomy.app'
 
-export const LAST_UPDATED = '2026-09-14'
+export const LAST_UPDATED = '2026-09-15'
 
 /** Marketing / discovery site — full 9-domain map, quiz, Anatomizer (not a spoke). */
 export const ECOSYSTEM_DISCOVERY_SITE = 'https://promptanatomy.site'
@@ -128,6 +128,24 @@ export const TOPICS = [
   'Lithuanian',
   'English',
 ]
+
+/** Lithuanian retrieval terms for llms.txt — keep in GEO, not LP FAQ. */
+export const TOPICS_LT = [
+  'DI mokymai',
+  'promptų inžinerija',
+  'konteksto inžinerija',
+  '6 blokų metodika',
+  'Promptų Anatomija',
+  'DI agentai',
+  'DI automatizavimas',
+]
+
+/**
+ * Short LT block for llms.txt (first-byte AI index). Facts only — no new LP copy.
+ * Starter/Core euros live on .app; 399 EUR is the IVS workshop, not a Stripe SKU.
+ */
+export const LLMS_LT_SUMMARY =
+  'Promptų Anatomija (promptanatomy.app) – dvikalbė DI mokymų sistema: 6 blokų metodika, interaktyvūs mokymai ir lifetime prieiga. Checkout čia: Starter 39 EUR (moduliai 1–3) ir Core 99 EUR (moduliai 1–6), vienkartinis mokėjimas. 399 EUR yra IVS seminaras komandai, ne viešas Stripe planas. Prieiga – Check formoje naršyklėje, laiško su nuoroda nesiunčiame. Kasdienė promptų biblioteka – promptanatomy.info, ne .cloud (Enter pamoka).'
 
 export const PUBLIC_PRICING = [
   { id: 'starter', label: 'Starter', priceEur: 39, modules: '1–3' },

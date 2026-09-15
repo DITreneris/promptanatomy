@@ -53,10 +53,20 @@ Prompt Anatomy (`promptanatomy.app`) is the conversion hub for LT/EN checkout, a
 
 prompt engineering, context engineering, context architecture, AI agents, AI automation, AI training, AI operating system, Lithuanian, English
 
+## LT
+
+Promptų Anatomija (promptanatomy.app) – dvikalbė DI mokymų sistema: 6 blokų metodika, interaktyvūs mokymai ir lifetime prieiga. Checkout čia: Starter 39 EUR (moduliai 1–3) ir Core 99 EUR (moduliai 1–6), vienkartinis mokėjimas. 399 EUR yra IVS seminaras komandai, ne viešas Stripe planas. Prieiga – Check formoje naršyklėje, laiško su nuoroda nesiunčiame. Kasdienė promptų biblioteka – promptanatomy.info, ne .cloud (Enter pamoka).
+
+- [Pagrindinis LT](https://www.promptanatomy.app/lt): Lietuviškas landing
+- [Kainodara](https://www.promptanatomy.app/lt#pricing): Starter 39 EUR, Core 99 EUR
+- [Prieiga](https://www.promptanatomy.app/lt#access): Check el. paštą naršyklėje
+
+Temos: DI mokymai, promptų inžinerija, konteksto inžinerija, 6 blokų metodika, Promptų Anatomija, DI agentai, DI automatizavimas
+
 ## Optional
 
 - [Privacy Policy](https://www.promptanatomy.app/privacy): Legal — secondary for AI context
 - [Terms of Service](https://www.promptanatomy.app/terms): Legal — secondary for AI context
 - [Training app](https://www.promptanatomy.app/anatomy/): Interactive course; disallowed in robots.txt for hub crawl focus
 - Do not index transactional routes: https://www.promptanatomy.app/success, https://www.promptanatomy.app/cancel, https://www.promptanatomy.app/api/
-- lastUpdated: 2026-09-14
+- lastUpdated: 2026-09-15

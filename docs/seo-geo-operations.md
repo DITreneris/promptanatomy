@@ -77,7 +77,12 @@ curl -s  https://www.promptanatomy.app/robots.txt | grep -E 'facebookexternalhit
 curl -sI https://www.promptanatomy.app/llms.txt        # 200
 curl -s  https://www.promptanatomy.app/llms.txt | grep -E 'promptanatomy\.(site|help)'
 curl -s  https://www.promptanatomy.app/llms.txt | grep -E '^>|\[Home EN\]|## Optional'
+curl -s  https://www.promptanatomy.app/llms.txt | grep -E '## LT|DI mokymai'
 curl -sI https://www.promptanatomy.app/llms-full.txt   # 200
+curl -s  https://www.promptanatomy.app/lt | grep -o '<title>[^<]*</title>'   # LT title, not EN
+curl -s  https://www.promptanatomy.app/lt | grep -c 'Turn random AI chats'   # 0
+curl -sI https://www.promptanatomy.app/lt | grep -i '^link:'                 # describedby llms.txt
+curl -s  https://www.promptanatomy.app/sitemap.xml | grep -c '<loc>'         # 4
 ```
 
 ---
