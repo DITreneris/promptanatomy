@@ -5,8 +5,12 @@
  * Env: ACCESS_TOKEN_SECRET, STRIPE_SECRET_KEY; optional TRAINING_REDIRECT_BASE, ACCESS_TOKEN_EXPIRY_DAYS
  */
 const Stripe = require('stripe');
-const crypto = require('crypto');
 const { captureApiException } = require('./lib/sentry');
+const {
+  normalizeMagicLinkEmail,
+  signMagicLink,
+  buildTrainingMagicLinkUrl,
+} = require('./lib/magic-link');
 
 /** Phase 1: only 3 and 6 (docs/phase-1-scope.md). */
 const PHASE1_PLAN_VALUES = [3, 6];
@@ -24,20 +28,6 @@ function setCorsHeaders(req, res) {
   }
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-}
-
-function base64url(buffer) {
-  return buffer
-    .toString('base64')
-    .replace(/\+/g, '-')
-    .replace(/\//g, '_')
-    .replace(/=+$/, '');
-}
-
-function buildMagicLinkToken(accessTier, expires, secret) {
-  const payload = `${accessTier}:${expires}`;
-  const sig = crypto.createHmac('sha256', secret).update(payload).digest();
-  return base64url(sig);
 }
 
 module.exports = async function handler(req, res) {
@@ -93,16 +83,19 @@ module.exports = async function handler(req, res) {
 
     const expiryDays = parseInt(process.env.ACCESS_TOKEN_EXPIRY_DAYS || '30', 10) || 30;
     const expires = Math.floor(Date.now() / 1000) + expiryDays * 86400;
-    const token = buildMagicLinkToken(accessTier, expires, secret);
+    const stripeEmail = session.customer_email || session.customer_details?.email || '';
+    const boundEmail = normalizeMagicLinkEmail(stripeEmail);
+    const token = signMagicLink(accessTier, expires, secret, boundEmail);
     const base = (process.env.TRAINING_REDIRECT_BASE || 'https://www.promptanatomy.app/anatomy').replace(/\/$/, '');
-    const redirectUrl = `${base}/?access_tier=${accessTier}&expires=${expires}&token=${token}`;
+    const redirectUrl = buildTrainingMagicLinkUrl({
+      base,
+      accessTier,
+      expires,
+      token,
+      email: boundEmail,
+    });
 
-    const customerEmail = (
-      session.customer_email ||
-      session.customer_details?.email ||
-      ''
-    )
-      .trim() || undefined;
+    const customerEmail = stripeEmail.trim() || undefined;
 
     const payload = { redirect_url: redirectUrl };
     if (customerEmail) payload.customer_email = customerEmail;

@@ -122,7 +122,7 @@ FastAPI šių handler’ių **neturi**. SOT: [`api/verify-access.js`](../api/ver
 
 - **React + Vite** – struktūra, routing (React Router), build pipeline. Nėra migracijos į Next.js ar SSR (pagal [UI_UX_SEO_MOSCOW_PLAN.md](archive/audits/UI_UX_SEO_MOSCOW_PLAN.md) WON'T).
 - **Stripe flow** – create-checkout-session → Stripe Checkout → success/cancel; webhook `checkout.session.completed` → Supabase `user_access`. Nepažeisti endpointų kontraktų.
-- **Magic link flow** – `success-redirect.js` ir `generate-access-link.js` naudoja tą pačią `buildMagicLinkToken()` logiką (HMAC-SHA256, base64url, `ACCESS_TOKEN_SECRET`). `verify-access.js` tikrina tokeną. Keičiant vieno token formatą – keisti visus tris.
+- **Magic link flow** – `success-redirect.js` ir `generate-access-link.js` pasirašo per `api/lib/magic-link.js` (HMAC-SHA256, base64url, `ACCESS_TOKEN_SECRET`). Kai `email` ne tuščias po trim + lowercase, payload yra `email:access_tier:expires` ir URL turi `email`. Kai `email` nėra, payload lieka `access_tier:expires`. `verify-access.js` tikrina tą pačią šaką. Seno payload nemesti, kol pasibaigia ~30 d. nuorodos.
 - **API:** `api.js` – `getAccess`, `createCheckoutSession`, `getSuccessRedirectUrl` (grąžina `{ redirect_url, customer_email? }`), `getTrainingAccessLink`; backend atsakymų formatai (JSON su `url`, `highest_plan`, `can_upgrade_to`, `redirect_url` ir t. t.).
 - **Env:** Backend – Pydantic Settings, `STRIPE_*`, `SUPABASE_*`, `FRONTEND_ORIGIN`. Frontend – `VITE_API_URL` (optional), `VITE_X_PIXEL_ID` (optional, X conversion tracking; jei tuščias – XPixel neįkelia skripto). Nepašalinti naudojamų kintamųjų.
 - **Backend failo pavadinimas:** `token_limits.py` (ne `limits.py`). `limits` vardas shadina PyPI paketą – neleistina.
