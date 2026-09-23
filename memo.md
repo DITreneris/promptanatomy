@@ -38,8 +38,9 @@ Po Stripe apmokėjimo vartotoją reikia nukreipti į mokymų sistemą su šiuo U
 1. **Secret:** naudokite bendrą paslaptį, sutartą su mokymų sistemos savininku. Env kintamasis: **`ACCESS_TOKEN_SECRET`** (min. 16 simbolių). Ta pati reikšmė bus nustatyta ir mokymų app (Vercel), kad galėtų patikrinti tokeną.
 
 2. **Payload:**  
-   `payload = access_tier + ":" + expires`  
-   Pvz. `6:1735689600`.
+   Be `email`: `payload = access_tier + ":" + expires` (pvz. `6:1735689600`).  
+   Su `email` (trim + lowercase, tuščias praleidžiamas): `payload = email + ":" + access_tier + ":" + expires` (pvz. `learner@example.com:6:1735689600`).  
+   Hub priima abu, kol senos nuorodos dar galioja. Žr. [docs/memo-magic-link-email-2026-09-23.md](docs/memo-magic-link-email-2026-09-23.md).
 
 3. **Signature:**  
    `signature = HMAC-SHA256(payload, ACCESS_TOKEN_SECRET)`  

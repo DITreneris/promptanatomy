@@ -54,7 +54,7 @@ jobs:
             apps/prompt-anatomy/package-lock.json
 
       - name: API sentry scrub tests
-        run: node --test api/lib/sentry.test.js
+        run: node --test api/lib/sentry.test.js api/lib/magic-link.test.js
 
       - name: Frontend install and build
         working-directory: frontend

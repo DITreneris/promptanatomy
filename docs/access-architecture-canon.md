@@ -29,7 +29,7 @@
 ## 3. Landing page ir API (skaitymas iš kanono)
 
 - **`GET /api/access?email=`** – grąžina `highest_plan` ir išvestines laukų reikšmes iš `user_access` (`api/access.js` / backend analogas).
-- **`GET /api/generate-access-link?email=`** – jei `highest_plan > 0`, generuoja mokymų URL su HMAC parametrais (`api/generate-access-link.js`).
+- **`GET /api/generate-access-link?email=`** – jei `highest_plan > 0`, generuoja mokymų URL su HMAC parametrais (`api/generate-access-link.js`). Payload `email:access_tier:expires` (email jau trim + lowercase).
 
 ---
 
@@ -43,8 +43,8 @@
 
 ## 5. Mokymų SPA: tiltas (ne antra DB tiesa)
 
-- Vartotojas patenka su query: `access_tier`, `expires`, `token` (HMAC).
-- **`GET /api/verify-access`** – serveris patvirtina parašą ir galiojimą.
+- Vartotojas patenka su query: `access_tier`, `expires`, `token`, ir neprivalomu `email` (HMAC).
+- **`GET /api/verify-access`** – serveris patvirtina parašą ir galiojimą. Jei `email` po trim + lowercase ne tuščias, payload `email:access_tier:expires`. Jei nėra arba tuščias, payload `access_tier:expires`. Tier lieka `[3, 6, 9, 12]`.
 - Po sėkmės klientas saugo patvirtintą tier (pvz. `localStorage` raktas `verified_access_tier`) – **UX / sesijos patogumui**, ne autoritetas atsiskaitymui ar LP.
 
 **Tai nėra** Supabase Auth JWT ir nėra antras „billing“ šaltinis – tai **perdavimo ir užrakto** mechanizmas atskiroje aplikacijoje (`apps/prompt-anatomy`).
