@@ -60,6 +60,7 @@ Rankinė patikra Vercel Dashboard (*Settings → Environment Variables → Produ
 | `ACCESS_TOKEN_SECRET` | ≥32 simboliai |
 | Build Command / Install Command override | **tuščias** (naudoti repo `vercel.json`) |
 | Include Git Submodules | **įjungta** |
+| `INZINERIJA_READ_TOKEN` | fine-grained PAT Contents: Read on `inzinerija` (same as Actions); required to refresh pin |
 
 **Paskutinis operatoriaus auditas:** 2026-08-16 — `[A.3d]` uždarytas. Evidence: [ops-observability-2026-08-16.md](archive/snapshots/ops-observability-2026-08-16.md). (`VITE_MVP_MODE` / `VITE_MAX_ACCESSIBLE_MODULE` / `ALLOW_WEBHOOK_WITHOUT_SECRET` nėra; Stripe / Supabase / `FRONTEND_ORIGIN` / `TRAINING_REDIRECT_BASE` / `ACCESS_TOKEN_SECRET` vietoje.)
 
