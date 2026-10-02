@@ -7,9 +7,9 @@
 
 | Viewport | Check |
 |----------|--------|
-| 375px | Hero CTA column; TrustedBy `#trusted-by` 3+3 wrap, no horizontal overflow; Pricing cards; FAQ summary `min-w-0 flex-1 break-words`; mobile drawer open/close; drawer locale LT\|EN `min-h-[44px]`; access feedback CTAs `min-h-[48px]`; Footer links |
+| 375px | Hero CTA column; TrustedBy `#trusted-by` 3+3 wrap, no horizontal overflow; Pricing cards; FAQ summary `min-w-0 flex-1 break-words`; mobile drawer open/close; drawer locale LT\|EN `min-h-[44px] min-w-[44px]`; access feedback CTAs `min-h-[48px]`; Footer links |
 | 768px | Navbar density; section headings readable; TrustedBy six logos in **one** row |
-| 1280px | Desktop nav: What Is, Ecosystem, Training (if access) + locale + CTA; Footer 4 equal columns (`lg:col-span-3`) + legal bar all `text-xs`; Ecosystem grid; FAQ contrast; TrustedBy one row |
+| 1280px | Desktop nav: What Is, Ecosystem, Training (if access) + locale (`min-h-[44px] min-w-[44px]`) + CTA; Footer 4 equal columns (`lg:col-span-3`) + legal bar all `text-xs`; Ecosystem grid; FAQ contrast; TrustedBy one row |
 
 Run the same rows on **`/lt` and `/en`** (375 / 1280): wordmark, `nav.whatIs`, hero subtitle — LT eilutės ilgesnės; nelūžta už viewport.
 
@@ -41,7 +41,7 @@ Run the same rows on **`/lt` and `/en`** (375 / 1280): wordmark, `nav.whatIs`, h
 
 ## Accessibility smoke
 
-- [ ] Tab: skip link → main content
+- [ ] Tab: skip link → main content. Light surfaces show a navy focus ring (`focus-ring`). Ecosystem controls show a gold ring with a navy offset (`focus-ring-on-dark`)
 - [ ] FAQ `<details>` keyboard expand/collapse
 - [ ] WhatIs stat numbers announced (not `aria-hidden`)
 - [ ] Hero typing respects `prefers-reduced-motion`
@@ -60,7 +60,7 @@ Record on production (`https://www.promptanatomy.app/`):
 
 | Date | URL | Accessibility | Notes |
 |------|-----|---------------|-------|
-| 2026-08-13 | / | **92** | Lighthouse CLI, a11y category only (PSI 429). Lab fails: `aria-hidden-focus`, `color-contrast`, `heading-order`. Record only at v1.1. **In-code 2026-08-13 follow-up (DS-1–5):** heading tags, gold-on-light text, drawer `inert`. **Do not invent a new score in this PR** — re-record post-deploy (DoD C). Perf baseline: [pagespeed-2026-08.md](../archive/snapshots/pagespeed-2026-08.md). |
+| 2026-08-13 | / | **92** | Lighthouse CLI, a11y category only (PSI 429). Lab fails: `aria-hidden-focus`, `color-contrast`, `heading-order`. Record only at v1.1. **In-code 2026-08-13 follow-up (DS-1–5):** heading tags, gold-on-light text, drawer `inert`. **2026-10-02 hygiene** removed the two gradient-clipped headlines and switched the light focus ring to navy. **Do not invent a new score in this PR** — a new accessibility score is post-deploy only (DoD C). Perf baseline: [pagespeed-2026-08.md](../archive/snapshots/pagespeed-2026-08.md). |
 
 CLI:
 
@@ -76,6 +76,7 @@ CI step **Design-system token grep** in [`.github/workflows/ci.yml`](../../.gith
 grep -rE 'rgba\(' src/components src/pages --include='*.jsx'
 grep -rE 'text-\[[0-9]+px\]' src/components src/pages --include='*.jsx'
 grep -rE 'shadow-\[' src/components src/pages --include='*.jsx'
+grep -rE 'size=\{' src/components src/pages --include='*.jsx'
 ```
 
 Expected: **no matches** (tokens only in `src/index.css`). Digit-only `text-[NNpx]` — does not flag `text-[length:var(--text-stat)]` in CSS.

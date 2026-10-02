@@ -212,7 +212,7 @@ export default function HomePage({ forceLocale }) {
                   value={customerEmail}
                   onChange={(e) => setCustomerEmail(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleCheckAccess()}
-                  className="flex-1 min-h-[48px] min-w-[200px] px-4 py-3 rounded-xl border-2 border-slate-300 bg-white text-brand-dark placeholder:text-slate-500 shadow-xs focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:border-brand-accent transition-shadow duration-200"
+                  className="flex-1 min-h-[48px] min-w-[200px] px-4 py-3 rounded-xl border-2 border-slate-300 bg-white text-brand-dark placeholder:text-slate-500 shadow-xs focus-ring focus-visible:border-brand-accent transition-shadow duration-200"
                   aria-describedby={accessEmailDescribedBy}
                 />
                 <button
@@ -230,7 +230,7 @@ export default function HomePage({ forceLocale }) {
                   {t('pricing.accessStoragePrivacy')}{' '}
                   <Link
                     to="/privacy"
-                    className="font-semibold text-brand-dark underline decoration-brand-accent/60 underline-offset-2 hover:text-brand-accent focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm"
+                    className="font-semibold text-brand-dark underline decoration-brand-accent/60 underline-offset-2 hover:text-brand-accent focus-ring rounded-sm"
                   >
                     {t('footer.privacyPolicy')}
                   </Link>
@@ -240,7 +240,7 @@ export default function HomePage({ forceLocale }) {
                 <button
                   type="button"
                   onClick={handleClearStoredEmail}
-                  className="mt-3 text-sm font-semibold text-slate-600 underline decoration-slate-400 underline-offset-2 hover:text-brand-dark focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm"
+                  className="mt-3 text-sm font-semibold text-slate-600 underline decoration-slate-400 underline-offset-2 hover:text-brand-dark focus-ring rounded-sm"
                 >
                   {t('pricing.clearStoredEmail')}
                 </button>

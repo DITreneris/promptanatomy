@@ -185,7 +185,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
         </div>
         <Link
           to="/terms#refunds"
-          className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em] hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm"
+          className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em] hover:text-brand-accent transition-colors duration-200 focus-ring rounded-sm"
         >
           <ShieldCheck className="icon-sm shrink-0" aria-hidden /> {t('pricing.refundContact')}
         </Link>

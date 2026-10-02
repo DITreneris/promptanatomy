@@ -76,6 +76,10 @@ jobs:
             echo '::error::Forbidden shadow-[ in LP JSX — use named shadows in @theme' >&2
             fail=1
           fi
+          if grep -rE 'size=\{' src/components src/pages --include='*.jsx'; then
+            echo '::error::Forbidden Lucide size={ in LP JSX — use icon-sm/md/lg/display' >&2
+            fail=1
+          fi
           exit $fail
 
       - name: Bundle size budget (LP critical path)

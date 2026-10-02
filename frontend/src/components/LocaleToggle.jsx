@@ -13,7 +13,7 @@ export default function LocaleToggle() {
         onClick={() => setLocale('lt')}
         onMouseEnter={() => prefetchLocale('lt')}
         onFocus={() => prefetchLocale('lt')}
-        className={`px-2.5 py-1 rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} ${FOCUS_RING}`}
+        className={`px-2.5 py-1 min-h-[44px] min-w-[44px] rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} ${FOCUS_RING}`}
         aria-pressed={locale === 'lt'}
         aria-label="Lietuvių"
       >
@@ -24,7 +24,7 @@ export default function LocaleToggle() {
         onClick={() => setLocale('en')}
         onMouseEnter={() => prefetchLocale('en')}
         onFocus={() => prefetchLocale('en')}
-        className={`px-2.5 py-1 rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} ${FOCUS_RING}`}
+        className={`px-2.5 py-1 min-h-[44px] min-w-[44px] rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} ${FOCUS_RING}`}
         aria-pressed={locale === 'en'}
         aria-label="English"
       >
