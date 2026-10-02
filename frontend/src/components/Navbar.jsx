@@ -199,7 +199,7 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
                 onClick={() => { setLocale('lt'); navigate('/lt') }}
                 onMouseEnter={() => prefetchLocale('lt')}
                 onFocus={() => prefetchLocale('lt')}
-                className={`px-2.5 py-1 rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} ${FOCUS_RING}`}
+                className={`px-2.5 py-1 min-h-[44px] min-w-[44px] rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} ${FOCUS_RING}`}
                 aria-pressed={locale === 'lt'}
                 aria-label="Lietuvių"
               >
@@ -210,7 +210,7 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
                 onClick={() => { setLocale('en'); navigate('/en') }}
                 onMouseEnter={() => prefetchLocale('en')}
                 onFocus={() => prefetchLocale('en')}
-                className={`px-2.5 py-1 rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} ${FOCUS_RING}`}
+                className={`px-2.5 py-1 min-h-[44px] min-w-[44px] rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} ${FOCUS_RING}`}
                 aria-pressed={locale === 'en'}
                 aria-label="English"
               >
@@ -231,7 +231,7 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
           ref={hamburgerRef}
           type="button"
           onClick={() => setMobileOpen((o) => !o)}
-          className="flex items-center justify-center p-3 lg:hidden min-h-[44px] min-w-[44px] rounded-xl text-brand-dark transition-all duration-200 hover:bg-slate-100 active:scale-[0.98] focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2"
+          className="flex items-center justify-center p-3 lg:hidden min-h-[44px] min-w-[44px] rounded-xl text-brand-dark transition-all duration-200 hover:bg-slate-100 active:scale-[0.98] focus-ring"
           aria-expanded={mobileOpen}
           aria-controls="mobile-nav"
           aria-label={mobileOpen ? t('nav.ariaCloseMenu') : t('nav.ariaOpenMenu')}
@@ -265,7 +265,7 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
               window.scrollTo({ top: 0, behavior: 'smooth' })
             }
           }}
-          className="py-4 text-base font-bold tracking-[0.08em] text-slate-600 hover:text-brand-dark border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm"
+          className="py-4 text-base font-bold tracking-[0.08em] text-slate-600 hover:text-brand-dark border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 focus-ring rounded-sm"
         >
           {t('common.home')}
         </Link>
@@ -275,7 +275,7 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
             onClick={() => { closeMobile(); setLocale('lt'); navigate('/lt') }}
             onMouseEnter={() => prefetchLocale('lt')}
             onFocus={() => prefetchLocale('lt')}
-            className={`px-3 py-2 min-h-[44px] min-w-[44px] rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
+            className={`px-3 py-2 min-h-[44px] min-w-[44px] rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} focus-ring`}
             aria-pressed={locale === 'lt'}
             aria-label="Lietuvių"
           >
@@ -286,7 +286,7 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
             onClick={() => { closeMobile(); setLocale('en'); navigate('/en') }}
             onMouseEnter={() => prefetchLocale('en')}
             onFocus={() => prefetchLocale('en')}
-            className={`px-3 py-2 min-h-[44px] min-w-[44px] rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2`}
+            className={`px-3 py-2 min-h-[44px] min-w-[44px] rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} focus-ring`}
             aria-pressed={locale === 'en'}
             aria-label="English"
           >
@@ -294,7 +294,7 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
           </button>
         </div>
         {allNavItems.map((item) => {
-          const mobileClass = "relative py-4 text-base font-bold tracking-[0.08em] text-slate-600 hover:text-brand-accent border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-200 after:w-0 hover:after:w-full focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm"
+          const mobileClass = "relative py-4 text-base font-bold tracking-[0.08em] text-slate-600 hover:text-brand-accent border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-200 after:w-0 hover:after:w-full focus-ring rounded-sm"
           return item.action ? (
             <button
               key={item.name}

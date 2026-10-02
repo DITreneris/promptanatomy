@@ -4,7 +4,7 @@
   /* base — brand primitives */
   --font-sans: ui-sans-serif, system-ui, sans-serif;
 
-  --text-label: 10px;
+  --text-label: 0.75rem;
   --text-label--line-height: 1.25;
   --text-stat: 3.5rem;
   --text-stat--line-height: 1;
@@ -42,11 +42,11 @@
   --color-feedback-warning-border: #fde68a;
   --color-feedback-warning-fill: #fffbeb;
 
-  --color-accent-muted-bg: rgb(255 193 7 / 0.15);
-  --color-accent-muted-border: rgb(255 193 7 / 0.35);
-  --color-accent-featured-from: rgb(255 193 7 / 0.08);
-  --color-accent-featured-to: rgb(255 193 7 / 0.02);
-  --color-accent-featured-border: rgb(255 193 7 / 0.5);
+  --color-accent-muted-bg: rgb(207 167 58 / 0.15);
+  --color-accent-muted-border: rgb(207 167 58 / 0.35);
+  --color-accent-featured-from: rgb(207 167 58 / 0.08);
+  --color-accent-featured-to: rgb(207 167 58 / 0.02);
+  --color-accent-featured-border: rgb(207 167 58 / 0.5);
   --color-surface-glass: rgb(255 255 255 / 0.04);
   --color-grid-line: rgb(255 255 255 / 0.15);
 
@@ -136,11 +136,19 @@
 }
 
 @utility focus-ring {
-  @apply focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2;
+  @apply focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-dark focus-visible:ring-offset-2;
+}
+
+@utility focus-ring-on-dark {
+  @apply focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark;
+}
+
+@utility btn-primary-surface {
+  @apply min-h-[44px] font-black text-brand-dark bg-cta-gradient shadow-cta-shadow border border-white/20 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98];
 }
 
 @utility btn-primary {
-  @apply min-h-[44px] font-black text-brand-dark bg-cta-gradient shadow-cta-shadow border border-white/20 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] focus-ring;
+  @apply btn-primary-surface focus-ring;
 }
 
 @utility btn-primary-lg {
@@ -220,11 +228,11 @@
 }
 
 @utility btn-ecosystem-outline {
-  @apply inline-flex items-center justify-center gap-2 min-h-[44px] px-6 py-3 rounded-xl font-bold text-white border border-white/20 bg-white/5 transition-all duration-200 hover:bg-white/10 hover:border-brand-accent/50 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark;
+  @apply inline-flex items-center justify-center gap-2 min-h-[44px] px-6 py-3 rounded-xl font-bold text-white border border-white/20 bg-white/5 transition-all duration-200 hover:bg-white/10 hover:border-brand-accent/50 focus-ring-on-dark;
 }
 
 @utility btn-ecosystem-secondary {
-  @apply inline-flex items-center justify-center gap-2 w-full min-h-[48px] px-6 py-3 rounded-2xl font-bold text-white border-2 border-white/15 bg-white/8 transition-all duration-300 hover:bg-white/12 hover:border-white/30 hover:-translate-y-0.5 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark;
+  @apply inline-flex items-center justify-center gap-2 w-full min-h-[48px] px-6 py-3 rounded-2xl font-bold text-white border-2 border-white/15 bg-white/8 transition-all duration-300 hover:bg-white/12 hover:border-white/30 hover:-translate-y-0.5 focus-ring-on-dark;
 }
 
 @utility ecosystem-tag-pill {
@@ -301,7 +309,7 @@
 }
 
 @utility btn-feedback-owned {
-  @apply mt-auto block w-full min-h-[48px] py-4 text-center font-bold rounded-2xl border-2 border-feedback-success-border bg-feedback-success-fill text-feedback-success-muted hover:bg-feedback-success-fill-hover hover:border-feedback-success-border-hover transition-all duration-200 disabled:opacity-70;
+  @apply mt-auto block w-full min-h-[48px] py-4 text-center font-bold rounded-2xl border-2 border-feedback-success-border bg-feedback-success-fill text-feedback-success-muted hover:bg-feedback-success-fill-hover hover:border-feedback-success-border-hover transition-all duration-200 focus-ring disabled:opacity-70;
 }
 
 @utility page-heading {

@@ -6,10 +6,10 @@ import { ORG_EMAIL, formatMailingAddressOneLine } from '../site/organization'
 import { APP_UTM_MEDIUM, FIRST_PARTY_REL, THIRD_PARTY_REL, withAppUtm } from '../utils/appUtm'
 
 const footerNavLinkClass =
-  'text-sm font-medium leading-5 text-slate-600 hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm'
+  'text-sm font-medium leading-5 text-slate-600 hover:text-brand-accent transition-colors duration-200 focus-ring rounded-sm'
 
 const footerLegalLinkClass =
-  'text-xs font-medium text-slate-600 hover:text-brand-accent transition-colors duration-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 rounded-sm'
+  'text-xs font-medium text-slate-600 hover:text-brand-accent transition-colors duration-200 focus-ring rounded-sm'
 
 function FooterColumn({ title, children }) {
   return (

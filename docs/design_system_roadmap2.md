@@ -47,9 +47,9 @@
 |--------|----------|-------------|
 | Centralized tokens | `@theme` in `index.css`: brand, feedback, gradients, named shadows | Base + functional + component layers (commented in CSS) |
 | CSS utilities (not React DS) | `btn-primary*`, `section-default`, `section-heading`, `page-heading`, `focus-ring`, `card-feedback-*` | Primer-aligned **utility** approach — no `@primer/react` |
-| Gradient split (resolved) | `bg-cta-gradient` = buttons; `bg-accent-gradient` = H1 clip + skip link only | Single primary button intent |
-| JSX color discipline | Zero `rgba(` / `text-[NNpx]` / `shadow-[` in LP JSX; CI grep | Hex/rgba only in `@theme` |
-| Typography | `text-stat` / `text-price` / `text-label-upper`; H1 `font-black`; stats `font-extrabold` | Weight contrast shipped |
+| Gradient split (resolved) | `bg-cta-gradient` lives in `btn-primary-surface`; `bg-accent-gradient` = skip link only | Hero line 2 is solid `text-feedback-warning-fg` (2026-10-02) |
+| JSX color discipline | Zero `rgba(` / `text-[NNpx]` / `shadow-[` / `size={` in LP JSX; CI grep | Hex/rgba only in `@theme`; Lucide uses `icon-*` |
+| Typography | `text-stat` / `text-price` / `text-label-upper` (`--text-label` 12px); H1 `font-black`; stats `font-extrabold` | Weight contrast shipped |
 | Section rhythm | `section-default` on LP sections; Ecosystem `section-dark-ecosystem` | Done |
 | A11y | Focus trap, reduced motion, 44px; Lighthouse a11y **92** (2026-08-13) | Recorded; lab fails listed in QA doc |
 | Living doc | This file + `index.css` `@theme` | Agent edit target — archived audits historical only |
@@ -158,14 +158,14 @@ From [HomePage.jsx](../frontend/src/pages/HomePage.jsx):
 
 **Historical — closed.** JSX grep is now a CI gate. Desktop Methodology/FAQ nav was **not** the end state; golden-legacy 2026-08-13 keeps those links out of the desktop bar.
 
-| Gap | File | Detail |
-|-----|------|--------|
-| Raw rgba borders/backgrounds | `Pricing.jsx` | `rgba(255,193,7,…)` badges and featured card |
-| Glass card surfaces | `Ecosystem.jsx` | `rgba(255,255,255,0.04)` + inline grid |
-| Ad-hoc type sizes | `WhatIsPromptAnatomy.jsx`, `Pricing.jsx` | `text-[56px]`, `text-[44px]` |
-| Inline accent ring shadow | `Methodology.jsx` | `shadow-[0_0_0_4px_rgba(207,167,58,…)]` |
-| Off-system buttons | `SuccessPage.jsx`, `CancelPage.jsx` | Dark/gray bespoke CTAs vs `btn-primary` |
-| Nav wayfinding | `Navbar.jsx` | `secondaryNavItems` drawer-only |
+| Gap | File | Detail | Status |
+|-----|------|--------|--------|
+| Raw rgba borders/backgrounds | `Pricing.jsx` | `rgba(255,193,7,…)` badges and featured card | Closed — do not re-implement |
+| Glass card surfaces | `Ecosystem.jsx` | `rgba(255,255,255,0.04)` + inline grid | Closed — do not re-implement |
+| Ad-hoc type sizes | `WhatIsPromptAnatomy.jsx`, `Pricing.jsx` | `text-[56px]`, `text-[44px]` | Closed — do not re-implement |
+| Inline accent ring shadow | `Methodology.jsx` | `shadow-[0_0_0_4px_rgba(207,167,58,…)]` | Closed — do not re-implement |
+| Off-system buttons | `SuccessPage.jsx`, `CancelPage.jsx` | Dark/gray bespoke CTAs vs `btn-primary` | Closed — do not re-implement |
+| Nav wayfinding | `Navbar.jsx` | `secondaryNavItems` drawer-only | Closed — desktop stays What Is + Ecosystem |
 
 ---
 
@@ -231,7 +231,7 @@ From [HomePage.jsx](../frontend/src/pages/HomePage.jsx):
 | # | Decision | Resolution |
 |---|----------|------------|
 | 1 | **Canonical proof numbers** | **Updated 2026-09-14.** **500+** = ecosystem prompt/template library (`hero.bullet1`, `whatIs.stat1Number`, `pricing.features`); **40+** = interactive tools (`whatIs.stat2`); **300+** = interactive slides (`whatIs.stat3`). **600+** practitioners (`hero.socialProof`) **removed** — no published counting method; social proof is now the Trusted-by client logo band (`TrustedBy.jsx`). |
-| 2 | **Primary button gradient** | **`bg-cta-gradient`** for all primary buttons via `btn-primary` utilities. **`bg-accent-gradient`** only for Hero H1 text clip + skip link. |
+| 2 | **Primary button gradient** | **`bg-cta-gradient`** inside `btn-primary-surface` (and `btn-primary`). **`bg-accent-gradient`** is the skip link only. Hero line 2 is solid `text-feedback-warning-fg` (2026-10-02). |
 
 ---
 
@@ -380,6 +380,8 @@ section-heading → text-4xl md:text-5xl font-black text-brand-dark tracking-[-0
 
 **v1.1 leftover prune (2026-09-15) — not v1.2.** Deleted unused `@utility` (`hub-core-pill`, `hub-connector-line`, `card-density-dark*`, `btn-ecosystem-ghost`, `animate-fade-in-up`, `shadow-tier-*`); unused shadow tokens; FAQ eyebrow code + empty `faq.sectionLabel`; invalid `duration-180`/`duration-220` → `duration-200`. Named Ecosystem/Pricing shadows stay. Crumb follow-up: deleted unused `--color-border-glass` / `--color-border-glass-hover` / `--shadow-ecosystem-card-rim` / `--color-brand-accent-hover`; unused `nav.brandTagline`; `PHASE_ACCENT_CLASSES` is 1–3 (`--color-ecosystem-4` kept).
 
+**v1.1 hygiene follow-up (2026-10-02) — not v1.2.** Light focus ring is navy (`focus-ring` / `ring-brand-dark`). Ecosystem uses `focus-ring-on-dark`. Primary chrome is `btn-primary-surface`; `btn-primary` adds the light ring. Ecosystem Enter CTA is `btn-primary-surface` + `focus-ring-on-dark`. Hero line 2 is solid `text-feedback-warning-fg` (gradient clip removed). Methodology `h2` is solid `text-brand-dark`. `--text-label` is 12px. Desktop locale is 44px. Muted/featured surfaces use brand gold `#cfa73a` alpha, not `#ffc107`. CTA gradient stays `#ffcc33` → `#ffb300`. CI grep also rejects Lucide `size={`.
+
 **Won’t:** shadcn / `@primer/react` / Geist font / dark mode / Figma pipeline / OKLCH / screenshot CI / Methodology+FAQ in desktop nav / collapsing Ecosystem shadows / `--color-brand-accent-fg` (wordmark gold on white stays).
 
 ---
@@ -403,19 +405,19 @@ Phase 5 (functional tokens + type scale)
 | 2 | **Hero layout** | Done | — |
 | 3 | **CTA hierarchy** | Done on LP; Success/Cancel parity in Phase 6 | 6 |
 | 4 | **Button variants** | Done — `btn-primary` / secondary / ghost / **`btn-dark`** (`#access` Check) | — |
-| 5 | **Card anatomy** | Unchanged — hover lift + tier shadows | — |
+| 5 | **Card anatomy** | Done — hover lift + named shadows (`shadow-soft`, `shadow-soft-lg`, `shadow-pricing-card`, `shadow-ecosystem-*`). No `shadow-tier-*` | — |
 | 6 | **Icon placement** | Done — LP 16/20/24 (`icon-sm/md/lg`); Success display 48 (`icon-display`) | 7 / v1.1 |
 | 7 | **Typography hierarchy** | Done — weight + size tokens; legal `page-heading` / `page-subheading` | 5 / v1.1 |
 | 8 | **Mobile layout** | Done — 44px targets | — |
 | 9 | **Proof blocks** | Done — mixed metrics, disambiguated copy | — |
 | 10 | **Shadows / borders** | Done — named shadows in `@theme` (`shadow-soft`, `shadow-soft-lg`, `shadow-pricing-card`, `shadow-ecosystem-*`); no `shadow-tier-*` | 5–6 / v1.1 |
-| 11 | **Gradients** | Done — CTA on buttons; accent on H1 clip + skip link only | — |
+| 11 | **Gradients** | Done — CTA inside `btn-primary-surface`; accent gradient on the skip link only. Hero line 2 is solid `text-feedback-warning-fg` | — |
 | 12 | **Images / diagrams** | Done — local `noise.svg` only | — |
 | 13 | **Footer density** | Done (2026-08-13) | 4× `lg:col-span-3`; legal `text-xs`; tagline be brand echo |
 | 14 | **No raw color in JSX** (Primer) | Done — hex/rgba only in `@theme`; CI grep | 5 / v1.1 |
 | 15 | **Semantic headings** (Primer) | Done — visual size via utility, not tag swap | — |
 | 16 | **Emphasis via weight/size** (Primer) | Done — not color alone for hierarchy | 5 |
-| 17 | **Focus + 44px targets** (Primer a11y) | Done — `focus-ring` on interactives | — |
+| 17 | **Focus + 44px targets** (Primer a11y) | Done — `focus-ring` (navy) on light surfaces; `focus-ring-on-dark` (gold, navy offset) on Ecosystem. Desktop and drawer locale are 44px | — |
 | 18 | **Materials / elevation tiers** | Done — named shadows as public API; Ecosystem names are component layer | 6 / v1.1 |
 | 19 | **Encourage flow** (Primer) | Done — one primary CTA intent to pricing (QW3a `.cloud` outbound reverted 2026-08-13) | — |
 | 20 | **Desktop wayfinding** | Done — What Is + Ecosystem (+ Training if access). Methodology/FAQ **not** in desktop nav (golden-legacy 2026-08-13) | 6 |
@@ -436,9 +438,10 @@ Phase 5 (functional tokens + type scale)
 |-------|-------------|-------|
 | Typeface | `--font-sans` / `font-sans` | OS stack only (`ui-sans-serif, system-ui, sans-serif`). No webfont. [ADR-0001](decisions/0001-lp-system-typeface.md) |
 | Brand dark | `--color-brand-dark` / `text-brand-dark` | Headings, nav brand |
-| Brand accent | `--color-brand-accent` / `text-brand-accent` | Accents, focus rings |
-| CTA gradient | `bg-cta-gradient` | Primary buttons via `btn-primary*` utilities |
-| Accent gradient | `bg-accent-gradient` | H1 accent text (Hero), skip link only — **verified post-impl** |
+| Brand accent | `--color-brand-accent` / `text-brand-accent` | Accents. Dark-surface focus ring only (`focus-ring-on-dark`) |
+| Label size | `--text-label` / `text-label-upper` | 12px (`0.75rem`). Uppercase labels (Trusted By, hero badge, footer columns, locale) |
+| CTA gradient | `bg-cta-gradient` | Inside `btn-primary-surface` only — not a JSX class |
+| Accent gradient | `bg-accent-gradient` | Skip link only (`HomePage.jsx`) |
 | Hero background | `bg-hero-bg` | Hero section |
 | Pricing background | `bg-pricing-section` | Pricing section |
 | Ecosystem colors | `bg-ecosystem-1` … `bg-ecosystem-4` | Hub card icons |
@@ -447,7 +450,7 @@ Phase 5 (functional tokens + type scale)
 | Shadow tier 3 | `shadow-pricing-card`, `shadow-cta-shadow`, `shadow-pricing-cta` | Featured pricing, CTAs |
 | Shadow public API | `shadow-soft` / `shadow-soft-lg` / `shadow-pricing-card` | Elevation for new LP surfaces. Do not add `shadow-tier-*`. |
 | Shadow component | `shadow-ecosystem-*`, `shadow-cta-shadow`, `shadow-accent-ring` | Hub/CTA/methodology — reuse these names; no new `shadow-[…]` in JSX |
-| Focus | `focus-ring` utility | All interactives |
+| Focus | `focus-ring` / `focus-ring-on-dark` | Light surfaces: navy ring. Ecosystem: gold ring + `ring-offset-brand-dark`. Do not override ring color from JSX on top of `@apply` |
 | Dark fill button | `btn-dark` | `#access` Check only — navy fill, not a second primary CTA |
 | Feedback | `card-feedback-success` / `card-feedback-warning` / `btn-feedback-owned` | `#access` cards, owned CTA, Success alert. **Hero terminal chrome stays Tailwind amber/emerald.** |
 | Icons | `icon-sm` / `icon-md` / `icon-lg` / `icon-display` | LP Lucide 16/20/24; Success checkout hero 48px only |
@@ -468,10 +471,10 @@ Phase 5 (functional tokens + type scale)
 
 ### Gradient usage map (current repo)
 
-| Class | Files |
+| Class | Where |
 |-------|-------|
-| `bg-cta-gradient` | `Hero.jsx`, `Navbar.jsx`, `Pricing.jsx`, `Ecosystem.jsx` |
-| `bg-accent-gradient` | `Hero.jsx` (H1 text clip), `HomePage.jsx` (skip link, access CTAs), `CancelPage.jsx` |
+| `bg-cta-gradient` | `index.css` `btn-primary-surface` only (buttons compose that utility) |
+| `bg-accent-gradient` | `HomePage.jsx` skip link only |
 
 ---
 
@@ -491,19 +494,19 @@ Phase 5 (functional tokens + type scale)
 | `en.json` / `lt.json` | Proof disambiguation; pruned hero keys |
 | `golden-legacy-standard.md` | Section order, Navbar/Hero canon |
 
-### Planned (Phases 5–7)
+### Shipped (Phases 5–7) — closed, do not re-implement
 
 | File | Problem | Micro-change | Phase |
 |------|---------|--------------|-------|
-| `index.css` | Missing functional + type tokens | Add Phase 5 tokens + utilities | 5 |
-| `Pricing.jsx` | Raw rgba; `text-[44px]` | `badge-accent`, `text-price` | 5 |
-| `Ecosystem.jsx` | Glass rgba inline | `card-glass`, `border-glass` | 5 |
-| `WhatIsPromptAnatomy.jsx` | `text-[56px]` | `text-stat` | 5 |
-| `Hero.jsx`, `Navbar.jsx` | Ad-hoc label px | `text-label-upper` | 5 |
-| `Methodology.jsx` | Inline accent ring shadow | `--shadow-accent-ring` | 5 |
-| `Navbar.jsx` | Desktop omits 3 sections | Add sentence-case anchor links | 6 |
-| `SuccessPage.jsx`, `CancelPage.jsx` | Off-system buttons | `btn-primary` / `btn-secondary` | 6 |
-| `HomePage.jsx` | Access CTAs may use accent gradient on buttons | Align to `btn-primary` | 6 |
+| `index.css` | Missing functional + type tokens | Phase 5 tokens + utilities | 5 — closed |
+| `Pricing.jsx` | Raw rgba; `text-[44px]` | `badge-accent`, `text-price` | 5 — closed |
+| `Ecosystem.jsx` | Glass rgba inline | `card-glass-ecosystem` (not `border-glass`; deleted 2026-09-15) | 5 — closed |
+| `WhatIsPromptAnatomy.jsx` | `text-[56px]` | `text-stat` | 5 — closed |
+| `Hero.jsx`, `Navbar.jsx` | Ad-hoc label px | `text-label-upper` (12px as of 2026-10-02) | 5 — closed |
+| `Methodology.jsx` | Inline accent ring shadow | `--shadow-accent-ring` | 5 — closed |
+| `Navbar.jsx` | Desktop wayfinding | What Is + Ecosystem only (golden-legacy 2026-08-13). Do not add Methodology/FAQ | 6 — closed |
+| `SuccessPage.jsx`, `CancelPage.jsx` | Off-system buttons | `btn-primary` / `btn-secondary` | 6 — closed |
+| `HomePage.jsx` | Access CTAs | `#access` Check is `btn-dark`; training CTA is `btn-primary` | 6 — closed |
 
 ---
 

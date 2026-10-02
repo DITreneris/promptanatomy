@@ -6,7 +6,7 @@ import { APP_UTM_MEDIUM, FIRST_PARTY_REL, withAppUtm } from '../utils/appUtm'
 
 const ECOSYSTEM_MAP_URL = `${ECOSYSTEM_DISCOVERY_SITE}/#ecosystem`
 
-const FALLBACK_ICONS = [<Zap key="z" />, <BookOpen key="b" />, <Target key="t" />, <Users key="u" />, <LayoutDashboard key="d" />, <Cpu key="c" />]
+const FALLBACK_ICONS = [<Zap key="z" className="icon-lg" />, <BookOpen key="b" className="icon-lg" />, <Target key="t" className="icon-lg" />, <Users key="u" className="icon-lg" />, <LayoutDashboard key="d" className="icon-lg" />, <Cpu key="c" className="icon-lg" />]
 /** URL → theme index 1–4 (phase: 1=Adopt, 2=Apply, 3=Scale) */
 const ECOSYSTEM_URL_INDEX = {
   'https://promptanatomy.cloud/': 1,
@@ -19,14 +19,14 @@ const ECOSYSTEM_URL_INDEX = {
   'https://promptanatomy.pro/': 3,
 }
 const ECOSYSTEM_URL_ICON = {
-  'https://promptanatomy.cloud/': <Zap key="z" />,
-  'https://www.promptanatomy.info/lt/': <BookOpen key="b" />,
-  'https://www.promptanatomy.info/en/': <BookOpen key="b" />,
-  'https://www.promptanatomy.space/': <Megaphone key="m" />,
-  'https://www.promptanatomy.space/en/': <Megaphone key="m" />,
-  'https://promptanatomy.help/': <Users key="u" />,
-  'https://www.promptanatomy.ceo/': <LayoutDashboard key="d" />,
-  'https://promptanatomy.pro/': <Cpu key="c" />,
+  'https://promptanatomy.cloud/': <Zap key="z" className="icon-lg" />,
+  'https://www.promptanatomy.info/lt/': <BookOpen key="b" className="icon-lg" />,
+  'https://www.promptanatomy.info/en/': <BookOpen key="b" className="icon-lg" />,
+  'https://www.promptanatomy.space/': <Megaphone key="m" className="icon-lg" />,
+  'https://www.promptanatomy.space/en/': <Megaphone key="m" className="icon-lg" />,
+  'https://promptanatomy.help/': <Users key="u" className="icon-lg" />,
+  'https://www.promptanatomy.ceo/': <LayoutDashboard key="d" className="icon-lg" />,
+  'https://promptanatomy.pro/': <Cpu key="c" className="icon-lg" />,
 }
 const ECOSYSTEM_BG_CLASSES = ['bg-ecosystem-1', 'bg-ecosystem-2', 'bg-ecosystem-3', 'bg-ecosystem-4']
 const ECOSYSTEM_HOVER_RING = ['group-hover:ring-ecosystem-1', 'group-hover:ring-ecosystem-2', 'group-hover:ring-ecosystem-3', 'group-hover:ring-ecosystem-4']
@@ -118,8 +118,7 @@ function renderCard(item, i, t, locale, pagePath) {
     : `${item.title} — ${ctaLabel}`
 
   const phaseAccentClass = !isPrimaryCard ? (PHASE_ACCENT_CLASSES[item.themeIndex - 1] ?? PHASE_ACCENT_CLASSES[0]) : ''
-  const cardBaseClass =
-    'group relative card-density-dark-premium overflow-hidden focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark'
+  const cardBaseClass = 'group relative card-density-dark-premium overflow-hidden'
   const cardClass = `${cardBaseClass}${isPrimaryCard ? ' card-featured-ecosystem' : ''}${phaseAccentClass ? ` ${phaseAccentClass}` : ''} ${useCtaLayout ? '' : 'block'}`
 
   const body = (
@@ -149,7 +148,7 @@ function renderCard(item, i, t, locale, pagePath) {
   )
 
   const ctaClass = isPrimaryCard
-    ? 'w-full min-h-[48px] py-3 rounded-2xl text-base btn-primary shadow-ecosystem-cta hover:scale-[1.03] hover:shadow-ecosystem-cta flex items-center justify-center focus-visible:ring-offset-brand-dark'
+    ? 'w-full min-h-[48px] py-3 rounded-2xl text-base btn-primary-surface focus-ring-on-dark shadow-ecosystem-cta hover:scale-[1.03] hover:shadow-ecosystem-cta flex items-center justify-center'
     : 'btn-ecosystem-secondary'
 
   const cta = useCtaLayout && ctaLabel && item.url && (
@@ -189,7 +188,7 @@ function renderCard(item, i, t, locale, pagePath) {
       target="_blank"
       rel={FIRST_PARTY_REL}
       onClick={() => captureEcosystemOutboundClick({ target: item.url, placement: 'ecosystem_card', locale, pagePath })}
-      className={`${cardClass} cursor-pointer`}
+      className={`${cardClass} cursor-pointer focus-ring-on-dark`}
       aria-label={item.title}
     >
       {content}

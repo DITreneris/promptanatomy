@@ -114,7 +114,7 @@ export default function Hero() {
 
           <h1 className="max-[359px]:text-3xl text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-brand-dark mb-4 md:mb-6 leading-[0.95] tracking-tighter break-words">
             {t('hero.headline1')}<br />
-            <span className="text-transparent bg-clip-text bg-accent-gradient break-words">
+            <span className="text-feedback-warning-fg break-words">
               {t('hero.headline2')}
             </span>
           </h1>
