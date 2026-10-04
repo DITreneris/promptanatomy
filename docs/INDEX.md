@@ -15,6 +15,7 @@
 | Changelog | [CHANGELOG.md](../CHANGELOG.md) | Pridėta / pakeista / taisymai. |
 | Versijų ir release | [versioning-and-release.md](versioning-and-release.md) | SemVer, release žingsniai, git tag. |
 | Magic-link spec (root) | [memo.md](../memo.md) | HMAC URL formatas platforma → training SPA. |
+| Magic-link email bind (2026-09-23) | [memo-magic-link-email-2026-09-23.md](memo-magic-link-email-2026-09-23.md) | Training forwarder pin `7a66b71`. Hub signs `email:tier:expires` only after that pin is live on `/anatomy/`. |
 
 ---
 

@@ -1,10 +1,13 @@
 /**
  * Vercel serverless: GET /api/verify-access?access_tier=3|6|9|12&expires=UNIX_TS&token=BASE64URL_HMAC
+ * Optional email: when non-blank after trim + lowercase, the payload is
+ * `email:access_tier:expires`. When absent or blank, the payload stays
+ * `access_tier:expires`.
  * Magic link access verification – HMAC-signed token.
  * Accepted tiers: 3, 6, 9, 12 (corporate12 / Supabase Phase 1). Returns 200 { access_tier } or 400/401.
  * Env: ACCESS_TOKEN_SECRET (shared secret, min 16 chars)
  */
-const crypto = require('crypto');
+const { normalizeMagicLinkEmail, verifyMagicLink } = require('./lib/magic-link');
 
 const VALID_TIERS = [3, 6, 9, 12];
 
@@ -22,22 +25,6 @@ function setCorsHeaders(req, res) {
   }
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-}
-
-function base64UrlEncode(buffer) {
-  return buffer
-    .toString('base64')
-    .replace(/\+/g, '-')
-    .replace(/\//g, '_')
-    .replace(/=+$/, '');
-}
-
-function verifyToken(accessTier, expires, token, secret) {
-  const payload = `${accessTier}:${expires}`;
-  const expectedHmac = crypto.createHmac('sha256', secret).update(payload).digest();
-  const expectedB64 = base64UrlEncode(expectedHmac);
-  if (token.length === 0 || token.length !== expectedB64.length) return false;
-  return crypto.timingSafeEqual(Buffer.from(token, 'utf8'), Buffer.from(expectedB64, 'utf8'));
 }
 
 module.exports = async function handler(req, res) {
@@ -60,6 +47,7 @@ module.exports = async function handler(req, res) {
   const accessTier = (req.query.access_tier || '').trim();
   const expires = (req.query.expires || '').trim();
   const token = (req.query.token || '').trim();
+  const email = normalizeMagicLinkEmail(req.query.email);
 
   if (!accessTier || !expires || !token) {
     return res.status(400).json({ error: 'Missing access_tier, expires, or token' });
@@ -80,7 +68,7 @@ module.exports = async function handler(req, res) {
     return res.status(401).json({ error: 'Link expired' });
   }
 
-  if (!verifyToken(accessTier, expires, token, secret)) {
+  if (!verifyMagicLink(accessTier, expires, token, secret, email)) {
     return res.status(401).json({ error: 'Invalid token' });
   }
 
