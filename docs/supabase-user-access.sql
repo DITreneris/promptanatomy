@@ -18,6 +18,7 @@ comment on column user_access.stripe_customer_id is 'Stripe customer id from che
 
 -- Hardening (20260603120000_user_access_hardening.sql): RLS enabled, no policies;
 -- REVOKE anon/authenticated. CHECK (20260710120000): highest_plan in (0,3,6,9,12,15).
+-- 20260923140000: jei trigeris / REVOKE nepritaikyti, o CHECK su 9 jau yra — tik finish_hardening, ne 20260603.
 -- Bulk import: scripts/import_user_access.py
 
 -- Rankinis upsert (produkcija): VISADA naudokite lower(email). Kitu atveju api/access.js ir

@@ -7,6 +7,9 @@
 | `20260324120000_user_access_baseline.sql` | Lentelė `user_access` (idempotent CREATE) |
 | `20260603120000_user_access_hardening.sql` | RLS, REVOKE anon/authenticated, CHECK `highest_plan`, `updated_at` trigger |
 | `20260710120000_user_access_add_plan_9_check.sql` | CHECK įtraukia `9` (operator grant tier; prod tier-9 eilutės) |
+| `20260923140000_user_access_finish_hardening.sql` | Trigeris `updated_at` (`search_path=public`), `REVOKE` anon/authenticated, šalina seną SELECT policy. Nekartoja CHECK be `9`. |
+
+Gyvoje hub DB MCP istorija: `20260923113146` (`user_access_finish_hardening`), `20260923113230` (`set_updated_at_search_path`). Repo failo versija su jomis nesutampa. Senų trijų migracijų istorijoje nėra — `db push` jų neperleisti; `20260603120000` CHECK neįtraukia `9` ir ant esamų eilučių lūžta.
 
 [docs/supabase-user-access.sql](supabase-user-access.sql) – santrauka ir rankinio paleidimo atsarginis variantas (tas pats DDL); laikykite sinchronizuotą su migracija.
 
