@@ -17,10 +17,10 @@ export default function TrustedBy() {
     <section
       id="trusted-by"
       aria-labelledby="trusted-by-heading"
-      className="bg-white px-4 sm:px-6 md:px-8 py-10 md:py-12"
+      className="section-band bg-white px-4 sm:px-6 md:px-8"
     >
       <div className="max-w-5xl mx-auto min-w-0">
-        <h2 id="trusted-by-heading" className="text-label-upper text-slate-500 text-center mb-6 md:mb-8">
+        <h2 id="trusted-by-heading" className="text-label-upper text-ink-soft text-center mb-6 md:mb-8">
           {t('trustedBy.title')}
         </h2>
         <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-6 sm:gap-x-6 md:gap-x-8 lg:gap-x-10 list-none m-0 p-0">

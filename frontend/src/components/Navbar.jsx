@@ -127,7 +127,7 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
 
   const closeMobile = () => setMobileOpen(false)
 
-  const navLinkClass = `relative text-nav-link text-slate-600 hover:text-brand-accent transition-colors duration-200 min-h-[44px] min-w-[44px] inline-flex items-center after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-200 after:w-0 hover:after:w-full ${FOCUS_RING}`
+  const navLinkClass = `relative text-nav-link text-ink-muted hover:text-brand-accent transition-colors duration-ui min-h-[44px] min-w-[44px] inline-flex items-center after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-ui after:w-0 hover:after:w-full ${FOCUS_RING}`
 
   const renderNavItem = (item, className) => {
     if (item.action) {
@@ -174,14 +174,14 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
   return (
     <>
     <nav
-      className={`fixed top-0 w-full z-[101] [-webkit-backface-visibility:hidden] backface-hidden transition-all duration-500 ${
-        scrolled ? 'py-3 bg-white/70 backdrop-blur-2xl border-b border-slate-200 shadow-xs' : 'py-3 md:py-4 bg-transparent'
+      className={`fixed top-0 w-full z-[101] [-webkit-backface-visibility:hidden] backface-hidden transition-all duration-overlay ${
+        scrolled ? 'py-3 bg-white/70 backdrop-blur-2xl border-b border-stroke shadow-xs' : 'py-3 md:py-4 bg-transparent'
       }`}
       aria-label={t('nav.ariaNav')}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex justify-between items-center gap-2 min-w-0">
         <Link to={homePath} className={`flex shrink-0 items-center gap-2.5 sm:gap-3 group cursor-pointer ${FOCUS_RING} rounded-lg min-w-0`}>
-          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-brand-dark flex items-center justify-center text-brand-accent shadow-soft border border-white/10 shrink-0 transition-colors duration-200 group-hover:bg-brand-dark/95">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-brand-dark flex items-center justify-center text-brand-accent shadow-soft border border-white/10 shrink-0 transition-colors duration-ui group-hover:bg-brand-dark/95">
             <Zap className="icon-md sm:icon-lg fill-current" aria-hidden />
           </div>
           <span className="min-w-0 text-lg sm:text-xl font-black tracking-tight leading-none text-brand-dark break-words">
@@ -193,13 +193,13 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
         <div className="hidden min-w-0 shrink items-center justify-end gap-3 lg:flex lg:gap-4 xl:gap-6">
           {mainNavItems.map((item) => renderNavItem(item, navLinkClass))}
           <div className="flex items-center gap-3 xl:gap-4 shrink-0">
-            <div className="flex items-center gap-1 p-0.5 rounded-lg bg-slate-100 border border-slate-200">
+            <div className="flex items-center gap-1 p-0.5 rounded-lg bg-canvas-muted border border-stroke">
               <button
                 type="button"
                 onClick={() => { setLocale('lt'); navigate('/lt') }}
                 onMouseEnter={() => prefetchLocale('lt')}
                 onFocus={() => prefetchLocale('lt')}
-                className={`px-2.5 py-1 min-h-[44px] min-w-[44px] rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} ${FOCUS_RING}`}
+                className={`px-2.5 py-1 min-h-[44px] min-w-[44px] rounded-md text-label-upper tracking-wide transition-colors duration-ui ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-ink-muted hover:text-brand-dark'} ${FOCUS_RING}`}
                 aria-pressed={locale === 'lt'}
                 aria-label="Lietuvių"
               >
@@ -210,7 +210,7 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
                 onClick={() => { setLocale('en'); navigate('/en') }}
                 onMouseEnter={() => prefetchLocale('en')}
                 onFocus={() => prefetchLocale('en')}
-                className={`px-2.5 py-1 min-h-[44px] min-w-[44px] rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} ${FOCUS_RING}`}
+                className={`px-2.5 py-1 min-h-[44px] min-w-[44px] rounded-md text-label-upper tracking-wide transition-colors duration-ui ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-ink-muted hover:text-brand-dark'} ${FOCUS_RING}`}
                 aria-pressed={locale === 'en'}
                 aria-label="English"
               >
@@ -231,7 +231,7 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
           ref={hamburgerRef}
           type="button"
           onClick={() => setMobileOpen((o) => !o)}
-          className="flex items-center justify-center p-3 lg:hidden min-h-[44px] min-w-[44px] rounded-xl text-brand-dark transition-all duration-200 hover:bg-slate-100 active:scale-[0.98] focus-ring"
+          className="flex items-center justify-center p-3 lg:hidden min-h-[44px] min-w-[44px] rounded-xl text-brand-dark transition-all duration-ui hover:bg-canvas-muted active:scale-[0.98] focus-ring"
           aria-expanded={mobileOpen}
           aria-controls="mobile-nav"
           aria-label={mobileOpen ? t('nav.ariaCloseMenu') : t('nav.ariaOpenMenu')}
@@ -249,13 +249,13 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
     >
       {/* Overlay without backdrop-blur-sm to avoid mobile GPU freeze */}
       <div
-        className={`absolute inset-0 bg-black/80 transition-opacity duration-300 ${mobileOpen ? 'opacity-100' : 'opacity-0'}`}
+        className={`absolute inset-0 bg-black/80 transition-opacity duration-overlay ${mobileOpen ? 'opacity-100' : 'opacity-0'}`}
         onClick={closeMobile}
         aria-hidden
       />
       <div
         ref={drawerRef}
-        className={`absolute top-0 right-0 h-full w-full max-w-sm bg-white shadow-2xl border-l border-slate-200 flex flex-col pt-24 px-6 transition-transform duration-300 ease-out ${mobileOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`absolute top-0 right-0 h-full w-full max-w-sm bg-white shadow-soft-lg border-l border-stroke flex flex-col pt-24 px-6 transition-transform duration-overlay ease-out ${mobileOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <Link
           to={homePath}
@@ -265,17 +265,17 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
               window.scrollTo({ top: 0, behavior: 'smooth' })
             }
           }}
-          className="py-4 text-base font-bold tracking-[0.08em] text-slate-600 hover:text-brand-dark border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 focus-ring rounded-sm"
+          className="py-4 text-base font-bold text-ink-muted hover:text-brand-dark border-b border-stroke-subtle min-h-[48px] flex items-center transition-colors duration-ui focus-ring rounded-sm"
         >
           {t('common.home')}
         </Link>
-        <div className="mb-6 flex items-center gap-0.5 p-0.5 rounded-lg bg-slate-100 border border-slate-200 w-fit">
+        <div className="mb-6 flex items-center gap-0.5 p-0.5 rounded-lg bg-canvas-muted border border-stroke w-fit">
           <button
             type="button"
             onClick={() => { closeMobile(); setLocale('lt'); navigate('/lt') }}
             onMouseEnter={() => prefetchLocale('lt')}
             onFocus={() => prefetchLocale('lt')}
-            className={`px-3 py-2 min-h-[44px] min-w-[44px] rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} focus-ring`}
+            className={`px-3 py-2 min-h-[44px] min-w-[44px] rounded-md text-label-upper tracking-wide transition-colors duration-ui ${locale === 'lt' ? 'bg-brand-dark text-white' : 'text-ink-muted hover:text-brand-dark'} focus-ring`}
             aria-pressed={locale === 'lt'}
             aria-label="Lietuvių"
           >
@@ -286,7 +286,7 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
             onClick={() => { closeMobile(); setLocale('en'); navigate('/en') }}
             onMouseEnter={() => prefetchLocale('en')}
             onFocus={() => prefetchLocale('en')}
-            className={`px-3 py-2 min-h-[44px] min-w-[44px] rounded-md text-label-upper tracking-wide transition-colors duration-200 ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-slate-600 hover:text-brand-dark'} focus-ring`}
+            className={`px-3 py-2 min-h-[44px] min-w-[44px] rounded-md text-label-upper tracking-wide transition-colors duration-ui ${locale === 'en' ? 'bg-brand-dark text-white' : 'text-ink-muted hover:text-brand-dark'} focus-ring`}
             aria-pressed={locale === 'en'}
             aria-label="English"
           >
@@ -294,7 +294,7 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
           </button>
         </div>
         {allNavItems.map((item) => {
-          const mobileClass = "relative py-4 text-base font-bold tracking-[0.08em] text-slate-600 hover:text-brand-accent border-b border-slate-100 min-h-[48px] flex items-center transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-200 after:w-0 hover:after:w-full focus-ring rounded-sm"
+          const mobileClass = "relative py-4 text-base font-bold text-ink-muted hover:text-brand-accent border-b border-stroke-subtle min-h-[48px] flex items-center transition-colors duration-ui after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-brand-accent after:transition-all after:duration-ui after:w-0 hover:after:w-full focus-ring rounded-sm"
           return item.action ? (
             <button
               key={item.name}
@@ -347,7 +347,7 @@ export default function Navbar({ onCtaClick, hasAccess = false, onTrainingClick,
         <button
           type="button"
           onClick={() => { closeMobile(); onCtaClick() }}
-          className="mt-8 btn-primary-md min-h-[48px] py-4 text-base flex items-center justify-center hover:scale-[1.03]"
+          className="mt-8 btn-primary-lg flex items-center justify-center"
         >
           {t('nav.cta')}
         </button>

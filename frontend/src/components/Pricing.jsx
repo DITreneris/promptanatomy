@@ -38,21 +38,21 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
     <>
       <div className="text-center mb-8 md:mb-16">
         <div className="badge-accent mb-4 md:mb-6">
-          <Globe className="icon-sm text-feedback-warning-icon shrink-0" aria-hidden /> {t('pricing.badge')}
+          <Globe className="icon-sm text-brand-accent shrink-0" aria-hidden /> {t('pricing.badge')}
         </div>
         <h2 className="section-heading mb-3 md:mb-4">
           {t('pricing.title')}
         </h2>
-        <p className="text-slate-600 text-base md:text-lg font-medium max-w-xl mx-auto">
+        <p className="text-lead text-ink-muted max-w-xl mx-auto">
           {t('pricing.subtext')}
         </p>
-        <p className="text-slate-600 text-sm font-medium mt-2">
+        <p className="text-ink-muted text-sm font-medium mt-2">
           {t('pricing.cumulativeNote')}
         </p>
         {Array.isArray(trustSignals) && trustSignals.length > 0 && (
-          <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-6 text-slate-600 font-medium">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-6 text-ink-muted font-medium">
             {trustSignals.map((item, i) => (
-              <span key={i} className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-4 py-2 text-sm">
+              <span key={i} className="flex items-center gap-2 rounded-full border border-stroke bg-white/70 px-4 py-2 text-sm">
                 <CheckCircle className="icon-sm text-feedback-success-icon shrink-0" aria-hidden />
                 {item}
               </span>
@@ -70,22 +70,22 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
           return (
             <div
               key={plan.id}
-              className={`relative rounded-3xl p-8 shadow-pricing-card hover:shadow-soft-lg hover:-translate-y-1.5 transition-all duration-300 flex flex-col ${isCore ? 'card-featured-pricing border-2' : 'bg-white border border-slate-100 hover:border-brand-accent/30'}`}
+              className={`relative rounded-3xl p-8 shadow-pricing-card hover:shadow-soft-lg hover:-translate-y-1 transition-all duration-overlay flex flex-col ${isCore ? 'card-featured-pricing border-2' : 'bg-white border border-stroke-subtle hover:border-brand-accent/30'}`}
             >
               {isCore && (
                 <span className="absolute top-6 right-6 badge-premium">
                   {t('pricing.recommended')}
                 </span>
               )}
-              <span className="text-xs font-bold uppercase tracking-widest text-slate-600 mb-2">
+              <span className="text-label-upper text-ink-muted mb-2">
                 {t(`pricing.plans.${plan.labelKey}`)}
               </span>
-              <p className="text-slate-600 font-bold mb-3">{plan.mods} {t('pricing.mods')}</p>
+              <p className="text-ink-muted font-bold mb-3">{plan.mods} {t('pricing.mods')}</p>
               {(() => {
                 const bullets = t(`pricing.planBullets.${plan.labelKey}`)
                 const list = Array.isArray(bullets) ? bullets : []
                 return list.length > 0 ? (
-                  <ul className="space-y-2 mb-4 text-sm text-slate-700 font-medium">
+                  <ul className="space-y-2 mb-4 text-sm text-ink-strong font-medium">
                     {list.map((item, i) => (
                       <li key={i} className="flex items-center gap-2">
                         <CheckCircle className="icon-sm text-feedback-success-icon shrink-0" aria-hidden />
@@ -97,7 +97,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
               })()}
               <p className="text-price mb-6 flex items-baseline">
                 {plan.price}
-                <span className="text-2xl font-bold text-slate-600 ml-1">€</span>
+                <span className="text-2xl font-bold text-ink-muted ml-1">€</span>
               </p>
               {isOwned ? (
                 <button
@@ -117,7 +117,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
                   disabled={loading}
                   aria-busy={loading}
                   aria-live={loading ? 'polite' : undefined}
-                  className="mt-auto w-full min-h-[48px] py-4 rounded-2xl text-base btn-primary shadow-pricing-cta hover:scale-[1.05] hover:shadow-pricing-cta flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                  className={`mt-auto w-full flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed ${isCore ? 'btn-primary-lg shadow-pricing-cta hover:shadow-pricing-cta' : 'btn-secondary-lg'}`}
                 >
                   {loading ? t('pricing.loading') : <>{state.label} <ArrowRight className="icon-md" aria-hidden /></>}
                 </button>
@@ -128,23 +128,23 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
       </div>
 
       {plansToShow.length === 0 && access && highest_plan >= PHASE1_MAX_MODULES && (
-        <p className="text-center text-slate-600 font-medium mb-16">
+        <p className="text-center text-ink-muted font-medium mb-16">
           {t('pricing.alreadyHave')} – {t('pricing.yourAccess').replace('%s', String(moduleDisplayCap(highest_plan)))}
         </p>
       )}
 
       {showModulesLockedNote && (
-        <p className="text-center text-slate-600 text-sm font-medium mb-6 flex items-center justify-center gap-2">
+        <p className="text-center text-ink-muted text-sm font-medium mb-6 flex items-center justify-center gap-2">
           <Lock className="icon-sm shrink-0" aria-hidden />
           {t('pricing.modulesLocked')}
         </p>
       )}
 
-      <div className="mb-10 rounded-2xl border border-slate-200 bg-slate-50/80 p-6 md:p-8 text-center">
+      <div className="mb-10 rounded-2xl border border-stroke bg-canvas/80 p-6 md:p-8 text-center">
         <h3 className="text-lg md:text-xl font-bold text-brand-dark tracking-tight mb-2">
           {t('pricing.forTeamsTitle')}
         </h3>
-        <p className="text-slate-600 text-sm md:text-base font-medium mb-4 max-w-xl mx-auto">
+        <p className="text-ink-muted text-sm md:text-base font-medium mb-4 max-w-xl mx-auto">
           {t('pricing.forTeamsBody')}
         </p>
         <a
@@ -159,11 +159,11 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
         </a>
       </div>
 
-      <div className="bg-slate-50 rounded-3xl p-10 border border-slate-100 mb-10">
-        <p className="text-slate-600 font-bold mb-6">{t('pricing.allPlansInclude')}</p>
+      <div className="bg-canvas rounded-3xl p-10 border border-stroke-subtle mb-10">
+        <p className="text-ink-muted font-bold mb-6">{t('pricing.allPlansInclude')}</p>
         <div className="grid md:grid-cols-2 gap-4">
           {(Array.isArray(features) ? features : []).map((item, i) => (
-            <div key={i} className="flex items-center gap-3 text-slate-700 font-medium">
+            <div key={i} className="flex items-center gap-3 text-ink-strong font-medium">
               <div className="w-6 h-6 rounded-full bg-feedback-success-fill flex items-center justify-center shrink-0 border border-feedback-success-track">
                 <CheckCircle className="icon-sm text-feedback-success-text shrink-0" aria-hidden />
               </div>
@@ -179,13 +179,13 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
         </p>
       )}
 
-      <div className="flex flex-wrap justify-center gap-14 text-slate-600">
-        <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em]">
+      <div className="flex flex-wrap justify-center gap-14 text-ink-muted">
+        <div className="flex items-center gap-3 text-label-upper">
           <Lock className="icon-sm shrink-0" aria-hidden /> {t('pricing.stripeVerified')}
         </div>
         <Link
           to="/terms#refunds"
-          className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em] hover:text-brand-accent transition-colors duration-200 focus-ring rounded-sm"
+          className="flex items-center gap-3 text-sm font-medium text-ink-muted hover:text-brand-accent transition-colors duration-ui focus-ring rounded-sm"
         >
           <ShieldCheck className="icon-sm shrink-0" aria-hidden /> {t('pricing.refundContact')}
         </Link>

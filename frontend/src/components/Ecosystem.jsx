@@ -31,7 +31,6 @@ const ECOSYSTEM_URL_ICON = {
 const ECOSYSTEM_BG_CLASSES = ['bg-ecosystem-1', 'bg-ecosystem-2', 'bg-ecosystem-3', 'bg-ecosystem-4']
 const ECOSYSTEM_HOVER_RING = ['group-hover:ring-ecosystem-1', 'group-hover:ring-ecosystem-2', 'group-hover:ring-ecosystem-3', 'group-hover:ring-ecosystem-4']
 
-const ROW_SIZE = 3
 const PRIMARY_CARD_INDEX = 0
 
 const PHASE_ACCENT_CLASSES = ['card-phase-accent-1', 'card-phase-accent-2', 'card-phase-accent-3']
@@ -66,15 +65,11 @@ export default function Ecosystem() {
       <div className="absolute inset-0 opacity-[0.025] pointer-events-none bg-ecosystem-grid" aria-hidden />
       <div className="max-w-7xl mx-auto relative z-10 min-w-0">
         <div className="text-center mb-8 md:mb-10">
-          <h2 className="text-4xl md:text-5xl lg:text-5xl font-extrabold text-white mb-4 tracking-[-0.02em]">{t('ecosystem.title')}</h2>
+          <h2 className="section-heading-on-dark mb-4">{t('ecosystem.title')}</h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 lg:gap-8">
-          {items.slice(0, ROW_SIZE).map((item, i) => renderCard(item, i, t, locale, pagePath))}
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 lg:gap-8 mt-7 lg:mt-8">
-          {items.slice(ROW_SIZE).map((item, i) => renderCard(item, i + ROW_SIZE, t, locale, pagePath))}
+          {items.map((item, i) => renderCard(item, i, t, locale, pagePath))}
         </div>
 
         {mapLinkLabel && (
@@ -127,7 +122,7 @@ function renderCard(item, i, t, locale, pagePath) {
         <span className="absolute top-6 right-6 badge-premium">{t('ecosystem.startHere')}</span>
       )}
       <div
-        className={`w-12 h-12 rounded-xl flex items-center justify-center text-white ${iconShadowClass} transition-all duration-200 group-hover:scale-105 ring-2 ring-transparent group-hover:ring-2 ${ECOSYSTEM_BG_CLASSES[item.themeIndex - 1]} ${ECOSYSTEM_HOVER_RING[item.themeIndex - 1]} mb-3`}
+        className={`w-12 h-12 rounded-xl flex items-center justify-center text-white ${iconShadowClass} transition-all duration-ui group-hover:scale-105 ring-2 ring-transparent group-hover:ring-2 ${ECOSYSTEM_BG_CLASSES[item.themeIndex - 1]} ${ECOSYSTEM_HOVER_RING[item.themeIndex - 1]} mb-3`}
       >
         {item.icon}
       </div>

@@ -3,9 +3,9 @@
 | Field | Value |
 |-------|-------|
 | **Date** | 2026-05-24 |
-| **Last updated** | 2026-09-15 (v1.1 leftover prune: unused utilities/tokens, FAQ eyebrow code, duration-200; **no v1.2**) |
-| **Implemented** | 2026-05-24 (Phases 1–8); **v1.1** 2026-08-13; leftover prune 2026-09-15 |
-| **Status** | **v1.0 shipped** (Phases 5–8). **v1.1 hygiene shipped** — leftover prune 2026-09-15. QA: [design-system-qa.md](process/design-system-qa.md) |
+| **Last updated** | 2026-10-04 (accent use: navy headlines, yellow CTA without halo, Starter outline; v1.3 surface language remains) |
+| **Implemented** | 2026-05-24 (Phases 1–8); **v1.1** 2026-08-13; leftover prune 2026-09-15; **v1.2** and **v1.3** 2026-10-02 |
+| **Status** | **v1.3 shipped** (ink, stroke, motion). v1.2 type rhythm remains underneath. QA: [design-system-qa.md](process/design-system-qa.md) |
 | **External benchmark** | [GitHub Primer](https://primer.style/) — token layering, semantics, flow (§14) |
 | **Scope** | LP in [frontend/src/pages/HomePage.jsx](../frontend/src/pages/HomePage.jsx) and [frontend/src/components/](../frontend/src/components/) |
 | **Token source** | [frontend/src/index.css](../frontend/src/index.css) (`@theme`, Tailwind CSS v4 — **not** `tailwind.config.js`) |
@@ -26,11 +26,11 @@
 
 ## 1. Executive Summary
 
-| Question | Answer (2026-08-13) |
+| Question | Answer (2026-10-02) |
 |----------|---------------------|
-| **Is the frontpage close to premium SaaS quality?** | **Yes — v1.0 shipped; v1.1 hygiene.** Token + utility system in `index.css`. Remaining work is Won’t (no UI kit, no webfont, no dark mode). |
+| **Is the frontpage close to premium SaaS quality?** | **Yes — v1.3 surface language shipped.** Token + utility system in `index.css`. Next in-scope work is §15 v1.4 (legal/checkout parity and CI). Won’t stays: no UI kit, no webfont, no dark mode. |
 | **What was fixed first (Phases 1–4)?** | Dual CTA gradient → `btn-primary`; Hero CTA ↔ `#pricing`; proof copy disambiguation; stat SR readability; Methodology semantics; `mt-20` removed; local `noise.svg`. |
-| **What's next?** | Nothing in-scope except optional Could (screenshots). Do not reopen Phases 5–7 as Open. |
+| **What's next?** | **v1.4** applies the v1.3 ink roles on legal and checkout pages and extends the CI grep. v1.3 is shipped. Do not reopen Phases 5–7 or v1.2 as Open. |
 | **Remaining trust polish?** | Proof numbers: **500+** library; **40+** interactive tools; **300+** interactive slides. **600+** practitioners **removed** (2026-09-14). Social proof = Trusted-by client logo band (`TrustedBy.jsx`, 6 logos). Desktop nav (golden-legacy 2026-08-13): What Is + Ecosystem (+ Training if `hasAccess`). **Not** Pricing / Methodology / FAQ. |
 | **What must not change?** | Brand palette (dark + gold), terminal hero, Navbar Variant B, Stripe checkout flow, mobile drawer pattern, i18n architecture. |
 | **What we will not adopt?** | `@primer/react`, shadcn on LP, dark mode, Figma pipeline, animation libraries — see §14.3. |
@@ -39,15 +39,15 @@
 
 ## 2. Current Design System Version
 
-### Label: **v1.0 shipped — v1.1 hygiene (2026-08-13)**
+### Label: **v1.3 shipped — surface language (2026-10-02)**
 
-*Historical labels: v0.85 audit → v0.95 Phases 1–4 → v1.0 Phases 5–8. Do not treat v0.95 as current.*
+*Historical labels: v0.85 audit → v0.95 Phases 1–4 → v1.0 Phases 5–8 → v1.1 hygiene → v1.2 type rhythm. Do not treat v0.95 or v1.2 as current. v1.4 in §15 is proposed, not shipped.*
 
 | Signal | Evidence | Implication |
 |--------|----------|-------------|
 | Centralized tokens | `@theme` in `index.css`: brand, feedback, gradients, named shadows | Base + functional + component layers (commented in CSS) |
 | CSS utilities (not React DS) | `btn-primary*`, `section-default`, `section-heading`, `page-heading`, `focus-ring`, `card-feedback-*` | Primer-aligned **utility** approach — no `@primer/react` |
-| Gradient split (resolved) | `bg-cta-gradient` lives in `btn-primary-surface`; `bg-accent-gradient` = skip link only | Hero line 2 is solid `text-feedback-warning-fg` (2026-10-02) |
+| Gradient split (resolved) | `bg-cta-gradient` lives in `btn-primary-surface`; `bg-accent-gradient` = skip link only | Hero H1 both lines are `text-brand-dark` (2026-10-04). CTA elevation is navy/black, not a `#ffb300` glow. |
 | JSX color discipline | Zero `rgba(` / `text-[NNpx]` / `shadow-[` / `size={` in LP JSX; CI grep | Hex/rgba only in `@theme`; Lucide uses `icon-*` |
 | Typography | `text-stat` / `text-price` / `text-label-upper` (`--text-label` 12px); H1 `font-black`; stats `font-extrabold` | Weight contrast shipped |
 | Section rhythm | `section-default` on LP sections; Ecosystem `section-dark-ecosystem` | Done |
@@ -231,7 +231,7 @@ From [HomePage.jsx](../frontend/src/pages/HomePage.jsx):
 | # | Decision | Resolution |
 |---|----------|------------|
 | 1 | **Canonical proof numbers** | **Updated 2026-09-14.** **500+** = ecosystem prompt/template library (`hero.bullet1`, `whatIs.stat1Number`, `pricing.features`); **40+** = interactive tools (`whatIs.stat2`); **300+** = interactive slides (`whatIs.stat3`). **600+** practitioners (`hero.socialProof`) **removed** — no published counting method; social proof is now the Trusted-by client logo band (`TrustedBy.jsx`). |
-| 2 | **Primary button gradient** | **`bg-cta-gradient`** inside `btn-primary-surface` (and `btn-primary`). **`bg-accent-gradient`** is the skip link only. Hero line 2 is solid `text-feedback-warning-fg` (2026-10-02). |
+| 2 | **Primary button gradient** | **`bg-cta-gradient`** inside `btn-primary-surface` (and `btn-primary`). **`bg-accent-gradient`** is the skip link only. Hero H1 both lines are `text-brand-dark` (2026-10-04; the 2026-10-02 solid fill replaced the gradient clip, then the brown warning color left the headline). |
 
 ---
 
@@ -380,7 +380,11 @@ section-heading → text-4xl md:text-5xl font-black text-brand-dark tracking-[-0
 
 **v1.1 leftover prune (2026-09-15) — not v1.2.** Deleted unused `@utility` (`hub-core-pill`, `hub-connector-line`, `card-density-dark*`, `btn-ecosystem-ghost`, `animate-fade-in-up`, `shadow-tier-*`); unused shadow tokens; FAQ eyebrow code + empty `faq.sectionLabel`; invalid `duration-180`/`duration-220` → `duration-200`. Named Ecosystem/Pricing shadows stay. Crumb follow-up: deleted unused `--color-border-glass` / `--color-border-glass-hover` / `--shadow-ecosystem-card-rim` / `--color-brand-accent-hover`; unused `nav.brandTagline`; `PHASE_ACCENT_CLASSES` is 1–3 (`--color-ecosystem-4` kept).
 
-**v1.1 hygiene follow-up (2026-10-02) — not v1.2.** Light focus ring is navy (`focus-ring` / `ring-brand-dark`). Ecosystem uses `focus-ring-on-dark`. Primary chrome is `btn-primary-surface`; `btn-primary` adds the light ring. Ecosystem Enter CTA is `btn-primary-surface` + `focus-ring-on-dark`. Hero line 2 is solid `text-feedback-warning-fg` (gradient clip removed). Methodology `h2` is solid `text-brand-dark`. `--text-label` is 12px. Desktop locale is 44px. Muted/featured surfaces use brand gold `#cfa73a` alpha, not `#ffc107`. CTA gradient stays `#ffcc33` → `#ffb300`. CI grep also rejects Lucide `size={`.
+**Accent use (2026-10-04).** Supersedes the Hero line-2 color and the `#ffb300` elevation sentences in the 2026-10-02 notes below. Hero H1 both lines are `text-brand-dark`. `badge-accent` text is `text-brand-dark`; its icon is `text-brand-accent`. `--shadow-cta-shadow` and `--shadow-pricing-cta` are navy; `--shadow-ecosystem-cta` is black. Hero and ecosystem warm radials are `rgb(255 179 0 / 0.04)`. CTA gradient stays `#ffcc33` → `#ffb300`. Starter buy is `btn-secondary-lg`; Core, Hero, nav, drawer, success, and cancel primary stay `btn-primary-lg`. Methodology eyebrow stays `text-amber-800`. `--color-feedback-warning-*` stays for real warnings only. Enter icon glow stays.
+
+**v1.1 hygiene follow-up (2026-10-02).** Light focus ring is navy (`focus-ring` / `ring-brand-dark`). Ecosystem uses `focus-ring-on-dark`. Primary chrome is `btn-primary-surface`; `btn-primary` adds the light ring. Ecosystem Enter CTA is `btn-primary-surface` + `focus-ring-on-dark`. Hero line 2 is solid `text-feedback-warning-fg` (gradient clip removed). `--text-label` is 12px. Desktop locale is 44px. Muted/featured surfaces use brand gold `#cfa73a` alpha. CTA gradient stays `#ffcc33` → `#ffb300`. CI grep also rejects Lucide `size={`.
+
+**v1.2 — type rhythm (2026-10-02).** One eyebrow: `text-label-upper` is 12px, `tracking-[0.18em]` (methodology label, breadcrumbs via `text-breadcrumb`, terminal line labels, pricing trust, access kicker). `badge-accent` stays the wider pill (`0.25em`). Light H2 including methodology is `section-heading`. Ecosystem H2 is `section-heading-on-dark` (white, weight 900). Hero H1 is `hero-heading` (same 30/36/48/60/72 scale). Hero lede is `hero-lede` (`font-medium`). Section intros and FAQ answers use `text-lead` (18px, `font-medium`). Price is `text-4xl` (36px) below `md`, then `--text-price` (44px). `--text-stat` and `--text-price` live in `:root`, not `@theme`, so they do not emit a second utility that overrides the responsive step. Success H1 is `checkout-heading`. Cancel H1 is `page-heading`. `btn-primary-lg` is the shared conversion size: `text-lg`, `py-4`, `min-h-[48px]`, `hover:scale-[1.03]` (hero, pricing buy, success, cancel, drawer CTA). Nav stays `btn-primary-md`. Access training links stay `text-sm`. Elevation yellow (`shadow-ecosystem-cta`, `shadow-pricing-cta`, icon card glow, hero and ecosystem radials) is `#ffb300`. Rhythm steps live on `--spacing-*` and `section-default` / `section-band` / `hero-pad` / `footer-pad` / `section-header-gap`. CI also rejects `tracking-[` and `leading-[` in LP JSX.
 
 **Won’t:** shadcn / `@primer/react` / Geist font / dark mode / Figma pipeline / OKLCH / screenshot CI / Methodology+FAQ in desktop nav / collapsing Ecosystem shadows / `--color-brand-accent-fg` (wordmark gold on white stays).
 
@@ -393,6 +397,9 @@ Phase 5 (functional tokens + type scale)
     → Phase 6 (nav + checkout parity + shadow enforcement)
         → Phase 7 (icon/spacing docs + QA gates → v1.0)
             → v1.1 hygiene (docs + CI grep + a11y record + feedback/legal utilities)
+                → v1.2 type rhythm (one eyebrow, shared CTA, named spacing, #ffb300 elevation)
+                    → v1.3 surface language (ink, stroke, motion — shipped)
+                        → v1.4 page parity + CI (legal/checkout — proposed, §15)
 ```
 
 ---
@@ -411,7 +418,7 @@ Phase 5 (functional tokens + type scale)
 | 8 | **Mobile layout** | Done — 44px targets | — |
 | 9 | **Proof blocks** | Done — mixed metrics, disambiguated copy | — |
 | 10 | **Shadows / borders** | Done — named shadows in `@theme` (`shadow-soft`, `shadow-soft-lg`, `shadow-pricing-card`, `shadow-ecosystem-*`); no `shadow-tier-*` | 5–6 / v1.1 |
-| 11 | **Gradients** | Done — CTA inside `btn-primary-surface`; accent gradient on the skip link only. Hero line 2 is solid `text-feedback-warning-fg` | — |
+| 11 | **Gradients** | Done — CTA inside `btn-primary-surface`; accent gradient on the skip link only. Hero H1 both lines are `text-brand-dark` (2026-10-04) | — |
 | 12 | **Images / diagrams** | Done — local `noise.svg` only | — |
 | 13 | **Footer density** | Done (2026-08-13) | 4× `lg:col-span-3`; legal `text-xs`; tagline be brand echo |
 | 14 | **No raw color in JSX** (Primer) | Done — hex/rgba only in `@theme`; CI grep | 5 / v1.1 |
@@ -430,7 +437,7 @@ Phase 5 (functional tokens + type scale)
 |-------|---------|---------|------|
 | Base | Brand primitives | `--color-brand-dark`, `--color-brand-accent` | Define in `@theme` only |
 | Functional | UI patterns (text, border, surface) | `--color-accent-muted-bg`, `--color-surface-glass`, `--color-feedback-success-*` | Use in utilities + components |
-| Component | Section-specific | `--background-image-hero-bg`, `--shadow-pricing-card`, Ecosystem shadows | Prefer functional when reusable. **Do not add a 24th shadow** without a v1.2 note. |
+| Component | Section-specific | `--background-image-hero-bg`, `--shadow-pricing-card`, Ecosystem shadows | Prefer functional when reusable. CTA elevation is navy or black (2026-10-04), not a `#ffb300` glow. Do not add a new shadow name. |
 
 **Current tokens (shipped):**
 
@@ -439,7 +446,11 @@ Phase 5 (functional tokens + type scale)
 | Typeface | `--font-sans` / `font-sans` | OS stack only (`ui-sans-serif, system-ui, sans-serif`). No webfont. [ADR-0001](decisions/0001-lp-system-typeface.md) |
 | Brand dark | `--color-brand-dark` / `text-brand-dark` | Headings, nav brand |
 | Brand accent | `--color-brand-accent` / `text-brand-accent` | Accents. Dark-surface focus ring only (`focus-ring-on-dark`) |
-| Label size | `--text-label` / `text-label-upper` | 12px (`0.75rem`). Uppercase labels (Trusted By, hero badge, footer columns, locale) |
+| Label size | `--text-label` / `text-label-upper` | 12px (`0.75rem`), `tracking-[0.18em]`. One eyebrow (Trusted By, hero badge, footer columns, locale, methodology label, terminal labels) |
+| Lead | `--text-lead` / `text-lead` | 18px, `font-medium`. Section intros and FAQ answers. Hero lede is `hero-lede` (`text-lg md:text-xl`) |
+| Headings | `section-heading` / `section-heading-on-dark` / `hero-heading` / `checkout-heading` | Light H2 36/48 weight 900. Ecosystem H2 same scale, white. Hero H1 keeps 30/36/48/60/72. Success H1 stays uppercase display |
+| Conversion CTA | `btn-primary-lg` / `btn-secondary-lg` | `text-lg`, `py-4`, `min-h-[48px]`. Hero and Core buy stay `btn-primary-lg`. Starter buy is `btn-secondary-lg` (white, dark outline). Nav stays `btn-primary-md` |
+| Rhythm | `--spacing-section-y` and siblings | `section-default` 5rem/7rem, `section-band` 2.5rem/3rem, `hero-pad`, `footer-pad`, `section-header-gap` |
 | CTA gradient | `bg-cta-gradient` | Inside `btn-primary-surface` only — not a JSX class |
 | Accent gradient | `bg-accent-gradient` | Skip link only (`HomePage.jsx`) |
 | Hero background | `bg-hero-bg` | Hero section |
@@ -447,14 +458,14 @@ Phase 5 (functional tokens + type scale)
 | Ecosystem colors | `bg-ecosystem-1` … `bg-ecosystem-4` | Hub card icons |
 | Shadow tier 1 | `shadow-soft`, `shadow-xs` | Cards, nav |
 | Shadow tier 2 | `shadow-soft-lg`, `shadow-hero-value` | Elevated cards |
-| Shadow tier 3 | `shadow-pricing-card`, `shadow-cta-shadow`, `shadow-pricing-cta` | Featured pricing, CTAs |
+| Shadow tier 3 | `shadow-pricing-card`, `shadow-cta-shadow`, `shadow-pricing-cta` | Featured pricing, CTAs. CTA shadows are navy elevation, not yellow (2026-10-04) |
 | Shadow public API | `shadow-soft` / `shadow-soft-lg` / `shadow-pricing-card` | Elevation for new LP surfaces. Do not add `shadow-tier-*`. |
 | Shadow component | `shadow-ecosystem-*`, `shadow-cta-shadow`, `shadow-accent-ring` | Hub/CTA/methodology — reuse these names; no new `shadow-[…]` in JSX |
 | Focus | `focus-ring` / `focus-ring-on-dark` | Light surfaces: navy ring. Ecosystem: gold ring + `ring-offset-brand-dark`. Do not override ring color from JSX on top of `@apply` |
 | Dark fill button | `btn-dark` | `#access` Check only — navy fill, not a second primary CTA |
 | Feedback | `card-feedback-success` / `card-feedback-warning` / `btn-feedback-owned` | `#access` cards, owned CTA, Success alert. **Hero terminal chrome stays Tailwind amber/emerald.** |
 | Icons | `icon-sm` / `icon-md` / `icon-lg` / `icon-display` | LP Lucide 16/20/24; Success checkout hero 48px only |
-| Legal type | `page-heading` / `page-subheading` | Privacy/Terms only — not `section-heading` (too large) |
+| Legal type | `page-heading` / `page-subheading` | Privacy/Terms and Cancel H1 — not `section-heading` (too large). Success uses `checkout-heading` |
 
 **Planned tokens (Phase 5 — shipped; listed for history):**
 
@@ -642,9 +653,12 @@ Phase 5 (functional tokens + type scale)
 | **v0.95** | Phases 1–4 shipped (2026-05-24) |
 | **v0.98** | Target after Phases 5–6 (functional tokens + cohesion) |
 | **v1.0** | Phases 5–8 shipped (QA gates + hub polish) |
-| **v1.1** | Hygiene 2026-08-13 — current |
+| **v1.1** | Hygiene 2026-08-13 |
+| **v1.2** | Type rhythm 2026-10-02 |
+| **v1.3** | Surface language 2026-10-02 — **current** |
+| **v1.4** | Proposed horizon — legal/checkout parity and CI (§15). Not started. |
 | **Top 3 delivered (1–4)** | (1) `btn-primary` + single CTA gradient, (2) Hero CTA honesty + proof copy, (3) Footer + mobile Hero polish |
-| **Top 3 v1.1** | (1) Canon/QA aligned to golden-legacy, (2) CI grep + a11y 92, (3) feedback + legal heading utilities |
+| **Top 3 v1.2** | (1) one eyebrow + shared section headings, (2) shared `btn-primary-lg`, (3) named section spacing and `#ffb300` elevation |
 | **Benchmark** | GitHub [Primer](https://primer.style/) — §14; adopt patterns, not `@primer/react` |
 | **Mistakes to avoid** | Section reorder; animation libs; raw rgba in JSX; proof changes without i18n + golden-legacy; reading §2 as v0.95 |
 
@@ -727,10 +741,56 @@ v0.95  utilities + CTA + a11y fixes
 v0.97  functional tokens + type scale   ← Phase 5
 v0.98  nav + checkout parity            ← Phase 6
 v1.0   QA gates + icon/spacing docs     ← Phase 7–8
-v1.1   hygiene (CI grep, a11y record, feedback/legal utilities)  ← current
+v1.1   hygiene (CI grep, a11y record, feedback/legal utilities)
+v1.2   type rhythm
+v1.3   ink, stroke, motion          ← current
+v1.4   legal/checkout parity + CI   ← proposed horizon (§15)
 ```
 
 ---
+
+## 15. Next horizons (revised 2026-10-02, after v1.3)
+
+v1.2 closed type and rhythm. v1.3 closed light-surface color, motion, the pricing eyebrow, the drawer shadow, and the methodology icon radius. This section is what remains. It is not a redesign, and it does not reopen the Won’t list.
+
+**Closed in v1.3 (do not re-open):**
+
+| Item | Live |
+|------|------|
+| Ink scale | Nine tokens at the old slate hex: `canvas`, `canvas-muted`, `stroke-subtle`, `stroke`, `stroke-strong`, `ink-faint`, `ink-soft`, `ink-muted`, `ink-strong`. Body copy is `text-ink-muted` (`#475569`). |
+| Motion | `duration-ui` 200ms, `duration-overlay` 300ms, one hover lift `-translate-y-1` |
+| Eyebrow | Pricing plan name is `text-label-upper`. `badge-accent` keeps `0.25em` |
+| Drawer | `shadow-soft-lg` + `border-stroke`. No new shadow name |
+| Radius | Methodology icon is `rounded-xl` (12px) |
+
+**Still open after v1.3:**
+
+| Gap | Where | Count |
+|-----|--------|------:|
+| Page bodies still use Tailwind `slate-*` | Privacy, Terms, Success, Cancel | 28 |
+| Access email field is a one-off class string | `HomePage.jsx` `#access` input | 1 |
+| Atmosphere motion left on purpose | Hero glow `duration-500` + `rounded-[60px]`; access progress `duration-500` | 2 |
+| Dark-surface slate left on purpose | Hero terminal (`text-slate-100/200/400`); `ecosystem-tag-pill` `text-slate-300` | exempt |
+| CI does not yet reject the classes v1.3 removed | `tracking-widest`, `shadow-2xl`, `shadow-xl`, `duration-150` | grep |
+| Lighthouse a11y | Recorded **92** on 2026-08-13. Do not invent a new score. Re-measure post-deploy only | 1 |
+
+`prefers-reduced-motion` already zeroes transitions. Hero terminal amber / emerald / rose / indigo stay exempt. Wordmark gold on white, the hotter CTA gradient, Ecosystem phase colors, and named Ecosystem shadows stay as they are.
+
+### v1.3 — surface language — **Shipped** (2026-10-02)
+
+Nine ink and stroke tokens, not three. Collapsing slate-400/500/600/700 into one muted color would have changed contrast. Each step kept its hex. Legal and checkout page bodies were left for v1.4. Build passed. Browser check: EN and LT, 375 and 1280, no overflow; drawer edge readable at 768 against the scrim; Privacy locale still 44×44.
+
+### v1.4 — page parity (horizon)
+
+| Item | Do |
+|------|----|
+| Pages | Privacy, Terms, Success, and Cancel body copy and strokes use the v1.3 ink utilities. Headings already have `page-heading` / `checkout-heading`. |
+| Access field | One `field-control` utility for the email input (stroke, radius, the existing navy `focus-ring`). |
+| CI | Reject `tracking-widest`, `shadow-2xl`, `shadow-xl`, and `duration-150` in LP JSX. Do not ban `slate-*` outright — the terminal exemption would make that grep a false fail. |
+| Evidence | Re-record Lighthouse a11y after deploy. Write the number that the run returns. |
+| Screenshots | The open v1.0 Could (manual baseline) can land here, once motion stops moving. Screenshot CI stays Won’t. |
+
+**Stops at v1.4.** Dark mode, a webfont, shadcn, `@primer/react`, `--color-brand-accent-fg`, and a collapsed Ecosystem shadow scale are still Won’t.
 
 ## Related documents
 

@@ -12,7 +12,7 @@ export default function PrivacyPage() {
     <div className="min-h-screen bg-slate-50 antialiased">
       <div className="max-w-2xl mx-auto px-6 py-16">
         <div className="mb-8 flex items-start justify-between gap-4">
-          <nav aria-label="Breadcrumb" className="text-xs font-bold uppercase tracking-[0.2em] text-slate-600">
+          <nav aria-label="Breadcrumb" className="text-breadcrumb">
             <ol className="flex items-center gap-2">
               <li><Link to={homePath} className="hover:text-brand-accent transition-colors duration-200">{t('common.home')}</Link></li>
               <li aria-hidden>/</li>

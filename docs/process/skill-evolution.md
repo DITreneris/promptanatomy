@@ -135,6 +135,7 @@ Pavyzdys:
 |----------|-------------|
 | LT #16–23: hub `.app` never Y; FB already cited but leaked 399; off-site pack ≠ sitemap | `q-and-a-agent/SKILL.md`, `seo-geo-operations.md` §I |
 | Tomas FB/LI copy = founder tu voice in `lt-geo-social-pack.md`; ne 25-žodžių GEO sloganai | `q-and-a-agent/SKILL.md` + lessons, `orchestrator/SKILL.md` Kill, INDEX §4 |
+| 2026-09-28: infantilus paketas atmestas („Tome“, jausmas, virtuvė, „keista“). Verslo tu skaitytojui; faktai = LT DUK; vienas URL; negrąžinti senų caption | `q-and-a-agent/SKILL.md` + lessons, `orchestrator/SKILL.md` Kill |
 
 ### Pakeltos pamokos (2026-08-13, LP design system v1.1)
 
