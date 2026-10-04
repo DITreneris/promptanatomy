@@ -1,6 +1,6 @@
-# Design system QA (LP v1.0 / v1.1)
+# Design system QA (LP v1.0 / v1.1 / v1.2 / v1.3)
 
-**Scope:** Phases 5–8 from [design_system_roadmap2.md](../design_system_roadmap2.md); v1.1 hygiene (tokens, legal headings, CI grep).  
+**Scope:** Phases 5–8 from [design_system_roadmap2.md](../design_system_roadmap2.md); v1.1 hygiene (tokens, legal headings, CI grep); v1.2 type rhythm (one eyebrow, shared conversion CTA, named section steps); v1.3 surface language (ink/stroke tokens, `duration-ui` / `duration-overlay`, one hover lift).  
 **Automated gate (pre-merge):** `cd frontend && npm run build`; CI **Design-system token grep**; `cd backend && pytest`.
 
 ## Visual QA (manual)
@@ -12,6 +12,10 @@
 | 1280px | Desktop nav: What Is, Ecosystem, Training (if access) + locale (`min-h-[44px] min-w-[44px]`) + CTA; Footer 4 equal columns (`lg:col-span-3`) + legal bar all `text-xs`; Ecosystem grid; FAQ contrast; TrustedBy one row |
 
 Run the same rows on **`/lt` and `/en`** (375 / 1280): wordmark, `nav.whatIs`, hero subtitle — LT eilutės ilgesnės; nelūžta už viewport.
+
+v1.2 on those same viewports: methodology eyebrow (`text-label-upper`, not wide tracking) stays one line inside its column; methodology H2 matches What Is / FAQ (`section-heading`); ecosystem H2 is white `section-heading-on-dark`; Hero and Core share `btn-primary-lg` (`text-lg`, `py-4`, `min-h-[48px]`); Starter is `btn-secondary-lg` at the same size; price is smaller than the What Is stat on 375px; terminal line labels stay 12px.
+
+v1.3 on those same viewports: pricing plan name is `text-label-upper` (one line, EN Starter/Core and LT the same labels); body copy is `text-ink-muted` (`rgb(71, 85, 105)`); mobile drawer uses `shadow-soft-lg` plus `border-stroke` (the edge is the border; at 375 the panel is full width, so check the edge at 768 where the scrim shows); hero terminal slate classes stay. Privacy/Terms locale stays 44×44.
 
 ## Footer
 
@@ -26,7 +30,7 @@ Run the same rows on **`/lt` and `/en`** (375 / 1280): wordmark, `nav.whatIs`, h
 - [ ] Header tik `ecosystem.title` — be pastraipos, `ctaPricing`, `workflowHint`, hub pill, phase legend
 - [ ] Anchor `#ekosistema` (Navbar/Footer): pirmos eilės kortelės ne nukirptos po sticky header (`scroll-margin-top`)
 - [ ] All 6 cards: `card-density-dark-premium` (`min-h-[200px]`); `title` + `line-clamp-2` outcome + tag pills; **be** phase eyebrow; CTA `mt-auto pt-3` — be perteklinės tuštumos virš mygtuko (375px / 1280px)
-- [ ] Enter: `border-2` featured frame + `startHere` badge + full-width `btn-primary` + `shadow-ecosystem-cta`
+- [ ] Enter: `border-2` featured frame + `startHere` badge + full-width `btn-primary` + `shadow-ecosystem-cta` (class stays; shadow is black elevation, not yellow)
 - [ ] Secondary: `card-phase-accent-*` top rim + `btn-ecosystem-secondary` + arrow; `aria-label` su opens-in-new-tab (be matomo teksto po CTA)
 - [ ] Card rest: `shadow-ecosystem-card-rest`; hover: `-translate-y-1` + `shadow-ecosystem-card-hover`
 - [ ] Enter icon: gold glow; kitos — `shadow-ecosystem-icon-depth` only
@@ -77,6 +81,8 @@ grep -rE 'rgba\(' src/components src/pages --include='*.jsx'
 grep -rE 'text-\[[0-9]+px\]' src/components src/pages --include='*.jsx'
 grep -rE 'shadow-\[' src/components src/pages --include='*.jsx'
 grep -rE 'size=\{' src/components src/pages --include='*.jsx'
+grep -rE 'tracking-\[' src/components src/pages --include='*.jsx'
+grep -rE 'leading-\[' src/components src/pages --include='*.jsx'
 ```
 
 Expected: **no matches** (tokens only in `src/index.css`). Digit-only `text-[NNpx]` — does not flag `text-[length:var(--text-stat)]` in CSS.

@@ -58,12 +58,12 @@ export default function Faq() {
                   {item?.q}
                 </span>
                 <ChevronDown
-                  className="icon-md shrink-0 text-slate-500 transition-all duration-200 group-open:rotate-180 group-hover:text-brand-accent"
+                  className="icon-md shrink-0 text-ink-soft transition-all duration-ui group-open:rotate-180 group-hover:text-brand-accent"
                   aria-hidden="true"
                 />
               </summary>
               <div className="px-6 pb-5">
-                <p className="text-slate-600 font-medium leading-relaxed">
+                <p className="text-lead text-ink-muted">
                   {item?.a}
                 </p>
               </div>

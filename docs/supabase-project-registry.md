@@ -48,6 +48,7 @@
 1. `20260324120000_user_access_baseline.sql` (jei lentelės dar nėra)
 2. `20260603120000_user_access_hardening.sql` (RLS, REVOKE, CHECK, trigger)
 3. `20260710120000_user_access_add_plan_9_check.sql` (CHECK įtraukia `9`)
+4. `20260923140000_user_access_finish_hardening.sql` (trigeris, REVOKE, senoji SELECT policy). **Neperleisti** `20260603120000`, jei jau yra `highest_plan=9` — tas CHECK `9` neįtraukia.
 
 ### Patikra po migracijos
 
@@ -55,7 +56,7 @@
 select highest_plan, count(*) from user_access group by highest_plan order by 1;
 ```
 
-Tikėtina prod (2026-08-25): `3`→2, `6`→86, `9`→5, `12`→21.
+Tikėtina prod (2026-08-25, pakartota 2026-09-23): `3`→2, `6`→86, `9`→5, `12`→21.
 
 Dashboard: Table Editor → `user_access` → RLS **enabled**; Security Advisor – kritinių finding'ų nėra.
 

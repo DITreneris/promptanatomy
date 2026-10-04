@@ -6,15 +6,15 @@ import { ORG_EMAIL, formatMailingAddressOneLine } from '../site/organization'
 import { APP_UTM_MEDIUM, FIRST_PARTY_REL, THIRD_PARTY_REL, withAppUtm } from '../utils/appUtm'
 
 const footerNavLinkClass =
-  'text-sm font-medium leading-5 text-slate-600 hover:text-brand-accent transition-colors duration-200 focus-ring rounded-sm'
+  'text-sm font-medium leading-5 text-ink-muted hover:text-brand-accent transition-colors duration-ui focus-ring rounded-sm'
 
 const footerLegalLinkClass =
-  'text-xs font-medium text-slate-600 hover:text-brand-accent transition-colors duration-200 focus-ring rounded-sm'
+  'text-xs font-medium text-ink-muted hover:text-brand-accent transition-colors duration-ui focus-ring rounded-sm'
 
 function FooterColumn({ title, children }) {
   return (
     <div>
-      <p className="text-label-upper text-slate-500 mb-3">{title}</p>
+      <p className="text-label-upper text-ink-soft mb-3">{title}</p>
       <ul className="space-y-2.5">{children}</ul>
     </div>
   )
@@ -29,9 +29,9 @@ function FooterLegalBar({ t, year }) {
 
   return (
     <div className="pt-5 md:pt-6 border-t border-brand-accent/20 space-y-2">
-      <div className="flex flex-col gap-3 md:flex-row md:flex-wrap md:items-center text-xs font-medium text-slate-600">
+      <div className="flex flex-col gap-3 md:flex-row md:flex-wrap md:items-center text-xs font-medium text-ink-muted">
         <span className="shrink-0">{t('footer.copyrightLine1', { year })}</span>
-        <span className="hidden md:inline text-slate-400" aria-hidden>
+        <span className="hidden md:inline text-ink-faint" aria-hidden>
           ·
         </span>
         <a
@@ -40,14 +40,14 @@ function FooterLegalBar({ t, year }) {
         >
           {ORG_EMAIL}
         </a>
-        <span className="hidden md:inline text-slate-400" aria-hidden>
+        <span className="hidden md:inline text-ink-faint" aria-hidden>
           ·
         </span>
         <nav aria-label={t('footer.legalNavAria')} className="flex flex-wrap items-center gap-x-3 gap-y-1">
           {legalLinks.map((item, i) => (
             <span key={item.to} className="inline-flex items-center gap-3">
               {i > 0 && (
-                <span className="text-slate-400 hidden sm:inline" aria-hidden>
+                <span className="text-ink-faint hidden sm:inline" aria-hidden>
                   ·
                 </span>
               )}
@@ -58,8 +58,8 @@ function FooterLegalBar({ t, year }) {
           ))}
         </nav>
       </div>
-      <p className="text-xs text-slate-500">{t('footer.creator')}</p>
-      <p className="text-xs text-slate-500">
+      <p className="text-xs text-ink-soft">{t('footer.creator')}</p>
+      <p className="text-xs text-ink-soft">
         {t('footer.mailingAddressInline')} {formatMailingAddressOneLine()}
       </p>
     </div>
@@ -72,7 +72,7 @@ export default function Footer({ hasAccess = false, onTrainingClick, trainingLin
   const pagePath = typeof window !== 'undefined' ? window.location.pathname : '/'
 
   return (
-    <footer className="bg-slate-50 pt-14 md:pt-16 pb-8 md:pb-10 px-4 sm:px-6 md:px-8 border-t border-slate-100 shadow-soft-top overflow-hidden">
+    <footer className="footer-pad bg-canvas px-4 sm:px-6 md:px-8 border-t border-stroke-subtle shadow-soft-top overflow-hidden">
       <div className="max-w-7xl mx-auto min-w-0">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-x-8 lg:gap-x-12 gap-y-10 items-start mb-6">
           <div className="sm:col-span-2 lg:col-span-3">
@@ -85,7 +85,7 @@ export default function Footer({ hasAccess = false, onTrainingClick, trainingLin
                 <span className="text-brand-accent">{t('nav.brandAnatomija')}</span>
               </span>
             </div>
-            <p className="text-sm font-medium leading-relaxed text-slate-600 max-w-[340px]">
+            <p className="text-sm font-medium leading-relaxed text-ink-muted max-w-[340px]">
               {t('footer.tagline')}
             </p>
           </div>
@@ -152,7 +152,7 @@ export default function Footer({ hasAccess = false, onTrainingClick, trainingLin
             </FooterColumn>
           </div>
 
-          <div className="lg:col-span-3">
+          <div className="sm:col-span-2 lg:col-span-3">
             <FooterColumn title={t('footer.columnNetwork')}>
               <li>
                 <a

@@ -6,12 +6,27 @@
 
   --text-label: 0.75rem;
   --text-label--line-height: 1.25;
-  --text-stat: 3.5rem;
-  --text-stat--line-height: 1;
-  --text-price: 2.75rem;
-  --text-price--line-height: 1;
   --text-nav-link: 0.8125rem;
   --text-nav-link--line-height: 1.25;
+  --text-lead: 1.125rem;
+  --text-lead--line-height: 1.6;
+
+  /* v1.2 rhythm — named steps, consumed by section/hero/footer utilities */
+  --spacing-section-y: 5rem;
+  --spacing-section-y-md: 7rem;
+  --spacing-band-y: 2.5rem;
+  --spacing-band-y-md: 3rem;
+  --spacing-hero-pt: 9rem;
+  --spacing-hero-pb: 8rem;
+  --spacing-footer-pt: 3.5rem;
+  --spacing-footer-pt-md: 4rem;
+  --spacing-footer-pb: 2rem;
+  --spacing-footer-pb-md: 2.5rem;
+  --spacing-section-dark-pt: 100px;
+  --spacing-section-tight: 4rem;
+  --spacing-section-tight-md: 5rem;
+  --spacing-header-gap: 3rem;
+  --spacing-header-gap-md: 4rem;
 
   --size-icon-sm: 1rem;
   --size-icon-md: 1.25rem;
@@ -20,6 +35,17 @@
 
   --color-brand-dark: #0b1320;
   --color-brand-accent: #cfa73a;
+
+  /* v1.3 light surfaces — same hex as Tailwind slate, named roles */
+  --color-canvas: #f8fafc;
+  --color-canvas-muted: #f1f5f9;
+  --color-stroke-subtle: #f1f5f9;
+  --color-stroke: #e2e8f0;
+  --color-stroke-strong: #cbd5e1;
+  --color-ink-faint: #94a3b8;
+  --color-ink-soft: #64748b;
+  --color-ink-muted: #475569;
+  --color-ink-strong: #334155;
 
   --color-ecosystem-1: #2e9e7e;
   --color-ecosystem-2: #7c5cff;
@@ -64,13 +90,13 @@
   --background-image-hero-bg:
     radial-gradient(
       circle at 50% 20%,
-      rgba(255, 196, 0, 0.12),
+      rgb(255 179 0 / 0.04),
       transparent 60%
     ),
     linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
   --background-image-ecosystem-center-glow: radial-gradient(
     circle at 50% 10%,
-    rgba(255, 190, 0, 0.12),
+    rgb(255 179 0 / 0.04),
     transparent 60%
   );
   --background-image-pricing-section: linear-gradient(
@@ -95,17 +121,17 @@
     0 8px 24px -4px rgba(11, 19, 32, 0.08),
     0 16px 48px -8px rgba(11, 19, 32, 0.06);
   --shadow-soft-top: 0 -4px 12px -4px rgba(11, 19, 32, 0.06);
-  --shadow-cta-shadow: 0 6px 14px rgba(255, 179, 0, 0.3);
+  --shadow-cta-shadow: 0 6px 14px rgba(11, 19, 32, 0.12);
   --shadow-ecosystem-card-rest: 0 8px 24px rgba(0, 0, 0, 0.25);
   --shadow-ecosystem-card-hover: 0 20px 50px rgba(0, 0, 0, 0.35);
-  --shadow-ecosystem-cta: 0 6px 18px rgba(255, 193, 7, 0.35);
+  --shadow-ecosystem-cta: 0 6px 18px rgba(0, 0, 0, 0.35);
   --shadow-ecosystem-icon-depth:
     0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1);
   --shadow-ecosystem-icon-card:
     0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1),
-    0 0 0 6px rgba(255, 193, 7, 0.05), 0 0 30px rgba(255, 193, 7, 0.15);
+    0 0 0 6px rgb(255 179 0 / 0.05), 0 0 30px rgb(255 179 0 / 0.15);
   --shadow-pricing-card: 0 20px 40px rgba(0, 0, 0, 0.06);
-  --shadow-pricing-cta: 0 8px 20px rgba(255, 193, 7, 0.35);
+  --shadow-pricing-cta: 0 8px 20px rgba(11, 19, 32, 0.10);
   --shadow-hero-value: 0 8px 24px rgba(0, 0, 0, 0.06);
   --shadow-accent-ring: 0 0 0 4px rgba(207, 167, 58, 0.08);
   --shadow-accent-ring-hover: 0 0 0 4px rgba(207, 167, 58, 0.12);
@@ -121,6 +147,11 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+  :root {
+    /* Outside @theme so they do not emit a competing .text-stat / .text-price utility. */
+    --text-stat: 3.5rem;
+    --text-price: 2.75rem;
+  }
   *,
   ::after,
   ::before,
@@ -143,8 +174,16 @@
   @apply focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark;
 }
 
+@utility duration-ui {
+  transition-duration: 200ms;
+}
+
+@utility duration-overlay {
+  transition-duration: 300ms;
+}
+
 @utility btn-primary-surface {
-  @apply min-h-[44px] font-black text-brand-dark bg-cta-gradient shadow-cta-shadow border border-white/20 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98];
+  @apply min-h-[44px] font-black text-brand-dark bg-cta-gradient shadow-cta-shadow border border-white/20 transition-all duration-ui hover:scale-[1.02] active:scale-[0.98];
 }
 
 @utility btn-primary {
@@ -152,7 +191,7 @@
 }
 
 @utility btn-primary-lg {
-  @apply btn-primary rounded-2xl px-12 py-6 text-xl hover:scale-[1.03];
+  @apply btn-primary rounded-2xl px-8 py-4 text-lg min-h-[48px] hover:scale-[1.03];
 }
 
 @utility btn-primary-md {
@@ -164,35 +203,71 @@
 }
 
 @utility btn-secondary {
-  @apply min-h-[44px] font-bold text-brand-dark bg-white border border-slate-200 shadow-soft transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98] focus-ring;
+  @apply min-h-[44px] font-bold text-brand-dark bg-white border border-stroke shadow-soft transition-all duration-ui hover:-translate-y-1 active:scale-[0.98] focus-ring;
+}
+
+@utility btn-secondary-lg {
+  @apply min-h-[48px] font-bold text-brand-dark bg-white border-2 border-brand-dark rounded-2xl px-8 py-4 text-lg shadow-soft transition-all duration-ui active:scale-[0.98] focus-ring disabled:opacity-70;
 }
 
 @utility btn-ghost {
-  @apply min-h-[44px] font-bold text-slate-600 bg-transparent hover:bg-slate-100 transition-all duration-200 focus-ring;
+  @apply min-h-[44px] font-bold text-ink-muted bg-transparent hover:bg-canvas-muted transition-all duration-ui focus-ring;
 }
 
 @utility btn-dark {
-  @apply min-h-[48px] font-bold text-white bg-brand-dark hover:brightness-110 active:scale-[0.98] transition-all duration-200 focus-ring disabled:opacity-70;
+  @apply min-h-[48px] font-bold text-white bg-brand-dark hover:brightness-110 active:scale-[0.98] transition-all duration-ui focus-ring disabled:opacity-70;
 }
 
 @utility section-default {
-  @apply py-20 md:py-28 px-4 sm:px-6 md:px-8;
+  @apply py-section-y md:py-section-y-md px-4 sm:px-6 md:px-8;
+}
+
+@utility section-band {
+  @apply py-band-y md:py-band-y-md;
+}
+
+@utility hero-pad {
+  @apply pt-section-y md:pt-hero-pt pb-section-y md:pb-hero-pb;
+}
+
+@utility footer-pad {
+  @apply pt-footer-pt md:pt-footer-pt-md pb-footer-pb md:pb-footer-pb-md;
+}
+
+@utility section-header-gap {
+  @apply mb-header-gap md:mb-header-gap-md;
 }
 
 @utility section-dark {
-  @apply section-default pt-20 sm:pt-[100px] pb-20 md:pb-28 bg-brand-dark relative overflow-hidden;
+  @apply section-default pt-section-y sm:pt-section-dark-pt pb-section-y md:pb-section-y-md bg-brand-dark relative overflow-hidden;
 }
 
 @utility section-dark-ecosystem {
-  @apply section-dark pb-16 md:pb-20;
+  @apply section-dark pb-section-tight md:pb-section-tight-md;
 }
 
 @utility section-heading {
   @apply text-4xl md:text-5xl font-black text-brand-dark tracking-[-0.02em] leading-[1.1];
 }
 
+@utility section-heading-on-dark {
+  @apply text-4xl md:text-5xl font-black text-white tracking-[-0.02em] leading-[1.1];
+}
+
+@utility hero-heading {
+  @apply max-[359px]:text-3xl text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-brand-dark leading-[0.95] tracking-tighter break-words;
+}
+
+@utility hero-lede {
+  @apply text-lg md:text-xl text-ink-muted font-medium;
+}
+
+@utility checkout-heading {
+  @apply text-4xl md:text-5xl font-black uppercase tracking-tighter leading-none text-brand-dark;
+}
+
 @utility badge-accent {
-  @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-[0.25em] text-amber-800 bg-accent-muted-bg border border-accent-muted-border;
+  @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-[0.25em] text-brand-dark bg-accent-muted-bg border border-accent-muted-border;
 }
 
 @utility card-featured-pricing {
@@ -200,7 +275,7 @@
 }
 
 @utility card-glass-ecosystem {
-  @apply rounded-3xl bg-surface-glass border border-white/12 backdrop-blur-md shadow-ecosystem-card-rest hover:border-white/20 hover:shadow-ecosystem-card-hover hover:-translate-y-1 transition-all duration-300;
+  @apply rounded-3xl bg-surface-glass border border-white/12 backdrop-blur-md shadow-ecosystem-card-rest hover:border-white/20 hover:shadow-ecosystem-card-hover hover:-translate-y-1 transition-all duration-overlay;
 }
 
 @utility card-featured-ecosystem {
@@ -220,7 +295,7 @@
 }
 
 @utility card-density {
-  @apply rounded-2xl p-6 md:p-8 bg-white shadow-soft border border-slate-100;
+  @apply rounded-2xl p-6 md:p-8 bg-white shadow-soft border border-stroke-subtle;
 }
 
 @utility card-density-dark-premium {
@@ -228,11 +303,11 @@
 }
 
 @utility btn-ecosystem-outline {
-  @apply inline-flex items-center justify-center gap-2 min-h-[44px] px-6 py-3 rounded-xl font-bold text-white border border-white/20 bg-white/5 transition-all duration-200 hover:bg-white/10 hover:border-brand-accent/50 focus-ring-on-dark;
+  @apply inline-flex items-center justify-center gap-2 min-h-[44px] px-6 py-3 rounded-xl font-bold text-white border border-white/20 bg-white/5 transition-all duration-ui hover:bg-white/10 hover:border-brand-accent/50 focus-ring-on-dark;
 }
 
 @utility btn-ecosystem-secondary {
-  @apply inline-flex items-center justify-center gap-2 w-full min-h-[48px] px-6 py-3 rounded-2xl font-bold text-white border-2 border-white/15 bg-white/8 transition-all duration-300 hover:bg-white/12 hover:border-white/30 hover:-translate-y-0.5 focus-ring-on-dark;
+  @apply inline-flex items-center justify-center gap-2 w-full min-h-[48px] px-6 py-3 rounded-2xl font-bold text-white border-2 border-white/15 bg-white/8 transition-all duration-overlay hover:bg-white/12 hover:border-white/30 hover:-translate-y-1 focus-ring-on-dark;
 }
 
 @utility ecosystem-tag-pill {
@@ -240,11 +315,11 @@
 }
 
 @utility badge-premium {
-  @apply inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-brand-dark bg-brand-accent/15 border border-brand-accent/35;
+  @apply inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-[0.18em] text-brand-dark bg-brand-accent/15 border border-brand-accent/35;
 }
 
 @utility faq-item {
-  @apply rounded-2xl border border-slate-200 bg-slate-100/80 transition-colors duration-200 hover:border-brand-accent/30 open:bg-white open:shadow-soft open:border-l-4 open:border-l-brand-accent;
+  @apply rounded-2xl border border-stroke bg-canvas-muted/80 transition-colors duration-ui hover:border-brand-accent/30 open:bg-white open:shadow-soft open:border-l-4 open:border-l-brand-accent;
 }
 
 @utility bg-ecosystem-grid {
@@ -257,11 +332,19 @@
 }
 
 @utility text-price {
-  @apply text-[length:var(--text-price)] font-extrabold leading-none text-brand-dark;
+  @apply text-4xl md:text-[length:var(--text-price)] font-extrabold leading-none text-brand-dark;
+}
+
+@utility text-lead {
+  @apply text-[length:var(--text-lead)] font-medium leading-[1.6];
 }
 
 @utility text-label-upper {
-  @apply text-label sm:text-xs font-bold uppercase tracking-[0.12em] sm:tracking-[0.18em];
+  @apply text-label font-bold uppercase tracking-[0.18em];
+}
+
+@utility text-breadcrumb {
+  @apply text-label-upper text-ink-muted;
 }
 
 @utility text-nav-link {
@@ -309,7 +392,7 @@
 }
 
 @utility btn-feedback-owned {
-  @apply mt-auto block w-full min-h-[48px] py-4 text-center font-bold rounded-2xl border-2 border-feedback-success-border bg-feedback-success-fill text-feedback-success-muted hover:bg-feedback-success-fill-hover hover:border-feedback-success-border-hover transition-all duration-200 focus-ring disabled:opacity-70;
+  @apply mt-auto block w-full min-h-[48px] py-4 text-center font-bold rounded-2xl border-2 border-feedback-success-border bg-feedback-success-fill text-feedback-success-muted hover:bg-feedback-success-fill-hover hover:border-feedback-success-border-hover transition-all duration-ui focus-ring disabled:opacity-70;
 }
 
 @utility page-heading {

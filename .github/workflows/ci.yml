@@ -80,6 +80,14 @@ jobs:
             echo '::error::Forbidden Lucide size={ in LP JSX — use icon-sm/md/lg/display' >&2
             fail=1
           fi
+          if grep -rE 'tracking-\[' src/components src/pages --include='*.jsx'; then
+            echo '::error::Forbidden tracking-[ in LP JSX — use type utilities in index.css' >&2
+            fail=1
+          fi
+          if grep -rE 'leading-\[' src/components src/pages --include='*.jsx'; then
+            echo '::error::Forbidden leading-[ in LP JSX — use type utilities in index.css' >&2
+            fail=1
+          fi
           exit $fail
 
       - name: Bundle size budget (LP critical path)

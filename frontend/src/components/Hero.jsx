@@ -99,9 +99,9 @@ export default function Hero() {
   const lineVisible = (lineIdx) => phase > lineIdx
 
   return (
-    <section className="relative pt-20 md:pt-36 pb-20 md:pb-32 overflow-hidden bg-hero-bg">
+    <section className="hero-pad relative overflow-hidden bg-hero-bg">
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[url('/noise.svg')]"></div>
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-slate-50/80 -skew-x-12 translate-x-32 -z-10 border-l border-slate-100"></div>
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-canvas/80 -skew-x-12 translate-x-32 -z-10 border-l border-stroke-subtle"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 grid lg:grid-cols-2 gap-12 lg:gap-24 items-center min-w-0">
         <div className="relative z-10 text-left min-w-0">
@@ -112,17 +112,15 @@ export default function Hero() {
             </span>
           </p>
 
-          <h1 className="max-[359px]:text-3xl text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-brand-dark mb-4 md:mb-6 leading-[0.95] tracking-tighter break-words">
+          <h1 className="hero-heading mb-4 md:mb-6">
             {t('hero.headline1')}<br />
-            <span className="text-feedback-warning-fg break-words">
-              {t('hero.headline2')}
-            </span>
+            {t('hero.headline2')}
           </h1>
 
-          <p className="text-lg md:text-xl text-slate-600 font-bold mb-4 max-w-xl break-words" aria-describedby="hero-bullets">
+          <p className="hero-lede mb-4 max-w-xl break-words" aria-describedby="hero-bullets">
             {t('hero.subtitle')}
           </p>
-          <ul id="hero-bullets" className="hidden sm:block list-none space-y-2 mb-8 md:mb-10 max-w-xl text-base md:text-lg text-slate-600 font-medium">
+          <ul id="hero-bullets" className="hidden sm:block list-none space-y-2 mb-8 md:mb-10 max-w-xl text-base md:text-lg text-ink-muted font-medium">
             {HERO_BULLET_KEYS.map((key) => (
               <li key={key} className="flex items-center gap-2">
                 <span className="text-brand-accent font-bold" aria-hidden="true">•</span>
@@ -157,8 +155,8 @@ export default function Hero() {
                 className="group/line cursor-default transition-all hover:translate-x-1"
                 style={{ opacity: lineVisible(0) ? 1 : 0, transform: lineVisible(0) ? 'none' : 'translateY(8px)', transition: 'opacity 0.3s ease-out, transform 0.3s ease-out' }}
               >
-                <div className="text-sm sm:text-xs text-slate-400 mb-1 font-black tracking-[0.2em]">{t('hero.codeLine1')}</div>
-                <div className="text-sm border-l-2 border-brand-accent/50 group-hover/line:border-brand-accent transition-colors duration-200 pl-5 py-1 break-words min-w-0">
+                <div className="text-label-upper text-slate-400 mb-1">{t('hero.codeLine1')}</div>
+                <div className="text-sm border-l-2 border-brand-accent/50 group-hover/line:border-brand-accent transition-colors duration-ui pl-5 py-1 break-words min-w-0">
                   <span className="text-brand-accent font-black">{t('hero.codeRole')}</span>
                   <span className="text-slate-200 italic break-words">
                     {displayed[0] && <>&quot;{displayed[0]}&quot;</>}
@@ -170,7 +168,7 @@ export default function Hero() {
                 className="group/line cursor-default transition-all hover:translate-x-1"
                 style={{ opacity: lineVisible(1) ? 1 : 0, transform: lineVisible(1) ? 'none' : 'translateY(8px)', transition: 'opacity 0.3s ease-out, transform 0.3s ease-out' }}
               >
-                <div className="text-sm sm:text-xs text-slate-400 mb-1 font-black tracking-[0.2em]">{t('hero.codeLine2')}</div>
+                <div className="text-label-upper text-slate-400 mb-1">{t('hero.codeLine2')}</div>
                 <div className="text-sm border-l-2 border-indigo-500/50 group-hover/line:border-indigo-500 transition-colors pl-5 py-1 break-words min-w-0">
                   <span className="text-indigo-300 font-black">{t('hero.codeContext')}</span>
                   <span className="text-slate-200 italic break-words">
@@ -183,7 +181,7 @@ export default function Hero() {
                 className="group/line cursor-default transition-all hover:translate-x-1"
                 style={{ opacity: lineVisible(2) ? 1 : 0, transform: lineVisible(2) ? 'none' : 'translateY(8px)', transition: 'opacity 0.3s ease-out, transform 0.3s ease-out' }}
               >
-                <div className="text-sm sm:text-xs text-slate-400 mb-1 font-black tracking-[0.2em]">{t('hero.codeLine3')}</div>
+                <div className="text-label-upper text-slate-400 mb-1">{t('hero.codeLine3')}</div>
                 <div className="text-sm border-l-2 border-emerald-500/50 group-hover/line:border-emerald-500 transition-colors pl-5 py-1 break-words min-w-0">
                   <span className="text-emerald-300 font-black">{t('hero.codeSchema')}</span>
                   <span className="text-slate-200 italic break-words">
@@ -197,7 +195,7 @@ export default function Hero() {
                 style={{ opacity: phase >= 4 ? 1 : 0, transition: 'opacity 0.5s ease-out' }}
               >
                 <div className="mt-1.5 w-2 h-2 shrink-0 rounded-full bg-emerald-400" aria-hidden="true" />
-                <span className="text-label-upper leading-snug tracking-[0.14em] sm:tracking-[0.18em] text-slate-100 break-words min-w-0">
+                <span className="text-label-upper leading-snug text-slate-100 break-words min-w-0">
                   {t('hero.terminalOutcome')}
                 </span>
               </div>

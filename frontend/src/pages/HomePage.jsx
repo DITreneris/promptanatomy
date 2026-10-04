@@ -163,7 +163,7 @@ export default function HomePage({ forceLocale }) {
     <div className="min-h-screen w-full max-w-[100vw] bg-white text-brand-dark font-sans selection:bg-brand-accent/30 antialiased overflow-x-hidden">
       <a
         href="#main-content"
-        className="absolute left-6 top-4 z-200 py-3 px-4 bg-accent-gradient text-brand-dark font-black rounded-xl -translate-y-24 focus:outline-hidden focus-visible:translate-y-0 focus-visible:ring-2 focus-visible:ring-brand-dark focus-visible:ring-offset-2 transition-transform duration-200"
+        className="absolute left-6 top-4 z-200 py-3 px-4 bg-accent-gradient text-brand-dark font-black rounded-xl -translate-y-24 focus:outline-hidden focus-visible:translate-y-0 focus-visible:ring-2 focus-visible:ring-brand-dark focus-visible:ring-offset-2 transition-transform duration-ui"
       >
         {t('common.skipToContent')}
       </a>
@@ -191,12 +191,12 @@ export default function HomePage({ forceLocale }) {
               onGoToTraining={handleGoToTraining}
               trainingLinkLoading={trainingLinkLoading}
             />
-            <div id="access" className="mt-8 md:mt-10 rounded-2xl border-2 border-slate-200 bg-white p-5 md:p-6 shadow-soft">
+            <div id="access" className="mt-8 md:mt-10 rounded-2xl border-2 border-stroke bg-white p-5 md:p-6 shadow-soft">
               <div className="mb-4">
-                <p className="text-sm font-black uppercase tracking-[0.2em] text-slate-700 mb-2">
+                <p className="text-label-upper text-ink-strong mb-2">
                   {t('pricing.returningTitle')}
                 </p>
-                <p id="access-email-how" className="text-sm text-slate-600 leading-relaxed">
+                <p id="access-email-how" className="text-sm text-ink-muted leading-relaxed">
                   {t('pricing.returningBody')}
                 </p>
               </div>
@@ -212,7 +212,7 @@ export default function HomePage({ forceLocale }) {
                   value={customerEmail}
                   onChange={(e) => setCustomerEmail(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleCheckAccess()}
-                  className="flex-1 min-h-[48px] min-w-[200px] px-4 py-3 rounded-xl border-2 border-slate-300 bg-white text-brand-dark placeholder:text-slate-500 shadow-xs focus-ring focus-visible:border-brand-accent transition-shadow duration-200"
+                  className="flex-1 min-h-[48px] min-w-[200px] px-4 py-3 rounded-xl border-2 border-stroke-strong bg-white text-brand-dark placeholder:text-ink-soft shadow-xs focus-ring focus-visible:border-brand-accent transition-shadow duration-ui"
                   aria-describedby={accessEmailDescribedBy}
                 />
                 <button
@@ -225,12 +225,12 @@ export default function HomePage({ forceLocale }) {
                   {accessLoading ? t('pricing.loading') : t('pricing.checkButton')}
                 </button>
               </div>
-              <div id="access-email-help" className="mt-4 text-xs text-slate-600 leading-relaxed space-y-2">
+              <div id="access-email-help" className="mt-4 text-xs text-ink-muted leading-relaxed space-y-2">
                 <p>
                   {t('pricing.accessStoragePrivacy')}{' '}
                   <Link
                     to="/privacy"
-                    className="font-semibold text-brand-dark underline decoration-brand-accent/60 underline-offset-2 hover:text-brand-accent focus-ring rounded-sm"
+                    className="font-bold text-brand-dark underline decoration-brand-accent/60 underline-offset-2 hover:text-brand-accent focus-ring rounded-sm"
                   >
                     {t('footer.privacyPolicy')}
                   </Link>
@@ -240,7 +240,7 @@ export default function HomePage({ forceLocale }) {
                 <button
                   type="button"
                   onClick={handleClearStoredEmail}
-                  className="mt-3 text-sm font-semibold text-slate-600 underline decoration-slate-400 underline-offset-2 hover:text-brand-dark focus-ring rounded-sm"
+                  className="mt-3 text-sm font-bold text-ink-muted underline decoration-ink-faint underline-offset-2 hover:text-brand-dark focus-ring rounded-sm"
                 >
                   {t('pricing.clearStoredEmail')}
                 </button>

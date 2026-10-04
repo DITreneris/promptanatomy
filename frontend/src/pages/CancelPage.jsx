@@ -15,7 +15,7 @@ export default function CancelPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-6 antialiased overflow-hidden relative">
-      <nav aria-label="Breadcrumb" className="relative z-10 mb-8 text-xs font-black uppercase tracking-[0.2em] text-slate-600">
+      <nav aria-label="Breadcrumb" className="text-breadcrumb relative z-10 mb-8">
         <ol className="flex items-center gap-2">
             <li><Link to={homePath} className="hover:text-brand-accent transition-colors duration-200">{t('common.home')}</Link></li>
           <li aria-hidden>/</li>
@@ -23,8 +23,8 @@ export default function CancelPage() {
         </ol>
       </nav>
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('/noise.svg')]"></div>
-      <div className="max-w-xl w-full bg-white rounded-3xl p-12 md:p-16 text-center shadow-xl border border-slate-100 relative z-10">
-        <h1 className="text-3xl font-black text-brand-dark mb-6 tracking-tight">
+      <div className="max-w-xl w-full bg-white rounded-3xl p-12 md:p-16 text-center shadow-soft-lg border border-slate-100 relative z-10">
+        <h1 className="page-heading mb-6">
           {t('cancel.heading')}
         </h1>
         <p className="text-slate-600 mb-10 text-lg font-medium leading-relaxed">
@@ -36,7 +36,7 @@ export default function CancelPage() {
             onClick={() => setTimeout(() => {
               document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })
             }, 100)}
-            className="min-h-[44px] inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-lg btn-primary-lg"
+            className="inline-flex items-center justify-center gap-2 btn-primary-lg"
           >
             {t('cancel.tryAgain')} <ArrowLeft className="icon-md rotate-180" aria-hidden />
           </Link>
