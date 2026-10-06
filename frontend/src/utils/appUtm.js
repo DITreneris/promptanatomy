@@ -7,6 +7,7 @@ export const APP_UTM_MEDIUM = {
   navbarMobile: 'navbar_mobile',
   ecosystemCard: 'ecosystem_card',
   ecosystemSiteMap: 'ecosystem_site_map',
+  hero: 'hero',
 }
 
 /** Tab-napping guard only. Referer must reach sibling Vercel analytics. */
