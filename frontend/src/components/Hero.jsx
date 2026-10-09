@@ -1,6 +1,11 @@
 import { useState, useEffect, useMemo } from 'react'
 import { ArrowRight } from 'lucide-react'
+import { useLocation } from 'react-router-dom'
 import { useLocale } from '../i18n/LocaleContext'
+import { captureEcosystemOutboundClick } from '../analytics/posthog'
+import { APP_UTM_MEDIUM, siblingHref } from '../utils/appUtm'
+
+const FREE_LESSON_URL = 'https://promptanatomy.cloud/'
 
 const HERO_BULLET_KEYS = ['hero.bullet1', 'hero.bullet2', 'hero.bullet3']
 const TYPING_MS = 55
@@ -25,7 +30,10 @@ function usePrefersReducedMotion() {
 
 export default function Hero() {
   const { t, locale } = useLocale()
+  const location = useLocation()
   const prefersReducedMotion = usePrefersReducedMotion()
+  const showFreeLesson = locale === 'en'
+  const freeLessonHref = siblingHref(FREE_LESSON_URL, APP_UTM_MEDIUM.hero)
 
   const fullTexts = useMemo(
     () => [
@@ -130,11 +138,35 @@ export default function Hero() {
           </ul>
 
           <div className="flex flex-col gap-4 sm:gap-6 items-stretch sm:flex-row sm:items-center">
+            {showFreeLesson ? (
+              <a
+                href={freeLessonHref}
+                onClick={() =>
+                  captureEcosystemOutboundClick({
+                    target: 'promptanatomy_cloud',
+                    placement: 'hero',
+                    locale,
+                    pagePath: location.pathname,
+                  })
+                }
+                className="group w-full sm:w-auto btn-primary-lg flex items-center justify-center gap-3"
+              >
+                {t('hero.ctaLesson')}{' '}
+                <ArrowRight className="icon-lg group-hover:translate-x-1 transition-transform" aria-hidden />
+              </a>
+            ) : null}
             <a
               href="#pricing"
-              className="group w-full sm:w-auto btn-primary-lg flex items-center justify-center gap-3"
+              className={
+                showFreeLesson
+                  ? 'w-full sm:w-auto btn-secondary-lg flex items-center justify-center'
+                  : 'group w-full sm:w-auto btn-primary-lg flex items-center justify-center gap-3'
+              }
             >
-              {t('hero.cta')} <ArrowRight className="icon-lg group-hover:translate-x-1 transition-transform" aria-hidden />
+              {t('hero.cta')}
+              {showFreeLesson ? null : (
+                <ArrowRight className="icon-lg group-hover:translate-x-1 transition-transform" aria-hidden />
+              )}
             </a>
           </div>
         </div>

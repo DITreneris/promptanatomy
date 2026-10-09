@@ -10,6 +10,8 @@ const {
   normalizeMagicLinkEmail,
   signMagicLink,
   buildTrainingMagicLinkUrl,
+  isMagicLinkRedeemed,
+  metadataWithMagicLinkRedeemed,
 } = require('./lib/magic-link');
 
 /** Phase 1: only 3 and 6 (docs/phase-1-scope.md). */
@@ -58,9 +60,9 @@ module.exports = async function handler(req, res) {
       return res.status(503).json({ detail: 'Redirect not configured' });
     }
 
+    const stripe = new Stripe(stripeKey);
     let session;
     try {
-      const stripe = new Stripe(stripeKey);
       session = await stripe.checkout.sessions.retrieve(sessionId);
     } catch (e) {
       console.warn('success-redirect: Stripe retrieve failed', e.message);
@@ -81,6 +83,21 @@ module.exports = async function handler(req, res) {
       return res.status(400).json({ detail: 'Invalid or unpaid session' });
     }
 
+    if (isMagicLinkRedeemed(session.metadata)) {
+      res.setHeader('Cache-Control', 'no-store');
+      return res.status(409).json({ detail: 'Link already issued' });
+    }
+
+    try {
+      await stripe.checkout.sessions.update(sessionId, {
+        metadata: metadataWithMagicLinkRedeemed(session.metadata),
+      });
+    } catch (e) {
+      console.error('success-redirect: redeem mark failed', e.message);
+      await captureApiException(e, { route: 'success-redirect', status: 502 });
+      return res.status(502).json({ detail: 'Redirect error' });
+    }
+
     const expiryDays = parseInt(process.env.ACCESS_TOKEN_EXPIRY_DAYS || '30', 10) || 30;
     const expires = Math.floor(Date.now() / 1000) + expiryDays * 86400;
     const stripeEmail = session.customer_email || session.customer_details?.email || '';
@@ -99,6 +116,7 @@ module.exports = async function handler(req, res) {
 
     const payload = { redirect_url: redirectUrl };
     if (customerEmail) payload.customer_email = customerEmail;
+    res.setHeader('Cache-Control', 'no-store');
     return res.status(200).json(payload);
   } catch (e) {
     console.error('success-redirect: unexpected error', e.message);

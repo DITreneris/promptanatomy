@@ -142,7 +142,7 @@ async def success_redirect(request: Request, session_id: str = ""):
         raise HTTPException(status_code=400, detail="Invalid or unpaid session")
     if session.get("payment_status") != "paid":
         raise HTTPException(status_code=400, detail="Invalid or unpaid session")
-    metadata = session.get("metadata") or {}
+    metadata = dict(session.get("metadata") or {})
     plan_str = metadata.get("plan")
     if not plan_str:
         raise HTTPException(status_code=400, detail="Invalid or unpaid session")
@@ -152,6 +152,16 @@ async def success_redirect(request: Request, session_id: str = ""):
         raise HTTPException(status_code=400, detail="Invalid or unpaid session")
     if access_tier not in settings.PHASE1_PLAN_VALUES:
         raise HTTPException(status_code=400, detail="Invalid or unpaid session")
+    if str(metadata.get("magic_link_redeemed") or "") == "1":
+        raise HTTPException(status_code=409, detail="Link already issued")
+    try:
+        stripe.checkout.Session.modify(
+            raw,
+            metadata={**metadata, "magic_link_redeemed": "1"},
+        )
+    except stripe.error.StripeError:
+        logger.exception("Success-redirect: failed to mark session redeemed")
+        raise HTTPException(status_code=502, detail="Redirect error")
     expires = int(time.time()) + (settings.access_token_expiry_days * 86400)
     secret = settings.access_token_secret.get_secret_value()
     token = _build_magic_link_token(access_tier, expires, secret)

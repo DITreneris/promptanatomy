@@ -23,8 +23,8 @@ export default function App() {
 
   useEffect(() => {
     if (!isPosthogEnabled()) return
-    capturePosthogPageview()
-  }, [pathname, location.search])
+    capturePosthogPageview(pathname)
+  }, [pathname])
 
   return (
     <>
