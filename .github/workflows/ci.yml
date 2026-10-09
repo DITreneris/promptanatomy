@@ -14,11 +14,13 @@ concurrency:
 jobs:
   golden-legacy:
     name: Golden Legacy
-    runs-on: ubuntu-latest
+    # Pin 24.04: ubuntu-latest moves to Ubuntu 26 on 2026-10-19.
+    runs-on: ubuntu-24.04
     steps:
       # Hub with default GITHUB_TOKEN; private inzinerija needs a PAT
       # (Contents: Read on DITreneris/inzinerija). Secret: INZINERIJA_READ_TOKEN.
-      - uses: actions/checkout@v4
+      # v7 runs on Node 24. v4 declared Node 20 and was forced onto 24.
+      - uses: actions/checkout@v7
 
       - name: Checkout private training submodule
         env:
@@ -45,7 +47,7 @@ jobs:
           git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "https://github.com/"
           git submodule update --init --recursive
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: "24"
           cache: npm
@@ -152,7 +154,7 @@ jobs:
           VITE_MAX_BUILD_MODULE: "12"
         run: npm ci && npm run build:corporate12
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
           cache: pip
