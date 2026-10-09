@@ -36,7 +36,11 @@ export default function SuccessPage() {
         }
       })
       .catch((err) => {
-        setError(err?.message || t('success.redirectError'))
+        setError(
+          err?.status === 409
+            ? t('success.alreadyRedeemed')
+            : err?.message || t('success.redirectError'),
+        )
         setRedirectUrl(null)
       })
       .finally(() => setLoading(false))
