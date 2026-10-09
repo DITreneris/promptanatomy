@@ -40,6 +40,20 @@ function verifyMagicLink(accessTier, expires, token, secret, email) {
   return crypto.timingSafeEqual(Buffer.from(token, 'utf8'), Buffer.from(expected, 'utf8'));
 }
 
+const MAGIC_LINK_REDEEMED_KEY = 'magic_link_redeemed';
+
+/** Checkout session metadata flag: this success URL already minted a training link. */
+function isMagicLinkRedeemed(metadata) {
+  if (!metadata || typeof metadata !== 'object') return false;
+  return String(metadata[MAGIC_LINK_REDEEMED_KEY] || '') === '1';
+}
+
+/** Copy of session metadata with the one-redemption flag set. Does not drop `plan`. */
+function metadataWithMagicLinkRedeemed(metadata) {
+  const base = metadata && typeof metadata === 'object' ? metadata : {};
+  return { ...base, [MAGIC_LINK_REDEEMED_KEY]: '1' };
+}
+
 /** Query built with URLSearchParams so `+` in an address is not read as a space. */
 function buildTrainingMagicLinkUrl({ base, accessTier, expires, token, email }) {
   const params = new URLSearchParams();
@@ -53,9 +67,12 @@ function buildTrainingMagicLinkUrl({ base, accessTier, expires, token, email }) 
 }
 
 module.exports = {
+  MAGIC_LINK_REDEEMED_KEY,
   normalizeMagicLinkEmail,
   magicLinkPayload,
   signMagicLink,
   verifyMagicLink,
+  isMagicLinkRedeemed,
+  metadataWithMagicLinkRedeemed,
   buildTrainingMagicLinkUrl,
 };

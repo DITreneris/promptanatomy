@@ -36,6 +36,8 @@
 ## 4. Antrinis kelias po checkout (sąmoningas)
 
 - **`GET /api/success-redirect?session_id=`** tier’ą ima iš **Stripe Checkout `session.metadata.plan`** (ir tikrina `payment_status`), **neperklausdamas** `user_access` (`api/success-redirect.js`).
+- **Vienkartinis išdavimas (2026-10-09):** pirmas sėkmingas atsakymas įrašo `metadata.magic_link_redeemed=1` ant tos Checkout sesijos ir grąžina mokymų nuorodą. Tas pats `session_id` vėliau → **409**, naujos nuorodos neminta. Prieiga lieka `user_access`; kitą kartą — LP el. paštas → `generate-access-link`.
+- **Grąžinimas rankinis (2026-10-09):** `charge.refunded` webhook’o nėra. Patvirtintas grąžinimas Stripe’e nekeičia `highest_plan`; eilutę keičia operatorius. Automatinis revoke nenaudojamas, kad Starter grąžinimas nenuplautų operatoriaus 9/12.
 - **Kodėl tai OK operaciškai:** po sėkmingo apmokėjimo webhook’as turėtų jau būti atnaujinęs DB; metadata ir DB sutampa normaliame sraute.
 - **Kanonas vis tiek:** ilgalaikė būsena ir LP logika = **`user_access`**. Jei webhook vėluoja ar nepavyksta, teorinis neatitikimas galimas – tai žinoma riba (žr. [TODO.md](../TODO.md) § Later – access architecture).
 

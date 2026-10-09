@@ -6,6 +6,8 @@ const {
   signMagicLink,
   verifyMagicLink,
   buildTrainingMagicLinkUrl,
+  isMagicLinkRedeemed,
+  metadataWithMagicLinkRedeemed,
 } = require('./magic-link');
 
 const SECRET = 'test-secret-at-least-16';
@@ -76,4 +78,13 @@ test('plus in the address round-trips through the query string', () => {
     true
   );
   assert.match(url, /email=learner%2Btag%40example\.com/);
+});
+
+test('success URL is redeemed once and keeps plan metadata', () => {
+  assert.equal(isMagicLinkRedeemed(null), false);
+  assert.equal(isMagicLinkRedeemed({ plan: '6' }), false);
+  assert.equal(isMagicLinkRedeemed({ plan: '6', magic_link_redeemed: '1' }), true);
+  const next = metadataWithMagicLinkRedeemed({ plan: '3' });
+  assert.deepEqual(next, { plan: '3', magic_link_redeemed: '1' });
+  assert.equal(isMagicLinkRedeemed(next), true);
 });

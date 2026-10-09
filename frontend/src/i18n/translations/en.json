@@ -273,6 +273,7 @@
     "goToTraining": "Go to training",
     "redirecting": "Redirecting…",
     "redirectError": "Could not prepare the link. You can return home or contact us.",
+    "alreadyRedeemed": "This link was already used. Enter your email on the pricing page and check access.",
     "noSession": "If you just paid – please wait, the system is preparing your access.",
     "nextTime": "Next time: promptanatomy.app → Pricing → enter email → Check → Go to training.",
     "metaTitle": "Payment successful",

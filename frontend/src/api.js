@@ -35,7 +35,9 @@ export async function getSuccessRedirectUrl(sessionId) {
   if (!res.ok) {
     const raw = (await res.json().catch(() => ({}))).detail || res.statusText
     const detail = typeof raw === 'string' ? raw : JSON.stringify(raw)
-    throw new Error(detail)
+    const err = new Error(detail)
+    err.status = res.status
+    throw err
   }
   const data = await res.json().catch(() => null)
   if (!data?.redirect_url) throw new Error(data === null ? 'Invalid response' : 'No redirect URL')

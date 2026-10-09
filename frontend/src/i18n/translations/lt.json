@@ -273,6 +273,7 @@
     "goToTraining": "Eiti į mokymus",
     "redirecting": "Nukreipiame…",
     "redirectError": "Nepavyko paruošti nuorodos. Gali grįžti į pradžią arba susisiekti su mumis.",
+    "alreadyRedeemed": "Ši nuoroda jau panaudota. Įvesk el. paštą kainodaroje ir patikrink prieigą.",
     "noSession": "Jei ką tik sumokėjai – palauk, sistema ruošia tavo prieigą.",
     "nextTime": "Kitą kartą: promptanatomy.app → Kainodara → įvesk el. paštą → Tikrinti → Eiti į mokymus.",
     "metaTitle": "Apmokėjimas sėkmingas",
