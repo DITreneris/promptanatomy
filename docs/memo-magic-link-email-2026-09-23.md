@@ -3,7 +3,9 @@
 **Date:** 2026-09-23
 **To:** Prompt Anatomy training app (`inzinerija`, route `/anatomy/`)
 **From:** Hub (`promptanatomy.app`)
-**Status:** Training forwarder is commit `7a66b71` on `inzinerija` branch `magic-link-email-forwarder` (cherry-pick of `32eef44` and `b23f26c` onto tag v1.6.4 / `b6c1a9a`; tag not moved; M13-ROI content not included). Hub pin of that SHA is `pin/magic-link-email-forwarder`. Hub signer is a later commit and must not ship in the same production deploy as that pin. Until the pin is live, hub code that signs `email:access_tier:expires` stays off `main`.
+**Status (2026-10-09):** Superseded as the live pin. Training tag **v1.6.6** (`d1d0830`) includes the forwarder (`32eef44`, `b23f26c` on `inzinerija` main). Hub build stays `build:corporate12`.
+
+**Status (2026-09-23):** Training forwarder is commit `7a66b71` on `inzinerija` branch `magic-link-email-forwarder` (cherry-pick of `32eef44` and `b23f26c` onto tag v1.6.4 / `b6c1a9a`; tag not moved; M13-ROI content not included). Hub pin of that SHA is `pin/magic-link-email-forwarder`. Hub signer is a later commit and must not ship in the same production deploy as that pin. Until the pin is live, hub code that signs `email:access_tier:expires` stays off `main`.
 **Secret:** `ACCESS_TOKEN_SECRET` stays the same. Do not rotate it for this change.
 
 ## Why
