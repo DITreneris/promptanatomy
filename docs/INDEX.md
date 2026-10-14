@@ -61,7 +61,8 @@
 | Ekosistemos kanonas | [ecosystem-canon.md](ecosystem-canon.md) | 9 domenų pipeline, LP kortelės. |
 | Ekosistemos valdymas | [ecosystem-governance.md](ecosystem-governance.md) | Hub-and-spoke taisyklės, KPI. |
 | Sibling memo (footer) | [sibling_memo.md](sibling_memo.md) | QW1b handoff spoke repo. |
-| Logo / favicon | [design/logo-favicon.md](design/logo-favicon.md) | Spalvos, dydžiai, generavimas. |
+| Brand manual (spokes) | [design/brand-manual.md](design/brand-manual.md) | Bendras identitetas spoke’ams: vardai, wordmark, navy `#0b1320`, gold `#cfa73a`, CTA gradientas, tipas, footer. Header lockup kairėje; paspaudimas grąžina į tą patį spoke. |
+| Logo / favicon | [design/logo-favicon.md](design/logo-favicon.md) | Favicon dydžiai, generavimas, OG saugi zona. Spalvų kanonas — brand manual. |
 | Public assets | [frontend/public/README.md](../frontend/public/README.md) | Og-image, sitemap, robots. |
 
 ---

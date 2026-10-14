@@ -11,7 +11,7 @@
 | **Token source** | [frontend/src/index.css](../frontend/src/index.css) (`@theme`, Tailwind CSS v4 — **not** `tailwind.config.js`) |
 | **Regressions** | [docs/golden-legacy-standard.md](golden-legacy-standard.md) |
 | **Copy canon** | [docs/language-guidelines-en-lt.md](language-guidelines-en-lt.md) |
-| **Brand colors** | [docs/design/logo-favicon.md](design/logo-favicon.md) (`#0B1320`, `#CFA73A`) |
+| **Brand colors** | [docs/design/brand-manual.md](design/brand-manual.md) (spoke contract: `#0b1320`, `#cfa73a`, CTA `#ffcc33`→`#ffb300`). Favicon sizes: [logo-favicon.md](design/logo-favicon.md). |
 | **Typeface** | OS sans — `--font-sans: ui-sans-serif, system-ui, sans-serif`. **Nėra webfonto** (Inter/Geist). Windows = Segoe UI; macOS = SF Pro. Kanonas: [ADR-0001](decisions/0001-lp-system-typeface.md). Footer: wordmark `font-black`; body/legal `font-medium`; labels `font-bold`. Nemaišyti 900 su 400 kūno bloke. |
 
 **Active reference.** This document supersedes archived audits for frontpage UI polish:
