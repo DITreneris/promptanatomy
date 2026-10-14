@@ -18,7 +18,10 @@ import {
   ORG_EMAIL,
   ORG_MAILING_ADDRESS_ONE_LINE,
   PUBLIC_PRICING,
+  QUICK_MODE_NOTE,
   SITE_URL,
+  SIX_BLOCKS,
+  SIX_BLOCK_SUMMARY,
   TOPICS,
   TOPICS_LT,
   TRAINING_SUMMARY,
@@ -101,6 +104,35 @@ function buildPublicationsShortLinks() {
   return CREATOR_PUBLICATIONS.map((pub) => mdLink(pub.title, pub.url, pub.summary)).join('\n')
 }
 
+/** Short form for llms.txt: `- **META**: definition` */
+function buildMethodShort(locale) {
+  return [
+    SIX_BLOCK_SUMMARY[locale],
+    '',
+    bulletList(SIX_BLOCKS.map((b) => `**${b[locale].name}**: ${b[locale].definition}`)),
+    '',
+    QUICK_MODE_NOTE[locale],
+  ].join('\n')
+}
+
+/** Full form for llms-full.txt: definition + keywords per block. */
+function buildMethodFull(locale) {
+  return [
+    SIX_BLOCK_SUMMARY[locale],
+    '',
+    ...SIX_BLOCKS.map(
+      (b) =>
+        `### ${b[locale].name}\n${b[locale].definition}\nKeywords: ${b[locale].keywords.join(', ')}`,
+    ),
+    '',
+    QUICK_MODE_NOTE[locale],
+  ].join('\n\n')
+}
+
+function buildMethodIndexMd(locale) {
+  return bulletList(SIX_BLOCKS.map((b) => `${b[locale].name}: ${b[locale].definition}`))
+}
+
 function buildHeroBlock(hero, locale) {
   const bullets = [hero.bullet1, hero.bullet2, hero.bullet3].filter(Boolean)
   return [
@@ -162,6 +194,7 @@ ${section(
     mdLink('Full LLM index', `${SITE_URL}/llms-full.txt`, 'Complete AI dump: FAQ LT/EN, hero, pricing'),
   ].join('\n'),
 )}
+${section('Method', buildMethodShort('en'))}
 ${section('Creator', buildCreatorShortLinks())}
 ${section('Publications', buildPublicationsShortLinks())}
 ${section('Ecosystem', buildEcosystemShortLinks())}
@@ -179,6 +212,9 @@ ${section(
     mdLink('Pagrindinis LT', `${SITE_URL}/lt`, 'Lietuviškas landing'),
     mdLink('Kainodara', `${SITE_URL}/lt#pricing`, 'Starter 39 EUR, Core 99 EUR'),
     mdLink('Prieiga', `${SITE_URL}/lt#access`, 'Check el. paštą naršyklėje'),
+    '',
+    `Šeši blokai: ${SIX_BLOCKS.map((b) => `${b.lt.name} – ${b.lt.definition}`).join(' ')}`,
+    QUICK_MODE_NOTE.lt,
     '',
     `Temos: ${TOPICS_LT.join(', ')}`,
   ].join('\n'),
@@ -206,6 +242,8 @@ function buildLlmsFull(en, lt) {
     section('Creator', buildCreatorBlock()),
     section('Publications', buildPublicationsBlock(true)),
     section('Ecosystem (hub-and-spoke)', buildEcosystemBlock()),
+    section('Six-Block Method (EN)', buildMethodFull('en')),
+    section('Šešių blokų metodika (LT)', buildMethodFull('lt')),
     section('Training product', TRAINING_SUMMARY),
     section('Hero (EN)', buildHeroBlock(en.hero, 'en')),
     section('Hero (LT)', buildHeroBlock(lt.hero, 'lt')),
@@ -227,7 +265,7 @@ function buildLlmsFull(en, lt) {
 }
 
 function buildIndexMd(hero, whatIs, locale) {
-  return `# Prompt Anatomy (${locale.toUpperCase()})\n\n${hero.headline1} ${hero.headline2}\n\n${hero.subtitle}\n\n${whatIs?.valueLine1 || ''}\n\n${whatIs?.valueLine2 || ''}\n\nCanonical: ${SITE_URL}/\n`
+  return `# Prompt Anatomy (${locale.toUpperCase()})\n\n${hero.headline1} ${hero.headline2}\n\n${hero.subtitle}\n\n${whatIs?.valueLine1 || ''}\n\n${whatIs?.valueLine2 || ''}\n\n${buildMethodIndexMd(locale)}\n\nCanonical: ${SITE_URL}/\n`
 }
 
 function buildLegalMd(legal, type) {

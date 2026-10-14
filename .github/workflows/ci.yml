@@ -120,6 +120,10 @@ jobs:
           grep -q 'promptanatomy.site' dist/llms.txt
           grep -q '## LT' dist/llms.txt
           grep -q 'DI mokymai' dist/llms.txt
+          grep -q '## Method' dist/llms.txt
+          grep -q 'REASONING' dist/llms-full.txt
+          grep -q 'Quick mode' dist/llms-full.txt
+          grep -q 'areaServed' dist/index.html
           grep -q '## Optional' dist/llms.txt
           test -f dist/sitemap.xml
           [ "$(grep -c '<loc>' dist/sitemap.xml)" = "4" ]

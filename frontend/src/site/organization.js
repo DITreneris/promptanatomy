@@ -21,6 +21,12 @@ export const ORG_REGION = 'CA'
 export const ORG_POSTAL_CODE = '94501'
 export const ORG_COUNTRY = 'US'
 
+/**
+ * Where the service is provided — EU sole proprietor (Terms §Services). The US postal address
+ * above is correspondence-only (legal.contactBody), not the place of business.
+ */
+export const ORG_AREA_SERVED = ['EU', 'LT']
+
 const ORG_DESCRIPTION =
   'Turn random AI chats into repeatable business workflows. Six-block method, 500+ templates, interactive training.'
 
@@ -75,6 +81,7 @@ export function getOrganizationJsonLd() {
     },
     description: ORG_DESCRIPTION,
     sameAs: ORG_SAME_AS,
+    areaServed: ORG_AREA_SERVED,
     address: getOrganizationPostalAddressSchema(),
     contactPoint: {
       '@type': 'ContactPoint',

@@ -137,6 +137,7 @@ Also noted in [versioning-and-release.md](versioning-and-release.md).
 - GSC Queries snapshot → [archive/snapshots/](archive/snapshots/)
 - **Monthly:** fill [templates/geo-citation-scorecard.md](templates/geo-citation-scorecard.md); archive as `docs/archive/snapshots/geo-citations-YYYY-MM.md`. *Last fill: [geo-citations-2026-09.md](archive/snapshots/geo-citations-2026-09.md) — `[B.1]` closed 2026-09-04 (EN+LT). Next ~2026-10.*
 - **LT off-site (FB / LinkedIn):** [templates/lt-geo-social-pack.md](templates/lt-geo-social-pack.md) — founder voice, bare `/lt` links, pin #2 (39/99). Does not replace monthly scorecard. Do not expand hub sitemap.
+- **2026-11 regression watch (six-block drift):** 2026-10-14 `llms.txt` / `llms-full.txt` gained `## Method` (six definitions + Quick-mode mapping from `SIX_BLOCKS` in [geo-manifest.js](../frontend/src/site/geo-manifest.js)). In the November fill, score **#1, #6, #16, #20, #22, #23** on whether the engine names META → ADVANCED or still the five-part spoke list (vaidmuo / kontekstas / mąstymas / rezultatas / kokybės kontrolė). Record the block names in Notes; no new prompts.
 
 ---
 

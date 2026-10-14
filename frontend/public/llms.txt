@@ -13,6 +13,19 @@ Prompt Anatomy (`promptanatomy.app`) is the conversion hub for LT/EN checkout, a
 - [FAQ](https://www.promptanatomy.app/#faq): Common questions and answers
 - [Full LLM index](https://www.promptanatomy.app/llms-full.txt): Complete AI dump: FAQ LT/EN, hero, pricing
 
+## Method
+
+The Prompt Anatomy Six-Block Method is a structured way to design repeatable AI tasks for individuals and teams. It separates the role and objective (META), the source context (INPUT), the deliverable requirements (OUTPUT), the decision criteria (REASONING), the validation rules (QUALITY), and advanced workflow capabilities (ADVANCED), so AI instructions are easier to reuse, evaluate, and improve.
+
+- **META**: Defines the AI's role, the task objective, and the operating boundaries.
+- **INPUT**: Specifies the source data, context, and information the AI may use.
+- **OUTPUT**: Defines the expected deliverable, its structure, and its format.
+- **REASONING**: Specifies the decision process, evaluation criteria, and constraints as observable steps.
+- **QUALITY**: Establishes checks that verify accuracy, completeness, and compliance before use.
+- **ADVANCED**: Adds specialised capabilities such as tools, retrieval, automation, or multi-step agent workflows when the task needs them.
+
+Ecosystem spokes use a five-part Quick mode (role, context, reasoning, result, quality check). It maps onto the Six-Block Method: role → META, context → INPUT, reasoning → REASONING, result → OUTPUT, quality check → QUALITY. ADVANCED exists only in the full method taught on promptanatomy.app.
+
 ## Creator
 
 - [Tomas Staniulis — LinkedIn](https://www.linkedin.com/in/staniulis): Founder and creator of the Prompt Anatomy ecosystem
@@ -61,6 +74,9 @@ Promptų Anatomija (promptanatomy.app) – dvikalbė DI mokymų sistema: 6 blok�
 - [Kainodara](https://www.promptanatomy.app/lt#pricing): Starter 39 EUR, Core 99 EUR
 - [Prieiga](https://www.promptanatomy.app/lt#access): Check el. paštą naršyklėje
 
+Šeši blokai: META – Apibrėžia DI vaidmenį, užduoties tikslą ir veikimo ribas. INPUT – Nurodo šaltinio duomenis, kontekstą ir informaciją, kuria DI gali naudotis. OUTPUT – Apibrėžia laukiamą rezultatą, jo struktūrą ir formatą. REASONING – Nurodo sprendimo eigą, vertinimo kriterijus ir apribojimus kaip stebimus žingsnius. QUALITY – Nustato patikras, kurios prieš naudojimą patvirtina tikslumą, išsamumą ir atitiktį. ADVANCED – Prideda specializuotas galimybes – įrankius, paiešką, automatizavimą ar kelių žingsnių agentų procesus, kai užduočiai to reikia.
+Ekosistemos spoke’ai naudoja penkių dalių Quick režimą (vaidmuo, kontekstas, mąstymas, rezultatas, kokybės kontrolė). Jis atitinka šešių blokų metodiką: vaidmuo → META, kontekstas → INPUT, mąstymas → REASONING, rezultatas → OUTPUT, kokybės kontrolė → QUALITY. ADVANCED yra tik pilnoje metodikoje, kurios mokoma promptanatomy.app.
+
 Temos: DI mokymai, promptų inžinerija, konteksto inžinerija, 6 blokų metodika, Promptų Anatomija, DI agentai, DI automatizavimas
 
 ## Optional
@@ -69,4 +85,4 @@ Temos: DI mokymai, promptų inžinerija, konteksto inžinerija, 6 blokų metodik
 - [Terms of Service](https://www.promptanatomy.app/terms): Legal — secondary for AI context
 - [Training app](https://www.promptanatomy.app/anatomy/): Interactive course; disallowed in robots.txt for hub crawl focus
 - Do not index transactional routes: https://www.promptanatomy.app/success, https://www.promptanatomy.app/cancel, https://www.promptanatomy.app/api/
-- lastUpdated: 2026-09-15
+- lastUpdated: 2026-10-14
