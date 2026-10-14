@@ -11,6 +11,7 @@ const {
   getUserHighestPlan,
   upsertUserAccess,
   toPlanValue,
+  isHubCheckoutPlan,
   normalizeEmail,
 } = require('./lib/supabase-access');
 const { captureApiException } = require('./lib/sentry');
@@ -60,6 +61,11 @@ module.exports = async function handler(req, res) {
   }
 
   const session = event.data.object;
+  if (session.payment_status && session.payment_status !== 'paid') {
+    console.warn('Checkout completed but payment_status is not paid:', session.payment_status, 'session:', session.id);
+    return res.status(200).json({ received: true });
+  }
+
   const email = getEmailFromSession(session);
   if (!email) {
     console.warn('Checkout completed but no email, session:', session.id);
@@ -73,8 +79,8 @@ module.exports = async function handler(req, res) {
   }
 
   const purchasedPlan = toPlanValue(planStr);
-  if (purchasedPlan == null) {
-    console.warn('Invalid metadata.plan:', planStr, 'session:', session.id);
+  if (!isHubCheckoutPlan(purchasedPlan)) {
+    console.warn('Ignoring non-Phase-1 or invalid metadata.plan:', planStr, 'session:', session.id);
     return res.status(200).json({ received: true });
   }
 

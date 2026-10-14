@@ -138,6 +138,7 @@ function patchHomeShell(
     canonicalUrl,
     ogUrl,
     ogLocale,
+    ogSiteName,
     title,
     description,
     ogImageAlt,
@@ -148,6 +149,7 @@ function patchHomeShell(
   const safeTitle = escapeHtml(title)
   const safeDescription = escapeAttr(description)
   const safeOgImageAlt = escapeAttr(ogImageAlt)
+  const safeOgSiteName = escapeAttr(ogSiteName)
 
   let out = html
 
@@ -170,6 +172,12 @@ function patchHomeShell(
     /<meta property="og:description" content="[^"]*" \/>/,
     `<meta property="og:description" content="${safeDescription}" />`,
     'og:description',
+  )
+  out = replaceOnce(
+    out,
+    /<meta property="og:site_name" content="[^"]*" \/>/,
+    `<meta property="og:site_name" content="${safeOgSiteName}" />`,
+    'og:site_name',
   )
   out = replaceOnce(
     out,
@@ -253,6 +261,7 @@ const EN_SHELL = {
   canonicalUrl: `${SITE_URL}/`,
   ogUrl: `${SITE_URL}/`,
   ogLocale: 'en_US',
+  ogSiteName: 'Prompt Anatomy',
   title: en.meta.title,
   description: en.meta.description,
   ogImageAlt: 'Prompt Anatomy social preview',
@@ -267,6 +276,7 @@ const ltHtml = patchHomeShell(shell, {
   canonicalUrl: `${SITE_URL}/lt`,
   ogUrl: `${SITE_URL}/lt`,
   ogLocale: 'lt_LT',
+  ogSiteName: 'Promptų Anatomija',
   title: lt.meta.title,
   description: lt.meta.description,
   ogImageAlt: 'Promptų Anatomija social preview',

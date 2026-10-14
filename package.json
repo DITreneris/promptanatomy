@@ -12,7 +12,7 @@
     "audit:frontend": "cd frontend && npm audit",
     "audit:backend": "cd backend && pip-audit",
     "generate-favicons": "node scripts/generate-favicons.mjs",
-    "test:api": "node --test api/lib/sentry.test.js"
+    "test:api": "node --test api/lib/sentry.test.js api/lib/magic-link.test.js"
   },
   "devDependencies": {
     "sharp": "^0.33.5"

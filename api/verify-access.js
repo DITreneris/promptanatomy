@@ -7,6 +7,7 @@
  * Accepted tiers: 3, 6, 9, 12 (corporate12 / Supabase Phase 1). Returns 200 { access_tier } or 400/401.
  * Env: ACCESS_TOKEN_SECRET (shared secret, min 16 chars)
  */
+const { rateLimit } = require('./lib/rate-limit');
 const { normalizeMagicLinkEmail, verifyMagicLink } = require('./lib/magic-link');
 
 const VALID_TIERS = [3, 6, 9, 12];
@@ -38,6 +39,8 @@ module.exports = async function handler(req, res) {
     res.setHeader('Allow', 'GET, OPTIONS');
     return res.status(405).json({ error: 'Method not allowed' });
   }
+
+  if (!rateLimit(req, res, 'verify-access', 60)) return;
 
   const secret = process.env.ACCESS_TOKEN_SECRET;
   if (!secret || secret.length < 16) {

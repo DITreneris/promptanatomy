@@ -144,6 +144,8 @@ jobs:
           test -f dist/lt.html
           grep -q '<html lang="lt">' dist/lt.html
           grep -q 'content="lt_LT"' dist/lt.html
+          grep -q '<meta property="og:site_name" content="Promptų Anatomija" />' dist/lt.html
+          grep -q '<meta property="og:site_name" content="Prompt Anatomy" />' dist/index.html
           if grep -q 'Turn random AI chats' dist/lt.html; then
             echo '::error::EN first-byte copy leaked into dist/lt.html' >&2
             exit 1
