@@ -83,7 +83,14 @@ curl -s  https://www.promptanatomy.app/lt | grep -o '<title>[^<]*</title>'   # L
 curl -s  https://www.promptanatomy.app/lt | grep -c 'Turn random AI chats'   # 0
 curl -sI https://www.promptanatomy.app/lt | grep -i '^link:'                 # describedby llms.txt
 curl -s  https://www.promptanatomy.app/sitemap.xml | grep -c '<loc>'         # 4
+# ADR-0003 static first-byte body (2026-10-14): raw HTML carries H1 + six blocks without JS
+curl -s  https://www.promptanatomy.app/   | grep -o '<h1>[^<]*</h1>'          # Stop talking. Start building.
+curl -s  https://www.promptanatomy.app/lt | grep -o '<h1>[^<]*</h1>'          # Nustok kalbėti. Pradėk kurti.
+curl -s  https://www.promptanatomy.app/lt | grep -c 'REASONING'               # >= 1
+curl -s  https://www.promptanatomy.app/llms.txt | grep -c '## Method'         # 1
 ```
+
+Po ADR-0003 Production: GSC → URL Inspection `/` ir `/lt` → „Test live URL“ → „View tested page“ → HTML turi `<h1>` be JS; tada **Request indexing** abiem. IndexNow POST (§D) tą pačią dieną.
 
 ---
 

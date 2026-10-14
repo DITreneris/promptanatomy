@@ -149,6 +149,21 @@ jobs:
             exit 1
           fi
           grep -q '<title>Prompt Anatomy – AI Training System</title>' dist/index.html
+          # ADR-0003: static first-byte body in #root (EN shell + LT shell), guard present, no cross-locale leak
+          grep -q 'data-static-shell' dist/index.html
+          grep -q 'html.js \[data-static-shell\]' dist/index.html
+          grep -q '<h1>Stop talking. Start building.</h1>' dist/index.html
+          grep -q '<h1>Nustok kalbėti. Pradėk kurti.</h1>' dist/lt.html
+          grep -q 'REASONING' dist/lt.html
+          grep -q '<h1>Stop talking. Start building.</h1>' dist/en.html
+          if grep -q 'Stop talking' dist/lt.html; then
+            echo '::error::EN static body leaked into dist/lt.html' >&2
+            exit 1
+          fi
+          if grep -q 'Nustok kalbėti' dist/index.html; then
+            echo '::error::LT static body leaked into dist/index.html' >&2
+            exit 1
+          fi
 
       - name: Training app install and build
         working-directory: apps/prompt-anatomy

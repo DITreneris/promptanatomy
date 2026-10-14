@@ -26,6 +26,10 @@
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://www.promptanatomy.app/" />
     <link rel="alternate" type="text/plain" href="https://www.promptanatomy.app/llms.txt" title="LLM site index" />
+    <!-- ADR-0003: static first-byte body lives in #root (written post-build by generate-locale-static.mjs).
+         Visible only without JS; React replaces it on mount. -->
+    <style>html.js [data-static-shell] { display: none; }</style>
+    <script>document.documentElement.classList.add('js')</script>
     <!-- Organization.address + sameAs + areaServed must match frontend/src/site/organization.js; founder → geo-manifest.js. Address is correspondence-only; service area is EU. -->
     <script type="application/ld+json">
     [

@@ -20,7 +20,7 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 | Praktika | Kodėl KILL |
 |----------|------------|
 | **Perėjimas į SSR (Next.js ir pan.)** | Per didelė permaina stack'ui; jūsų tikslas – konversija ir mokėjimai, ne tūkstantis puslapių. Google gerai indeksuoja ir SPA, jei yra bazinė techninė SEO. |
-| **Pilnas pre-render (Puppeteer / vite-plugin-prerender)** | Sudėtinga konfigūracija, lėtesnis build, daug priklausomybių. Landing su keliais route'ais to neprireikia pirmajai iteracijai. |
+| **Pilnas pre-render (Puppeteer / vite-plugin-prerender)** | Sudėtinga konfigūracija, lėtesnis build, daug priklausomybių. Landing su keliais route'ais to neprireikia pirmajai iteracijai. **Lengvas statinis body iš i18n į `#root` tame pačiame post-build skripte — MARRY ([ADR-0003](decisions/0003-static-first-byte-body.md)); tai ne prerender plugin.** |
 | **20 GitHub topics** | Per daug – atrodo triukšmingai. Pakanka 5–10 tiksliai pasirinktų. |
 | **Dinaminis sitemap su 100+ URL** | Projektas turi kelis statinius puslapius (/ , /success , /cancel). Paprastas statinis `sitemap.xml` užtenka. |
 | **Atskiros subdomenų/kelio strategijos vien kalbai** | Dabar LT/EN per lang switcher – paprasčiau palikti vieną domeną + `hreflang` / `lang` atributai. |
