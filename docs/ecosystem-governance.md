@@ -22,9 +22,9 @@ Išlaikyti vieną brandą su 9-domenų ekosistema + discovery svetaine taip, kad
 ## SEO/GEO/AI taisyklės
 
 1. Kiekvienas domenas turi savo pirminį intent ir nedubliuoja LP turinio 1:1.
-2. Visi domenai naudoja nuoseklų brand identitetą (Organization faktai, kontaktas, tonas).
+2. Visi domenai naudoja nuoseklų brand identitetą (Organization faktai, kontaktas, tonas). Vardai, wordmark, spalvos, tipas: [design/brand-manual.md](design/brand-manual.md).
 3. Kiekvienas domenas turi self-canonical; dubliuojami puslapiai perrašomi arba žymimi noindex.
-4. Kryžminis linkinimas turi būti kryptingas: iš `.cloud/.pro` aiškus CTA atgal į `.app`.
+4. Kryžminis linkinimas turi būti kryptingas. Kelias iš spoke atgal į `.app` yra entity footer ([sibling_memo.md](sibling_memo.md)). Header lockup grąžina į tą patį spoke ([design/brand-manual.md](design/brand-manual.md) §3.5).
 5. Matavimas remiasi `ecosystem_outbound_click` įvykiais ir periodiniu KPI snapshot.
 6. Hub → spoke nuorodos (kortelės, Footer Cloud/Pro, mobile drawer): `utm_source=app` + placement `utm_medium` (`ecosystem_card` / `ecosystem_site_map` / `footer_network` / `navbar_mobile`). `noopener` palikti; `noreferrer` nuimti (kitaip Vercel spoke’e rodo Direct). Atvirkštinė kryptis — [sibling_memo.md](sibling_memo.md) (`utm_source=<spoke>`).
 

@@ -150,6 +150,12 @@ Pavyzdys:
 
 ---
 
+### Pakeltos pamokos (2026-10-08, spoke header lockup)
+
+| Taisyklė | Kur įrašyta |
+|----------|-------------|
+| Header lockup kairėje; paspaudimas grąžina į tą patį spoke, tas pats skirtukas. Kelias į `.app` yra entity footer. Įvardintas dešinysis punktas gali vesti į `.app` | [brand-manual.md](../design/brand-manual.md) §3.5, [sibling_memo.md](../sibling_memo.md), [ecosystem-governance.md](../ecosystem-governance.md), `q-and-a-agent` / `frontend-agent` / `orchestrator` SKILL.md |
+
 ## Skirtumas nuo submodulio
 
 Submodulio `apps/prompt-anatomy` skills – training turinys (moduliai, skaidrės). **Parent** skills – LP, Vercel `api/`, deploy, submodule pin, access tier.

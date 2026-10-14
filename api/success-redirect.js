@@ -5,6 +5,7 @@
  * Env: ACCESS_TOKEN_SECRET, STRIPE_SECRET_KEY; optional TRAINING_REDIRECT_BASE, ACCESS_TOKEN_EXPIRY_DAYS
  */
 const Stripe = require('stripe');
+const { rateLimit } = require('./lib/rate-limit');
 const { captureApiException } = require('./lib/sentry');
 const {
   normalizeMagicLinkEmail,
@@ -43,6 +44,8 @@ module.exports = async function handler(req, res) {
     res.setHeader('Allow', 'GET, OPTIONS');
     return res.status(405).json({ detail: 'Method not allowed' });
   }
+
+  if (!rateLimit(req, res, 'success-redirect', 30)) return;
 
   try {
     const secret = process.env.ACCESS_TOKEN_SECRET;

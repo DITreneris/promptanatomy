@@ -13,6 +13,7 @@
     <meta property="og:title" content="Prompt Anatomy – AI Training System" />
     <meta property="og:description" content="Turn random AI chats into repeatable business workflows. Six-block method, 500+ templates, interactive training." />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Prompt Anatomy" />
     <meta property="og:image" content="https://www.promptanatomy.app/og-image-v3.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
@@ -26,7 +27,11 @@
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://www.promptanatomy.app/" />
     <link rel="alternate" type="text/plain" href="https://www.promptanatomy.app/llms.txt" title="LLM site index" />
-    <!-- Organization.address + sameAs must match frontend/src/site/organization.js; founder → geo-manifest.js -->
+    <!-- ADR-0003: static first-byte body lives in #root (written post-build by generate-locale-static.mjs).
+         Visible only without JS; React replaces it on mount. -->
+    <style>html.js [data-static-shell] { display: none; }</style>
+    <script>document.documentElement.classList.add('js')</script>
+    <!-- Organization.address + sameAs + areaServed must match frontend/src/site/organization.js; founder → geo-manifest.js. Address is correspondence-only; service area is EU. -->
     <script type="application/ld+json">
     [
       {
@@ -50,6 +55,7 @@
           "https://x.com/TStaniulis_NFT",
           "https://github.com/DITreneris/promptanatomy"
         ],
+        "areaServed": ["EU", "LT"],
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "1311 Park St, Unit #654",

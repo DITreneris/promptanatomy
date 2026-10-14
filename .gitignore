@@ -50,6 +50,9 @@ _xlsx_*.json
 # Cursor (agentai, rules, skills, lessons) – lokaliai, kaip submodulyje inzinerija
 .cursor/
 
+# Local Remotion video studio
+video/
+
 # IDE / OS
 .idea/
 .vscode/

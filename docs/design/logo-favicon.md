@@ -13,10 +13,15 @@ Vienas šaltinis visiems favicon ir logo išvestiniams; dydžiai, spalvos, kada 
 
 ## Spalvos
 
-| Naudojimas | Reikšmė |
-|------------|---------|
-| Fonas | `#0B1320` |
-| Žaibas / akcentas | `#CFA73A` (galima suvienodinti su `#f3cc30` brand) |
+In-page lockup ir spalvų kanonas spoke’ams: [brand-manual.md](brand-manual.md) (`#0b1320` + `#cfa73a`; CTA mygtukas `#ffcc33` → `#ffb300`). `#f3cc30` nėra tokenas.
+
+Šis SVG **dabar** nupieštas kitaip (ne kopijuoti į antraštę):
+
+| Failo detalė | Reikšmė faile |
+|--------------|----------------|
+| Plytelės gradientas | `#050d14` → `#103b5a` |
+| Žaibas | `#fbd304` |
+| `aria-label` | `Prompts anatomija` (neteisingas vardas; kanonas — brand manual §2) |
 
 ---
 

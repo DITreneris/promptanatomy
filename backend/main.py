@@ -13,6 +13,7 @@ import json
 import logging
 import time
 from contextlib import asynccontextmanager
+from urllib.parse import urlencode
 
 import stripe
 from fastapi import FastAPI, Request, HTTPException
@@ -105,9 +106,26 @@ def _checkout_session_customer_email(session) -> str | None:
     return s or None
 
 
-def _build_magic_link_token(access_tier: int, expires: int, secret: str) -> str:
-    """Build HMAC-SHA256 token (base64url) for payload access_tier:expires."""
-    payload = f"{access_tier}:{expires}"
+def _normalize_magic_link_email(raw: str | None) -> str | None:
+    if raw is None:
+        return None
+    normalized = str(raw).strip().lower()
+    return normalized or None
+
+
+def _build_magic_link_token(
+    access_tier: int,
+    expires: int,
+    secret: str,
+    email: str | None = None,
+) -> str:
+    """Build HMAC-SHA256 token (base64url) for payload [email:]access_tier:expires."""
+    normalized_email = _normalize_magic_link_email(email)
+    payload = (
+        f"{normalized_email}:{access_tier}:{expires}"
+        if normalized_email
+        else f"{access_tier}:{expires}"
+    )
     signature = hmac.new(
         secret.encode() if isinstance(secret, str) else secret,
         payload.encode(),
@@ -115,6 +133,27 @@ def _build_magic_link_token(access_tier: int, expires: int, secret: str) -> str:
     ).digest()
     token = base64.urlsafe_b64encode(signature).rstrip(b"=").replace(b"+", b"-").replace(b"/", b"_").decode()
     return token
+
+
+def _build_training_magic_link_url(
+    base_url: str,
+    access_tier: int,
+    expires: int,
+    token: str,
+    email: str | None = None,
+) -> str:
+    params: list[tuple[str, str]] = []
+    normalized_email = _normalize_magic_link_email(email)
+    if normalized_email:
+        params.append(("email", normalized_email))
+    params.extend(
+        [
+            ("access_tier", str(access_tier)),
+            ("expires", str(expires)),
+            ("token", token),
+        ]
+    )
+    return f"{base_url.rstrip('/')}/?{urlencode(params)}"
 
 
 @app.get("/health")
@@ -164,11 +203,16 @@ async def success_redirect(request: Request, session_id: str = ""):
         raise HTTPException(status_code=502, detail="Redirect error")
     expires = int(time.time()) + (settings.access_token_expiry_days * 86400)
     secret = settings.access_token_secret.get_secret_value()
-    token = _build_magic_link_token(access_tier, expires, secret)
-    base_url = settings.training_redirect_base.rstrip("/")
-    redirect_url = f"{base_url}/?access_tier={access_tier}&expires={expires}&token={token}"
-    out: dict = {"redirect_url": redirect_url}
     ce = _checkout_session_customer_email(session)
+    token = _build_magic_link_token(access_tier, expires, secret, ce)
+    redirect_url = _build_training_magic_link_url(
+        settings.training_redirect_base,
+        access_tier,
+        expires,
+        token,
+        ce,
+    )
+    out: dict = {"redirect_url": redirect_url}
     if ce:
         out["customer_email"] = ce
     return out
@@ -282,6 +326,14 @@ def handle_checkout_completed(session: dict) -> bool | None:
         session.get("id"),
         session.get("customer_email"),
     )
+    payment_status = session.get("payment_status")
+    if payment_status is not None and payment_status != "paid":
+        logger.warning(
+            "Checkout completed but payment_status=%s in session %s",
+            payment_status,
+            session.get("id"),
+        )
+        return None
     email = _get_email_from_session(session)
     if not email:
         logger.warning("Checkout completed but no email in session %s", session.get("id"))
@@ -296,8 +348,8 @@ def handle_checkout_completed(session: dict) -> bool | None:
     except (TypeError, ValueError):
         logger.warning("Invalid metadata.plan=%s in session %s", plan_str, session.get("id"))
         return None
-    if purchased_plan not in settings.PLAN_VALUES:
-        logger.warning("Unknown plan value %s in session %s", purchased_plan, session.get("id"))
+    if purchased_plan not in settings.PHASE1_PLAN_VALUES:
+        logger.warning("Ignoring non-Phase-1 plan value %s in session %s", purchased_plan, session.get("id"))
         return None
     if not settings.is_supabase_configured():
         logger.error("Supabase not configured; cannot upsert user_access")

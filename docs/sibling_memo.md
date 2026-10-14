@@ -56,6 +56,8 @@ Founder („by Tomas Staniulis“) **nedėti** šioje eilutėje — lieka JSON-L
 
 ## 4. Grafinis minimumas (ne dizaino sistema)
 
+Pilnas identitetas (wordmark, spalvos, tipas, balsas, header lockup): [design/brand-manual.md](design/brand-manual.md) §3.5. Header ženklas stovi kairėje ir grąžina į šio spoke pradžią, tame pačiame skirtuke. Kelias į `.app` lieka šioje footer eilutėje, ne lockup nuorodoje.
+
 - Tekstas kaip esamas footer linkas spoke’e (body/small), ne H2  
 - Be kortelės, shadow, sticky promo, floating badge, hero overlay  
 - Skaitomas kontrastas; keyboard focus jei tai `<a>`  

@@ -4,11 +4,15 @@
  */
 const { createClient } = require('@supabase/supabase-js');
 
-const PLAN_VALUES = [3, 6, 12, 15];
+const PLAN_VALUES = [3, 6, 9, 12, 15];
 /** Phase 1: only offer upgrade to 3 or 6 (docs/phase-1-scope.md). */
 const PHASE1_PLAN_VALUES = [3, 6];
 /** plan_id "1"|"2"|"3"|"4" → plan_value 3|6|12|15 */
 const PLAN_ID_TO_VALUE = { '1': 3, '2': 6, '3': 12, '4': 15 };
+
+function isHubCheckoutPlan(planValue) {
+  return Number.isInteger(planValue) && PHASE1_PLAN_VALUES.includes(planValue);
+}
 
 function normalizeEmail(email) {
   return String(email || '').trim().toLowerCase();
@@ -89,6 +93,7 @@ module.exports = {
   PLAN_VALUES,
   PHASE1_PLAN_VALUES,
   PLAN_ID_TO_VALUE,
+  isHubCheckoutPlan,
   normalizeEmail,
   getSupabaseClient,
   isSupabaseConfigured,

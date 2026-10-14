@@ -131,18 +131,20 @@ class TestGetAccess:
 
 class TestHandleCheckoutCompleted:
     def test_supabase_off_returns_sentinel(self, monkeypatch):
-        """Valid email+plan but Supabase unset → supabase_off (webhook → 503)."""
+        """Valid email+plan+paid but Supabase unset → supabase_off (webhook → 503)."""
         from main import handle_checkout_completed
 
         monkeypatch.setattr(
             "main.settings",
             SimpleNamespace(
                 is_supabase_configured=lambda: False,
-                PLAN_VALUES=(3, 6, 12, 15),
+                PHASE1_PLAN_VALUES=(3, 6),
+                PLAN_VALUES=(3, 6, 9, 12, 15),
             ),
         )
         session = {
             "id": "cs_test",
+            "payment_status": "paid",
             "customer_details": {"email": "buyer@example.com"},
             "metadata": {"plan": "6"},
         }
@@ -155,10 +157,136 @@ class TestHandleCheckoutCompleted:
             "main.settings",
             SimpleNamespace(
                 is_supabase_configured=lambda: False,
-                PLAN_VALUES=(3, 6, 12, 15),
+                PHASE1_PLAN_VALUES=(3, 6),
+                PLAN_VALUES=(3, 6, 9, 12, 15),
             ),
         )
-        assert handle_checkout_completed({"id": "cs_test", "metadata": {"plan": "6"}}) is None
+        assert handle_checkout_completed({"id": "cs_test", "payment_status": "paid", "metadata": {"plan": "6"}}) is None
+
+    def test_unpaid_session_returns_none(self, monkeypatch):
+        from main import handle_checkout_completed
+
+        monkeypatch.setattr(
+            "main.settings",
+            SimpleNamespace(
+                is_supabase_configured=lambda: True,
+                PHASE1_PLAN_VALUES=(3, 6),
+                PLAN_VALUES=(3, 6, 9, 12, 15),
+            ),
+        )
+        session = {
+            "id": "cs_unpaid",
+            "payment_status": "unpaid",
+            "customer_details": {"email": "buyer@example.com"},
+            "metadata": {"plan": "6"},
+        }
+        assert handle_checkout_completed(session) is None
+
+    def test_non_phase1_plan_returns_none(self, monkeypatch):
+        from main import handle_checkout_completed
+
+        monkeypatch.setattr(
+            "main.settings",
+            SimpleNamespace(
+                is_supabase_configured=lambda: True,
+                PHASE1_PLAN_VALUES=(3, 6),
+                PLAN_VALUES=(3, 6, 9, 12, 15),
+            ),
+        )
+        session = {
+            "id": "cs_plan12",
+            "payment_status": "paid",
+            "customer_details": {"email": "buyer@example.com"},
+            "metadata": {"plan": "12"},
+        }
+        assert handle_checkout_completed(session) is None
+
+
+class TestSuccessRedirect:
+    def _mock_settings(self, monkeypatch):
+        monkeypatch.setattr(
+            "main.settings",
+            SimpleNamespace(
+                access_token_secret=SimpleNamespace(get_secret_value=lambda: "0123456789abcdef0123456789abcdef"),
+                access_token_expiry_days=30,
+                training_redirect_base="https://www.promptanatomy.app/anatomy",
+                PHASE1_PLAN_VALUES=(3, 6),
+            ),
+        )
+
+    def test_paid_session_returns_200_with_bound_email_and_marks_redeemed(self, monkeypatch):
+        self._mock_settings(monkeypatch)
+        fake_session = {
+            "id": "cs_paid_1",
+            "payment_status": "paid",
+            "customer_email": "User+Tag@Example.com ",
+            "metadata": {"plan": "6"},
+        }
+        with patch("main.stripe.checkout.Session.retrieve", return_value=fake_session):
+            with patch("main.stripe.checkout.Session.modify") as mock_modify:
+                r = client.get("/api/success-redirect?session_id=cs_paid_1")
+        assert r.status_code == 200
+        data = r.json()
+        assert data["customer_email"] == "User+Tag@Example.com"
+        assert "email=user%2Btag%40example.com" in data["redirect_url"]
+        assert "access_tier=6" in data["redirect_url"]
+        mock_modify.assert_called_once_with(
+            "cs_paid_1",
+            metadata={"plan": "6", "magic_link_redeemed": "1"},
+        )
+
+    def test_already_redeemed_returns_409(self, monkeypatch):
+        self._mock_settings(monkeypatch)
+        fake_session = {
+            "id": "cs_redeemed",
+            "payment_status": "paid",
+            "customer_email": "user@example.com",
+            "metadata": {"plan": "6", "magic_link_redeemed": "1"},
+        }
+        with patch("main.stripe.checkout.Session.retrieve", return_value=fake_session):
+            with patch("main.stripe.checkout.Session.modify") as mock_modify:
+                r = client.get("/api/success-redirect?session_id=cs_redeemed")
+        assert r.status_code == 409
+        assert "already issued" in r.json().get("detail", "").lower()
+        mock_modify.assert_not_called()
+
+    def test_unpaid_or_non_phase1_session_returns_400(self, monkeypatch):
+        self._mock_settings(monkeypatch)
+        unpaid_session = {
+            "id": "cs_unpaid",
+            "payment_status": "unpaid",
+            "metadata": {"plan": "6"},
+        }
+        with patch("main.stripe.checkout.Session.retrieve", return_value=unpaid_session):
+            r = client.get("/api/success-redirect?session_id=cs_unpaid")
+        assert r.status_code == 400
+
+        plan12_session = {
+            "id": "cs_plan12",
+            "payment_status": "paid",
+            "metadata": {"plan": "12"},
+        }
+        with patch("main.stripe.checkout.Session.retrieve", return_value=plan12_session):
+            r = client.get("/api/success-redirect?session_id=cs_plan12")
+        assert r.status_code == 400
+
+    def test_stripe_modify_failure_returns_502(self, monkeypatch):
+        import stripe as stripe_mod
+
+        self._mock_settings(monkeypatch)
+        fake_session = {
+            "id": "cs_fail_mod",
+            "payment_status": "paid",
+            "customer_email": "user@example.com",
+            "metadata": {"plan": "3"},
+        }
+        with patch("main.stripe.checkout.Session.retrieve", return_value=fake_session):
+            with patch(
+                "main.stripe.checkout.Session.modify",
+                side_effect=stripe_mod.error.APIConnectionError("network down"),
+            ):
+                r = client.get("/api/success-redirect?session_id=cs_fail_mod")
+        assert r.status_code == 502
 
 
 class TestStripeWebhook:

@@ -53,7 +53,7 @@ class Settings(BaseSettings):
         description="Days until magic-link expires (from now)",
     )
 
-    PLAN_VALUES: ClassVar[tuple[int, ...]] = (3, 6, 12, 15)
+    PLAN_VALUES: ClassVar[tuple[int, ...]] = (3, 6, 9, 12, 15)
     PHASE1_PLAN_IDS: ClassVar[tuple[str, ...]] = ("1", "2")
     PHASE1_PLAN_VALUES: ClassVar[tuple[int, ...]] = (3, 6)
     PLAN_ID_TO_VALUE: ClassVar[dict[str, int]] = {"1": 3, "2": 6, "3": 12, "4": 15}

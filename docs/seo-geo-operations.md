@@ -83,7 +83,14 @@ curl -s  https://www.promptanatomy.app/lt | grep -o '<title>[^<]*</title>'   # L
 curl -s  https://www.promptanatomy.app/lt | grep -c 'Turn random AI chats'   # 0
 curl -sI https://www.promptanatomy.app/lt | grep -i '^link:'                 # describedby llms.txt
 curl -s  https://www.promptanatomy.app/sitemap.xml | grep -c '<loc>'         # 4
+# ADR-0003 static first-byte body (2026-10-14): raw HTML carries H1 + six blocks without JS
+curl -s  https://www.promptanatomy.app/   | grep -o '<h1>[^<]*</h1>'          # Stop talking. Start building.
+curl -s  https://www.promptanatomy.app/lt | grep -o '<h1>[^<]*</h1>'          # Nustok kalbėti. Pradėk kurti.
+curl -s  https://www.promptanatomy.app/lt | grep -c 'REASONING'               # >= 1
+curl -s  https://www.promptanatomy.app/llms.txt | grep -c '## Method'         # 1
 ```
+
+Po ADR-0003 Production: GSC → URL Inspection `/` ir `/lt` → „Test live URL“ → „View tested page“ → HTML turi `<h1>` be JS; tada **Request indexing** abiem. IndexNow POST (§D) tą pačią dieną.
 
 ---
 
@@ -135,8 +142,9 @@ Also noted in [versioning-and-release.md](versioning-and-release.md).
 
 - PostHog: `ecosystem_card`, `ecosystem_site_map`, `ecosystem_hub` (žr. [ecosystem-governance.md](ecosystem-governance.md))
 - GSC Queries snapshot → [archive/snapshots/](archive/snapshots/)
-- **Monthly:** fill [templates/geo-citation-scorecard.md](templates/geo-citation-scorecard.md); archive as `docs/archive/snapshots/geo-citations-YYYY-MM.md`. *Last fill: [geo-citations-2026-09.md](archive/snapshots/geo-citations-2026-09.md) — `[B.1]` closed 2026-09-04 (EN+LT). Next ~2026-10.*
+- **Monthly:** fill [templates/geo-citation-scorecard.md](templates/geo-citation-scorecard.md); archive as `docs/archive/snapshots/geo-citations-YYYY-MM.md`. *Last fill: [geo-citations-2026-10.md](archive/snapshots/geo-citations-2026-10.md) — `[B.1]` closed 2026-10-05 (EN+LT). Y 24→28; EN Y flat 16/60; LT Y 8→12. Next ~2026-11. Prior: [geo-citations-2026-09.md](archive/snapshots/geo-citations-2026-09.md).*
 - **LT off-site (FB / LinkedIn):** [templates/lt-geo-social-pack.md](templates/lt-geo-social-pack.md) — founder voice, bare `/lt` links, pin #2 (39/99). Does not replace monthly scorecard. Do not expand hub sitemap.
+- **2026-11 regression watch (six-block drift):** 2026-10-14 `llms.txt` / `llms-full.txt` gained `## Method` (six definitions + Quick-mode mapping from `SIX_BLOCKS` in [geo-manifest.js](../frontend/src/site/geo-manifest.js)). In the November fill, score **#1, #6, #16, #20, #22, #23** on whether the engine names META → ADVANCED or still the five-part spoke list (vaidmuo / kontekstas / mąstymas / rezultatas / kokybės kontrolė). Record the block names in Notes; no new prompts.
 
 ---
 

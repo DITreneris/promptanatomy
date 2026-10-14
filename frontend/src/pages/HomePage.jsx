@@ -257,7 +257,7 @@ export default function HomePage({ forceLocale }) {
                       {t('pricing.yourAccess').replace('%s', String(accessModuleCap))}
                     </span>
                     <span className="text-xs font-bold text-feedback-success-text">
-                      {access.highest_plan}/{accessModuleCap}
+                      {Math.min(access.highest_plan, accessModuleCap)}/{accessModuleCap}
                     </span>
                   </div>
                   <div className="w-full h-2 bg-feedback-success-track rounded-full mb-3 overflow-hidden">

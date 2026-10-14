@@ -187,6 +187,7 @@ export default function SeoHead() {
     ensurePropertyMeta('og:title', title)
     ensurePropertyMeta('og:description', description)
     ensurePropertyMeta('og:type', 'website')
+    ensurePropertyMeta('og:site_name', routeLocale === 'lt' ? 'Promptų Anatomija' : 'Prompt Anatomy')
     ensurePropertyMeta('og:url', canonicalUrl)
     ensurePropertyMeta('og:image', OG_IMAGE_URL)
     ensurePropertyMeta('og:image:alt', routeLocale === 'lt' ? 'Promptų Anatomija social preview' : 'Prompt Anatomy social preview')

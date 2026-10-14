@@ -20,7 +20,7 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 | Praktika | Kodėl KILL |
 |----------|------------|
 | **Perėjimas į SSR (Next.js ir pan.)** | Per didelė permaina stack'ui; jūsų tikslas – konversija ir mokėjimai, ne tūkstantis puslapių. Google gerai indeksuoja ir SPA, jei yra bazinė techninė SEO. |
-| **Pilnas pre-render (Puppeteer / vite-plugin-prerender)** | Sudėtinga konfigūracija, lėtesnis build, daug priklausomybių. Landing su keliais route'ais to neprireikia pirmajai iteracijai. |
+| **Pilnas pre-render (Puppeteer / vite-plugin-prerender)** | Sudėtinga konfigūracija, lėtesnis build, daug priklausomybių. Landing su keliais route'ais to neprireikia pirmajai iteracijai. **Lengvas statinis body iš i18n į `#root` tame pačiame post-build skripte — MARRY ([ADR-0003](decisions/0003-static-first-byte-body.md)); tai ne prerender plugin.** |
 | **20 GitHub topics** | Per daug – atrodo triukšmingai. Pakanka 5–10 tiksliai pasirinktų. |
 | **Dinaminis sitemap su 100+ URL** | Projektas turi kelis statinius puslapius (/ , /success , /cancel). Paprastas statinis `sitemap.xml` užtenka. |
 | **Atskiros subdomenų/kelio strategijos vien kalbai** | Dabar LT/EN per lang switcher – paprasčiau palikti vieną domeną + `hreflang` / `lang` atributai. |
@@ -146,6 +146,16 @@ Trumpa išvada iš interneto šaltinių (GitHub repo SEO, React/Vite SPA SEO) ir
 - **`rel=describedby`** — [vercel.json](../vercel.json) Link header on `/` **and** `/lt`.
 - **CI** — GEO smoke asserts 4-URL sitemap (no spokes / `/anatomy/` / success-cancel) and `dist/lt.html` is LT (`lang="lt"`, no EN description).
 - **`LAST_UPDATED`** → `2026-09-15`.
+- **KILL unchanged** — no SSR/Next.js; hub sitemap still 4 URLs; no public `/glossary`; no spokes in hub sitemap.
+
+### Įgyvendinimo būsena (2026-10-14, six-block GEO definitions)
+
+- **Kontekstas** — penki išoriniai auditai (CRO / GEO / E-E-A-T / intl / tech SEO) + 2026-10 scorecard: `llms.txt` vardino „Six-Block Method“, bet neapibrėžė blokų; varikliai citavo spoke penkių dalių schemą kaip kanoną (#22/#23) arba Role/Context/Goal sąrašus (#1/#6/#16/#20).
+- **`SIX_BLOCKS` + `SIX_BLOCK_SUMMARY` + `QUICK_MODE_NOTE`** — [geo-manifest.js](../frontend/src/site/geo-manifest.js): šeši vieno sakinio apibrėžimai EN/LT su raktažodžiais, citatai tinkama pastraipa, ir aiškus mapping vaidmuo→META, kontekstas→INPUT, mąstymas→REASONING, rezultatas→OUTPUT, kokybės kontrolė→QUALITY (ADVANCED tik pilnoje metodikoje). REASONING = stebimi kriterijai, ne chain-of-thought exposure.
+- **Artefaktai** — [generate-geo-static.mjs](../frontend/scripts/generate-geo-static.mjs): `llms.txt` `## Method` (po `## Main`) + LT blokai `## LT`; `llms-full.txt` `## Six-Block Method (EN)` / `## Šešių blokų metodika (LT)` prieš `Training product`; `index.en.md` / `index.lt.md` blokų sąrašas. `LAST_UPDATED` → `2026-10-14`.
+- **Organization identity** — `areaServed: ["EU", "LT"]` [organization.js](../frontend/src/site/organization.js) + [index.html](../frontend/index.html); `legal.termsScope` EN/LT: JAV pašto adresas – tik korespondencijai, paslaugos ir registracija – ES. Adresas lieka (owner sprendimas 2026-10-14).
+- **CI** — GEO smoke: `## Method` `llms.txt`, `REASONING` + `Quick mode` `llms-full.txt`, `areaServed` `dist/index.html`.
+- **Neimta iš auditų** — email „Check“ ≠ signup gate (pirkimas → Stripe tiesiogiai), hreflang/canonical „contracts“ (jau yra nuo 2026-09-15), nauji `/methodology` / `/about` / `/lt/di-mokymai-*` URL, EU AI Act puslapiai. Statinis body pirmame baite — atskiras ADR (Banga 2).
 - **KILL unchanged** — no SSR/Next.js; hub sitemap still 4 URLs; no public `/glossary`; no spokes in hub sitemap.
 
 ---
