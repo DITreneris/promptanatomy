@@ -40,7 +40,9 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  if (!rateLimit(req, res, 'verify-access', 60)) return;
+  if (!rateLimit(req, res, { key: 'verify-access', limit: 60, windowSec: 60 })) {
+    return;
+  }
 
   const secret = process.env.ACCESS_TOKEN_SECRET;
   if (!secret || secret.length < 16) {

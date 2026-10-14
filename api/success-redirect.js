@@ -45,7 +45,9 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ detail: 'Method not allowed' });
   }
 
-  if (!rateLimit(req, res, 'success-redirect', 30)) return;
+  if (!rateLimit(req, res, { key: 'success-redirect', limit: 30, windowSec: 60 })) {
+    return;
+  }
 
   try {
     const secret = process.env.ACCESS_TOKEN_SECRET;
