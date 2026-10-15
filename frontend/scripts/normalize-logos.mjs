@@ -3,14 +3,14 @@
  * optical height and emits WebP for `TrustedBy.jsx`.
  *
  * Sources live in `frontend/logos-src/` — outside `public/`, so the originals stay
- * in the repo without shipping to `dist/`. Only the generated
- * `frontend/public/logo/*.webp` files are published and referenced by the LP.
+ * in the repo without shipping to `dist/`. Published files are
+ * `frontend/public/logo/*.webp` plus confirmed `*.svg` copies (Bagfactory).
  *
  * Run (sharp is not a project dependency — CI never installs it):
  *   cd frontend && npx --yes -p sharp@0.34 node scripts/normalize-logos.mjs
  */
 
-import { mkdir, readdir, stat, unlink } from 'node:fs/promises'
+import { copyFile, mkdir, readdir, stat, unlink } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -23,8 +23,11 @@ const OUTPUT_HEIGHT = 96
 const TRIM_THRESHOLD = 20
 const SOURCE_EXT = new Set(['.png', '.jpg', '.jpeg'])
 
-/** Sources kept for reference but not part of the confirmed set in `TrustedBy.jsx`. */
-const SKIP = new Set(['bagfactory'])
+/**
+ * Full filenames kept in logos-src but not published.
+ * `bagfactory.jpg` is the soft raster; `bagfactory.svg` is the mark that ships.
+ */
+const SKIP = new Set(['bagfactory.jpg'])
 
 /** Display height per aspect-ratio bucket — wide wordmarks read larger at equal height. */
 function displayHeight(ratio) {
@@ -44,10 +47,9 @@ try {
 }
 
 const entries = await readdir(SRC_DIR)
-const sources = entries
-  .filter((f) => SOURCE_EXT.has(path.extname(f).toLowerCase()))
-  .filter((f) => !SKIP.has(path.basename(f, path.extname(f))))
-  .sort()
+const publishable = entries.filter((f) => !SKIP.has(f)).sort()
+const sources = publishable.filter((f) => SOURCE_EXT.has(path.extname(f).toLowerCase()))
+const svgs = publishable.filter((f) => path.extname(f).toLowerCase() === '.svg')
 
 if (sources.length === 0) {
   console.error(`No source logos found in ${SRC_DIR}`)
@@ -93,13 +95,35 @@ for (const file of sources) {
   })
 }
 
-const kept = new Set(sources.map((f) => `${path.basename(f, path.extname(f))}.webp`))
+const keptWebp = new Set(sources.map((f) => `${path.basename(f, path.extname(f))}.webp`))
+const keptSvg = new Set()
+for (const file of svgs) {
+  const name = path.basename(file)
+  await copyFile(path.join(SRC_DIR, file), path.join(OUT_DIR, name))
+  keptSvg.add(name)
+  const bytes = (await stat(path.join(OUT_DIR, name))).size
+  rows.push({
+    file,
+    source: 'svg',
+    trimmed: 'svg',
+    ratio: '',
+    output: name,
+    kb: (bytes / 1024).toFixed(1),
+    display: 'svg',
+    warn: '',
+  })
+}
+
 const published = await readdir(OUT_DIR)
 for (const file of published) {
-  if (path.extname(file).toLowerCase() !== '.webp') continue
-  if (kept.has(file)) continue
-  await unlink(path.join(OUT_DIR, file))
-  console.log(`removed stale ${file}`)
+  const ext = path.extname(file).toLowerCase()
+  if (ext === '.webp' && !keptWebp.has(file)) {
+    await unlink(path.join(OUT_DIR, file))
+    console.log(`removed stale ${file}`)
+  } else if (ext === '.svg' && !keptSvg.has(file)) {
+    await unlink(path.join(OUT_DIR, file))
+    console.log(`removed stale ${file}`)
+  }
 }
 
 console.table(rows)

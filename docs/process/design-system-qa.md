@@ -7,9 +7,9 @@
 
 | Viewport | Check |
 |----------|--------|
-| 375px | Hero CTA column; TrustedBy `#trusted-by` 3+3 wrap, no horizontal overflow; Pricing cards; FAQ summary `min-w-0 flex-1 break-words`; mobile drawer open/close; drawer locale LT\|EN `min-h-[44px] min-w-[44px]`; access feedback CTAs `min-h-[48px]`; Footer links |
-| 768px | Navbar density; section headings readable; TrustedBy six logos in **one** row |
-| 1280px | Desktop nav: What Is, Ecosystem, Training (if access) + locale (`min-h-[44px] min-w-[44px]`) + CTA; Footer 4 equal columns (`lg:col-span-3`) + legal bar all `text-xs`; Ecosystem grid; FAQ contrast; TrustedBy one row |
+| 375px | Hero CTA column; TrustedBy `#trusted-by` — touch / reduced-motion: static 2×4 grid; hover device: marquee, loop without a seam jump; no horizontal overflow; Pricing cards; FAQ summary `min-w-0 flex-1 break-words`; mobile drawer open/close; drawer locale LT\|EN `min-h-[44px] min-w-[44px]`; access feedback CTAs `min-h-[48px]`; Footer links |
+| 768px | Navbar density; section headings readable; TrustedBy marquee (hover device) or 4+4 grid (touch); hover pauses the track |
+| 1280px | Desktop nav: What Is, Ecosystem, Training (if access) + locale (`min-h-[44px] min-w-[44px]`) + CTA; Footer 4 equal columns (`lg:col-span-3`) + legal bar all `text-xs`; Ecosystem grid; FAQ contrast; TrustedBy marquee, 8 logos, seamless loop, pause on hover |
 
 Run the same rows on **`/lt` and `/en`** (375 / 1280): wordmark, `nav.whatIs`, hero subtitle — LT eilutės ilgesnės; nelūžta už viewport.
 
