@@ -429,6 +429,25 @@
     from, to { border-color: transparent; }
     50% { border-color: var(--color-brand-accent); }
   }
+
+  @keyframes logo-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+@utility logo-marquee-viewport {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 1.5rem, #000 calc(100% - 1.5rem), transparent);
+}
+
+@utility logo-marquee-track {
+  animation: logo-marquee 45s linear infinite;
+}
+
+/* Mouse pause. Touch and reduced-motion get a static grid in TrustedBy.jsx, not a paused track. */
+.logo-marquee-viewport:hover .logo-marquee-track {
+  animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {

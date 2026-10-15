@@ -100,6 +100,10 @@ jobs:
           fi
           exit $fail
 
+      - name: Trusted-by logo dimensions (LOGOS vs public/logo)
+        working-directory: frontend
+        run: node scripts/check-logo-dims.mjs
+
       - name: Bundle size budget (LP critical path)
         run: node scripts/check-bundle-size.mjs
 

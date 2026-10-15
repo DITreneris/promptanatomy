@@ -156,6 +156,14 @@ Pavyzdys:
 |----------|-------------|
 | Header lockup kairėje; paspaudimas grąžina į tą patį spoke, tas pats skirtukas. Kelias į `.app` yra entity footer. Įvardintas dešinysis punktas gali vesti į `.app` | [brand-manual.md](../design/brand-manual.md) §3.5, [sibling_memo.md](../sibling_memo.md), [ecosystem-governance.md](../ecosystem-governance.md), `q-and-a-agent` / `frontend-agent` / `orchestrator` SKILL.md |
 
+### Pakeltos pamokos (2026-10-15, TrustedBy logos)
+
+| Taisyklė | Kur įrašyta |
+|----------|-------------|
+| Umaras pilnas lockup, nekirpti; aukštis `h-9 sm:h-10` (ne ratio kaušas, ne `h-12 sm:h-14`) | `frontend-agent/SKILL.md` + lessons, golden-legacy §1 |
+| Marquee `prefers-reduced-motion` = statiškas tinklelis per `matchMedia`, ne globalus `animation-duration: 0.01ms` (sustabdytų takelį per −50 %). Juostos `<img>` `max-w-none`. `SKIP` = pilnas failo vardas | `frontend-agent/SKILL.md` + lessons, `normalize-logos.mjs` |
+| Marquee siūlė: tarpas **eilutės viduje** + uždaromasis `pr-*`, takelis be `gap` (kitaip `-50 %` = W + G/2, šuolis kas ciklą — išmatuota 15,5 / 20 px). Touch (`hover: none`) = statiškas tinklelis, nes hover pauzės nėra, o `:focus-within` be fokusuojamų elementų — miręs kodas (WCAG 2.2.2). `LOGOS` `w`/`h` saugo CI `check-logo-dims.mjs`, ne akis | `frontend-agent/SKILL.md`, golden-legacy §1 / §5, `.github/workflows/ci.yml` |
+
 ## Skirtumas nuo submodulio
 
 Submodulio `apps/prompt-anatomy` skills – training turinys (moduliai, skaidrės). **Parent** skills – LP, Vercel `api/`, deploy, submodule pin, access tier.
