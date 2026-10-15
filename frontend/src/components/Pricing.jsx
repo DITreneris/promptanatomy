@@ -174,7 +174,7 @@ export default function Pricing({ onBuy, loading, error, access, customerEmail, 
       </div>
 
       {error && (
-        <p className="mb-6 text-red-600 text-sm font-medium text-center" role="alert" aria-live="polite">
+        <p className="mb-6 text-feedback-danger-fg text-sm font-medium text-center" role="alert" aria-live="polite">
           {error}
         </p>
       )}

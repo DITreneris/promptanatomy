@@ -67,6 +67,7 @@
   --color-feedback-warning-icon: #d97706;
   --color-feedback-warning-border: #fde68a;
   --color-feedback-warning-fill: #fffbeb;
+  --color-feedback-danger-fg: #dc2626;
 
   --color-accent-muted-bg: rgb(207 167 58 / 0.15);
   --color-accent-muted-border: rgb(207 167 58 / 0.35);
@@ -216,6 +217,10 @@
 
 @utility btn-dark {
   @apply min-h-[48px] font-bold text-white bg-brand-dark hover:brightness-110 active:scale-[0.98] transition-all duration-ui focus-ring disabled:opacity-70;
+}
+
+@utility field-control {
+  @apply flex-1 min-h-[48px] min-w-[200px] px-4 py-3 rounded-xl border-2 border-stroke-strong bg-white text-brand-dark placeholder:text-ink-soft shadow-xs focus-ring focus-visible:border-brand-accent transition-shadow duration-ui;
 }
 
 @utility section-default {

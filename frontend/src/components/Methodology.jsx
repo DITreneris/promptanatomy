@@ -26,7 +26,7 @@ export default function Methodology() {
       <div className="max-w-7xl mx-auto min-w-0">
         <div className="section-header-gap flex flex-col lg:flex-row justify-between items-end gap-12">
           <div className="max-w-2xl">
-            <p className="text-label-upper text-amber-800 mb-8">{t('methodology.sectionLabel')}</p>
+            <p className="text-label-upper text-feedback-warning-fg mb-8">{t('methodology.sectionLabel')}</p>
             <h2 className="section-heading">
               {t('methodology.titleLine1')} <br /> {t('methodology.titleLine2')}
             </h2>

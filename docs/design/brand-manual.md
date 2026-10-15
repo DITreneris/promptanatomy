@@ -278,15 +278,14 @@ The landing page tokens are the color source of truth: [frontend/src/index.css](
 
 | Finding | Evidence | Spoke rule |
 |---------|----------|------------|
-| Favicon yellow is a third gold | [favicon.svg](../../frontend/public/favicon.svg) bolt `#fbd304`. Tile is a gradient `#050d14` → `#103b5a`, radius 8 on a 32 viewBox. Contrast of `#fbd304` on white is 1.46:1. | In-page mark uses `#cfa73a` on flat `#0b1320`. Do not sample the SVG with an eyedropper. |
-| Favicon name is wrong | Same file, `aria-label="Prompts anatomija"`. | Use §2 names. |
-| Old logo note offered a fourth yellow | [logo-favicon.md](logo-favicon.md) used to list `#CFA73A` or `#f3cc30`, and a flat `#0B1320` tile the SVG does not have. | `#f3cc30` is not a brand color. Sizes and safe zone in that note still apply. |
+| Favicon aligned (2026-10-15) | [favicon.svg](../../frontend/public/favicon.svg) + generated PNGs now use flat `#0b1320` tile (rx 8 on 32 viewBox), `#cfa73a` bolt, and `aria-label="Prompt Anatomy"` (was `#050d14`→`#103b5a` gradient, `#fbd304` bolt, `Prompts anatomija`). | In-page mark and favicon share `#cfa73a` on flat `#0b1320`. |
+| Old logo note offered a fourth yellow | [logo-favicon.md](logo-favicon.md) used to list `#CFA73A` or `#f3cc30`, and a flat `#0B1320` tile the SVG did not yet have. | `#f3cc30` is not a brand color. Sizes and safe zone in that note still apply. |
 | JSON-LD Lithuanian name lowercases A | [organization.js](../../frontend/src/site/organization.js) `ORG_NAME_LT = 'Promptų anatomija'`. Visible UI, `og:site_name` on `/lt`, and this manual use **Promptų Anatomija**. | Copy the capital A. Do not copy `ORG_NAME_LT` into a spoke title. |
 | Gold word on white fails contrast | `#cfa73a` on white = 2.27:1. Kept on purpose for the second word at weight 900. | Do not extend gold-on-white to small text. |
 | Hub ecosystem hues look like a palette | Four hexes in §4.4. | Card rims on `.app` only. |
 | Spokes already have local design systems | Enter lesson v3.1, blog Design System 2.1.0, and others. | Keep the local system for layout. Point the lockup, the two golds, the names, and the footer line at this file. |
 
-Favicon alignment (flat navy tile, `#cfa73a` bolt, correct accessible name) is a hub asset change. It is not done in this manual. Until it ships, spokes follow §3, not the SVG paint.
+Favicon alignment (flat `#0b1320` tile, `#cfa73a` bolt, `aria-label="Prompt Anatomy"`, plus regenerated PNGs) shipped on the hub on 2026-10-15. Spokes continue to follow §3.
 
 ---
 

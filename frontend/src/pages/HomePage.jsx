@@ -212,7 +212,7 @@ export default function HomePage({ forceLocale }) {
                   value={customerEmail}
                   onChange={(e) => setCustomerEmail(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleCheckAccess()}
-                  className="flex-1 min-h-[48px] min-w-[200px] px-4 py-3 rounded-xl border-2 border-stroke-strong bg-white text-brand-dark placeholder:text-ink-soft shadow-xs focus-ring focus-visible:border-brand-accent transition-shadow duration-ui"
+                  className="field-control"
                   aria-describedby={accessEmailDescribedBy}
                 />
                 <button
@@ -246,7 +246,7 @@ export default function HomePage({ forceLocale }) {
                 </button>
               )}
               {accessError && (
-                <p id="access-error" className="mt-2 text-red-600 text-sm" role="alert">
+                <p id="access-error" className="mt-2 text-feedback-danger-fg text-sm" role="alert">
                   {accessError}
                 </p>
               )}

@@ -15,13 +15,13 @@ Vienas šaltinis visiems favicon ir logo išvestiniams; dydžiai, spalvos, kada 
 
 In-page lockup ir spalvų kanonas spoke’ams: [brand-manual.md](brand-manual.md) (`#0b1320` + `#cfa73a`; CTA mygtukas `#ffcc33` → `#ffb300`). `#f3cc30` nėra tokenas.
 
-Šis SVG **dabar** nupieštas kitaip (ne kopijuoti į antraštę):
+Šis SVG suvienodintas su brand manual (2026-10-15):
 
 | Failo detalė | Reikšmė faile |
 |--------------|----------------|
-| Plytelės gradientas | `#050d14` → `#103b5a` |
-| Žaibas | `#fbd304` |
-| `aria-label` | `Prompts anatomija` (neteisingas vardas; kanonas — brand manual §2) |
+| Plytelė | `#0b1320` (plokščia, `rx="8"`) |
+| Žaibas | `#cfa73a` |
+| `aria-label` | `Prompt Anatomy` (kanonas — brand manual §2) |
 
 ---
 
