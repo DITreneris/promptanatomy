@@ -33,6 +33,7 @@ const ORG_DESCRIPTION =
 /** Entity graph profiles for Organization.sameAs (must match index.html). */
 export const ORG_SAME_AS = [
   'https://t.me/prompt_anatomy',
+  'https://www.youtube.com/@promptanatomy',
   'https://medium.com/@tomas.staniulis76',
   'https://promptanatomy.site',
   'https://www.linkedin.com/in/staniulis',

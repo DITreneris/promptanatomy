@@ -83,7 +83,7 @@ function headBlock({ title, description, path }) {
     :root { --brand-dark: #0b1320; --brand-accent: #cfa73a; --muted: #475569; }
     body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background: #f8fafc; color: var(--brand-dark); -webkit-font-smoothing: antialiased; }
     .wrap { max-width: 42rem; margin: 0 auto; padding: 4rem 1.5rem; }
-    nav[aria-label="Breadcrumb"] { margin-bottom: 2rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+    nav[aria-label="Breadcrumb"] { margin-bottom: 2rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
     nav ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
     nav a { color: var(--muted); text-decoration: none; }
     nav a:hover { color: var(--brand-accent); }
@@ -92,8 +92,8 @@ function headBlock({ title, description, path }) {
     .sections { display: flex; flex-direction: column; gap: 2rem; margin-bottom: 2.5rem; }
     section h2 { font-size: 1.125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.5rem; color: var(--brand-dark); }
     section p { margin: 0; font-weight: 500; line-height: 1.625; color: var(--muted); }
-    .back { display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 700; color: var(--brand-accent); text-decoration: none; }
-    .back:hover { text-decoration: underline; }
+    .back { display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 700; color: var(--brand-dark); text-decoration: underline; text-decoration-color: rgb(207 167 58 / 0.6); text-underline-offset: 4px; }
+    .back:hover { color: var(--brand-accent); }
     .back svg { width: 1.25rem; height: 1.25rem; flex-shrink: 0; }
   </style>
 </head>`

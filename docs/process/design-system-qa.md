@@ -1,6 +1,6 @@
-# Design system QA (LP v1.0 / v1.1 / v1.2 / v1.3)
+# Design system QA (LP v1.0 / v1.1 / v1.2 / v1.3 / v1.4)
 
-**Scope:** Phases 5–8 from [design_system_roadmap2.md](../design_system_roadmap2.md); v1.1 hygiene (tokens, legal headings, CI grep); v1.2 type rhythm (one eyebrow, shared conversion CTA, named section steps); v1.3 surface language (ink/stroke tokens, `duration-ui` / `duration-overlay`, one hover lift).  
+**Scope:** Phases 5–8 from [design_system_roadmap2.md](../design_system_roadmap2.md); v1.1 hygiene (tokens, legal headings, CI grep); v1.2 type rhythm (one eyebrow, shared conversion CTA, named section steps); v1.3 surface language (ink/stroke tokens, `duration-ui` / `duration-overlay`, one hover lift); v1.4 off-home page parity (`Privacy`, `Terms`, `Success`, `Cancel`, static legal HTML, `field-control`, `feedback-danger-fg`, expanded CI grep).  
 **Automated gate (pre-merge):** `cd frontend && npm run build`; CI **Design-system token grep**; `cd backend && pytest`.
 
 ## Visual QA (manual)
@@ -83,6 +83,8 @@ grep -rE 'shadow-\[' src/components src/pages --include='*.jsx'
 grep -rE 'size=\{' src/components src/pages --include='*.jsx'
 grep -rE 'tracking-\[' src/components src/pages --include='*.jsx'
 grep -rE 'leading-\[' src/components src/pages --include='*.jsx'
+grep -rE 'tracking-widest|shadow-2xl|shadow-xl|duration-150|duration-200' src/components src/pages --include='*.jsx'
+grep -rE '\b(bg|text|border)-slate-' src/pages --include='*.jsx'
 ```
 
 Expected: **no matches** (tokens only in `src/index.css`). Digit-only `text-[NNpx]` — does not flag `text-[length:var(--text-stat)]` in CSS.

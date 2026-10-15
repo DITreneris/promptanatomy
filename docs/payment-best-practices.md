@@ -71,7 +71,7 @@ Schema: [docs/supabase-user-access.sql](supabase-user-access.sql).
 
 ### 3.4 Vercel shared lib
 
-- **`api/lib/supabase-access.js`** – Vercel handlerių SOT: `PLAN_VALUES`, email normalizacija, get/upsert. Python stack: `backend/db.py` + `backend/core/config.py` – **PLAN_VALUES turi atitikti** JS lib.
+- **`api/lib/supabase-access.js`** – Vercel handlerių SOT: `PLAN_VALUES` (`[3, 6, 9, 12, 15]` DB skaitymui), `HUB_CHECKOUT_PLAN_VALUES` (`[3, 6]` / `isHubCheckoutPlan` Stripe webhook filtrui), email normalizacija, get/upsert. Python stack: `backend/db.py` + `backend/core/config.py` (`PLAN_VALUES = (3, 6, 9, 12, 15)`, `PHASE1_PLAN_VALUES = (3, 6)`) – **PLAN_VALUES turi atitikti** JS lib.
 - Daugelio Supabase projektų registras: [supabase-project-registry.md](supabase-project-registry.md).
 
 ---

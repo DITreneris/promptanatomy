@@ -77,9 +77,9 @@ Jei mokėjimas per Stripe pavyko, webhook rodo 0% klaidų, bet **user_access** l
 - Production (ir Preview, jei testuoji): `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` (service role, ne anon key).
 - Po pakeitimų **Redeploy**.
 
-### 3.2 Stripe Checkout Session – metadata.plan
+### 3.2 Stripe Checkout Session – metadata.plan ir payment_status
 
-Webhook įrašo į DB tik jei `session.metadata.plan` yra **plan_id** ("1"–"4") arba **plan_value** (3, 6, 12, 15). Phase 1 checkout siunčia **3** / **6**. Tier **9** – ne Stripe webhook, o operatoriaus upsert į `user_access` (žr. [user-access-tier-registry.md](user-access-tier-registry.md)). Be `metadata.plan` webhook grąžina 200, bet įrašo neįrašo.
+Webhook įrašo į DB tik jei `session.payment_status === 'paid'` (kai laukas pateiktas) ir `session.metadata.plan` yra Phase 1 savitarnos planas: **plan_id** (`"1"`, `"2"`) arba **plan_value** (`3`, `6` — `isHubCheckoutPlan`). Tier **9** ir **12** (bei `15`) – ne per Stripe Phase 1 webhook, o operatoriaus upsert į `user_access` (žr. [user-access-tier-registry.md](user-access-tier-registry.md)). Be `metadata.plan` arba su ne Phase-1 planu webhook grąžina 200, bet įrašo neįrašo.
 
 ### 3.3 Vercel function logai
 

@@ -152,7 +152,7 @@ export default function Hero() {
                 className="group w-full sm:w-auto btn-primary-lg flex items-center justify-center gap-3"
               >
                 {t('hero.ctaLesson')}{' '}
-                <ArrowRight className="icon-lg group-hover:translate-x-1 transition-transform" aria-hidden />
+                <ArrowRight className="icon-lg group-hover:translate-x-1 transition-transform duration-ui" aria-hidden />
               </a>
             ) : null}
             <a
@@ -165,7 +165,7 @@ export default function Hero() {
             >
               {t('hero.cta')}
               {showFreeLesson ? null : (
-                <ArrowRight className="icon-lg group-hover:translate-x-1 transition-transform" aria-hidden />
+                <ArrowRight className="icon-lg group-hover:translate-x-1 transition-transform duration-ui" aria-hidden />
               )}
             </a>
           </div>
@@ -184,7 +184,7 @@ export default function Hero() {
 
             <div className="space-y-6">
               <div
-                className="group/line cursor-default transition-all hover:translate-x-1"
+                className="group/line cursor-default transition-all duration-ui hover:translate-x-1"
                 style={{ opacity: lineVisible(0) ? 1 : 0, transform: lineVisible(0) ? 'none' : 'translateY(8px)', transition: 'opacity 0.3s ease-out, transform 0.3s ease-out' }}
               >
                 <div className="text-label-upper text-slate-400 mb-1">{t('hero.codeLine1')}</div>
@@ -197,11 +197,11 @@ export default function Hero() {
                 </div>
               </div>
               <div
-                className="group/line cursor-default transition-all hover:translate-x-1"
+                className="group/line cursor-default transition-all duration-ui hover:translate-x-1"
                 style={{ opacity: lineVisible(1) ? 1 : 0, transform: lineVisible(1) ? 'none' : 'translateY(8px)', transition: 'opacity 0.3s ease-out, transform 0.3s ease-out' }}
               >
                 <div className="text-label-upper text-slate-400 mb-1">{t('hero.codeLine2')}</div>
-                <div className="text-sm border-l-2 border-indigo-500/50 group-hover/line:border-indigo-500 transition-colors pl-5 py-1 break-words min-w-0">
+                <div className="text-sm border-l-2 border-indigo-500/50 group-hover/line:border-indigo-500 transition-colors duration-ui pl-5 py-1 break-words min-w-0">
                   <span className="text-indigo-300 font-black">{t('hero.codeContext')}</span>
                   <span className="text-slate-200 italic break-words">
                     {displayed[1] && <>&quot;{displayed[1]}&quot;</>}
@@ -210,11 +210,11 @@ export default function Hero() {
                 </div>
               </div>
               <div
-                className="group/line cursor-default transition-all hover:translate-x-1"
+                className="group/line cursor-default transition-all duration-ui hover:translate-x-1"
                 style={{ opacity: lineVisible(2) ? 1 : 0, transform: lineVisible(2) ? 'none' : 'translateY(8px)', transition: 'opacity 0.3s ease-out, transform 0.3s ease-out' }}
               >
                 <div className="text-label-upper text-slate-400 mb-1">{t('hero.codeLine3')}</div>
-                <div className="text-sm border-l-2 border-emerald-500/50 group-hover/line:border-emerald-500 transition-colors pl-5 py-1 break-words min-w-0">
+                <div className="text-sm border-l-2 border-emerald-500/50 group-hover/line:border-emerald-500 transition-colors duration-ui pl-5 py-1 break-words min-w-0">
                   <span className="text-emerald-300 font-black">{t('hero.codeSchema')}</span>
                   <span className="text-slate-200 italic break-words">
                     {displayed[2] && <>&quot;{displayed[2]}&quot;</>}

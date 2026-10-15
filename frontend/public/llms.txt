@@ -51,6 +51,7 @@ Ecosystem spokes use a five-part Quick mode (role, context, reasoning, result, q
 - [Knowledge hub (.blog)](https://promptanatomy.blog/): Spoke — Deepen: articles, canvases, and systems-thinking content (LT: https://promptanatomy.blog/)
 - [Playground (.lol)](https://promptanatomy.lol/): Spoke — Play: structured sandbox for low-stakes prompt experiments (LT: https://promptanatomy.lol/)
 - [Community (Telegram)](https://t.me/prompt_anatomy): Public practitioner support group
+- [YouTube](https://www.youtube.com/@promptanatomy): Brand channel
 
 ## Pricing
 
@@ -85,4 +86,4 @@ Temos: DI mokymai, promptų inžinerija, konteksto inžinerija, 6 blokų metodik
 - [Terms of Service](https://www.promptanatomy.app/terms): Legal — secondary for AI context
 - [Training app](https://www.promptanatomy.app/anatomy/): Interactive course; disallowed in robots.txt for hub crawl focus
 - Do not index transactional routes: https://www.promptanatomy.app/success, https://www.promptanatomy.app/cancel, https://www.promptanatomy.app/api/
-- lastUpdated: 2026-10-14
+- lastUpdated: 2026-10-15

@@ -47,39 +47,39 @@ export default function SuccessPage() {
   }, [sessionId, t])
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-start sm:justify-center px-6 py-8 antialiased overflow-x-hidden relative">
+    <div className="min-h-screen bg-canvas flex flex-col items-center justify-start sm:justify-center px-6 py-8 antialiased overflow-x-hidden relative">
       <nav aria-label="Breadcrumb" className="text-breadcrumb relative z-10 mb-8">
         <ol className="flex items-center gap-2">
-              <li><Link to={homePath} className="hover:text-brand-accent transition-colors duration-200">{t('common.home')}</Link></li>
+              <li><Link to={homePath} className="hover:text-brand-accent transition-colors duration-ui focus-ring rounded-sm">{t('common.home')}</Link></li>
           <li aria-hidden>/</li>
           <li className="text-brand-dark" aria-current="page">{t('success.breadcrumb')}</li>
         </ol>
       </nav>
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('/noise.svg')]"></div>
       <div className="max-w-2xl w-full bg-brand-dark rounded-3xl p-2 shadow-soft-lg border border-white/5 relative z-10">
-        <div className="bg-white rounded-3xl px-6 py-10 sm:p-12 md:p-16 text-center shadow-inner">
+        <div className="bg-white rounded-3xl px-6 py-10 sm:p-12 md:p-16 text-center border border-stroke">
           <div className="w-24 h-24 bg-feedback-success-fill text-feedback-success-text rounded-full flex items-center justify-center mx-auto mb-6 md:mb-10 shadow-success-icon border-4 border-white">
             <ShieldCheck className="icon-display" strokeWidth={1.5} aria-hidden />
           </div>
           <h1 className="checkout-heading mb-6">
             {t('success.heading')}
           </h1>
-          <p className="text-slate-600 mb-4 text-xl font-medium leading-relaxed italic max-w-sm mx-auto">
+          <p className="text-ink-muted mb-4 text-xl font-medium leading-relaxed italic max-w-sm mx-auto">
             {t('success.body')}
           </p>
-          <p className="text-slate-600 text-sm mb-6 max-w-sm mx-auto">
+          <p className="text-ink-muted text-sm mb-6 max-w-sm mx-auto">
             {t('success.emailDisclaimer')}
           </p>
-          <p className="text-slate-600 text-sm mb-6 max-w-sm mx-auto">
+          <p className="text-ink-muted text-sm mb-6 max-w-sm mx-auto">
             {t('success.nextTime')}
           </p>
           {!sessionId && (
-            <p className="text-slate-600 text-sm mb-6 max-w-sm mx-auto">
+            <p className="text-ink-muted text-sm mb-6 max-w-sm mx-auto">
               {t('success.noSession')}
             </p>
           )}
           {loading && (
-            <p className="text-slate-600 text-sm mb-8" aria-live="polite">
+            <p className="text-ink-muted text-sm mb-8" aria-live="polite">
               {t('success.redirecting')}
             </p>
           )}

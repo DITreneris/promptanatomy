@@ -12,7 +12,7 @@
 
 export const SITE_URL = 'https://www.promptanatomy.app'
 
-export const LAST_UPDATED = '2026-10-14'
+export const LAST_UPDATED = '2026-10-15'
 
 /** Marketing / discovery site — full 9-domain map, quiz, Anatomizer (not a spoke). */
 export const ECOSYSTEM_DISCOVERY_SITE = 'https://promptanatomy.site'
@@ -116,6 +116,8 @@ export function getEcosystemItemList(locale = 'en') {
 }
 
 export const COMMUNITY_URL = 'https://t.me/prompt_anatomy'
+/** Brand channel. Also listed on Organization.sameAs in organization.js + index.html. */
+export const YOUTUBE_URL = 'https://www.youtube.com/@promptanatomy'
 
 export const TOPICS = [
   'prompt engineering',

@@ -117,7 +117,7 @@ Keičiant spoke URL — atnaujinti `geo-manifest.js`, tada `npm run build`.
 
 ### Organization.sameAs — operator follow-up
 
-Current `ORG_SAME_AS` (code): Telegram, Medium, `.site`, founder LinkedIn/X, GitHub repo.
+Current `ORG_SAME_AS` (code): Telegram, YouTube `@promptanatomy`, Medium, `.site`, founder LinkedIn/X, GitHub repo.
 
 1. Create LinkedIn **Company** page if missing → append URL to `ORG_SAME_AS` + `index.html`.
 2. Create Wikidata item when notability allows → append `https://www.wikidata.org/wiki/Q…` (do not invent Q-IDs).

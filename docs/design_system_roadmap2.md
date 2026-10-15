@@ -3,9 +3,9 @@
 | Field | Value |
 |-------|-------|
 | **Date** | 2026-05-24 |
-| **Last updated** | 2026-10-04 (accent use: navy headlines, yellow CTA without halo, Starter outline; v1.3 surface language remains) |
-| **Implemented** | 2026-05-24 (Phases 1–8); **v1.1** 2026-08-13; leftover prune 2026-09-15; **v1.2** and **v1.3** 2026-10-02 |
-| **Status** | **v1.3 shipped** (ink, stroke, motion). v1.2 type rhythm remains underneath. QA: [design-system-qa.md](process/design-system-qa.md) |
+| **Last updated** | 2026-10-15 (**v1.4 shipped**: legal/checkout page parity, static legal `.back` contrast, `field-control` + `feedback-danger-fg`, `favicon.svg` brand alignment, expanded CI greps) |
+| **Implemented** | 2026-05-24 (Phases 1–8); **v1.1** 2026-08-13; leftover prune 2026-09-15; **v1.2** and **v1.3** 2026-10-02; **v1.4** 2026-10-15 |
+| **Status** | **v1.4 shipped** (page parity + CI). v1.3 surface language and v1.2 type rhythm remain underneath. QA: [design-system-qa.md](process/design-system-qa.md) |
 | **External benchmark** | [GitHub Primer](https://primer.style/) — token layering, semantics, flow (§14) |
 | **Scope** | LP in [frontend/src/pages/HomePage.jsx](../frontend/src/pages/HomePage.jsx) and [frontend/src/components/](../frontend/src/components/) |
 | **Token source** | [frontend/src/index.css](../frontend/src/index.css) (`@theme`, Tailwind CSS v4 — **not** `tailwind.config.js`) |
@@ -26,11 +26,11 @@
 
 ## 1. Executive Summary
 
-| Question | Answer (2026-10-02) |
+| Question | Answer (2026-10-15) |
 |----------|---------------------|
-| **Is the frontpage close to premium SaaS quality?** | **Yes — v1.3 surface language shipped.** Token + utility system in `index.css`. Next in-scope work is §15 v1.4 (legal/checkout parity and CI). Won’t stays: no UI kit, no webfont, no dark mode. |
-| **What was fixed first (Phases 1–4)?** | Dual CTA gradient → `btn-primary`; Hero CTA ↔ `#pricing`; proof copy disambiguation; stat SR readability; Methodology semantics; `mt-20` removed; local `noise.svg`. |
-| **What's next?** | **v1.4** applies the v1.3 ink roles on legal and checkout pages and extends the CI grep. v1.3 is shipped. Do not reopen Phases 5–7 or v1.2 as Open. |
+| **Is the frontpage close to premium SaaS quality?** | **Yes — v1.4 shipped.** Token + utility system in `index.css` covers both LP and off-home routes (`Privacy`, `Terms`, `Success`, `Cancel`) plus static legal HTML. Won’t stays: no UI kit, no webfont, no dark mode. |
+| **What was fixed first (Phases 1–4)?** | Dual CTA gradient → `btn-primary`; Hero CTA hierarchy; proof copy disambiguation; stat SR readability; Methodology semantics; `mt-20` removed; local `noise.svg`. |
+| **What's next?** | **v1.4 is shipped** (2026-10-15). Post-deploy Lighthouse a11y re-measure remains optional. Do not reopen Phases 5–7 or v1.2–v1.4 as Open. |
 | **Remaining trust polish?** | Proof numbers: **500+** library; **40+** interactive tools; **300+** interactive slides. **600+** practitioners **removed** (2026-09-14). Social proof = Trusted-by client logo band (`TrustedBy.jsx`, 6 logos). Desktop nav (golden-legacy 2026-08-13): What Is + Ecosystem (+ Training if `hasAccess`). **Not** Pricing / Methodology / FAQ. |
 | **What must not change?** | Brand palette (dark + gold), terminal hero, Navbar Variant B, Stripe checkout flow, mobile drawer pattern, i18n architecture. |
 | **What we will not adopt?** | `@primer/react`, shadcn on LP, dark mode, Figma pipeline, animation libraries — see §14.3. |
@@ -39,9 +39,9 @@
 
 ## 2. Current Design System Version
 
-### Label: **v1.3 shipped — surface language (2026-10-02)**
+### Label: **v1.4 shipped — page parity & CI (2026-10-15)**
 
-*Historical labels: v0.85 audit → v0.95 Phases 1–4 → v1.0 Phases 5–8 → v1.1 hygiene → v1.2 type rhythm. Do not treat v0.95 or v1.2 as current. v1.4 in §15 is proposed, not shipped.*
+*Historical labels: v0.85 audit → v0.95 Phases 1–4 → v1.0 Phases 5–8 → v1.1 hygiene → v1.2 type rhythm → v1.3 surface language. Do not treat v0.95 or v1.2 as current.*
 
 | Signal | Evidence | Implication |
 |--------|----------|-------------|
@@ -240,7 +240,7 @@ From [HomePage.jsx](../frontend/src/pages/HomePage.jsx):
 | Task | Status | Notes |
 |------|--------|-------|
 | Proof numbers / copy audit | Done | **500+** library; **40+** interactive tools; **300+** slides. **2026-09-14:** **600+** social proof removed; proof = Trusted-by logo band |
-| Hero CTA ↔ `#pricing` | Done | `hero.cta` pricing intent; removed unused `ctaSecondary`. **2026-08-13:** QW3a (Hero → `.cloud`) was a regression against Primer “one primary CTA intent to pricing”; restored — one Hero CTA → `#pricing`, same tab, no secondary. |
+| Hero CTA ↔ `#pricing` | Done | `hero.cta` pricing intent; removed unused `ctaSecondary`. **2026-10-06:** EN (`/`, `/en`) has primary `hero.ctaLesson` → `promptanatomy.cloud` (`btn-primary-lg`, `utm_medium=hero`) and secondary `hero.cta` → `#pricing` (`btn-secondary-lg`); `/lt` keeps a single primary `hero.cta` → `#pricing`. |
 | Standardize primary gradient | Done | HomePage access CTAs, CancelPage |
 | Remove Methodology `mt-20` | Done | |
 | Fix stat `aria-hidden` | Done | |
@@ -426,7 +426,7 @@ Phase 5 (functional tokens + type scale)
 | 16 | **Emphasis via weight/size** (Primer) | Done — not color alone for hierarchy | 5 |
 | 17 | **Focus + 44px targets** (Primer a11y) | Done — `focus-ring` (navy) on light surfaces; `focus-ring-on-dark` (gold, navy offset) on Ecosystem. Desktop and drawer locale are 44px | — |
 | 18 | **Materials / elevation tiers** | Done — named shadows as public API; Ecosystem names are component layer | 6 / v1.1 |
-| 19 | **Encourage flow** (Primer) | Done — one primary CTA intent to pricing (QW3a `.cloud` outbound reverted 2026-08-13) | — |
+| 19 | **Encourage flow** (Primer) | Done — EN Hero pairs primary `.cloud` lesson (`btn-primary-lg`) with secondary `#pricing` (`btn-secondary-lg`); LT Hero has one primary `#pricing` CTA (2026-10-06) | — |
 | 20 | **Desktop wayfinding** | Done — What Is + Ecosystem (+ Training if access). Methodology/FAQ **not** in desktop nav (golden-legacy 2026-08-13) | 6 |
 
 ### Token reference appendix (`index.css` `@theme`)
@@ -743,35 +743,35 @@ v0.98  nav + checkout parity            ← Phase 6
 v1.0   QA gates + icon/spacing docs     ← Phase 7–8
 v1.1   hygiene (CI grep, a11y record, feedback/legal utilities)
 v1.2   type rhythm
-v1.3   ink, stroke, motion          ← current
-v1.4   legal/checkout parity + CI   ← proposed horizon (§15)
+v1.3   ink, stroke, motion
+v1.4   legal/checkout parity + CI   ← current
 ```
 
 ---
 
-## 15. Next horizons (revised 2026-10-02, after v1.3)
+## 15. Next horizons (revised 2026-10-15, after v1.4)
 
-v1.2 closed type and rhythm. v1.3 closed light-surface color, motion, the pricing eyebrow, the drawer shadow, and the methodology icon radius. This section is what remains. It is not a redesign, and it does not reopen the Won’t list.
+v1.2 closed type and rhythm. v1.3 closed light-surface color, motion, the pricing eyebrow, the drawer shadow, and the methodology icon radius. v1.4 closed off-home page parity (`Privacy`, `Terms`, `Success`, `Cancel`), static legal `.back` contrast, `field-control` + `feedback-danger-fg`, `favicon.svg` brand alignment, and expanded CI token greps.
 
-**Closed in v1.3 (do not re-open):**
+**Closed in v1.3–v1.4 (do not re-open):**
 
 | Item | Live |
 |------|------|
-| Ink scale | Nine tokens at the old slate hex: `canvas`, `canvas-muted`, `stroke-subtle`, `stroke`, `stroke-strong`, `ink-faint`, `ink-soft`, `ink-muted`, `ink-strong`. Body copy is `text-ink-muted` (`#475569`). |
+| Ink scale | Nine tokens at the old slate hex: `canvas`, `canvas-muted`, `stroke-subtle`, `stroke`, `stroke-strong`, `ink-faint`, `ink-soft`, `ink-muted`, `ink-strong`. Body copy is `text-ink-muted` (`#475569`) across LP and all off-home pages. |
 | Motion | `duration-ui` 200ms, `duration-overlay` 300ms, one hover lift `-translate-y-1` |
 | Eyebrow | Pricing plan name is `text-label-upper`. `badge-accent` keeps `0.25em` |
 | Drawer | `shadow-soft-lg` + `border-stroke`. No new shadow name |
 | Radius | Methodology icon is `rounded-xl` (12px) |
+| Form & feedback | `field-control` on `#access-email`; `text-feedback-danger-fg` (`#dc2626`) on error alerts; `text-feedback-warning-fg` on Methodology eyebrow |
+| Static legal HTML | `generate-legal-static.mjs` `.back` link uses navy text + gold underline; breadcrumb uses `0.18em` tracking |
+| Favicon SOT | `favicon.svg` + PNGs use flat `#0b1320` tile, `#cfa73a` bolt, `aria-label="Prompt Anatomy"` |
 
-**Still open after v1.3:**
+**Intentional exemptions after v1.4:**
 
-| Gap | Where | Count |
-|-----|--------|------:|
-| Page bodies still use Tailwind `slate-*` | Privacy, Terms, Success, Cancel | 28 |
-| Access email field is a one-off class string | `HomePage.jsx` `#access` input | 1 |
+| Exemption | Where | Count |
+|-----------|--------|------:|
 | Atmosphere motion left on purpose | Hero glow `duration-500` + `rounded-[60px]`; access progress `duration-500` | 2 |
 | Dark-surface slate left on purpose | Hero terminal (`text-slate-100/200/400`); `ecosystem-tag-pill` `text-slate-300` | exempt |
-| CI does not yet reject the classes v1.3 removed | `tracking-widest`, `shadow-2xl`, `shadow-xl`, `duration-150` | grep |
 | Lighthouse a11y | Recorded **92** on 2026-08-13. Do not invent a new score. Re-measure post-deploy only | 1 |
 
 `prefers-reduced-motion` already zeroes transitions. Hero terminal amber / emerald / rose / indigo stay exempt. Wordmark gold on white, the hotter CTA gradient, Ecosystem phase colors, and named Ecosystem shadows stay as they are.
@@ -780,13 +780,14 @@ v1.2 closed type and rhythm. v1.3 closed light-surface color, motion, the pricin
 
 Nine ink and stroke tokens, not three. Collapsing slate-400/500/600/700 into one muted color would have changed contrast. Each step kept its hex. Legal and checkout page bodies were left for v1.4. Build passed. Browser check: EN and LT, 375 and 1280, no overflow; drawer edge readable at 768 against the scrim; Privacy locale still 44×44.
 
-### v1.4 — page parity (horizon)
+### v1.4 — page parity & CI — **Shipped** (2026-10-15)
 
-| Item | Do |
-|------|----|
-| Pages | Privacy, Terms, Success, and Cancel body copy and strokes use the v1.3 ink utilities. Headings already have `page-heading` / `checkout-heading`. |
-| Access field | One `field-control` utility for the email input (stroke, radius, the existing navy `focus-ring`). |
-| CI | Reject `tracking-widest`, `shadow-2xl`, `shadow-xl`, and `duration-150` in LP JSX. Do not ban `slate-*` outright — the terminal exemption would make that grep a false fail. |
+| Item | Shipped |
+|------|---------|
+| Pages | Privacy, Terms, Success, and Cancel body copy and strokes use v1.3 ink/canvas/stroke utilities (`bg-canvas`, `text-ink-muted`, `border-stroke`, `border-stroke-subtle`). Breadcrumb links use `duration-ui focus-ring rounded-sm`. Static legal `.back` uses navy + gold underline (`0.18em` breadcrumb tracking). |
+| Access field & feedback | `@utility field-control` for `#access-email`; `--color-feedback-danger-fg` for error alerts; `text-feedback-warning-fg` on Methodology eyebrow. |
+| Favicon | `favicon.svg` + generated PNGs aligned to `#0b1320` + `#cfa73a` + `aria-label="Prompt Anatomy"`. |
+| CI | Rejects `tracking-widest`, `shadow-2xl`, `shadow-xl`, `duration-150`, `duration-200` in LP JSX, plus raw `(bg\|text\|border)-slate-` in `src/pages`. |
 | Evidence | Re-record Lighthouse a11y after deploy. Write the number that the run returns. |
 | Screenshots | The open v1.0 Could (manual baseline) can land here, once motion stops moving. Screenshot CI stays Won’t. |
 

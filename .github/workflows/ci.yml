@@ -90,6 +90,14 @@ jobs:
             echo '::error::Forbidden leading-[ in LP JSX — use type utilities in index.css' >&2
             fail=1
           fi
+          if grep -rE 'tracking-widest|shadow-2xl|shadow-xl|duration-150|duration-200' src/components src/pages --include='*.jsx'; then
+            echo '::error::Forbidden v1.3 retired classes (tracking-widest, shadow-2xl, shadow-xl, duration-150, duration-200) in LP JSX' >&2
+            fail=1
+          fi
+          if grep -rE '\b(bg|text|border)-slate-' src/pages --include='*.jsx'; then
+            echo '::error::Forbidden raw slate-* in src/pages JSX — use v1.3 ink/canvas/stroke tokens' >&2
+            fail=1
+          fi
           exit $fail
 
       - name: Bundle size budget (LP critical path)
