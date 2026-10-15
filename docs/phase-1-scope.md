@@ -40,7 +40,7 @@ Pirmajame etape siūlome **tik du planus**:
 | **Frontend** `Pricing.jsx` | Rodomi tik planai 1 ir 2; konstantos `PHASE1_MAX_MODULES = 6`, `PLANS` / `PLANS_ALL` (ne `PHASE1_PLANS`). |
 | **Frontend** i18n | Istorinis: „15 modulių“ → „6 modulių“; `pricing.modulesLocked` (7+ locked). Gyvos i18n čia neperrašyti. |
 | **Frontend** `Pricing.jsx` empty-state | Varta `highest_plan >= 6` (kai `plansToShow.length === 0`); rodomas `%s` = `moduleDisplayCap` (6/9/12). |
-| **Backend** `config` | `PLAN_VALUES` gali būti `(3, 6)` Faze 1; arba palikti (3,6,12,15), bet checkout – tik 1, 2. |
+| **Backend / API** `config` | `PLAN_VALUES = (3, 6, 9, 12, 15)` (DB skaitymui `getHighestPlan` / `user_access`); `PHASE1_PLAN_VALUES = (3, 6)` / `isHubCheckoutPlan` (Stripe checkout ir webhook priima tik 1, 2 → 3, 6). |
 | **Docs** | roadmap.md – nuoroda į šį dokumentą; INDEX – phase-1-scope. |
 
 ---
