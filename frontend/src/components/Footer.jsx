@@ -186,6 +186,16 @@ export default function Footer({ hasAccess = false, onTrainingClick, trainingLin
               </li>
               <li>
                 <a
+                  href="https://www.youtube.com/@promptanatomy"
+                  target="_blank"
+                  rel={THIRD_PARTY_REL}
+                  className={footerNavLinkClass}
+                >
+                  {t('footer.youtube')}
+                </a>
+              </li>
+              <li>
+                <a
                   href={withAppUtm('https://promptanatomy.cloud/', APP_UTM_MEDIUM.footerNetwork)}
                   target="_blank"
                   rel={`${FIRST_PARTY_REL} external nofollow`}

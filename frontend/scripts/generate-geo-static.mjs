@@ -25,6 +25,7 @@ import {
   TOPICS,
   TOPICS_LT,
   TRAINING_SUMMARY,
+  YOUTUBE_URL,
 } from '../src/site/geo-manifest.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -58,6 +59,7 @@ function buildEcosystemBlock() {
       `${spoke.name}: ${spoke.urls.en} (EN) / ${spoke.urls.lt} (LT) — ${spoke.role}`,
     ]),
     `Community (Telegram): ${COMMUNITY_URL}`,
+    `YouTube: ${YOUTUBE_URL}`,
   ]
   return bulletList(lines)
 }
@@ -71,6 +73,7 @@ function buildEcosystemShortLinks() {
       mdLink(spoke.name, spoke.urls.en, `${spoke.role} (LT: ${spoke.urls.lt})`),
     ),
     mdLink('Community (Telegram)', COMMUNITY_URL, 'Public practitioner support group'),
+    mdLink('YouTube', YOUTUBE_URL, 'Brand channel'),
   ].join('\n')
 }
 
