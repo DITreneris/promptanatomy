@@ -40,6 +40,7 @@ Kiekvienas agentas turi thin stub `.cursor/agents/<id>.md` + `.cursor/skills/<ag
 ## Procesas ir dokumentacija
 
 - **Dokumentų indeksas:** [docs/INDEX.md](docs/INDEX.md) – **vienintelis** šaltinis dokumentų kelių ir paskirčių; visi doc nuorodas tikrinti per INDEX.
+- **Agentų hierarchija (hub + spokes):** [docs/agent-hierarchy.md](docs/agent-hierarchy.md) – kam priklauso kuris agentas. Hub orkestratorius nevaldo spoke agentų.
 - **Development workflow:** [docs/process/development.md](docs/process/development.md) – kaip naudoti agentus, QA, doc atnaujinimai.
 - **Definition of Done:** [docs/process/dod_system.md](docs/process/dod_system.md) – užduotis → PR merge-ready (CI + QA) → deploy smoke.
 - **Ką dokumentuoti:** [docs/process/documentation.md](docs/process/documentation.md).
