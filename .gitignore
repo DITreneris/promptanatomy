@@ -50,8 +50,34 @@ _xlsx_*.json
 # Cursor (agentai, rules, skills, lessons) – lokaliai, kaip submodulyje inzinerija
 .cursor/
 
-# Local Remotion video studio
+# Video studio stays on the operator disk. Do not force-add.
+# Directory covers Remotion, HeyGen, SeaShell, masters, audio, and stills.
 video/
+# Media dropped outside video/ (frontend/public, repo root, docs) is the same leak.
+*.mp4
+*.m4v
+*.mov
+*.mkv
+*.webm
+*.avi
+*.wmv
+*.mpg
+*.mpeg
+*.wav
+*.mp3
+*.m4a
+*.aac
+*.flac
+*.ogg
+*.opus
+*.aiff
+*.gif
+*.vtt
+*.srt
+# Production notes and YouTube paste kits. The catalog lives with the studio.
+docs/video-*.md
+docs/youtube-*.md
+/article.md
 
 # IDE / OS
 .idea/

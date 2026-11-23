@@ -10,6 +10,7 @@ Prieš pradedant užduotį, nustatykite, kuris agentas tinkamiausias, ir deleguo
 | **Pilnas kelias / integracija** | `fullstack-agent` | Frontend + `api/` + submodule; deploy, access tier, Vercel build; GEO CI/post-deploy smoke. |
 | **Klausimai** – apie projektą, dokumentaciją, deploy, prieigą, SEO/GEO | `q-and-a-agent` | „Kaip veikia“, „kur yra X“, tier 9/12 / corporate12 smoke / GSC / llms. |
 | **Kokybe** – code review, saugumas, regresija, GEO smoke | `quality-assurance-agent` | Po pakeitimų arba prieš PR/merge. |
+| **Video** – Remotion, ElevenLabs, `video/`, filmai, voiceover, stills, render | `video-agent` | Naujas ar keičiamas filmas. „Ką sako filmas“ lieka `q-and-a-agent`. |
 | **Mišrios / deploy užduotys** | **orchestrator** skill | Routing + doc-loading: `.cursor/skills/orchestrator/SKILL.md` |
 
 **Lean ir tokenai:** Prieš implementaciją apmąstykite ir patikrinkite kelią; nekurkite nereikalingų funkcijų. Taupykite tokenus: trumpi atsakymai, citavimas pagal failą/eilutę.
@@ -24,6 +25,7 @@ Thin stubs (entry) → workflow SOT = atitinkamas `.cursor/skills/<id>/SKILL.md`
 - **fullstack-agent** – `.cursor/agents/fullstack-agent.md` → skill `fullstack-agent`
 - **q-and-a-agent** – `.cursor/agents/q-and-a-agent.md` → skill `q-and-a-agent`
 - **quality-assurance-agent** – `.cursor/agents/quality-assurance-agent.md` → skill `quality-assurance-agent`
+- **video-agent** – `.cursor/agents/video-agent.md` → skill `video-agent`. Planas, masteriai ir YouTube rinkiniai lieka diske (`video/`, `docs/video-*.md`, `docs/youtube-*.md`); į GitHub neina.
 
 ## Skills (workflow + lessons)
 
@@ -33,7 +35,7 @@ Thin stubs (entry) → workflow SOT = atitinkamas `.cursor/skills/<id>/SKILL.md`
 
 Kiekvienas agentas turi thin stub `.cursor/agents/<id>.md` + `.cursor/skills/<agent-id>/SKILL.md` (+ `lessons.md` kai yra). **SKILL.md = workflow SOT.** Parent skills = marketing monorepo (LP + Vercel API + deploy); training turinys – submodulyje `apps/prompt-anatomy`.
 
-> **Git:** `.cursor/` neį repo (`.gitignore`). Šis failas (**AGENTS.md**) ir `docs/` – commitinami; agentų/skills/rules turinį sinchronizuokite rankiniu būdu arba kopijuokite iš šablono po clone.
+> **Git:** `.cursor/` neį repo (`.gitignore`). Šis failas (**AGENTS.md**) ir `docs/` – commitinami; agentų/skills/rules turinį sinchronizuokite rankiniu būdu arba kopijuokite iš šablono po clone. Išimtis: `video/`, media plėtiniai, `docs/video-*.md`, `docs/youtube-*.md` ir šaknies `article.md` lieka diske — CI atmeta, jei jie atsiranda indekse.
 
 ## Procesas ir dokumentacija
 
