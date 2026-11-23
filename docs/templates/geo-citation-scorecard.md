@@ -42,7 +42,6 @@
 | 10 | promptanatomy.app training modules | | | | | | |
 | 11 | Prompt Anatomy ecosystem cloud info space help | | | | | | |
 | 12 | How to get access to Prompt Anatomy training magic link | | | | | | |
-| 13 | AI automation prompt library for HR and marketing | | | | | | |
 | 14 | Beyond the Chatbox Prompt Anatomy Medium | | | | | | |
 | 15 | Is Prompt Anatomy a subscription or one-time purchase? | | | | | | |
 
@@ -61,13 +60,15 @@
 | 22 | Starter ar Core Promptų Anatomija | | | | | | |
 | 23 | Promptų Anatomija ekosistema Cloud biblioteka | | | | | | |
 
+**#13 retired 2026-11-06.** “AI automation prompt library for HR and marketing” is off the live set. It makes engines write a prompt library instead of citing the product. Do not renumber #14–#23. Closed months keep their #13 cells.
+
 ---
 
 ## Summary
 
 | Metric | Value |
 |--------|-------|
-| Prompts run | / 23 |
+| Prompts run | / 22 |
 | Hub `.app` citations | |
 | Spoke / `.site` citations | |
 | Medium-only citations | |

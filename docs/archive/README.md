@@ -49,6 +49,7 @@ Istorinė arba pasenusi dokumentacija – **ne** kasdieniam operaciniam darbui. 
 | Failas | Paskirtis |
 |--------|-----------|
 | [gsc-2026-09-04.md](snapshots/gsc-2026-09-04.md) | B.2 search ops: redirect + GEO smoke; GSC Performance paste pending; PostHog organic complementary. |
+| [geo-citations-2026-11.md](snapshots/geo-citations-2026-11.md) | B.1 GEO scorecard 2026-11 **closed** 2026-11-19 (Y 28→31; Gemini #5 empty, not N; #13 retired). |
 | [geo-citations-2026-09.md](snapshots/geo-citations-2026-09.md) | B.1 GEO scorecard 2026-09 **closed** (EN #1–15 + LT #16–23 filled 2026-09-04). |
 | [ops-uptime-2026-09-04.md](snapshots/ops-uptime-2026-09-04.md) | Operator close `[A.3b]` UptimeRobot 5 min + email/SMS. |
 | [ops-sentry-b4-2026-09-04.md](snapshots/ops-sentry-b4-2026-09-04.md) | B.4 Sentry api/* **closed** (Production DSN + operator smoke 2026-09-04). |
