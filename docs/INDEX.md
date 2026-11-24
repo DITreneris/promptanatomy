@@ -15,7 +15,7 @@
 | Changelog | [CHANGELOG.md](../CHANGELOG.md) | Pridėta / pakeista / taisymai. |
 | Versijų ir release | [versioning-and-release.md](versioning-and-release.md) | SemVer, release žingsniai, git tag. |
 | Magic-link spec (root) | [memo.md](../memo.md) | HMAC URL formatas platforma → training SPA. |
-| Magic-link email bind (2026-09-23) | [memo-magic-link-email-2026-09-23.md](memo-magic-link-email-2026-09-23.md) | Bind spec. Live training pin from 2026-10-09 is tag `v1.6.6` (`d1d0830`). The 2026-09-23 pin was `7a66b71`. |
+| Magic-link email bind (2026-09-23) | [memo-magic-link-email-2026-09-23.md](memo-magic-link-email-2026-09-23.md) | Bind spec. Live training pin from 2026-11-24 is tag `v1.6.7` (`0933e27`). The 2026-10-09 pin was `d1d0830` / `v1.6.6`. The 2026-09-23 pin was `7a66b71`. |
 
 ---
 
