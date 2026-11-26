@@ -22,6 +22,13 @@ jobs:
       # v7 runs on Node 24. v4 declared Node 20 and was forced onto 24.
       - uses: actions/checkout@v7
 
+      - name: Refuse tracked video studio files
+        run: |
+          if git ls-files | grep -E '(^|/)video/|(^|/)docs/youtube-|(^|/)docs/video-|^article\.md$|\.(mp4|m4v|mov|mkv|webm|avi|wmv|mpg|mpeg|wav|mp3|m4a|aac|flac|ogg|opus|aiff|gif|vtt|srt)$'; then
+            echo '::error::Video studio files are local only. Remove them from the git index.'
+            exit 1
+          fi
+
       - name: Checkout private training submodule
         env:
           TOKEN: ${{ secrets.INZINERIJA_READ_TOKEN }}

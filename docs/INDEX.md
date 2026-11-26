@@ -79,6 +79,8 @@
 | ADR katalogas | [decisions/](decisions/) | Architektūriniai sprendimai. |
 | Šablonai | [templates/](templates/) | ADR, changelog, GEO scorecard, LT social pack, tier-grant-wave. |
 | Agentų orkestratorius | [AGENTS.md](../AGENTS.md) | Routing, skills, lean taisyklės. |
+| Agentų hierarchija | [agent-hierarchy.md](agent-hierarchy.md) | Hub ir spoke: kas kam priklauso, 53 agentai. Snapshot 2026-10-23. |
+| Video studija | local, ne GitHub | `video/`, `docs/video-*.md`, `docs/youtube-*.md` ir šaknies `article.md` lieka operatoriaus diske. `.gitignore` ir CI jų neįleidžia. Katalogas nėra šiame faile. |
 
 ---
 
